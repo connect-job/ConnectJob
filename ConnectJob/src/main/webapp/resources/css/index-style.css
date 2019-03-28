@@ -1,0 +1,238 @@
+@font-face {
+	font-family: 'NotoKr';
+	font-style: normal;
+	font-weight: 300;
+	src: url('../font/notokr-regular.eot');
+	src: url('../font/notokr-regular.eot?#iefix') format('embedded-opentype'),
+		 url('../font/notokr-regular.woff2') format('woff2'),
+		 url('../font/notokr-regular.woff') format('woff');
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    font-family: 'NotoKr', sans-serif;
+    font-size: 14px;
+    letter-spacing: -0.3px;
+}
+
+/* 공통 컴포넌트 태그 */
+input {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 5px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    font-size: 13px;
+    background: none;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    background-color: #fff;
+    /* background-color: #293341; */
+    color: #2b2b2b;
+    border-bottom: 1px solid #eee;
+}
+
+header #header-container {
+    display: inline-block;
+    width: 990px;
+}
+
+header #header-container #logo {
+    width: 990px;
+    display: inline-block;
+    text-align: left;
+}
+
+/* 헤더 - 중간 */
+
+header #header-container #header-menu {
+    width: 990px;
+    height: 40px;
+    font-size: 13px;
+} 
+
+header #header-container #header-menu .menu-left {
+    float: left;
+}
+
+header #header-container #header-menu .menu-left ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+header #header-container #header-menu .menu-left ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-top: 12px;
+    width: 120px;
+    height: 30px;
+}
+
+header #header-container #header-menu .menu-left ul li:hover {
+    transition: 800ms;
+    background-color: #373e55;
+    color: #fff;
+}
+
+
+header #header-container #header-menu .menu-right {
+    float: right;
+}
+
+header #header-container #header-menu .menu-right ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+header #header-container #header-menu .menu-right ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-top: 12px;
+    width: 90px;
+    height: 30px;
+}
+
+header #header-container #header-menu .menu-right ul li:hover {
+    transition: 600ms;
+    background-color: #373e55;
+    color: #fff;
+}
+
+section {
+    padding-top: 100px;
+    width: 100%;
+    height: 600px;
+    text-align: center;
+    animation: BgEffect 12s ease infinite;
+}
+
+@keyframes BgEffect {
+    0% {
+        background-image: url(../images/background-02.jpg);
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    50% {
+        background-image: url(../images/background-04.jpg);
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    100% {
+        background-image: url(../images/background-02.jpg);
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+}
+
+
+section #index-container {
+    display: inline-block;
+    width: 990px;
+    text-align: center;
+    padding-top: 150px;
+}
+
+section #index-container .index {
+    display: inline-block;
+    width: 350px;
+}
+
+section #index-container .index .index-search {
+    width: 350px;
+    background-color: rgba(255, 255, 255, 0.575);
+}
+
+section #index-container .index .index-search input {
+    width: 300px;
+    height: 40px;
+    font-size: 13px;
+    letter-spacing: -0.3px;
+    color: #3b3b3b;
+}
+
+section #index-container .index #index-search-result {
+    display: none;
+    position: absolute;
+    width: 350px;
+    color: #fff;
+}
+
+section #index-container .index #index-search-result ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+section #index-container .index #index-search-result ul li {
+	transition: 600ms;
+	background-color: #293341ab;
+	text-align: left;
+	color: #fff;
+    height: 30px;
+    font-size: 12px;
+	padding-top: 10px;
+	padding-left: 15px;
+	border-bottom: 1px solid #404f64;
+}
+
+section #index-container .index #index-search-result ul li:hover {
+    transition: 600ms;
+    background-color: #2f4461ca;
+}
+
+
+footer {
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    font-size: 12px;
+    letter-spacing: 0;
+}
+
+footer #footer-container {
+    display: inline-block;
+    width: 990px;
+}
+
+footer #footer-container .footer-top {
+    text-align: center;
+}
+
+footer #footer-container .footer-top ul {
+    list-style-type: none;
+}
+
+footer #footer-container .footer-top ul li {
+    display: inline-block;
+    padding-top: 12px;
+    width: 200px;
+    height: 30px;
+}
+
+footer #footer-container .footer-middle {
+    text-align: center;
+    height: 50px;
+}
+
+footer #footer-container .footer-bottom {
+    text-align: center;
+    color: #4e4e4e;
+}
+
+
