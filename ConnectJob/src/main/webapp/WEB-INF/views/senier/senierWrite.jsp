@@ -17,7 +17,7 @@
         </div>
 
         <div class="senier-subTitle">
-            <div id="left">동문선배에게 취업고민 상담하기</div>
+            <div id="left">직종 선배에게 취업고민 상담하기</div>
             <div id="right"></div>
         </div>
 
@@ -29,7 +29,7 @@
                         <div class="right">
                             <input type="radio" name="cate" id="radio1"><label for="radio1">회사</label>
                             <input type="radio" name="cate" id="radio2"><label for="radio2">직무</label>
-                            <input type="radio" name="cate" id="radio3"><label for="radio3">업계/산업</label>
+                       		<!-- <input type="radio" name="cate" id="radio3"><label for="radio3">업계/산업</label> -->
                             <input type="radio" name="cate" id="radio4"><label for="radio4">진로</label>
                             <input type="radio" name="cate" id="radio5"><label for="radio5">기타</label>
                         </div>

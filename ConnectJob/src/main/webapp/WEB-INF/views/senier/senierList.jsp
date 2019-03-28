@@ -15,42 +15,42 @@
         </div>
 
         <div class="senier-subTitle">
-            <div id="left">우리학교 동문의 취업고민과 선배의 답변이에요</div>
+            <div id="left">우리 직종의 취업고민과 선배의 답변이에요</div>
             <div id="right"><button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">선배에게 질문하기</button></div>
         </div>
 
         <div class="senier-middle">
-            <div class="senier-item">
+            <div class="senier-item" onclick="location.href='${path}/senierAnswer.do'">
                 <div class="item-cate">13학번 회사고민</div>
                 <div class="item-title">이력서 열람 후 연락까지</div>
                 <div class="item-content">이력서를 넣고 열람한 회사들이 면접연락이 보통 언제쯤......</div>
                 <div class="item-info">7일전　답변 7개　조회수 382</div>
             </div>
-            <div class="senier-item">
+            <div class="senier-item" onclick="location.href='${path}/senierAnswer.do'">
+                <div class="item-cate">13학번 직무고민</div>
+                <div class="item-title">이력서 열람 후 연락까지</div>
+                <div class="item-content">이력서를 넣고 열람한 회사들이 면접연락이 보통 언제쯤......</div>
+                <div class="item-info">7일전　답변 7개　조회수 382</div>
+            </div>
+           <div class="senier-item" onclick="location.href='${path}/senierAnswer.do'">
+                <div class="item-cate">13학번 진로고민</div>
+                <div class="item-title">이력서 열람 후 연락까지</div>
+                <div class="item-content">이력서를 넣고 열람한 회사들이 면접연락이 보통 언제쯤......</div>
+                <div class="item-info">7일전　답변 7개　조회수 382</div>
+            </div>
+            <div class="senier-item" onclick="location.href='${path}/senierAnswer.do'">
+                <div class="item-cate">13학번 기타고민</div>
+                <div class="item-title">이력서 열람 후 연락까지</div>
+                <div class="item-content">이력서를 넣고 열람한 회사들이 면접연락이 보통 언제쯤......</div>
+                <div class="item-info">7일전　답변 7개　조회수 382</div>
+            </div>
+           <div class="senier-item" onclick="location.href='${path}/senierAnswer.do'">
                 <div class="item-cate">13학번 회사고민</div>
                 <div class="item-title">이력서 열람 후 연락까지</div>
                 <div class="item-content">이력서를 넣고 열람한 회사들이 면접연락이 보통 언제쯤......</div>
                 <div class="item-info">7일전　답변 7개　조회수 382</div>
             </div>
-            <div class="senier-item">
-                <div class="item-cate">13학번 회사고민</div>
-                <div class="item-title">이력서 열람 후 연락까지</div>
-                <div class="item-content">이력서를 넣고 열람한 회사들이 면접연락이 보통 언제쯤......</div>
-                <div class="item-info">7일전　답변 7개　조회수 382</div>
-            </div>
-            <div class="senier-item">
-                <div class="item-cate">13학번 회사고민</div>
-                <div class="item-title">이력서 열람 후 연락까지</div>
-                <div class="item-content">이력서를 넣고 열람한 회사들이 면접연락이 보통 언제쯤......</div>
-                <div class="item-info">7일전　답변 7개　조회수 382</div>
-            </div>
-            <div class="senier-item">
-                <div class="item-cate">13학번 회사고민</div>
-                <div class="item-title">이력서 열람 후 연락까지</div>
-                <div class="item-content">이력서를 넣고 열람한 회사들이 면접연락이 보통 언제쯤......</div>
-                <div class="item-info">7일전　답변 7개　조회수 382</div>
-            </div>
-            <div class="senier-item">
+            <div class="senier-item" onclick="location.href='${path}/senierAnswer.do'">
                 <div class="item-cate">13학번 회사고민</div>
                 <div class="item-title">이력서 열람 후 연락까지</div>
                 <div class="item-content">이력서를 넣고 열람한 회사들이 면접연락이 보통 언제쯤......</div>
