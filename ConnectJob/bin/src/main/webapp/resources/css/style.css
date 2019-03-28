@@ -1,0 +1,861 @@
+/* @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&subset=korean'); */
+
+@font-face {
+	font-family: 'NotoKr';
+	font-style: normal;
+	font-weight: 300;
+	src: url('../font/notokr-regular.eot');
+	src: url('../font/notokr-regular.eot?#iefix') format('embedded-opentype'),
+		 url('../font/notokr-regular.woff2') format('woff2'),
+		 url('../font/notokr-regular.woff') format('woff');
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    font-family: 'NotoKr', sans-serif;
+    font-size: 14px;
+    letter-spacing: -0.3px;
+    color: #535353;
+}
+
+
+a {
+    color: #535353;
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+    color: #5e6477;
+    text-decoration: none;
+}
+
+
+/* ------------------------------------- 공통 컴포넌트 태그 */
+input {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 5px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    font-size: 13px;
+    background: none;
+}
+
+select {
+    padding-top: 5px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 8px;
+    outline: none;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    font-size: 12px;
+    letter-spacing: -0.3px;
+    color: #373e55;
+}
+
+option {
+    height: 30px;
+}
+
+
+/* ------------------------------------- 헤더시작 */
+
+header {
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    background-color: #fff;
+    /* background-color: #373e55; */
+    color: #373e55;
+    border-bottom: 1px solid #eee;
+}
+
+header #header-container {
+    display: inline-block;
+    width: 990px;
+}
+
+header #header-container #logo {
+    width: 990px;
+    display: inline-block;
+    text-align: left;
+}
+
+/* 헤더 - 중간 */
+
+header #header-container #header-menu {
+    width: 990px;
+    height: 40px;
+    font-size: 13px;
+} 
+
+header #header-container #header-menu .menu-left {
+    float: left;
+}
+
+header #header-container #header-menu .menu-left ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+header #header-container #header-menu .menu-left ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-top: 12px;
+    width: 120px;
+    height: 30px;
+}
+
+header #header-container #header-menu .menu-left ul li:hover {
+    transition: 800ms;
+    background-color: rgb(55, 62, 85);
+    color: #fff;
+}
+
+
+header #header-container #header-menu .menu-right {
+    float: right;
+}
+
+header #header-container #header-menu .menu-right ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+header #header-container #header-menu .menu-right ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-top: 12px;
+    width: 90px;
+    height: 30px;
+}
+
+header #header-container #header-menu .menu-right ul li:hover {
+    transition: 600ms;
+    background-color: #373e55;
+    color: #fff;
+}
+
+section {
+    padding-top: 150px;
+    padding-bottom: 50px;
+    width: 100%;
+    text-align: center;
+    color: #383838;
+    letter-spacing: -0.3px;
+}
+
+section #company-container {
+    display: inline-block;
+    width: 990px;
+}
+
+section #company-container .company-top {
+    padding-left: 25px;
+    text-align: left;
+    height: 50px;
+    font-size: 24px;
+}
+
+.selected {
+    background-color: #373e55;
+    color: #fff;
+}
+
+section #company-container .company-middle {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #e6e6e6;
+    text-align: left;
+}
+
+section #company-container .company-middle button {
+    width: 240px;
+    height: 35px;
+    outline: none;
+    background-color: #373e55;
+    color: #fff;
+    border: 1px solid #373e55;
+}
+
+section #company-container .company-middle button:hover {
+    transition: 600ms;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #373e55;
+}
+
+section #company-container .company-middle #search_location {
+    width: 100%;
+}
+
+section #company-container .company-middle #search_location #search_left {
+    display: inline-block;
+    width: 230px;
+    height: 150px;
+    padding: 5px;
+    background-color: #fff;
+    overflow-y: scroll;
+}
+
+#search_left::-webkit-scrollbar {
+    width: 9px;
+}
+
+#search_left::-webkit-scrollbar-track {
+    background-color: #fff;
+    
+    border-radius: 10px;
+}
+
+#search_left::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b9bbc4;
+}
+
+section #company-container .company-middle #search_location #search_left ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+section #company-container .company-middle #search_location #search_left ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 15px;
+    padding-top: 8px;
+    width: 92px;
+    height: 27px;
+    font-size: 12px;
+    border: 1px solid #eee;
+    margin-bottom: 2px;
+}
+
+section #company-container .company-middle #search_location #search_left ul li:hover {
+    transition: 500ms;
+    background-color: #eee;
+    border: 1px solid #373e55;
+}
+
+section #company-container .company-middle #search_location #search_right {
+    display: inline-block;
+    width: 730px;
+    height: 150px;
+    border: 1px solid #eee;
+    background-color: #fff;
+    padding: 5px;
+    overflow-y: scroll;
+}
+
+#search_right::-webkit-scrollbar {
+    width: 9px;
+}
+
+#search_right::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+#search_right::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b9bbc4;
+}
+
+section #company-container .company-middle #search_location #search_right #location {
+    
+}
+
+section #company-container .company-middle #search_location #search_right #location ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+section #company-container .company-middle #search_location #search_right #location ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 15px;
+    padding-top: 8px;
+    width: 99px;
+    height: 28px;
+    font-size: 12px;
+    border: 1px solid #eee;
+    margin-bottom: 2px;
+}
+
+
+
+section #company-container .company-middle #search_selected {
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+}
+
+section #company-container .company-middle #search_selected #select_left {
+    padding-left: 5px;
+    float: left;
+}
+
+section #company-container .company-middle #search_selected #select_left button {
+    background: none;
+    width: 110px;
+    height: 30px;
+    font-size: 12px;
+    border-radius: 2px;
+    color: #373e55;
+    margin: 3px;
+}
+
+section #company-container .company-middle #search_selected #select_left button:hover {
+    background-color: #373e55;
+    transition: 600ms;
+    color: #fff;
+}
+
+section #company-container .company-middle #search_selected #select_right {
+
+    float: right;
+}
+
+section #company-container .company-middle #search_selected #select_right button {
+    width: 100px;
+    height: 35px;
+    outline: none;
+    background-color: #373e55;
+    color: #fff;
+    border: 1px solid #373e55;
+}
+
+section #company-container .company-middle #company-location {
+    display: inline-block;
+    text-align: center;
+}
+
+
+section #company-container .company-middle #company-location-detail {
+    display: inline-block;
+    text-align: center;
+}
+
+section #company-container #company-content {
+	width: 100%;
+    text-align: center;
+}
+
+section #company-container #company-content #company-list {
+    display: inline-block;
+    text-align: center;
+    width: 990px;
+    color: #535353;
+}
+
+
+section #company-container #company-content #company-list table {
+    margin-top: 10px;
+    border-top: 2px solid #373e55;
+    font-size: 13px;
+    display: inline-block;
+    border-collapse: collapse;
+}
+
+section #company-container #company-content #company-list table th {
+    background-color: #eeeff1;
+    height: 40px;
+    text-align: center;
+}
+
+section #company-container #company-content #company-list table td {
+    height: 33px;
+    border-bottom: 1px solid #eee;
+}
+
+section #company-container #company-content #company-list #pageBar {
+    width: 990px;
+    padding-top: 10px;
+    height: 40px;
+}
+
+section #company-container #company-content #company-list #pageBar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+section #company-container #company-content #company-list #pageBar ul li {
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid #cfcfcf;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+    height: 23px;
+    margin: 1px;
+}
+
+section #company-container #company-content #company-list #pageBar ul li:hover {
+    background-color: #373e55;
+    color: #fff;
+    transition: 600ms;
+}
+
+section #company-container #company-content #company-list #pageBar ul li.active {
+    background-color: #373e55;
+    color: #fff;
+}
+
+/* ---------------- 기업상세페이지 -------------------- */
+
+section#companyView {
+    background-color: #fff;
+}
+
+section #company-view-container {
+    display: inline-block;
+    width: 990px;
+}
+
+section #company-view-container .company-view-top {
+    padding-left: 25px;
+    text-align: left;
+    height: 50px;
+    font-size: 24px;
+    width: 970px;;
+}
+
+section #company-view-container #company-view-content {
+    width: 100%;
+}
+
+section #company-view-container #company-view-content .view-left {
+    width: 120px;
+    text-align: center;
+    position: fixed;
+    cursor: pointer;
+    float: left;
+}
+
+section #company-view-container #company-view-content .view-left ul {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+section #company-view-container #company-view-content .view-left ul li {
+    width: 90px;
+    padding-top: 20px;
+    height: 60px;
+    border-radius: 4px;
+    border: 1px solid #d3d3d3;
+    margin-bottom: 3px;
+}
+
+section #company-view-container #company-view-content .view-left ul li:hover {
+    background-color: #373e55;
+    border: 1px solid #373e55;
+    color: #fff;
+    transition: 600ms;
+}
+
+/* ------------------------------------------------------------------- */
+
+section #company-view-container #company-view-content .view-right {
+    float: right;
+    width: 870px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-info {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-info .info-left {
+    display: inline-block;
+    vertical-align: top;
+    width: 42%;
+    margin-right: 5px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-info .info-left .info {
+    width: 100%;
+    height: 45px;
+    text-align: left;
+    border: 1px solid #d3d3d3;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    background-color: #fff;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-info .info-left .info:hover {
+    transition: 500ms;
+    background-color: #373e55;
+    color: #fff;
+}
+
+
+.title {
+    display: inline-block;
+    width: 75px;
+    height: 30px;
+    padding-left: 15px;
+    padding-top: 13px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.content {
+    padding-left: 10px;
+    height: 30px;
+    display: inline-block;
+    font-size: 13px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-info .info-right {
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    padding-left: 15px;
+    width: 55%;
+    height: 430px;
+    border-radius: 4px;
+    border: 1px solid #d3d3d3;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.line {
+    background-color: #373e55;
+    height: 10px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-review {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 200px;
+    border-radius: 4px;
+    border: 1px solid #d3d3d3;
+    background-color: #fff;
+    color: #535353;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    height: 200px;
+    border-radius: 4px;
+    border: 1px solid #d3d3d3;
+    background-color: #fff;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-news {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #d3d3d3;
+    font-size: 13px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-news .news-line {
+    width: 100%;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-news .news-line:hover {
+    background-color: #eee;
+    transition: 600ms;
+}
+
+.news-title {
+    display: inline-block;
+    padding-top: 14px;
+    padding-left: 15px;
+    height: 32px;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    text-align: left;
+    font-size: 13px;
+}
+
+
+
+/* ------------------------- 선배와의 대화 ----------------------- */
+
+section #senier-container {
+    display: inline-block;
+    width: 990px;
+    letter-spacing: -0.4px;
+}
+
+section #senier-container .senier-top {
+    padding-left: 25px;
+    text-align: left;
+    height: 50px;
+    font-size: 24px;
+}
+
+
+section #senier-container .senier-subTitle {
+    padding-left: 27px;
+    text-align: left;
+    font-size: 14px;
+}
+
+section #senier-container .senier-subTitle #left {
+    padding-top: 8px;
+    float: left;
+}
+
+section #senier-container .senier-subTitle #right {
+    padding-right: 25px;
+    float: right;
+}
+
+section #senier-container .senier-subTitle #right button {
+    width: 200px;
+    height: 35px;
+    letter-spacing: -0.5px;
+    color: #fff;
+    border: 2px solid #373e55;
+    outline: none;
+    background-color: #373e55;
+}
+
+section #senier-container .senier-subTitle #right button:hover {
+    transition: 600ms;
+    border: 2px solid #373e55;
+    outline: none;
+    background-color: #373e55;
+    color: #fff;
+}
+
+section #senier-container .senier-middle {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+section #senier-container .senier-middle .senier-item {
+    cursor: pointer;
+    margin: 15px;
+    display: inline-block;
+    width: 450px;
+    border-radius: 4px;
+    border: 1px solid #cfcfcf;
+    background-color: #fff;
+    color: #535353;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+section #senier-container .senier-middle .senier-item:hover {
+    transition: 500ms;
+    background-color: #373e55;
+    color: #fff;
+}
+
+section #senier-container .senier-middle .senier-item .item-cate {
+    padding-left: 25px;
+    width: 100%;
+    font-size: 12px;
+}
+
+section #senier-container .senier-middle .senier-item .item-title {
+    padding-left: 25px;
+    width: 100%;
+    font-size: 18px;
+    height: 30px;
+}
+
+section #senier-container .senier-middle .senier-item .item-content {
+    padding-left: 25px;
+    width: 100%;
+    font-size: 12px;
+}
+
+section #senier-container .senier-middle .senier-item .item-info {
+    padding-left: 25px;
+    width: 100%;
+    font-size: 12px;
+}
+
+
+/* ------------------------- 선배에게 질문하기 (글쓰기) -------------------- */
+
+section #senier-container .senier-middle #senier-write-container {
+    margin-top: 15px;
+    width: 100%;
+}
+
+section #senier-container .senier-middle #senier-write-container .write-cate {
+    margin-bottom: 5px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #d3d3d3;
+}
+
+section #senier-container .senier-middle #senier-write-container .write-title {
+    margin-bottom: 5px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #d3d3d3;
+}
+
+section #senier-container .senier-middle #senier-write-container .write-content {
+    margin-bottom: 5px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #d3d3d3;
+}
+
+section #senier-container .senier-middle #senier-write-container .write-content {
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+section #senier-container .senier-middle #senier-write-container .write-btn {
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+section #senier-container .senier-middle #senier-write-container .write-btn button {
+    width: 200px;
+    height: 35px;
+    letter-spacing: -0.5px;
+    color: #fff;
+    border: 2px solid #373e55;
+    outline: none;
+    background-color: #373e55;
+}
+    
+section #senier-container .senier-middle #senier-write-container .write-btn button:hover {
+    transition: 600ms;
+    border: 2px solid #373e55;
+    outline: none;
+    background-color: #373e55;
+    color: #fff;
+}
+
+section #senier-container .senier-middle #senier-write-container .left {
+    vertical-align: top;
+    padding-top: 10px;
+    border-radius: 4px;
+    width: 200px;
+    height: 30px;
+    background-color: #373e55;
+    color: #fff;
+    display: inline-block;
+    border-right: 1px solid #d3d3d3;
+}
+
+section #senier-container .senier-middle #senier-write-container .right {
+    vertical-align: top;
+    text-align: left;
+    padding-top: 18px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    width: 769px;
+    display: inline-block;
+}
+
+section #senier-container .senier-middle #senier-write-container .right input[type=radio] {
+    width: 40px;
+}
+
+section #senier-container .senier-middle #senier-write-container .right textarea {
+    padding-left: 15px;
+    width: 745px;
+    height: 250px;
+    border: none;
+    outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    font-size: 12px;
+    letter-spacing: 0;
+    border-top: 1px solid #eee;
+}
+
+footer #footer-container {
+    display: inline-block;
+    width: 990px;
+}
+
+footer #footer-container .footer-top {
+    text-align: center;
+}
+
+footer #footer-container .footer-top ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+footer #footer-container .footer-top ul li {
+    display: inline-block;
+    padding-top: 12px;
+    width: 200px;
+    height: 30px;
+}
+
+footer #footer-container .footer-middle {
+    text-align: center;
+    height: 50px;
+}
+
+footer #footer-container .footer-bottom {
+    text-align: center;
+    color: #4e4e4e;
+}
+
+
