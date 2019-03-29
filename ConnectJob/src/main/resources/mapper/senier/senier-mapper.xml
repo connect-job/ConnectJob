@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="senier">
+  
+  <resultMap type="senier" id="senierResult">
+		<id property="sNo" column="s_no"/>
+		<result property="sJob" column="s_job"/>
+		<result property="qType" column="q_type" typeHandler="strArr"/>
+		<result property="sTitle" column="s_title"/>
+		<result property="sContent" column="s_content"/>
+		<result property="sHits" column="s_hits"/>
+		<result property="sDate" column="s_date"/>
+		<result property="pId" column="p_id"/>
+		<result property="status" column="status"/>
+	</resultMap>
+	
+	
+  
+  <insert id="insertSenier" parameterType="senier">
+  	insert into s_talk values(SEQ_S_NO.NEXTVAL,null,#{qType, typeHandler=strArr},#{sTitle},#{sContent},0,default,null,default)
+  </insert>
+  
+  <select id="senierList" resultMap="senierResult">
+  	select * from s_talk
+  </select>
+  
+</mapper>

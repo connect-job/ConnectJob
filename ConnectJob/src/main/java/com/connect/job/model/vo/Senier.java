@@ -1,12 +1,20 @@
 package com.connect.job.model.vo;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.Arrays;
 
-public class Senier {
+public class Senier implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3653406228267432755L;
+	
 	
 	private int sNo;
 	private String sJob;
-	private String qType;
+	private String[] qType;
 	private String sTitle;
 	private String sContent;
 	private int sHits;
@@ -18,8 +26,8 @@ public class Senier {
 		
 	}
 
-	public Senier(int sNo, String sJob, String qType, String sTitle, String sContent, int sHits, Date sDate, String pId,
-			String status) {
+	public Senier(int sNo, String sJob, String[] qType, String sTitle, String sContent, int sHits, Date sDate,
+			String pId, String status) {
 		super();
 		this.sNo = sNo;
 		this.sJob = sJob;
@@ -48,11 +56,11 @@ public class Senier {
 		this.sJob = sJob;
 	}
 
-	public String getqType() {
+	public String[] getqType() {
 		return qType;
 	}
 
-	public void setqType(String qType) {
+	public void setqType(String[] qType) {
 		this.qType = qType;
 	}
 
@@ -106,9 +114,11 @@ public class Senier {
 
 	@Override
 	public String toString() {
-		return "Senier [sNo=" + sNo + ", sJob=" + sJob + ", qType=" + qType + ", sTitle=" + sTitle + ", sContent="
-				+ sContent + ", sHits=" + sHits + ", sDate=" + sDate + ", pId=" + pId + ", status=" + status + "]";
+		return "Senier [sNo=" + sNo + ", sJob=" + sJob + ", qType=" + Arrays.toString(qType) + ", sTitle=" + sTitle
+				+ ", sContent=" + sContent + ", sHits=" + sHits + ", sDate=" + sDate + ", pId=" + pId + ", status="
+				+ status + "]";
 	}
+
 	
 	
 	

@@ -56,6 +56,19 @@
                 <div class="item-content">이력서를 넣고 열람한 회사들이 면접연락이 보통 언제쯤......</div>
                 <div class="item-info">7일전　답변 7개　조회수 382</div>
             </div>
+            
+             	<c:forEach var="sen" items="${list}" varStatus="vs">
+             <div class="senier-item" onclick="location.href='${path}/senierAnswer.do'">
+					<div class="item-cate">
+						<c:forEach items="${sen.qType}" var="type" varStatus="vs">
+						${vs.index!=0?",":"" }${type}
+					</c:forEach>
+					</div>
+					<div class="item-title">${sen.sTitle}</div>
+					<div class="item-content">${sen.sContent}</div>
+            </div>
+				</c:forEach>
+            
         </div>
     </div>
 </section>
