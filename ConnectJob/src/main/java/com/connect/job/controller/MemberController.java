@@ -9,6 +9,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.connect.job.model.vo.Member;
 import com.connect.job.service.MemberService;
@@ -30,18 +32,42 @@ public class MemberController {
 		return "member/memberEnroll";
 	}
 	
-	@RequestMapping("/member/memberEnrollEnd.do")
-	public String insertMember(Member m, Model model) {
+	@RequestMapping(value="/member/memberEnrollEnd.do", method=RequestMethod.POST)
+	public String insertMember(Member m, Model model) throws Exception {
 		
 		String pw=m.getPassword();
 		logger.debug(pw);
-		String enPw=encoder.encode(pw);
+		String enPw=encoder.encode(pw); //암호화
 		logger.debug(enPw);
 		m.setPassword(enPw);
 		
 		int result=service.insertMember(m);
 		
-		return "member/loginMember";
+		String msg="";
+		String loc="";
+		
+		if(result>0) {
+			msg="가입시 등록한 이메일로 인증해주세요";
+			loc="/";
+			
+		}else {
+			msg="가입 실패";
+			loc="/";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("loc", loc);
+		
+		return "common/msg";
+	}
+	
+	@RequestMapping(value="/member/emailConfirm", method=RequestMethod.POST)
+	public String emailConfirm(String pId, Model model) {
+		
+		service.userAuth(pId);
+		model.addAttribute("pId", pId);
+		
+		return "member/emailConfirm";
 	}
 	
 	@RequestMapping("/member/login.do")
@@ -59,14 +85,14 @@ public class MemberController {
 		
 		if(result!=null) {
 			if(encoder.matches(m.getPassword(), result.getPassword())) {
-				msg = "로그인 성공!";
+				msg = "로그인 성공";
 				 session.setAttribute("loginMember", result); 
-				 logger.debug("클라이언트에게 넘어온 값" + result);
+				 logger.debug("클라이언트에게 넘어온 값: " + result);
 			} else {
-				msg = "비밀번호가 일치하지 않습니다!";
+				msg = "비밀번호가 일치하지 않습니다.!";
 			}
 		} else {
-			msg = "존재하지 않는 아이디 입니다.";
+			msg = "존재하지 않는 아이디입니다.";
 		}
 		
 		model.addAttribute("msg", msg);

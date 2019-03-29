@@ -4,8 +4,8 @@ import com.connect.job.model.vo.Member;
 
 public interface MemberService {
 
-	int insertMember(Member m);
-
+	int insertMember(Member m) throws Exception;
 	Member selectOne(Member m);
+	void userAuth(String pId);
 	
 }

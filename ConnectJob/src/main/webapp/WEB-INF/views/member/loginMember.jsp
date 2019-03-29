@@ -23,7 +23,7 @@
 				<td><input type="button" value="ID/PW찾기" id="findbtn"/></td>			
 			</tr>
 			<tr>
-				<td colspan="2"><a id="kakao-login-btn"></a></td>				
+				<td colspan="2"><a href="https://kauth.kakao.com/oauth/authorize?client_id=QM-jGsTNm7gTr8ll4bhxDDdBu3mKDIb3VxWOVgorDNQAAAFpw-9hDw&redirect_uri=http://localhost:9090/job&response_type=code" id="kakao-login-btn"></a></td>				
 			</tr>
 		</table>	
 		
@@ -49,6 +49,8 @@
          alert(JSON.stringify(err));
       }
     });
+    
+    Kakao.Auth.setAccessToken("QM-jGsTNm7gTr8ll4bhxDDdBu3KDlb3VxWOVgorDNQAAAFpw-9hDw");
 </script>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

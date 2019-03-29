@@ -20,8 +20,14 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public Member selectOne(Member m) {
-		// TODO Auto-generated method stub
+		
 		return session.selectOne("member.selectOne", m);
+	}
+
+	@Override
+	public void userAuth(String pId) {
+		
+		session.update("member.userAuth", pId);
 	}
 	
 	

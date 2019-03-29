@@ -5,7 +5,7 @@ import com.connect.job.model.vo.Member;
 public interface MemberDao {
 
 	int insertMember(Member m);
-
 	Member selectOne(Member m);
+	void userAuth(String pId);
 
 }
