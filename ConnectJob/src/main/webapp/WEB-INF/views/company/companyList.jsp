@@ -271,6 +271,33 @@
             e.remove();
         }
 
+       	function fn_paging(cPage) {
+       		window.location.href="${path}/company/companyList.do?cPage=" + cPage;
+       	}
+       	
+       	function fn_ajaxPaging(cPage) {
+       		var comList = $('#ajax_table');
+       		var location_temp = $('#select_left button');
+            var location = "";
+
+            for(var i=0; i<location_temp.length;i++) {
+                location += location_temp[i].innerText + ",";
+            }
+            
+            $.ajax({
+            	url: '${path}/company/companyListEnd.do',
+            	data: {"location":location, "cPage":cPage},
+            	dataType: "html",
+            	success: function(data) {
+					var Ca = /\+/g;
+					var resultSet = decodeURIComponent(data.replace(Ca, " "));
+            		comList.empty();
+            		comList.html(resultSet);
+            	}
+            });
+            
+       	}
+        
         function fn_search() {
             var comList = $('#ajax_table');
             var location_temp = $('#select_left button');
@@ -295,59 +322,3 @@
     </script>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
-
-
-<!-- 
-<div id="company-location">
-    지역선택
-    <select>
-        <option>전국</option>
-        <option>서울</option>
-        <option>부산</option>
-        <option>대구</option>
-        <option>인천</option>
-        <option>광주</option>
-        <option>대전</option>
-        <option>울산</option>
-        <option>세종</option>
-        <option>경기</option>
-        <option>강원</option>
-        <option>충북</option>
-        <option>충남</option>
-        <option>전북</option>
-        <option>전남</option>
-        <option>경북</option>
-        <option>경남</option>
-        <option>제주</option>
-    </select>
-</div>
-<div id="company-location-detail">
-    <select>
-        <option>전체</option>
-        <option>강남구</option>
-        <option>강동구</option>
-        <option>강북구</option>
-        <option>강서구</option>
-        <option>관악구</option>
-        <option>광진구</option>
-        <option>구로구</option>
-        <option>금천구</option>
-        <option>노원구</option>
-        <option>도봉구</option>
-        <option>동대문구</option>
-        <option>동작구</option>
-        <option>마포구</option>
-        <option>서대문구</option>
-        <option>서초구</option>
-        <option>성동구</option>
-        <option>성북구</option>
-        <option>송파구</option>
-        <option>양천구</option>
-        <option>영등포구</option>
-        <option>용산구</option>
-        <option>은평구</option>
-        <option>종로구</option>
-        <option>중구</option>
-        <option>중랑구</option>
-    </select>
-</div> -->

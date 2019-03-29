@@ -18,6 +18,12 @@
 	
     <script src="${path }/resources/js/wow.min.js"></script>
     <script src="${path }/resources/js/jquery-3.3.1.min.js"></script>
+    
+    <!-- 제이쿼리 모달 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    
+    
     <script>
         new WOW().init();
     </script>
@@ -27,14 +33,18 @@
         <div id="header-container">
             <div id="logo">
                 <a href="${path }/"><img src="${path }/resources/images/logo.jpg"></a>
+                <img src="${path }/resources/images/icon-search.png" width="14px"><input type="search" id="search" placeholder="기업을 검색해보세요" autocomplete="off" autofocus/>
             </div>
             <div id="header-menu">
                 <div class="menu-left">
                     <ul>
                         <li onclick="location.href='${path}/calendar.do'">공채달력</li>
                         <li onclick="location.href='${path}/company/companyList.do'">기업탐색</li>
-                        <li>기업리뷰</li>
+                        <li onclick="location.href='${path}/review/review.do'">기업리뷰</li>
                         <li onclick="location.href='${path}/senierConversation.do'">선배와의대화</li>
+                        <c:if test="${loginMember!=null}">
+                           <li onclick="location.href='${path}/resume.do'">내 이력서</li>
+                        </c:if>
                     </ul>
                 </div>
                 <div class="menu-right">

@@ -46,7 +46,6 @@ public class MemberController {
 	
 	@RequestMapping("/member/login.do")
 	public String login() {
-		
 		return "member/loginMember";
 	}
 	

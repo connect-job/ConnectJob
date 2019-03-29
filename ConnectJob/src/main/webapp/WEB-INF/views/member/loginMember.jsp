@@ -8,6 +8,8 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <section>
+	<div id="login-container">
+	<h3>Connect Job Member's Login</h3>
 	<form name="loginFrm" action="${path }/member/loginMember.do" method="post">
 		<table>
 			<tr>
@@ -28,6 +30,7 @@
 		</table>	
 		
 	</form>	
+	</div>
 </section>
 
 <script>

@@ -27,8 +27,11 @@
                     <ul>
                         <li onclick="location.href='${path}/calendar.do'">공채달력</li>
                         <li onclick="location.href='${path}/company/companyList.do'">기업탐색</li>
-                        <li>기업리뷰</li>
+                        <li onclick="location.href='${path}/review/review.do'">기업리뷰</li>
                         <li onclick="location.href='${path}/senierConversation.do'">선배와의대화</li>
+                        <c:if test="${loginMember!=null}">
+                           <li onclick="location.href='${path}/resume.do'">내 이력서</li>
+                        </c:if>
                     </ul>
                 </div>
                 <div class="menu-right">

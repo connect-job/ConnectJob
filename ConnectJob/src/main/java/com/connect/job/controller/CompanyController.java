@@ -25,6 +25,7 @@ import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.News;
 import com.connect.job.openapi.NaverSearch;
 import com.connect.job.service.CompanyService;
+import com.connect.job.common.AjaxPageBarFactory;
 import com.connect.job.common.PageBarFactory;
 
 @Controller
@@ -40,7 +41,7 @@ public class CompanyController {
 		List<Company> list = service.selectAll(cPage, numPerPage);
 		int total = service.selectCompanyCount();
 		System.out.println(list.get(0));
-		model.addAttribute("pageBar", PageBarFactory.getPageBar(total, cPage, numPerPage, "/job/company/companyList.do"));
+		model.addAttribute("pageBar", PageBarFactory.getPageBar(total, cPage, numPerPage));
 		model.addAttribute("company",list);
 		return "company/companyList";
 	}
@@ -65,13 +66,16 @@ public class CompanyController {
 		Company com = new Company();
 		com.setCompanyLocations(locations);
 		
+		System.out.println("검색할 지역 : " + locations[0]);
+		
 		int numPerPage = 10;
 		List<Company> list = service.companyList(com, cPage, numPerPage);
 		int total = service.selectAjaxCount(com);
 		
 		System.out.println("AJAX 전체개수 : " + total);
+		System.out.println(list.get(0).getCompanyAddressNew());
 		
-		String pageBar =  PageBarFactory.getPageBar(total, cPage, numPerPage, "/job/company/companyList.do");
+		String pageBar =  AjaxPageBarFactory.getPageBar(total, cPage, numPerPage);
 		
 		String html = "";
 		
@@ -98,8 +102,9 @@ public class CompanyController {
 		}
 		
 		html += "<tr>";
-		html += "<td colspan='4'>";
-		html += pageBar;
+		html += "<td colspan=\"4\" style=\"text-align: center;\"><div id=\"pageBar\">";
+		html +=  pageBar;
+		html += "</div>";
 		html += "</td>";
 		html += "</tr>";
 		
