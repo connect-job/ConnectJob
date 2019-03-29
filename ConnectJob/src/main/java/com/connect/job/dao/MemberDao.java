@@ -6,6 +6,6 @@ public interface MemberDao {
 
 	int insertMember(Member m);
 	Member selectOne(Member m);
-	void userAuth(String pId);
+	int updateEmailConfirm(Member m);
 
 }

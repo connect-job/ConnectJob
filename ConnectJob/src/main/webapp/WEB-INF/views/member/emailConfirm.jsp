@@ -12,13 +12,16 @@
 </head>
 <body>
 <script type="text/javascript">
-  var pId = '${pId}';
-
-  alert(pId + '님 회원가입을 축하합니다. 이제 로그인이 가능 합니다.');
+	
+	var pId='${pId}';
+	
+	console.log(pId);
+	
+  alert('회원가입을 축하합니다. 이제 로그인이 가능 합니다.');
 
   window.open('', '_self', ''); // 브라우저창 닫기
-  /* window.close(); // 브라우저 창 닫기 */
-  self.location = '/';
+ 
+  self.location = '${path}/member/login.do';
 </script>	
 </body>
 </html>

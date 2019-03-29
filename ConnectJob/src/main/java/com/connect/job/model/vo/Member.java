@@ -14,13 +14,14 @@ public class Member {
 	private String major;
 	private String isConfirm;
 	private Date enrollDate;
+	private int isEmailConfirm;
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Member(String pId, String password, String pName, String gender, String phone, String isSns, String finalEdu,
-			String school, String major, String isConfirm, Date enrollDate) {
+			String school, String major, String isConfirm, Date enrollDate, int isEmailConfirm) {
 		super();
 		this.pId = pId;
 		this.password = password;
@@ -33,6 +34,7 @@ public class Member {
 		this.major = major;
 		this.isConfirm = isConfirm;
 		this.enrollDate = enrollDate;
+		this.isEmailConfirm = isEmailConfirm;
 	}
 
 	public String getpId() {
@@ -121,14 +123,25 @@ public class Member {
 
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
+	}	
+
+	public int getIsEmailConfirm() {
+		return isEmailConfirm;
+	}
+
+	public void setIsEmailConfirm(int isEmailConfirm) {
+		this.isEmailConfirm = isEmailConfirm;
 	}
 
 	@Override
 	public String toString() {
 		return "Member [pId=" + pId + ", password=" + password + ", pName=" + pName + ", gender=" + gender + ", phone="
 				+ phone + ", isSns=" + isSns + ", finalEdu=" + finalEdu + ", school=" + school + ", major=" + major
-				+ ", isConfirm=" + isConfirm + ", enrollDate=" + enrollDate + "]";
+				+ ", isConfirm=" + isConfirm + ", enrollDate=" + enrollDate + ", isEmailConfirm=" + isEmailConfirm
+				+ "]";
 	}
+
+	
 	
 	
 	

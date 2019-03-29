@@ -12,36 +12,31 @@ import com.connect.job.dao.MemberDao;
 import com.connect.job.model.vo.Member;
 
 @Service
-public class MemberServiceImpl implements MemberService{
+public class MemberServiceImpl implements MemberService{	
 	
 	@Inject
 	private JavaMailSender sender;
 	
 	@Autowired
-	private MemberDao dao;
+	private MemberDao dao;	
 	
-	@Transactional
 	@Override
-	public int insertMember(Member m) throws Exception {
+	public int insertMember(Member m) throws Exception {			
 		
-		
-		
-		/*String authkey=new TempKey().getKey(10, false);
-		dao.createAuthKey(m.getpId(), authkey);*/		
+		/*String authkey=new TempKey().getKey(10, false); //인증키 생성
+		service.createAuthKey(pId, authkey);	*/
 		
 		//이메일 발송
-		MailHandler sendMail=new MailHandler(sender);
-		
-		sendMail.setSubject("[ConnectJob] 이메일 인증"); //제목
-		
-		sendMail.setText(new StringBuffer().append("[ConnectJob]이메일 인증")
-				.append("<a href='http://localhost/job/member/emailConfirm?pId='")
-				.append(m.getpId()).append("' target='_blank'> ConnectJob 이메일 인증 </a>").toString()); //내용
-		
-		sendMail.setFrom("jiany811@gmail.com", "ConnectJob 관리자"); //보내는 사람
-		
-		sendMail.setTo(m.getpId()); //받는 사람
-		
+		MailHandler sendMail=new MailHandler(sender);				
+		sendMail.setSubject("[ConnectJob] 이메일 인증"); //제목				
+		sendMail.setText(new StringBuffer()
+				.append("[ConnectJob]이메일 인증</br>")
+				.append("<a href='http://localhost:9090/job/member/emailConfirm?pId='")
+				.append(m.getpId())
+				.append("' target='_blenk'>이메일 인증</a>")
+				.toString()); //내용				
+		sendMail.setFrom("jiany811@gmail.com", "ConnectJob"); //보내는 사람				
+		sendMail.setTo(m.getpId()); //받는 사람				
 		sendMail.send();
 		
 		return dao.insertMember(m);
@@ -56,10 +51,12 @@ public class MemberServiceImpl implements MemberService{
 
 
 	@Override
-	public void userAuth(String pId) {
+	public int updateEmailConfirm(Member m) {
 		
-		dao.userAuth(pId);
+		return dao.updateEmailConfirm(m);
 	}
+
+	
 	
 	
 	

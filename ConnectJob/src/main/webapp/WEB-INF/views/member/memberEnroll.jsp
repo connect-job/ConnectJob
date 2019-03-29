@@ -3,9 +3,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
-
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-
+<script>	
+	
+	$(function(){
+		$("#emailSendBtn").click(function(){
+			location.href='${path}/email/emailSender?pId=${pId}';
+		});
+	})
+</script> 
 
 <style>
 	tr.msgtr{
@@ -19,12 +26,12 @@
 	}
 </style>
 <section>
-	<form name="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
+	<form name="memberEnrollFrm" action="${path }/member/memberEnrollEnd.do" method="post">
 	<table>
 		<tr>
 			<td>아이디</td>
 			<td><input type="email" name="pId"/></td>
-			<!-- <td><input type="button" value="인증번호 전송" id="idck"/></td> -->
+			<td><input type="button" value="인증번호" id="emailSendBtn"/></td>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
@@ -70,60 +77,14 @@
 			<td><input type="text" name="major"/></td>
 		</tr>
 		<tr>
-			<td><input type="submit" value="등록"/></td>
+			<td><input type="submit" value="등록" id="formBtn"/></td>
 			<td><input type="reset" value="취소"/></td>
 		</tr>		
 	</table>
 	</form>
 </section>
 
-<script src="http://code.jquery.com/jquery-3.3.1.min.js">	
-	
-	$(function(){
-		$('#idck').click(function(){
-			location.href="${path}/mail/mailForm";
-		});
-			
-		
-	})
-	
-	/* $(function(){
-		var pw=$('#pw').val();
-		var pw2=$('#pw2').val();
-		
-		$('#pw2').click(function(){			
-			console.log(pw);
-			console.log(pw2);
-			if(pw!=pw2){
-				$('.msgtr').css("display", "show");
-				$('.error').css("display", "show");
-				pw2.focus();
-			};
-		})
-		
-	}) */
-	
-	/* $(function(){
-		var pw=str;
-		var num=pw.search(/[0-9]/g);
-		var eng=pw.search(/[a-z]/ig);
-		var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-	
-		if(pw.length<8 || pw.length>20){
-			alert("영문, 숫자, 특수문자 혼합해 8자리~20자리 이내로 입력하세요");
-			return false;
-		}		
-		if(pw.search(/₩s/) != -1){
-			  alert("비밀번호는 공백업이 입력해주세요.");
-			  return false;
-		} 
-		if(num < 0 || eng < 0 || spe < 0 ){
-			alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
-			return false;
-		}
-		return true;			
-	}) */
-</script>    
+   
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 

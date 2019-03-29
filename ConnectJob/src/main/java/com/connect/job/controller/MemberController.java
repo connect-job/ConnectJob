@@ -26,12 +26,14 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	//회원가입 페이지 이동
 	@RequestMapping("/member/memberEnroll.do")
 	public String memberEnroll() {
 		
 		return "member/memberEnroll";
 	}
 	
+	//회원가입
 	@RequestMapping(value="/member/memberEnrollEnd.do", method=RequestMethod.POST)
 	public String insertMember(Member m, Model model) throws Exception {
 		
@@ -61,11 +63,14 @@ public class MemberController {
 		return "common/msg";
 	}
 	
-	@RequestMapping(value="/member/emailConfirm", method=RequestMethod.POST)
+	@RequestMapping(value="/member/emailConfirm", method=RequestMethod.GET)
 	public String emailConfirm(String pId, Model model) {
 		
-		service.userAuth(pId);
-		model.addAttribute("pId", pId);
+		Member m=new Member();
+		m.setpId(pId);
+		m.setIsEmailConfirm(1);
+		
+		int result=service.updateEmailConfirm(m);	
 		
 		return "member/emailConfirm";
 	}
@@ -78,6 +83,7 @@ public class MemberController {
 	
 	@RequestMapping("/member/loginMember.do")
 	public String selectOne(Member m, HttpSession session, Model model) {
+		
 		Member result = service.selectOne(m);		
 		
 		String msg="";

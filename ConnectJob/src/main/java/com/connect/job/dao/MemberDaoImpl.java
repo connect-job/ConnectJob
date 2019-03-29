@@ -25,10 +25,12 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public void userAuth(String pId) {
+	public int updateEmailConfirm(Member m) {
 		
-		session.update("member.userAuth", pId);
+		return session.update("member.updateEmailConfirm", m);
 	}
+
+	
 	
 	
 }

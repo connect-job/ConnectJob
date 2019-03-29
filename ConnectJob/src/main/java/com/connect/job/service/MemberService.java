@@ -6,6 +6,6 @@ public interface MemberService {
 
 	int insertMember(Member m) throws Exception;
 	Member selectOne(Member m);
-	void userAuth(String pId);
+	int updateEmailConfirm(Member m);
 	
 }
