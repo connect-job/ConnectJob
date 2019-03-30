@@ -1,4 +1,4 @@
-/*package com.connect.job.controller;
+package com.connect.job.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,7 +17,7 @@ import com.connect.job.service.CMemberService;
 @Controller
 public class CMemberController {
 
-private Logger logger=LoggerFactory.getLogger(MemberController.class);
+	private Logger logger=LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
@@ -25,14 +25,14 @@ private Logger logger=LoggerFactory.getLogger(MemberController.class);
 	@Autowired
 	private CMemberService service;
 	
-	@RequestMapping("/member/memberEnroll.do")
-	public String memberEnroll() {
+	/*@RequestMapping("/CMemberEnroll.do")
+	public String CMemberEnroll() {
 		
-		return "member/memberEnroll";
+		return "CMember/CMemberEnroll";
 	}
 	
-	@RequestMapping("/member/memberEnrollEnd.do")
-	public String insertMember(CMember m, Model model) {
+	@RequestMapping("/CMemberEnrollEnd.do")
+	public String insertCMember(CMember m, Model model) {
 		
 		String pw=m.getCMemberPw();
 		logger.debug(pw);
@@ -43,12 +43,13 @@ private Logger logger=LoggerFactory.getLogger(MemberController.class);
 		int result=service.insertMember(m);
 		
 		return "member/loginMember";
-	}
+	}*/
 	
-	@RequestMapping("/member/login.do")
-	public String login() {
+	//기업회원로그인
+	@RequestMapping("/cMemberLogin.do")
+	public String CMemberlogin() {
 		
-		return "member/loginMember";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/cMemberLogin")
@@ -75,7 +76,7 @@ private Logger logger=LoggerFactory.getLogger(MemberController.class);
 		return "common/msg";
 	}
 	
-	@RequestMapping("/member/logout.do")
+	/*@RequestMapping("/member/logout.do")
 	public String logout(HttpSession session) {
 		
 		session.invalidate();
@@ -86,6 +87,6 @@ private Logger logger=LoggerFactory.getLogger(MemberController.class);
 	public String findMember() {
 		
 		return "member/findMember";
-	}
+	}*/
 }
-*/
+
