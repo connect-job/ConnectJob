@@ -20,6 +20,18 @@ html, body {
     color: #535353;
 }
 
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #2c3142;
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #454a5a;
+}
 
 a {
     color: #535353;
@@ -34,34 +46,6 @@ a:hover {
 
 
 /* ------------------------------------- 공통 컴포넌트 태그 */
-input {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 5px;
-    border: none;
-    border-radius: 4px;
-    outline: none;
-    font-size: 13px;
-    background: none;
-}
-
-select {
-    padding-top: 5px;
-    padding-bottom: 8px;
-    padding-left: 10px;
-    padding-right: 8px;
-    outline: none;
-    border: 1px solid #cfcfcf;
-    border-radius: 4px;
-    font-size: 12px;
-    letter-spacing: -0.3px;
-    color: #373e55;
-}
-
-option {
-    height: 30px;
-}
 
 
 /* ------------------------------------- 헤더시작 */
@@ -70,10 +54,11 @@ header {
     width: 100%;
     position: fixed;
     text-align: center;
-    background-color: #fff;
-    color: #373e55;
-    border-bottom: 1px solid #eee;
+    background-color: #2c3142;
+    /* background-color: #2c3142c7; */
+    color: #fff;
     z-index: 5999;
+    height: 120px;
 }
 
 header #header-container {
@@ -81,18 +66,70 @@ header #header-container {
     width: 990px;
 }
 
+
+header #header-container #header-top {
+   width: 100%;
+   text-align: right;
+}
+
+header #header-container #header-top ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+header #header-container #header-top ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-top: 10px;
+    width: 70px;
+    height: 22px;
+    text-align: center;
+    font-size: 12px;
+}
+
+
 header #header-container #logo {
     width: 990px;
+    padding-left: 20px;
     display: inline-block;
     text-align: left;
 }
 
+
+header #header-container #logo .logo-text {
+    display: inline-block;
+	border: 2px solid #fff;
+	padding-left: 12px;
+    width: 158px;
+    height: 32px;
+}
+
+header #header-container #logo .logo-text:hover {
+    transition: 900ms;
+    background-color: #fff;
+}
+
+header #header-container #logo .logo-text:hover a{
+    transition: 900ms;
+    background-color: #fff;
+    color: #000;
+}
+
+header #header-container #logo .logo-text a {
+	color: #fff;
+    font-weight: 300;
+    font-size: 22px;
+}
+
+
 /* 헤더 - 중간 */
 
 header #header-container #header-menu {
+	margin-top: 7px;
     width: 990px;
     height: 40px;
-    font-size: 13px;
+    font-size: 14px;
 } 
 
 header #header-container #header-menu .menu-left {
@@ -113,36 +150,38 @@ header #header-container #header-menu .menu-left ul li {
     height: 30px;
 }
 
-header #header-container #header-menu .menu-left ul li:hover {
-    transition: 800ms;
-    background-color: rgb(55, 62, 85);
-    color: #fff;
+header #header-container #header-menu .menu-left ul li .menu-line {
+	margin-top: 5px;
+	transition: 600ms;
+	width: 0%;
+	height: 2px;
+	background-color: #fff;
 }
 
+header #header-container #header-menu .menu-left ul li:hover .menu-line {
+    width: 100%;
+    transition: 600ms;
+}
 
 header #header-container #header-menu .menu-right {
     float: right;
 }
 
-header #header-container #header-menu .menu-right ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+header #header-container #header-menu .menu-right #searchfrm {
+    padding-top: 7px;
 }
 
-header #header-container #header-menu .menu-right ul li {
-    cursor: pointer;
-    display: inline-block;
-    padding-top: 12px;
-    width: 90px;
-    height: 30px;
+header #header-container #header-menu .menu-right #searchfrm input {
+    padding-top: 3px;
+    padding-left: 10px;
+    font-size: 13px;
+    letter-spacing: -0.4px;
+    outline: none;
+    border: none;
+    height:30px;
 }
 
-header #header-container #header-menu .menu-right ul li:hover {
-    transition: 600ms;
-    background-color: #373e55;
-    color: #fff;
-}
+/* 공통 섹션 */
 
 section {
     padding-top: 150px;
@@ -151,6 +190,113 @@ section {
     text-align: center;
     color: #383838;
     letter-spacing: -0.3px;
+}
+
+
+/* -------------------------------- 인덱스 */
+
+
+section#index {
+    padding-top: 100px;
+    width: 100%;
+    height: 800px;
+    text-align: center;
+    animation: BgEffect infinite 15s;
+}
+
+
+
+section #index-container {
+    display: inline-block;
+    width: 990px;
+    text-align: center;
+    padding-top: 130px;
+}
+
+
+section #index-container .index {
+    display: inline-block;
+    width: 400px;
+}
+
+section #index-container .index .index-search {
+    width: 400px;
+    background-color: #ffffff;
+    border: 2px solid #2c3142;
+}
+
+section #index-container .index .index-search input {
+    width: 300px;
+    height: 40px;
+    font-size: 13px;
+    letter-spacing: -0.3px;
+    color: #3b3b3b;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+}
+
+section #index-container .index #index-search-result {
+    display: none;
+    position: absolute;
+    width: 400px;
+    color: #fff;
+}
+
+section #index-container .index #index-search-result ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+section #index-container .index #index-search-result ul li {
+	transition: 600ms;
+	background-color: #333941d2;
+	text-align: left;
+	color: #fff;
+    height: 30px;
+    font-size: 12px;
+	padding-top: 12px;
+	padding-left: 15px;
+	border-bottom: 1px solid #ffffff54;
+}
+
+section #index-container .index #index-search-result ul li:hover {
+    transition: 600ms;
+    background-color: #252d33f1;
+}
+
+section #index-container .index-right {
+    display: inline-block;
+    vertical-align: top;
+    width: 578px;
+    border: 2px solid #fff;
+    height: 500px;
+}
+
+
+@keyframes BgEffect {
+    0% {
+        background-image: url(../images/background-02.jpg);
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    50% {
+        background-image: url(../images/background-03.jpg);
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    100% {
+        background-image: url(../images/background-02.jpg);
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }
 
 /* ----------------------------------------------------------------------- 로그인 */
@@ -197,7 +343,7 @@ section #company-container .company-top {
 }
 
 .selected {
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
 }
 
@@ -212,16 +358,16 @@ section #company-container .company-middle button {
     width: 240px;
     height: 35px;
     outline: none;
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
-    border: 1px solid #373e55;
+    border: 1px solid #2c3142;
 }
 
 section #company-container .company-middle button:hover {
     transition: 600ms;
     background-color: #fff;
     color: #000;
-    border: 1px solid #373e55;
+    border: 1px solid #2c3142;
 }
 
 section #company-container .company-middle #search_location {
@@ -273,7 +419,7 @@ section #company-container .company-middle #search_location #search_left ul li {
 section #company-container .company-middle #search_location #search_left ul li:hover {
     transition: 500ms;
     background-color: #eee;
-    border: 1px solid #373e55;
+    border: 1px solid #2c3142;
 }
 
 section #company-container .company-middle #search_location #search_right {
@@ -343,12 +489,12 @@ section #company-container .company-middle #search_selected #select_left button 
     height: 30px;
     font-size: 12px;
     border-radius: 2px;
-    color: #373e55;
+    color: #2c3142;
     margin: 3px;
 }
 
 section #company-container .company-middle #search_selected #select_left button:hover {
-    background-color: #373e55;
+    background-color: #2c3142;
     transition: 600ms;
     color: #fff;
 }
@@ -362,9 +508,9 @@ section #company-container .company-middle #search_selected #select_right button
     width: 100px;
     height: 35px;
     outline: none;
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
-    border: 1px solid #373e55;
+    border: 1px solid #2c3142;
 }
 
 section #company-container .company-middle #company-location {
@@ -393,14 +539,14 @@ section #company-container #company-content #company-list {
 
 section #company-container #company-content #company-list table {
     margin-top: 10px;
-    border-top: 2px solid #373e55;
+    border-top: 2px solid #2c3142;
     font-size: 13px;
     display: inline-block;
     border-collapse: collapse;
 }
 
 section #company-container #company-content #company-list table th {
-    border-bottom: 1px solid #373e55;
+    border-bottom: 1px solid #eee;
     height: 40px;
     text-align: center;
 }
@@ -435,13 +581,13 @@ section #company-container #company-content #company-list #pageBar ul li {
 }
 
 section #company-container #company-content #company-list #pageBar ul li:hover {
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
     transition: 600ms;
 }
 
 section #company-container #company-content #company-list #pageBar ul li.active {
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
 }
 
@@ -487,14 +633,13 @@ section #company-view-container #company-view-content .view-left ul li {
     width: 90px;
     padding-top: 20px;
     height: 60px;
-    border-radius: 4px;
     border: 1px solid #d3d3d3;
     margin-bottom: 3px;
 }
 
 section #company-view-container #company-view-content .view-left ul li:hover {
-    background-color: #373e55;
-    border: 1px solid #373e55;
+    background-color: #2c3142;
+    border: 1px solid #2c3142;
     color: #fff;
     transition: 600ms;
 }
@@ -507,7 +652,7 @@ section #company-view-container #company-view-content .view-right {
 }
 
 section #company-view-container #company-view-content .view-right button {
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
     outline: none;
     border: none;
@@ -533,14 +678,13 @@ section #company-view-container #company-view-content .view-right #right-company
     height: 45px;
     text-align: left;
     border: 1px solid #d3d3d3;
-    border-radius: 3px;
     margin-bottom: 8px;
     background-color: #fff;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-info .info-left .info:hover {
     transition: 500ms;
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
 }
 
@@ -570,39 +714,33 @@ section #company-view-container #company-view-content .view-right #right-company
     padding-left: 15px;
     width: 55%;
     height: 430px;
-    border-radius: 4px;
     border: 1px solid #d3d3d3;
     background-color: #fff;
     overflow: hidden;
 }
 
 .line {
-    border-radius: 3px;
     background-color: #767b8f;
     height: 10px;
 }
 
 .line1 {
-    border-radius: 3px;
     background-color: #676c80;
     height: 10px;
 }
 
 .line2 {
-    border-radius: 3px;
     background-color: #575c72;
     height: 10px;
 }
 
 .line3 {
-    border-radius: 3px;
     background-color: #464c63;
     height: 10px;
 }
 
 .line4 {
-    border-radius: 3px;
-    background-color: #373e55;
+    background-color: #2c3142;
     height: 10px;
 }
 
@@ -612,7 +750,6 @@ section #company-view-container #company-view-content .view-right #right-company
     margin-top: 5px;
     margin-bottom: 5px;
     width: 100%;
-    border-radius: 4px;
     background-color: #fff;
     color: #535353;
     text-align: center;
@@ -639,7 +776,6 @@ section #company-view-container #company-view-content .view-right #right-company
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-left .review-item {
     cursor: pointer;
-    border-radius: 4px;
     width: 100%;
     border-bottom: 1px solid #eee;
     padding-left: 15px;
@@ -650,7 +786,7 @@ section #company-view-container #company-view-content .view-right #right-company
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-left .review-item:hover {
     transition: 500ms;
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
 }
 
@@ -748,13 +884,13 @@ section #company-view-container #company-view-content .view-right #right-company
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-bottom ul li:hover {
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
     transition: 600ms;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-bottom ul li.active {
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
 }
 
@@ -763,7 +899,6 @@ section #company-view-container #company-view-content .view-right #right-company
     margin-bottom: 5px;
     width: 100%;
     height: 200px;
-    border-radius: 4px;
     border: 1px solid #d3d3d3;
     background-color: #fff;
 }
@@ -772,7 +907,6 @@ section #company-view-container #company-view-content .view-right #right-company
     margin-top: 5px;
     margin-bottom: 5px;
     width: 100%;
-    border-radius: 4px;
     border: 1px solid #d3d3d3;
     font-size: 13px;
     background-color: #fff;
@@ -837,7 +971,7 @@ section #company-view-container #company-view-content .view-right #review-write 
     width: 100%;
     padding-top: 20px;
     height: 40px;
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
     font-size: 16px;
 }
@@ -900,7 +1034,7 @@ section #company-view-container #company-view-content .view-right #review-write 
     margin-top: 20px;
     width: 100%;
     height: 50px;
-    border-top: 1px solid #373e55;
+    border-top: 1px solid #2c3142;
     background-color: #e1e3e9;
     color: #fff;
     font-size: 16px;
@@ -914,14 +1048,14 @@ section #company-view-container #company-view-content .view-right #review-write 
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle .middle-right {
     float: right;
-    color: #373e55;
+    color: #2c3142;
     font-size: 13px;
     padding-right: 15px;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle button {
     background-color: #fff;
-    color: #373e55;
+    color: #2c3142;
     font-weight: bold;
     font-size: 14px;
     width: 120px;
@@ -931,7 +1065,7 @@ section #company-view-container #company-view-content .view-right #review-write 
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle button:hover {
-    background-color: #373e55;
+    background-color: #2c3142;
     transition: 500ms;
     color: #fff;
 }
@@ -978,16 +1112,16 @@ section #senier-container .senier-subTitle #right button {
     height: 35px;
     letter-spacing: -0.5px;
     color: #fff;
-    border: 2px solid #373e55;
+    border: 2px solid #2c3142;
     outline: none;
-    background-color: #373e55;
+    background-color: #2c3142;
 }
 
 section #senier-container .senier-subTitle #right button:hover {
     transition: 600ms;
-    border: 2px solid #373e55;
+    border: 2px solid #2c3142;
     outline: none;
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
 }
 
@@ -1013,7 +1147,7 @@ section #senier-container .senier-middle .senier-item {
 
 section #senier-container .senier-middle .senier-item:hover {
     transition: 500ms;
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
 }
 
@@ -1086,16 +1220,16 @@ section #senier-container .senier-middle #senier-write-container .write-btn butt
     height: 35px;
     letter-spacing: -0.5px;
     color: #fff;
-    border: 2px solid #373e55;
+    border: 2px solid #2c3142;
     outline: none;
-    background-color: #373e55;
+    background-color: #2c3142;
 }
     
 section #senier-container .senier-middle #senier-write-container .write-btn button:hover {
     transition: 600ms;
-    border: 2px solid #373e55;
+    border: 2px solid #2c3142;
     outline: none;
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
 }
 
@@ -1105,7 +1239,7 @@ section #senier-container .senier-middle #senier-write-container .left {
     border-radius: 4px;
     width: 200px;
     height: 30px;
-    background-color: #373e55;
+    background-color: #2c3142;
     color: #fff;
     display: inline-block;
     border-right: 1px solid #d3d3d3;
@@ -1133,14 +1267,163 @@ section #senier-container .senier-middle #senier-write-container .right textarea
     outline: none;
 }
 
+/* ------------------------- 내 이력서  -------------------- */
+
+section #resume-container {
+    width: 990px;
+    display: inline-block;
+}
 
 
+section #resume-container .resume-top {
+    padding-left: 25px;
+    text-align: left;
+    height: 50px;
+    font-size: 24px;
+
+}
+
+section #resume-container .resume-content {
+    padding-left: 25px;
+    text-align: left;
+    line-height: 35px;
+}
+
+section #resume-container .list-header {
+    margin-top: 20px;
+    padding-left: 25px;
+    text-align: left;
+    padding-top: 15px;
+    font-size: 24px;
+    height: 50px;
+}
+
+section #resume-container .list-header button {
+    vertical-align: top;
+    width: 120px;
+    height: 33px;
+    outline: none;
+    border: 1px solid #c4c4c4;
+    background-color: #fff;
+}
+
+section #resume-container .list-header button:hover {
+    transition: 500ms;
+    background-color: #2c3142;
+    border: 1px solid #2c3142;
+    color: #fff;
+}
+
+section #resume-container #resume-list {
+    margin-top: 20px;
+    display: inline-block;
+    width: 900px;
+    border: 1px solid #cfcfcf;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+section #resume-container .sub-title {
+    border-radius: 3px;
+    background-color: #f1f1f1;
+    color: #000;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+section #resume-container .item {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    display: inline-block;
+}
+
+section #resume-container .item .left {
+    display: inline-block;
+    width: 15%;
+    padding-top: 10px;
+    height: 30px;
+    padding-left: 25px;
+    text-align: left;
+}
+
+section #resume-container .item .right {
+    vertical-align: top;
+    padding-left: 25px;
+    text-align: left;
+    display: inline-block;
+    width: 70%;
+}
+
+section #resume-container .item .right input[type=text]:focus {
+    transition: 500ms;
+    border: 2px solid #2c3142;
+}
+
+section #resume-container .item .right input[type=email]:focus {
+    transition: 500ms;
+    border: 2px solid #2c3142;
+}
+
+section #resume-container .item .right input[type=date]:focus {
+    transition: 500ms;
+    border: 2px solid #2c3142;
+}
+
+section #resume-container .item .right select:focus {
+    transition: 500ms;
+    border: 2px solid #2c3142;
+}
+
+section #resume-container .item .right input[type=text] {
+    vertical-align: top;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    border: 2px solid #eee;
+    width: 300px;
+    outline: none;
+}
+
+section #resume-container .item .right input[type=email] {
+    vertical-align: top;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    border: 2px solid #eee;
+    width: 300px;
+    outline: none;
+}
+
+section #resume-container .item .right input[type=date] {
+    vertical-align: top;
+    padding-left: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 13px;
+    border: 2px solid #eee;
+    width: 150px;
+    outline: none;
+}
 
 
-
-
-
-
+section #resume-container .item .right select {
+    vertical-align: top;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    width: 200px;
+    border: 2px solid #eee;
+    outline: none;
+}
 
 
 
@@ -1167,10 +1450,10 @@ section #senier-container .senier-middle #senier-write-container .right textarea
 footer {
     width: 100%;
     text-align: center;
-    background-color: #fff;
+    background-color: #2c3142;
+    color: #fff;
     font-size: 12px;
     letter-spacing: 0;
-    border-top: 1px solid #eee;
 }
 
 footer #footer-container {
@@ -1202,7 +1485,7 @@ footer #footer-container .footer-middle {
 
 footer #footer-container .footer-bottom {
     text-align: center;
-    color: #4e4e4e;
+    color: #ffffff;
 }
 
 

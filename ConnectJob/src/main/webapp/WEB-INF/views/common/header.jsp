@@ -31,24 +31,8 @@
 <body>
     <header>
         <div id="header-container">
-            <div id="logo">
-                <a href="${path }/"><img src="${path }/resources/images/logo.jpg"></a>
-                <img src="${path }/resources/images/icon-search.png" width="14px"><input type="search" id="search" placeholder="기업을 검색해보세요" autocomplete="off" autofocus/>
-            </div>
-            <div id="header-menu">
-                <div class="menu-left">
-                    <ul>
-                        <li onclick="location.href='${path}/calendar.do'">공채달력</li>
-                        <li onclick="location.href='${path}/company/companyList.do'">기업탐색</li>
-                        <li onclick="location.href='${path}/review/review.do'">기업리뷰</li>
-                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화</li>
-                        <c:if test="${loginMember!=null}">
-                           <li onclick="location.href='${path}/resume.do'">내 이력서</li>
-                        </c:if>
-                    </ul>
-                </div>
-                <div class="menu-right">
-                    <ul>
+        	<div id="header-top">
+        		<ul>
                         <c:if test="${loginMember==null}">
                         	<li onclick="location.href='${path}/member/login.do'">로그인</li>
                         	<li onclick="location.href='${path}/member/memberEnroll.do'">회원가입</li>
@@ -60,6 +44,28 @@
                         </c:if>
                         <li onclick="location.href='${path}/customerService.do'">고객센터</li>
                     </ul>
+        	</div>
+            <div id="logo">
+            	<div class="logo-text">
+                <a href="${path }/">CONNECT JOB</a>
+                </div>
+            </div>
+            <div id="header-menu">
+                <div class="menu-left">
+                    <ul>
+                        <li onclick="location.href='${path}/calendar.do'">공채달력<div class="menu-line"></div></li>
+                        <li onclick="location.href='${path}/company/companyList.do'">기업탐색<div class="menu-line"></div></li>
+                        <li onclick="location.href='${path}/review/review.do'">기업리뷰<div class="menu-line"></div></li>
+                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화<div class="menu-line"></div></li>
+                        <c:if test="${loginMember!=null}">
+                           <li onclick="location.href='${path}/resume.do'">내 이력서<div class="menu-line"></div></li>
+                        </c:if>
+                    </ul>
+                </div>
+                <div class="menu-right">
+                        <div id="searchfrm">
+                                <input type="search" id="searchfrm2" placeholder="기업을 검색해보세요" autocomplete="off" autofocus/>
+                            </div>
                 </div>
             </div>
         </div>
