@@ -44,7 +44,7 @@
                         	<li onclick="location.href='${path}/member/mypage.do'">마이페이지</li>
                         	<li onclick="location.href='${path}/member/logout.do'">로그아웃</li>                        	
                         </c:if>
-                        <li>고객센터</li>
+                        <li onclick="location.href='${path}/customerService.do'">고객센터</li>
                     </ul>
                 </div>
             </div>

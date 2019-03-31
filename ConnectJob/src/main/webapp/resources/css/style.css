@@ -73,6 +73,7 @@ header {
     background-color: #fff;
     color: #373e55;
     border-bottom: 1px solid #eee;
+    z-index: 5999;
 }
 
 header #header-container {

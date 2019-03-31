@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="company">
+
+	<insert id="insertCompany" parameterType="company">
+		INSERT INTO COMPANY VALUES(#{companyNo}, #{companyUpdate}, #{companyName}, #{companyZipcode}, #{companyAddressOld}, #{companyAddressNew}, #{companyStatus}, #{companyCode}, #{companyCate}, #{companyRegDate}, #{companyAllPeople}, #{companyPrice}, #{companyNewPeople}, #{companyOutPeople})
+	</insert>
+	
+	<select id="selectAll" resultType="company" resultMap="companyResult">
+		SELECT * FROM COMPANY
+	</select>
+	
+	<select id="companyOne" parameterType="_int" resultType="company" resultMap="companyResult">
+		SELECT * FROM COMPANY WHERE COMPANY_NO = #{no}
+	</select>
+	
+	<select id="selectCompanyCount" resultType="_int">
+		SELECT COUNT(*) FROM COMPANY
+	</select>
+	
+	<select id="searchCompany" resultType="company" resultMap="companyResult">
+		SELECT * FROM COMPANY WHERE COMPANY_NAME LIKE '%' || #{keyword} || '%'
+	</select>
+	
+	<select id="companyList" resultType="company" resultMap="companyResult">
+		SELECT * FROM COMPANY WHERE 1=1
+		<if test="companyLocations!=null and companyLocations!=''">
+			AND
+	        <foreach collection="companyLocations" item="location"  open="(" close=")" separator="or">
+	            COMPANY_ADDRESS_OLD LIKE '%' || #{location} || '%'
+	        </foreach>
+		</if>
+	</select>
+	
+	<select id="selectAjaxCount" resultType="_int">
+		SELECT COUNT(*) FROM COMPANY WHERE 1=1
+		<if test="companyLocations!=null and companyLocations!=''">
+			AND
+	        <foreach collection="companyLocations" item="location"  open="(" close=")" separator="or">
+	            COMPANY_ADDRESS_OLD LIKE '%' || #{location} || '%'
+	        </foreach>
+		</if>
+	</select>
+	
+	<resultMap type="company" id="companyResult">
+		<id property="companyNo" column="company_no"/>
+		<result property="companyUpdate" column="company_update"/>
+		<result property="companyName" column="company_name"/>
+		<result property="companyZipcode" column="company_zipcode"/>
+		<result property="companyAddressOld" column="company_address_old"/>
+		<result property="companyAddressNew" column="company_address_new"/>
+		<result property="companyStatus" column="company_status"/>
+		<result property="companyCode" column="company_code"/>
+		<result property="companyCate" column="company_cate"/>
+		<result property="companyRegDate" column="company_regdate"/>
+		<result property="companyAllPeople" column="company_all_people"/>
+		<result property="companyPrice" column="company_price"/>
+		<result property="companyNewPeople" column="company_new_people"/>
+		<result property="companyOutPeople" column="company_out_people"/>
+	</resultMap>
+	
+</mapper>
