@@ -57,6 +57,7 @@
 	}
 </style>
 <section>
+	<div id="enroll-container">
 	<form name="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
 	<table>
 		<tr>
@@ -113,6 +114,7 @@
 		</tr>		
 	</table>
 	</form>
+	</div>
 </section>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

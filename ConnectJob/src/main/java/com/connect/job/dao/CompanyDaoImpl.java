@@ -33,7 +33,7 @@ public class CompanyDaoImpl implements CompanyDao {
 	@Override
 	public List<Company> companyList(Company com, int cPage, int numPerPage) {
 		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
-		return session.selectList("company.selectAll", com, row);
+		return session.selectList("company.companyList", com, row);
 	}
 
 	@Override
