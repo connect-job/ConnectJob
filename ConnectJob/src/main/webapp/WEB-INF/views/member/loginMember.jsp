@@ -6,6 +6,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 <section>
 <div class="login-container">
 	<ul class="tabs">
@@ -39,21 +40,21 @@
 
 	<!-- 기업회원 -->		
 	<div id="cmember" class="tab-content">
-		<form name="loginFrm" action="${path }/cMemberLogin.do" method="post">
+		<form name="cMemberloginFrm" action="${path }/cMemberLogin.do" method="post">
 			<table>
-			<caption>기업회원로그인</caption>
-				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="cmemberId"/></td>
-				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td><input type="password" name="password"/></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="로그인"/></td>
-					<td><input type="button" value="ID/PW찾기" id="findbtn"/></td>			
-				</tr>
+				<caption>기업회원로그인</caption>
+					<tr>
+						<td>아이디</td>
+						<td><input type="text" name="cmemberId"/></td>
+					</tr>
+					<tr>
+						<td>비밀번호</td>
+						<td><input type="password" name="cmemberPwd"/></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="로그인"/></td>
+						<td><input type="button" value="ID/PW찾기" id="findbtn"/></td>			
+					</tr>
 			</table>
 		</form>	
 	</div>
@@ -86,11 +87,11 @@
 			location.href='${path}/member/findMember';
 		})
 	}); */
-	$(function(){
+	/* $(function(){
 		$("#CMemberEnroll").click(function(){
 			location.href="${path}/CMemberEnroll.do"
 		})
-	})
+	}) */
 	
 	//개인회원 기업회원 나누는 탭설정
 		$(document).ready(function(){
@@ -103,7 +104,7 @@
         
             $(this).addClass('current');
             $("#"+tab_id).addClass('current');
-            
+
             })
         })
 	

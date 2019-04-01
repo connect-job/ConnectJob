@@ -12,6 +12,20 @@ public class CMemberServiceImpl implements CMemberService {
 	@Autowired
 	private CMemberDao dao;
 	
+	
+	
+	@Override
+	public int updateMember(CMember m) {
+		
+		return dao.updateMember(m);
+	}
+
+	@Override
+	public int deleteMember(CMember m) {
+		
+		return dao.deleteMember(m);
+	}
+
 	@Override
 	public int insertMember(CMember m) {
 		

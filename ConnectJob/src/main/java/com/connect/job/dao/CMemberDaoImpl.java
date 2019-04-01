@@ -12,9 +12,23 @@ public class CMemberDaoImpl implements CMemberDao {
 	@Autowired
 	private SqlSessionTemplate session;
 	
+	
+	
+	@Override
+	public int updateMember(CMember m) {
+
+		return session.update("cmember.updateMember",m);
+	}
+
+	@Override
+	public int deleteMember(CMember m) {
+		
+		return session.delete("cmember.deleteMember",m);
+	}
+
 	@Override
 	public int insertCMember(CMember m) {
-		return session.insert("cmemeber.insertCMember",m);
+		return session.insert("cmember.insertCMember",m);
 	}
 
 	@Override

@@ -7,5 +7,9 @@ public interface CMemberDao {
 	int insertCMember(CMember m);
 	
 	CMember selectOne(CMember m);
+	
+	int deleteMember(CMember m);
+	
+	int updateMember(CMember m);
 
 }
