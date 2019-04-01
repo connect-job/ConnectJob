@@ -52,8 +52,11 @@ public class SenierController {
 	}
 	
 	@RequestMapping("/senierAnswer.do")
-	public String answer()
+	public String answer(Model model, int no)
 	{
+		
+		List<Senier> list=service.senierOneList(no);
+		model.addAttribute("list",list);
 		return "senier/senierAnswer";//후배에게 답변하기
 	}
 	

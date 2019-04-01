@@ -27,7 +27,26 @@
                 </div>
             </div>
             <div class="company-content">
-                 <textarea cols="50" maxlength="2000" rows="2" placeholder="답변부탁드려요"></textarea>
+            
+          
+            	
+            	<c:forEach var="sen" items="${list}" varStatus="vs">
+            	<div>
+            		제목 ${sen.sTitle}
+            	</div>
+            	<div>
+            		질문유형 	<c:forEach items="${sen.qType}" var="type" varStatus="vs">
+								${type}
+							</c:forEach>
+            	</div>
+
+            	<div>
+            		내용 ${sen.sContent}
+            	</div>
+            	</c:forEach>
+            	
+          
+                 
                  
                  
                  <h3>후배에게 답변하기</h3>

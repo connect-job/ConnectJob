@@ -32,6 +32,14 @@ public class SenierDaoImpl implements SenierDao {
 
 		return session.selectOne("senier.selectCount");
 	}
+
+	
+
+	@Override
+	public List<Senier> senierOneList(int no) {
+
+		return session.selectList("senier.senierOneList",no);
+	}
 	
 	
 

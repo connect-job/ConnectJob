@@ -30,6 +30,14 @@ public class SenierServiceImpl implements SenierService {
 		
 		return dao.selectCount();
 	}
+
+	
+
+	@Override
+	public List<Senier> senierOneList(int no) {
+		
+		return dao.senierOneList(no);
+	}
 	
 	
 	

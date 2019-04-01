@@ -33,13 +33,17 @@
             
             
              	<c:forEach var="sen" items="${list}" varStatus="vs">
-             <div class="senier-item" onclick="location.href='${path}/senierAnswer.do'">
+             <div class="senier-item" onclick="location.href='${path}/senierAnswer.do?no=${sen.sNo}'">
 					<div class="item-cate">
-						<c:forEach items="${sen.qType}" var="type" varStatus="vs">
-						${vs.index!=0?",":"" }${type}
+					<c:forEach items="${sen.qType}" var="type" varStatus="vs">
+						${type}
 					</c:forEach>
 					</div>
-					<div class="item-title">${sen.sTitle}</div>
+					<div class="item-title">
+						<%-- <a href="${path }/senierAnswer.do?no=${sen.sNo}"> --%>
+						${sen.sTitle}
+						<!-- </a> -->
+					</div>
 					<div class="item-content">${sen.sContent}</div>
             </div>
 				</c:forEach>

@@ -9,5 +9,5 @@ public interface SenierDao {
 	int insertSenier(Senier s);
 	List<Senier> senierList(int cPage, int numPerPage);
 	int selectCount();
-	
+	List<Senier> senierOneList(int no);
 }
