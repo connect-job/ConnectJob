@@ -4,7 +4,22 @@
 	<insert id="insertMember" parameterType="member">
 		insert into p_member values(#{pId}, #{password}, #{pName}, #{gender}, #{phone}, null, #{finalEdu}, #{school}, #{major}, default, default)
 	</insert>
-	<select id="selectOne" resultType="member">
+	<select id="selectOne" resultType="member" resultMap="memberResult">
 		select * from p_member where p_id=#{pId}
 	</select>
+	
+	<resultMap type="member" id="memberResult">
+		<id column="p_id" property="pId"/>
+		<result column="password" property="password"/>
+		<result column="p_name" property="pName"/>
+		<result column="gender" property="gender"/>
+		<result column="phone" property="phone"/>
+		<result column="is_sns" property="isSns"/>
+		<result column="final_edu" property="finalEdu"/>
+		<result column="school" property="school"/>
+		<result column="major" property="major"/>
+		<result column="is_confirm" property="isConfirm"/>
+		<result column="enroll_date" property="enrollDate"/>
+	</resultMap>
+	
 </mapper>

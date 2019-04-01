@@ -1,6 +1,6 @@
 package com.connect.job.common;
 
-public class PageBarFactory {
+public class AjaxPageBarFactory {
 
 	public static String getPageBar(int total, int cPage, int numPerPage) {
 		String pageBar = "";
@@ -15,14 +15,14 @@ public class PageBarFactory {
 		if(pageNo==1) {
 			pageBar += "<li>이전</li>";
 		} else {
-			pageBar += "<li onclick='fn_paging(\"" + (pageNo-1) + "\")'>이전</li>";
+			pageBar += "<li onclick='fn_ajaxPaging(\"" + (pageNo-1) + "\")'>이전</li>";
 		}
 		
 		while(!(pageNo>pageEnd || pageNo > totalPage)) {
 			if(cPage==pageNo) {
 				pageBar += "<li class='active'>" + pageNo + "</li>";
 			} else {
-				pageBar += "<li onclick='fn_paging(\"" + pageNo + "\")'>" + pageNo + "</li>";
+				pageBar += "<li onclick='fn_ajaxPaging(\"" + pageNo + "\")'>" + pageNo + "</li>";
 			}
 			pageNo++;
 		}
@@ -30,7 +30,7 @@ public class PageBarFactory {
 		if(pageNo>totalPage) {
 			pageBar += "<li>다음</li>";
 		} else {
-			pageBar += "<li onclick='fn_paging(\"" + pageNo + "\")'>다음</li>";
+			pageBar += "<li onclick='fn_ajaxPaging(\"" + pageNo + "\")'>다음</li>";
 		}
 		
 		pageBar += "</ul>";

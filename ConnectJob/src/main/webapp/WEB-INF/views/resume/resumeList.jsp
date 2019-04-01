@@ -7,29 +7,22 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <section>
-
-<h2>내 이력서 관리</h2>
-<p>- 이력서는 <b>최대 3개</b>까지 등록 가능 합니다.</p>
-<p>- 작성한 이력서로 회사에 지원 할 수 있습니다.
-<p>- 이력서를 공개로 설정하시면 기업으로부터 <b>면접제의</b>를 받을 수 있습니다.</p>
-<br>
-<h3>이력서 리스트</h3>
-<button onclick="location.href='${path}/resume/insertResume.do'">작성하기</button>
-<table>
-	<tr>
-		<th>이력서 제목</th>
-		<th>지원현황</th>
-		<th>공개</th>
-		<th>열람기업</th>
-	</tr>
-	<tr>
-		<td>기본이력서</td>
-		<td>1</td>
-		<td>공개</td>
-		<td>1</td>
-	</tr>
-	
-</table>
+	<div id="resume-container">
+		<div class="resume-top">
+				<i class="far fa-address-card"></i>　내 이력서 관리
+		</div>
+		<div class="resume-content">
+			· 이력서는 <b>최대 3개</b>까지 등록 가능 합니다.<br>
+			· 작성한 이력서로 회사에 지원 할 수 있습니다.<br>
+			· 이력서를 공개로 설정하시면 기업으로부터 <b>면접제의</b>를 받을 수 있습니다.
+		</div>
+		<div class="list-header">
+				<i class="fas fa-list-ul"></i>　이력서 리스트　　<button onclick="location.href='${path}/resume/insertResume.do'">작성하기</button>
+		</div>
+		<div id="resume-list">
+				작성된 이력서가 없습니다. 첫 번째 이력서를 작성해보세요.
+		</div>
+	</div>
 </section>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
