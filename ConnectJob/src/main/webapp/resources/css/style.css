@@ -33,8 +33,8 @@ a:hover {
 }
 
 
-/* ------------------------------------- 공통 컴포넌트 태그 */
-input {
+/* ------------------------------------- 怨듯넻 而댄룷�꼳�듃 �깭洹� */
+/* input {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 15px;
@@ -44,7 +44,7 @@ input {
     outline: none;
     font-size: 13px;
     background: none;
-}
+} */
 
 select {
     padding-top: 5px;
@@ -64,7 +64,7 @@ option {
 }
 
 
-/* ------------------------------------- 헤더시작 */
+/* ------------------------------------- �뿤�뜑�떆�옉 */
 
 header {
     width: 100%;
@@ -87,7 +87,7 @@ header #header-container #logo {
     text-align: left;
 }
 
-/* 헤더 - 중간 */
+/* �뿤�뜑 - 以묎컙 */
 
 header #header-container #header-menu {
     width: 990px;
@@ -414,7 +414,7 @@ section #company-container #company-content #company-list #pageBar ul li.active 
     color: #fff;
 }
 
-/* ---------------- 기업상세페이지 -------------------- */
+/* ---------------- 湲곗뾽�긽�꽭�럹�씠吏� -------------------- */
 
 section#companyView {
     background-color: #fff;
@@ -594,7 +594,7 @@ section #company-view-container #company-view-content .view-right #right-company
 
 
 
-/* ------------------------- 선배와의 대화 ----------------------- */
+/* ------------------------- �꽑諛곗��쓽 ���솕 ----------------------- */
 
 section #senier-container {
     display: inline-block;
@@ -696,7 +696,7 @@ section #senier-container .senier-middle .senier-item .item-info {
 }
 
 
-/* ------------------------- 선배에게 질문하기 (글쓰기) -------------------- */
+/* ------------------------- �꽑諛곗뿉寃� 吏덈Ц�븯湲� (湲��벐湲�) -------------------- */
 
 section #senier-container .senier-middle #senier-write-container {
     margin-top: 15px;

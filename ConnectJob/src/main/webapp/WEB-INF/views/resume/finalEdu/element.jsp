@@ -6,7 +6,7 @@
 		<tr>
 			<th>학교명</th>
 			<td>
-				<input type="text" id="schoolName"required>
+				<input type="text" name="schoolName" id="schoolName"required>
 				<input type="checkbox" id="noEle">중입 검정고시
 			</td>
 			
@@ -14,7 +14,7 @@
 		<tr>
 			<th>지역</th>
 			<td>
-			<select name="area" required>
+			<select name="schoolArea" required>
 						<option value="" disabled selected>지역을 선택하세요</option>
 						<option value="서울">서울</option>
 						<option value="경기">경기</option>
@@ -40,7 +40,7 @@
 		</tr>
 		<tr>
 			<th>재학기간</th>
-			<td><input type="date" id="admissionDate"> - <input type="date" id="graduateDate"></td>
+			<td><input type="date" name="admissionDate" id="admissionDate"> - <input type="date" name="elGraduateDate" id="elGraduateDate"></td>
 		</tr>
 	</table>
 </div>

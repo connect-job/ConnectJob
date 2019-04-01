@@ -6,14 +6,14 @@
 		<tr>
 			<th>학교명</th>
 			<td>
-				<input type="text" id="schoolName"required>
-				<input type="checkbox" id="noEle">대입 검정고시
+				<input type="text" name="schoolName" id="schoolName"required>
+				<input type="checkbox" id="noHigh">대입 검정고시
 			</td>
 		</tr>
 		<tr>
 			<th>계열</th>
 			<td>
-			<select name="affiliation" required>
+			<select name="highAffiliation" required>
 						<option value="" disabled selected>계열을 선택하세요</option>
 						<option value="문과">문과계열</option>
 						<option value="이과">이과계열</option>
@@ -28,7 +28,7 @@
 		<tr>
 			<th>지역</th>
 			<td>
-			<select name="area" required>
+			<select name="schoolArea" required>
 						<option value="" disabled selected>지역을 선택하세요</option>
 						<option value="서울">서울</option>
 						<option value="경기">경기</option>
@@ -54,7 +54,7 @@
 		</tr>
 		<tr>
 			<th>재학기간</th>
-			<td><input type="date" id="admissionDate"> - <input type="date" id="graduateDate"></td>
+			<td><input type="date" name="admissionDate" id="admissionDate"> - <input type="date" name="graduateDate" id="graduateDate"></td>
 		</tr>
 	</table>
 </div>

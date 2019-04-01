@@ -22,6 +22,12 @@
 		<th>공개</th>
 		<th>열람기업</th>
 	</tr>
+	<tr>
+		<td>기본이력서</td>
+		<td>1</td>
+		<td>공개</td>
+		<td>1</td>
+	</tr>
 	
 </table>
 </section>

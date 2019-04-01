@@ -4,11 +4,11 @@
 <table>
 	<tr>
 		<th>회사명</th>
-		<td><input type="text" placeholder="회사명 입력" required></td>
+		<td><input type="text" name="careerCName" placeholder="회사명 입력" required></td>
 	</tr>
 	<tr>
 		<th>재직기간</th>
-		<td><input type="date" id="joinDate"> - <input type="date" id="resignDate">
+		<td><input type="date" name="joinDate" id="joinDate"> - <input type="date" name="resignDate" id="resignDate">
 		<select name="companyFlag" required>
 						<option value="퇴사">퇴사</option>
 						<option value="재직">재직중</option>
@@ -70,7 +70,7 @@
 	</tr>
 	<tr>
 		<th>직종</th>
-		<td><input type="text" placeholder="직종 입력" required></td>
+		<td><input type="text" name="occupation" placeholder="직종 입력" required></td>
 	</tr>
 </table>
 </div>
