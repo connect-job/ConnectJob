@@ -1,5 +1,7 @@
 package com.connect.job.service;
 
+import java.util.List;
+
 import com.connect.job.model.vo.CMember;
 
 public interface CMemberService {
@@ -11,5 +13,7 @@ public interface CMemberService {
 	int deleteMember(CMember m);
 	
 	int updateMember(CMember m);
+	
+	List<CMember> selectList();
 
 }

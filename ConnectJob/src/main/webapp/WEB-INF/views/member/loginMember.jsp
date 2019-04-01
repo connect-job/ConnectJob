@@ -8,6 +8,7 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <section>
+<<<<<<< HEAD
 <div class="login-container">
 	<ul class="tabs">
 		<li class="tab-link current" data-tab="member">개인회원</li>
@@ -59,6 +60,31 @@
 		</form>	
 	</div>
 </div>
+=======
+	<div id="login-container">
+	<h3>Connect Job Member's Login</h3>
+	<form name="loginFrm" action="${path }/member/loginMember.do" method="post">
+		<table>
+			<tr>
+				<td>아이디</td>
+				<td><input type="email" name="pId"/></td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="password" name="password"/></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="로그인"/></td>
+				<td><input type="button" value="ID/PW찾기" id="findbtn"/></td>			
+			</tr>
+			<tr>
+				<td colspan="2"><a id="kakao-login-btn"></a></td>				
+			</tr>
+		</table>	
+		
+	</form>	
+	</div>
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 </section>
 
 <script>

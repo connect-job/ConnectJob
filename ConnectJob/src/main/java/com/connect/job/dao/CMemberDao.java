@@ -1,5 +1,7 @@
 package com.connect.job.dao;
 
+import java.util.List;
+
 import com.connect.job.model.vo.CMember;
 
 public interface CMemberDao {
@@ -11,5 +13,7 @@ public interface CMemberDao {
 	int deleteMember(CMember m);
 	
 	int updateMember(CMember m);
+	
+	List<CMember> selectList();
 
 }

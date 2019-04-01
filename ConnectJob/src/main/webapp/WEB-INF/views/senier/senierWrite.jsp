@@ -17,7 +17,7 @@
         </div>
 
         <div class="senier-subTitle">
-            <div id="left">동문선배에게 취업고민 상담하기</div>
+            <div id="left">직종 선배에게 취업고민 상담하기</div>
             <div id="right"></div>
         </div>
 
@@ -27,20 +27,20 @@
                     <div class="write-cate">
                         <div class="left">질문유형</div>
                         <div class="right">
-                            <input type="radio" name="cate" id="radio1"><label for="radio1">회사</label>
-                            <input type="radio" name="cate" id="radio2"><label for="radio2">직무</label>
-                            <input type="radio" name="cate" id="radio3"><label for="radio3">업계/산업</label>
-                            <input type="radio" name="cate" id="radio4"><label for="radio4">진로</label>
-                            <input type="radio" name="cate" id="radio5"><label for="radio5">기타</label>
+                            <input type="radio" name="qType" id="radio1"><label for="radio1">회사</label>
+                            <input type="radio" name="qType" id="radio2"><label for="radio2">직무</label>
+                       		<!-- <input type="radio" name="cate" id="radio3"><label for="radio3">업계/산업</label> -->
+                            <input type="radio" name="qType" id="radio4"><label for="radio4">진로</label>
+                            <input type="radio" name="qType" id="radio5"><label for="radio5">기타</label>
                         </div>
                     </div>
                     <div class="write-title">
                         <div class="left">제목</div>
-                        <div class="right"><input type="text" placeholder="궁금한 질문을 입력해주세요"></div>
+                        <div class="right"><input type="text" name="sTitle" placeholder="궁금한 질문을 입력해주세요"></div>
                     </div>
                     <div class="write-content">
                         <div class="left">내용</div>
-                        <div class="right"><textarea placeholder="구체적인 내용을 입력해주세요"></textarea></div>
+                        <div class="right"><textarea name="sContent" placeholder="구체적인 내용을 입력해주세요"></textarea></div>
                     </div>
                     <div class="write-btn"><button type="submit">질문하기</button></div>
                 </div>

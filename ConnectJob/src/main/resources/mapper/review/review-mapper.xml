@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="review">
+
+
+	<select id="reviewCountAll" resultType="_int">
+		SELECT COUNT(*) FROM COMPANY_REVIEW WHERE REVIEW_STATUS = 'Y'
+	</select>
+	
+	<select id="reviewOne" parameterType="_int" resultType="review" resultMap="reviewMap">
+		SELECT * FROM COMPANY_REVIEW WHERE REVIEW_NO = #{reviewNo}
+	</select>
+	
+	<select id="reviewAll" resultType="review" resultMap="reviewMap">
+		SELECT * FROM COMPANY_REVIEW WHERE REVIEW_STATUS = 'Y' ORDER BY REVIEW_DATE DESC
+	</select>
+
+	<insert id="reviewWrite" parameterType="review">
+		INSERT INTO COMPANY_REVIEW VALUES(SEQ_REVIEW_NO.NEXTVAL, #{reviewMember}, #{reviewCompany}, #{reviewIsCurrent}, #{reviewJob}, #{reviewEmployCate}, #{reviewCareer}, #{reviewLocation}, #{reviewTotalScore}, #{reviewShort}, #{reviewMerit}, #{reviewDisMerit}, #{reviewRequest}, #{reviewGrade01}, #{reviewGrade02}, #{reviewGrade03}, #{reviewGrade04}, #{reviewGrade05}, DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	
+	<select id="reviewCount" resultType="_int">
+		SELECT COUNT(*) FROM COMPANY_REVIEW WHERE REVIEW_COMPANY = #{reviewCompany}
+	</select>
+	
+	<select id="reviewList" resultType="review" resultMap="reviewMap">
+		SELECT * FROM COMPANY_REVIEW WHERE REVIEW_COMPANY = #{reviewCompany} ORDER BY REVIEW_DATE DESC
+	</select>
+	
+	<resultMap type="review" id="reviewMap">
+		<id column="review_no" property="reviewNo"/>
+		<result column="review_member" property="reviewMember"/>
+		<result column="review_company" property="reviewCompany"/>
+		<result column="review_iscurrent" property="reviewIsCurrent"/>
+		<result column="review_job" property="reviewJob"/>
+		<result column="review_employ_cate" property="reviewEmployCate"/>
+		<result column="review_career" property="reviewCareer"/>
+		<result column="review_location" property="reviewLocation"/>
+		<result column="review_total_score" property="reviewTotalScore"/>
+		<result column="review_short" property="reviewShort"/>
+		<result column="review_merit" property="reviewMerit"/>
+		<result column="review_dismerit" property="reviewDisMerit"/>
+		<result column="review_request" property="reviewRequest"/>
+		<result column="review_grade_01" property="reviewGrade01"/>
+		<result column="review_grade_02" property="reviewGrade02"/>
+		<result column="review_grade_03" property="reviewGrade03"/>
+		<result column="review_grade_04" property="reviewGrade04"/>
+		<result column="review_grade_05" property="reviewGrade05"/>
+		<result column="review_like" property="reviewLike"/>
+		<result column="review_date" property="reviewDate"/>
+	</resultMap>
+	
+</mapper>

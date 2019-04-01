@@ -26,17 +26,17 @@ public class ResumeController {
 
 	@RequestMapping("/selectCareer.do")
 	public String selectCareer(String career) {
-		if(career.equals("°æ·Â"))
+		if(career.equals("ê²½ë ¥"))
 			return "resume/career/career";
 		else return "";
 	}
 	@RequestMapping("/selectFinalEdu.do")
 	public String selectFinalEdu(String finalEdu) {
-		if(finalEdu.equals("ÃÊÁ¹")) 
+		if(finalEdu.equals("ì´ˆì¡¸")) 
 			return "resume/finalEdu/element";
-		else if(finalEdu.equals("ÁßÁ¹")) 
+		else if(finalEdu.equals("ì¤‘ì¡¸")) 
 			return "resume/finalEdu/middleschool";
-		else if(finalEdu.equals("°íÁ¹"))
+		else if(finalEdu.equals("ê³ ì¡¸"))
 			return "resume/finalEdu/highschool";
 		else 
 			return "resume/finalEdu/university";

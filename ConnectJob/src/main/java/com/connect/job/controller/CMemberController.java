@@ -1,5 +1,7 @@
 package com.connect.job.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -26,11 +28,11 @@ public class CMemberController {
 	@Autowired
 	private CMemberService service;
 	
-	@RequestMapping("/member/memberEnroll.do")
+	/*@RequestMapping("/member/memberEnroll.do")
 	public String cmemberEnroll() {
 		
 		return "member/memberEnroll";
-	}
+	}*/
 	
 	@RequestMapping("/cMemberEnrollEnd.do")
 	public String insertCMember(CMember m, Model model) {
@@ -85,21 +87,21 @@ public class CMemberController {
 		return "common/msg";
 	}
 	
-/*	@RequestMapping("/member/logout.do")
+	/*@RequestMapping("")
 	public String logout(HttpSession session) {
 		
 		session.invalidate();
 		return "redirect:/";
 	}
 	
-	@RequestMapping("/member/findMember")
+	@RequestMapping("")
 	public String findMember() {
 		
 		return "member/findMember";
 	}*/
 	
 	//회원삭제
-	@RequestMapping("")
+	@RequestMapping("/cMemberdelete.do")
 	public String deleteCMember(CMember m, Model model, HttpSession session)
 	{
 		int result=service.deleteMember(m);
@@ -120,7 +122,7 @@ public class CMemberController {
 	}
 	
 	//회원 수정
-	@RequestMapping("")
+	@RequestMapping("/cMemberUpdate.do")
 	public ModelAndView updateMember(CMember m, Model model)
 	{
 		CMember re=service.selectOne(m);
@@ -135,7 +137,7 @@ public class CMemberController {
 	{
 		int result=service.updateMember(m);
 		String msg="";
-		String loc="/member/update.do?userId="+m.getCMemberId();
+		String loc="/member/cMemberUpdate.do?CMemberId="+m.getCMemberId();
 		if(result>0)
 		{
 			msg="수정완료";
@@ -149,5 +151,16 @@ public class CMemberController {
 		mv.addObject("msg",msg);
 		mv.addObject("loc",loc);
 		return mv;
+	}
+	
+	//기업회원조회
+	@RequestMapping("/cmemberList.do")
+	public String selectList(Model model)
+	{
+		List<CMember> list=service.selectList();
+		System.out.println(list);
+		model.addAttribute("list",list);
+		
+		return "/cmember/cMemberList";
 	}
 }

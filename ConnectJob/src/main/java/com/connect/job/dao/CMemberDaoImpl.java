@@ -1,5 +1,7 @@
 package com.connect.job.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,6 +16,12 @@ public class CMemberDaoImpl implements CMemberDao {
 	
 	
 	
+	@Override
+	public List<CMember> selectList() {
+		
+		return session.selectList("cmember.selectList");
+	}
+
 	@Override
 	public int updateMember(CMember m) {
 

@@ -1,5 +1,7 @@
 package com.connect.job.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,12 @@ public class CMemberServiceImpl implements CMemberService {
 	
 	
 	
+	@Override
+	public List<CMember> selectList() {
+
+		return dao.selectList();
+	}
+
 	@Override
 	public int updateMember(CMember m) {
 		

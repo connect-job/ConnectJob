@@ -135,6 +135,8 @@
        	if(!result) $(e.target).next().css('color','crimson').text('잘못된 아이디 문자 조합입니다.');
         return result;
     }
+    
+   
 
     
     

@@ -2,7 +2,7 @@ package com.connect.job.common;
 
 public class PageBarFactory {
 
-	public static String getPageBar(int total, int cPage, int numPerPage, String url) {
+	public static String getPageBar(int total, int cPage, int numPerPage) {
 		String pageBar = "";
 	
 		int totalPage = (int)Math.ceil((double)total/numPerPage);
@@ -34,11 +34,6 @@ public class PageBarFactory {
 		}
 		
 		pageBar += "</ul>";
-		pageBar += "<script>";
-		pageBar += "function fn_paging(cPage) {";
-		pageBar += "window.location.href='" + url + "?cPage='+cPage;";
-		pageBar += "} </script>";
-		
 		return pageBar;
 	}
 
