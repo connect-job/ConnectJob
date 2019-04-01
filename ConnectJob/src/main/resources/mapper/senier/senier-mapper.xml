@@ -24,4 +24,8 @@
   	select * from s_talk
   </select>
   
+  <select id="selectCount" resultType="_int">
+  	select count(*) from s_talk
+  </select>
+  
 </mapper>

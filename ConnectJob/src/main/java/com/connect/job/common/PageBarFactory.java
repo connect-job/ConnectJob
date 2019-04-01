@@ -36,5 +36,6 @@ public class PageBarFactory {
 		pageBar += "</ul>";
 		return pageBar;
 	}
+	
 
 }
