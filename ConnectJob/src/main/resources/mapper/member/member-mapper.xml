@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 	<insert id="insertMember" parameterType="member">
-		insert into p_member values(#{pId}, #{password}, #{pName}, #{gender}, #{phone}, null, #{finalEdu}, #{school}, #{major}, default, default, default)
+		insert into p_member values(#{pId}, #{password}, #{pName}, #{gender}, #{phone}, null, #{finalEdu}, #{school}, #{major}, default, default)
 	</insert>
 	
 	<select id="selectOne" resultType="member">
 		select * from p_member where p_id=#{pId}
 	</select>
 	
-	<update id="updateEmailConfirm" parameterType="member">
-		update p_member set is_emailConfirm=1 where p_id=#{pId}
-	</update>
+	<!-- <update id="updateEmailConfirm" parameterType="member">
+		update p_member set is_emailConfirm=#{isEmailConfirm} where p_id=#{pId}
+	</update> -->
 </mapper>

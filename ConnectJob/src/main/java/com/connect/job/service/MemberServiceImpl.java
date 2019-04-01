@@ -4,10 +4,9 @@ import javax.inject.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.connect.job.common.MailHandler;
-import com.connect.job.common.TempKey;
+
 import com.connect.job.dao.MemberDao;
 import com.connect.job.model.vo.Member;
 
@@ -18,7 +17,7 @@ public class MemberServiceImpl implements MemberService{
 	private JavaMailSender sender;
 	
 	@Autowired
-	private MemberDao dao;	
+	private MemberDao dao;
 	
 	@Override
 	public int insertMember(Member m) throws Exception {			
@@ -49,12 +48,12 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectOne(m);
 	}
 
-
+/*
 	@Override
 	public int updateEmailConfirm(Member m) {
 		
 		return dao.updateEmailConfirm(m);
-	}
+	}*/
 
 	
 	

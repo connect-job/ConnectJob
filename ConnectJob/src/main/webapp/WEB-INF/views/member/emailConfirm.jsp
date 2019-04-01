@@ -13,9 +13,8 @@
 <body>
 <script type="text/javascript">
 	
-	var pId='${pId}';
+	var pId='${m.pId}';
 	
-	console.log(pId);
 	
   alert('회원가입을 축하합니다. 이제 로그인이 가능 합니다.');
 

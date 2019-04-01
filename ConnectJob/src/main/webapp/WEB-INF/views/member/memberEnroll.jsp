@@ -31,7 +31,7 @@
 		<tr>
 			<td>아이디</td>
 			<td><input type="email" name="pId"/></td>
-			<td><input type="button" value="인증번호" id="emailSendBtn"/></td>
+			<!-- <td><input type="button" value="인증번호" id="emailSendBtn"/></td> -->
 		</tr>
 		<tr>
 			<td>비밀번호</td>

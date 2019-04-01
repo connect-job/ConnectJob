@@ -6,6 +6,6 @@ public interface MemberDao {
 
 	int insertMember(Member m);
 	Member selectOne(Member m);
-	int updateEmailConfirm(Member m);
+	/*int updateEmailConfirm(Member m);*/
 
 }

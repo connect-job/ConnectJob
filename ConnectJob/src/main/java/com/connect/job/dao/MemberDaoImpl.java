@@ -24,11 +24,11 @@ public class MemberDaoImpl implements MemberDao {
 		return session.selectOne("member.selectOne", m);
 	}
 
-	@Override
+	/*@Override
 	public int updateEmailConfirm(Member m) {
 		
 		return session.update("member.updateEmailConfirm", m);
-	}
+	}*/
 
 	
 	

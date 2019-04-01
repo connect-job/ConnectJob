@@ -23,7 +23,10 @@
 				<td><input type="button" value="ID/PW찾기" id="findbtn"/></td>			
 			</tr>
 			<tr>
-				<td colspan="2"><a href="https://kauth.kakao.com/oauth/authorize?client_id=QM-jGsTNm7gTr8ll4bhxDDdBu3mKDIb3VxWOVgorDNQAAAFpw-9hDw&redirect_uri=http://localhost:9090/job&response_type=code" id="kakao-login-btn"></a></td>				
+				<td colspan="2">
+					<!-- 로그인 코드받기 -->
+					<a href="https://kauth.kakao.com/oauth/authorize?client_id=eea7cf213d496958f3d4df223aaacde8&redirect_uri=http://localhost:9090/job/kakaoLogin&response_type=code" id="kakao-login-btn"></a>
+				</td>				
 			</tr>
 		</table>	
 		
@@ -37,20 +40,30 @@
 		})
 	})
 
-	// 사용할 앱의 JavaScript 키를 설정해 주세요.
+	//js키 설정
     Kakao.init('60f4385612bb24ab265ce9857acca8ff');
-    // 카카오 로그인 버튼을 생성합니다.
+	
+	//카카오 로그인 버튼 생성
     Kakao.Auth.createLoginButton({
-      container: '#kakao-login-btn',
-      success: function(authObj) {
-        alert(JSON.stringify(authObj));
+      container: '#kakao-login-btn',      
+      success: function(authObj) {    
+    	  
+    	  Kakao.API.request({
+    		  url:"/v2/user/me",
+    		  success:function(res){
+    			  console.log(res.id);
+    		  }
+    	  })
       },
       fail: function(err) {
-         alert(JSON.stringify(err));
+    	  //실패
+    	 /* alert(JSON.stringify(err)); */
       }
     });
+	
+		
     
-    Kakao.Auth.setAccessToken("QM-jGsTNm7gTr8ll4bhxDDdBu3KDlb3VxWOVgorDNQAAAFpw-9hDw");
+    /* Kakao.Auth.setAccessToken(accessTokenFromServer); */
 </script>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

@@ -1,5 +1,7 @@
 package com.connect.job.controller;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,15 +12,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.connect.job.model.vo.Member;
+import com.connect.job.service.KakaoAPI;
 import com.connect.job.service.MemberService;
 
 @Controller
 public class MemberController {
 	
 	private Logger logger=LoggerFactory.getLogger(MemberController.class);
+	
+	@Autowired
+	private KakaoAPI kakao;
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
@@ -66,11 +72,11 @@ public class MemberController {
 	@RequestMapping(value="/member/emailConfirm", method=RequestMethod.GET)
 	public String emailConfirm(String pId, Model model) {
 		
-		Member m=new Member();
+		/*Member m=new Member();
 		m.setpId(pId);
-		m.setIsEmailConfirm(1);
+		m.setIsEmailConfirm(1);*/
 		
-		int result=service.updateEmailConfirm(m);	
+		/*int result=service.updateEmailConfirm(m);*/	
 		
 		return "member/emailConfirm";
 	}
@@ -80,6 +86,7 @@ public class MemberController {
 		
 		return "member/loginMember";
 	}
+	
 	
 	@RequestMapping("/member/loginMember.do")
 	public String selectOne(Member m, HttpSession session, Model model) {
@@ -113,10 +120,42 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value="/kakaoLogin", produces="application/json")
+	public String kakaoLogin(@RequestParam("code") String code, HttpSession session) {
+		
+		System.out.println("kakaoCode: " + code);	
+		String access_token=kakao.getAccessToken(code);			
+		
+		//사용자 정보 불러오기
+		HashMap<String, Object> userInfo=kakao.getUserInfo(access_token);
+		System.out.println("userInfo: " + userInfo);
+		
+		/*if(userInfo.get("email")!=null) {
+			session.setAttribute("loginMember", userInfo.get("email"));
+			session.setAttribute("access_token", access_token);
+		}
+		*/
+		return "member/loginMember";
+	}
+	
+	/*@RequestMapping(value="/kakaoLogout")
+	public String kakaoLogout(HttpSession session) {
+		kakao.kakaoLogout((String)session.getAttribute("access_token"));
+		session.removeAttribute("access_token");
+		session.removeAttribute("pId");
+		
+		return "redirect:/";
+	}*/
+	
 	@RequestMapping("/member/findMember")
 	public String findMember() {
 		
 		return "member/findMember";
 	}
 	
+	@RequestMapping("/member/mypage.do")
+	public String mypage() {
+		
+		return "member/mypage";
+	}
 }
