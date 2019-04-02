@@ -11,4 +11,9 @@ public class PolicyController {
 		return "policy/policy";
 	}
 	
+	@RequestMapping("emailUnthClct.do")
+	public String email() {
+		return "email/email";
+	}
+	
 }

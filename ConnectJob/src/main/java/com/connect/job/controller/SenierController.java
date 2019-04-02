@@ -80,6 +80,13 @@ public class SenierController {
 		
 	}
 	
+	
+	@RequestMapping("/senier/comWrite.do") //댓글등록
+	public String comWrite()
+	{
+		
+		return "/";
+	}
 
 	
 	
