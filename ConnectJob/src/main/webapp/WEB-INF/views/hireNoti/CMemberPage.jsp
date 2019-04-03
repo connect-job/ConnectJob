@@ -12,8 +12,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <section>
-
-	 <h1>회사이름 : </h1>
+	<h1>회사이름 : </h1>
     <h3>설립일 : </h3>
     <h3>주소 : </h3>
     <h3>담당자 : </h3>
@@ -25,9 +24,18 @@
     <h2>지원취소 : </h2>
     <br/>
     조회기간<input type="text" id="resume-search-sdate"/>~<input type="text" id="resume-search-edate"/>
-
+    <div>
+    	<div>
+    		
+    	</div>
+    	<div>
+    	
+    	</div>
+    	
+    </div>
 
 </section>
+
 <script>
 $(function() {
     $( "#resume-search-sdate" ).datepicker({
