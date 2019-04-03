@@ -11,5 +11,9 @@
 		<typeAlias type="com.connect.job.model.vo.CompanyAvgScore" alias="score"/>
 		<typeAlias type="com.connect.job.model.vo.Senier" alias="senier"/>
 		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>
+		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="handler"/>
 	</typeAliases>
+	
+	 
 </configuration>
+

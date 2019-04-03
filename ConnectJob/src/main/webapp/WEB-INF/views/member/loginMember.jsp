@@ -8,7 +8,6 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <section>
-
 <div id="login-container">
 	<img src="${path }/resources/images/title.png" width="650px"><br><br>
 	<ul id="tabs">
@@ -29,6 +28,7 @@
 				</div>
 			</div>
 			<div class="login-right">
+				<a href="https://kauth.kakao.com/oauth/authorize?client_id=eea7cf213d496958f3d4df223aaacde8&redirect_uri=http://localhost:9090/job/kakaoLogin&response_type=code" id="kakao-login-btn"></a>
 					<a id="custom-login-btn" href="javascript:loginWithKakao()">
 							<button type="button" class="kakao">카카오톡으로 로그인</button>
 					</a>
@@ -70,7 +70,9 @@
 
   //<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정해 주세요.
+	//js키 설정
     Kakao.init('60f4385612bb24ab265ce9857acca8ff');
+<<<<<<< HEAD
     function loginWithKakao() {
       // 로그인 창을 띄웁니다.
       Kakao.Auth.login({
@@ -113,6 +115,26 @@
 			}
 		});
 	
+	
+	//카카오 로그인 버튼 생성
+    Kakao.Auth.createLoginButton({
+      container: '#kakao-login-btn',      
+      success: function(authObj) {    
+    	  
+    	  Kakao.API.request({
+    		  url:"/v2/user/me",
+    		  success:function(res){
+    			  console.log(res.id);
+    		  }
+    	  })
+      },
+      fail: function(err) {
+    	  //실패
+    	 /* alert(JSON.stringify(err)); */
+      }
+    });
+	
+		
 </script>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

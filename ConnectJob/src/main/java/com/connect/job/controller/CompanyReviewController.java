@@ -126,7 +126,7 @@ public class CompanyReviewController {
 		
 		Member m = (Member) session.getAttribute("loginMember");
 		if(m!=null) {
-			if(m.getpId().equals(review.getReviewMember())) {
+			if(m.getP_id().equals(review.getReviewMember())) {
 				html += "　　<button onclick='fn_update()'>수정</button>　<button onclick='fn_delete()'>삭제</button>";
 			}
 		}
