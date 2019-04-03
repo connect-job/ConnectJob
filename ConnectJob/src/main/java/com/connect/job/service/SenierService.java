@@ -7,6 +7,8 @@ import com.connect.job.model.vo.Senier;
 public interface SenierService {
 
 	int insertSenier(Senier s);
-	List<Senier> senierList();
+	List<Senier> senierList(int cPage, int numPerPage);
+	int selectCount();
+	List<Senier> senierOneList(int no);
 
 }

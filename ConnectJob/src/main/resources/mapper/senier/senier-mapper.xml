@@ -24,4 +24,14 @@
   	select * from s_talk
   </select>
   
+  <select id="selectCount" resultType="_int">
+  	select count(*) from s_talk
+  </select>
+  
+  
+  
+  <select id="senierOneList" resultMap="senierResult" parameterType="_int">
+  	select * from s_talk where s_no = #{no}
+  </select>
+  
 </mapper>

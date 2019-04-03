@@ -20,10 +20,26 @@ public class SenierServiceImpl implements SenierService {
 	}
 
 	@Override
-	public List<Senier> senierList() {
+	public List<Senier> senierList(int cPage, int numPerPage) {
 		
-		return dao.senierList();
+		return dao.senierList(cPage, numPerPage);
 	}
+
+	@Override
+	public int selectCount() {
+		
+		return dao.selectCount();
+	}
+
+	
+
+	@Override
+	public List<Senier> senierOneList(int no) {
+		
+		return dao.senierOneList(no);
+	}
+	
+	
 	
 	
 }

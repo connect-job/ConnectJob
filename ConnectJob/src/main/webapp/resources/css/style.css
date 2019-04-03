@@ -45,8 +45,39 @@ a:hover {
 }
 
 
+
+
 /* ------------------------------------- 공통 컴포넌트 태그 */
 
+
+#pageBar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#pageBar ul li {
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid #cfcfcf;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+    height: 23px;
+    margin: 1px;
+}
+
+#pageBar ul li:hover {
+    background-color: #2c3142;
+    color: #fff;
+    transition: 600ms;
+}
+
+#pageBar ul li.active {
+    background-color: #2c3142;
+    color: #fff;
+}
 
 /* ------------------------------------- 헤더시작 */
 
