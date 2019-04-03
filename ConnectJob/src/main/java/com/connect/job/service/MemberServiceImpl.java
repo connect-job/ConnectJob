@@ -20,10 +20,7 @@ public class MemberServiceImpl implements MemberService{
 	private MemberDao dao;
 	
 	@Override
-	public int insertMember(Member m) throws Exception {			
-		
-		/*String authkey=new TempKey().getKey(10, false); //인증키 생성
-		service.createAuthKey(pId, authkey);	*/
+	public int insertMember(Member m) throws Exception {	
 		
 		//이메일 발송
 		MailHandler sendMail=new MailHandler(sender);				
@@ -31,16 +28,15 @@ public class MemberServiceImpl implements MemberService{
 		sendMail.setText(new StringBuffer()
 				.append("[ConnectJob]이메일 인증</br>")
 				.append("<a href='http://localhost:9090/job/member/emailConfirm?pId='")
-				.append(m.getpId())
+				.append(m.getP_id())
 				.append("' target='_blenk'>이메일 인증</a>")
 				.toString()); //내용				
 		sendMail.setFrom("jiany811@gmail.com", "ConnectJob"); //보내는 사람				
-		sendMail.setTo(m.getpId()); //받는 사람				
+		sendMail.setTo(m.getP_id()); //받는 사람				
 		sendMail.send();
 		
 		return dao.insertMember(m);
-	}
-	
+	}	
 
 	@Override
 	public Member selectOne(Member m) {
@@ -48,16 +44,32 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectOne(m);
 	}
 
-/*
-	@Override
-	public int updateEmailConfirm(Member m) {
-		
-		return dao.updateEmailConfirm(m);
-	}*/
 
+	@Override
+	public Member findId(Member m) {
+		
+		return dao.findId(m);
+	}
+
+	@Override
+	public int deleteMember(Member m) {
+		
+		return dao.deleteMember(m);
+	}
+
+	@Override
+	public int updateMember(Member m) {
+		
+		return dao.updateMember(m);
+	}
+
+	@Override
+	public int updatePw(Member m) {
+		// TODO Auto-generated method stub
+		return dao.updatePw(m);
+	}
 	
 	
-	
-	
+
 	
 }

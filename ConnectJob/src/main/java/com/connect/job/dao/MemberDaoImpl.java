@@ -1,5 +1,7 @@
 package com.connect.job.dao;
 
+import java.util.HashMap;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,12 +26,36 @@ public class MemberDaoImpl implements MemberDao {
 		return session.selectOne("member.selectOne", m);
 	}
 
-	/*@Override
-	public int updateEmailConfirm(Member m) {
+	@Override
+	public HashMap<String, Object> kakaoLogin(HashMap<String, Object> userInfo) {
 		
-		return session.update("member.updateEmailConfirm", m);
-	}*/
+		return session.selectOne("member.kakaoLogin", userInfo);
+	}
 
+	@Override
+	public Member findId(Member m) {	
+		
+		return session.selectOne("member.findId", m);
+	}
+
+	@Override
+	public int deleteMember(Member m) {
+		
+		return session.delete("member.deleteMember", m);
+	}
+
+	@Override
+	public int updateMember(Member m) {
+		
+		return session.update("member.updateMember", m);
+	}
+
+	@Override
+	public int updatePw(Member m) {
+		
+		return session.update("member.updatePw", m);
+	}
+	
 	
 	
 	

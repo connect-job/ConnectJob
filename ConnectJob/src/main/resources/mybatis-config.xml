@@ -5,5 +5,9 @@
 	<typeAliases>
 		<typeAlias type="com.connect.job.model.vo.Member" alias="member"/>
 		<typeAlias type="com.connect.job.model.vo.Company" alias="company"/>
+		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="handler"/>
 	</typeAliases>
+	
+	 
 </configuration>
+

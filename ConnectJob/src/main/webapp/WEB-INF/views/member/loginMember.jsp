@@ -12,7 +12,7 @@
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td><input type="email" name="pId"/></td>
+				<td><input type="email" name="p_id"/></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>

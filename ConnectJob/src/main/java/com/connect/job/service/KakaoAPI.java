@@ -7,18 +7,22 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.connect.job.dao.MemberDao;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.JsonParser; 
 
 @Service
 public class KakaoAPI {	
 	
 	private HttpURLConnection conn;
+	
+	@Autowired
+	private MemberDao dao;
 	
 	public String getAccessToken(String code) {
 		
@@ -82,6 +86,7 @@ public class KakaoAPI {
 	
 	public HashMap<String, Object> getUserInfo(String access_token){
 		
+		
 		HashMap<String, Object> userInfo=new HashMap<>();
 		String reqURL="https://kapi.kakao.com/v2/user/me"; //사용자 요청
 		String line="";
@@ -100,9 +105,7 @@ public class KakaoAPI {
 			int responseCode=conn.getResponseCode();
 			System.out.println("responseCode: "+responseCode);			
 			
-			BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			
-			
+			BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));			
 			
 			while((line=br.readLine())!=null) {
 				result+=line;
@@ -115,21 +118,15 @@ public class KakaoAPI {
 			JsonElement element=parser.parse(result);
 			
 			JsonObject properties=element.getAsJsonObject().get("properties").getAsJsonObject();
-			JsonObject kakao_account=element.getAsJsonObject().get("kakao_account").getAsJsonObject();		
+			JsonObject kakao_account=element.getAsJsonObject().get("kakao_account").getAsJsonObject();			
 			
-			/*String email=properties.getAsJsonObject().get("email").getAsString();*/
 			String name=properties.getAsJsonObject().get("nickname").getAsString();			
-			String id=properties.getAsJsonObject().get("id").getAsString();
+			String id=element.getAsJsonObject().get("id").getAsString();
 			
-			/*userInfo.put("email", email);*/
-			userInfo.put("nickname", name);
-			userInfo.put("id", id);
+			userInfo.put("id", id); //isSNS에 넣을 kakao 고유 id
+			userInfo.put("nickname", name);	//pName
 			
-			System.out.println(id);
-			
-			/*System.out.println("service userInfo: "+userInfo);*/
-			
-	
+			dao.kakaoLogin(userInfo);
 			
 		}catch (Exception e) {
 			e.printStackTrace();

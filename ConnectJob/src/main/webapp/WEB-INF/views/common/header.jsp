@@ -43,7 +43,7 @@
                         	<li onclick="location.href='${path}/member/memberEnroll.do'">회원가입</li>
                         </c:if>
                         <c:if test="${loginMember!=null}">
-                        	<li onclick="location.href='${path}/member/mypage.do'">마이페이지</li>
+                        	<li onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">마이페이지</li>
                         	<li onclick="location.href='${path}/member/logout.do'">로그아웃</li>                        	
                         </c:if>
                         <li>고객센터</li>

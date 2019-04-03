@@ -19,19 +19,19 @@ public class MailHandler {
         message = this.mailSender.createMimeMessage();
         messageHelper = new MimeMessageHelper(message, true, "UTF-8");
     }
-    //¸ÞÀÏ Á¦¸ñ
+    //ì œëª©
     public void setSubject(String subject) throws MessagingException {
         messageHelper.setSubject(subject);
     }
-    //¸ÞÀÏ ³»¿ë
+    //ë‚´ìš©
     public void setText(String htmlContent) throws MessagingException {
         messageHelper.setText(htmlContent, true);
     }
-    //º¸³»´Â »ç¶÷
+    //ë³´ë‚´ëŠ” ì‚¬ëžŒ
     public void setFrom(String email, String name) throws UnsupportedEncodingException, MessagingException {
         messageHelper.setFrom(email, name);
     }
-    //¹Þ´Â »ç¶÷
+    //ë°›ëŠ” ì‚¬ëžŒ
     public void setTo(String email) throws MessagingException {
         messageHelper.setTo(email);
     }
