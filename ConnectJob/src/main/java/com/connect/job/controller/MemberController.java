@@ -11,9 +11,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.connect.job.model.vo.Member;
@@ -122,7 +124,7 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	/*//카카오 로그인
+	//카카오 로그인
 	@RequestMapping(value="/kakaoLogin", produces="application/json")
 	public ModelAndView kakaoLogin(@RequestParam("code") String code, HttpSession session, Member m) {
 		
@@ -134,14 +136,22 @@ public class MemberController {
 		HashMap<String, Object> userInfo=kakao.getUserInfo(access_token); //사용자 정보 불러오기
 		System.out.println("userInfo: " + userInfo);
 		
-		if(m.getIs_sns()==null) {
-			mv.setViewName("member/memberEnroll");
-			mv.addObject("userInfo", userInfo);			
-		}
+		String msg="";
 		
+		if(m.getIs_sns()==null) {
+			
+			mv.setViewName("member/memberEnroll");
+			mv.addObject("userInfo", userInfo);
+			
+		}else if(m.getIs_sns()!=null&&m.getIs_sns().equals(userInfo.get("id"))) {
+			 
+			 session.setAttribute("loginMember", userInfo); 
+			 logger.debug("클라이언트에게 넘어온 값: " + userInfo);
+			 mv.setViewName("index");			 
+		}		
 		
 		return mv;
-	}	*/
+	}	
 	
 	//id,pw찾기 페이지 이동
 	@RequestMapping("/member/findMember")
@@ -257,5 +267,18 @@ public class MemberController {
 		
 		return "common/msg";
 	}
+	
+	/*//아이디 중복체크
+	@RequestMapping("/checkId")
+	@ResponseBody
+	public String checkId(@RequestBody String p_id) {
+		int count=0;
+		
+		
+		count=service.checkId(p_id);
+		
+		return "redirect:/";
+		
+	}*/
 	
 }
