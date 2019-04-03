@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.connect.job.dao.CompanyDao;
 import com.connect.job.model.vo.Company;
+import com.connect.job.model.vo.CompanyAvgScore;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
@@ -47,6 +48,11 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	public int selectAjaxCount(Company com) {
 		return dao.selectAjaxCount(com);
+	}
+
+	@Override
+	public CompanyAvgScore selectScore(int no) {
+		return dao.selectScore(no);
 	}
 
 	

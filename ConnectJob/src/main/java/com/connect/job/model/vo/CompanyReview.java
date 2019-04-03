@@ -24,6 +24,7 @@ public class CompanyReview {
 	private int reviewGrade05;
 	private int reviewLike;
 	private Date reviewDate;
+	private String cName;
 	
 	public CompanyReview() {
 		// TODO Auto-generated constructor stub
@@ -32,8 +33,8 @@ public class CompanyReview {
 	public CompanyReview(int reviewNo, String reviewMember, int reviewCompany, String reviewIsCurrent, String reviewJob,
 			String reviewEmployCate, String reviewCareer, String reviewLocation, int reviewTotalScore,
 			String reviewShort, String reviewMerit, String reviewDisMerit, String reviewRequest, int reviewGrade01,
-			int reviewGrade02, int reviewGrade03, int reviewGrade04, int reviewGrade05, int reviewLike,
-			Date reviewDate) {
+			int reviewGrade02, int reviewGrade03, int reviewGrade04, int reviewGrade05, int reviewLike, Date reviewDate,
+			String cName) {
 		super();
 		this.reviewNo = reviewNo;
 		this.reviewMember = reviewMember;
@@ -55,6 +56,7 @@ public class CompanyReview {
 		this.reviewGrade05 = reviewGrade05;
 		this.reviewLike = reviewLike;
 		this.reviewDate = reviewDate;
+		this.cName = cName;
 	}
 
 	public int getReviewNo() {
@@ -217,6 +219,14 @@ public class CompanyReview {
 		this.reviewDate = reviewDate;
 	}
 
+	public String getcName() {
+		return cName;
+	}
+
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
+
 	@Override
 	public String toString() {
 		return "CompanyReview [reviewNo=" + reviewNo + ", reviewMember=" + reviewMember + ", reviewCompany="
@@ -226,8 +236,10 @@ public class CompanyReview {
 				+ ", reviewMerit=" + reviewMerit + ", reviewDisMerit=" + reviewDisMerit + ", reviewRequest="
 				+ reviewRequest + ", reviewGrade01=" + reviewGrade01 + ", reviewGrade02=" + reviewGrade02
 				+ ", reviewGrade03=" + reviewGrade03 + ", reviewGrade04=" + reviewGrade04 + ", reviewGrade05="
-				+ reviewGrade05 + ", reviewLike=" + reviewLike + ", reviewDate=" + reviewDate + "]";
+				+ reviewGrade05 + ", reviewLike=" + reviewLike + ", reviewDate=" + reviewDate + ", cName=" + cName
+				+ "]";
 	}
+
 	
 	
 }

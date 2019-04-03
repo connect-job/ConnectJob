@@ -576,6 +576,7 @@ section #company-container #company-content #company-list #pageBar ul li {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 6px;
+    font-size: 12px;
     height: 23px;
     margin: 1px;
 }
@@ -664,6 +665,7 @@ section #company-view-container #company-view-content .view-right button {
 section #company-view-container #company-view-content .view-right #right-company-info {
     width: 100%;
     margin-bottom: 5px;
+    
 }
 
 section #company-view-container #company-view-content .view-right #right-company-info .info-left {
@@ -719,6 +721,15 @@ section #company-view-container #company-view-content .view-right #right-company
     overflow: hidden;
 }
 
+
+section #company-view-container #company-view-content .view-right #right-company-info .info-right .review {
+    display: inline-block;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-info .info-right .review .review-info {
+    display: inline-block;
+}
+
 .line {
     background-color: #767b8f;
     height: 10px;
@@ -772,6 +783,7 @@ section #company-view-container #company-view-content .view-right #right-company
     display: inline-block;
     vertical-align: top;
     width: 39%;
+    text-align: center;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-left .review-item {
@@ -854,6 +866,13 @@ section #company-view-container #company-view-content .view-right #right-company
     padding-bottom: 15px;
 }
 
+section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right .review-like {
+    width: 100%;
+    font-size: 13px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-bottom: 15px;
+}
 
 
 
@@ -879,6 +898,7 @@ section #company-view-container #company-view-content .view-right #right-company
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 6px;
+    font-size: 12px;
     height: 23px;
     margin: 1px;
 }
@@ -893,6 +913,8 @@ section #company-view-container #company-view-content .view-right #right-company
     background-color: #2c3142;
     color: #fff;
 }
+
+
 
 section #company-view-container #company-view-content .view-right #right-company-hire {
     margin-top: 5px;
@@ -1136,8 +1158,7 @@ section #senier-container .senier-middle .senier-item {
     margin: 15px;
     display: inline-block;
     width: 450px;
-    border-radius: 4px;
-    border: 1px solid #cfcfcf;
+    border: 2px solid #eee;
     background-color: #fff;
     color: #535353;
     text-align: left;
@@ -1148,6 +1169,7 @@ section #senier-container .senier-middle .senier-item {
 section #senier-container .senier-middle .senier-item:hover {
     transition: 500ms;
     background-color: #2c3142;
+    border: 2px solid #2c3142;
     color: #fff;
 }
 

@@ -7,6 +7,7 @@
 		<typeAlias type="com.connect.job.model.vo.Company" alias="company"/>
 		<typeAlias type="com.connect.job.model.vo.CompanyReview" alias="review"/>
 		<typeAlias type="com.connect.job.model.vo.CompanyReviewLike" alias="reviewlike"/>
+		<typeAlias type="com.connect.job.model.vo.CompanyAvgScore" alias="score"/>
 		<typeAlias type="com.connect.job.model.vo.Senier" alias="senier"/>
 		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>
 	</typeAliases>
