@@ -429,67 +429,120 @@
 
     <script>
             var locations = $('#search_right > div');
-            locations.eq(1).hide();
-            locations.eq(2).hide();
+            $.each(locations, function(index) {
+                locations.eq(index).hide();
+            });
+            locations.eq(0).show();
 
             $('#search_left ul li').click(function() {
                 switch($(this).text()) {
                     case "서울" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
                         locations.eq(0).show(); 
-                        locations.eq(1).hide();
-                        locations.eq(2).hide();
-                        locations.eq(3).hide();
-                        locations.eq(4).hide();
-                        locations.eq(5).hide();
-                        locations.eq(6).hide();
-                        locations.eq(7).hide();
-                        locations.eq(8).hide();
-                        locations.eq(9).hide();
-                        locations.eq(10).hide();
-                        locations.eq(11).hide();
-                        locations.eq(12).hide();
-                        locations.eq(13).hide();
-                        locations.eq(14).hide();
-                        locations.eq(15).hide();
-                        locations.eq(16).hide();
                         break;
                     case "경기" : 
-                        locations.eq(0).hide();
-                        locations.eq(1).show();
-                        locations.eq(2).hide();
-                        locations.eq(3).hide();
-                        locations.eq(4).hide();
-                        locations.eq(5).hide();
-                        locations.eq(6).hide();
-                        locations.eq(7).hide();
-                        locations.eq(8).hide();
-                        locations.eq(9).hide();
-                        locations.eq(10).hide();
-                        locations.eq(11).hide();
-                        locations.eq(12).hide();
-                        locations.eq(13).hide();
-                        locations.eq(14).hide();
-                        locations.eq(15).hide();
-                        locations.eq(16).hide();
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(1).show(); 
                         break;
                     case "인천" : 
-                        locations.eq(0).hide();
-                        locations.eq(1).hide();
-                        locations.eq(2).show();
-                        locations.eq(3).hide();
-                        locations.eq(4).hide();
-                        locations.eq(5).hide();
-                        locations.eq(6).hide();
-                        locations.eq(7).hide();
-                        locations.eq(8).hide();
-                        locations.eq(9).hide();
-                        locations.eq(10).hide();
-                        locations.eq(11).hide();
-                        locations.eq(12).hide();
-                        locations.eq(13).hide();
-                        locations.eq(14).hide();
-                        locations.eq(15).hide();
-                        locations.eq(16).hide();
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(2).show(); 
+                        break;
+                    case "부산" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(3).show(); 
+                        break;
+                    case "대구" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(4).show(); 
+                        break;
+                    case "광주" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(5).show(); 
+                        break;
+                    case "대전" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(6).show(); 
+                        break;
+                    case "대전" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(7).show(); 
+                        break;
+                    case "울산" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(8).show(); 
+                        break;
+                    case "세종" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(9).show(); 
+                        break;
+                    case "강원" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(10).show(); 
+                        break;
+                    case "경남" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(11).show(); 
+                        break;
+                    case "경북" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(12).show(); 
+                        break;
+                    case "전남" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(13).show(); 
+                        break;
+                    case "전북" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(14).show(); 
+                        break;
+                    case "충남" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(15).show(); 
+                        break;
+                    case "충북" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(16).show(); 
+                        break;
+                    case "제주" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(17).show(); 
                         break;
                 }
             });

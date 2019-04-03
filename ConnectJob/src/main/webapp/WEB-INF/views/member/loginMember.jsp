@@ -8,33 +8,31 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <section>
-<<<<<<< HEAD
-<div class="login-container">
-	<ul class="tabs">
-		<li class="tab-link current" data-tab="member">개인회원</li>
+
+<div id="login-container">
+	<img src="${path }/resources/images/title.png" width="650px"><br><br>
+	<ul id="tabs">
+		<li class="tab-link selected" data-tab="member">개인회원</li>
 		<li class="tab-link" data-tab="cmember">기업회원</li>
 	</ul>
 	<!-- 일반회원 -->
 	<div id="member" class="tab-content current">
 		<form name="loginFrm" action="${path }/member/loginMember.do" method="post">
-			<table>
-			<caption>일반회원로그인</caption>
-				<tr>
-					<td>아이디</td>
-					<td><input type="email" name="pId"/></td>
-				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td><input type="password" name="password"/></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="로그인"/></td>
-					<td><input type="button" value="ID/PW찾기" id="findbtn"/></td>			
-				</tr>
-				<tr>
-					<td colspan="2"><a id="kakao-login-btn"></a></td>				
-				</tr>
-			</table>	
+			<div class="login-left">
+				<div class="login-item">
+					<div class="item-left">아이디</div>
+					<div class="item-right"><input type="email" name="pId" autocomplete="off"/></div>
+				</div>
+				<div class="login-item">
+					<div class="item-left">비밀번호</div>
+					<div class="item-right"><input type="password" name="password" autocomplete="new-password"/></div>
+				</div>
+			</div>
+			<div class="login-right">
+					<a id="kakao-login-btn"></a><br>
+					<input type="submit" value="로그인"/><br>
+					<input type="button" value="ID/PW찾기" id="findbtn"/>
+			</div>
 		</form>	
 	</div>
 
@@ -42,49 +40,24 @@
 	<!-- 기업회원 -->		
 	<div id="cmember" class="tab-content">
 		<form name="cMemberloginFrm" action="${path }/cMemberLogin.do" method="post">
-			<table>
-				<caption>기업회원로그인</caption>
-					<tr>
-						<td>아이디</td>
-						<td><input type="text" name="cmemberId"/></td>
-					</tr>
-					<tr>
-						<td>비밀번호</td>
-						<td><input type="password" name="cmemberPwd"/></td>
-					</tr>
-					<tr>
-						<td><input type="submit" value="로그인"/></td>
-						<td><input type="button" value="ID/PW찾기" id="findbtn"/></td>			
-					</tr>
-			</table>
+			<div class="login-left">
+				<div class="login-item">
+					<div class="item-left">아이디</div>
+					<div class="item-right"><input type="text" name="CMemberId" autocomplete="off"/></div>
+				</div>
+				<div class="login-item">
+					<div class="item-left">비밀번호</div>
+					<div class="item-right"><input type="password" name="CMemberPw" autocomplete="new-password"/></div>
+				</div>
+			</div>
+			<div class="login-right">
+					<a id="kakao-login-btn"></a><br>
+					<input type="submit" value="기업회원 로그인"/><br>
+					<input type="button" value="ID/PW찾기" id="findbtn"/>
+			</div>
 		</form>	
 	</div>
 </div>
-=======
-	<div id="login-container">
-	<h3>Connect Job Member's Login</h3>
-	<form name="loginFrm" action="${path }/member/loginMember.do" method="post">
-		<table>
-			<tr>
-				<td>아이디</td>
-				<td><input type="email" name="pId"/></td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="password"/></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="로그인"/></td>
-				<td><input type="button" value="ID/PW찾기" id="findbtn"/></td>			
-			</tr>
-			<tr>
-				<td colspan="2"><a id="kakao-login-btn"></a></td>				
-			</tr>
-		</table>	
-		
-	</form>	
-	</div>
->>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 </section>
 
 <script>
@@ -120,58 +93,23 @@
 	}) */
 	
 	//개인회원 기업회원 나누는 탭설정
-		$(document).ready(function(){
-        
-            $('ul.tabs li').click(function(){
-            var tab_id = $(this).attr('data-tab');
-        
-            $('ul.tabs li').removeClass('current');
-            $('.tab-content').removeClass('current');
-        
-            $(this).addClass('current');
-            $("#"+tab_id).addClass('current');
+		$('.tab-link').click(function() {
+			$('.tab-link').eq(0).removeClass('selected');
+			$('.tab-link').eq(1).removeClass('selected');
+			$(this).addClass('selected');
 
-            })
-        })
+			var id = $(this).attr('data-tab');
+
+			if(id=='member') {
+				$('#member').css("display","inline-block");
+				$('#cmember').css("display","none");
+			} else {
+				$('#cmember').css("display","inline-block");
+				$('#member').css("display","none");
+			}
+		});
 	
 </script>
-<style>
-	caption{
-		font-size:20px; ;
-	}
-	
-        .login-container{
-        width: 500px;
-        margin: 0 auto;
-        }     
-        ul.tabs{
-        margin: 0px;
-        padding: 0px;
-        list-style: none;
-        }
-        ul.tabs li{
-        background: none;
-        color: #222;
-        display: inline-block;
-        padding: 10px 15px;
-        cursor: pointer;
-        }
-        
-        ul.tabs li.current{
-        background: #ededed;
-        color: #222;
-        }
-        
-        .tab-content{
-        display: none;
-        background: #ededed;
-        padding: 15px;
-        }
-        
-        .tab-content.current{
-        display: inherit;
-        }
-</style>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 

@@ -1,5 +1,7 @@
 package com.connect.job.model.vo;
 
+import java.util.Date;
+
 public class CMember {
 	
 	private String CMemberId;
@@ -10,26 +12,11 @@ public class CMember {
 	private String CMemberCPhone;
 	private String CMemberBNum;
 	private String CMemberDiv;
-	private String CMemberEnroll;
+	private Date CMemberEnroll;
 	private String CMemberEmail;
 
 	public CMember() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public CMember(String cMemberId, String cId, String cMemberPw, String cMemberName, String cMemberPhone,
-			String cMemberCPhone, String cMemberBNum, String cMemberDiv, String cMemberEnroll, String cMemberEmail) {
-		super();
-		CMemberId = cMemberId;
-		CId = cId;
-		CMemberPw = cMemberPw;
-		CMemberName = cMemberName;
-		CMemberPhone = cMemberPhone;
-		CMemberCPhone = cMemberCPhone;
-		CMemberBNum = cMemberBNum;
-		CMemberDiv = cMemberDiv;
-		CMemberEnroll = cMemberEnroll;
-		CMemberEmail = cMemberEmail;
 	}
 
 	public String getCMemberId() {
@@ -96,11 +83,11 @@ public class CMember {
 		CMemberDiv = cMemberDiv;
 	}
 
-	public String getCMemberEnroll() {
+	public Date getCMemberEnroll() {
 		return CMemberEnroll;
 	}
 
-	public void setCMemberEnroll(String cMemberEnroll) {
+	public void setCMemberEnroll(Date cMemberEnroll) {
 		CMemberEnroll = cMemberEnroll;
 	}
 
@@ -119,6 +106,8 @@ public class CMember {
 				+ CMemberBNum + ", CMemberDiv=" + CMemberDiv + ", CMemberEnroll=" + CMemberEnroll + ", CMemberEmail="
 				+ CMemberEmail + "]";
 	}
+
+	
 	
 	
 }

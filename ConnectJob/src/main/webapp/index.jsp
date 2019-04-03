@@ -10,8 +10,15 @@
 <script>
 	$('#logo').hide();
 	$('#searchfrm').hide();
-	$('header').css("height","100px");
-	$('header').css("background-color","#2c3142c7");
+	$('header').css("height","90px");
+	$('header').css("background","none");
+	$('header').hover(function() {
+		$(this).css("background-color","#2c3142c5");
+	});
+	$('header').mouseleave(function() {
+		$(this).css("background","none");
+	});
+	
 </script>
 
     <section id="index">
