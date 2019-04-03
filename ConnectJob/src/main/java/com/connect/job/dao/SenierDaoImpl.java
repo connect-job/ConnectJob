@@ -1,4 +1,4 @@
-package com.connect.job.service;
+package com.connect.job.dao;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.connect.job.model.vo.Scomment;
 import com.connect.job.model.vo.Senier;
 
 @Repository
@@ -40,6 +41,21 @@ public class SenierDaoImpl implements SenierDao {
 
 		return session.selectList("senier.senierOneList",no);
 	}
+
+	@Override
+	public int insertComWrite(Scomment sco) {
+
+		return session.insert("senier.insertComWrite",sco);
+	}
+
+	@Override
+	public List<Scomment> comList(Scomment sco) {
+
+		return session.selectList("senier.comList",sco);
+	}
+
+	
+	
 	
 	
 

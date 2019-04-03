@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.connect.job.model.vo.Scomment;
 import com.connect.job.model.vo.Senier;
 import com.connect.job.service.SenierService;
 import com.connect.job.common.PageBarFactory;
@@ -82,12 +84,35 @@ public class SenierController {
 	
 	
 	@RequestMapping("/senier/comWrite.do") //댓글등록
-	public String comWrite()
+	@ResponseBody
+	public String comWrite(@RequestParam(defaultValue="1")int cNo, String cContent,String cWriter, Model model) /*Scomment sco*/
 	{
+		Scomment sco=new Scomment();
+		sco.setsNo(cNo);
+		sco.setcContent(cContent);
+		sco.setcWriter(cWriter);
 		
-		return "/";
+		int result=service.insertComWrite(sco);
+		
+		System.out.println(result);
+		
+		
+		
+		return "redirect:/senier/comList.do";
 	}
+	
+	@RequestMapping("/senier/comList.do") //댓글등록 조회
+	@ResponseBody
+	public List<Scomment> comList(@RequestParam(defaultValue="1")int cNo, Model model) 
+	{
+		Scomment sco=new Scomment();
+		sco.setsNo(cNo);
+		
+		List<Scomment> list=service.comList(sco);
+		System.out.println(list);
 
+		return list;
+	}
 	
 	
 }

@@ -29,16 +29,9 @@
   </select>
   
   
+  
   <select id="senierOneList" resultMap="senierResult" parameterType="_int">
   	select * from s_talk where s_no = #{no}
-  </select>
-  
-  <insert id="insertComWrite" parameterType="Scomment">
-  	insert into s_comment values(SEQ_C_NO.NEXTVAL,0,0,#{cContent},default,#{cWriter},default)
-  </insert>
-  
-  <select id="comList" parameterType="Scomment">
-  	select * from s_comment where c_no = #{cNo}
   </select>
   
 </mapper>

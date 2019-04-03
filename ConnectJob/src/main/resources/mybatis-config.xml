@@ -9,5 +9,6 @@
 		<typeAlias type="com.connect.job.model.vo.CompanyReviewLike" alias="reviewlike"/>
 		<typeAlias type="com.connect.job.model.vo.Senier" alias="senier"/>
 		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>
+		<typeAlias type="com.connect.job.model.vo.Scomment" alias="Scomment"/>
 	</typeAliases>
 </configuration>
