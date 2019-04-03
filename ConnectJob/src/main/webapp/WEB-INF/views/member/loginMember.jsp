@@ -29,7 +29,9 @@
 				</div>
 			</div>
 			<div class="login-right">
-					<a id="kakao-login-btn"></a><br>
+					<a id="custom-login-btn" href="javascript:loginWithKakao()">
+							<button type="button" class="kakao">카카오톡으로 로그인</button>
+					</a>
 					<input type="submit" value="로그인"/><br>
 					<input type="button" value="ID/PW찾기" id="findbtn"/>
 			</div>
@@ -51,7 +53,6 @@
 				</div>
 			</div>
 			<div class="login-right">
-					<a id="kakao-login-btn"></a><br>
 					<input type="submit" value="기업회원 로그인"/><br>
 					<input type="button" value="ID/PW찾기" id="findbtn"/>
 			</div>
@@ -67,18 +68,21 @@
 		})
 	})
 
-	// 사용할 앱의 JavaScript 키를 설정해 주세요.
+  //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
     Kakao.init('60f4385612bb24ab265ce9857acca8ff');
-    // 카카오 로그인 버튼을 생성합니다.
-    Kakao.Auth.createLoginButton({
-      container: '#kakao-login-btn',
-      success: function(authObj) {
-        alert(JSON.stringify(authObj));
-      },
-      fail: function(err) {
-         alert(JSON.stringify(err));
-      }
-    });
+    function loginWithKakao() {
+      // 로그인 창을 띄웁니다.
+      Kakao.Auth.login({
+        success: function(authObj) {
+          alert(JSON.stringify(authObj));
+        },
+        fail: function(err) {
+          alert(JSON.stringify(err));
+        }
+      });
+    };
+  //]]>
     
     //기업회원 파트
 	/* $(function(){

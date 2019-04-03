@@ -45,8 +45,6 @@ a:hover {
 }
 
 
-/* ------------------------------------- 공통 컴포넌트 태그 */
-
 
 /* ------------------------------------- 헤더시작 */
 
@@ -378,7 +376,20 @@ section #login-container #member .login-right {
     vertical-align: top;
     display:inline-block;
     width: 49%;
-    padding-top: 25px;
+    padding-bottom: 15px;
+}
+
+section #login-container #member .login-right .kakao {
+    background-color: rgb(255, 215, 35);
+    color: #000;
+    font-size: 12px;
+    letter-spacing: -0.3px;
+    border: none;
+    outline: none;
+    width: 80%;
+    height: 35px;
+    vertical-align: top;
+    margin-bottom: 10px;
 }
 
 section #login-container #member .login-right input {
@@ -389,6 +400,8 @@ section #login-container #member .login-right input {
     width: 80%;
     margin-bottom: 10px;
     height: 35px;
+    font-size: 12px;
+    letter-spacing: -0.3px;
 }
 
 

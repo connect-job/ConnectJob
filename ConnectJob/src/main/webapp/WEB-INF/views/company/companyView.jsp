@@ -74,7 +74,12 @@
                         <div class="review">
                             <div class="avgPoint">
                                 <H2>REVIEW</H2>
+                                <c:if test="${score!=null }">
                                 <h3>기업 총 평점　|　${score.avgTotal }/5.0　|　${score.avgTotal==1?"★☆☆☆☆" : score.avgTotal==2? "★★☆☆☆" : score.avgTotal==3? "★★★☆☆" : score.avgTotal==4 ? "★★★★☆" : "★★★★★" }</h3>
+                            	</c:if>
+                            	<c:if test="${score==null }">
+                            	<h3>등록된 평가가 없습니다</h3>
+                            	</c:if>
                             </div>
                             <div class="review-info">
                                 <canvas id="myChart" width="450" height="300"></canvas>
