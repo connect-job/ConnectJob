@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.connect.job.model.vo.CompanyReview;
+import com.connect.job.model.vo.CompanyReviewLike;
 
 @Repository
 public class ReviewDaoImpl implements ReviewDao {
@@ -45,6 +46,24 @@ public class ReviewDaoImpl implements ReviewDao {
 	@Override
 	public CompanyReview reviewOne(int reviewNo) {
 		return session.selectOne("review.reviewOne", reviewNo);
+	}
+
+	@Override
+	public int reviewLike(CompanyReviewLike like) {
+		List<CompanyReviewLike> list = session.selectList("review.isLike", like);
+		int result = 0;
+		if(list.size()>0) {
+			// 이미 좋아요 눌렀음, 좋아요 취소
+			result = -1;
+			session.delete("review.deleteLike", like);
+			return result;
+		} else {
+			// 좋아요 기록 없음, 좋아요 추가
+			session.insert("review.reviewLike", like);
+			result = 1;
+			return result;
+		}
+		
 	}
 
 	

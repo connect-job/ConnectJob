@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.connect.job.model.vo.Company;
+import com.connect.job.model.vo.CompanyAvgScore;
 import com.connect.job.model.vo.News;
 import com.connect.job.openapi.NaverSearch;
 import com.connect.job.service.CompanyService;
@@ -40,7 +41,6 @@ public class CompanyController {
 		int numPerPage = 10;
 		List<Company> list = service.selectAll(cPage, numPerPage);
 		int total = service.selectCompanyCount();
-		System.out.println(list.get(0));
 		model.addAttribute("pageBar", PageBarFactory.getPageBar(total, cPage, numPerPage));
 		model.addAttribute("company",list);
 		return "company/companyList";
@@ -51,8 +51,12 @@ public class CompanyController {
 	public String companyView(int no, Model model) {
 		Company com = service.selectOne(no);
 		
+		// 총 평점 및 각 점수 가져오기
+		CompanyAvgScore cas = service.selectScore(no);
+		
 		List<News> news = new NaverSearch().naverSearch(com.getCompanyName());
 		
+		model.addAttribute("score", cas);
 		model.addAttribute("company",com);
 		model.addAttribute("news", news);
 		return "company/companyView";
@@ -66,14 +70,11 @@ public class CompanyController {
 		Company com = new Company();
 		com.setCompanyLocations(locations);
 		
-		System.out.println("검색할 지역 : " + locations[0]);
+		System.out.println("검색한 지역 뭐 들어왔니?" + location);
 		
 		int numPerPage = 10;
 		List<Company> list = service.companyList(com, cPage, numPerPage);
 		int total = service.selectAjaxCount(com);
-		
-		System.out.println("AJAX 전체개수 : " + total);
-		System.out.println(list.get(0).getCompanyAddressNew());
 		
 		String pageBar =  AjaxPageBarFactory.getPageBar(total, cPage, numPerPage);
 		
@@ -118,7 +119,6 @@ public class CompanyController {
 	public String selectCompanyCount() {
 		int count = service.selectCompanyCount();
 		String result = String.valueOf(count);
-		System.out.println(result);
 		return result;
 	}
 	
@@ -128,8 +128,6 @@ public class CompanyController {
 	public String searchCompany(String keyword) throws UnsupportedEncodingException {
 		System.out.println(keyword);
 		List<Company> list = service.searchCompany(keyword);
-		System.out.println("검색결과 값이 몇개 있니? : " + list.size());
-		System.out.println(list.get(0));
 		
 		String result = "<ul>";
 		for(int i=0; i<list.size(); i++) {

@@ -10,6 +10,7 @@
 
 
 <section>
+
 	<div id="company-container">
 
 		<div class="company-top">선배와의 대화</div>
@@ -22,7 +23,9 @@
 
 			</div>
 		</div>
-		<div class="company-content">
+
+                
+		 <div class="company-content">
 
 
 

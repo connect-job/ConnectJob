@@ -3,132 +3,164 @@ package com.connect.job.model.vo;
 import java.sql.Date;
 
 public class Member {
-	private String pId;
+	private String p_id;
 	private String password;
-	private String pName;
+	private String p_name;
 	private String gender;
 	private String phone;
-	private String isSns;
-	private String finalEdu;
+	private String is_sns;
+	private String final_edu;
 	private String school;
 	private String major;
-	private String isConfirm;
-	private Date enrollDate;
+	private String is_confirm;
+	private Date enroll_date;
+	
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String pId, String password, String pName, String gender, String phone, String isSns, String finalEdu,
-			String school, String major, String isConfirm, Date enrollDate) {
+
+	public Member(String p_id, String password, String p_name, String gender, String phone, String is_sns,
+			String final_edu, String school, String major, String is_confirm, Date enroll_date) {
 		super();
-		this.pId = pId;
+		this.p_id = p_id;
 		this.password = password;
-		this.pName = pName;
+		this.p_name = p_name;
 		this.gender = gender;
 		this.phone = phone;
-		this.isSns = isSns;
-		this.finalEdu = finalEdu;
+		this.is_sns = is_sns;
+		this.final_edu = final_edu;
 		this.school = school;
 		this.major = major;
-		this.isConfirm = isConfirm;
-		this.enrollDate = enrollDate;
+		this.is_confirm = is_confirm;
+		this.enroll_date = enroll_date;
 	}
 
-	public String getpId() {
-		return pId;
+
+	public String getP_id() {
+		return p_id;
 	}
 
-	public void setpId(String pId) {
-		this.pId = pId;
+
+	public void setP_id(String p_id) {
+		this.p_id = p_id;
 	}
+
 
 	public String getPassword() {
 		return password;
 	}
 
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getpName() {
-		return pName;
+
+	public String getP_name() {
+		return p_name;
 	}
 
-	public void setpName(String pName) {
-		this.pName = pName;
+
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
 	}
+
 
 	public String getGender() {
 		return gender;
 	}
 
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 
 	public String getPhone() {
 		return phone;
 	}
 
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-	public String getIsSns() {
-		return isSns;
+
+	public String getIs_sns() {
+		return is_sns;
 	}
 
-	public void setIsSns(String isSns) {
-		this.isSns = isSns;
+
+	public void setIs_sns(String is_sns) {
+		this.is_sns = is_sns;
 	}
 
-	public String getFinalEdu() {
-		return finalEdu;
+
+	public String getFinal_edu() {
+		return final_edu;
 	}
 
-	public void setFinalEdu(String finalEdu) {
-		this.finalEdu = finalEdu;
+
+	public void setFinal_edu(String final_edu) {
+		this.final_edu = final_edu;
 	}
+
 
 	public String getSchool() {
 		return school;
 	}
 
+
 	public void setSchool(String school) {
 		this.school = school;
 	}
+
 
 	public String getMajor() {
 		return major;
 	}
 
+
 	public void setMajor(String major) {
 		this.major = major;
 	}
 
-	public String getIsConfirm() {
-		return isConfirm;
+
+	public String getIs_confirm() {
+		return is_confirm;
 	}
 
-	public void setIsConfirm(String isConfirm) {
-		this.isConfirm = isConfirm;
+
+	public void setIs_confirm(String is_confirm) {
+		this.is_confirm = is_confirm;
 	}
 
-	public Date getEnrollDate() {
-		return enrollDate;
+
+	public Date getEnroll_date() {
+		return enroll_date;
 	}
 
-	public void setEnrollDate(Date enrollDate) {
-		this.enrollDate = enrollDate;
+
+	public void setEnroll_date(Date enroll_date) {
+		this.enroll_date = enroll_date;
 	}
+
 
 	@Override
 	public String toString() {
-		return "Member [pId=" + pId + ", password=" + password + ", pName=" + pName + ", gender=" + gender + ", phone="
-				+ phone + ", isSns=" + isSns + ", finalEdu=" + finalEdu + ", school=" + school + ", major=" + major
-				+ ", isConfirm=" + isConfirm + ", enrollDate=" + enrollDate + "]";
+		return "Member [p_id=" + p_id + ", password=" + password + ", p_name=" + p_name + ", gender=" + gender
+				+ ", phone=" + phone + ", is_sns=" + is_sns + ", final_edu=" + final_edu + ", school=" + school
+				+ ", major=" + major + ", is_confirm=" + is_confirm + ", enroll_date=" + enroll_date + "]";
 	}
+	
+	
+
+	
+	
+
+	
 	
 	
 	

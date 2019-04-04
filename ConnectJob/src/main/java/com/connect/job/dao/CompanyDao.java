@@ -3,6 +3,7 @@ package com.connect.job.dao;
 import java.util.List;
 
 import com.connect.job.model.vo.Company;
+import com.connect.job.model.vo.CompanyAvgScore;
 
 public interface CompanyDao {
 
@@ -13,6 +14,7 @@ public interface CompanyDao {
 	Company companyOne(int no);
 	List<Company> selectAll(int cPage, int numPerPage);
 	int selectAjaxCount(Company com);
+	CompanyAvgScore selectScore(int no);
 	
 
 }
