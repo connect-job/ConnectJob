@@ -72,7 +72,7 @@
     // 사용할 앱의 JavaScript 키를 설정해 주세요.
 	//js키 설정
     Kakao.init('60f4385612bb24ab265ce9857acca8ff');
-<<<<<<< HEAD
+
     function loginWithKakao() {
       // 로그인 창을 띄웁니다.
       Kakao.Auth.login({

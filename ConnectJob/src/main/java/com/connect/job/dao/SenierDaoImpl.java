@@ -55,9 +55,15 @@ public class SenierDaoImpl implements SenierDao {
 	}
 
 	@Override
-	public List<Scomment> selectAll() {
+	public List<Scomment> selectAll(int cPage, int numPerPage) {
 
-		return session.selectList("senier.selectcomAll");
+		return session.selectList("senier.selectcomAll", null, new RowBounds((cPage-1)*numPerPage, numPerPage));
+	}
+
+	@Override
+	public int selectcomCount() {
+
+		return session.selectOne("senier.selectcomCount");
 	}
 
 	

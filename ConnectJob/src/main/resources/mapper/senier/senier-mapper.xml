@@ -42,8 +42,14 @@
   </select>
   
   <select id="selectcomAll" resultMap="ScommentMap">
-  	select * from s_comment order by c_regdate desc
+  	select A.*, (SELECT P_NAME FROM P_MEMBER B WHERE A.C_WRITER = B.P_ID) PNAME from s_comment A order by c_regdate desc
   </select>
+  
+  <select id="selectcomCount" resultType="_int">
+  	select count(*) from s_comment
+  </select>
+  
+
   
   <resultMap type="scomment" id="ScommentMap">
   	<id column="c_no" property="cNo"/>
@@ -52,6 +58,7 @@
   	<result column="c_content" property="cContent"/>
   	<result column="c_regdate" property="cRegdate"/>
   	<result column="c_writer" property="cWriter"/>
+  	<result column="PNAME" property="cName"/>
   </resultMap>
   
 </mapper>

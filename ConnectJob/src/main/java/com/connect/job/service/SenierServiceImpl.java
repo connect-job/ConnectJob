@@ -53,11 +53,20 @@ public class SenierServiceImpl implements SenierService {
 	}
 
 	@Override
-	public List<Scomment> selectAll() {
+	public List<Scomment> selectAll(int cPage, int numPerPage) {
 
-		return dao.selectAll();
+		return dao.selectAll(cPage, numPerPage);
 	}
 
+	@Override
+	public int selectcomCount() {
+
+		return dao.selectcomCount();
+	}
+
+	
+	
+	
 	
 	
 	

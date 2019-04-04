@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import com.connect.job.model.vo.Scomment;
 import com.connect.job.model.vo.Senier;
 import com.connect.job.service.SenierService;
+import com.connect.job.common.AjaxPageBarFactory;
 import com.connect.job.common.PageBarFactory;
 
 
@@ -122,14 +126,27 @@ public class SenierController {
 	
 	@RequestMapping(value="/senier/comAjaxList.do", produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String comAjaxList() {
+	public String comAjaxList(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage, Model model, HttpSession session) {
+		
+		int numPerPage=10;
+		
+		
 		String html = "";
-		List<Scomment> list = service.selectAll();
+		List<Scomment> list = service.selectAll(cPage,numPerPage);
+		int total=service.selectcomCount();
 
+		System.out.println(list);
+		System.out.println(total);
+		
+		String pageBar=AjaxPageBarFactory.getPageBar(total, cPage, numPerPage);
+		
+
+		
+		
 		html += "<div class=\"comment-item\">";
 			for(int i=0; i<list.size();i++) {
 				html += "<div class=\"writer\">";
-				html += list.get(i).getcWriter();
+				html += list.get(i).getcName();
 				html += "</div>";
 				
 				html += "<div class=\"content\">";
@@ -140,10 +157,37 @@ public class SenierController {
 				html += list.get(i).getcRegdate();
 				html += "</div>";
 			}
+			html += "<div id=\"pageBar\">";
+			html += pageBar;
+			html += "</div>";
 			html += "</div>";
 
 		return html;
 	}
 	
+	
+	/*// 댓글 좋아요
+		@RequestMapping("senier/senierLike.do")
+		@ResponseBody
+		public String SenierLike(String member, int reviewNo, int companyNo) throws UnsupportedEncodingException {
+			
+			ScommentLike like = new ScommentLike();
+			like.setLikeMember(member);
+			like.setLikeReview(reviewNo);
+			like.setLikeCompany(companyNo);
+			
+			String message = "";
+			
+			int result = service.scommentLike(like);
+			
+			if(result>0) {
+				message = "좋아요";
+			} else {
+				message = "좋아요 취소";
+			}
+			
+			String msg = URLEncoder.encode(message, "UTF-8");
+			return msg;
+		}*/
 	
 }

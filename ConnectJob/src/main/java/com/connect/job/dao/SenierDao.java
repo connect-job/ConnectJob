@@ -14,5 +14,8 @@ public interface SenierDao {
 	int insertComWrite(Scomment sco);
 	
 	List<Scomment> comList(Scomment sco);
-	List<Scomment> selectAll();
+	List<Scomment> selectAll(int cPage, int numPerPage);
+	int selectcomCount();
+	
+	
 }

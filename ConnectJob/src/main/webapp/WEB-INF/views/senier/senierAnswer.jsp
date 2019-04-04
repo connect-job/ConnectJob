@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.connect.job.model.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -7,7 +7,10 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
+<%-- <%
+Member m = (Member) session.getAttribute("loginMember");
 
+%> --%>
 
 <section>
 
@@ -63,7 +66,7 @@
 					<textarea name="cContent" cols="80" rows="5" maxlength="2000"
 						placeholder="후배에게 성의있는 답변부탁드려요"></textarea>
 					<input type="hidden" name="cNo" />
-					<input type="hidden" name="cWriter" />
+					<input type="hidden" name="cWriter" value="${loginMember.p_id}"/>
 				</div>
 
 				<div style="display: inline-block;">
@@ -77,8 +80,9 @@
 
 
 
-
 			<script>
+                
+                
                 
 	                $.ajax({  
 	        			url: "${path}/senier/comAjaxList.do",
@@ -134,6 +138,27 @@
 		</div>
 
 	</div>
+	
+	 <script>
+	 function fn_ajaxPaging(cPage) {
+    	var space = $('#comment-space');
+
+         $.ajax({
+         	url: '${path}/senier/comAjaxList.do',
+         	data: {"cPage":cPage},
+         	dataType: "html",
+         	success: function(data) {
+				var Ca = /\+/g;
+				var resultSet = decodeURIComponent(data.replace(Ca, " "));
+				space.empty();
+				space.html(resultSet);
+         	}
+         });
+         
+    	}
+       </script>
+        
+        
 </section>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

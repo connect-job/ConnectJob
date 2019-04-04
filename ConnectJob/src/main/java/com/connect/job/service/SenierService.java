@@ -13,6 +13,8 @@ public interface SenierService {
 	List<Senier> senierOneList(int no);
 	int insertComWrite(Scomment sco);
 	List<Scomment> comList(Scomment sco);
-	List<Scomment> selectAll();
+	List<Scomment> selectAll(int cPage, int numPerPage);
+	int selectcomCount();
+
 
 }

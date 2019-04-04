@@ -17,12 +17,14 @@ public class Scomment implements Serializable{
 	private Date cRegdate;
 	private String cWriter;
 	private String status;
+	private String cName;
 	
 	public Scomment() {
 		
 	}
 
-	public Scomment(int cNo, int sNo, int cLevel, String cContent, Date cRegdate, String cWriter, String status) {
+	public Scomment(int cNo, int sNo, int cLevel, String cContent, Date cRegdate, String cWriter, String status,
+			String cName) {
 		super();
 		this.cNo = cNo;
 		this.sNo = sNo;
@@ -31,6 +33,7 @@ public class Scomment implements Serializable{
 		this.cRegdate = cRegdate;
 		this.cWriter = cWriter;
 		this.status = status;
+		this.cName = cName;
 	}
 
 	public int getcNo() {
@@ -89,12 +92,20 @@ public class Scomment implements Serializable{
 		this.status = status;
 	}
 
+	public String getcName() {
+		return cName;
+	}
+
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Scomment [cNo=" + cNo + ", sNo=" + sNo + ", cLevel=" + cLevel + ", cContent=" + cContent + ", cRegdate="
-				+ cRegdate + ", cWriter=" + cWriter + ", status=" + status + "]";
+				+ cRegdate + ", cWriter=" + cWriter + ", status=" + status + ", cName=" + cName + "]";
 	}
-	
-	
+
 	
 }
