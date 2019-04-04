@@ -1,5 +1,7 @@
 package com.connect.job.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -67,6 +69,17 @@ public class MemberServiceImpl implements MemberService{
 	public int updatePw(Member m) {
 		// TODO Auto-generated method stub
 		return dao.updatePw(m);
+	}
+
+	@Override
+	public List<Member> selectList() {
+	
+		return dao.selectList();
+	}
+
+	@Override
+	public Member selectOneKakao(Member m) {
+		return dao.selectOneKakao(m);
 	}
 	
 	

@@ -6,12 +6,10 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<%
-	HashMap<String, Object> userInfo=(HashMap<String, Object>)request.getAttribute("userInfo");
-%>
-<section>
 
-	<form name="memberEnrollFrm" method="post">
+
+<section>
+	<form action="${path}/member/memberEnrollEnd.do" name="memberEnrollFrm" method="post">
 	<table>
 		<tr>
 			<td>이메일 아이디</td>
@@ -20,32 +18,22 @@
 		</tr>
 		<tr>
 			<td>비밀번호</td>
-			<td><input type="password" name="password" id="pw1" onkeyup="verify.check()" required/></td>
+			<td><input type="password" name="passwor2" id="pw1" onkeyup="verify.check()" required/></td>
 			<td><span>영.숫자  포함 8글자 이상 작성</span></td>
 		</tr>
 		<tr>
 			<td>비밀번호 확인</td>
-			<td><input type="password" name="password2" id="pw2" onkeyup="verify.check()" required/></td>
+			<td><input type="password" name="password" id="pw2" onkeyup="verify.check()" required/></td>
 			<td><div id="password_result"></div></td>			
 		</tr>		
-		<c:if test="${userInfo==null }">
-			<tr>
-				<td>이름</td>		
-				<td>
-					<input type="text" name="p_name"/>
-					<input type="hidden" name="is_sns"/>
-				</td>
-			</tr>
-		</c:if>
-		<c:if test="${userInfo!=null }">	
-			<tr>
-				<td>이름</td>		
-				<td><input type="text" name="pName" value="${userInfo.nickname }"/></td>
-			</tr>
-			<tr>			
-				<td><input type="hidden" name="isSns" value="${userInfo.id }"/></td>
-			</tr>		
-		</c:if>
+		<tr>
+			<td>이름</td>		
+			<td>
+				<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
+				<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
+				<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
+			</td>
+		</tr>	
 		<tr>
 			<td>성별</td>
 			<td>
@@ -101,8 +89,8 @@ function verifynotify(field1, field2, result_id, match_html, nomatch_html) {
 
 	function verifyInput() {
 	  verify = new verifynotify();
-	  verify.field1 = document.memberEnrollFrm.password;
-	  verify.field2 = document.memberEnrollFrm.password2;
+	  verify.field1 = document.memberEnrollFrm.password2;
+	  verify.field2 = document.memberEnrollFrm.password;
 	  verify.result_id = "password_result";
 	  verify.match_html = "<span style=\"color:green\">비밀번호가 일치합니다.<\/span>";
 	  verify.nomatch_html = "<span style=\"color:red\">비밀번호가 일치하지않습니다.<\/span>";

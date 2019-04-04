@@ -1,6 +1,7 @@
 package com.connect.job.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.connect.job.model.vo.Member;
 
@@ -13,5 +14,7 @@ public interface MemberDao {
 	int deleteMember(Member m);
 	int updateMember(Member m);
 	int updatePw(Member m);
+	List<Member> selectList();
+	Member selectOneKakao(Member m);
 
 }
