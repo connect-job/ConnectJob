@@ -66,6 +66,7 @@ public class CMemberController {
 	public String selectOne(CMember m, HttpSession session, Model model) {
 		
 		CMember result = service.selectOne(m);
+		System.out.println(result);
 		
 		String msg="";
 		String loc = "/";

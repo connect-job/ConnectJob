@@ -17,10 +17,52 @@
         <div id="company-view-content">
             <div class="view-left">
                 <ul>
-                    <li onclick="location.href='#'" class="selected"><i class="fas fa-info-circle"></i><br>기업정보</li>
-                    <li onclick="location.href='#right-company-review'"><i class="fas fa-comment-dots"></i><br>기업리뷰</li>
-                    <li onclick="location.href='#right-company-hire'"><i class="fas fa-user-friends"></i><br>채용정보</li>
-                    <li onclick="location.href='#right-company-news'"><i class="far fa-newspaper"></i><br>기업뉴스</li>
+                    <li class="selected"><i class="fas fa-info-circle"></i><br>기업정보</li>
+                    <li><i class="fas fa-comment-dots"></i><br>기업리뷰</li>
+                    <li><i class="fas fa-user-friends"></i><br>채용정보</li>
+                    <li><i class="far fa-newspaper"></i><br>기업뉴스</li>
+                    <script>
+                        var lmenu = $('.view-left ul li');
+                        var delay = 100;
+                        lmenu.eq(0).on('click', function () {
+                            $('html, body').stop().animate({ scrollTop: 0 }, delay);
+                        });
+                        lmenu.eq(1).on('click', function () {
+                            $('html, body').stop().animate({ scrollTop: 510 }, delay);
+                        });
+                        lmenu.eq(2).on('click', function () {
+                            $('html, body').stop().animate({ scrollTop: 1000 }, delay);
+                        });
+                        lmenu.eq(3).on('click', function () {
+                            $('html, body').stop().animate({ scrollTop: 1300 }, delay);
+                        });
+
+                        $(window).scroll(function () { 
+                            var sc = $(document).scrollTop();
+
+                            if(sc>=0 && sc<410) {
+                                lmenu.eq(0).addClass('selected');
+                                lmenu.eq(1).removeClass('selected');
+                                lmenu.eq(2).removeClass('selected');
+                                lmenu.eq(3).removeClass('selected');
+                            } else if (sc>410 && sc<900) {
+                                lmenu.eq(1).addClass('selected');
+                                lmenu.eq(0).removeClass('selected');
+                                lmenu.eq(2).removeClass('selected');
+                                lmenu.eq(3).removeClass('selected');
+                            } else if (sc>900 && sc<1300) {
+                                lmenu.eq(2).addClass('selected');
+                                lmenu.eq(1).removeClass('selected');
+                                lmenu.eq(0).removeClass('selected');
+                                lmenu.eq(3).removeClass('selected');
+                            } else {
+                                lmenu.eq(3).addClass('selected');
+                                lmenu.eq(0).removeClass('selected');
+                                lmenu.eq(1).removeClass('selected');
+                                lmenu.eq(2).removeClass('selected');
+                            }
+                        });
+                    </script>
                 </ul>
             </div>
             <div class="view-right">
@@ -28,12 +70,12 @@
                     <div class="info-left">
                         <div class="info">
                             <div class="title">기업구분</div>
-                            <div class="content wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="content wow fadeInUp" data-wow-delay="0.1s">
                                 ${company.companyStatus==1?"법인":"개인"}</div>
                         </div>
                         <div class="info">
                             <div class="title">설립일자</div>
-                            <div class="content wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="content wow fadeInUp" data-wow-delay="0.1s">
                                 <fmt:parseDate value="${company.companyRegDate}" var="date" pattern="yyyyMMdd" />
                                 <fmt:formatDate value="${date}" pattern="yyyy년 MM월 dd일" var="regDate" />
                                 ${regDate }
@@ -41,28 +83,28 @@
                         </div>
                         <div class="info">
                             <div class="title">회사주소</div>
-                            <div class="content wow fadeInUp" data-wow-delay="0.5s">(${company.companyZipcode})
+                            <div class="content wow fadeInUp" data-wow-delay="0.1s">(${company.companyZipcode})
                                 ${company.companyAddressNew}</div>
                         </div>
                         <div class="info">
                             <div class="title">산업군</div>
-                            <div class="content wow fadeInUp" data-wow-delay="0.6s">${company.companyCate}</div>
+                            <div class="content wow fadeInUp" data-wow-delay="0.1s">${company.companyCate}</div>
                         </div>
                         <div class="info">
                             <div class="title">사원수</div>
-                            <div class="content wow fadeInUp" data-wow-delay="0.7s">${company.companyAllPeople} 명</div>
+                            <div class="content wow fadeInUp" data-wow-delay="0.1s">${company.companyAllPeople} 명</div>
                         </div>
                         <div class="info">
                             <div class="title">신규사원</div>
-                            <div class="content wow fadeInUp" data-wow-delay="0.8s">${company.companyNewPeople} 명</div>
+                            <div class="content wow fadeInUp" data-wow-delay="0.1s">${company.companyNewPeople} 명</div>
                         </div>
                         <div class="info">
                             <div class="title">퇴사인원</div>
-                            <div class="content wow fadeInUp" data-wow-delay="0.9s">${company.companyOutPeople} 명</div>
+                            <div class="content wow fadeInUp" data-wow-delay="0.1s">${company.companyOutPeople} 명</div>
                         </div>
                         <div class="info">
                             <div class="title">예상평균연봉</div>
-                            <div class="content wow fadeInUp" data-wow-delay="1s">
+                            <div class="content wow fadeInUp" data-wow-delay="0.1s">
                                 <c:set value="${((company.companyPrice*10)*12)/company.companyAllPeople}" var="price" />
                                 <fmt:formatNumber value="${price }" var="avg" />
                                 <fmt:parseNumber integerOnly="true" value="${avg }" var="avgPrice" />
@@ -75,21 +117,23 @@
                             <div class="avgPoint">
                                 <H2>REVIEW</H2>
                                 <c:if test="${score!=null }">
-                                <h3>기업 총 평점　|　${score.avgTotal }/5.0　|　${score.avgTotal==1?"★☆☆☆☆" : score.avgTotal==2? "★★☆☆☆" : score.avgTotal==3? "★★★☆☆" : score.avgTotal==4 ? "★★★★☆" : "★★★★★" }</h3>
-                            	</c:if>
-                            	<c:if test="${score==null }">
-                            	<h3>등록된 평가가 없습니다</h3>
-                            	</c:if>
+                                    <h3>기업 총 평점　|　${score.avgTotal }/5.0　|　${score.avgTotal==1?"★☆☆☆☆" :
+                                        score.avgTotal==2? "★★☆☆☆" : score.avgTotal==3? "★★★☆☆" : score.avgTotal==4 ?
+                                        "★★★★☆" : "★★★★★" }</h3>
+                                </c:if>
+                                <c:if test="${score==null }">
+                                    <h3>등록된 평가가 없습니다</h3>
+                                </c:if>
                             </div>
                             <div class="review-info">
                                 <canvas id="myChart" width="450" height="300"></canvas>
                                 <script>
-                                	var grade1 = ${score.avgGrade1};
-                                	var grade2 = ${score.avgGrade2};
-                                	var grade3 = ${score.avgGrade3};
-                                	var grade4 = ${score.avgGrade4};
-                                	var grade5 = ${score.avgGrade5};
-                                	
+                                    var grade1 = ${ score.avgGrade1 };
+                                    var grade2 = ${ score.avgGrade2 };
+                                    var grade3 = ${ score.avgGrade3 };
+                                    var grade4 = ${ score.avgGrade4 };
+                                    var grade5 = ${ score.avgGrade5 };
+
                                     var ctx = $('#myChart');
                                     var myChart = new Chart(ctx, {
                                         type: 'doughnut',
@@ -114,8 +158,12 @@
                     </div>
                 </div>
 
-                <h3>기업리뷰　　　　<button onclick="fn_review()">기업리뷰 작성하기</button></h3>
+                <h3>기업리뷰</h3>
                 <div id="right-company-review">
+                    <div class="review-btns">
+                        <button onclick="fn_refresh()">목록 새로고침</button>
+                        <button onclick="fn_review()">기업리뷰 작성하기</button>
+                    </div>
                     <div class="review-top">
                         <div class="review-table-left">
 
@@ -155,18 +203,18 @@
                 </div>
 
                 <script>
-	                function fn_ajaxPaging(cPage) {
-	                	$.ajax({
-	                        url: '${path}/review/reviewList.do?reviewCompany=${company.companyNo}&cPage=' + cPage,
-	                        success: function (data) {
-	                            var Ca = /\+/g;
-	                            var resultSet = decodeURIComponent(data.replace(Ca, " "));
-	                            reviewList.empty();
-	                            reviewList.html(resultSet);
-	                        }
-	                    });
-					}
-                
+                    function fn_ajaxPaging(cPage) {
+                        $.ajax({
+                            url: '${path}/review/reviewList.do?reviewCompany=${company.companyNo}&cPage=' + cPage,
+                            success: function (data) {
+                                var Ca = /\+/g;
+                                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+                                reviewList.empty();
+                                reviewList.html(resultSet);
+                            }
+                        });
+                    }
+
                     var reviewList = $('#right-company-review');
                     $.ajax({
                         url: '${path}/review/reviewList.do?reviewCompany=${company.companyNo}',
@@ -177,6 +225,19 @@
                             reviewList.html(resultSet);
                         }
                     });
+
+                    function fn_refresh() {
+                        var reviewList = $('#right-company-review');
+                        $.ajax({
+                            url: '${path}/review/reviewList.do?reviewCompany=${company.companyNo}',
+                            success: function (data) {
+                                var Ca = /\+/g;
+                                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+                                reviewList.empty();
+                                reviewList.html(resultSet);
+                            }
+                        });
+                    }
 
                     function fn_reviewContent(e, no) {
                         var item = $('.review-item');
@@ -486,17 +547,15 @@
                             </div>
                             <div class="form-bottom"></div>
                         </div>
-
-
                     </form>
 
                 </div>
                 <script>
                     function fn_review() {
                         if (${ loginMember != null }) {
-                            console.log("리뷰작성 권한여부 ${loginMember.isConfirm}");
-                            if (${ loginMember.isConfirm eq "TRUE" }) {
-                            	$('body').scrollTop(0);
+                            console.log("리뷰작성 권한여부 ${loginMember.is_confirm}");
+                            if (${ loginMember.is_confirm eq "TRUE" }) {
+                                $('body').scrollTop(0);
                                 $(".background-blur").eq(0).css("display", "inline-block");
                                 $('#review-write').css("display", "block");
                                 $('.review_form').eq(1).css("display", "none");
@@ -627,27 +686,66 @@
                             $('#reviewGrade05').parent().children().eq(1).remove();
                         }
                     }
-                </script>
-                <!-- ---------------------------------------------------------- -->
-				
-				<script>
-					function fn_like(num) {
-                    	if(${ loginMember != null}) {
-                    		$.ajax({
-                                url: '${path}/review/reviewLike.do?member=${loginMember.p_id}&reviewNo=' + num + '&companyNo=${company.companyNo}',
-                                success: function(data) {
-                                	var resultSet = decodeURIComponent(data);
-                                    alert(resultSet);
+
+                        // 리뷰수정
+                        function fn_update(num) {
+                            $.ajax({
+                                url: '${path}/review/reviewUpdate.do?reviewNo=' + num,
+                                success: function (data) {
+                                    var reviewContent = $('.review-table-right').eq(0);
+                                    var Ca = /\+/g;
+                                    var resultSet = decodeURIComponent(data.replace(Ca, " "));
+                                    reviewContent.empty();
+                                    reviewContent.html(resultSet);
                                 }
                             });
-                    	} else {
-                    		 if (confirm('좋아요는 회원만 가능합니다\n로그인 페이지로 이동하시겠습니까?')) {
-                                 window.location.href = "${path}/member/login.do";
-                             } else {
-                                 return;
-                             }}}
-				</script>
-				
+                        }
+
+                    function fn_updateEnd() {
+                        var frm = $('#updateFrm').serialize();
+                        $.ajax({
+                            url: '${path}/review/reviewUpdateEnd.do',
+                            data: frm,
+                            success: function (data) {
+                                var reviewContent = $('.review-table-right').eq(0);
+                                var Ca = /\+/g;
+                                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+                                reviewContent.empty();
+                                reviewContent.html(resultSet);
+                            }
+                        });
+                    }
+
+                    // 좋아요
+                    function fn_like(num) {
+                        if (${ loginMember != null }) {
+                            $.ajax({
+                                url: '${path}/review/reviewLike.do?member=${loginMember.p_id}&reviewNo=' + num + '&companyNo=${company.companyNo}',
+                                success: function (data) {
+                                    var resultSet = decodeURIComponent(data);
+                                    alert(resultSet);
+                                    var reviewContent = $('.review-table-right').eq(0);
+                                    $.ajax({
+                                        url: '${path}/review/reviewOne.do?reviewNo=' + num,
+                                        success: function (data) {
+                                            var Ca = /\+/g;
+                                            var resultSet = decodeURIComponent(data.replace(Ca, " "));
+                                            reviewContent.empty();
+                                            reviewContent.html(resultSet);
+                                        }
+                                    });
+                                }
+                            });
+                        } else {
+                            if (confirm('좋아요는 회원만 가능합니다\n로그인 페이지로 이동하시겠습니까?')) {
+                                window.location.href = "${path}/member/login.do";
+                            } else {
+                                return;
+                            }
+                        }
+                    }
+                </script>
+
                 <h3>채용공고</h3>
                 <div id="right-company-hire">
                     <div></div>
@@ -663,7 +761,7 @@
                 <div id="right-company-news">
                     <c:forEach items="${news }" var="news" end="5">
                         <div class="news-line">
-                            <div class="news-title wow fadeInLeft" data-wow-delay="0.3s"><a
+                            <div class="news-title wow fadeInLeft" data-wow-delay="0.1s"><a
                                     href="${news.newsLink }">${news.newsTitle }</a></div>
                         </div>
                     </c:forEach>

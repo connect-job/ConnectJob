@@ -65,38 +65,9 @@
 	$(function(){
 		$("#findbtn").click(function(){
 			location.href='${path}/member/findMember';
-		})
-	})
+		});
+	});
 
-  //<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-	//js키 설정
-    Kakao.init('60f4385612bb24ab265ce9857acca8ff');
-<<<<<<< HEAD
-    function loginWithKakao() {
-      // 로그인 창을 띄웁니다.
-      Kakao.Auth.login({
-        success: function(authObj) {
-          alert(JSON.stringify(authObj));
-        },
-        fail: function(err) {
-          alert(JSON.stringify(err));
-        }
-      });
-    };
-  //]]>
-    
-    //기업회원 파트
-	/* $(function(){
-		$("#findbtn").click(function(){
-			location.href='${path}/member/findMember';
-		})
-	}); */
-	/* $(function(){
-		$("#CMemberEnroll").click(function(){
-			location.href="${path}/CMemberEnroll.do"
-		})
-	}) */
 	
 	//개인회원 기업회원 나누는 탭설정
 		$('.tab-link').click(function() {
@@ -114,27 +85,6 @@
 				$('#member').css("display","none");
 			}
 		});
-	
-	
-	//카카오 로그인 버튼 생성
-    Kakao.Auth.createLoginButton({
-      container: '#kakao-login-btn',      
-      success: function(authObj) {    
-    	  
-    	  Kakao.API.request({
-    		  url:"/v2/user/me",
-    		  success:function(res){
-    			  console.log(res.id);
-    		  }
-    	  })
-      },
-      fail: function(err) {
-    	  //실패
-    	 /* alert(JSON.stringify(err)); */
-      }
-    });
-	
-		
 </script>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

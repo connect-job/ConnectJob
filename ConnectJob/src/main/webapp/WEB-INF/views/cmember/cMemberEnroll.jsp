@@ -76,7 +76,7 @@
 
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
-					<div class="right"><input type="password" class="CMember" id="CMemberPw" name="CMemberPw"/></div>
+					<div class="right"><input type="password" class="CMember" id="CMemberPw"/></div>
 				</div>
 
 				<div class="enroll-item">

@@ -8,10 +8,6 @@
 	<select id="selectOne" resultType="member">
 		select * from p_member where p_id=#{p_id}
 	</select>	
-
-	<!-- <select id="kakaoLogin" resultType="userInfo" parameterType="hashmap">
-		select * from p_member where is_sns=#{id}
-	</select> -->
 	
 	<select id="findId" resultType="member" parameterType="member">
 		select * from p_member where phone=#{phone} and p_name=#{p_name}
@@ -27,7 +23,7 @@
 		<result column="final_edu" property="finalEdu"/>
 		<result column="school" property="school"/>
 		<result column="major" property="major"/>
-		<result column="is_confirm" property="isConfirm"/>
+		<result column="is_confirm" property="is_confirm"/>
 		<result column="enroll_date" property="enrollDate"/>
 	</resultMap>
 	

@@ -154,14 +154,7 @@ public class Member {
 				+ ", phone=" + phone + ", is_sns=" + is_sns + ", final_edu=" + final_edu + ", school=" + school
 				+ ", major=" + major + ", is_confirm=" + is_confirm + ", enroll_date=" + enroll_date + "]";
 	}
-	
-	
 
-	
-	
-
-	
-	
 	
 	
 }
