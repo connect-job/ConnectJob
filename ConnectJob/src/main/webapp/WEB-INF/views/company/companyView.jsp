@@ -211,7 +211,7 @@
                                 <div class="right">
                                     <input type="text" readonly value="${company.companyName}">
                                     <input type="hidden" name="reviewCompany" value="${company.companyNo }" />
-                                    <input type="hidden" name="reviewMember" value="${loginMember.pId }" />
+                                    <input type="hidden" name="reviewMember" value="${loginMember.p_id }" />
                                 </div>
                             </div>
                             <div class="input">
@@ -634,7 +634,7 @@
 					function fn_like(num) {
                     	if(${ loginMember != null}) {
                     		$.ajax({
-                                url: '${path}/review/reviewLike.do?member=${loginMember.pId}&reviewNo=' + num + '&companyNo=${company.companyNo}',
+                                url: '${path}/review/reviewLike.do?member=${loginMember.p_id}&reviewNo=' + num + '&companyNo=${company.companyNo}',
                                 success: function(data) {
                                 	var resultSet = decodeURIComponent(data);
                                     alert(resultSet);

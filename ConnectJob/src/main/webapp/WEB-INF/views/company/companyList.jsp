@@ -628,6 +628,7 @@
                 location += location_temp[i].innerText + ",";
             }
             
+            
             $.ajax({
             	url: '${path}/company/companyListEnd.do',
             	data: {"location":location, "cPage":cPage},
@@ -648,7 +649,14 @@
             var location = "";
 
             for(var i=0; i<location_temp.length;i++) {
-                location += location_temp[i].innerText + ",";
+            	console.log(location_temp[i].innerText.indexOf("전체"));
+            	if(location_temp[i].innerText.indexOf("전체")) {
+            		location += location_temp[i].innerText.replace("전체","") + ",";
+            		console.log(location);
+            	} else {
+            		location += location_temp[i].innerText + ",";
+            	}
+                
             }
             
             $.ajax({

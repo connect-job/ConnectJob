@@ -20,7 +20,7 @@
 			<div class="login-left">
 				<div class="login-item">
 					<div class="item-left">아이디</div>
-					<div class="item-right"><input type="email" name="pId" autocomplete="off"/></div>
+					<div class="item-right"><input type="email" name="p_id" autocomplete="off"/></div>
 				</div>
 				<div class="login-item">
 					<div class="item-left">비밀번호</div>
