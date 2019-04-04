@@ -4,6 +4,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.connect.job.model.vo.Member" alias="member"/>
+<<<<<<< HEAD
 		<typeAlias type="com.connect.job.model.vo.CMember" alias="cmember"/>
 		<typeAlias type="com.connect.job.model.vo.Company" alias="company"/>
 		<typeAlias type="com.connect.job.model.vo.CompanyReview" alias="review"/>
@@ -11,5 +12,12 @@
 		<typeAlias type="com.connect.job.model.vo.CompanyAvgScore" alias="score"/>
 		<typeAlias type="com.connect.job.model.vo.Senier" alias="senier"/>
 		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>
+=======
+		<typeAlias type="com.connect.job.model.vo.Company" alias="company"/>
+		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="handler"/>
+>>>>>>> branch 'jian' of https://github.com/connect-job/ConnectJob.git
 	</typeAliases>
+	
+	 
 </configuration>
+

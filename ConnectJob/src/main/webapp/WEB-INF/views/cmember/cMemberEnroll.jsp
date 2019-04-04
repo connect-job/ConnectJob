@@ -75,7 +75,7 @@
 
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
-					<div class="right"><input type="password" class="CMember" id="CMemberPw" name="CMemberPw" required/></div>
+					<div class="right"><input type="password" class="CMember" id="CMemberPw" name="CMemberPw" placeholder="영문자,숫자,특수문자를 혼합하여 8~20자" required/></div>
 				</div>
 
 				<div class="enroll-item">
@@ -195,7 +195,7 @@
 	//아이디 중복체크
 	const idAvailAjax = (e) => {
 		$.ajax({
-			url: '${path}/checkId?memberId=' + signupId.val(),
+			url: '${path}/checkId?cmemberId=' + signupId.val(),
 			type: 'get',
 			dataType: 'text',
 			success: data => {
@@ -203,14 +203,11 @@
 					idAvail.val('false');
 					$(e.target).next().css('color', 'crimson');
 					$(e.target).next().text('해당 아이디가 이미 존재합니다.');
-
-
 				}
 				else {
 					idAvail.val('true');
 					$(e.target).next().css('color', 'green');
 					$(e.target).next().text('사용가능한 아이디입니다.');
-
 					$(e.target).parent().next().children().show();
 
 				}
