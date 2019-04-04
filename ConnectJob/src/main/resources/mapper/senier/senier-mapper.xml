@@ -33,12 +33,25 @@
   	select * from s_talk where s_no = #{no}
   </select>
   
-  <insert id="insertComWrite" parameterType="Scomment">
+  <insert id="insertComWrite" parameterType="scomment">
   	insert into s_comment values(SEQ_C_NO.NEXTVAL,0,0,#{cContent},default,#{cWriter},default)
   </insert>
   
-  <select id="comList" parameterType="Scomment">
+  <select id="comList" parameterType="scomment">
   	select * from s_comment where c_no = #{cNo}
   </select>
+  
+  <select id="selectcomAll" resultMap="ScommentMap">
+  	select * from s_comment order by c_regdate desc
+  </select>
+  
+  <resultMap type="scomment" id="ScommentMap">
+  	<id column="c_no" property="cNo"/>
+  	<result column="s_no" property="sNo"/>
+  	<result column="c_level" property="cLevel"/>
+  	<result column="c_content" property="cContent"/>
+  	<result column="c_regdate" property="cRegdate"/>
+  	<result column="c_writer" property="cWriter"/>
+  </resultMap>
   
 </mapper>

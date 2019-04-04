@@ -54,6 +54,12 @@ public class SenierDaoImpl implements SenierDao {
 		return session.selectList("senier.comList",sco);
 	}
 
+	@Override
+	public List<Scomment> selectAll() {
+
+		return session.selectList("senier.selectcomAll");
+	}
+
 	
 	
 	

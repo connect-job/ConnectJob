@@ -52,6 +52,12 @@ public class SenierServiceImpl implements SenierService {
 		return dao.comList(sco);
 	}
 
+	@Override
+	public List<Scomment> selectAll() {
+
+		return dao.selectAll();
+	}
+
 	
 	
 	

@@ -1,5 +1,7 @@
 package com.connect.job.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,22 +85,26 @@ public class SenierController {
 	}
 	
 	
-	@RequestMapping("/senier/comWrite.do") //댓글등록
+	@RequestMapping(value="/senier/comWrite.do")//댓글등록
 	@ResponseBody
-	public String comWrite(@RequestParam(defaultValue="1")int cNo, String cContent,String cWriter, Model model) /*Scomment sco*/
+	public String comWrite(@RequestParam(defaultValue="1")int cNo, String cContent,String cWriter, Model model) throws UnsupportedEncodingException /*Scomment sco*/
 	{
 		Scomment sco=new Scomment();
 		sco.setsNo(cNo);
 		sco.setcContent(cContent);
 		sco.setcWriter(cWriter);
 		
-		int result=service.insertComWrite(sco);
+		int count = service.insertComWrite(sco);
+		String result_temp = "";
 		
-		System.out.println(result);
+		if(count>0) {
+			result_temp = "댓글이 등록되었습니다";
+		} else {
+			result_temp = "댓글 등록 실패";
+		}
 		
-		
-		
-		return "redirect:/senier/comList.do";
+		String result = URLEncoder.encode(result_temp, "UTF-8");
+		return result;
 	}
 	
 	@RequestMapping("/senier/comList.do") //댓글등록 조회
@@ -112,6 +118,31 @@ public class SenierController {
 		System.out.println(list);
 
 		return list;
+	}
+	
+	@RequestMapping(value="/senier/comAjaxList.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String comAjaxList() {
+		String html = "";
+		List<Scomment> list = service.selectAll();
+
+		html += "<div class=\"comment-item\">";
+			for(int i=0; i<list.size();i++) {
+				html += "<div class=\"writer\">";
+				html += list.get(i).getcWriter();
+				html += "</div>";
+				
+				html += "<div class=\"content\">";
+				html += list.get(i).getcContent();
+				html += "</div>";
+				
+				html += "<div class=\"date\">";
+				html += list.get(i).getcRegdate();
+				html += "</div>";
+			}
+			html += "</div>";
+
+		return html;
 	}
 	
 	
