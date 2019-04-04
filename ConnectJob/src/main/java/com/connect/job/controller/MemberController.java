@@ -26,8 +26,12 @@ public class MemberController {
 	
 	@RequestMapping("/member/memberEnroll.do")
 	public String memberEnroll() {
-		
 		return "member/memberEnroll";
+	}
+	
+	@RequestMapping("/member/memberEnrollPage.do")
+	public String memberEnrollForm() {
+		return "member/memberEnrollForm";
 	}
 	
 	@RequestMapping("/member/memberEnrollEnd.do")

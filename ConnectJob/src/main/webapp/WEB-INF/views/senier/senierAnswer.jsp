@@ -10,44 +10,20 @@
 
 
 <section>
-        <div id="company-container">
-            
-            <div class="company-top">
-             선배와의 대화
+        <div id="senier-container">
+    
+            <div class="senier-top">
+                선배와의 대화
             </div>
-            <div class="company-middle">
-                <div id="company-location">
-                                후배에게 답변하기
-                   
-                </div>
-                 
-                <div id="company-location-detail"> 
-                   <button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">선배에게 질문하기</button>
-                  
-                </div>
-            </div>
-            <div class="company-content">
-            
-          
-            	
-            	<c:forEach var="sen" items="${list}" varStatus="vs">
-            	<div>
-            		제목<h2>${sen.sTitle}</h2>
-            	</div>
-            	<div>
-            		질문유형 	<c:forEach items="${sen.qType}" var="type" varStatus="vs">
-								${type}
-							</c:forEach>
-            	</div>
-            	<br/><br/>
 
-            	<div>
-            		내용 ${sen.sContent}
-            	</div>
-            	</c:forEach>
-            	
-          
-                 
+
+            <div class="senier-subTitle">
+                <div id="left">우리 직종의 취업고민과 선배의 답변이에요</div>
+                <div id="right"><button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">선배에게 질문하기</button></div>
+            </div>
+
+            <div class="senier-middle">
+                 <textarea cols="50" maxlength="2000" rows="2" placeholder="답변부탁드려요"></textarea>
                  
                  
                  <h3>후배에게 답변하기</h3>

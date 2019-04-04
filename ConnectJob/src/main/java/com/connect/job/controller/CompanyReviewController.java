@@ -5,6 +5,8 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.connect.job.common.AjaxPageBarFactory;
 import com.connect.job.common.PageBarFactory;
 import com.connect.job.model.vo.CompanyReview;
+import com.connect.job.model.vo.CompanyReviewLike;
+import com.connect.job.model.vo.Member;
 import com.connect.job.service.ReviewService;
 
 @Controller
@@ -45,11 +49,9 @@ public class CompanyReviewController {
 		CompanyReview cr = new CompanyReview();
 		cr.setReviewCompany(review.getReviewCompany());
 		
-		int numPerPage = 10;
+		int numPerPage = 6;
 		List<CompanyReview> list = service.reviewList(cr, cPage, numPerPage);
 		int total = service.reviewCount(cr);
-		
-		System.out.println("AJAX 리뷰 전체개수 : " + total);
 		
 		String pageBar =  AjaxPageBarFactory.getPageBar(total, cPage, numPerPage);
 		
@@ -59,17 +61,29 @@ public class CompanyReviewController {
 		html += "<div class=\"review-table-left\">";
 		
 		
-		
-		for(int i=0; i<list.size(); i++) {
-			html += "<div class=\"review-item\" onclick=\"fn_reviewContent(this," + list.get(i).getReviewNo() + ")\">";
-			html += "<div class=\"item-title\">" + list.get(i).getReviewShort() + "</div>";
-			
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
-			String reviewDate = sdf.format(list.get(i).getReviewDate());
-					
-            html += "<div class=\"item-content\">" + list.get(i).getReviewIsCurrent() + "　" + list.get(i).getReviewTotalScore() + "　" + reviewDate + "　" + list.get(i).getReviewLike() + "</div>";
-            html += "</div>";
+		if(list.size()==0) {
+			html += "작성된 리뷰가 없습니다";
+		} else {
+			for(int i=0; i<list.size(); i++) {
+				html += "<div class=\"review-item\" onclick=\"fn_reviewContent(this," + list.get(i).getReviewNo() + ")\">";
+				html += "<div class=\"item-title\"><i class=\"far fa-edit\"></i>　" + list.get(i).getReviewShort() + "</div>";
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+				String reviewDate = sdf.format(list.get(i).getReviewDate());
+				
+	            html += "<div class=\"item-content\">" + list.get(i).getReviewIsCurrent() + "　";
+	            switch(list.get(i).getReviewTotalScore()) {
+	            	case 1 : html += "★☆☆☆☆"; break;
+	            	case 2 : html += "★★☆☆☆"; break;
+	            	case 3 : html += "★★★☆☆"; break;
+	            	case 4 : html += "★★★★☆"; break;
+	            	case 5 : html += "★★★★★"; break;
+	            }
+	            html += "　" + reviewDate + "　<i class=\"far fa-thumbs-up\"></i>&nbsp;" + list.get(i).getReviewLike() + "</div>";
+	            html += "</div>";
+			}
 		}
+		
 		
 		html += "</div>";
 		html += "<div class=\"review-table-right\">";
@@ -88,7 +102,7 @@ public class CompanyReviewController {
 	// 리뷰 Select One (Ajax)
 	@RequestMapping("review/reviewOne.do")
 	@ResponseBody
-	public String reviewOne(int reviewNo) throws UnsupportedEncodingException {
+	public String reviewOne(HttpSession session, int reviewNo) throws UnsupportedEncodingException {
 		String html = "";
 		
 		CompanyReview review = service.reviewOne(reviewNo);
@@ -97,11 +111,26 @@ public class CompanyReviewController {
 		String reviewDate = sdf.format(review.getReviewDate());
 		
 		html += "<div class=\"review-detail-top\">";
-		html += review.getReviewTotalScore() + "　" + review.getReviewJob() + "　" + review.getReviewIsCurrent() + "　" + review.getReviewLocation() + "　" + reviewDate;
+		switch(review.getReviewTotalScore()) {
+	    	case 1 : html += "★☆☆☆☆"; break;
+	    	case 2 : html += "★★☆☆☆"; break;
+	    	case 3 : html += "★★★☆☆"; break;
+	    	case 4 : html += "★★★★☆"; break;
+	    	case 5 : html += "★★★★★"; break;
+		}
+		html += "　" + review.getReviewJob() + "　" + review.getReviewIsCurrent() + "　" + review.getReviewLocation() + "　" + reviewDate;
 		html += "</div>";
 		
 		html += "<div class=\"review-datail-title\">";
 		html += review.getReviewShort();
+		
+		Member m = (Member) session.getAttribute("loginMember");
+		if(m!=null) {
+			if(m.getpId().equals(review.getReviewMember())) {
+				html += "　　<button onclick='fn_update()'>수정</button>　<button onclick='fn_delete()'>삭제</button>";
+			}
+		}
+		
 		html += "</div>";
 
 		html += "<div class=\"review-detail-content\">";
@@ -119,18 +148,53 @@ public class CompanyReviewController {
 
 		html += "<div class=\"review-detail-score\">";
 		html += "승진 기회 및 가능성<div class=\"line\" style=\"width:" + review.getReviewGrade01() + "0%;\" ></div><br>";
-		html += "복지 및 급여<div class=\"line\" style=\"width:" + review.getReviewGrade02() + "0%;\" ></div><br>";
-		html += "업무와 삶의 균형<div class=\"line\" style=\"width:" + review.getReviewGrade03() + "0%;\" ></div><br>";
-		html += "사내문화<div class=\"line\" style=\"width:" + review.getReviewGrade04() + "0%;\" ></div><br>";
-		html += "경영진<div class=\"line\" style=\"width:" + review.getReviewGrade05() + "0%;\" ></div>";
-		
+		html += "복지 및 급여<div class=\"line1\" style=\"width:" + review.getReviewGrade02() + "0%;\" ></div><br>";
+		html += "업무와 삶의 균형<div class=\"line2\" style=\"width:" + review.getReviewGrade03() + "0%;\" ></div><br>";
+		html += "사내문화<div class=\"line3\" style=\"width:" + review.getReviewGrade04() + "0%;\" ></div><br>";
+		html += "경영진<div class=\"line4\" style=\"width:" + review.getReviewGrade05() + "0%;\" ></div>";
 		html += "</div>";
-
 		
+		html += "<div class=\"review-like\">";
+		html += "리뷰가 도움이 되셨나요?　　　<button onclick='fn_like(" + review.getReviewNo() + ")'>도움됐어요</button>";
+		html += "</div>";
+		/*
+		 * html += "<script>"; html += "function fn_reviewLike(num) {"; html +=
+		 * "if(${loginMember}!=null}) {"; html += "$.ajax({"; html +=
+		 * "url: '${path}/review/reviewLike.do?member=' + ${loginMember.pId} + \"&reviewNo=\" + num + \"&companyNo=\" + ${company.companyNo},"
+		 * ; html += "success: function(data) {"; html +=
+		 * "var resultSet = decodeURIComponent(data);"; html += "alert(resultSet);}});";
+		 * html += "} else {"; html +=
+		 * "if (confirm('좋아요는 회원만 가능합니다\\n로그인 페이지로 이동하시겠습니까?')) {"; html +=
+		 * "window.location.href = \"${path}/member/login.do\";"; html += "} else {";
+		 * html += "return;"; html += "}}}"; html += "</script>";
+		 */
+
 		String result = URLEncoder.encode(html, "UTF-8");
 		return result;
 	}
 	
+	// 리뷰 좋아요
+	@RequestMapping("review/reviewLike.do")
+	@ResponseBody
+	public String reviewLike(String member, int reviewNo, int companyNo) throws UnsupportedEncodingException {
+		CompanyReviewLike like = new CompanyReviewLike();
+		like.setLikeMember(member);
+		like.setLikeReview(reviewNo);
+		like.setLikeCompany(companyNo);
+		
+		String message = "";
+		
+		int result = service.reviewLike(like);
+		
+		if(result>0) {
+			message = "좋아요";
+		} else {
+			message = "좋아요 취소";
+		}
+		
+		String msg = URLEncoder.encode(message, "UTF-8");
+		return msg;
+	}
 	
 	// 리뷰작성
 	@RequestMapping("review/reviewWrite.do")

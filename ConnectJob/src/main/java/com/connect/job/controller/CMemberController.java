@@ -28,11 +28,10 @@ public class CMemberController {
 	@Autowired
 	private CMemberService service;
 	
-	/*@RequestMapping("/member/memberEnroll.do")
+	@RequestMapping("/cmember/cmemberEnroll.do")
 	public String cmemberEnroll() {
-		
-		return "member/memberEnroll";
-	}*/
+		return "cmember/cMemberEnroll";
+	}
 	
 	@RequestMapping("/cMemberEnrollEnd.do")
 	public String insertCMember(CMember m, Model model) {
@@ -66,7 +65,7 @@ public class CMemberController {
 	@RequestMapping("/cMemberLogin.do")
 	public String selectOne(CMember m, HttpSession session, Model model) {
 		
-		CMember result = service.selectOne(m);		
+		CMember result = service.selectOne(m);
 		
 		String msg="";
 		String loc = "/";

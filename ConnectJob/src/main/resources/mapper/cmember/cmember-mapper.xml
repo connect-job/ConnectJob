@@ -2,19 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cmember">
 
-	<select id="selectList" resultMap="CMember">
-		select * from cmember
+	<select id="selectList" resultType="CMember">
+		select * from c_member
 	</select>
 
 	<delete id="deleteMember">
-		delete from CMember where cMemberId=#{CMemberId}
+		delete from C_Member where cMemberId=#{CMemberId}
 	</delete>
 
   <insert id="insertCMember" parameterType="cmember">
-  	insert into CMember values(#{CMemberId},#{CId},#{CMemberPw},#{CMemberName},#{CMemberPhone},#{CMemberCPhone},#{CMemberBNum},#{CMemberDiv},#{CMemberEnroll},#{CMemberEmail})
+  	insert into C_Member values(#{CMemberId},#{CId},#{CMemberPw},#{CMemberName},#{CMemberPhone},#{CMemberCPhone},#{CMemberBNum},#{CMemberDiv},DEFAULT,#{CMemberEmail})
   </insert>
   
   <select id="selectOne" resultType="cmember">
-  	select * from cmember where CMemberId=#{cmemberid}
+  	select * from c_member where CMemberId=#{CMemberId}
   </select>
+  
+  
 </mapper>

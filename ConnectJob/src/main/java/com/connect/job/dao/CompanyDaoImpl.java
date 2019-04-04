@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.connect.job.model.vo.Company;
+import com.connect.job.model.vo.CompanyAvgScore;
 
 @Repository
 public class CompanyDaoImpl implements CompanyDao {
@@ -52,6 +53,11 @@ public class CompanyDaoImpl implements CompanyDao {
 		return session.selectOne("company.selectAjaxCount", com);
 	}
 
+	@Override
+	public CompanyAvgScore selectScore(int no) {
+		return session.selectOne("review.reviewTotalAvg", no);
+	}
+	
 	
 	
 }

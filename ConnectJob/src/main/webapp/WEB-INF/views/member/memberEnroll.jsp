@@ -6,6 +6,63 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
+<style>
+	div.msgdiv{
+		display: none;
+	}
+	div.error{
+		display: none;
+	}
+	div.success{
+		display: none;
+	}
+	/* 개인회원 기업회원 탭나눔 스타일 */
+	.enroll-container{
+        width: 500px;
+        margin: 0 auto;
+        }     
+        ul.tabs{
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        }
+        ul.tabs li{
+        background: none;
+        color: #222;
+        display: inline-block;
+        padding: 10px 15px;
+        cursor: pointer;
+        }
+        
+        ul.tabs li.current{
+        background: #ededed;
+        color: #222;
+        }
+        
+        .tab-content{
+        display: none;
+        background: #ededed;
+        padding: 15px;
+        }
+        
+        .tab-content.current{
+        display: inherit;
+        }
+</style>
+
+<section>
+	<div id="enroll-container">
+	<!-- 개인회원가입 -->
+	<div class="title">
+		<div class="title-left">회원가입</div>
+		<div class="title-right">심사를 통해 게재된 믿을 수 있는 기업리뷰　|　이력서를 통한 기업 매칭 시스템<br>커넥트잡 회원이 되어 <b>모든 서비스를 무료</b>로 이용하세요</div>
+	</div><br>
+	<div class="enrollType">
+		<div class="enroll-item" onclick="location.href='${path}/member/memberEnrollPage.do'"><i class="fas fa-user-edit"></i><br>일반회원가입</div>
+		<div class="enroll-item" onclick="location.href='${path}/cmember/cmemberEnroll.do'"><i class="fas fa-building"></i><br>기업회원가입</div>
+	</div>
+</section>
+
 <script src="http://code.jquery.com/jquery-3.3.1.min.js">	
 	
 	$(function(){
@@ -78,242 +135,7 @@
                 $("#chk_all").prop("checked",false);
             }
         });
-        
-       
-        	
-
-
 </script>
-
-<style>
-	div.msgdiv{
-		display: none;
-	}
-	div.error{
-		display: none;
-	}
-	div.success{
-		display: none;
-	}
-	/* 개인회원 기업회원 탭나눔 스타일 */
-	.enroll-container{
-        width: 500px;
-        margin: 0 auto;
-        }     
-        ul.tabs{
-        margin: 0px;
-        padding: 0px;
-        list-style: none;
-        }
-        ul.tabs li{
-        background: none;
-        color: #222;
-        display: inline-block;
-        padding: 10px 15px;
-        cursor: pointer;
-        }
-        
-        ul.tabs li.current{
-        background: #ededed;
-        color: #222;
-        }
-        
-        .tab-content{
-        display: none;
-        background: #ededed;
-        padding: 15px;
-        }
-        
-        .tab-content.current{
-        display: inherit;
-        }
-</style>
-
-<section>
-	<div class="enroll-container">
-	<!-- 개인회원가입 -->
-		<ul class="tabs">
-			<li class="tab-link current" data-tab="memberEnroll">개인회원</li>
-			<li class="tab-link" data-tab="cmemberEnroll">기업회원</li>
-		</ul>	
-		<div id="memberEnroll" class="tab-content current"><!-- 개인회원가입 -->
-			<form name="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
-				<div>
-					<div>
-						<div>아이디</div>
-						<div><input type="email" name="pId"/></div>
-						<div><input type="button" value="인증번호 전송" name="id_ck"/></div>
-					</div>
-					<div>
-						<div>비밀번호</div>
-						<div><input type="password" name="password" id="pw"/></div>
-					</div>
-					<div>
-						<div>비밀번호 확인</div>
-						<div><input type="password" name="password2" id="pw2"/></div>
-						
-					</div>
-					<div class="msgdiv">
-						<div></div>
-						<div>
-							<div class="error">비밀번호 오류</div>
-							<div class="success">비밀번호 일치</div>
-						</div>
-					</div>
-					<div>
-						<div>이름</div>
-						<div><input type="text" name="pName"/></div>
-					</div>
-					<div>
-						<div>성별</div>
-						<div>
-							<input type="radio" name="gender" value="M"/>남
-							<input type="radio" name="gender" value="F"/>여
-						</div>
-					</div>
-					<div>
-						<div>연락처</div>
-						<div><input type="phone" name="phone"/></div>
-					</div>		
-					<div>
-						<div>최종학력</div>
-						<div><input type="text" name="finalEdu"/></div>
-					</div>
-					<div>
-						<div>학교</div>
-						<div><input type="text" name="school"/></div>
-					</div>
-					<div>
-						<div>전공</div>
-						<div><input type="text" name="major"/></div>
-					</div>
-					<div>
-						<b>약관동의</b></br>
-					</div>	
-					<div>
-						<div>전체동의</div><div><input type="checkbox" class="chk" id="chk_all"/></div>
-					</div>
-					<div>
-						<div>기업회원 약관에 동의</div><div><input type="checkbox" class="chk" name="chk" id="ch2"/></div>
-					</div>
-					<div>		
-						<div>개인정보 수집 및 이용에 동의</div><div><input type="checkbox" class="chk" name="chk" id="ch3"/></div>
-					</div>
-					<div>		
-						<div>마케팅 정보 수신 동의 - 이메일 (선택)</div><div><input type="checkbox" class="chk" name="chk" id="ch4"/></div>
-					</div>
-					<div>		
-						<div>마케팅 정보 수신 동의 - SMS/MMS (선택)</div><div><input type="checkbox" class="chk" name="chk" id="ch5"/></div>
-					</div>
-					<div>		
-						<div>개인정보 제 3자 제공 및 위탁사항 이용약관</div><div><a></a></div>
-					</div>
-					<div>
-						<div><input type="submit" value="등록"/></div>
-						<div><input type="reset" value="취소"/></div>
-					</div>		
-				</div>
-			</form>
-		</div>
-		
-	<!-- 기업회원가입 -->
-		<div id="cmemberEnroll" class="tab-content">
-				<form action="${path }/cMemberEnrollEnd.do" method="post" class="signup-frm" autocomplete="off">
-					<div><b>기업인증</b><br /></div> 
-					<div>사업자번호<input type="text" class="CMember" id="CMemberBNum" /><div>
-					<div><select type="select" class="CMember" id="CMemberDiv"><i class="fas fa-arrow-down"></i></br>
-						<option value="divide" selected disabled>기업구분</option>
-						<option value="normal">일반</option>
-						<option value="staffing">인재파견</option>
-						<option value="headhunting">헤드헌팅</option>
-					</select></div>
-					 <br /> <br /> <br /> 
-					 <div><b>담당자 인증</b><br />
-						휴대폰인증<input type="checkbox" value="" />api?<br /> 
-						이메일 인증<input type="checkbox" value="emailCk()" /><br />
-						이메일<input type="hidden" id="emailCksub" />
-					<button>인증<i class="fas fa-check"></i></button></div>
-					<br /> <br /> <br /> 
-					<div><b>ID/PW</b><br /></div> 
-					<div>회원 아이디<input type="text"class="CMember" id="CMemberId" /></div>
-					<div>회원 비밀번호<input type="password" class="CMember" id="CMemberPw" /></div> 
-					<div>회원 비밀번호 확인<input type="password"class="CMember" id="CMemberPwCk" /></div> 
-					<div>회원 담당자 이름<input type="text" class="CMember" id="CMemberName" /></div> 
-					<div>회원 담당자 연락처<input type="text" class="CMember" id="CMemberPhone" /></div> 
-					<div>기업 연락처<input type="text" class="CMember" id="CMemberCPhone" /></div> 
-					<div>회원 담당자이메일<input type="email" class="CMember" id="CMemberId" /></div>
-					<div><b>약관동의</b></div>
-					<div>
-						전체동의 <input type="checkbox" id="ACCEPT_TERMS" value="ACCEPT_TERMS_ALL" /></br>
-						-----------------------------------------------------------------------</br>
-						기업회원 약관에 동의<input type="checkbox" id="CMemberAccept" /></br>
-						개인정보 수집 및 이용에 동의<input type="checkbox" id="CMemberAccept" /></br>
-						마케팅 정보 수신 동의 - 이메일 (선택)<input type="checkbox" id="CMemberAccept" /></br>
-						마케팅 정보 수신 동의 - SMS/MMS (선택)<input type="checkbox" id="CMemberAccept" /></br>
-						개인정보 제 3자 제공 및 위탁사항 이용약관</br>
-					</div>
-					<button>회원가입완료</button>
-				</form>
-			</div>
-	<div id="enroll-container">
-	<form name="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
-	<table>
-		<tr>
-			<td>아이디</td>
-			<td><input type="email" name="pId"/></td>
-			<td><input type="button" value="인증번호 전송" name="id_ck"/></td>
-		</tr>
-		<tr>
-			<td>비밀번호</td>
-			<td><input type="password" name="password" id="pw"/></td>
-		</tr>
-		<tr>
-			<td>비밀번호 확인</td>
-			<td><input type="password" name="password2" id="pw2"/></td>
-			
-		</tr>
-		<tr class="msgtr">
-			<td></td>
-			<td>
-				<div class="error">비밀번호 오류</div>
-				<div class="success">비밀번호 일치</div>
-			</td>
-		</tr>
-		<tr>
-			<td>이름</td>
-			<td><input type="text" name="pName"/></td>
-		</tr>
-		<tr>
-			<td>성별</td>
-			<td>
-				<input type="radio" name="gender" value="M"/>남
-				<input type="radio" name="gender" value="F"/>여
-			</td>
-		</tr>
-		<tr>
-			<td>연락처</td>
-			<td><input type="phone" name="phone"/></td>
-		</tr>		
-		<tr>
-			<td>최종학력</td>
-			<td><input type="text" name="finalEdu"/></td>
-		</tr>
-		<tr>
-			<td>학교</td>
-			<td><input type="text" name="school"/></td>
-		</tr>
-		<tr>
-			<td>전공</td>
-			<td><input type="text" name="major"/></td>
-		</tr>
-		<tr>
-			<td><input type="submit" value="등록"/></td>
-			<td><input type="reset" value="취소"/></td>
-		</tr>		
-	</table>
-	</form>
-	</div>
-</section>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 

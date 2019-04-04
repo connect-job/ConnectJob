@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.connect.job.dao.ReviewDao;
 import com.connect.job.model.vo.CompanyReview;
+import com.connect.job.model.vo.CompanyReviewLike;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
@@ -42,6 +43,11 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public CompanyReview reviewOne(int reviewNo) {
 		return dao.reviewOne(reviewNo);
+	}
+
+	@Override
+	public int reviewLike(CompanyReviewLike like) {
+		return dao.reviewLike(like);
 	}
 	
 	
