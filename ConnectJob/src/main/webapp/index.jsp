@@ -18,6 +18,20 @@
 		$(this).css("background","none");
 	});
 	
+	$(window).scroll(function () { 
+        var sc = $(document).scrollTop();
+
+        if(sc>150) {
+        	$('header').css("background-color","#2c3142c5");
+        	$('#logo').show();
+        	$('header').css("height","120px");
+        } else {
+        	$('header').css("background","none");
+        	$('#logo').hide();
+        	$('header').css("height","90px");
+        }
+		});
+	
 </script>
 
     <section id="index">

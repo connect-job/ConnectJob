@@ -6,10 +6,6 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-<%
-	HashMap<String, Object> userInfo = (HashMap<String, Object>)request.getAttribute("userInfo");
-%>
-
 <section>
 	<div id="enroll-container">
 		<!-- 개인회원가입 -->

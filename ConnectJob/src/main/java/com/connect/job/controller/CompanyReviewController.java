@@ -61,6 +61,13 @@ public class CompanyReviewController {
 		String pageBar =  AjaxPageBarFactory.getPageBar(total, cPage, numPerPage);
 		
 		String html = "";
+		
+		html += "<div class=\"review-btns\">";
+		html += "<div class=\"left\">";
+		html += "<button onclick=\"fn_refresh()\"><i class=\"fas fa-redo-alt\"></i>　목록 새로고침</button></div>";
+		html += "<div class=\"right\">";
+		html += "<button class=\"write\" onclick=\"fn_review()\">기업리뷰 작성하기</button></div>";
+		html += "</div>";
         
 		html += "<div class=\"review-top\">";
 		html += "<div class=\"review-table-left\">";

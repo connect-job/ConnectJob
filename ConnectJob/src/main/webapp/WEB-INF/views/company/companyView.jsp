@@ -28,7 +28,7 @@
                             $('html, body').stop().animate({ scrollTop: 0 }, delay);
                         });
                         lmenu.eq(1).on('click', function () {
-                            $('html, body').stop().animate({ scrollTop: 510 }, delay);
+                            $('html, body').stop().animate({ scrollTop: 520 }, delay);
                         });
                         lmenu.eq(2).on('click', function () {
                             $('html, body').stop().animate({ scrollTop: 1000 }, delay);
@@ -40,17 +40,17 @@
                         $(window).scroll(function () { 
                             var sc = $(document).scrollTop();
 
-                            if(sc>=0 && sc<410) {
+                            if(sc>=0 && sc<310) {
                                 lmenu.eq(0).addClass('selected');
                                 lmenu.eq(1).removeClass('selected');
                                 lmenu.eq(2).removeClass('selected');
                                 lmenu.eq(3).removeClass('selected');
-                            } else if (sc>410 && sc<900) {
+                            } else if (sc>310 && sc<700) {
                                 lmenu.eq(1).addClass('selected');
                                 lmenu.eq(0).removeClass('selected');
                                 lmenu.eq(2).removeClass('selected');
                                 lmenu.eq(3).removeClass('selected');
-                            } else if (sc>900 && sc<1300) {
+                            } else if (sc>700 && sc<1100) {
                                 lmenu.eq(2).addClass('selected');
                                 lmenu.eq(1).removeClass('selected');
                                 lmenu.eq(0).removeClass('selected');
