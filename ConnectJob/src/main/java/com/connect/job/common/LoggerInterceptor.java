@@ -21,7 +21,7 @@ private Logger logger=LoggerFactory.getLogger(LoggerInterceptor.class);
 		if(request.getSession().getAttribute("loginMember")==null)
 		{
 			request.setAttribute("msg", "로그인 후 이용할 수 있습니다.");
-			request.setAttribute("loc", "/");
+			request.setAttribute("loc", "/member/login.do");
 			request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp").forward(request, response);
 			return false;
 		}
