@@ -78,8 +78,12 @@ public class MemberDaoImpl implements MemberDao {
 		// TODO Auto-generated method stub
 		return session.selectOne("member.selectCount", p_id);
 	}
-	
-	
+
+	@Override
+	public int emailConfirm(Member m) {
+		
+		return session.update("member.emailConfirm", m);
+	}
 	
 	
 }

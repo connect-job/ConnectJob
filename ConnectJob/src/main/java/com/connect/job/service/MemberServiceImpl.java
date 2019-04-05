@@ -22,20 +22,7 @@ public class MemberServiceImpl implements MemberService{
 	private MemberDao dao;
 	
 	@Override
-	public int insertMember(Member m) throws Exception {	
-		
-		/*//이메일 발송
-		MailHandler sendMail=new MailHandler(sender);				
-		sendMail.setSubject("[ConnectJob] 이메일 인증"); //제목				
-		sendMail.setText(new StringBuffer()
-				.append("[ConnectJob]이메일 인증</br>")
-				.append("<a href='http://localhost:9090/job/member/emailConfirm?p_id='")
-				.append(m.getP_id())
-				.append("' target='_blank'>이메일 인증</a>")
-				.toString()); //내용				
-		sendMail.setFrom("jiany811@gmail.com", "ConnectJob"); //보내는 사람				
-		sendMail.setTo(m.getP_id()); //받는 사람				
-		sendMail.send();*/
+	public int insertMember(Member m){	
 		
 		return dao.insertMember(m);
 	}
@@ -92,13 +79,18 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectOneKakao(m);
 	}
 
-
-
 	@Override
 	public int checkId(String p_id) {
 		// TODO Auto-generated method stub
 		return dao.selectCount(p_id);
 	}
+
+	@Override
+	public int emailConfirm(Member m) {
+		// TODO Auto-generated method stub
+		return dao.emailConfirm(m);
+	}
+	
 	
 	
 

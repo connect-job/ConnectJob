@@ -18,5 +18,7 @@ public interface MemberDao {
 	Member selectOneKakao(Member m);
 	int insertMemberKakao(Member m);
 	int selectCount(String p_id);
+	int emailConfirm(Member m);
+	
 
 }

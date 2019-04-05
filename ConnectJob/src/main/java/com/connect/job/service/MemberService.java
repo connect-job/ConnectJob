@@ -16,4 +16,6 @@ public interface MemberService {
 	Member selectOneKakao(Member m);
 	int insertMemberKakao(Member m);
 	int checkId(String p_id);
+	int emailConfirm(Member m);
+	
 }

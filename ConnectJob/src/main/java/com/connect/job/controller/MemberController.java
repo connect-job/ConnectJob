@@ -136,47 +136,49 @@ public class MemberController {
 	}
 	
 	//이메일 보내기
-	@ResponseBody
+	/*@ResponseBody*/
 	@RequestMapping("/emailSender")
-	public String emailSender(Member m, Model model) {
+	public String emailSender(String keyck, String p_id, Model model) {
 		
+		/*ModelAndView mv=new ModelAndView();
 		TempKey tempKey=new TempKey();
-		String key=tempKey.getKey(6, false); //인증번호 생성
 		
+		String key=tempKey.getKey(6, false); //인증번호 생성		
+		m.setEmail_confirm(key);	*/	
 		
-		/*//이메일 발송
+		//이메일 발송
 		try {
 			MailHandler sendMail=new MailHandler(sender);				
 			sendMail.setSubject("[ConnectJob] 이메일 인증"); //제목				
 			sendMail.setText(new StringBuffer()
-							.append("[ConnectJob]이메일 인증</br>")
-							.append("<a href='http://localhost:9090/job/member/emailConfirm?p_id='")
-							.append(m.getP_id())
-							.append("' target='_blank'>인증번호: ")
-							.append(key)
+							.append("[ConnectJob]이메일 인증<br>")
+							.append("<a>")
+							.append("인증번호:  ")
+							.append(keyck)													
 							.append("</a>")
 							.toString()); //내용				
 			sendMail.setFrom("jiany811@gmail.com", "ConnectJob"); //보내는 사람				
-			sendMail.setTo(m.getP_id()); //받는 사람				
-			sendMail.send();
+			sendMail.setTo(p_id); //받는 사람				
+			sendMail.send();			
+			
+		
 		}catch (Exception e) {
 			e.printStackTrace();
-		}*/
+		}
 		
-		
-		model.addAttribute("key", key);
-		
+		/*mv.addObject("key", key);*/
+		/*mv.setViewName("member/memberEnrollForm");*/
 		return "member/memberEnrollForm";
 		
 	}
 	
-	/*//이메일 인증
+	//이메일 인증
 	@RequestMapping(value="/member/emailForm", method=RequestMethod.GET)
-	public String emailConfirm(String p_id, String key, Model model) {	
+	public String emailConfirm(Member m, String key, Model model) {
 		
-		
+		model.addAttribute("key", key);
 		return "member/emailForm";
-	}*/
+	}
 	
 	//로그인 페이지 이동
 	@RequestMapping("/member/login.do")

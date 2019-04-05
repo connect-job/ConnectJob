@@ -11,9 +11,16 @@
 <title>email send</title>
 </head>
 <body>
-<script type="text/javascript"></script>
-인증번호: <input type="text" name="tempKey"/>
-<input type="text" value="${key}"/>
+<script type="text/javascript">
+	var pId="${p_Id}"
+	var key="${key}"
+	
+	console.log(pId);
+	console.log(key.typeOf);	
+</script>
+
+인증번호: <input type="text" name="key" />
 <input type="button" value="확인"/>
+<input type="text" value="${key }"/>
 </body>
 </html>

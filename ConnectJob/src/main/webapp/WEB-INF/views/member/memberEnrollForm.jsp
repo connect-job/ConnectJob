@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.connect.job.common.TempKey"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-
+<%
+	TempKey tempkey=new TempKey();
+	String key=tempkey.getKey(6, false);
+%>
 <section>
 	<div id="enroll-container">
 		<!-- 개인회원가입 -->
@@ -16,7 +19,7 @@
 		</div>
 		
 		<div id="memberEnroll" class="tab-content current">
-			<form name="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
+			<form id="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
@@ -30,20 +33,25 @@
 						인증번호
 					</div>
 					<div class="right">
-						<input type="text" name="key" autocomplete="off"/>
+						<input type="text" name="key" id="key" autocomplete="off"/>
+						<span id="key_result"></span>
+						<input type="hidden" name="key" id="keyck" value="<%=key %>" autocomplete="off"/>						
 						<input type="button" value="인증번호 전송" id="emailSender"/>
 					</div>					
 				</div>
 				
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
-					<div class="right"><input type="password" name="password2" id="pw1" onkeyup="verify.check()" required/><span>영.숫자 포함 8글자 이상 작성</span></div>
+					<div class="right">
+						<input type="password" name="password" id="pw1" onkeyup="verify.check()" required/>
+						<span>영.숫자 포함 8글자 이상 작성</span>
+					</div>
 				</div>
 				
 				<div class="enroll-item">
 					<div class="left">비밀번호 확인</div>
 					<div class="right">
-						<input type="password" name="password" id="pw2" onkeyup="verify.check()" required />
+						<input type="password" name="password2" id="pw2" onkeyup="verify.check()" required />
 						<span id="password_result"></span>
 					</div>
 				</div>	
@@ -107,7 +115,7 @@
 					<div>개인정보 제 3자 제공 및 위탁사항 이용약관</div>
 				</div>
 				<div class="enroll-text-end">
-					<input type="reset" value="취소" /><input type="submit" value="등록" onclick="fn_enroll()" />
+					<input type="reset" value="취소" /><input type="submit" value="등록" id="enrollBtn" />
 				</div>
 		</div>
 		</form>
@@ -117,35 +125,46 @@
 <script>
 //인증번호 전송
 $(document).ready(function(){
-	$('#emailSender').on('click', function(){		
-		var pId=$('#p_id').val();
-		var key=$('#key').val();
-		var tempKey=${key}
-		alert("인증번호 발송");		
+	$('#emailSender').on('click', function(){
 		
-		console.log(key);
-		console.log(pId);
+		/* alert("가입하신 이메일로 인증메일이 발송되었습니다."); //여기 ok */
+		
+		var p_id=$('#p_id').val();
+		var keyck=$('#keyck').val();
+		var key=$('#key').val();
 		
 		$.ajax({
 			type:'POST',
-			url:'${path}/emailSender?p_id='+pId,
+			url:'${path}/emailSender', //이메일 보내기 
+			data: {"keyck":keyck, "p_id":p_id},
 			success:function(data){
-				console.log("key: "+key);				
-				console.log("temp:" +tempKey);
-				alert("${tempKey}");
+				if(key!=keyck){					
+					console.log("인증번호 불일치");
+					
+				}else{
+					
+					console.log("인증번호 일치");
+				} 
+				console.log(keyck);
 			},
 			error:function(error){
 				alert(error);
 			}
-		});
+		});			
+			
 	});
 });
 
 //아이디 중복체크
 $(document).ready(function(){
 	$('#idck').on('click', function(){		
-		alert("되나");
+		
 		var pId=$('#p_id').val();
+		
+		if(pId == ""){
+			alert("아이디를 입력해주세요");
+			return false;
+		}
 		
 		$.ajax({
 			type:'POST',
@@ -217,7 +236,7 @@ $(document).ready(function(){
 	});
 
 
-	// 최소길이 & 최대길이 제한
+	/* // 최소길이 & 최대길이 제한
 	var minimum = 8;
 	var maximun = 12;
 
@@ -257,7 +276,7 @@ $(document).ready(function(){
 		}
 
 		return msg;
-	}
+	} */
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

@@ -53,5 +53,9 @@
 	
 	<select id="selectCount" resultMap="memberResult">
 		select count(*) from p_member where p_id=#{p_id}
-	</select>	
+	</select>
+	
+	<!-- <update id="emailConfirm">
+		update p_member set email_confirm=#{email_confirm} where p_id=#{p_id}
+	</update>	 -->
 </mapper>
