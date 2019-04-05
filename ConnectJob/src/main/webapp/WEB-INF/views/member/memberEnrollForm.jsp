@@ -127,7 +127,7 @@
 $(document).ready(function(){
 	$('#emailSender').on('click', function(){
 		
-		/* alert("가입하신 이메일로 인증메일이 발송되었습니다."); //여기 ok */
+		alert("가입하신 이메일로 인증메일이 발송되었습니다.");
 		
 		var p_id=$('#p_id').val();
 		var keyck=$('#keyck').val();
@@ -138,13 +138,18 @@ $(document).ready(function(){
 			url:'${path}/emailSender', //이메일 보내기 
 			data: {"keyck":keyck, "p_id":p_id},
 			success:function(data){
-				if(key!=keyck){					
-					console.log("인증번호 불일치");
-					
-				}else{
-					
-					console.log("인증번호 일치");
-				} 
+				
+				window.open('${path}/member/emailForm?keyck='+keyck, '', 'width=300, height=300');
+				
+				/* $('#key').keyup(function(){
+					if(key!=keyck){					
+						console.log("인증번호 불일치");						
+					}else{
+						
+						console.log("인증번호 일치");
+					} 
+				}); */
+				
 				console.log(keyck);
 			},
 			error:function(error){
@@ -171,7 +176,8 @@ $(document).ready(function(){
 			url: '${path}/member/checkId?p_id='+pId,			
 			success:function(data){
 				if(data=='0'){
-					alert("이 이메일은 사용하실 수 없습니다.");					
+					alert("이 이메일은 사용하실 수 없습니다.");
+					
 				}else{					
 					alert("이 이메일은 사용할 수 있습니다.");					
 				}

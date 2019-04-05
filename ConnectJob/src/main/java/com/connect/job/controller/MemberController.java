@@ -146,7 +146,7 @@ public class MemberController {
 		String key=tempKey.getKey(6, false); //인증번호 생성		
 		m.setEmail_confirm(key);	*/	
 		
-		//이메일 발송
+		/*//이메일 발송
 		try {
 			MailHandler sendMail=new MailHandler(sender);				
 			sendMail.setSubject("[ConnectJob] 이메일 인증"); //제목				
@@ -165,18 +165,23 @@ public class MemberController {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		/*mv.addObject("key", key);*/
 		/*mv.setViewName("member/memberEnrollForm");*/
+		
+		model.addAttribute("keyck", keyck);
+		model.addAttribute("p_id", p_id);
 		return "member/memberEnrollForm";
 		
 	}
 	
 	//이메일 인증
 	@RequestMapping(value="/member/emailForm", method=RequestMethod.GET)
-	public String emailConfirm(Member m, String key, Model model) {
+	public String emailConfirm(String p_id, String keyck, Model model) {
 		
-		model.addAttribute("key", key);
+		model.addAttribute("keyck", keyck);
+		model.addAttribute("p_id", p_id);
+		
 		return "member/emailForm";
 	}
 	
