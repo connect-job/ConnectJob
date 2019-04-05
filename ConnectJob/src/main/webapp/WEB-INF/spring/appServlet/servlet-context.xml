@@ -23,6 +23,14 @@
 	
 	<context:component-scan base-package="com.connect.job" />
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/senier/*"/>
+			<mapping path="/senierAnswer.do"/>
+			<mapping path="/senierWrite.do"/>
+			<beans:bean id="loggerInterceptor" class="com.connect.job.common.LoggerInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	
 </beans:beans>

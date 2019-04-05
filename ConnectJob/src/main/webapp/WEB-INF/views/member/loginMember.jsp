@@ -86,6 +86,8 @@
 			}
 		});
 	
+	Kakao.init('60f4385612bb24ab265ce9857acca8ff');
+	
 	//카카오 로그인 버튼 생성
     Kakao.Auth.createLoginButton({
       container: '#kakao-login-btn',      
