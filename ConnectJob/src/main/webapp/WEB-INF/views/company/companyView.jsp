@@ -553,19 +553,10 @@
                 <script>
                     function fn_review() {
                         if (${ loginMember != null }) {
-                            console.log("리뷰작성 권한여부 ${loginMember.is_confirm}");
-                            if (${ loginMember.is_confirm eq "TRUE" }) {
                                 $('body').scrollTop(0);
                                 $(".background-blur").eq(0).css("display", "inline-block");
                                 $('#review-write').css("display", "block");
                                 $('.review_form').eq(1).css("display", "none");
-                            } else {
-                                if (confirm('재직정보등록 후 승인된 회원만 리뷰 작성이 가능합니다.\n승인페이지로 이동하시겠습니까?')) {
-                                    window.location.href = "${path}/member/mypage.do";
-                                } else {
-                                    return;
-                                }
-                            }
                         } else {
                             if (confirm('로그인 후 리뷰를 작성하실 수 있습니다\n로그인 페이지로 이동하시겠습니까?')) {
                                 window.location.href = "${path}/member/login.do";
@@ -718,17 +709,17 @@
 
                     // 좋아요
                     function fn_like(num) {
+                    	var Ca = /\+/g;
                         if (${ loginMember != null }) {
                             $.ajax({
                                 url: '${path}/review/reviewLike.do?member=${loginMember.p_id}&reviewNo=' + num + '&companyNo=${company.companyNo}',
                                 success: function (data) {
-                                    var resultSet = decodeURIComponent(data);
+                                	var resultSet = decodeURIComponent(data.replace(Ca, " "));
                                     alert(resultSet);
                                     var reviewContent = $('.review-table-right').eq(0);
                                     $.ajax({
                                         url: '${path}/review/reviewOne.do?reviewNo=' + num,
                                         success: function (data) {
-                                            var Ca = /\+/g;
                                             var resultSet = decodeURIComponent(data.replace(Ca, " "));
                                             reviewContent.empty();
                                             reviewContent.html(resultSet);

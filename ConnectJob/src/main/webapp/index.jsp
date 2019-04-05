@@ -37,31 +37,42 @@
     <section id="index">
         <div id="index-container">
 				<img src="${path }/resources/images/index-text.png"><br>
+				
 				<div class="index">
 					<div class="index-search">
 						<img src="${path }/resources/images/icon-search.png" width="14px"><input type="search" id="search" placeholder="기업을 검색해보세요" autocomplete="off" autofocus/>
 					</div>
 					<div id="index-search-result"></div>
+					<div id="popular-keyword">
+				</div>
 				</div>
 			</div>
+			
+			<script>
+					var pop = $('#popular-keyword');
+					$.ajax({
+						url: '${path}/company/selectKeyword.do',
+						success: function(data) {
+							var Ca = /\+/g;
+							var resultSet = decodeURIComponent(data.replace(Ca, " "));
+							pop.empty();
+							pop.html(resultSet);
+						}
+					});
+				</script>
         
         <script>
 	        function fn_keywordCheck(no) {
+	        	$.ajax({
+	        		url: '${path}/company/searchKeyword.do?keyword=' + no,
+	        		success: function(data) {
+	        			console.log(data);
+	        		}
+	        	});
 	    		location.href="${path}/company/companyView.do?no=" + no;
 	    		$('#index-search-result').css("display","none");
 	    	}
         
-        
-        	$(function() {
-        		$.ajax({
-        			url: '${path}/company/companyCount.do',
-        			dataType: 'html',
-        			success: function(data) {
-        				      $('#counter').html(data);
-        			}
-        		});
-        		
-        		
     			var result = $('#index-search-result');
         		
         		$('#search').keyup(function () {
@@ -80,13 +91,6 @@
         				}
         			});
         		});
-        		
-        		$("#loginModal").modal({
-                    fadeDuration: 100
-                  });
-        		
-        	});
-        	
         </script>
     </section>
 
