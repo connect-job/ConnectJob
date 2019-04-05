@@ -66,6 +66,12 @@ public class MemberDaoImpl implements MemberDao {
 	public Member selectOneKakao(Member m) {
 		return session.selectOne("member.selectOneKakao", m);
 	}
+
+	@Override
+	public int insertMemberKakao(Member m) {
+		// TODO Auto-generated method stub
+		return session.insert("member.insertMemberKakao", m);
+	}
 	
 	
 	

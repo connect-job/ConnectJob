@@ -1,22 +1,24 @@
 package com.connect.job.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.connect.job.common.MailHandler;
+import com.connect.job.common.TempKey;
 import com.connect.job.model.vo.Member;
 
 import com.connect.job.service.MemberService;
@@ -25,6 +27,9 @@ import com.connect.job.service.MemberService;
 public class MemberController {
 	
 	private Logger logger=LoggerFactory.getLogger(MemberController.class);	
+
+	@Inject
+	private JavaMailSender sender;
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
@@ -42,7 +47,7 @@ public class MemberController {
 	@RequestMapping("/member/memberEnrollKakao.do")
 	public String memberEnroll(Member m, Model model) {
 		model.addAttribute("Member", m);
-		return "member/memberEnroll";
+		return "member/memberEnrollKakao";
 	}
 	
 	// 카카오 회원이고, 커넥트잡 회원일 때 로그인처리 세션부여
@@ -62,6 +67,36 @@ public class MemberController {
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("loc", loc);
+		return "common/msg";
+	}
+	
+	//카카오 회원가입
+	@RequestMapping("/member/memberEnrollEndKakao.do")
+	public String insertMemberKakao(Member m, Model model) throws Exception {
+			
+		String pw=m.getPassword();
+		logger.debug(pw);
+		String enPw=encoder.encode(pw); //암호화
+		logger.debug(enPw);
+		m.setPassword(enPw);
+			
+		int result=service.insertMemberKakao(m);
+			
+		String msg="";
+		String loc="";
+			
+		if(result>0) {
+			msg="가입 성공!";
+			loc="/";
+				
+		}else {
+			msg="가입 실패";
+			loc="/";
+		}
+			
+		model.addAttribute("msg", msg);
+		model.addAttribute("loc", loc);
+			
 		return "common/msg";
 	}
 	
@@ -95,11 +130,42 @@ public class MemberController {
 		return "common/msg";
 	}
 	
+	//이메일 보내기
+	@RequestMapping("/emailSender")
+	public String emailSender(Member m, Model model) {
+		
+		TempKey key=new TempKey();
+		key.getKey(6, false); //인증번호 생성
+		
+		/*//이메일 발송
+		try {
+			MailHandler sendMail=new MailHandler(sender);				
+			sendMail.setSubject("[ConnectJob] 이메일 인증"); //제목				
+			sendMail.setText(new StringBuffer()
+							.append("[ConnectJob]이메일 인증</br>")
+							.append("<a href='http://localhost:9090/job/member/emailConfirm?p_id='")
+							.append(m.getP_id())
+							.append("' target='_blank'>인증번호: ")
+							.append(key)
+							.append("</a>")
+							.toString()); //내용				
+			sendMail.setFrom("jiany811@gmail.com", "ConnectJob"); //보내는 사람				
+			sendMail.setTo(m.getP_id()); //받는 사람				
+			sendMail.send();
+		}catch (Exception e) {
+			// TODO: handle exception
+		}*/
+		model.addAttribute("key", key);
+		
+		return "member/emailForm";
+		
+	}
+	
 	//이메일 인증
 	@RequestMapping(value="/member/emailConfirm", method=RequestMethod.GET)
 	public String emailConfirm(String pId, Model model) {	
 		
-		return "member/emailConfirm";
+		return "member/emailForm";
 	}
 	
 	//로그인 페이지 이동

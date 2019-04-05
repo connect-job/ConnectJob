@@ -5,6 +5,10 @@
 		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, #{final_edu}, #{school}, #{major}, default, default, ${kakao_id})
 	</insert>
 	
+	<insert id="insertMemberKakao" parameterType="member">
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, #{final_edu}, #{school}, #{major}, default, default, ${kakao_id})
+	</insert>
+	
 	<select id="selectOne" resultType="member">
 		select * from p_member where p_id=#{p_id}
 	</select>	

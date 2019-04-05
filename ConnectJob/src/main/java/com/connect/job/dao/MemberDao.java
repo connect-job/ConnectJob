@@ -16,5 +16,6 @@ public interface MemberDao {
 	int updatePw(Member m);
 	List<Member> selectList();
 	Member selectOneKakao(Member m);
+	int insertMemberKakao(Member m);
 
 }

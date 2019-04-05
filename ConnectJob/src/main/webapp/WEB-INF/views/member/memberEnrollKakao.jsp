@@ -7,19 +7,18 @@
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-
 <section>
-	<form action="${path}/member/memberEnrollEnd.do" name="memberEnrollFrm" method="post">
+	<form action="${path}/member/memberEnrollEndKakao.do" name="memberEnrollFrm" method="post">
 	<table>
 		<tr>
 			<td>이메일 아이디</td>
 			<td><input type="email" name="p_id" required/></td>
-			<td><input type="button" value="인증번호" id="idck" onclick="fn_checkKey()"/></td>
+			<td><input type="button" value="중복확인" id="idck"/></td>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
 			<td><input type="password" name="passwor2" id="pw1" onkeyup="verify.check()" required/></td>
-			<td><span>영.숫자  포함 8글자 이상 작성</span></td>
+			<td><span>영.숫자  포함 8글자 이상</span></td>
 		</tr>
 		<tr>
 			<td>비밀번호 확인</td>
@@ -65,16 +64,6 @@
 	</form>
 </section>
 <script>
-//인증번호
-$(function(){
-	$('#idck').on("click", function(){
-		alert("인증번호 발송");
-		var win=window.open("${path}/emailSender", "이메일 인증", "width=400, height=300, titlebar=1");
-		/* win.document.write("인증번호 입력: <input type='text' name='tempKey'/>"); */
-		
-	})
-})
-
 //패스워드
 function verifynotify(field1, field2, result_id, match_html, nomatch_html) {
 	  this.field1 = field1;

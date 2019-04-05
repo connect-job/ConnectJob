@@ -11,16 +11,9 @@
 <title>email send</title>
 </head>
 <body>
-<script type="text/javascript">
-	
-	var pId='${m.pId}';
-	
-	
-  alert('회원가입을 축하합니다. 이제 로그인이 가능 합니다.');
-
-  window.open('', '_self', ''); // 브라우저창 닫기
- 
-  self.location = '${path}/member/login.do';
-</script>	
+<script type="text/javascript"></script>
+인증번호: <input type="text" name="tempKey"/>
+<input type="text" value="${key}"/>
+<input type="button" value="확인"/>
 </body>
 </html>

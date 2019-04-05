@@ -15,8 +15,8 @@ import com.connect.job.model.vo.Member;
 @Service
 public class MemberServiceImpl implements MemberService{	
 	
-	@Inject
-	private JavaMailSender sender;
+	/*@Inject
+	private JavaMailSender sender;*/
 	
 	@Autowired
 	private MemberDao dao;
@@ -24,21 +24,31 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int insertMember(Member m) throws Exception {	
 		
-		//이메일 발송
+		/*//이메일 발송
 		MailHandler sendMail=new MailHandler(sender);				
 		sendMail.setSubject("[ConnectJob] 이메일 인증"); //제목				
 		sendMail.setText(new StringBuffer()
 				.append("[ConnectJob]이메일 인증</br>")
-				.append("<a href='http://localhost:9090/job/member/emailConfirm?pId='")
+				.append("<a href='http://localhost:9090/job/member/emailConfirm?p_id='")
 				.append(m.getP_id())
-				.append("' target='_blenk'>이메일 인증</a>")
+				.append("' target='_blank'>이메일 인증</a>")
 				.toString()); //내용				
 		sendMail.setFrom("jiany811@gmail.com", "ConnectJob"); //보내는 사람				
 		sendMail.setTo(m.getP_id()); //받는 사람				
-		sendMail.send();
+		sendMail.send();*/
 		
 		return dao.insertMember(m);
-	}	
+	}
+	
+	
+
+	@Override
+	public int insertMemberKakao(Member m) {
+		// TODO Auto-generated method stub
+		return dao.insertMemberKakao(m);
+	}
+
+
 
 	@Override
 	public Member selectOne(Member m) {
