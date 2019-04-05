@@ -72,6 +72,12 @@ public class MemberDaoImpl implements MemberDao {
 		// TODO Auto-generated method stub
 		return session.insert("member.insertMemberKakao", m);
 	}
+
+	@Override
+	public int selectCount(String p_id) {
+		// TODO Auto-generated method stub
+		return session.selectOne("member.selectCount", p_id);
+	}
 	
 	
 	

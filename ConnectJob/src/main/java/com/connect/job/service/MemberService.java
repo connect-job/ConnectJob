@@ -15,4 +15,5 @@ public interface MemberService {
 	List<Member> selectList();
 	Member selectOneKakao(Member m);
 	int insertMemberKakao(Member m);
+	int checkId(String p_id);
 }

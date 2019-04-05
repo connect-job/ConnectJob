@@ -44,7 +44,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int insertMemberKakao(Member m) {
-		// TODO Auto-generated method stub
+		
 		return dao.insertMemberKakao(m);
 	}
 
@@ -90,6 +90,14 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member selectOneKakao(Member m) {
 		return dao.selectOneKakao(m);
+	}
+
+
+
+	@Override
+	public int checkId(String p_id) {
+		// TODO Auto-generated method stub
+		return dao.selectCount(p_id);
 	}
 	
 	

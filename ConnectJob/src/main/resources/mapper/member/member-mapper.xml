@@ -49,5 +49,9 @@
 	
 	<update id="updatePw" parameterType="member">
 		update p_member set password=#{password} where p_id=#{p_id}
-	</update>	
+	</update>
+	
+	<select id="selectCount" resultMap="memberResult">
+		select count(*) from p_member where p_id=#{p_id}
+	</select>	
 </mapper>

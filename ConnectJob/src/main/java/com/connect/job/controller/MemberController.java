@@ -12,6 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -135,11 +136,13 @@ public class MemberController {
 	}
 	
 	//이메일 보내기
+	@ResponseBody
 	@RequestMapping("/emailSender")
 	public String emailSender(Member m, Model model) {
 		
-		TempKey key=new TempKey();
-		key.getKey(6, false); //인증번호 생성
+		TempKey tempKey=new TempKey();
+		String key=tempKey.getKey(6, false); //인증번호 생성
+		
 		
 		/*//이메일 발송
 		try {
@@ -157,20 +160,23 @@ public class MemberController {
 			sendMail.setTo(m.getP_id()); //받는 사람				
 			sendMail.send();
 		}catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}*/
+		
+		
 		model.addAttribute("key", key);
 		
-		return "member/emailForm";
+		return "member/memberEnrollForm";
 		
 	}
 	
-	//이메일 인증
-	@RequestMapping(value="/member/emailConfirm", method=RequestMethod.GET)
-	public String emailConfirm(String pId, Model model) {	
+	/*//이메일 인증
+	@RequestMapping(value="/member/emailForm", method=RequestMethod.GET)
+	public String emailConfirm(String p_id, String key, Model model) {	
+		
 		
 		return "member/emailForm";
-	}
+	}*/
 	
 	//로그인 페이지 이동
 	@RequestMapping("/member/login.do")
@@ -349,6 +355,26 @@ public class MemberController {
 		model.addAttribute("loc", loc);
 		
 		return "common/msg";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/member/checkId")
+	public String checkId(Member m) {		
+		
+		List<Member> result = service.selectList();
+		
+		String check = "";		
+		
+		for(int i=0; i<result.size(); i++) {
+			if(result.get(i).getP_id().equals(m.getP_id())) {
+				//아이디 없음
+				check = "0";
+			} else {
+				//아이디 있음
+				check = "1";
+			}
+		}
+		return check;
 	}
 	
 }

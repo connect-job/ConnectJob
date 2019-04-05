@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <section>
@@ -14,46 +14,49 @@
 			<div class="title-right">심사를 통해 게재된 믿을 수 있는 기업리뷰　|　이력서를 통한 기업 매칭 시스템<br>커넥트잡 회원이 되어 <b>모든 서비스를 무료</b>로 이용하세요
 			</div>
 		</div>
+		
 		<div id="memberEnroll" class="tab-content current">
 			<form name="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="pId" autocomplete="off" />
-						<input type="button" value="중복확인" id="idck" />
-					</div>
+						<input type="email" name="p_id" id="p_id" autocomplete="off" />						
+						<input type="button" value="중복확인" id="idck"/>										
+					</div>					
 				</div>
+				
+				<div class="enroll-item">
+					<div class="left">
+						인증번호
+					</div>
+					<div class="right">
+						<input type="text" name="key" autocomplete="off"/>
+						<input type="button" value="인증번호 전송" id="emailSender"/>
+					</div>					
+				</div>
+				
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
-					<div class="right"><input type="password" name="password2" id="pw1" onkeyup="verify.check()" required /><span>영.숫자 포함 8글자 이상 작성</span></div>
+					<div class="right"><input type="password" name="password2" id="pw1" onkeyup="verify.check()" required/><span>영.숫자 포함 8글자 이상 작성</span></div>
 				</div>
+				
 				<div class="enroll-item">
 					<div class="left">비밀번호 확인</div>
 					<div class="right">
 						<input type="password" name="password" id="pw2" onkeyup="verify.check()" required />
 						<span id="password_result"></span>
 					</div>
+				</div>	
+							
+				<div class="enroll-item msgdiv">
+					<div class="left">이름</div>
+					<div class="right">
+						<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
+						<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
+						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
+					</div>
 				</div>
-				<c:if test="${userInfo==null }">
-					<div class="enroll-item msgdiv">
-						<div class="left">이름</div>
-						<div class="right">
-							<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
-							<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
-							<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
-						</div>
-					</div>
-				</c:if>
-				<c:if test="${userInfo!=null }">
-					<div class="enroll-item msgdiv">
-						<div class="left">이름</div>
-						<div class="right">
-							<input type="text" name="pName" value="${userInfo.nickname }" />
-							<input type="hidden" name="isSns" value="${userInfo.id }" />
-						</div>
-					</div>
-				</c:if>
-
+				
 				<div class="enroll-item">
 					<div class="left">성별</div>
 					<div class="right">
@@ -61,22 +64,27 @@
 						<input type="radio" name="gender" value="F" />여
 					</div>
 				</div>
+				
 				<div class="enroll-item">
 					<div class="left">연락처</div>
 					<div class="right"><input type="phone" name="phone" autocomplete="off" /></div>
 				</div>
+				
 				<div class="enroll-item">
 					<div class="left">최종학력</div>
 					<div class="right"><input type="text" name="finalEdu" autocomplete="off" /></div>
 				</div>
+				
 				<div class="enroll-item">
 					<div class="left">학교</div>
 					<div class="right"><input type="text" name="school" autocomplete="off" /></div>
 				</div>
+				
 				<div class="enroll-item">
 					<div class="left">전공</div>
 					<div class="right"><input type="text" name="major" autocomplete="off" /></div>
 				</div>
+				
 				<div class="enroll-text">
 					<b>약관동의</b></br>
 				</div>
@@ -107,6 +115,56 @@
 </section>
 
 <script>
+//인증번호 전송
+$(document).ready(function(){
+	$('#emailSender').on('click', function(){		
+		var pId=$('#p_id').val();
+		var key=$('#key').val();
+		var tempKey=${key}
+		alert("인증번호 발송");		
+		
+		console.log(key);
+		console.log(pId);
+		
+		$.ajax({
+			type:'POST',
+			url:'${path}/emailSender?p_id='+pId,
+			success:function(data){
+				console.log("key: "+key);				
+				console.log("temp:" +tempKey);
+				alert("${tempKey}");
+			},
+			error:function(error){
+				alert(error);
+			}
+		});
+	});
+});
+
+//아이디 중복체크
+$(document).ready(function(){
+	$('#idck').on('click', function(){		
+		alert("되나");
+		var pId=$('#p_id').val();
+		
+		$.ajax({
+			type:'POST',
+			url: '${path}/member/checkId?p_id='+pId,			
+			success:function(data){
+				if(data=='0'){
+					alert("이 이메일은 사용하실 수 없습니다.");					
+				}else{					
+					alert("이 이메일은 사용할 수 있습니다.");					
+				}
+			},
+			error:function(error){
+				alert("error: "+error);
+			}
+		});
+	});
+});
+
+	//비밀번호
 	function verifynotify(field1, field2, result_id, match_html, nomatch_html) {
 		this.field1 = field1;
 		this.field2 = field2;
