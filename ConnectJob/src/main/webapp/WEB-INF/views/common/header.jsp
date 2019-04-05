@@ -25,6 +25,22 @@
     
     <script>
         new WOW().init();
+        
+        
+        $(function(){ 
+        	$("#header-top li#cs").click(function(){
+        			
+        			if(!$(this).next("ul").is(":visible"))
+        			{ 
+        				$(this).next("ul").slideDown();
+        			}
+        			else	
+        			{
+        				$("#header-top ul li#cs").slideUp(); 
+        			}
+        	}) 
+        })
+
     </script>
 </head>
 <body>
@@ -44,7 +60,8 @@
                         	<li onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">기업페이지</li>
                         	<li onclick="location.href='${path}/member/logout.do'">로그아웃</li>                        	
                         </c:if>
-                        <li onclick="location.href='${path}/customerService.do'">고객센터</li>
+                        <li id="cs">고객센터</li>  
+                        <%-- onclick="location.href='${path}/customerService.do'" --%>
                     </ul>
         	</div>
             <div id="logo">

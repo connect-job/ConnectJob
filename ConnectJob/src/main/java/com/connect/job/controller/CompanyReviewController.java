@@ -80,8 +80,8 @@ public class CompanyReviewController {
 				html += "<div class=\"review-item\" onclick=\"fn_reviewContent(this," + list.get(i).getReviewNo() + ")\">";
 				html += "<div class=\"item-title\"><i class=\"far fa-edit\"></i>　" + list.get(i).getReviewShort() + "</div>";
 				
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
-				String reviewDate = sdf.format(list.get(i).getReviewDate());
+				/*SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+				String reviewDate = sdf.format(list.get(i).getReviewDate());*/
 				
 	            html += "<div class=\"item-content\">" + list.get(i).getReviewIsCurrent() + "　";
 	            switch(list.get(i).getReviewTotalScore()) {
@@ -91,7 +91,7 @@ public class CompanyReviewController {
 	            	case 4 : html += "★★★★☆"; break;
 	            	case 5 : html += "★★★★★"; break;
 	            }
-	            html += "　" + reviewDate + "　<i class=\"far fa-thumbs-up\"></i>&nbsp;" + list.get(i).getReviewLike() + "</div>";
+	            html += "　"  + "　<i class=\"far fa-thumbs-up\"></i>&nbsp;" + list.get(i).getReviewLike() + "</div>";
 	            html += "</div>";
 			}
 		}
@@ -119,8 +119,8 @@ public class CompanyReviewController {
 		
 		CompanyReview review = service.reviewOne(reviewNo);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
-		String reviewDate = sdf.format(review.getReviewDate());
+		/*SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+		String reviewDate = sdf.format(review.getReviewDate());*/
 		
 		html += "<div class=\"review-detail-top\">";
 		switch(review.getReviewTotalScore()) {
@@ -130,7 +130,7 @@ public class CompanyReviewController {
 	    	case 4 : html += "★★★★☆"; break;
 	    	case 5 : html += "★★★★★"; break;
 		}
-		html += "　" + review.getReviewJob() + "　" + review.getReviewIsCurrent() + "　" + review.getReviewLocation() + "　" + reviewDate;
+		html += "　" + review.getReviewJob() + "　" + review.getReviewIsCurrent() + "　" + review.getReviewLocation() + "　";
 		html += "</div>";
 		
 		html += "<div class=\"review-datail-title\">";
