@@ -47,7 +47,7 @@ public class MemberController {
 	@RequestMapping("/member/memberEnrollKakao.do")
 	public String memberEnroll(Member m, Model model) {
 		model.addAttribute("Member", m);
-		return "member/memberEnroll";
+		return "member/memberEnrollForm";
 	}
 	
 	// 카카오 회원이고, 커넥트잡 회원일 때 로그인처리 세션부여
@@ -267,7 +267,7 @@ public class MemberController {
 		logger.debug(pw);
 		String enPw=encoder.encode(pw); //암호화
 		logger.debug(enPw);
-		m.setPassword(enPw);		
+		m.setPassword(enPw);
 		
 		int result=service.updatePw(m);
 		

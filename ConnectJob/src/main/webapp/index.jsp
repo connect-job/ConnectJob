@@ -81,9 +81,6 @@
         			});
         		});
         		
-        		/* $('#search').blur(function() {
-        			result.css("display","none");
-        		}) */
         		$("#loginModal").modal({
                     fadeDuration: 100
                   });

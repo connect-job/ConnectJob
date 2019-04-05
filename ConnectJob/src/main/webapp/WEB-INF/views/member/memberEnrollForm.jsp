@@ -19,7 +19,7 @@
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="pId" autocomplete="off" />
+						<input type="email" name="p_id" autocomplete="off" />
 						<input type="button" value="중복확인" id="idck" />
 					</div>
 				</div>
@@ -35,7 +35,6 @@
 						<div id="password_result"></div>
 					</div>
 				</div>
-				<c:if test="${userInfo==null }">
 					<div class="enroll-item msgdiv">
 						<div class="left">이름</div>
 						<div class="right">
@@ -44,17 +43,7 @@
 							<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
 						</div>
 					</div>
-				</c:if>
-				<c:if test="${userInfo!=null }">
-					<div class="enroll-item msgdiv">
-						<div class="left">이름</div>
-						<div class="right">
-							<input type="text" name="pName" value="${userInfo.nickname }" />
-							<input type="hidden" name="isSns" value="${userInfo.id }" />
-						</div>
-					</div>
-				</c:if>
-
+					
 				<div class="enroll-item">
 					<div class="left">성별</div>
 					<div class="right">
@@ -68,7 +57,7 @@
 				</div>
 				<div class="enroll-item">
 					<div class="left">최종학력</div>
-					<div class="right"><input type="text" name="finalEdu" autocomplete="off" /></div>
+					<div class="right"><input type="text" name="final_edu" autocomplete="off" /></div>
 				</div>
 				<div class="enroll-item">
 					<div class="left">학교</div>

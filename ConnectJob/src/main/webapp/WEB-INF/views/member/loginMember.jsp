@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="login-right">
-					<a id="custom-login-btn" href="javascript:loginWithKakao()">
+					<a id="kakao-login-btn">
 							<button type="button" class="kakao">카카오톡으로 로그인</button>
 					</a>
 					<input type="submit" value="로그인"/><br>
