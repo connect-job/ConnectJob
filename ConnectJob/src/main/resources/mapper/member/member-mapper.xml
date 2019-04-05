@@ -11,8 +11,8 @@
 	
 	<select id="selectOne" resultType="member">
 		select * from p_member where p_id=#{p_id}
-	</select>	
-
+	</select>
+	
 	<select id="selectOneKakao" resultType="member">
 		select * from p_member where kakao_id = #{kakao_id}
 	</select>
@@ -20,6 +20,20 @@
 	<select id="findId" resultType="member" parameterType="member">
 		select * from p_member where phone=#{phone} and p_name=#{p_name}
 	</select>
+	
+	<resultMap type="member" id="memberResult">
+		<id column="p_id" property="p_id"/>
+		<result column="password" property="password"/>
+		<result column="p_name" property="pName"/>
+		<result column="gender" property="gender"/>
+		<result column="phone" property="phone"/>
+		<result column="is_sns" property="isSns"/>
+		<result column="final_edu" property="finalEdu"/>
+		<result column="school" property="school"/>
+		<result column="major" property="major"/>
+		<result column="is_confirm" property="is_confirm"/>
+		<result column="enroll_date" property="enrollDate"/>
+	</resultMap>
 	
 	<select id="selectList" resultType="member">
 		SELECT * FROM P_MEMBER

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="review">
+
+	<update id="reviewUpdate" parameterType="review">
+		UPDATE COMPANY_REVIEW SET REVIEW_TOTAL_SCORE = #{reviewTotalScore}, REVIEW_SHORT = #{reviewShort}, REVIEW_MERIT = #{reviewMerit}, REVIEW_DISMERIT = #{reviewDisMerit}, REVIEW_REQUEST = #{reviewRequest}, REVIEW_GRADE_01 = #{reviewGrade01}, REVIEW_GRADE_02 = #{reviewGrade02}, REVIEW_GRADE_03 = #{reviewGrade03}, REVIEW_GRADE_04 = #{reviewGrade04}, REVIEW_GRADE_05 = #{reviewGrade05} WHERE REVIEW_NO = #{reviewNo}
+	</update>
+
+	<!-- 평점 관련 DB 출력 -->
+	<!-- 선택된 기업의 총 평점 -->
+	<select id="reviewTotalAvg"  resultMap="scoreMap">
+		SELECT AVG(REVIEW_TOTAL_SCORE) review_total_score, AVG(REVIEW_GRADE_01) review_grade_01, AVG(REVIEW_GRADE_02) review_grade_02, AVG(REVIEW_GRADE_03) review_grade_03, AVG(REVIEW_GRADE_04) review_grade_04, AVG(REVIEW_GRADE_05) review_grade_05 FROM COMPANY_REVIEW WHERE REVIEW_COMPANY = #{no}
+	</select>
+	
+	<resultMap type="score" id="scoreMap">
+		<result column="review_total_score" property="avgTotal"/>
+		<result column="review_grade_01" property="avgGrade1"/>
+		<result column="review_grade_02" property="avgGrade2"/>
+		<result column="review_grade_03" property="avgGrade3"/>
+		<result column="review_grade_04" property="avgGrade4"/>
+		<result column="review_grade_05" property="avgGrade5"/>
+	</resultMap>
+	
+	<select id="isLike" parameterType="reviewlike" resultType="reviewlike">
+		SELECT * FROM REVIEW_LIKE WHERE LIKE_MEMBER = #{likeMember} AND LIKE_REVIEW = #{likeReview} AND LIKE_COMPANY = #{likeCompany}
+	</select>
+	
+	<delete id="deleteLike" parameterType="reviewlike">
+		DELETE REVIEW_LIKE WHERE LIKE_MEMBER = #{likeMember} AND LIKE_REVIEW = #{likeReview} AND LIKE_COMPANY = #{likeCompany}
+	</delete>
+	
+	<insert id="reviewLike" parameterType="reviewlike">
+		INSERT INTO REVIEW_LIKE VALUES(SEQ_LIKE_NO.NEXTVAL, #{likeMember}, #{likeReview}, #{likeCompany})
+	</insert>
+	
+	<select id="reviewLikeAll" resultMap="reviewlikeMap">
+		SELECT * FROM REVIEW_LIKE WHERE LIKE_REVIEW = #{reviewNo}
+	</select>
+	
+	<resultMap type="reviewlike" id="reviewlikeMap">
+		<result column="LIKE_NO" property="likeNo"/>
+		<result column="LIKE_MEMBER" property="likeMember"/>
+		<result column="LIKE_REVIEW" property="likeReview"/>
+		<result column="LIKE_COMPANY" property="likeCompany"/>
+	</resultMap>
+	
+	<select id="reviewCountAll" resultType="_int">
+		SELECT COUNT(*) FROM COMPANY_REVIEW WHERE REVIEW_STATUS = 'Y'
+	</select>
+	
+	<select id="reviewOne" parameterType="_int" resultType="review" resultMap="reviewMap">
+		SELECT * FROM COMPANY_REVIEW WHERE REVIEW_NO = #{reviewNo}
+	</select>
+	
+	<select id="reviewAll" resultType="review" resultMap="reviewMap">
+		SELECT A.*, (SELECT B.COMPANY_NAME FROM COMPANY B WHERE A.REVIEW_COMPANY = B.COMPANY_NO) CNAME, (SELECT COUNT(*) FROM REVIEW_LIKE B GROUP BY B.LIKE_REVIEW HAVING B.LIKE_REVIEW = A.REVIEW_NO) REVIEWLIKE FROM COMPANY_REVIEW A ORDER BY REVIEW_DATE DESC
+	</select>
+
+	<insert id="reviewWrite" parameterType="review">
+		INSERT INTO COMPANY_REVIEW VALUES(SEQ_REVIEW_NO.NEXTVAL, #{reviewMember}, #{reviewCompany}, #{reviewIsCurrent}, #{reviewJob}, #{reviewEmployCate}, #{reviewCareer}, #{reviewLocation}, #{reviewTotalScore}, #{reviewShort}, #{reviewMerit}, #{reviewDisMerit}, #{reviewRequest}, #{reviewGrade01}, #{reviewGrade02}, #{reviewGrade03}, #{reviewGrade04}, #{reviewGrade05}, DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	
+	<select id="reviewCount" resultType="_int">
+		SELECT COUNT(*) FROM COMPANY_REVIEW WHERE REVIEW_COMPANY = #{reviewCompany}
+	</select>
+	
+	<select id="reviewList" resultType="review" resultMap="reviewMap">
+		SELECT A.*, (SELECT COUNT(*) FROM REVIEW_LIKE B GROUP BY B.LIKE_REVIEW HAVING B.LIKE_REVIEW = A.REVIEW_NO) REVIEWLIKE FROM COMPANY_REVIEW A WHERE REVIEW_COMPANY = #{reviewCompany} ORDER BY REVIEW_DATE DESC
+	</select>
+	
+	<resultMap type="review" id="reviewMap">
+		<id column="review_no" property="reviewNo"/>
+		<result column="review_member" property="reviewMember"/>
+		<result column="review_company" property="reviewCompany"/>
+		<result column="review_iscurrent" property="reviewIsCurrent"/>
+		<result column="review_job" property="reviewJob"/>
+		<result column="review_employ_cate" property="reviewEmployCate"/>
+		<result column="review_career" property="reviewCareer"/>
+		<result column="review_location" property="reviewLocation"/>
+		<result column="review_total_score" property="reviewTotalScore"/>
+		<result column="review_short" property="reviewShort"/>
+		<result column="review_merit" property="reviewMerit"/>
+		<result column="review_dismerit" property="reviewDisMerit"/>
+		<result column="review_request" property="reviewRequest"/>
+		<result column="review_grade_01" property="reviewGrade01"/>
+		<result column="review_grade_02" property="reviewGrade02"/>
+		<result column="review_grade_03" property="reviewGrade03"/>
+		<result column="review_grade_04" property="reviewGrade04"/>
+		<result column="review_grade_05" property="reviewGrade05"/>
+		<result column="reviewlike" property="reviewLike"/>
+		<result column="review_date" property="reviewDate"/>
+	</resultMap>
+	
+</mapper>

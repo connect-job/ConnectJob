@@ -10,23 +10,18 @@
 
 
 <section>
-        <div id="company-container">
-            
-            <div class="company-top">
-             선배와의 대화
+        <div id="senier-container">
+    
+            <div class="senier-top">
+                선배와의 대화
             </div>
-            <div class="company-middle">
-                <div id="company-location">
-                                후배에게 답변하기
-                   
-                </div>
-                 
-                <div id="company-location-detail">
-                   <button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">선배에게 질문하기</button>
-                  
-                </div>
+
+            <div class="senier-subTitle">
+                <div id="left">우리 직종의 취업고민과 선배의 답변이에요</div>
+                <div id="right"><button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">선배에게 질문하기</button></div>
             </div>
-            <div class="company-content">
+
+            <div class="senier-middle">
                  <textarea cols="50" maxlength="2000" rows="2" placeholder="답변부탁드려요"></textarea>
                  
                  
@@ -38,7 +33,7 @@
                 
 				<dl>
 					<dt>
-						<strong>학교전공 선배</strong>  
+						<strong>직종 선배</strong>  
 					</dt>
 					<dd>
 						본인 자소서나 포트폴리오를 중요 정보는 가린 후<br />온라인에서 평가 받거나 선배나 먼저 취업한 친구들에게

@@ -42,6 +42,11 @@ public class MemberController {
 	public String memberEnroll() {
 		return "member/memberEnroll";
 	}
+
+	@RequestMapping("/member/memberEnrollPage.do")
+	public String memberEnrollForm() {
+		return "member/memberEnrollForm";
+	}
 	
 	//카카오 회원일때 회원가입 페이지 이동
 	@RequestMapping("/member/memberEnrollKakao.do")
@@ -68,8 +73,8 @@ public class MemberController {
 		model.addAttribute("msg", msg);
 		model.addAttribute("loc", loc);
 		return "common/msg";
-	}
-	
+	}	
+
 	//카카오 회원가입
 	@RequestMapping("/member/memberEnrollEndKakao.do")
 	public String insertMemberKakao(Member m, Model model) throws Exception {
@@ -99,7 +104,6 @@ public class MemberController {
 			
 		return "common/msg";
 	}
-	
 	//회원가입
 	@RequestMapping("/member/memberEnrollEnd.do")
 	public String insertMember(Member m, Model model) throws Exception {
@@ -171,7 +175,6 @@ public class MemberController {
 	//로그인 페이지 이동
 	@RequestMapping("/member/login.do")
 	public String login() {
-		
 		return "member/loginMember";
 	}	
 	
@@ -347,18 +350,5 @@ public class MemberController {
 		
 		return "common/msg";
 	}
-	
-	/*//아이디 중복체크
-	@RequestMapping("/checkId")
-	@ResponseBody
-	public String checkId(@RequestBody String p_id) {
-		int count=0;
-		
-		
-		count=service.checkId(p_id);
-		
-		return "redirect:/";
-		
-	}*/
 	
 }
