@@ -17,7 +17,7 @@ public interface CompanyDao {
 	int selectAjaxCount(Company com);
 	CompanyAvgScore selectScore(int no);
 	int searchKeyword(int keyword);
-	List<SearchKeyword> selectSearchKeyword();
+	List<SearchKeyword> selectKeyword();
 	
 
 }

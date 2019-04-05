@@ -141,11 +141,33 @@ public class CompanyController {
 		return html;
 	}
 	
+	// 검색하는 순간 데이터 저장
 	@RequestMapping("company/searchKeyword.do")
 	@ResponseBody
 	public String searchKeyword(int keyword) {
 		int result = service.searchKeyword(keyword);
 		return "검색어 저장완료";
+	}
+	
+	// 인덱스 Ajax 검색어 랭킹
+	@RequestMapping("company/selectKeyword.do")
+	@ResponseBody
+	public String selectKeyword(HttpServletRequest request) throws UnsupportedEncodingException {
+		List<SearchKeyword> list = service.selectKeyword();
+		
+		String html = "";
+		
+		if(!list.isEmpty()) {
+			html += "<div>실시간 검색순위";
+			html += "<ul>";
+			for(int i=0; i<list.size(); i++) {
+				html += "<li onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" +list.get(i).getSearchCompany() + "'\">" + (i+1) + "　" + list.get(i).getCname() + "</li>";
+			}
+			html += "</ul></div>";
+		}
+		
+		String result = URLEncoder.encode(html, "UTF-8");
+		return result;
 	}
 	
 	// 기업등록

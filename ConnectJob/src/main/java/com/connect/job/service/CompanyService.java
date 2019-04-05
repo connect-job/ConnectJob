@@ -36,7 +36,7 @@ public interface CompanyService {
 	int searchKeyword(int keyword);
 
 	// 검색어 순위 불러오기
-	List<SearchKeyword> selectSearchKeyword();
+	List<SearchKeyword> selectKeyword();
 
 	
 }

@@ -62,8 +62,8 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	@Override
-	public List<SearchKeyword> selectSearchKeyword() {
-		return dao.selectSearchKeyword();
+	public List<SearchKeyword> selectKeyword() {
+		return dao.selectKeyword();
 	}
 
 	

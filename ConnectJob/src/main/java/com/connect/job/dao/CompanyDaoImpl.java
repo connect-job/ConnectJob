@@ -65,7 +65,7 @@ public class CompanyDaoImpl implements CompanyDao {
 	}
 
 	@Override
-	public List<SearchKeyword> selectSearchKeyword() {
+	public List<SearchKeyword> selectKeyword() {
 		return session.selectList("company.selectSearchKeyword");
 	}
 	
