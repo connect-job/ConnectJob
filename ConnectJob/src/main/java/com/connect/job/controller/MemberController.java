@@ -1,6 +1,7 @@
 package com.connect.job.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,23 +11,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.connect.job.model.vo.Member;
-import com.connect.job.service.KakaoAPI;
+
 import com.connect.job.service.MemberService;
 
 @Controller
 public class MemberController {
 	
-	private Logger logger=LoggerFactory.getLogger(MemberController.class);
-	
-	@Autowired
-	private KakaoAPI kakao;
+	private Logger logger=LoggerFactory.getLogger(MemberController.class);	
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
@@ -45,7 +43,34 @@ public class MemberController {
 		return "member/memberEnrollForm";
 	}
 	
-
+	//카카오 회원일때 회원가입 페이지 이동
+	@RequestMapping("/member/memberEnrollKakao.do")
+	public String memberEnroll(Member m, Model model) {
+		model.addAttribute("Member", m);
+		return "member/memberEnroll";
+	}
+	
+	// 카카오 회원이고, 커넥트잡 회원일 때 로그인처리 세션부여
+	@RequestMapping("/member/memberLoginKakao.do")
+	public String memberLoginKakao(Member m, HttpSession session, Model model) {
+		Member result = service.selectOneKakao(m);
+		
+		String msg = "";
+		String loc = "/";
+		
+		if(result!=null) {
+			msg = "카카오 로그인 성공";
+			session.setAttribute("loginMember", result);
+		} else {
+			msg = "카카오 로그인 실패!";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("loc", loc);
+		return "common/msg";
+	}
+	
+	//회원가입
 	@RequestMapping("/member/memberEnrollEnd.do")
 	public String insertMember(Member m, Model model) throws Exception {
 		
@@ -86,7 +111,7 @@ public class MemberController {
 	@RequestMapping("/member/login.do")
 	public String login() {
 		return "member/loginMember";
-	}
+	}	
 	
 	//로그인
 	@RequestMapping("/member/loginMember.do")
@@ -125,26 +150,26 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	/*//카카오 로그인
-	@RequestMapping(value="/kakaoLogin", produces="application/json")
-	public ModelAndView kakaoLogin(@RequestParam("code") String code, HttpSession session, Member m) {
+	@RequestMapping("/member/isKakao.do")
+	@ResponseBody
+	public String isKakao(Member m, HttpSession session) {
+		List<Member> result = service.selectList();
 		
-		ModelAndView mv=new ModelAndView();
+		String check = "";
 		
-		System.out.println("kakaoCode: " + code);	
-		String access_token=kakao.getAccessToken(code);	//토큰 받기위한 코드 넘기기		
+		/*System.out.println("아이디값 담겼니? : " + m.getKakao_id());*/
 		
-		HashMap<String, Object> userInfo=kakao.getUserInfo(access_token); //사용자 정보 불러오기
-		System.out.println("userInfo: " + userInfo);
-		
-		if(m.getIs_sns()==null) {
-			mv.setViewName("member/memberEnroll");
-			mv.addObject("userInfo", userInfo);			
+		for(int i=0; i<result.size(); i++) {
+			if(result.get(i).getKakao_id()==m.getKakao_id()) {
+				// 로그인페이지로 이동
+				check = "1";
+			} else {
+				// 회원가입페이지로 이동
+				check = "2";
+			}
 		}
-		
-		
-		return mv;
-	}	*/
+		return check;
+	}
 	
 	//id,pw찾기 페이지 이동
 	@RequestMapping("/member/findMember")

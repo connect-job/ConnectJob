@@ -25,12 +25,12 @@
 				</div>
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
-					<div class="right"><input type="password" name="password" id="pw1" onkeyup="verify.check()"
+					<div class="right"><input type="password" name="password2" id="pw1" onkeyup="verify.check()"
 							required /><span>영.숫자 포함 8글자 이상 작성</span></div>
 				</div>
 				<div class="enroll-item">
 					<div class="left">비밀번호 확인</div>
-					<div class="right"><input type="password" name="password2" id="pw2" onkeyup="verify.check()"
+					<div class="right"><input type="password" name="password" id="pw2" onkeyup="verify.check()"
 							required />
 						<div id="password_result"></div>
 					</div>
@@ -39,8 +39,9 @@
 					<div class="enroll-item msgdiv">
 						<div class="left">이름</div>
 						<div class="right">
-							<input type="text" name="p_name" />
-							<input type="hidden" name="is_sns" />
+							<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
+							<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
+							<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
 						</div>
 					</div>
 				</c:if>
