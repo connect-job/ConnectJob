@@ -47,21 +47,16 @@
         
         <script>
 	        function fn_keywordCheck(no) {
+	        	$.ajax({
+	        		url: '${path}/company/searchKeyword.do?keyword=' + no,
+	        		success: function(data) {
+	        			console.log(data);
+	        		}
+	        	});
 	    		location.href="${path}/company/companyView.do?no=" + no;
 	    		$('#index-search-result').css("display","none");
 	    	}
         
-        
-        	$(function() {
-        		$.ajax({
-        			url: '${path}/company/companyCount.do',
-        			dataType: 'html',
-        			success: function(data) {
-        				      $('#counter').html(data);
-        			}
-        		});
-        		
-        		
     			var result = $('#index-search-result');
         		
         		$('#search').keyup(function () {
@@ -80,13 +75,6 @@
         				}
         			});
         		});
-        		
-        		$("#loginModal").modal({
-                    fadeDuration: 100
-                  });
-        		
-        	});
-        	
         </script>
     </section>
 

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="company">
+	
+	<insert id="insertSearchKeyword">
+		INSERT INTO SEARCH_KEYWORD VALUES(#{keyword}, default)
+	</insert>
+
+	<select id="selectSearchKeyword">
+		SELECT COUNT(*) FROM SEARCH_KEYWORD GROUP BY SEARCH_COMPANY
+	</select>
 
 	<insert id="insertCompany" parameterType="company">
 		INSERT INTO COMPANY VALUES(#{companyNo}, #{companyUpdate}, #{companyName}, #{companyZipcode}, #{companyAddressOld}, #{companyAddressNew}, #{companyStatus}, #{companyCode}, #{companyCate}, #{companyRegDate}, #{companyAllPeople}, #{companyPrice}, #{companyNewPeople}, #{companyOutPeople})

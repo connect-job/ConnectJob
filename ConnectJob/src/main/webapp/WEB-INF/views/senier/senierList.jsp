@@ -9,7 +9,7 @@
 
 <section>
     <div id="senier-container">
-
+        
         <div class="senier-top">
             선배와의 대화
         </div>

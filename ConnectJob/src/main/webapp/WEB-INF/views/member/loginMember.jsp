@@ -116,14 +116,12 @@
     	            	 }
     	             });    	             
     	             
-    	             
     	             /* console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
     	             console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
     	         // res.properties.nickname으로도 접근 가능 )
     	             console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력 */
     	           }
-    	         }); 	
-    	  
+    	         });
       },
       fail: function(err) {
     	  //실패
