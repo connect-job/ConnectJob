@@ -9,6 +9,11 @@
 	TempKey tempkey=new TempKey();
 	String key=tempkey.getKey(6, false);
 %>
+<style>
+	div#id-result-div{	
+		display: none;
+	}
+</style>
 <section>
 	<div id="enroll-container">
 		<!-- 개인회원가입 -->
@@ -31,7 +36,7 @@
 					</div>					
 				</div>
 				
-				<div class="enroll-item">
+				<div class="enroll-item" id="id-result-div">
 					<div class="left"></div>
 					<div class="right">						
 						<span id="id_result"></span>						
@@ -159,53 +164,46 @@ $(document).ready(function(){
 });
 
 //아이디 중복체크
-$(document).ready(function(){
-	
+$(document).ready(function(){	
 	$('#p_id').blur(function(){		
-		var p_id=$('#p_id').val();	
-		
-							
-				$.ajax({
-					type:"POST",
-					url: "${path}/member/checkId?p_id="+p_id,
-					success:function(result){
-						if(result!=0){												
-							
-							$("#id_result").html("사용 불가능한 아이디입니다.");
-							console.log(result);
-							console.log(p_id);
-						}else{							
-							$("#id_result").html("사용 가능한 아이디입니다.");
-							console.log(result);
-							console.log(p_id);
-						}
-					},
-					error:function(error){
-						$("#id_result").html("error");
-					}
-				}); //end ajax
-
-	}); //keyup end
+		var p_id=$('#p_id').val();							
+		$.ajax({
+			type:"POST",
+			url: "${path}/member/checkId?p_id="+p_id,
+			success:function(result){
+				$("#id-result-div").show();
+				if(result!=0){							
+					$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');
+					
+				}else{							
+					$("#id_result").html("사용 가능한 아이디입니다.").css('color', 'green');
+					
+				}
+			},error:function(error){
+				$("#id_result").html("error");
+			}
+		});
+	});
 });
 
 //비밀번호 일치
  $(function(){
-		$("input[type=password]").blur(function(){
-			var pw1=$('#pw1').val();
-			var pw2=$('#pw2').val();		
-			var x=document.getElementById("password_result");
-			if(pw1.trim()!=pw2.trim()){
-				$('#password_result').html("비밀번호가 일치하지 않습니다.");
-				x.style.color="red";
+	$("input[type=password]").blur(function(){
+		var pw1=$('#pw1').val();
+		var pw2=$('#pw2').val();		
+		var result=document.getElementById("password_result");
+		if(pw1.trim()!=pw2.trim()){
+			$('#password_result').html("비밀번호가 일치하지 않습니다.");
+			result.style.color="red";
 			
-			}else{
-				$('#password_result').html("비밀번호가 일치합니다.");
-				x.style.color="green";
+		}else{
+			$('#password_result').html("비밀번호가 일치합니다.");
+			result.style.color="green";
 				
-			}
+		}
 			
-		});
 	});
+});
 
 
 </script>
