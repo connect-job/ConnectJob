@@ -11,8 +11,6 @@
 <title>email send</title>
 </head>
 <body>
-
-
 <div class="enroll-item">
 	<form id="keyConfirmFrm">
 	<div class="left">인증번호</div>
@@ -23,7 +21,6 @@
 	</div>
 	</form>					
 </div>
-
 <script type="text/javascript">
 
 $(function(){
@@ -45,5 +42,39 @@ $(function(){
 	});
 });
 </script>
+
+<%-- <div>
+	<div class="row">
+		<div class="col-md-12">
+    		<h5>이메일 인증</h5>
+    	</div>
+    	</div>
+		<input type="text" name="inputRandomNo" id="inputRandomNo" maxlength="6" placeholder="인증번호를 입력하세요."/>
+		<input type="hidden" name="randomNo" id="randomNo" value="${randomNo }">
+		<input type="button" onclick="checkEmail();" class="btn btn-outline-info slidetopleft" value="확인">
+</div> --%>
+<script>
+  		setTimeout(function(){self.close();},300000);
+  		
+  		var count = 300;
+  		var counter = setInterval(timer,1000);
+  		function timer()
+  		{
+  			count--;
+  			if(count<=0)
+ 				{
+  				clearInterval(counter);
+  				
+  				document.getElementById('timer').innerHTML="";
+  				return
+ 				}
+  			document.getElementById('timer').innerHTML=count;
+  		}
+</script>
+<div id='timer-container' class='timer-container'>
+	<p><span id='timer'></span> 초 이내에 인증을 완료해주세요. 이후에 자동으로 창이 닫힙니다.</p>
+</div>	
+
+
 </body>
 </html>

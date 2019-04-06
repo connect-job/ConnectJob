@@ -51,7 +51,7 @@
 		update p_member set password=#{password} where p_id=#{p_id}
 	</update>
 	
-	<select id="selectCount" resultMap="memberResult">
+	<select id="selectCount" resultType="_int" parameterType="String">
 		select count(*) from p_member where p_id=#{p_id}
 	</select>
 	

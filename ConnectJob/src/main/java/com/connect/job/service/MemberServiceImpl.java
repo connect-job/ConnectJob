@@ -79,16 +79,19 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectOneKakao(m);
 	}
 
-	@Override
-	public int checkId(String p_id) {
-		// TODO Auto-generated method stub
-		return dao.selectCount(p_id);
-	}
 
 	@Override
 	public int emailConfirm(Member m) {
 		// TODO Auto-generated method stub
 		return dao.emailConfirm(m);
+	}
+
+
+
+	@Override
+	public int selectCount(String p_id) {
+		// TODO Auto-generated method stub
+		return dao.selectCount(p_id);
 	}
 	
 	

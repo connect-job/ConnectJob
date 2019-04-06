@@ -366,22 +366,18 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping("/member/checkId")
-	public String checkId(Member m) {		
+	public String checkId(String p_id) {		
 		
-		List<Member> result = service.selectList();
-		
-		String check = "";		
-		
-		for(int i=0; i<result.size(); i++) {
-			if(result.get(i).getP_id().equals(m.getP_id())) {
-				//아이디 없음
-				check = "0";
-			} else {
-				//아이디 있음
-				check = "1";
-			}
+		int count=service.selectCount(p_id);
+		String result="";
+		if(count==0) {
+			result="0";
+		}else {
+			result="1";
 		}
-		return check;
+		System.out.println(result);
+		
+		return result;
 	}
 	
 }
