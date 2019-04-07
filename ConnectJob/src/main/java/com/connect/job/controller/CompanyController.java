@@ -158,12 +158,11 @@ public class CompanyController {
 		String html = "";
 		
 		if(!list.isEmpty()) {
-			html += "<div>실시간 검색순위";
-			html += "<ul>";
+			html += "<ul class='rolling'>";
 			for(int i=0; i<list.size(); i++) {
 				html += "<li onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" +list.get(i).getSearchCompany() + "'\">" + (i+1) + "　" + list.get(i).getCname() + "</li>";
 			}
-			html += "</ul></div>";
+			html += "</ul>";
 		}
 		
 		String result = URLEncoder.encode(html, "UTF-8");

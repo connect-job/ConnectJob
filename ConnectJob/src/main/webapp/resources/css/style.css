@@ -90,6 +90,7 @@ header {
     z-index: 5999;
     height: 120px;
     transition: 700ms;
+    border-bottom: 1px solid #eee;
 }
 
 header #header-container {
@@ -130,7 +131,6 @@ header #header-container #logo {
 
 header #header-container #logo .logo-text {
     display: inline-block;
-	border: 2px solid #fff;
 	padding-left: 12px;
     width: 158px;
     height: 32px;
@@ -138,17 +138,17 @@ header #header-container #logo .logo-text {
 
 header #header-container #logo .logo-text:hover {
     transition: 900ms;
-    background-color: #fff;
+    background-color: #eee;
 }
 
 header #header-container #logo .logo-text:hover a{
     transition: 900ms;
-    background-color: #fff;
+    background-color: #eee;
     color: #000;
 }
 
 header #header-container #logo .logo-text a {
-	color: #fff;
+	color: #ffffff;
     font-weight: 300;
     font-size: 22px;
 }
@@ -198,18 +198,35 @@ header #header-container #header-menu .menu-right {
     float: right;
 }
 
-header #header-container #header-menu .menu-right #searchfrm {
-    padding-top: 7px;
+header #header-container #header-menu .menu-right #popular-keyword {
+    width: 150px;
+    height: 28px;
+    overflow: hidden;
+    padding-top: 12px;
 }
 
-header #header-container #header-menu .menu-right #searchfrm input {
-    padding-top: 3px;
-    padding-left: 10px;
-    font-size: 13px;
-    letter-spacing: -0.4px;
-    outline: none;
-    border: none;
-    height:30px;
+header #header-container #header-menu .menu-right #popular-keyword #popular-container {
+    position: relative;
+    width: 150px;
+    height: 28px;
+    overflow: hidden;
+}
+
+header #header-container #header-menu .menu-right #popular-keyword #popular-container ul {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    
+}
+
+header #header-container #header-menu .menu-right #popular-keyword #popular-container ul li {
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 12px;
+    letter-spacing: -0.3px;
+    height: 28px;
+    line-height: 28px;
+    color: #ffffff;
 }
 
 /* 공통 섹션 */
@@ -260,6 +277,7 @@ section #index-container #popular-keyword ul {
 }
 
 section #index-container #popular-keyword ul li {
+    cursor: pointer;
     color: #fff;
     display: inline-block;
     margin-right: 15px;
@@ -279,7 +297,7 @@ section #index-container .index .index-search {
 
 section #index-container .index .index-search input {
     width: 300px;
-    height: 40px;
+    height: 38px;
     font-size: 13px;
     letter-spacing: -0.3px;
     color: #3b3b3b;
@@ -766,7 +784,6 @@ section #company-container .company-middle #search_location #search_left {
     width: 230px;
     height: 150px;
     padding: 5px;
-    background-color: #fff;
     overflow-y: scroll;
 }
 
@@ -775,8 +792,6 @@ section #company-container .company-middle #search_location #search_left {
 }
 
 #search_left::-webkit-scrollbar-track {
-    background-color: #fff;
-    
     border-radius: 10px;
 }
 
@@ -814,7 +829,6 @@ section #company-container .company-middle #search_location #search_right {
     width: 730px;
     height: 150px;
     border: 1px solid #eee;
-    background-color: #fff;
     padding: 5px;
     overflow-y: scroll;
 }
@@ -824,7 +838,6 @@ section #company-container .company-middle #search_location #search_right {
 }
 
 #search_right::-webkit-scrollbar-track {
-    background-color: #fff;
     border-radius: 10px;
 }
 
@@ -981,9 +994,6 @@ section #company-container #company-content #company-list #pageBar ul li.active 
 
 /* ---------------- 기업상세페이지 -------------------- */
 
-section#companyView {
-    background-color: #fff;
-}
 
 section #company-view-container {
     display: inline-block;
