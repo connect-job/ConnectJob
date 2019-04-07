@@ -8,21 +8,24 @@
 
 <script>
 	$('#logo').hide();
-	$('#searchfrm').hide();
+	$('#popular-keyword').hide();
 	$('header').css("height","90px");
 	$('header').css("background","none");
+	$('header').css("color","#fff");
+	$('header').css("border","none");
 	$('header').hover(function() {
-		$(this).css("background-color","#2c3142c5");
+		$(this).css("background-color","#2c3142c7");
 	});
 	$('header').mouseleave(function() {
 		$(this).css("background","none");
+		$(this).css("color","#fff");
 	});
 	
 	$(window).scroll(function () { 
         var sc = $(document).scrollTop();
 
         if(sc>150) {
-        	$('header').css("background-color","#2c3142c5");
+        	$('header').css("background-color","#2c3142c7");
         	$('#logo').show();
         	$('header').css("height","120px");
         } else {
