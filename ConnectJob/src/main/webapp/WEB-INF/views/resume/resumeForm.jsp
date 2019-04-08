@@ -318,7 +318,7 @@ if (ua.indexOf("MSIE") > -1) {
 			}
 		})
 
-	};
+	}
 	function selectCareer() {
 		var career = $('[name=career]').val();
 		if(career=="신입"){
@@ -332,7 +332,7 @@ if (ua.indexOf("MSIE") > -1) {
 				}
 			})
 		}
-	};
+	}
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

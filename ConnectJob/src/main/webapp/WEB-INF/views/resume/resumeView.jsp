@@ -27,7 +27,7 @@
 			<td><i class="fas fa-phone-volume"></i>  휴대폰  </td>
 			<td>| ${resultR.phone }</td>
 		</tr>
-		<tr>
+		<tr> 
 			<td><i class="fas fa-at"></i>  이메일 </td>
 			<td>| ${resultR.email }</td>
 		</tr>
