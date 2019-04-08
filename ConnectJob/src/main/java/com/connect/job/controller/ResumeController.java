@@ -61,7 +61,7 @@ public class ResumeController {
 		ModelAndView mv=new ModelAndView();
 		Member m=(Member)session.getAttribute("loginMember");
 		System.out.println(m);
-		List<Resume> list=service.selectedResumeList(m.getpId());
+		List<Resume> list=service.selectedResumeList(m.getP_id());
 		mv.addObject("list",list);
 		mv.setViewName( "resume/resumeList");
 		return mv;
@@ -104,7 +104,7 @@ public class ResumeController {
 	@RequestMapping("/resume/resumeRegistEnd.do")
 	public ModelAndView insertResume(Resume r,FinalEdu fe,FinalEduUniv fu, Career c,HttpSession session) {
 		Member m=(Member) session.getAttribute("loginMember");
-		List<Resume> list=service.selectedResumeList(m.getpId());
+		List<Resume> list=service.selectedResumeList(m.getP_id());
 /*		System.out.println(r);
 		System.out.println(fe);
 		System.out.println(fu);
@@ -177,7 +177,7 @@ public class ResumeController {
 			mv.addObject("msg","이력서 삭제에 실패하였습니다.");
 		}
 
-		List<Resume> list=service.selectedResumeList(m.getpId());
+		List<Resume> list=service.selectedResumeList(m.getP_id());
 		mv.setViewName("common/msg");
 		mv.addObject("list",list);
 		mv.addObject("loc","/resume.do");

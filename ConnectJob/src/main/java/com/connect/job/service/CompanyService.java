@@ -3,6 +3,8 @@ package com.connect.job.service;
 import java.util.List;
 
 import com.connect.job.model.vo.Company;
+import com.connect.job.model.vo.CompanyAvgScore;
+import com.connect.job.model.vo.SearchKeyword;
 
 public interface CompanyService {
 
@@ -26,6 +28,15 @@ public interface CompanyService {
 
 	// Ajax 기업 수
 	int selectAjaxCount(Company com);
+
+	// 기업 총평점 및 기타 점수 가져가기
+	CompanyAvgScore selectScore(int no);
+	
+	// 검색어 순위용
+	int searchKeyword(int keyword);
+
+	// 검색어 순위 불러오기
+	List<SearchKeyword> selectKeyword();
 
 	
 }

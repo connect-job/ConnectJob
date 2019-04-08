@@ -9,7 +9,7 @@
   <jsp:param value="" name="pageTitle"/>
 </jsp:include>
 <section>
-<form name="loginFrm" action="${path }/cMemberLogin" method="post">
+<form name="loginFrm" action="${path }/cMemberLogin.do" method="post">
 		<table>
 			<tr>
 				<td>아이디</td>
@@ -23,8 +23,8 @@
 				<td><input type="submit" value="로그인"/></td>
 				<td><input type="button" value="ID/PW찾기" id="findbtn"/></td>			
 			</tr>
-		</table>	
-		
+			<input type="button" id="CMemberEnroll" value="기업회원가입"/>
+		</table>
 	</form>	
 </section>
 
@@ -34,6 +34,11 @@
 			location.href='${path}/member/findMember';
 		})
 	});
+	$(function(){
+		$("#CMemberEnroll").click(function(){
+			location.href="${path}/CMemberEnroll.do"
+		})
+	})
 </script>
 
 

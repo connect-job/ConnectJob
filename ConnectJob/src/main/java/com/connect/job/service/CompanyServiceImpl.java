@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.connect.job.dao.CompanyDao;
 import com.connect.job.model.vo.Company;
+import com.connect.job.model.vo.CompanyAvgScore;
+import com.connect.job.model.vo.SearchKeyword;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
@@ -47,6 +49,21 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	public int selectAjaxCount(Company com) {
 		return dao.selectAjaxCount(com);
+	}
+
+	@Override
+	public CompanyAvgScore selectScore(int no) {
+		return dao.selectScore(no);
+	}
+
+	@Override
+	public int searchKeyword(int keyword) {
+		return dao.searchKeyword(keyword);
+	}
+
+	@Override
+	public List<SearchKeyword> selectKeyword() {
+		return dao.selectKeyword();
 	}
 
 	

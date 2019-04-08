@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//src/main/webapp/resources/css/style.css=UTF-8
+=======
+encoding//src/main/java/com/connect/job/controller/MemberController.java=UTF-8
+encoding//src/main/java/com/connect/job/service/MemberServiceImpl.java=UTF-8
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git

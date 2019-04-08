@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-
+	pageEncoding="UTF-8"%>
 
 <div class="item">
-   <div class="left">회사명</div>
-   <div class="right">
-      <input type="text" name="careerCName" placeholder="회사명 입력" required>
-   </div>
+	<div class="left">회사명</div>
+	<div class="right">
+		<input type="text" placeholder="회사명 입력" required>
+	</div>
 </div>
 
 <div class="item">

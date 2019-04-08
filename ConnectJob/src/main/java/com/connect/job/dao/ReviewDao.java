@@ -3,6 +3,7 @@ package com.connect.job.dao;
 import java.util.List;
 
 import com.connect.job.model.vo.CompanyReview;
+import com.connect.job.model.vo.CompanyReviewLike;
 
 public interface ReviewDao {
 
@@ -12,5 +13,8 @@ public interface ReviewDao {
 	List<CompanyReview> reviewAll(int cPage, int numPerPage);
 	int reviewCountAll();
 	CompanyReview reviewOne(int reviewNo);
+	int reviewLike(CompanyReviewLike like);
+	int reviewUpdate(CompanyReview r);
+	List<CompanyReviewLike> reviewLikeAll(int reviewNo);
 
 }

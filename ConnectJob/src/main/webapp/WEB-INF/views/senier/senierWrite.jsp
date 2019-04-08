@@ -27,11 +27,11 @@
                     <div class="write-cate">
                         <div class="left">질문유형</div>
                         <div class="right">
-                            <input type="radio" name="qType" id="radio1"><label for="radio1">회사</label>
-                            <input type="radio" name="qType" id="radio2"><label for="radio2">직무</label>
+                            <input type="radio" name="qType" id="radio1" value="회사고민"><label for="radio1">회사고민</label>
+                            <input type="radio" name="qType" id="radio2" value="직무고민"><label for="radio2">직무고민</label>
                        		<!-- <input type="radio" name="cate" id="radio3"><label for="radio3">업계/산업</label> -->
-                            <input type="radio" name="qType" id="radio4"><label for="radio4">진로</label>
-                            <input type="radio" name="qType" id="radio5"><label for="radio5">기타</label>
+                            <input type="radio" name="qType" id="radio4" value="진로고민"><label for="radio4">진로고민</label>
+                            <input type="radio" name="qType" id="radio5" value="기타고민"><label for="radio5">기타고민</label>
                         </div>
                     </div>
                     <div class="write-title">

@@ -5,7 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
-
 <h3>대학교 정보 입력</h3>
 
 <div class="item">
@@ -84,9 +83,7 @@
 </div>
 <div id="addUniv"></div>
 
-
 <script>
-
    $('#addMajorContainer').css("display","none");
 
    function addMajor() {
@@ -109,9 +106,10 @@
 		   }
 		})   
 	};
-		/* 
+	/* 
 	$("#deleteBtn").click(function(){
 		$(this).closest("table").css("display","none");
 		$(this).closest("table").prev().css("display","none");
 	}); */
+	
 </script>
