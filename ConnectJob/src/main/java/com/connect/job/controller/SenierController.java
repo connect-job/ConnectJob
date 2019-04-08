@@ -76,8 +76,7 @@ public class SenierController {
 		List<Senier> list=service.senierList(cPage,numPerPage);
 		int total=service.selectCount();
 		
-		System.out.println(list);
-		System.out.println(total);
+	
 		
 		mv.addObject("list",list);
 		mv.addObject("total",total);
@@ -119,7 +118,7 @@ public class SenierController {
 		sco.setsNo(cNo);
 		
 		List<Scomment> list=service.comList(sco);
-		System.out.println(list);
+		
 
 		return list;
 	}
@@ -135,8 +134,7 @@ public class SenierController {
 		List<Scomment> list = service.selectAll(cPage,numPerPage);
 		int total=service.selectcomCount();
 
-		System.out.println(list);
-		System.out.println(total);
+	
 		
 		String pageBar=AjaxPageBarFactory.getPageBar(total, cPage, numPerPage);
 		
