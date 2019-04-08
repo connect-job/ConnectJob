@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.connect.job.common.TempKey"%>
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.HashMap"%>
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -16,6 +12,7 @@
 <style>
 	div#id-result-div{display: none;}
 	div#pw-result-div{display: none;}
+	div#pw-result-div2{display: none;}
 </style>
 <section>
 	<div id="enroll-container">
@@ -31,16 +28,10 @@
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-<<<<<<< HEAD
 						<input type="email" name="p_id" id="p_id" autocomplete="off" />						
 						<input type="hidden" name="key" id="keyck" value="<%=key %>" autocomplete="off"/>						
 						<input type="button" value="인증번호 전송" id="emailSender"/>																
-					</div>					
-=======
-						<input type="email" name="p_id" autocomplete="off" />
-						<input type="button" value="중복확인" id="idck" />
 					</div>
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 				</div>
 				
 				<div class="enroll-item" id="id-result-div">
@@ -53,10 +44,16 @@
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
 					<div class="right">
-						<input type="password" name="password" id="pw1" required/>
-						<span>영.숫자 포함 8글자 이상 작성</span>
+						<input type="password" name="password" id="pw1" required/>						
 					</div>
 				</div>
+				
+				<!-- <div class="enroll-item" id="pw-result-div">
+					<div class="left"></div>
+					<div class="right">						
+						<span id="pw_validate"></span>					
+					</div>					
+				</div> -->
 				
 				<div class="enroll-item">
 					<div class="left">비밀번호 확인</div>
@@ -64,37 +61,23 @@
 						<input type="password" name="password2" id="pw2" required />						
 					</div>
 				</div>
-<<<<<<< HEAD
 				
-				<div class="enroll-item" id="pw-result-div">
+				<div class="enroll-item" id="pw-result-div2">
 					<div class="left"></div>
 					<div class="right">						
 						<span id="password_result"></span>						
 					</div>					
 				</div>	
-							
+		
 				<div class="enroll-item msgdiv">
 					<div class="left">이름</div>
 					<div class="right">
 						<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
 						<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
 						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
-=======
-					<div class="enroll-item msgdiv">
-						<div class="left">이름</div>
-						<div class="right">
-							<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
-							<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
-							<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
-						</div>
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 					</div>
-<<<<<<< HEAD
-				</div>
-				
-=======
-					
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+				</div>		
+
 				<div class="enroll-item">
 					<div class="left">성별</div>
 					<div class="right">
@@ -153,6 +136,7 @@
 </section>
 
 <script>
+
 //인증번호 전송
 $(document).ready(function(){
 	$('#emailSender').on('click', function(){
@@ -211,23 +195,49 @@ $(document).ready(function(){
 });
 
 //비밀번호 일치
- $(function(){
+$(function(){
 	$("input[type=password]").blur(function(){
 		var pw1=$('#pw1').val();
 		var pw2=$('#pw2').val();		
-		var result=document.getElementById("password_result");
+		var result=document.getElementById("password_result");		
 		
 		if(pw1.trim()!=pw2.trim()){
-			$('#password_result').html("비밀번호가 일치하지 않습니다.");
-			result.style.color="red";
-			
+			$('#password_result').html("비밀번호가 일치하지 않습니다.").css('color', 'red');			
 		}else{
-			$('#password_result').html("비밀번호가 일치합니다.");
-			result.style.color="green";				
+			$('#password_result').html("비밀번호가 일치합니다.").css('color', 'green');						
 		}
-		$("#pw-result-div").show();
+		$("#pw-result-div").show();		
 	});
 });
+
+
+
+
+	/* $(function(){	
+	var pw1=$('#pw1').val();
+	$("#pw1").blur(function(){		
+		if(pw1.trim().length<8){
+			$('#pw_validate').html("비밀번호는 8자리 이상 20자리 이하로 입력해주세요.").css('color', 'red');
+		}else if(pw1.trim().length8){
+			$('#pw_validate').html("사용가능한 비밀번호입니다.").css('color', 'green');
+		}
+		
+	});
+	
+}); */
+
+/* $(function(){
+	var pw1=$('#pw1').val();
+	var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/; //정규식
+	$("#pw1").blur(function(){
+		if(!regex.test(pw1)){
+			alert('영문, 숫자, 특수문자 혼합해 입력');
+			return false;
+		}
+		return true;
+	});
+}) */
+
 
 
 </script>

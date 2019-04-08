@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cmember">
+
+	<select id="selectList" resultType="cmember">
+		select * from c_member
+	</select>
+
+	<delete id="deleteMember">
+		delete from C_Member where cMemberId=#{CMemberId}
+	</delete>
+
+  <insert id="insertCMember" parameterType="cmember">
+  		insert into C_Member values(#{CMemberId},#{CId},#{CMemberPw},#{CMemberName},#{CMemberPhone},#{CMemberCPhone},#{CMemberBNum},#{CMemberDiv},DEFAULT,#{CMemberEmail})
+  </insert>
+  
+  <select id="selectOne" resultType="cmember">
+  		select * from c_member where cmemberid = #{CMemberId}
+  </select>
+  
+  
+</mapper>
