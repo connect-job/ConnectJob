@@ -440,30 +440,37 @@ section #index-container {
 }
 
 section #index-container #index-top-left {
-    vertical-align: top;
     display: inline-block;
     width: 700px;
     height: 210px;
-    position: relative;
     border: 1px solid rgb(209, 209, 209);
     overflow: hidden;
     margin: 0 auto;
+    animation: mainSlide infinite 15s;
+    background-image: url('../images/main-1.jpg');
+        background-size: 100%;
 }
 
-section #index-container #index-top-left ul {
-    width: 700px;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    position: absolute;
-}
+@-webkit-keyframes mainSlide {
+    0% {
+        background-image: url('../images/main-1.jpg');
+        background-size: 100%;
+    }
 
-section #index-container #index-top-left ul li {
-    float: left;
-    width: 700px;
-    height: 210px;
-    margin: 0;
-    padding: 0;
+    40% {
+        background-image: url('../images/main-2.jpg');
+        background-size: 100%;
+    }
+
+    60% {
+        background-image: url('../images/main-3.jpg');
+        background-size: 100%;
+    }
+
+    100% {
+        background-image: url('../images/main-1.jpg');
+        background-size: 100%;
+    }
 }
 
 
