@@ -30,8 +30,7 @@
 	    		location.href="${path}/company/companyView.do?no=" + no;
 	    		$('#index-search-result').css("display","none");
 	   
-	    	}
-        
+	    	}  
         
         	$(function() {
         		$.ajax({
