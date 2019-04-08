@@ -159,11 +159,11 @@ public class CompanyReviewController {
 		html += "</div>";
 
 		html += "<div class=\"review-detail-score\">";
-		html += "승진 기회 및 가능성<div class=\"line\" style=\"width:" + review.getReviewGrade01() + "0%;\" ></div><br>";
-		html += "복지 및 급여<div class=\"line1\" style=\"width:" + review.getReviewGrade02() + "0%;\" ></div><br>";
-		html += "업무와 삶의 균형<div class=\"line2\" style=\"width:" + review.getReviewGrade03() + "0%;\" ></div><br>";
-		html += "사내문화<div class=\"line3\" style=\"width:" + review.getReviewGrade04() + "0%;\" ></div><br>";
-		html += "경영진<div class=\"line4\" style=\"width:" + review.getReviewGrade05() + "0%;\" ></div>";
+		html += "승진 기회 및 가능성 (" + review.getReviewGrade01() + "/5)<div class=\"line\" style=\"width:" + review.getReviewGrade01() + "0%;\" ></div><br>";
+		html += "복지 및 급여 (" + review.getReviewGrade02() + "/5)<div class=\"line1\" style=\"width:" + review.getReviewGrade02() + "0%;\" ></div><br>";
+		html += "업무와 삶의 균형 (" + review.getReviewGrade03() + "/5)<div class=\"line2\" style=\"width:" + review.getReviewGrade03() + "0%;\" ></div><br>";
+		html += "사내문화 (" + review.getReviewGrade04() + "/5)<div class=\"line3\" style=\"width:" + review.getReviewGrade04() + "0%;\" ></div><br>";
+		html += "경영진 (" + review.getReviewGrade05() + "/5)<div class=\"line4\" style=\"width:" + review.getReviewGrade05() + "0%;\" ></div>";
 		html += "</div>";
 		
 		html += "<div class=\"review-like\">";

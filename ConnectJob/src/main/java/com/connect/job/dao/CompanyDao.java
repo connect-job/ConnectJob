@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.CompanyAvgScore;
+import com.connect.job.model.vo.SearchKeyword;
 
 public interface CompanyDao {
 
@@ -15,6 +16,8 @@ public interface CompanyDao {
 	List<Company> selectAll(int cPage, int numPerPage);
 	int selectAjaxCount(Company com);
 	CompanyAvgScore selectScore(int no);
+	int searchKeyword(int keyword);
+	List<SearchKeyword> selectKeyword();
 	
 
 }

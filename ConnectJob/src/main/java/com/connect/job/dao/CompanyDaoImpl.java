@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.CompanyAvgScore;
+import com.connect.job.model.vo.SearchKeyword;
 
 @Repository
 public class CompanyDaoImpl implements CompanyDao {
@@ -56,6 +57,16 @@ public class CompanyDaoImpl implements CompanyDao {
 	@Override
 	public CompanyAvgScore selectScore(int no) {
 		return session.selectOne("review.reviewTotalAvg", no);
+	}
+
+	@Override
+	public int searchKeyword(int keyword) {
+		return session.insert("company.insertSearchKeyword", keyword);
+	}
+
+	@Override
+	public List<SearchKeyword> selectKeyword() {
+		return session.selectList("company.selectSearchKeyword");
 	}
 	
 	

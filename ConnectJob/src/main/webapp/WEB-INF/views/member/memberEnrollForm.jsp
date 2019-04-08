@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.connect.job.common.TempKey"%>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.HashMap"%>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -27,10 +31,16 @@
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
+<<<<<<< HEAD
 						<input type="email" name="p_id" id="p_id" autocomplete="off" />						
 						<input type="hidden" name="key" id="keyck" value="<%=key %>" autocomplete="off"/>						
 						<input type="button" value="인증번호 전송" id="emailSender"/>																
 					</div>					
+=======
+						<input type="email" name="p_id" autocomplete="off" />
+						<input type="button" value="중복확인" id="idck" />
+					</div>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 				</div>
 				
 				<div class="enroll-item" id="id-result-div">
@@ -54,6 +64,7 @@
 						<input type="password" name="password2" id="pw2" required />						
 					</div>
 				</div>
+<<<<<<< HEAD
 				
 				<div class="enroll-item" id="pw-result-div">
 					<div class="left"></div>
@@ -68,9 +79,22 @@
 						<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
 						<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
 						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
+=======
+					<div class="enroll-item msgdiv">
+						<div class="left">이름</div>
+						<div class="right">
+							<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
+							<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
+							<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
+						</div>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 					</div>
+<<<<<<< HEAD
 				</div>
 				
+=======
+					
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 				<div class="enroll-item">
 					<div class="left">성별</div>
 					<div class="right">
