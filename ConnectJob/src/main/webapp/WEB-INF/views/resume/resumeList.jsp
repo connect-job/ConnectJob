@@ -16,6 +16,22 @@
 			· 작성한 이력서로 회사에 지원 할 수 있습니다.<br>
 			· 이력서를 공개로 설정하시면 기업으로부터 <b>면접제의</b>를 받을 수 있습니다.
 		</div>
+		
+		<div class="resume-sub">
+			<div class="sub-item">
+				<div class="item-title">작성된 이력서</div>
+				<div class="item-content">5</div>
+			</div>
+			<div class="sub-item">
+				<div class="item-title">열람한 기업 수</div>
+				<div class="item-content">15</div>
+			</div>
+			<div class="sub-item">
+				<div class="item-title">입사지원 현황</div>
+				<div class="item-content">26</div>
+			</div>
+		</div>
+		
 		<div class="list-header">
 				<i class="fas fa-list-ul"></i>　이력서 리스트　　<button onclick="location.href='${path}/resume/insertResume.do'">작성하기</button>
 		</div>

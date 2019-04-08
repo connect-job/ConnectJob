@@ -29,7 +29,7 @@
 <body>
     <header>
         <div id="notice">
-            이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　<button>X</button>
+            이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　<button id="x-btn">X</button>
         </div>
 
         <div id="header-top">
@@ -67,27 +67,33 @@
                         </li>
                         <li onclick="location.href='${path}/senierConversation.do'">선배와의대화<div class="menu-line"></div>
                         </li>
-                        <c:if test="${loginMember!=null}">
-                           <li onclick="location.href='${path}/resume.do'">내 이력서<div class="menu-line"></div></li>
-                           <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
-                        </c:if>
                     </ul>
                 </div>
                 <div class="menu-right">
                     <ul>
                         <c:if test="${loginMember==null && loginCMember==null}">
-                            <li onclick="location.href='${path}/member/login.do'">로그인</li>
-                            <li onclick="location.href='${path}/member/memberEnroll.do'">회원가입</li>
+                            <li id="login-li" onclick="location.href='${path}/member/login.do'"><i class="fas fa-sign-in-alt"></i><span id="login">로그인</span></li>
+                            <li id="join-li" onclick="location.href='${path}/member/memberEnroll.do'"><i class="fas fa-user-plus"></i><span id="join">회원가입</span></li>
                         </c:if>
                         <c:if test="${loginMember!=null}">
-                            <li onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">마이페이지</li>
-                            <li><i class="far fa-comment-dots"></i></li>
-                            <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
+                            <li id="mypage-li"><i class="fas fa-user-check"></i><span id="mypage">MyPage</span>
+                                <div id="sub-menu-mypage">
+                                        <ul>
+                                            <li  onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">내 정보관리</li>
+                                                <li onclick="location.href='${path}/resume.do'">내 이력서<div class="menu-line"></div></li>
+                                                <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
+                                        </ul>
+                                </div></li>
+                            <li id="alarm-li"><i class="far fa-comment-dots"></i>
+                            <div id="alarm">
+                                최근 소식이 없습니다!
+                            </div></li>
+                            <li id="logout-li" onclick="location.href='${path}/member/logout.do'"><i class="fas fa-sign-out-alt"></i><span id="logout">로그아웃</span></li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
                             <li onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">기업페이지</li>
                             <li><i class="far fa-comment-dots"></i></li>
-                            <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
+                            <li onclick="location.href='${path}/member/logout.do'"><i class="fas fa-sign-out-alt"></i></li>
                         </c:if>
                         <li id="sub">고객센터<div id="sub-menu">
                                 <ul>
@@ -104,8 +110,64 @@
     </header>
 
     <script>
+        $('#x-btn').click(function() {
+            $(this).parent().css("display","none");
+            $(this).parent().parent().parent().find('section').css("padding-top","150px");
+        });
+
+        $('#login-li').mouseover(function() {
+            $('#login').css("display","block");
+            $('#alarm').css("display","none");
+            $('#sub-menu').css("display","none");
+        });
+
+        $('#login-li').mouseleave(function() {
+            $('#alarm').css("display","none");
+        });
+
+        $('#join-li').mouseover(function() {
+            $('#join').css("display","block");
+        });
+
+        $('#join-li').mouseleave(function() {
+            $('#join').css("display","none");
+        });
+
+        $('#mypage-li').mouseover(function() {
+            $('#alarm').css("display","none");
+            $('#sub-menu').css("display","none");
+            $('#sub-menu-mypage').css("display","block");
+        });
+
+        $('#sub-menu-mypage').mouseleave(function() {
+            $('#sub-menu-mypage').css("display","none");
+        });
+
+        $('#alarm-li').mouseover(function() {
+            $('#sub-menu-mypage').css("display","none");
+            $('#sub-menu').css("display","none");
+            $('#alarm').css("display","block");
+        });
+
+        $('#alarm-li').mouseleave(function() {
+            $('#alarm').css("display","none");
+        });
+
+        $('#logout-li').mouseover(function() {
+            $('#sub-menu-mypage').css("display","none");
+            $('#sub-menu').css("display","none");
+            $('#alarm').css("display","none");
+            $('#logout').css("display","block");
+        });
+
+        $('#logout-li').mouseleave(function() {
+            $('#logout').css("display","none");
+        });
 
         $('#sub').mouseover(function() {
+            $('#sub-menu-mypage').css("display","none");
+            $('#alarm').css("display","none");
+            $('#logout').css("display","none");
             $('#sub-menu').css("display","block");
         });
 
@@ -155,7 +217,6 @@
             $.ajax({
                 url: '${path}/company/searchKeyword.do?keyword=' + no,
                 success: function (data) {
-                    console.log(data);
                 }
             });
             location.href = "${path}/company/companyView.do?no=" + no;
@@ -173,7 +234,6 @@
                 success: function (data) {
                     var Ca = /\+/g;
                     var resultSet = decodeURIComponent(data.replace(Ca, " "));
-                    console.log(resultSet);
                     result.css("display", "block");
                     result.empty();
                     result.html(resultSet);

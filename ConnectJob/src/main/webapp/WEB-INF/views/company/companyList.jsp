@@ -434,6 +434,8 @@
             });
             locations.eq(0).show();
 
+            $(this).class
+
             $('#search_left ul li').click(function() {
                 switch($(this).text()) {
                     case "서울" : 

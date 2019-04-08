@@ -20,7 +20,7 @@
 			</ul>
 		</div>
 		<div class="index-top-right">
-			<div class="notice">최근 기업리뷰</div>
+			<div id="tab-btn" class="notice selected">최근 기업리뷰</div><div id="tab-btn" class="notice2">공지사항</div>
 
 			<div id="item">
 					<br><Br>
@@ -37,11 +37,46 @@
 					var Ca = /\+/g;
 	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
 	                item.empty();
-	                console.log(data);
 	                item.html(resultSet);
 				}
 			});
 		</script>
+
+		<div class="index-hire">
+			<div class="hire-title">
+				실시간 채용공고
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date"><span style="color:red">오늘마감</span></div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date">~2019-06-01 까지</div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date">~2019-06-01 까지</div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date">~2019-06-01 까지</div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date">~2019-06-01 까지</div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+		</div>
 
 
 		<div class="index-middle">
@@ -150,7 +185,7 @@
 			banner.css("height", bannerHeight + "px");
 			//alert(bannerHeight);
 			//배너의 좌측 위치를 옮겨 준다.
-			banner.animate({ left: - bannerWidth + "px" }, 1000, function () { //숫자는 롤링 진행되는 시간이다.
+			banner.animate({ left: - bannerWidth + "px" }, 600, function () { //숫자는 롤링 진행되는 시간이다.
 				//첫번째 이미지를 마지막 끝에 복사(이동이 아니라 복사)해서 추가한다.
 				$(this).append("<li>" + $(this).find("li:first").html() + "</li>");
 				//뒤로 복사된 첫번재 이미지는 필요 없으니 삭제한다.

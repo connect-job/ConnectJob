@@ -45,8 +45,8 @@ public class CompanyController {
 		List<Company> list = service.latestSalary();
 		
 		html += "<ul>";
-		if(list.size()>6) {
-			for(int i=0; i<6; i++) {
+		if(!list.isEmpty()) {
+			for(int i=0; i<5; i++) {
 				html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getCompanyNo() + "'\">";
 				if(list.get(i).getCompanyName().length()>12) {
 					html += (i+1) + "　" +  list.get(i).getCompanyName().substring(0, 13) + "...";		
@@ -74,7 +74,7 @@ public class CompanyController {
 		
 		html += "<ul>";
 		if(!list.isEmpty()) {
-			for(int i=0; i<list.size(); i++) {
+			for(int i=0; i<5; i++) {
 				html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getCompanyNo() + "'\">";
 				if(list.get(i).getCompanyName().length()>12) {
 					html += (i+1) + "　"+  list.get(i).getCompanyName().substring(0, 13) + "...</li>";		
@@ -101,7 +101,7 @@ public class CompanyController {
 			
 			html += "<ul>";
 			if(!list.isEmpty()) {
-				for(int i=0; i<list.size(); i++) {
+				for(int i=0; i<5; i++) {
 					html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getCompanyNo() + "'\">";
 					if(list.get(i).getCompanyName().length()>12) {
 						html += (i+1) + "　"+ list.get(i).getCompanyName().substring(0, 13) + "...</li>";		
