@@ -68,8 +68,8 @@
                         <li onclick="location.href='${path}/senierConversation.do'">선배와의대화<div class="menu-line"></div>
                         </li>
                         <c:if test="${loginMember!=null}">
-                            <li onclick="location.href='${path}/resume.do'">내 이력서<div class="menu-line"></div>
-                            </li>
+                           <li onclick="location.href='${path}/resume.do'">내 이력서<div class="menu-line"></div></li>
+                           <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
                         </c:if>
                     </ul>
                 </div>

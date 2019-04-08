@@ -141,8 +141,8 @@ public class CompanyReviewController {
 		
 		CompanyReview review = service.reviewOne(reviewNo);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
-		String reviewDate = sdf.format(review.getReviewDate());
+		/*SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+		String reviewDate = sdf.format(review.getReviewDate());*/
 		
 		html += "<div class=\"review-detail-top\">";
 		switch(review.getReviewTotalScore()) {
@@ -152,7 +152,7 @@ public class CompanyReviewController {
 	    	case 4 : html += "★★★★☆"; break;
 	    	case 5 : html += "★★★★★"; break;
 		}
-		html += "　" + review.getReviewJob() + "　" + review.getReviewIsCurrent() + "　" + review.getReviewLocation() + "　" + reviewDate;
+		html += "　" + review.getReviewJob() + "　" + review.getReviewIsCurrent() + "　" + review.getReviewLocation() + "　" /*+ reviewDate*/;
 		html += "</div>";
 		
 		html += "<div class=\"review-datail-title\">";
@@ -214,8 +214,8 @@ public class CompanyReviewController {
 		String html = "";
 		CompanyReview review = service.reviewOne(r.getReviewNo());
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
-		String reviewDate = sdf.format(review.getReviewDate());
+		/*SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+		String reviewDate = sdf.format(review.getReviewDate());*/
 		
 		html += "<form id='updateFrm' method='POST'>";
 		html += "<input type=\"hidden\" name=\"reviewNo\" value='" + review.getReviewNo() + "'/>";
@@ -362,8 +362,8 @@ public class CompanyReviewController {
 			
 			CompanyReview review = service.reviewOne(r.getReviewNo());
 			
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
-			String reviewDate = sdf.format(review.getReviewDate());
+			/*SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+			String reviewDate = sdf.format(review.getReviewDate());*/
 			
 			html += "<div class=\"review-detail-top\">";
 			switch(review.getReviewTotalScore()) {
@@ -373,7 +373,7 @@ public class CompanyReviewController {
 		    	case 4 : html += "★★★★☆"; break;
 		    	case 5 : html += "★★★★★"; break;
 			}
-			html += "　" + review.getReviewJob() + "　" + review.getReviewIsCurrent() + "　" + review.getReviewLocation() + "　" + reviewDate;
+			html += "　" + review.getReviewJob() + "　" + review.getReviewIsCurrent() + "　" + review.getReviewLocation() + "　"/* + reviewDate*/;
 			html += "</div>";
 			
 			html += "<div class=\"review-datail-title\">";

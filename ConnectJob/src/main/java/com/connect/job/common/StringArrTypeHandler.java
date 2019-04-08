@@ -23,8 +23,14 @@ public class StringArrTypeHandler implements TypeHandler<String[]> {
 	@Override
 	public String[] getResult(ResultSet rs, String columnName) throws SQLException {
 		String temp = rs.getString(columnName);
-		String[] values = temp.split(",");
-		return values;
+		if(temp!=null) {
+			String[] values = temp.split(",");
+			return values;
+		}
+		else {
+			return null;
+		}
+		
 	}
 
 	@Override

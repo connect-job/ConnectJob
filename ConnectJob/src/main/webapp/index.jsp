@@ -54,7 +54,6 @@
 						<br><Br>
 					<img src="${path}/resources/images/loading.gif" width="20px">
 				</div>
-				
 				<script>
 				// 최근 기업리뷰 AJAX
 					var salary = $('#salary');
@@ -68,8 +67,8 @@
 						}
 					});
 				</script>
-				
 			</div>
+
 			<div class="index-middle-center">
 				<div class="top">
 					<div class="left">기업리뷰 TOP 5</div>

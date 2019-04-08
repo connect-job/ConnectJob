@@ -1,13 +1,13 @@
 /* @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&subset=korean'); */
 
 @font-face {
-	font-family: 'NotoKr';
-	font-style: normal;
-	font-weight: 300;
-	src: url('../font/notokr-regular.eot');
-	src: url('../font/notokr-regular.eot?#iefix') format('embedded-opentype'),
-		 url('../font/notokr-regular.woff2') format('woff2'),
-		 url('../font/notokr-regular.woff') format('woff');
+   font-family: 'NotoKr';
+   font-style: normal;
+   font-weight: 300;
+   src: url('../font/notokr-regular.eot');
+   src: url('../font/notokr-regular.eot?#iefix') format('embedded-opentype'),
+       url('../font/notokr-regular.woff2') format('woff2'),
+       url('../font/notokr-regular.woff') format('woff');
 }
 
 html, body {
@@ -175,6 +175,7 @@ header #header-top .top-container .header-top-center #header-search-result {
     width: 402px;
     border: 1px solid #eee;
     box-shadow: 10px 5px 15px 5px #eee;
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 }
 
 header #header-top .top-container .header-top-center #header-search-result ul {
@@ -281,7 +282,6 @@ header  #header-menu .menu-container .menu-left ul li {
     height: 30px;
     font-size: 13px;
 }
-
 
 header  #header-menu .menu-container .menu-left ul li .menu-line {
 	margin-top: 5px;
@@ -437,7 +437,9 @@ section #index-container .index-top-right .notice {
 section #index-container .index-top-right #item {
     font-size: 12px;
     width: 100%;
-}
+
+
+
 
 section #index-container .index-top-right #item ul {
     margin: 0;
@@ -715,7 +717,7 @@ section #login-container #cmember .login-right input {
 
 
 section #login-container table {
-	display: inline-block;
+   display: inline-block;
 }
 
 /* ----------------------------------------------------------------------- 회원가입 */
@@ -900,8 +902,8 @@ section #enroll-container #memberEnroll .enroll-text-end input {
 /* ---------------------------------------------------------------------  캘린더 */
 
 section #calendar {
-	display: inline-block;
-	width: 990px;
+   display: inline-block;
+   width: 990px;
 }
 
 /* ----------------------------------------------------------------- 기업리스트 */
@@ -1097,7 +1099,7 @@ section #company-container .company-middle #company-location-detail {
 }
 
 section #company-container #company-content {
-	width: 100%;
+   width: 100%;
     text-align: center;
 }
 
@@ -1507,8 +1509,6 @@ section #company-view-container #company-view-content .view-right #right-company
     margin-bottom: 15px;
     text-align: center;
 }
-
-
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-bottom {
     border-top: 1px solid #cfcfcf;
@@ -2236,5 +2236,4 @@ footer #footer-container .footer-bottom {
     text-align: center;
     color: #ffffff;
 }
-
 
