@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -80,10 +81,12 @@
                         </c:if>
                         <c:if test="${loginMember!=null}">
                             <li onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">마이페이지</li>
+                            <li><i class="far fa-comment-dots"></i></li>
                             <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
                             <li onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">기업페이지</li>
+                            <li><i class="far fa-comment-dots"></i></li>
                             <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <li id="sub">고객센터<div id="sub-menu">

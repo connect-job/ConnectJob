@@ -184,6 +184,7 @@ header #header-top .top-container .header-top-center #header-search-result ul {
 }
 
 header #header-top .top-container .header-top-center #header-search-result ul li {
+    cursor: pointer;
 	transition: 600ms;
 	background-color: #fff;
 	text-align: left;
@@ -320,7 +321,7 @@ header  #header-menu .menu-container .menu-right ul li {
     height: 30px;
     padding-left: 15px;
     padding-right: 15px;
-    
+    background-color: #fff;
 }
 
 header  #header-menu .menu-container .menu-right ul li:hover{
@@ -433,18 +434,19 @@ section #index-container .index-top-right .notice {
 }
 
 
-section #index-container .index-top-right .item {
+section #index-container .index-top-right #item {
     font-size: 12px;
     width: 100%;
 }
 
-section #index-container .index-top-right .item ul {
+section #index-container .index-top-right #item ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
-section #index-container .index-top-right .item ul li {
+section #index-container .index-top-right #item ul li {
+    cursor: pointer;
     height: 25px;
     border-bottom: 1px solid #eee;
     padding-top: 8px;
@@ -452,18 +454,27 @@ section #index-container .index-top-right .item ul li {
     text-align: left;
 }
 
+section #index-container .index-top-right #item ul li:hover {
+    background-color: #eee;
+    transition: 500ms;
+}
+
 
 section #index-container .index-middle {
     margin-top: 15px;
     width: 100%;
-    text-align: inherit;
 }
 
 section #index-container .index-middle > div {
     vertical-align: top;
     display: inline-block;
-    width: 32.2%;
+    width: 30%;
     margin: 1px;
+    margin-right: 40px;
+}
+
+section #index-container .index-middle > div:nth-last-child(1) {
+    margin-right: 0;
 }
 
 section #index-container .index-middle > div .top {
@@ -505,6 +516,7 @@ section #index-container .index-middle > div .title {
 
 section #index-container .index-middle > div .content {
     width: 100%;
+    text-align: center;
 }
 
 section #index-container .index-middle > div .content ul {
@@ -514,12 +526,18 @@ section #index-container .index-middle > div .content ul {
 }
 
 section #index-container .index-middle > div .content ul li {
+    cursor: pointer;
     padding-top: 8px;
     font-size: 12px;
     height: 28px;
     border-bottom: 1px solid #eee;
     padding-left: 15px;
     text-align: left;
+}
+
+section #index-container .index-middle > div .content ul li:hover {
+    transition: 500ms;
+    background-color: #eee;
 }
 
 

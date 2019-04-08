@@ -59,6 +59,11 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<CompanyReviewLike> reviewLikeAll(int reviewNo) {
 		return dao.reviewLikeAll(reviewNo);
 	}
+
+	@Override
+	public List<CompanyReview> reviewLatest() {
+		return dao.reviewLatest();
+	}
 	
 	
 

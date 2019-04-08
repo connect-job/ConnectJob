@@ -19,6 +19,8 @@ public class Company {
 	private int companyNewPeople;
 	private int companyOutPeople;
 	private String[] companyLocations;
+	private int reviewCount;
+	private int totalScore;
 	
 	public Company() {
 		// TODO Auto-generated constructor stub
@@ -27,7 +29,7 @@ public class Company {
 	public Company(int companyNo, String companyUpdate, String companyName, int companyZipcode,
 			String companyAddressOld, String companyAddressNew, int companyStatus, int companyCode, String companyCate,
 			String companyRegDate, int companyAllPeople, int companyPrice, int companyNewPeople, int companyOutPeople,
-			String[] companyLocations) {
+			String[] companyLocations, int reviewCount, int totalScore) {
 		super();
 		this.companyNo = companyNo;
 		this.companyUpdate = companyUpdate;
@@ -44,6 +46,8 @@ public class Company {
 		this.companyNewPeople = companyNewPeople;
 		this.companyOutPeople = companyOutPeople;
 		this.companyLocations = companyLocations;
+		this.reviewCount = reviewCount;
+		this.totalScore = totalScore;
 	}
 
 	public int getCompanyNo() {
@@ -166,6 +170,22 @@ public class Company {
 		this.companyLocations = companyLocations;
 	}
 
+	public int getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
+
+	public int getTotalScore() {
+		return totalScore;
+	}
+
+	public void setTotalScore(int totalScore) {
+		this.totalScore = totalScore;
+	}
+
 	@Override
 	public String toString() {
 		return "Company [companyNo=" + companyNo + ", companyUpdate=" + companyUpdate + ", companyName=" + companyName
@@ -174,10 +194,10 @@ public class Company {
 				+ companyCode + ", companyCate=" + companyCate + ", companyRegDate=" + companyRegDate
 				+ ", companyAllPeople=" + companyAllPeople + ", companyPrice=" + companyPrice + ", companyNewPeople="
 				+ companyNewPeople + ", companyOutPeople=" + companyOutPeople + ", companyLocations="
-				+ Arrays.toString(companyLocations) + "]";
+				+ Arrays.toString(companyLocations) + ", reviewCount=" + reviewCount + ", totalScore=" + totalScore
+				+ "]";
 	}
 
-	
 	
 	
 }

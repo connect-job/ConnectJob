@@ -21,16 +21,28 @@
 		</div>
 		<div class="index-top-right">
 			<div class="notice">최근 기업리뷰</div>
-			<div class="item">
-				<ul>
-					<li>리뷰제목 - 2019-04-07</li>
-					<li>리뷰제목 - 2019-04-07</li>
-					<li>리뷰제목 - 2019-04-07</li>
-					<li>리뷰제목 - 2019-04-07</li>
-					<li>리뷰제목 - 2019-04-07</li>
-				</ul>
+
+			<div id="item">
+					<br><Br>
+				<img src="${path}/resources/images/loading.gif" width="20px">
 			</div>
 		</div>
+
+		<script>
+			// 최근 기업리뷰 AJAX
+			var item = $('#item');
+			$.ajax({
+				url: '${path}/review/reviewLatest.do',
+				success: function(data) {
+					var Ca = /\+/g;
+	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+	                item.empty();
+	                console.log(data);
+	                item.html(resultSet);
+				}
+			});
+		</script>
+
 
 		<div class="index-middle">
 			<div class="index-middle-left">
@@ -38,57 +50,71 @@
 					<div class="left">연봉순위 TOP 5</div>
 					<div class="right">국민연금 기준</div>
 				</div>
-				<div class="title">
-					국민연금 기준 예상평균연봉 순위
+				<div class="content" id="salary">
+						<br><Br>
+					<img src="${path}/resources/images/loading.gif" width="20px">
 				</div>
-				<div class="content">
-					<ul>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-					</ul>
-				</div>
+				
+				<script>
+				// 최근 기업리뷰 AJAX
+					var salary = $('#salary');
+					$.ajax({
+						url: '${path}/company/latestSalary.do',
+						success: function(data) {
+							var Ca = /\+/g;
+			                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+			                salary.empty();
+			                salary.html(resultSet);
+						}
+					});
+				</script>
+				
 			</div>
 			<div class="index-middle-center">
 				<div class="top">
 					<div class="left">기업리뷰 TOP 5</div>
-					<div class="right"></div>
+					<div class="right">기업 별 리뷰 많은 순위</div>
 				</div>
-				<div class="title">
-					기업 별 리뷰 많은 순위
+				<div class="content" id="reviews">
+						<br><Br>
+					<img src="${path}/resources/images/loading.gif" width="20px">
 				</div>
-				<div class="content">
-					<ul>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-					</ul>
-				</div>
+				<script>
+				// 최근 기업리뷰 AJAX
+					var reviews = $('#reviews');
+					$.ajax({
+						url: '${path}/company/latestReview.do',
+						success: function(data) {
+							var Ca = /\+/g;
+			                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+			                reviews.empty();
+			                reviews.html(resultSet);
+						}
+					});
+				</script>
 			</div>
 			<div class="index-middle-right">
 				<div class="top">
 					<div class="left">기업평점 TOP 5</div>
 					<div class="right">기업 총 평점 기준</div>
 				</div>
-				<div class="title">
-					기업리뷰의 총 평점 순위
+				<div class="content" id="score">
+					<br><Br>
+					<img src="${path}/resources/images/loading.gif" width="20px">
 				</div>
-				<div class="content">
-					<ul>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-					</ul>
-				</div>
+				<script>
+				// 최근 기업리뷰 AJAX
+					var score = $('#score');
+					$.ajax({
+						url: '${path}/company/latestScore.do',
+						success: function(data) {
+							var Ca = /\+/g;
+			                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+			                score.empty();
+			                score.html(resultSet);
+						}
+					});
+				</script>
 			</div>
 		</div>
 
@@ -146,11 +172,7 @@
 			rollingId = setInterval(function () { rollingStart(); }, 6000);
 			$(this).css("cursor", "default");
 		});
-
 	});
-
-
-
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

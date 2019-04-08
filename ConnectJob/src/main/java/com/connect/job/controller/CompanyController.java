@@ -36,6 +36,88 @@ public class CompanyController {
 	@Autowired
 	private CompanyService service;
 	
+	// 연봉 TOP 5
+	@RequestMapping("company/latestSalary.do")
+	@ResponseBody
+	public String latestSalary(HttpServletRequest request) throws UnsupportedEncodingException {
+		String html = "";
+		
+		List<Company> list = service.latestSalary();
+		
+		html += "<ul>";
+		if(list.size()>6) {
+			for(int i=0; i<6; i++) {
+				html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getCompanyNo() + "'\">";
+				if(list.get(i).getCompanyName().length()>12) {
+					html += (i+1) + "　" +  list.get(i).getCompanyName().substring(0, 13) + "...";		
+				} else {
+					html += (i+1) + "　"+  list.get(i).getCompanyName();
+				}
+				html += "　|　" + list.get(i).getCompanyPrice() +"원</li>";
+			}
+		} else {
+			html += "<li>리스트가 없습니다</li>";
+		}
+		html += "</ul>";
+		
+		String result = URLEncoder.encode(html, "UTF-8");
+		return result;
+	}
+	
+	// 리뷰 TOP 5
+	@RequestMapping("company/latestReview.do")
+	@ResponseBody
+	public String latestReview(HttpServletRequest request) throws UnsupportedEncodingException {
+		String html = "";
+		
+		List<Company> list = service.latestReview();
+		
+		html += "<ul>";
+		if(!list.isEmpty()) {
+			for(int i=0; i<list.size(); i++) {
+				html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getCompanyNo() + "'\">";
+				if(list.get(i).getCompanyName().length()>12) {
+					html += (i+1) + "　"+  list.get(i).getCompanyName().substring(0, 13) + "...</li>";		
+				} else {
+					html += (i+1) + "　"+  list.get(i).getCompanyName() +"</li>";
+				}
+			}
+		} else {
+			html += "<li>리스트가 없습니다</li>";
+		}
+		html += "</ul>";
+		
+		String result = URLEncoder.encode(html, "UTF-8");
+		return result;
+	}
+	
+	// 기업평점 TOP 5
+		@RequestMapping("company/latestScore.do")
+		@ResponseBody
+		public String latestScore(HttpServletRequest request) throws UnsupportedEncodingException {
+			String html = "";
+			
+			List<Company> list = service.latestScore();
+			
+			html += "<ul>";
+			if(!list.isEmpty()) {
+				for(int i=0; i<list.size(); i++) {
+					html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getCompanyNo() + "'\">";
+					if(list.get(i).getCompanyName().length()>12) {
+						html += (i+1) + "　"+ list.get(i).getCompanyName().substring(0, 13) + "...</li>";		
+					} else {
+						html += (i+1) + "　"+ list.get(i).getCompanyName() + "</li>";
+					}
+				}
+			} else {
+				html += "<li>리스트가 없습니다</li>";
+			}
+			html += "</ul>";
+			
+			String result = URLEncoder.encode(html, "UTF-8");
+			return result;
+		}
+	
 	// 기업 리스트 페이지 이동
 	@RequestMapping("company/companyList.do")
 	public String companyList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model) {
@@ -240,8 +322,5 @@ public class CompanyController {
         }
 		return "/";
 	}
-	
-	
-	
 	
 }

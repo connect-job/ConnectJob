@@ -76,6 +76,11 @@ public class ReviewDaoImpl implements ReviewDao {
 		return session.selectList("review.reviewLikeAll", reviewNo);
 	}
 
+	@Override
+	public List<CompanyReview> reviewLatest() {
+		return session.selectList("review.reviewLatest");
+	}
+
 	
 	
 }

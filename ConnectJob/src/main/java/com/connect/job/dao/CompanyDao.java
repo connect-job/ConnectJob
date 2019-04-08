@@ -18,6 +18,8 @@ public interface CompanyDao {
 	CompanyAvgScore selectScore(int no);
 	int searchKeyword(int keyword);
 	List<SearchKeyword> selectKeyword();
-	
+	List<Company> latestSalary();
+	List<Company> latestReview();
+	List<Company> latestScore();
 
 }

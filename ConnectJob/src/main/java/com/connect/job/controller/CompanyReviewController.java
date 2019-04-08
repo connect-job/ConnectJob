@@ -32,6 +32,28 @@ public class CompanyReviewController {
 	@Autowired
 	private ReviewService service;
 	
+	// 최근 리뷰
+	@RequestMapping("review/reviewLatest.do")
+	@ResponseBody
+	public String reviewAll(HttpServletRequest request) throws UnsupportedEncodingException {
+		String html = "";
+		
+		List<CompanyReview> list = service.reviewLatest();
+		
+		html += "<ul>";
+		if(list.size()>5) {
+			for(int i=0; i<5; i++) {
+				html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getReviewCompany() + "'\">·　" + list.get(i).getReviewShort() + "</li>";
+			}
+		} else {
+			html += "<li>등록된 리뷰가 없습니다</li>";
+		}
+		html += "</ul>";
+		
+		String result = URLEncoder.encode(html, "UTF-8");
+		return result;
+	}
+	
 	// 리뷰리스트
 	@RequestMapping("review/review.do")
 	public String reviewList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, CompanyReview review, Model model) {

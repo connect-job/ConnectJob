@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="review">
 
+	<select id="reviewLatest" resultMap="reviewMap">
+		SELECT * FROM COMPANY_REVIEW ORDER BY REVIEW_DATE DESC
+	</select>
+
 	<update id="reviewUpdate" parameterType="review">
 		UPDATE COMPANY_REVIEW SET REVIEW_TOTAL_SCORE = #{reviewTotalScore}, REVIEW_SHORT = #{reviewShort}, REVIEW_MERIT = #{reviewMerit}, REVIEW_DISMERIT = #{reviewDisMerit}, REVIEW_REQUEST = #{reviewRequest}, REVIEW_GRADE_01 = #{reviewGrade01}, REVIEW_GRADE_02 = #{reviewGrade02}, REVIEW_GRADE_03 = #{reviewGrade03}, REVIEW_GRADE_04 = #{reviewGrade04}, REVIEW_GRADE_05 = #{reviewGrade05} WHERE REVIEW_NO = #{reviewNo}
 	</update>
