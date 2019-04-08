@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="resume">
+	<insert id="insertResume" parameterType="resume">
+		INSERT INTO RESUME VALUES(SEQ_RESUME_ID.NEXTVAL,#{pId},#{title},#{name},#{birth},#{gender},#{email},#{phone},#{finalEdu},#{career},#{hopePosition},#{hopeSalary},#{hopeArea, typeHandler=strArr},#{hopeJobArea, typeHandler=strArr},#{hopeCategory, typeHandler=strArr},#{isPublic},DEFAULT,SYSDATE)
+		<selectKey keyProperty="resumeNo" resultType="_int" order="AFTER">SELECT SEQ_RESUME_ID.CURRVAL FROM DUAL</selectKey>
+	</insert>
+	<insert id="insertCareer" parameterType="career">
+		INSERT INTO CAREER VALUES(SEQ_CAREER_ID.NEXTVAL,#{resumeNo},#{careerCName},#{joinDate},#{resignDate},#{companyFlag},#{position},#{job},#{occupation})
+	</insert>
+	<insert id="insertFinalEdu" parameterType="finalEdu">
+		INSERT INTO FINALEDU VALUES(SEQ_FINALEDU_ID.NEXTVAL,#{resumeNo},#{schoolFlag},#{schoolName},#{graduateYear},#{graduateState})
+	</insert>
+	<insert id="insertFinalEduUniv" parameterType="finalEduUniv">
+		INSERT INTO FINALEDU_UNIV VALUES(SEQ_FINALEDU_UNIV_ID.NEXTVAL,#{resumeNo},#{schoolFlag},#{schoolName},#{major},#{secondMajorCategory},#{secondMajor},#{score},#{scoreStandard},#{admissionYM},#{graduationYM},#{graduateState})
+	</insert>
+	
+	<select id="selectResumeList" resultType="resume" resultMap="resumeResultMap">
+		SELECT * FROM RESUME WHERE P_ID=#{pId} AND IS_DELETE='FALSE' ORDER BY RESUME_NO DESC
+	</select>
+	<select id="selectResume" resultType="resume" resultMap="resumeResultMap" parameterType="_int">
+		SELECT * FROM RESUME WHERE RESUME_NO=#{resumeNo}
+	</select>
+	<select id="selectFinalEdu" resultType="finalEdu" resultMap="finalEduMap" parameterType="_int">
+		SELECT * FROM FINALEDU WHERE RESUME_NO=#{resumeNo}
+	</select>
+	<select id="selectFinalEduUniv" resultType="finalEduUniv" resultMap="finalEduUnivMap" parameterType="_int">
+		SELECT * FROM FINALEDU_UNIV WHERE RESUME_NO=#{resumeNo}
+	</select>
+	<select id="selectCareer" resultType="career" resultMap="careerMap" parameterType="_int">
+		SELECT * FROM CAREER WHERE RESUME_NO=#{resumeNo}
+	</select>
+	<select id="selectCntUniv" resultType='_int' parameterType="_int">
+		SELECT COUNT(*) FROM FINALEDU_UNIV WHERE RESUME_NO=#{resumeNo}
+	</select>
+	<select id="selectedFinalEduUnivList" resultType="finalEduUniv" resultMap="finalEduUnivMap" parameterType="_int">
+		SELECT * FROM FINALEDU_UNIV WHERE RESUME_NO=#{resumeNo}
+	</select>
+	<update id="deleteResume" parameterType="_int">
+		UPDATE RESUME SET IS_DELETE='TRUE' WHERE RESUME_NO=#{resumeNo}
+	</update>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<resultMap type="career" id="careerMap">
+		<id property="careerNo" column="career_no"></id>
+		<result property="resumeNo" column="resume_no"/>
+		<result property="careerCName" column="career_c_name"/>	
+		<result property="joinDate" column="join_date"/>	
+		<result property="resignDate" column="resign_date"/>	
+		<result property="companyFlag" column="company_flag"/>
+		<result property="position" column="position"/>	
+		<result property="job" column="job"/>	
+		<result property="occupation" column="occupation"/>	
+
+	</resultMap>
+	
+	<resultMap type="finalEdu" id="finalEduMap">
+		<id property="finalEduNo" column="finaledu_no"></id>
+		<result property="resumeNo" column="resume_no"/>
+		<result property="schoolFlag" column="school_flag"/>
+		<result property="schoolName" column="school_name"/>
+		<result property="graduateYear" column="graduate_year"/>
+		<result property="graduateState" column="graduate_state"/>
+	</resultMap>
+		
+	<resultMap type="finalEduUniv" id="finalEduUnivMap">
+		<id property="finalEduUnivNo" column="finaledu_univ_no"></id>
+		<result property="resumeNo" column="resume_no"/>
+		<result property="schoolFlag" column="school_flag"/>
+		<result property="schoolName" column="school_name"/>
+		<result property="major" column="major"/>
+		<result property="secondMajorCategory" column="second_major_category"/>
+		<result property="secondMajor" column="second_major"/>
+		<result property="score" column="score"/>
+		<result property="scoreStandard" column="score_standard"/>
+		<result property="admissionYM" column="admission_ym"/>
+		<result property="graduationYM" column="graduation_ym"/>
+		<result property="graduateState" column="graduate_state"></result>
+	</resultMap>
+	
+	<resultMap type="resume" id="resumeResultMap">
+		<id property="resumeNo" column="resume_no"></id>
+		<result property="pId" column="p_id"/>
+		<result property="title" column="title"/>
+		<result property="name" column="name"/>
+		<result property="birth" column="birth"/>
+		<result property="gender" column="gender"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="finalEdu" column="final_edu"/>
+		<result property="career" column="career"/>
+		<result property="hopePosition" column="hope_position"/>
+		<result property="hopeSalary" column="hope_salary"/>
+		<result property="hopeArea" column="hope_area" typeHandler="strArr"/>
+		<result property="hopeJobArea" column="hope_job_area" typeHandler="strArr"/>
+		<result property="hopeCategory" column="hope_category" typeHandler="strArr"/>
+		<result property="isPublic" column="is_public"/>
+		<result property="isDelete" column="is_delete"/>
+		<result property="creationDate" column="creation_date"/>
+	</resultMap>
+
+</mapper>
