@@ -3,21 +3,27 @@ package com.connect.job.model.vo;
 import java.util.Arrays;
 
 public class Career {
-	private String[] careerCName;
-	private String[] joinDate;
-	private String[] resignDate;
-	private String[] companyFlag;
-	private String[] position;
-	private String[] job;
-	private String[] occupation;
+	private int careerNo;
+	private int resumeNo;
+	private String careerCName;
+	private String joinDate;
+	private String resignDate;
+	private String companyFlag;
+	private String position;
+	private String job;
+	private String occupation;
 	
 	public Career() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Career(String[] careerCName, String[] joinDate, String[] resignDate, String[] companyFlag, String[] position,
-			String[] job, String[] occupation) {
+
+
+	public Career(int careerNo, int resumeNo, String careerCName, String joinDate, String resignDate,
+			String companyFlag, String position, String job, String occupation) {
 		super();
+		this.careerNo = careerNo;
+		this.resumeNo = resumeNo;
 		this.careerCName = careerCName;
 		this.joinDate = joinDate;
 		this.resignDate = resignDate;
@@ -27,68 +33,92 @@ public class Career {
 		this.occupation = occupation;
 	}
 
-	public String[] getCareerCName() {
+
+
+	public int getCareerNo() {
+		return careerNo;
+	}
+
+
+
+	public void setCareerNo(int careerNo) {
+		this.careerNo = careerNo;
+	}
+
+
+
+	public String getCareerCName() {
 		return careerCName;
 	}
 
-	public void setCareerCName(String[] careerCName) {
+	public void setCareerCName(String careerCName) {
 		this.careerCName = careerCName;
 	}
 
-	public String[] getJoinDate() {
+	public String getJoinDate() {
 		return joinDate;
 	}
 
-	public void setJoinDate(String[] joinDate) {
+	public void setJoinDate(String joinDate) {
 		this.joinDate = joinDate;
 	}
 
-	public String[] getResignDate() {
+	public String getResignDate() {
 		return resignDate;
 	}
 
-	public void setResignDate(String[] resignDate) {
+	public void setResignDate(String resignDate) {
 		this.resignDate = resignDate;
 	}
 
-	public String[] getCompanyFlag() {
+	public String getCompanyFlag() {
 		return companyFlag;
 	}
 
-	public void setCompanyFlag(String[] companyFlag) {
+	public void setCompanyFlag(String companyFlag) {
 		this.companyFlag = companyFlag;
 	}
 
-	public String[] getPosition() {
+	public String getPosition() {
 		return position;
 	}
 
-	public void setPosition(String[] position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 
-	public String[] getJob() {
+	public String getJob() {
 		return job;
 	}
 
-	public void setJob(String[] job) {
+	public void setJob(String job) {
 		this.job = job;
 	}
 
-	public String[] getOccupation() {
+	public String getOccupation() {
 		return occupation;
 	}
 
-	public void setOccupation(String[] occupation) {
+	public void setOccupation(String occupation) {
 		this.occupation = occupation;
 	}
 
+	public int getResumeNo() {
+		return resumeNo;
+	}
+
+	public void setResumeNo(int resumeNo) {
+		this.resumeNo = resumeNo;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Career [careerCName=" + Arrays.toString(careerCName) + ", joinDate=" + Arrays.toString(joinDate)
-				+ ", resignDate=" + Arrays.toString(resignDate) + ", companyFlag=" + Arrays.toString(companyFlag)
-				+ ", position=" + Arrays.toString(position) + ", job=" + Arrays.toString(job) + ", occupation="
-				+ Arrays.toString(occupation) + "]";
+		return "Career [careerNo=" + careerNo + ", resumeNo=" + resumeNo + ", careerCName=" + careerCName
+				+ ", joinDate=" + joinDate + ", resignDate=" + resignDate + ", companyFlag=" + companyFlag
+				+ ", position=" + position + ", job=" + job + ", occupation=" + occupation + "]";
 	}
+	
 	
 }

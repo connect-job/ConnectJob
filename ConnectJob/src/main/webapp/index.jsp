@@ -24,11 +24,12 @@
 					<div id="index-search-result"></div>
 				</div>
 			</div>
-        </div>
+
         <script>
 	        function fn_keywordCheck(no) {
 	    		location.href="${path}/company/companyView.do?no=" + no;
 	    		$('#index-search-result').css("display","none");
+	   
 	    	}
         
         
@@ -66,6 +67,7 @@
         		}) */
         		
         	});
+        	
         	
         </script>
     </section>

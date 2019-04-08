@@ -20,7 +20,33 @@
 				<i class="fas fa-list-ul"></i>　이력서 리스트　　<button onclick="location.href='${path}/resume/insertResume.do'">작성하기</button>
 		</div>
 		<div id="resume-list">
-				작성된 이력서가 없습니다. 첫 번째 이력서를 작성해보세요.
+			<c:choose>
+				<c:when test="${not empty list}">
+				<table>
+						<tr>
+							<th>이력서 제목</th>
+							<th>공개 여부</th>
+							<th>작성 날짜</th>
+							<th>지원 현황</th>
+							<th>열람 기업</th>
+						</tr>
+						<c:forEach items="${list }" var="r">
+							<tr>
+								<td><a href="${path}/resume/resumeView.do?resumeNo=${r.resumeNo}">${r.title }</a></td>
+								<td>${r.isPublic eq 'true'? "공개":"비공개" }</td>
+								<td><fmt:formatDate value="${r.creationDate}" pattern="yyyy-MM-dd"/></td>
+								<td>-</td>
+								<td>-</td>
+							</tr>
+						</c:forEach>
+				</table>
+					
+				</c:when>
+				<c:otherwise>
+					작성된 이력서가 없습니다. 첫 번째 이력서를 작성해보세요.
+				</c:otherwise>
+			</c:choose> 
+			
 		</div>
 	</div>
 </section>

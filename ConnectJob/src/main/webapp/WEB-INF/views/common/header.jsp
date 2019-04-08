@@ -30,9 +30,9 @@
 </head>
 <body>
     <header>
-        <div id="header-container">-
+        <div id="header-container">
         	<div id="header-top">
-        		<ul>-
+        		<ul>
                         <c:if test="${loginMember==null}">
                         	<li onclick="location.href='${path}/member/login.do'">로그인</li>
                         	<li onclick="location.href='${path}/member/memberEnroll.do'">회원가입</li>
@@ -59,6 +59,7 @@
                         <li onclick="location.href='${path}/senierConversation.do'">선배와의대화<div class="menu-line"></div></li>
                         <c:if test="${loginMember!=null}">
                            <li onclick="location.href='${path}/resume.do'">내 이력서<div class="menu-line"></div></li>
+                           <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
                         </c:if>
                     </ul>
                 </div>
