@@ -2,6 +2,7 @@ package com.connect.job.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.connect.job.common.PageBarFactory;
 import com.connect.job.model.vo.Inquiry;
+import com.connect.job.model.vo.Member;
 import com.connect.job.service.HelpService;
 
 @Controller
@@ -44,18 +46,22 @@ public class HelpController {
 	}
 	
 	@RequestMapping("/help/inquiryWriteEnd.do")
-	public String inquiryWriteEnd(Inquiry i, Model model)
+	public String inquiryWriteEnd(Inquiry i, Model model, HttpSession session)
 	{
 		int result=service.insertInquiry(i);
 		
 		String msg="";
 		String loc="/help/myInquiry.do"; //문의리스트시작페이지
-		if(result>0)
+		
+		/*Member m=(Member)session.getAttribute("loginMember");*/
+		
+		
+		if(result>0 /*&& m!=null*/)
 		{
 			msg="문의등록완료";
 			
 		}
-		else
+		else//로그인 안되면 실패
 		{
 			msg="문의등록실패";
 		}
