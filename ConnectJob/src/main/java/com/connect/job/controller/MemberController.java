@@ -140,12 +140,12 @@ public class MemberController {
 	//이메일 보내기
 	/*@ResponseBody*/
 	@RequestMapping("/emailSender")
-	public ModelAndView emailSender(String keyck, String p_id, Model model) {
+	public String emailSender(String keyck, String p_id, Model model) {
 		
 		ModelAndView mv=new ModelAndView();	
 		
 		//이메일 발송
-		try {
+		/*try {
 			MailHandler sendMail=new MailHandler(sender);				
 			sendMail.setSubject("[ConnectJob] 이메일 인증"); //제목				
 			sendMail.setText(new StringBuffer()
@@ -162,15 +162,15 @@ public class MemberController {
 		
 		}catch (Exception e) {
 			e.printStackTrace();
-		}
-		
+		}*/
+	/*	
 		mv.addObject("keyck", keyck);
 		mv.addObject("p_id", p_id);
-		mv.setViewName("member/memberEnrollForm");
+		mv.setViewName("member/memberEnrollForm");*/
 		
-		/*model.addAttribute("keyck", keyck);
-		model.addAttribute("p_id", p_id);*/
-		return mv;
+		model.addAttribute("keyck", keyck);
+		model.addAttribute("p_id", p_id);
+		return "member/memberEnrollForm";
 		
 	}
 	
@@ -372,6 +372,40 @@ public class MemberController {
 		if(count==0) {result="0";}
 		else {result="1";}		
 		return result;
+	}
+	
+	
+	@RequestMapping("/member/findPw")
+	public String findPw(Member m, Model model) {		
+		
+		Member result=service.findPw(m);
+	
+		System.out.println(result);
+		
+		String msg="";
+		
+		if(result!=null) {
+			try {
+				MailHandler sendMail=new MailHandler(sender);				
+				sendMail.setSubject("[ConnectJob] 이메일 인증"); //제목				
+				sendMail.setText(new StringBuffer()
+								.append("[ConnectJob]비밀번호 변경<br>")					
+								.append("<a href='http://localhost:9090/job/member/changePw'> 비밀번호 변경 </a>")
+								.toString()); //내용				
+				sendMail.setFrom("jiany811@gmail.com", "ConnectJob"); //보내는 사람				
+				sendMail.setTo(result.getP_id()); //받는 사람				
+				sendMail.send();			
+				
+			
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else {
+			msg="값 없음";
+		}
+		
+		
+		return "common/msg";
 	}
 	
 }

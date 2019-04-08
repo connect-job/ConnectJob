@@ -1,12 +1,21 @@
 package com.connect.job.controller;
 
+import java.net.ResponseCache;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.connect.job.common.PageBarFactory;
 import com.connect.job.model.vo.Notice;
 import com.connect.job.service.NoticeService;
 
@@ -18,13 +27,20 @@ public class NoticeController {
 	
 	//공지사항 페이지 이동
 	@RequestMapping("/notice.do")
-	public String selectNoticeList(Model model) {
+	public ModelAndView selectNoticeList(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage, Model model) {
 		
-		List<Notice> list=service.selectList();
-		model.addAttribute("list", list);
-		System.out.println(list);
+		int numPerPage=10;
+		ModelAndView mv=new ModelAndView();
+		List<Notice> list=service.selectList(cPage,numPerPage);
+		int totalList=service.selectCount();
 		
-		return "notice/notice";
+		mv.addObject("list",list);
+		mv.addObject("totalList",totalList);
+		mv.addObject("pageBar",PageBarFactory.getPageBar(totalList,cPage,numPerPage));
+		
+		mv.setViewName("/notice/notice");
+		
+		return mv;
 	}
 	
 	//공지사항 글쓰기 페이지 이동
@@ -59,10 +75,35 @@ public class NoticeController {
 	
 	//공지사항 view 이동
 	@RequestMapping("/notice/noticeView")
-	public String noticeView(int notice_no, Model model) {
+	public String noticeView(int notice_no, Model model, HttpServletRequest request, HttpServletResponse response) {	
 		
-		Notice result=service.selectOne(notice_no);
+		Cookie cookie[]=request.getCookies();
+		String boardCookie="";
+		boolean hasRead=false;
 		
+		if(cookie!=null) {
+			output :
+			for(Cookie c : cookie) {
+				String name=c.getName();
+				String value=c.getValue();
+				
+				if("boardCookie".equals(name)) {
+					boardCookie=value;
+					if(value.contains("|" + notice_no + "|")) {
+						hasRead=true;
+						break output;
+					}
+				}
+			}
+		}
+		
+		if(!hasRead) {
+			Cookie c=new Cookie("boardCookie", boardCookie+"|"+notice_no+"|");
+			c.setMaxAge(-1);
+			response.addCookie(c);
+		}
+		
+		Notice result=service.selectOne(notice_no, hasRead);
 		model.addAttribute("notice", result);
 		
 		return "notice/noticeView";
@@ -117,5 +158,7 @@ public class NoticeController {
 		
 		return "common/msg";
 	}
+	
+	
 	
 }

@@ -8,12 +8,16 @@ public interface NoticeService {
 
 	int insertNotice(Notice n);
 
-	List<Notice> selectList();
+	List<Notice> selectList(int cPage, int numPerPage);
 
 	Notice selectOne(int notice_no);
 
 	int deleteNotice(int notice_no);
 
 	int updateNotice(Notice n);
+
+	int selectCount();
+
+	Notice selectOne(int notice_no, boolean hasRead);
 	
 }

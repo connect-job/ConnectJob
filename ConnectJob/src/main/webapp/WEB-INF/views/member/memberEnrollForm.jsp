@@ -152,16 +152,16 @@ $(document).ready(function(){
 			url:'${path}/emailSender?p_id='+p_id, //이메일 보내기 
 			success:function(data){
 				
-				/* window.open('${path}/member/emailForm?keyck='+keyck, '', 'width=300, height=300'); */
+				window.open('${path}/member/emailForm?keyck='+keyck, '', 'width=500, height=200');
 				
-				$('#key').blur(function(){
+				/* $('#key').blur(function(){
 					if(key!=keyck){					
 						console.log("인증번호 불일치");						
 					}else{
 						
 						console.log("인증번호 일치");
 					} 
-				});
+				}); */
 				
 				console.log(keyck);
 			},
@@ -200,13 +200,20 @@ $(function(){
 		var pw1=$('#pw1').val();
 		var pw2=$('#pw2').val();		
 		var result=document.getElementById("password_result");		
-		
+		$("#pw-result-div").show();
 		if(pw1.trim()!=pw2.trim()){
-			$('#password_result').html("비밀번호가 일치하지 않습니다.").css('color', 'red');			
-		}else{
-			$('#password_result').html("비밀번호가 일치합니다.").css('color', 'green');						
+			$('#password_result').html("비밀번호가 일치하지 않습니다.").css('color', 'red');
+			/* alert("비밀번호가 일치하지 않습니다."); */
+			return false;
 		}
-		$("#pw-result-div").show();		
+		if(pw1.trim().length<8){
+			/* $('#pw_validate').html("비밀번호는 8자리 이상 20자리 이하로 입력해주세요.").css('color', 'red'); */
+			alert("비밀번호는 8자리 이상 20자리 이하로 입력해주세요.");
+			return false;
+		}
+		
+		return true;
+		
 	});
 });
 

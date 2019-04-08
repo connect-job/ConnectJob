@@ -16,12 +16,16 @@
 	</insert>
 	
 	<select id="selectList" resultType="notice">
-		select * from notice order by notice_date desc
-	</select>
+  		select A.*,(select count(*) from notice where A.notice_no=notice_no) from notice A order by notice_date desc
+  	</select>
 	
 	<select id="selectOne" resultMap="noticeResult" parameterType="_int">
 		select * from notice where notice_no=#{notice_no}
 	</select>
+	
+	<update id="updateCount" parameterType="member">
+		update notice set read_count=read_count+1 where notice_no=#{notice_no}
+	</update>
 	
 	<delete id="deleteNotice" parameterType="notice">
 		delete from notice where notice_no=#{notice_no}
@@ -30,4 +34,10 @@
 	<update id="updateNotice" parameterType="notice">
 		update notice set title=#{title}, content=#{content} where notice_no=#{notice_no}
 	</update>
+	
+	<select id="selectCount" resultType="_int">
+		select count(*) from notice
+	</select>
+	
+	
 </mapper>

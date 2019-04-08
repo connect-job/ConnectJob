@@ -50,13 +50,18 @@
          		</tr>
          	</c:forEach>
          
-	</table>        
+	</table> 
+	
+	<div id="paging-container"> 
+		${pageBar }             
+   	</div>
+   	       
    	<div>       
         <select id="searchType">
             <option value="title">제목</option>
             <option value="content">내용</option>                
         </select>            
-		<div>
+		<div id="search-text">
         	<form>
         		<input type="hidden" name="searchType" value="title"/>            		
             	<input type="hidden" name="cPage"/>
@@ -76,8 +81,6 @@
 		</div>           	               
 	</div> 
               
-	<div id="paging-container"> 
-		<ul></ul>             
-   	</div>
+	
 </section>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

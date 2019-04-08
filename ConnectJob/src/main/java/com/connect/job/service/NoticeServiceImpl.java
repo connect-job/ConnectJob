@@ -21,9 +21,9 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public List<Notice> selectList() {
+	public List<Notice> selectList(int cPage, int numPerPage) {
 		// TODO Auto-generated method stub
-		return dao.selectList();
+		return dao.selectList(cPage, numPerPage);
 	}
 
 	@Override
@@ -43,6 +43,23 @@ public class NoticeServiceImpl implements NoticeService {
 		// TODO Auto-generated method stub
 		return dao.updateNotice(n);
 	}
+
+	@Override
+	public int selectCount() {
+		// TODO Auto-generated method stub
+		return dao.selectCount();
+	}
+
+	@Override
+	public Notice selectOne(int notice_no, boolean hasRead) {
+		
+		if(notice_no!=0 && !hasRead) {
+			int result=dao.updateCount(notice_no);			
+		}
+		return dao.selectOne(notice_no, hasRead);
+	}
+
+	
 	
 	
 	

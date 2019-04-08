@@ -84,6 +84,14 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return session.update("member.emailConfirm", m);
 	}
+
+	@Override
+	public Member findPw(Member m) {
+		// TODO Auto-generated method stub
+		
+		
+		return session.selectOne("member.findPw", m);
+	}
 	
 	
 }

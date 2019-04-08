@@ -29,12 +29,12 @@
 <script type="text/javascript">
 
 function checkEmail(){
-	var frm=opener.document.memberEnrollFrm;	
+	/* var frm=opener.document.memberEnrollFrm; */	
 	var inputKey = $('#key').val().trim();
 	var randomKey = $('#randomKey').val().trim();
 	if(inputKey!=randomKey)	{
 		alert('인증번호가 일치하지 않습니다.');
-		return;
+		return false;
 	}else{
 		alert('이메일 인증 완료!');
 		self.close();

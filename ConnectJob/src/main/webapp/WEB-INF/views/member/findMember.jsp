@@ -29,18 +29,22 @@
 			<caption>PW찾기</caption>
 			<tr>
 				<td>아이디</td>
-				<td><input type="email" name="p_id"/></td>
+				<td><input type="email" name="p_id" id="p_id"/></td>
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td><input type="phone" name="phone"/></td>
+				<td><input type="phone" name="phone" id="phone"/></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="PW찾기"/></td>				
+				<td colspan="2"><input type="submit" value="PW찾기" id="findPw"/></td>				
 			</tr>
 		</table>
 	</form>
 </section>
+
+<script type="text/javascript">
+
+</script>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 

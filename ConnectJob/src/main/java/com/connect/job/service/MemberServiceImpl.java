@@ -25,9 +25,7 @@ public class MemberServiceImpl implements MemberService{
 	public int insertMember(Member m){	
 		
 		return dao.insertMember(m);
-	}
-	
-	
+	}	
 
 	@Override
 	public int insertMemberKakao(Member m) {
@@ -35,14 +33,11 @@ public class MemberServiceImpl implements MemberService{
 		return dao.insertMemberKakao(m);
 	}
 
-
-
 	@Override
 	public Member selectOne(Member m) {
 		
 		return dao.selectOne(m);
 	}
-
 
 	@Override
 	public Member findId(Member m) {
@@ -86,12 +81,16 @@ public class MemberServiceImpl implements MemberService{
 		return dao.emailConfirm(m);
 	}
 
-
-
 	@Override
 	public int selectCount(String p_id) {
 		// TODO Auto-generated method stub
 		return dao.selectCount(p_id);
+	}
+
+	@Override
+	public Member findPw(Member m) {
+		// TODO Auto-generated method stub
+		return dao.findPw(m);
 	}
 	
 	

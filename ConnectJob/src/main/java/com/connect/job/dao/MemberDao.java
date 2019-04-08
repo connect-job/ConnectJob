@@ -19,6 +19,7 @@ public interface MemberDao {
 	int insertMemberKakao(Member m);
 	int emailConfirm(Member m);
 	int selectCount(String p_id);
+	Member findPw(Member m);
 	
 
 }
