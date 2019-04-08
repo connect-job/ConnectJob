@@ -19,23 +19,32 @@
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="p_id" autocomplete="off" />
-						<div id="checkMsg"></div>
-						<input type="button" value="중복확인" id="idck"/>
-						
-					</div>
+						<input type="email" name="p_id" id="p_id" autocomplete="off" />																					
+					</div>					
 				</div>
+				
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
-					<div class="right"><input type="password" name="password2" id="pw1" onkeyup="verify.check()" required/><span>영.숫자 포함 8글자 이상 작성</span></div>
+					<div class="right">
+						<input type="password" name="password" id="pw1" required/>
+						<span>영.숫자 포함 8글자 이상 작성</span>
+					</div>
 				</div>
+				
 				<div class="enroll-item">
 					<div class="left">비밀번호 확인</div>
 					<div class="right">
-						<input type="password" name="password" id="pw2" onkeyup="verify.check()" required />
-						<span id="password_result"></span>
+						<input type="password" name="password2" id="pw2" required />						
 					</div>
 				</div>
+				
+				<div class="enroll-item" id="pw-result-div">
+					<div class="left"></div>
+					<div class="right">						
+						<span id="password_result"></span>						
+					</div>					
+				</div>
+					
 				<div class="enroll-item msgdiv">
 					<div class="left">이름</div>
 					<div class="right">
@@ -57,7 +66,7 @@
 				</div>
 				<div class="enroll-item">
 					<div class="left">최종학력</div>
-					<div class="right"><input type="text" name="finalEdu" autocomplete="off" /></div>
+					<div class="right"><input type="text" name="final_edu" autocomplete="off" /></div>
 				</div>
 				<div class="enroll-item">
 					<div class="left">학교</div>
@@ -98,118 +107,46 @@
 
 <script type="text/javascript">
 
-	$(document).ready(function(){
-		$('#idck').onc('click', function(){
-			$.ajax({
-				type:'POST',
-				url: '/member/checkId',
-				data{"p_id":$('#p_id').val();},
-				success:function(data){
-					if($.trim(data)==0){
-						$('#check').html('<p style="color:green">이 아이디는 사용 가능합니다.</p>')
-					}else{
-						$('#checkMsg').html('<p style="color:red">이 아이디는 사용 불가능합니다.</p>')
-					}
+//아이디 중복체크
+$(document).ready(function(){	
+	$('#p_id').blur(function(){		
+		var p_id=$('#p_id').val();							
+		$.ajax({
+			type:"POST",
+			url: "${path}/member/checkId?p_id="+p_id,
+			success:function(result){
+				$("#id-result-div").show();
+				if(result!=0){							
+					$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');					
+				}else{							
+					$("#id_result").html("사용 가능한 아이디입니다.").css('color', 'green');					
 				}
-				
-			});
+			},error:function(error){
+				$("#id_result").html("error");
+			}
 		});
 	});
-	
-	
-	function verifynotify(field1, field2, result_id, match_html, nomatch_html) {
-		this.field1 = field1;
-		this.field2 = field2;
-		this.result_id = result_id;
-		this.match_html = match_html;
-		this.nomatch_html = nomatch_html;
+});
 
-		this.check = function () {
-			if (!this.result_id) { return false; }
-			if (!document.getElementById) { return false; }
-			r = document.getElementById(this.result_id);
-			if (!r) { return false; }
-
-			if (this.field1.value != "" && this.field1.value == this.field2.value) {
-				r.innerHTML = this.match_html;
-			} else {
-				r.innerHTML = this.nomatch_html;
-			}
+//비밀번호 일치
+ $(function(){
+	$("input[type=password]").blur(function(){
+		var pw1=$('#pw1').val();
+		var pw2=$('#pw2').val();		
+		var result=document.getElementById("password_result");
+		
+		if(pw1.trim()!=pw2.trim()){
+			$('#password_result').html("비밀번호가 일치하지 않습니다.");
+			result.style.color="red";
+			
+		}else{
+			$('#password_result').html("비밀번호가 일치합니다.");
+			result.style.color="green";				
 		}
-	}
-
-	function verifyInput() {
-		verify = new verifynotify();
-		verify.field1 = document.memberEnrollFrm.password;
-		verify.field2 = document.memberEnrollFrm.password2;
-		verify.result_id = "password_result";
-		verify.match_html = "<span style=\"color:green\">비밀번호가 일치합니다.<\/span>";
-		verify.nomatch_html = "<span style=\"color:red\">비밀번호가 일치하지않습니다.<\/span>";
-
-		// Update the result message
-		verify.check();
-	}
-
-	function addLoadEvent(func) {
-		var oldonload = window.onload;
-		if (typeof window.onload != 'function') {
-			window.onload = func;
-		} else {
-			window.onload = function () {
-				if (oldonload) {
-					oldonload();
-				}
-				func();
-			}
-		}
-	}
-
-	addLoadEvent(function () {
-		verifyInput();
+		$("#pw-result-div").show();
 	});
+});
 
-
-	// 최소길이 & 최대길이 제한
-	var minimum = 8;
-	var maximun = 12;
-
-	function chkPw(obj, viewObj) {
-		var paramVal = obj.value;
-		var msg = chkPwLength(obj);
-		if (msg == "") msg = "안전한 비밀번호 입니다.";
-
-		document.getElementById(viewObj).innerHTML = msg;
-	}
-
-	// 글자 갯수 제한
-	function chkPwLength(paramObj) {
-		var msg = "";
-		var paramCnt = paramObj.value.length;
-
-		if (paramCnt < minimum) {
-			msg = "최소 암호 글자수는 <b>" + minimum + "</b> 입니다.";
-		} else if (paramCnt > maximun) {
-			msg = "최대 암호 글자수는 <b>" + maximun + "</b> 입니다.";
-		} else {
-			msg = chkPwNumber(paramObj);
-		}
-
-		return msg;
-	}
-
-	//비밀번호 유효성 검사
-	function chkPwNumber(paramObj) {
-		var msg = "";
-		// if(!paramObj.value.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/))
-		if (!paramObj.value.match(/([a-zA-Z0-9])|([a-zA-Z0-9])/)) {
-			// msg = "비밀번호는 영어, 숫자, 특수문자의 조합으로 6~16자리로 입력해주세요.";
-			msg = "비밀번호는 영어, 숫자의 조합으로 6~16자리로 입력해주세요.";
-		} else {
-			msg = chkPwContinuity(paramObj);
-		}
-
-		return msg;
-	}
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

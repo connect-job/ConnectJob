@@ -138,15 +138,11 @@ public class MemberController {
 	//이메일 보내기
 	/*@ResponseBody*/
 	@RequestMapping("/emailSender")
-	public String emailSender(String keyck, String p_id, Model model) {
+	public ModelAndView emailSender(String keyck, String p_id, Model model) {
 		
-		/*ModelAndView mv=new ModelAndView();
-		TempKey tempKey=new TempKey();
+		ModelAndView mv=new ModelAndView();	
 		
-		String key=tempKey.getKey(6, false); //인증번호 생성		
-		m.setEmail_confirm(key);	*/	
-		
-		/*//이메일 발송
+		//이메일 발송
 		try {
 			MailHandler sendMail=new MailHandler(sender);				
 			sendMail.setSubject("[ConnectJob] 이메일 인증"); //제목				
@@ -165,13 +161,14 @@ public class MemberController {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		*/
-		/*mv.addObject("key", key);*/
-		/*mv.setViewName("member/memberEnrollForm");*/
 		
-		model.addAttribute("keyck", keyck);
-		model.addAttribute("p_id", p_id);
-		return "member/memberEnrollForm";
+		mv.addObject("keyck", keyck);
+		mv.addObject("p_id", p_id);
+		mv.setViewName("member/memberEnrollForm");
+		
+		/*model.addAttribute("keyck", keyck);
+		model.addAttribute("p_id", p_id);*/
+		return mv;
 		
 	}
 	
@@ -370,13 +367,8 @@ public class MemberController {
 		
 		int count=service.selectCount(p_id);
 		String result="";
-		if(count==0) {
-			result="0";
-		}else {
-			result="1";
-		}
-		System.out.println(result);
-		
+		if(count==0) {result="0";}
+		else {result="1";}		
 		return result;
 	}
 	

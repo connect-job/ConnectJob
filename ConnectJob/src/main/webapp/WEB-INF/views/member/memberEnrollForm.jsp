@@ -10,9 +10,8 @@
 	String key=tempkey.getKey(6, false);
 %>
 <style>
-	div#id-result-div{	
-		display: none;
-	}
+	div#id-result-div{display: none;}
+	div#pw-result-div{display: none;}
 </style>
 <section>
 	<div id="enroll-container">
@@ -29,10 +28,8 @@
 					<div class="left">아이디</div>
 					<div class="right">
 						<input type="email" name="p_id" id="p_id" autocomplete="off" />						
-						<!-- <input type="button" value="중복확인" id="idck"/> -->
 						<input type="hidden" name="key" id="keyck" value="<%=key %>" autocomplete="off"/>						
-						<input type="button" value="인증번호 전송" id="emailSender"/>
-																
+						<input type="button" value="인증번호 전송" id="emailSender"/>																
 					</div>					
 				</div>
 				
@@ -54,9 +51,15 @@
 				<div class="enroll-item">
 					<div class="left">비밀번호 확인</div>
 					<div class="right">
-						<input type="password" name="password2" id="pw2" required />
-						<span id="password_result"></span>
+						<input type="password" name="password2" id="pw2" required />						
 					</div>
+				</div>
+				
+				<div class="enroll-item" id="pw-result-div">
+					<div class="left"></div>
+					<div class="right">						
+						<span id="password_result"></span>						
+					</div>					
 				</div>	
 							
 				<div class="enroll-item msgdiv">
@@ -83,7 +86,7 @@
 				
 				<div class="enroll-item">
 					<div class="left">최종학력</div>
-					<div class="right"><input type="text" name="finalEdu" autocomplete="off" /></div>
+					<div class="right"><input type="text" name="final_edu" autocomplete="off" /></div>
 				</div>
 				
 				<div class="enroll-item">
@@ -134,24 +137,23 @@ $(document).ready(function(){
 		
 		var p_id=$('#p_id').val();
 		var keyck=$('#keyck').val();
-		var key=$('#key').val();
+		/* var key=$('#key').val(); */
 		
 		$.ajax({
 			type:'POST',
-			url:'${path}/emailSender', //이메일 보내기 
-			data: {"keyck":keyck, "p_id":p_id},
+			url:'${path}/emailSender?p_id='+p_id, //이메일 보내기 
 			success:function(data){
 				
-				window.open('${path}/member/emailForm?keyck='+keyck, '', 'width=300, height=300');
+				/* window.open('${path}/member/emailForm?keyck='+keyck, '', 'width=300, height=300'); */
 				
-				/* $('#key').keyup(function(){
+				$('#key').blur(function(){
 					if(key!=keyck){					
 						console.log("인증번호 불일치");						
 					}else{
 						
 						console.log("인증번호 일치");
 					} 
-				}); */
+				});
 				
 				console.log(keyck);
 			},
@@ -173,11 +175,9 @@ $(document).ready(function(){
 			success:function(result){
 				$("#id-result-div").show();
 				if(result!=0){							
-					$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');
-					
+					$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');					
 				}else{							
-					$("#id_result").html("사용 가능한 아이디입니다.").css('color', 'green');
-					
+					$("#id_result").html("사용 가능한 아이디입니다.").css('color', 'green');					
 				}
 			},error:function(error){
 				$("#id_result").html("error");
@@ -192,16 +192,16 @@ $(document).ready(function(){
 		var pw1=$('#pw1').val();
 		var pw2=$('#pw2').val();		
 		var result=document.getElementById("password_result");
+		
 		if(pw1.trim()!=pw2.trim()){
 			$('#password_result').html("비밀번호가 일치하지 않습니다.");
 			result.style.color="red";
 			
 		}else{
 			$('#password_result').html("비밀번호가 일치합니다.");
-			result.style.color="green";
-				
+			result.style.color="green";				
 		}
-			
+		$("#pw-result-div").show();
 	});
 });
 
