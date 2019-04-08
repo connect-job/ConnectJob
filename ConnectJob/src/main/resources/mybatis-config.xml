@@ -14,6 +14,7 @@
 		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>
 		<typeAlias type="com.connect.job.model.vo.Scomment" alias="scomment"/>
 		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="handler"/>
+		<typeAlias type="com.connect.job.model.vo.Inquiry" alias="inquiry"/>
 	</typeAliases>
 	
 	 
