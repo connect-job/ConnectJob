@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 public class Resume {
-	private String pId;
+	private String p_id;
 	private int resumeNo;
 	private String title;
 	private String name;
@@ -28,11 +28,11 @@ public class Resume {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Resume(String pId, int resumeNo, String title, String name, String birth, String gender, String email,
+	public Resume(String p_id, int resumeNo, String title, String name, String birth, String gender, String email,
 			String phone, String finalEdu, String career, String hopePosition, String hopeSalary, String[] hopeArea,
 			String[] hopeJobArea, String[] hopeCategory, String isPublic, String isDelete, Date creationDate) {
 		super();
-		this.pId = pId;
+		this.p_id = p_id;
 		this.resumeNo = resumeNo;
 		this.title = title;
 		this.name = name;
@@ -52,12 +52,12 @@ public class Resume {
 		this.creationDate = creationDate;
 	}
 
-	public String getpId() {
-		return pId;
+	public String getP_id() {
+		return p_id;
 	}
 
-	public void setpId(String pId) {
-		this.pId = pId;
+	public void setP_id(String p_id) {
+		this.p_id = p_id;
 	}
 
 	public int getResumeNo() {
@@ -198,15 +198,13 @@ public class Resume {
 
 	@Override
 	public String toString() {
-		return "Resume [pId=" + pId + ", resumeNo=" + resumeNo + ", title=" + title + ", name=" + name + ", birth="
+		return "Resume [p_id=" + p_id + ", resumeNo=" + resumeNo + ", title=" + title + ", name=" + name + ", birth="
 				+ birth + ", gender=" + gender + ", email=" + email + ", phone=" + phone + ", finalEdu=" + finalEdu
 				+ ", career=" + career + ", hopePosition=" + hopePosition + ", hopeSalary=" + hopeSalary + ", hopeArea="
 				+ Arrays.toString(hopeArea) + ", hopeJobArea=" + Arrays.toString(hopeJobArea) + ", hopeCategory="
 				+ Arrays.toString(hopeCategory) + ", isPublic=" + isPublic + ", isDelete=" + isDelete
 				+ ", creationDate=" + creationDate + "]";
 	}
-
-	
 
 	
 	

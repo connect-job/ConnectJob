@@ -147,15 +147,8 @@ header  #header-top .top-container .header-top-center {
     padding-top: 15px;
     vertical-align: top;
     display: inline-block;
-<<<<<<< HEAD
-   border: 2px solid #fff;
-   padding-left: 12px;
-    width: 158px;
-    height: 32px;
-=======
     width: 400px;
     text-align: center;
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 }
 
 
@@ -176,12 +169,6 @@ header #header-top .top-container .header-top-center .header-search input {
     padding-left: 15px;
 }
 
-<<<<<<< HEAD
-header #header-container #logo .logo-text a {
-   color: #fff;
-    font-weight: 300;
-    font-size: 22px;
-=======
 header #header-top .top-container .header-top-center #header-search-result {
     display: none;
     position: absolute;
@@ -264,19 +251,11 @@ header  #header-top .top-container .header-top-right #popular-keyword #popular-c
 
 /* 헤더 - 중간 */
 
-<<<<<<< HEAD
-header #header-container #header-menu {
-   margin-top: 7px;
-    width: 990px;
-    height: 40px;
-    font-size: 14px;
-=======
 header #header-menu {
     width: 100%;
     height: 42px;
     border-bottom: 1px solid #eee;
     text-align: center;
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 } 
 
 header  #header-menu .menu-container {
@@ -303,15 +282,6 @@ header  #header-menu .menu-container .menu-left ul li {
     font-size: 13px;
 }
 
-<<<<<<< HEAD
-header #header-container #header-menu .menu-left ul li .menu-line {
-   margin-top: 5px;
-   transition: 600ms;
-   width: 0%;
-   height: 2px;
-   background-color: #fff;
-=======
-
 header  #header-menu .menu-container .menu-left ul li .menu-line {
 	margin-top: 5px;
 	transition: 600ms;
@@ -319,7 +289,6 @@ header  #header-menu .menu-container .menu-left ul li .menu-line {
     bottom: 0;
 	height: 4px;
 	background-color: #404861;
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 }
 
 header  #header-menu .menu-container .menu-left ul li:hover .menu-line {
@@ -464,30 +433,9 @@ section #index-container .index-top-right .notice {
 }
 
 
-<<<<<<< HEAD
-section #index-container .index #index-search-result ul {
-   padding: 0;
-   margin: 0;
-   list-style: none;
-}
-
-section #index-container .index #index-search-result ul li {
-   transition: 600ms;
-   background-color: #333941d2;
-   text-align: left;
-   color: #fff;
-    height: 30px;
-=======
 section #index-container .index-top-right .item {
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
     font-size: 12px;
-<<<<<<< HEAD
-   padding-top: 12px;
-   padding-left: 15px;
-   border-bottom: 1px solid #ffffff54;
-=======
     width: 100%;
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 }
 
 section #index-container .index-top-right .item ul {
@@ -578,16 +526,11 @@ section #index-container .index-middle > div .content ul li {
 /* ----------------------------------------------------------------------- 로그인 */
 
 section #login-container {
-<<<<<<< HEAD
-   display: inline-block;
-   width: 990px;
-=======
 	display: inline-block;
     width: 990px;
     text-align: center;
     padding-top: 40px;
     padding-bottom: 50px;
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 }
 
 section #login-container ul {
@@ -760,22 +703,13 @@ section #login-container table {
 /* ----------------------------------------------------------------------- 회원가입 */
 
 section #enroll-container {
-<<<<<<< HEAD
-   display: inline-block;
-   width: 990px;
-=======
 	display: inline-block;
     width: 990px;
     text-align: center;
     padding-top: 30px;
     padding-bottom: 50px;
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 }
 
-<<<<<<< HEAD
-section #enroll-container table {
-   display: inline-block;
-=======
 section #enroll-container .title {
     display: inline-block;
     width:650px;
@@ -943,7 +877,6 @@ section #enroll-container #memberEnroll .enroll-text-end input {
     color: #fff;
     border: none;
     margin: 10px;
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 }
 
 /* ---------------------------------------------------------------------  캘린더 */
@@ -1548,8 +1481,6 @@ section #company-view-container #company-view-content .view-right #right-company
     padding-bottom: 15px;
 }
 
-<<<<<<< HEAD
-=======
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right .review-like {
     width: 100%;
     font-size: 13px;
@@ -1559,9 +1490,6 @@ section #company-view-container #company-view-content .view-right #right-company
     text-align: center;
 }
 
-
-
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 section #company-view-container #company-view-content .view-right #right-company-review .review-bottom {
     border-top: 1px solid #cfcfcf;
     padding-top: 13px;

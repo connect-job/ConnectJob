@@ -11,14 +11,13 @@
 		<typeAlias type="com.connect.job.model.vo.CompanyReviewLike" alias="reviewlike"/>
 		<typeAlias type="com.connect.job.model.vo.CompanyAvgScore" alias="score"/>
 		<typeAlias type="com.connect.job.model.vo.Senier" alias="senier"/>
-		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>-
+		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>
 		<typeAlias type="com.connect.job.model.vo.Resume" alias="resume"/>
 		<typeAlias type="com.connect.job.model.vo.FinalEdu" alias="finalEdu"/>
-		<typeAlias type="com.connect.job.model.vo.FinalEduUniv" alias="finalEduUniv"></typeAlias>
-		<typeAlias type="com.connect.job.model.vo.Career" alias="career"/>-
-		<typeAlias type="com.connect.job.model.vo.Scomment" alias="scomment"/>-
+		<typeAlias type="com.connect.job.model.vo.FinalEduUniv" alias="finalEduUniv"/>
+		<typeAlias type="com.connect.job.model.vo.Career" alias="career"/>
+		<typeAlias type="com.connect.job.model.vo.Scomment" alias="scomment"/>
 	</typeAliases>
-	
 	 
 </configuration>
 

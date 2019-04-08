@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="resume">
 	<insert id="insertResume" parameterType="resume">
-		INSERT INTO RESUME VALUES(SEQ_RESUME_ID.NEXTVAL,#{pId},#{title},#{name},#{birth},#{gender},#{email},#{phone},#{finalEdu},#{career},#{hopePosition},#{hopeSalary},#{hopeArea, typeHandler=strArr},#{hopeJobArea, typeHandler=strArr},#{hopeCategory, typeHandler=strArr},#{isPublic},DEFAULT,SYSDATE)
+		INSERT INTO RESUME VALUES(SEQ_RESUME_ID.NEXTVAL,#{p_id},#{title},#{name},#{birth},#{gender},#{email},#{phone},#{finalEdu},#{career},#{hopePosition},#{hopeSalary},#{hopeArea, typeHandler=strArr},#{hopeJobArea, typeHandler=strArr},#{hopeCategory, typeHandler=strArr},#{isPublic},DEFAULT,SYSDATE)
 		<selectKey keyProperty="resumeNo" resultType="_int" order="AFTER">SELECT SEQ_RESUME_ID.CURRVAL FROM DUAL</selectKey>
 	</insert>
 	<insert id="insertCareer" parameterType="career">
@@ -16,7 +16,7 @@
 	</insert>
 	
 	<select id="selectResumeList" resultType="resume" resultMap="resumeResultMap">
-		SELECT * FROM RESUME WHERE P_ID=#{pId} AND IS_DELETE='FALSE' ORDER BY RESUME_NO DESC
+		SELECT * FROM RESUME WHERE P_ID=#{p_id} AND IS_DELETE='FALSE' ORDER BY RESUME_NO DESC
 	</select>
 	<select id="selectResume" resultType="resume" resultMap="resumeResultMap" parameterType="_int">
 		SELECT * FROM RESUME WHERE RESUME_NO=#{resumeNo}
@@ -92,7 +92,7 @@
 	
 	<resultMap type="resume" id="resumeResultMap">
 		<id property="resumeNo" column="resume_no"></id>
-		<result property="pId" column="p_id"/>
+		<result property="p_id" column="p_id"/>
 		<result property="title" column="title"/>
 		<result property="name" column="name"/>
 		<result property="birth" column="birth"/>

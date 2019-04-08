@@ -107,7 +107,7 @@ if (ua.indexOf("MSIE") > -1) {
 			 <input id='up_file' type="file" name="up_file" multiple />
 		</div>
 		<div class="item">
-			<input type="hidden" name="pId" value="${loginMember.pId}">
+			<input type="hidden" name="p_id" value="${loginMember.p_id}">
 			<div class="left">이름</div>
 			<div class="right"><input type="text" name="name" id="name" required></div>
 		</div>
