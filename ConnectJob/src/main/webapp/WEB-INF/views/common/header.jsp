@@ -32,14 +32,17 @@
         <div id="header-container">
         	<div id="header-top">
         		<ul>
-                        <c:if test="${loginMember==null}">
+                        <c:if test="${loginMember==null && loginCMember==null}">
                         	<li onclick="location.href='${path}/member/login.do'">로그인</li>
                         	<li onclick="location.href='${path}/member/memberEnroll.do'">회원가입</li>
-                        	
                         </c:if>
                         <c:if test="${loginMember!=null}">
                         	<li onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">마이페이지</li>
                         	<li onclick="location.href='${path}/member/logout.do'">로그아웃</li>                        	
+                        </c:if>
+                        <c:if test="${loginCMember!=null}">
+                        	<li onclick="location.href='${path}/member/mypage.do?p_id=${loginCMember.CMemberId }'">기업페이지</li>
+                        	<li onclick="location.href='${path}/cmemberlogout.do'">로그아웃</li>                        	
                         </c:if>
                         <li onclick="location.href='${path}/customerService.do'">고객센터</li>
                     </ul>

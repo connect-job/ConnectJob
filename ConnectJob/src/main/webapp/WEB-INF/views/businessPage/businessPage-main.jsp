@@ -25,34 +25,50 @@
     <br/>
     조회기간<input type="text" id="resume-search-sdate"/>~<input type="text" id="resume-search-edate"/>
     <div>
-    	<div>
-    		
-    	</div>
-    	<div>
-    	
-    	</div>
-    	
+        <nav class="nav-cmember-page">
+            <div class="nav-cmember-page-header">
+                <img>
+            </div>
+            <div>
+                <span>기업정보</span>
+            </div>
+            <div>
+                <span>채용공고</span>
+                
+            </div>
+            <div>
+                <span>이력서열람</span>
+                <ul>
+                    <li>자사지원이력서 열람</li>
+                    <li>인재채용</li>
+                </ul>
+            </div>
+            <div>
+                <span>리뷰조회</span>
+            </div>
+        </nav>
     </div>
 
 </section>
 
 <script>
-$(function() {
-    $( "#resume-search-sdate" ).datepicker({
-    	showOn:"both",
-    	changeMonth:true,
-    	changeYear:true,
-    	nextText:"다음달",
-    	prevText:"이전달",
-    	dayNames:['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
-    	monthNamesShort:['1','2','3','4','5','6','7','8','9','10','11','12'],
-    	monthNames:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-    	currentText:'오늘날짜',
-		closeText:'닫기',
-		dateFormat:"yy.mm.dd",
-    	minDate:0
-    });
-});
+
+		$(function() {
+		    $( "#resume-search-sdate" ).datepicker({
+		    	showOn:"both",
+		    	changeMonth:true,
+		    	changeYear:true,
+		    	nextText:"다음달",
+		    	prevText:"이전달",
+		    	dayNames:['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
+		    	monthNamesShort:['1','2','3','4','5','6','7','8','9','10','11','12'],
+		    	monthNames:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		    	currentText:'오늘날짜',
+				closeText:'닫기',
+				dateFormat:"yy.mm.dd",
+		    	minDate:0
+		    });
+		});
 	
 		$(function() {
 		    $( "#resume-search-edate" ).datepicker({

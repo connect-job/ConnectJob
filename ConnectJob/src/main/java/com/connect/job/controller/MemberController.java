@@ -41,16 +41,14 @@ public class MemberController {
 	public String memberEnroll() {
 		return "member/memberEnroll";
 	}
-	
-<<<<<<< HEAD
+
 	@RequestMapping("/member/memberEnrollPage.do")
 	public String memberEnrollForm() {
 		return "member/memberEnrollForm";
 	}
 	
-=======
-	//회원가입
->>>>>>> branch 'jian' of https://github.com/connect-job/ConnectJob.git
+
+
 	@RequestMapping("/member/memberEnrollEnd.do")
 	public String insertMember(Member m, Model model) throws Exception {
 		

@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="path" value="${pageContext.request.contextPath}" />
-
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+<jsp:include page="/WEB-INF/views/common/header.jsp">
+  <jsp:param value="" name="pageTitle"/>
+</jsp:include>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
@@ -42,7 +44,7 @@
             
             <div class="enroll-item">
                <div class="left">
-                  	기업선택
+                  기업선택
                </div>
                <div class="right">
                   <input type="text" class="CMember" id="cId" name="cId"  required/>
@@ -51,7 +53,7 @@
             
             <div class="enroll-item">
                <div class="left">
-                 	 기업 연락처
+                  기업 연락처
                </div>
                <div class="right">
                   <input type="text" class="CMember" id="CMemberCPhone" name="CMemberCPhone" required/>
@@ -59,14 +61,14 @@
             </div>
 
             <div class="enroll-title">
-            	  담당자 정보 입력
+               담당자 정보 입력
             </div>
 
             <div class="enroll-item">
                <div class="left">담당자 인증</div>
                <div class="right">
-			                  이메일 인증<input type="checkbox" value="emailCk()" />
-			                  이메일<input type="hidden" id="emailCksub" />
+                  이메일 인증<input type="checkbox" value="emailCk()" />
+                  이메일<input type="hidden" id="emailCksub" />
                   <button>인증<i class="fas fa-check"></i></button>
                </div>
             </div>
@@ -102,31 +104,31 @@
             </div>
 
             <div class="enroll-title">
-               	약관동의
+               약관동의
             </div>
 
             <div class="enroll-text">
-               	전체동의 <input type="checkbox" id="ACCEPT_TERMS" value="ACCEPT_TERMS_ALL"  class="chk" />
+               전체동의 <input type="checkbox" id="ACCEPT_TERMS" value="ACCEPT_TERMS_ALL"  class="chk" />
             </div>
 
             <div class="enroll-text">
-               	기업회원 약관에 동의(필수)<input type="checkbox" id="CMemberAccept" class="chk" name="chk" required />
+               기업회원 약관에 동의(필수)<input type="checkbox" id="CMemberAccept" class="chk" name="chk" required />
             </div>
 
             <div class="enroll-text">
-               	개인정보 수집 및 이용에 동의(필수)<input type="checkbox" id="CMemberAccept" class="chk" name="chk" required />
+               개인정보 수집 및 이용에 동의(필수)<input type="checkbox" id="CMemberAccept" class="chk" name="chk" required />
             </div>
 
             <div class="enroll-text">
-               	마케팅 정보 수신 동의 - 이메일 (선택)<input type="checkbox" id="CMemberAccept" class="chk" name="chk" />
+               마케팅 정보 수신 동의 - 이메일 (선택)<input type="checkbox" id="CMemberAccept" class="chk" name="chk" />
             </div>
 
             <div class="enroll-text">
-              	 마케팅 정보 수신 동의 - SMS/MMS (선택)<input type="checkbox" id="CMemberAccept" class="chk" name="chk" />
+               마케팅 정보 수신 동의 - SMS/MMS (선택)<input type="checkbox" id="CMemberAccept" class="chk" name="chk" />
             </div>
 
             <div class="enroll-text">
-              	개인정보 제 3자 제공 및 위탁사항 이용약관
+               개인정보 제 3자 제공 및 위탁사항 이용약관
             </div>
 
             <div class="enroll-text">

@@ -11,112 +11,79 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-<script src="http://code.jquery.com/jQuery-3.3.1.min.js"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <section>
-<style>
-            body{
-        margin-top: 100px;
-        font-family: 'Trebuchet MS', serif;
-        line-height: 1.6
-        }
-        .container{
-        width: 500px;
-        margin: 0 auto;
-        }     
-
-        ul.tabs{
-        margin: 0px;
-        padding: 0px;
-        list-style: none;
-        }
-
-        ul.tabs li{
-        background: none;
-        color: #222;
-        display: inline-block;
-        padding: 10px 15px;
-        cursor: pointer;
-        }
-
-        ul.tabs li.current{
-        background: #ededed;
-        color: #222;
-        }
-        
-        .tab-content{
-        display: none;
-        background: #ededed;
-        padding: 15px;
-        }
-        
-        .tab-content.current{
-        display: inherit;
-        }
-</style>
-
-<div class="container">
- 
-    <ul class="tabs">
-      <li class="tab-link current" data-tab="tab-1">메뉴_하나</li>
-      <li class="tab-link" data-tab="tab-2">메뉴_둘</li>
-      <li class="tab-link" data-tab="tab-3">메뉴_셋</li>
-    </ul>
-   
-    <div id="tab-1" class="tab-content current">
-  ---- ---- -------- ---- ---- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- ---- -------- ---- ---- ---- ----
+	<h1>회사이름 : </h1>
+    <h3>설립일 : </h3>
+    <h3>주소 : </h3>
+    <h3>담당자 : </h3>
+    <br/><br/><br/>
+    <h1>자사지원현황</h1>
+    <h2>전체 : </h2>
+    <h2>열람 : </h2>
+    <h2>미열람 : </h2>
+    <h2>지원취소 : </h2>
+    <br/>
+    조회기간<input type="text" id="resume-search-sdate"/>~<input type="text" id="resume-search-edate"/>
+    <div>
+        <nav class="nav-cmember-page">
+            <div class="nav-cmember-page-header">
+                <img>
+            </div>
+            <div>
+                <span>기업정보</span>
+            </div>
+            <div>
+                <span>채용공고</span>
+            </div>
+            <div>
+                <span>이력서열람</span>
+                <ul>
+                    <li>자사지원이력서 열람</li>
+                    <li>인재채용</li>
+                </ul>
+            </div>
+            <div>
+                <span>리뷰조회</span>
+            </div>
+        </nav>
     </div>
 
-    <div id="tab-2" class="tab-content">
-  ---- ---- ★------ ---- ---- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- ---- -------- ---- ---- ---- ★-- ---- ---- ------★ ---- ---- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- ---- ★------ ---- ---- ---- ----
-    </div>
-
-    <div id="tab-3" class="tab-content">
-  ---- ★-- -------- ---- ---- ---- -★- ---- ---- -------- ---- -★- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- --★ -------- ★-- ---- ---- ---- ---- ---- -------- ---- ---- --★ ---- ---- ---- -------- ---- ---- ---- --★
-    </div>
-
-</div>
-
-  <input type="checkbox" class="chk" id="chk_all"/>전체선택<br/><br/><br/>
-  <input type="checkbox" class="chk" name="chk" id="ch2"/>선택지 1번<br/>
-  <input type="checkbox" class="chk" name="chk" id="ch3"/>선택지 2번<br/>
-  <input type="checkbox" class="chk" name="chk" id="ch4"/>선택지 3번<br/>
-  <br/><br/>---------------------------------------------------------------<br/><br/>
+</section>
 
 <script>
-            //탭나눔
-            $(document).ready(function(){
-        
-            $('ul.tabs li').click(function(){
-            var tab_id = $(this).attr('data-tab');
-        
-            $('ul.tabs li').removeClass('current');
-            $('.tab-content').removeClass('current');
-        
-            $(this).addClass('current');
-            $("#"+tab_id).addClass('current');
 
-            })
-        })
-
-        //체크박스 전체선택 및 전체해제
-        $("#chk_all").click(function(){
-            if($("#chk_all").is(":checked")){
-                $(".chk").prop("checked",true);
-            }
-            else{
-                $(".chk").prop("checked",false);
-            }
-        });
-
-        //한개의 체크박스 선택 해제시 전체선택 체크박스도 해제
-        $(".chk").click(function(){
-            if($("input[name='chk']:checked").length == 3){
-                $("#chk_all").prop("checked",true);
-            }else{
-                $("#chk_all").prop("checked",false);
-            }
-        });
-        </script>
-</section>
+		$(function() {
+		    $( "#resume-search-sdate" ).datepicker({
+		    	showOn:"both",
+		    	changeMonth:true,
+		    	changeYear:true,
+		    	nextText:"다음달",
+		    	prevText:"이전달",
+		    	dayNames:['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
+		    	monthNamesShort:['1','2','3','4','5','6','7','8','9','10','11','12'],
+		    	monthNames:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		    	currentText:'오늘날짜',
+				closeText:'닫기',
+				dateFormat:"yy.mm.dd",
+		    	minDate:0
+		    });
+		});
+	
+		$(function() {
+		    $( "#resume-search-edate" ).datepicker({
+		    	showOn:"both",
+		    	changeMonth:true,
+		    	changeYear:true,
+		    	nextText:"다음달",
+		    	prevText:"이전달",
+		    	dayNames:['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
+		    	monthNamesShort:['1','2','3','4','5','6','7','8','9','10','11','12'],
+		    	monthNames:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		    	currentText:'오늘날짜',
+				closeText:'닫기',
+				dateFormat:"yy.mm.dd",
+		    	minDate:0
+		    });
+		});
+</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

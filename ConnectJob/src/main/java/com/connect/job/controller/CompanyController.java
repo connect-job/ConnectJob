@@ -70,6 +70,8 @@ public class CompanyController {
 		Company com = new Company();
 		com.setCompanyLocations(locations);
 		
+		System.out.println("검색한 지역 뭐 들어왔니?" + location);
+		
 		int numPerPage = 10;
 		List<Company> list = service.companyList(com, cPage, numPerPage);
 		int total = service.selectAjaxCount(com);

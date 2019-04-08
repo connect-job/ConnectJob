@@ -65,19 +65,26 @@ public class CMemberController {
 	@RequestMapping("/cMemberLogin.do")
 	public String selectOne(CMember m, HttpSession session, Model model) {
 		
+		System.out.println(m.getCMemberId());
+		
 		CMember result = service.selectOne(m);
+		System.out.println(encoder.encode(m.getCMemberPw()));
+		System.out.println(result.getCMemberPw());
 		
 		String msg="";
 		String loc = "/";
 		
-		if(result!=null) {
+		if(result!=null) 
+		{
 			if(encoder.matches(m.getCMemberPw(), result.getCMemberPw())) {
 				 msg = "로그인 성공!";
 				 session.setAttribute("loginCMember", result); 
-			} else {
+			} 
+			else {
 				msg = "비밀번호가 일치하지 않습니다!";
 			}
-		} else {
+		}
+		else {
 			msg = "존재하지 않는 아이디 입니다.";
 		}
 		
@@ -86,19 +93,19 @@ public class CMemberController {
 		return "common/msg";
 	}
 	
-	/*@RequestMapping("")
+	@RequestMapping("/cmemberlogout.do")
 	public String logout(HttpSession session) {
 		
 		session.invalidate();
 		return "redirect:/";
 	}
-	
+	/*
 	@RequestMapping("")
 	public String findMember() {
 		
 		return "member/findMember";
-	}*/
-	
+	}
+	*/
 	//회원삭제
 	@RequestMapping("/cMemberdelete.do")
 	public String deleteCMember(CMember m, Model model, HttpSession session)
