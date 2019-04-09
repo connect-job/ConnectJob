@@ -27,7 +27,7 @@ public interface MemberDao {
 	int updateStatus(String p_id);
 	void insertMember(Member m) throws Exception;
 
-	List<CompanyReview> selectReviewList(Member m);
+	List<CompanyReview> selectReviewList(CompanyReview review);
 	
 	
 

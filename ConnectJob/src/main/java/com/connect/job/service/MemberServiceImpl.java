@@ -49,27 +49,6 @@ public class MemberServiceImpl implements MemberService{
 		return dao.updateStatus(p_id);
 	}
 		
-	//임시 비밀번호 발급
-	/*@Override
-	public void sendPw(Map info, StringBuffer sb) throws Exception {
-		
-		dao.updateTempPw(info);//임시 비밀번호로 업데이트.
-		TempKey tempkey=new TempKey();
-		//만들어놓은 임시 비밀번호
-		String tempPw=tempKey.getKey(8, false);
-			            	   
-		//메일 전송
-		MailHandler sendMail = new MailHandler(mailSender);
-		sendMail.setSubject("[ConnectJob] 비밀번호 변경");
-		sendMail.setText(new StringBuffer().append("<h2>비밀번호 변경 링크</h2>")
-		                .append("<a href='http://localhost:9090/job/member/changePw?p_id=").append(m.getP_id())
-		                .append("' target='_blank'>로그인 하러가기</a>")
-						.toString());
-		sendMail.setFrom("jiany811@gmail.com", "[ConnectJob]");
-	    sendMail.setTo(m.getP_id());
-		sendMail.send();     
-	}*/
-		
 	
 	@Override
 	public int insertMemberKakao(Member m) {
@@ -139,9 +118,9 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public List<CompanyReview> selectReviewList(Member m) {
+	public List<CompanyReview> selectReviewList(CompanyReview review) {
 		// TODO Auto-generated method stub
-		return dao.selectReviewList(m);
+		return dao.selectReviewList(review);
 	}
 
 	

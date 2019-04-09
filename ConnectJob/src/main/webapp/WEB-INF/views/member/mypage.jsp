@@ -69,18 +69,21 @@
 </div>
 
 <div id="tab2" class="tab_content">
-	<span>리뷰보기</span>
-	
-	<c:if test="${reviewList!=null }">
-		<c:forEach var="rList" items="${reviewList }">
+	<c:if test="${reviewList != null }">
+		<c:forEach var="list" items="${reviewList }">
 			<div>
-				<div>${reviewList.review_member }</div>
-				<div>${reviewList.review_short }</div>
-				<div>${reviewList.review_date}</div>
+				<div>
+					<input type="hidden" value="${list.reviewNo }"/>
+					${list.reviewCompany }
+					${list.reviewShort }
+					${list.reviewDate}
+					<input type="button" value="수정" onclick="location.href='#'"/>
+					<input type="button" value="삭제" onclick="location.href='#'"/>
+				</div>
 			</div>
 		</c:forEach>
 	</c:if>
-	<c:if test="${reviewList==null }">
+	<c:if test="${reviewList == null }">
 		<div>
 			작성한 리뷰가 없습니다.
 		</div>

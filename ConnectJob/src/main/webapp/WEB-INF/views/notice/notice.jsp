@@ -27,11 +27,13 @@
  <section>    
     	   	  	
  	<table>
-		<tr>            	
-			<td>
-				<input type="button" value="글쓰기" onclick="location.href='${path}/notice/noticeForm'"/>
-			</td>
-        </tr>                        
+ 		<c:if test="${loginMember!=null && loginMember.p_id eq 'admin@admin.com' }">
+			<tr>            	
+				<td>
+					<input type="button" value="글쓰기" onclick="location.href='${path}/notice/noticeForm'"/>
+				</td>
+        	</tr> 
+        </c:if>                       
         <tr>
             <th>번호</th>
             <th>작성자</th>

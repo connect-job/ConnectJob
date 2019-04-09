@@ -15,6 +15,7 @@ public interface MemberService {
 	Member findId(Member m);
 	int deleteMember(Member m);
 	int updateMember(Member m);
+	
 	int updatePw(Member m);
 	List<Member> selectList();
 	Member selectOneKakao(Member m);
@@ -26,7 +27,7 @@ public interface MemberService {
 	int updateStatus(String p_id);
 	void insertMember(Member m, StringBuffer sb) throws Exception;
 
-	List<CompanyReview> selectReviewList(Member m);
+	List<CompanyReview> selectReviewList(CompanyReview review);
 	
 	
 }

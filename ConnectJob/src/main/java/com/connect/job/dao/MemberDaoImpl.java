@@ -16,12 +16,6 @@ public class MemberDaoImpl implements MemberDao {
 	
 	@Autowired
 	private SqlSessionTemplate session;
-
-	/*@Override
-	public int insertMember(Member m) {
-		
-		return session.insert("member.insertMember", m);
-	}*/
 	
 	@Override
 	public int insertMemberKako(Member m) {
@@ -106,9 +100,9 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public List<CompanyReview> selectReviewList(Member m) {
+	public List<CompanyReview> selectReviewList(CompanyReview review) {
 		// TODO Auto-generated method stub
-		return session.selectList("member.selectReviewList", m);
+		return session.selectList("member.selectReviewList", review);
 	}
 
 	

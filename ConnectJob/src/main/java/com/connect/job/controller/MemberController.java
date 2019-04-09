@@ -251,7 +251,7 @@ public class MemberController {
 		System.out.println(result);
 		
 		model.addAttribute("msg", msg);
-		
+		model.addAttribute("loc", loc);
 		return "common/msg";
 	}
 	
@@ -275,12 +275,18 @@ public class MemberController {
 		
 		ModelAndView mv=new ModelAndView();	
 		
-		List<CompanyReview> list=service.selectReviewList(m);
-		System.out.println(list);
+		CompanyReview review=new CompanyReview();
+		review.setReviewMember(m.getP_id());
+		/*List<CompanyReview> list=service.selectReviewList(m);*/
 		
-		mv.setViewName("member/mypage");
+		List<CompanyReview> list=service.selectReviewList(review);
+		
+		System.out.println(review);
+		
+		
 		mv.addObject("m", result); //내 정보보기
 		mv.addObject("reviewList", list);
+		mv.setViewName("member/mypage");
 		return mv;
 	}
 	
@@ -316,12 +322,14 @@ public class MemberController {
 		int result=service.updateMember(m);
 		
 		String msg="";
-		String loc="/member/mypage.do";
+		String loc="";
 		
 		if(result>0) {
-			msg="수정 완료";			
+			msg="수정 완료";
+			loc="/member/mypage.do?p_id="+m.getP_id();
 		}else {
 			msg="수정 실패";
+			loc="/";
 		}
 		
 		model.addAttribute("msg", msg);

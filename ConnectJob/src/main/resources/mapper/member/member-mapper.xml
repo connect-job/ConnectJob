@@ -65,8 +65,31 @@
 		UPDATE P_MEMBER SET EMAIL_CONFIRM = 'Y' where P_ID=#{P_ID}
 	</update>
 	
-	<select id="selectReviewList" resultType="member" parameterType="member">
-		select * from company_review where review_member=#{p_id}
+	<resultMap type="review" id="reviewMap">
+		<id column="review_no" property="reviewNo"/>
+		<result column="review_member" property="reviewMember"/>
+		<result column="review_company" property="reviewCompany"/>
+		<result column="review_iscurrent" property="reviewIsCurrent"/>
+		<result column="review_job" property="reviewJob"/>
+		<result column="review_employ_cate" property="reviewEmployCate"/>
+		<result column="review_career" property="reviewCareer"/>
+		<result column="review_location" property="reviewLocation"/>
+		<result column="review_total_score" property="reviewTotalScore"/>
+		<result column="review_short" property="reviewShort"/>
+		<result column="review_merit" property="reviewMerit"/>
+		<result column="review_dismerit" property="reviewDisMerit"/>
+		<result column="review_request" property="reviewRequest"/>
+		<result column="review_grade_01" property="reviewGrade01"/>
+		<result column="review_grade_02" property="reviewGrade02"/>
+		<result column="review_grade_03" property="reviewGrade03"/>
+		<result column="review_grade_04" property="reviewGrade04"/>
+		<result column="review_grade_05" property="reviewGrade05"/>
+		<result column="reviewlike" property="reviewLike"/>
+		<result column="review_date" property="reviewDate"/>
+	</resultMap>
+	
+	<select id="selectReviewList" resultType="member" resultMap="reviewMap">
+		select * from company_review where review_member=#{reviewMember}
 	</select>
 	
 </mapper>
