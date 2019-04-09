@@ -1,38 +1,83 @@
 package com.connect.job.service;
 
 import java.util.List;
+import java.util.Map;
 
-import javax.inject.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.connect.job.common.MailHandler;
-
+import com.connect.job.common.TempKey;
 import com.connect.job.dao.MemberDao;
+import com.connect.job.model.vo.CompanyReview;
 import com.connect.job.model.vo.Member;
 
 @Service
-public class MemberServiceImpl implements MemberService{	
-	
-	/*@Inject
-	private JavaMailSender sender;*/
+public class MemberServiceImpl implements MemberService{
+
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	@Autowired
 	private MemberDao dao;
 	
+	//회원가입&회원가입 인증메일 전송(트랜잭션처리)
+	@Transactional
 	@Override
-	public int insertMember(Member m){	
-		
-		return dao.insertMember(m);
-	}	
+	public void insertMember(Member m, StringBuffer sb) throws Exception {	
+	
+	    dao.insertMember(m);	        
+	    
+	    //메일 전송
+	    MailHandler sendMail = new MailHandler(mailSender);
+	    sendMail.setSubject("[ConnectJob] 이메일 인증");
+	    sendMail.setText(new StringBuffer().append("<h1>[ConnectJob] 메일인증</h1>")
+	                	.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
+	                	.append("<a href='http://localhost:9090/job/member/emailForm?p_id=").append(m.getP_id())
+	                	.append("' target='_blank'>이메일 인증 확인</a>").toString());
+	    sendMail.setFrom("jiany811@gmail.com", "[ConnectJob]");
+	    sendMail.setTo(m.getP_id());
+	    sendMail.send();  
 
+	}
+	   
+	//메일 인증상태 업데이트
+	@Override
+	public int updateStatus(String p_id) {
+		return dao.updateStatus(p_id);
+	}
+		
+	//임시 비밀번호 발급
+	/*@Override
+	public void sendPw(Map info, StringBuffer sb) throws Exception {
+		
+		dao.updateTempPw(info);//임시 비밀번호로 업데이트.
+		TempKey tempkey=new TempKey();
+		//만들어놓은 임시 비밀번호
+		String tempPw=tempKey.getKey(8, false);
+			            	   
+		//메일 전송
+		MailHandler sendMail = new MailHandler(mailSender);
+		sendMail.setSubject("[ConnectJob] 비밀번호 변경");
+		sendMail.setText(new StringBuffer().append("<h2>비밀번호 변경 링크</h2>")
+		                .append("<a href='http://localhost:9090/job/member/changePw?p_id=").append(m.getP_id())
+		                .append("' target='_blank'>로그인 하러가기</a>")
+						.toString());
+		sendMail.setFrom("jiany811@gmail.com", "[ConnectJob]");
+	    sendMail.setTo(m.getP_id());
+		sendMail.send();     
+	}*/
+		
+	
 	@Override
 	public int insertMemberKakao(Member m) {
 		
-		return dao.insertMemberKakao(m);
+		return dao.insertMemberKako(m);
 	}
-
+	
+	
 	@Override
 	public Member selectOne(Member m) {
 		
@@ -59,7 +104,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int updatePw(Member m) {
-		// TODO Auto-generated method stub
+		
 		return dao.updatePw(m);
 	}
 
@@ -77,21 +122,29 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int emailConfirm(Member m) {
-		// TODO Auto-generated method stub
+		
 		return dao.emailConfirm(m);
 	}
 
 	@Override
 	public int selectCount(String p_id) {
-		// TODO Auto-generated method stub
+		
 		return dao.selectCount(p_id);
 	}
 
 	@Override
 	public Member findPw(Member m) {
-		// TODO Auto-generated method stub
+		
 		return dao.findPw(m);
 	}
+
+	@Override
+	public List<CompanyReview> selectReviewList(Member m) {
+		// TODO Auto-generated method stub
+		return dao.selectReviewList(m);
+	}
+
+	
 	
 	
 	

@@ -151,6 +151,9 @@ public class Member {
 				+ ", major=" + major + ", is_confirm=" + is_confirm + ", enroll_date=" + enroll_date + ", kakao_id="
 				+ kakao_id + ", email_confirm=" + email_confirm + "]";
 	}
+
+	
+
 	
 	
 }

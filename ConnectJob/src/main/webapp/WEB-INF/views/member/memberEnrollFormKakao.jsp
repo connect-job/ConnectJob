@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.connect.job.common.TempKey"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -7,8 +7,6 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <style>
 	div#id-result-div{display: none;}
-	/* div#pw-result-div{display: none;}
-	div#pw-result-div2{display: none;} */
 </style>
 <section>
 	<div id="enroll-container">
@@ -20,11 +18,11 @@
 		</div>
 		
 		<div id="memberEnroll" class="tab-content current">
-			<form id="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
+			<form action="${path}/member/insertKakao.do" method="post">
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="p_id" id="p_id" autocomplete="off" placeholder="이메일 아이디"/>																				
+						<input type="email" name="p_id" id="p_id" autocomplete="off" />															
 					</div>
 				</div>
 				
@@ -38,10 +36,10 @@
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
 					<div class="right">
-						<input type="password" name="password" id="pw1" placeholder="영문+숫자+특수문자 8글자 이상 입력" required/>
+						<input type="password" name="password" id="pw1" required/>
 						<span id="pw_validate"></span>						
 					</div>
-				</div>				
+				</div>			
 				
 				<div class="enroll-item">
 					<div class="left">비밀번호 확인</div>
@@ -49,14 +47,14 @@
 						<input type="password" name="password2" id="pw2" required />
 						<span id="password_result"></span>						
 					</div>
-				</div>					
+				</div>				
 		
 				<div class="enroll-item msgdiv">
 					<div class="left">이름</div>
 					<div class="right">
-						<input type="text" name="p_name"/>
-						<%-- <input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
-						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/> --%>
+						<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
+						<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
+						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
 					</div>
 				</div>		
 
@@ -88,7 +86,6 @@
 					<div class="right"><input type="text" name="major" autocomplete="off" /></div>
 				</div>
 				
-				
 				<div class="enroll-text">
 					<b>약관동의</b></br>
 				</div>
@@ -119,7 +116,6 @@
 </section>
 
 <script>
-
 
 //아이디 중복체크
 $(document).ready(function(){	
@@ -201,7 +197,6 @@ $(document).ready(function(){
 		}		
 	});
 });
-
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

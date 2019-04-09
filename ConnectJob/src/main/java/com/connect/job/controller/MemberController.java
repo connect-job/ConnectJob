@@ -2,7 +2,7 @@ package com.connect.job.controller;
 
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,16 +12,14 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.connect.job.common.MailHandler;
-import com.connect.job.common.TempKey;
+import com.connect.job.model.vo.CompanyReview;
 import com.connect.job.model.vo.Member;
-
 import com.connect.job.service.MemberService;
 
 @Controller
@@ -29,8 +27,8 @@ public class MemberController {
 	
 	private Logger logger=LoggerFactory.getLogger(MemberController.class);	
 
-	@Inject
-	private JavaMailSender sender;
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
@@ -54,7 +52,7 @@ public class MemberController {
 	public String memberEnroll(Member m, Model model) {
 		model.addAttribute("Member", m);
 
-		return "member/memberEnrollForm";
+		return "member/memberEnrollFormKakao";
 
 	}
 	
@@ -79,8 +77,8 @@ public class MemberController {
 	}	
 
 	//카카오 회원가입
-	@RequestMapping("/member/memberEnrollEnd.do")
-	public String insertMemberKakao(Member m, Model model) throws Exception {
+	@RequestMapping("/member/insertKakao.do")
+	public String insertMemberKakao(Member m, Model model){
 			
 		String pw=m.getPassword();
 		logger.debug(pw);
@@ -88,7 +86,7 @@ public class MemberController {
 		logger.debug(enPw);
 		m.setPassword(enPw);
 			
-		int result=service.insertMember(m);
+		int result=service.insertMemberKakao(m);
 			
 		String msg="";
 		String loc="";
@@ -107,9 +105,10 @@ public class MemberController {
 			
 		return "common/msg";
 	}
-	/*//회원가입
+	
+	//회원가입
 	@RequestMapping("/member/memberEnrollEnd.do")
-	public String insertMember(Member m, Model model) throws Exception {
+	public String insertMember(Member m, Model model, HttpServletRequest request)throws Exception{
 		
 		String pw=m.getPassword();
 		logger.debug(pw);
@@ -117,71 +116,42 @@ public class MemberController {
 		logger.debug(enPw);
 		m.setPassword(enPw);
 		
-		int result=service.insertMember(m);
+		StringBuffer sb = request.getRequestURL();
+		service.insertMember(m, sb);
 		
-		String msg="";
-		String loc="";
-		
-		if(result>0) {
-			msg="가입시 등록한 이메일로 인증해주세요";
-			loc="/";
-			
-		}else {
-			msg="가입 실패";
-			loc="/";
-		}
+		String msg="인증메일 확인";
+		String loc="/";
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("loc", loc);
 		
 		return "common/msg";
-	}*/
-	
-	//이메일 보내기
-	/*@ResponseBody*/
-	@RequestMapping("/emailSender")
-	public String emailSender(String keyck, String p_id, Model model) {
-		
-		ModelAndView mv=new ModelAndView();	
-		
-		//이메일 발송
-		/*try {
-			MailHandler sendMail=new MailHandler(sender);				
-			sendMail.setSubject("[ConnectJob] 이메일 인증"); //제목				
-			sendMail.setText(new StringBuffer()
-							.append("[ConnectJob]이메일 인증<br>")
-							.append("<a>")
-							.append("인증번호:  ")
-							.append(keyck)													
-							.append("</a>")
-							.toString()); //내용				
-			sendMail.setFrom("jiany811@gmail.com", "ConnectJob"); //보내는 사람				
-			sendMail.setTo(p_id); //받는 사람				
-			sendMail.send();			
-			
-		
-		}catch (Exception e) {
-			e.printStackTrace();
-		}*/
-	/*	
-		mv.addObject("keyck", keyck);
-		mv.addObject("p_id", p_id);
-		mv.setViewName("member/memberEnrollForm");*/
-		
-		model.addAttribute("keyck", keyck);
-		model.addAttribute("p_id", p_id);
-		return "member/memberEnrollForm";
-		
 	}
 	
 	//이메일 인증
 	@RequestMapping(value="/member/emailForm", method=RequestMethod.GET)
-	public String emailConfirm(String p_id, String keyck, Model model) {
+	public ModelAndView emailConfirm(String p_id) {
 		
-		model.addAttribute("keyck", keyck);
-		model.addAttribute("p_id", p_id);
+		int result = service.updateStatus(p_id);
+		ModelAndView mv = new ModelAndView();
+
+		String msg = "";
+		String loc = "/";
+
+		logger.debug("이메일 상태 업데이트의 결과??" + result);
+		if (result > 0) {
+			msg = "이메일 인증이 완료되었습니다. 이제 로그인이 가능합니다.";
+			loc="/member/login.do";
+			
+		} else {
+			mv.addObject("비정상적인 접근입니다.", msg);
+			mv.setViewName("redirect:/");
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("loc", loc);
+		mv.setViewName("common/msg");
 		
-		return "member/emailForm";
+		return mv;
 	}
 	
 	//로그인 페이지 이동
@@ -201,13 +171,19 @@ public class MemberController {
 		
 		if(result!=null) {
 			if(encoder.matches(m.getPassword(), result.getPassword())) {
-				 msg = "로그인 성공";
-				 session.setAttribute("loginMember", result); 
-				 logger.debug("클라이언트에게 넘어온 값: " + result);
-				 m.toString();
-			} else {
-				msg = "비밀번호가 일치하지 않습니다.!";
-			}
+				if(result.getEmail_confirm()!=null) {
+					 msg = "로그인 성공";
+					 session.setAttribute("loginMember", result); 
+					 logger.debug("클라이언트에게 넘어온 값: " + result);
+					 m.toString();
+				}else {
+					msg="이메일 인증을 완료해주세요";
+				}
+				
+			}else {
+				msg="비밀번호가 일치하지 않습니다.";
+			}			
+			
 		} else {
 			msg = "존재하지 않는 아이디입니다.";
 		}
@@ -259,16 +235,37 @@ public class MemberController {
 	@RequestMapping("/member/findId")
 	public String findId(Member m, Model model) {	
 		
-		Member result=service.findId(m);
+		Member result=service.findId(m);		
 		
-		String msg="id: "+result.getP_id();
+		String msg="";
+		String loc="";
+		
+		if(result==null) {
+			msg=m.getP_name()+"님의 아이디는 "+result.getP_id()+"입니다.";
+			loc="/";
+		}else {
+			msg="아이디가 존재하지 않습니다.";
+		}
+		
 		
 		System.out.println(result);
 		
 		model.addAttribute("msg", msg);
 		
 		return "common/msg";
-	}	
+	}
+	
+	//아이디 중복확인
+	@ResponseBody
+	@RequestMapping("/member/checkId")
+	public String checkId(String p_id) {		
+		
+		int count=service.selectCount(p_id);
+		String result="";
+		if(count==0) {result="0";}
+		else {result="1";}		
+		return result;
+	}
 
 	//마이페이지 이동
 	@RequestMapping("/member/mypage.do")
@@ -276,10 +273,14 @@ public class MemberController {
 		
 		Member result=service.selectOne(m);
 		
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("member/mypage");
-		mv.addObject("m", result);
+		ModelAndView mv=new ModelAndView();	
 		
+		List<CompanyReview> list=service.selectReviewList(m);
+		System.out.println(list);
+		
+		mv.setViewName("member/mypage");
+		mv.addObject("m", result); //내 정보보기
+		mv.addObject("reviewList", list);
 		return mv;
 	}
 	
@@ -336,6 +337,40 @@ public class MemberController {
 		return "member/changePw";
 	}
 	
+	//비밀번호 찾기
+	@RequestMapping("/member/findPw")
+	public String findPw(Member m, Model model, HttpServletRequest request) throws Exception {		
+		
+		Member result=service.findPw(m);
+		StringBuffer sb = request.getRequestURL();
+		System.out.println(result);
+		
+		String msg="";
+		String loc="";
+		
+		if(result!=null) {
+			
+			
+			MailHandler sendMail = new MailHandler(mailSender);
+			sendMail.setSubject("[ConnectJob] 비밀번호 안내");
+			sendMail.setText(new StringBuffer().append("<h2>비밀번호 변경 링크</h2>")
+			                .append("<a href='http://localhost:9090/job/member/changePw?p_id=").append(m.getP_id())
+			                .append("' target='_blank'>비밀번호 변경</a>")
+							.toString());
+			sendMail.setFrom("jiany811@gmail.com", "[ConnectJob]");
+		    sendMail.setTo(m.getP_id());
+			sendMail.send();
+			msg="이메일을 확인해주세요";
+			
+		}else {
+			msg="아이디가 존재하지 않습니다.";
+		}	
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("loc", loc);
+		return "common/msg";
+	}
+	
 	//비밀번호 변경
 	@RequestMapping("/member/changePwEnd")
 	public String updatePw(Member m, Model model) {
@@ -361,51 +396,6 @@ public class MemberController {
 		model.addAttribute("loc", loc);
 		
 		return "common/msg";
-	}
-	
-	@ResponseBody
-	@RequestMapping("/member/checkId")
-	public String checkId(String p_id) {		
-		
-		int count=service.selectCount(p_id);
-		String result="";
-		if(count==0) {result="0";}
-		else {result="1";}		
-		return result;
-	}
-	
-	
-	@RequestMapping("/member/findPw")
-	public String findPw(Member m, Model model) {		
-		
-		Member result=service.findPw(m);
-	
-		System.out.println(result);
-		
-		String msg="";
-		
-		if(result!=null) {
-			try {
-				MailHandler sendMail=new MailHandler(sender);				
-				sendMail.setSubject("[ConnectJob] 이메일 인증"); //제목				
-				sendMail.setText(new StringBuffer()
-								.append("[ConnectJob]비밀번호 변경<br>")					
-								.append("<a href='http://localhost:9090/job/member/changePw'> 비밀번호 변경 </a>")
-								.toString()); //내용				
-				sendMail.setFrom("jiany811@gmail.com", "ConnectJob"); //보내는 사람				
-				sendMail.setTo(result.getP_id()); //받는 사람				
-				sendMail.send();			
-				
-			
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else {
-			msg="값 없음";
-		}
-		
-		
-		return "common/msg";
-	}
+	}	
 	
 }
