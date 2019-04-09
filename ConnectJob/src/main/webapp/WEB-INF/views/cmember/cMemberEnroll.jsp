@@ -85,12 +85,10 @@
                <div class="left">비밀번호 확인</div>
                <div class="right"><input type="password" class="CMember" id="CMemberPwCk" name="CMemberPw"/></div>
             </div>
-
             <div class="enroll-item">
                <div class="left">담당자 이름</div>
                <div class="right"><input type="text" class="CMember" id="CMemberName" name="CMemberName"/></div>
             </div>
-
             <div class="enroll-item">
                <div class="left">담당자 연락처</div>
                <div class="right"><input type="text" class="CMember" id="CMemberPhone" name="CMemberPhone"/></div>

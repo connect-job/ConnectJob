@@ -14,6 +14,7 @@ public class Member {
 	private String major;
 	private String is_confirm;
 	private Date enroll_date;
+	private int kakao_id;
 	
 	
 	public Member() {
@@ -22,7 +23,7 @@ public class Member {
 
 
 	public Member(String p_id, String password, String p_name, String gender, String phone, String is_sns,
-			String final_edu, String school, String major, String is_confirm, Date enroll_date) {
+			String final_edu, String school, String major, String is_confirm, Date enroll_date, int kakao_id) {
 		super();
 		this.p_id = p_id;
 		this.password = password;
@@ -35,6 +36,7 @@ public class Member {
 		this.major = major;
 		this.is_confirm = is_confirm;
 		this.enroll_date = enroll_date;
+		this.kakao_id = kakao_id;
 	}
 
 
@@ -148,20 +150,21 @@ public class Member {
 	}
 
 
+	public int getKakao_id() {
+		return kakao_id;
+	}
+
+
+	public void setKakao_id(int kakao_id) {
+		this.kakao_id = kakao_id;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Member [p_id=" + p_id + ", password=" + password + ", p_name=" + p_name + ", gender=" + gender
 				+ ", phone=" + phone + ", is_sns=" + is_sns + ", final_edu=" + final_edu + ", school=" + school
-				+ ", major=" + major + ", is_confirm=" + is_confirm + ", enroll_date=" + enroll_date + "]";
+				+ ", major=" + major + ", is_confirm=" + is_confirm + ", enroll_date=" + enroll_date + ", kakao_id="
+				+ kakao_id + "]";
 	}
-	
-	
-
-	
-	
-
-	
-	
-	
-	
 }

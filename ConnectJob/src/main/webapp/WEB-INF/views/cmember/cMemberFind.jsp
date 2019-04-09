@@ -10,7 +10,7 @@
 </jsp:include>
 <section>
 	<!-- 이메일 인증을 통해 회원 아이디 비밀번호 찾기 -->
-	아이디 찾기<input 	
+	아이디 찾기<input 	/>
 
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

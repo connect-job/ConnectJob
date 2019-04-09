@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.HashMap"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -6,9 +6,6 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-<%-- <%
-	HashMap<String, Object> userInfo = (HashMap<String, Object>)request.getAttribute("userInfo");
-%> --%>
 
 <section>
 	<div id="enroll-container">
@@ -23,41 +20,31 @@
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="pId" autocomplete="off" />
+						<input type="email" name="p_id" autocomplete="off" />
 						<input type="button" value="중복확인" id="idck" />
 					</div>
 				</div>
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
-					<div class="right"><input type="password" name="password" id="pw1" onkeyup="verify.check()"
+					<div class="right"><input type="password" name="password2" id="pw1" onkeyup="verify.check()"
 							required /><span>영.숫자 포함 8글자 이상 작성</span></div>
 				</div>
 				<div class="enroll-item">
 					<div class="left">비밀번호 확인</div>
-					<div class="right"><input type="password" name="password2" id="pw2" onkeyup="verify.check()"
+					<div class="right"><input type="password" name="password" id="pw2" onkeyup="verify.check()"
 							required />
 						<div id="password_result"></div>
 					</div>
 				</div>
-				<c:if test="${userInfo==null }">
 					<div class="enroll-item msgdiv">
 						<div class="left">이름</div>
 						<div class="right">
-							<input type="text" name="p_name" />
-							<input type="hidden" name="is_sns" />
+							<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
+							<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
+							<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
 						</div>
 					</div>
-				</c:if>
-				<c:if test="${userInfo!=null }">
-					<div class="enroll-item msgdiv">
-						<div class="left">이름</div>
-						<div class="right">
-							<input type="text" name="pName" value="${userInfo.nickname }" />
-							<input type="hidden" name="isSns" value="${userInfo.id }" />
-						</div>
-					</div>
-				</c:if>
-
+					
 				<div class="enroll-item">
 					<div class="left">성별</div>
 					<div class="right">
@@ -71,7 +58,7 @@
 				</div>
 				<div class="enroll-item">
 					<div class="left">최종학력</div>
-					<div class="right"><input type="text" name="finalEdu" autocomplete="off" /></div>
+					<div class="right"><input type="text" name="final_edu" autocomplete="off" /></div>
 				</div>
 				<div class="enroll-item">
 					<div class="left">학교</div>

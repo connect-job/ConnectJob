@@ -7,10 +7,8 @@
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<%-- <%
-	HashMap<String, Object> userInfo=(HashMap<String, Object>)request.getAttribute("userInfo");
-%>
- --%>
+
+
 <section>
 	<div id="enroll-container">
 	<!-- 개인회원가입 -->
@@ -22,8 +20,11 @@
 		<div class="enroll-item" onclick="location.href='${path}/member/memberEnrollPage.do'"><i class="fas fa-user-edit"></i><br>일반회원가입</div>
 		<div class="enroll-item" onclick="location.href='${path}/cmember/cmemberEnroll.do'"><i class="fas fa-building"></i><br>기업회원가입</div>
 	</div>
+
 </section>
 
+	
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 

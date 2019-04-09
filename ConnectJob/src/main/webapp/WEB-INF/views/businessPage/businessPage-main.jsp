@@ -8,10 +8,14 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
   <jsp:param value="" name="pageTitle"/>
 </jsp:include>
+<jsp:include page="/WEB-INF/views/common/business-nav.jsp">
+  <jsp:param value="" name="pageTitle"/>
+</jsp:include>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <section>
+<h1> 이거 제발 뜨게 해주세요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
 	<h1>회사이름 : </h1>
     <h3>설립일 : </h3>
     <h3>주소 : </h3>
@@ -23,36 +27,14 @@
     <h2>미열람 : </h2>
     <h2>지원취소 : </h2>
     <br/>
-    조회기간<input type="text" id="resume-search-sdate"/>~<input type="text" id="resume-search-edate"/>
-    <div>
-        <nav class="nav-cmember-page">
-            <div class="nav-cmember-page-header">
-                <img>
-            </div>
-            <div>
-                <span>기업정보</span>
-            </div>
-            <div>
-                <span>채용공고</span>
-                
-            </div>
-            <div>
-                <span>이력서열람</span>
-                <ul>
-                    <li>자사지원이력서 열람</li>
-                    <li>인재채용</li>
-                </ul>
-            </div>
-            <div>
-                <span>리뷰조회</span>
-            </div>
-        </nav>
-    </div>
-
+   	조회기간<input type="text" id="resume-search-sdate"/>~<input type="text" id="resume-search-edate"/>
+    
+    
+    
 </section>
 
 <script>
-
+	//조회기간 날짜
 		$(function() {
 		    $( "#resume-search-sdate" ).datepicker({
 		    	showOn:"both",

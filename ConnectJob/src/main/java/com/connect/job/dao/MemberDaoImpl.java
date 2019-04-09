@@ -1,6 +1,7 @@
 package com.connect.job.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,16 @@ public class MemberDaoImpl implements MemberDao {
 	public int updatePw(Member m) {
 		
 		return session.update("member.updatePw", m);
+	}
+
+	@Override
+	public List<Member> selectList() {
+		return session.selectList("member.selectList");
+	}
+
+	@Override
+	public Member selectOneKakao(Member m) {
+		return session.selectOne("member.selectOneKakao", m);
 	}
 	
 	

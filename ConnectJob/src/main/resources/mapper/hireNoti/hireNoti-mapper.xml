@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="HireNoti">
 	
-	<insert id="insertNoti" parameterType="company">
-		INSERT INTO HIRENOTI VALUES(#{HN_SEQ},#{CMemberId},#{COMPANY_NO},#{title},#{HN_Sort},#{HN_career},#{HN_recruit},#{HN_cate},#{HN_chargeTask},#{HN_Dept},#{HN_rank_position},#{HN_final_edu},#{HN_Major},#{HN_preference},#{HN_for},#{HN_gender},#{HN_birth},#{HN_sal},#{HN_work_place},#{HN_stime},#{HN_dtime},#{HN_startdate},#{HN_enddate},#{HN_required},#{HN_ori},#{HN_re},#{HN_process},#{HN_doc},#{HN_interview},#{HN_name},#{HN_phone},#{HN_celphone},#{HN_email},#{HN_fax},#{HN_title},#{HN_count})
+	<insert id="insertNoti" parameterType="hireNoti">
+		INSERT INTO HIRENOTI VALUES(HN_SEQ.NEXTVAL,#{HNSort},#{HNCareer},#{HNForm},#{HNRecruit},#{HNCate},#{HNChargeTask},#{HNDept},#{HNRankPosition},#{HNFinalEdu},#{HNMajor},#{HNPreference},#{HNFor},#{HNGender},#{HNBirth},#{HNSal},#{HNWorkPlace},#{HNDay},#{HNStime},#{HNDtime},#{startDate},#{endDate},#{HNEve},#{HNReMethod}#{HNRequired},#{HNOri},#{HNRe},#{HNProcess},#{HNDoc},#{HNInterview},#{HNName},#{HNPhone},#{HNCelPhone},#{HNEMail},#{HNFax},#{HNTitle},#{HNCount},sysdate)
 	</insert>
 </mapper>

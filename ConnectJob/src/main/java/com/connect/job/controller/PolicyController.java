@@ -16,4 +16,10 @@ public class PolicyController {
 		return "email/email";
 	}
 	
+	@RequestMapping("trmUse.do")
+	public String trmUse() {
+		return "trmUse/trmUse";
+	}
+	
+	
 }

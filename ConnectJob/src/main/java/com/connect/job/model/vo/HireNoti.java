@@ -5,18 +5,15 @@ import java.util.Date;
 public class HireNoti {
 	
 	private int HNSeq;
-	private String CMemberId;
-	private int companyNo;
-	private String title;
 	private String HNSort;
-	private int HNRecruit;
 	private String HNCareer;
+	private String HNForm;
+	private int HNRecruit;
 	private String HNCate;
 	private String HNChargeTask;
 	private String HNDept;
 	private String HNRankPosition;
 	private String HNFinalEdu;
-	private String HNWorkForm;
 	private String HNMajor;
 	private String HNPreference;
 	private String HNFor;
@@ -24,16 +21,18 @@ public class HireNoti {
 	private int HNBirth;
 	private String HNSal;
 	private String HNWorkPlace;
-	private String HN_Stime;
-	private String HN_Dtime;
-	private Date start;
-	private Date end;
+	private String HNStime;
+	private String HNDtime;
+	private String startDate;
+	private String endDate;
+	private String HNEve;
+	private String HNReMethod;
 	private String HNRequired;
 	private String HNOri;
 	private String HNRe;
 	private String HNProcess;
 	private String HNDoc;
-	private String HNinterview;
+	private String HNInterview;
 	private String HNName;
 	private String HNPhone;
 	private String HNCelPhone;
@@ -41,32 +40,30 @@ public class HireNoti {
 	private String HNFax;
 	private String HNTitle;
 	private int HNCount;
+	private Date AddDate;
 	
 	public HireNoti() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public HireNoti(int hNSeq, String cMemberId, int companyNo, String title, String hNSort, int hNRecruit,
-			String hNCareer, String hNCate, String hNChargeTask, String hNDept, String hNRankPosition,
-			String hNFinalEdu, String hNWorkForm, String hNMajor, String hNPreference, String hNFor, String hNGender,
-			int hNBirth, String hNSal, String hNWorkPlace, String hN_Stime, String hN_Dtime, Date start, Date end,
-			String hNRequired, String hNOri, String hNRe, String hNProcess, String hNDoc, String hNinterview,
-			String hNName, String hNPhone, String hNCelPhone, String hNEMail, String hNFax, String hNTitle,
-			int hNCount) {
+	public HireNoti(int hNSeq, String hNSort, String hNCareer, String hNForm, int hNRecruit, String hNCate,
+			String hNChargeTask, String hNDept, String hNRankPosition, String hNFinalEdu, String hNMajor,
+			String hNPreference, String hNFor, String hNGender, int hNBirth, String hNSal, String hNWorkPlace,
+			String hNStime, String hNDtime, String startDate, String endDate, String hNEve, String hNReMethod,
+			String hNRequired, String hNOri, String hNRe, String hNProcess, String hNDoc, String hNInterview,
+			String hNName, String hNPhone, String hNCelPhone, String hNEMail, String hNFax, String hNTitle, int hNCount,
+			Date addDate) {
 		super();
 		HNSeq = hNSeq;
-		CMemberId = cMemberId;
-		this.companyNo = companyNo;
-		this.title = title;
 		HNSort = hNSort;
-		HNRecruit = hNRecruit;
 		HNCareer = hNCareer;
+		HNForm = hNForm;
+		HNRecruit = hNRecruit;
 		HNCate = hNCate;
 		HNChargeTask = hNChargeTask;
 		HNDept = hNDept;
 		HNRankPosition = hNRankPosition;
 		HNFinalEdu = hNFinalEdu;
-		HNWorkForm = hNWorkForm;
 		HNMajor = hNMajor;
 		HNPreference = hNPreference;
 		HNFor = hNFor;
@@ -74,16 +71,18 @@ public class HireNoti {
 		HNBirth = hNBirth;
 		HNSal = hNSal;
 		HNWorkPlace = hNWorkPlace;
-		HN_Stime = hN_Stime;
-		HN_Dtime = hN_Dtime;
-		this.start = start;
-		this.end = end;
+		HNStime = hNStime;
+		HNDtime = hNDtime;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		HNEve = hNEve;
+		HNReMethod = hNReMethod;
 		HNRequired = hNRequired;
 		HNOri = hNOri;
 		HNRe = hNRe;
 		HNProcess = hNProcess;
 		HNDoc = hNDoc;
-		HNinterview = hNinterview;
+		HNInterview = hNInterview;
 		HNName = hNName;
 		HNPhone = hNPhone;
 		HNCelPhone = hNCelPhone;
@@ -91,6 +90,7 @@ public class HireNoti {
 		HNFax = hNFax;
 		HNTitle = hNTitle;
 		HNCount = hNCount;
+		AddDate = addDate;
 	}
 
 	public int getHNSeq() {
@@ -101,30 +101,6 @@ public class HireNoti {
 		HNSeq = hNSeq;
 	}
 
-	public String getCMemberId() {
-		return CMemberId;
-	}
-
-	public void setCMemberId(String cMemberId) {
-		CMemberId = cMemberId;
-	}
-
-	public int getCompanyNo() {
-		return companyNo;
-	}
-
-	public void setCompanyNo(int companyNo) {
-		this.companyNo = companyNo;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
 	public String getHNSort() {
 		return HNSort;
 	}
@@ -133,20 +109,28 @@ public class HireNoti {
 		HNSort = hNSort;
 	}
 
-	public int getHNRecruit() {
-		return HNRecruit;
-	}
-
-	public void setHNRecruit(int hNRecruit) {
-		HNRecruit = hNRecruit;
-	}
-
 	public String getHNCareer() {
 		return HNCareer;
 	}
 
 	public void setHNCareer(String hNCareer) {
 		HNCareer = hNCareer;
+	}
+
+	public String getHNForm() {
+		return HNForm;
+	}
+
+	public void setHNForm(String hNForm) {
+		HNForm = hNForm;
+	}
+
+	public int getHNRecruit() {
+		return HNRecruit;
+	}
+
+	public void setHNRecruit(int hNRecruit) {
+		HNRecruit = hNRecruit;
 	}
 
 	public String getHNCate() {
@@ -187,14 +171,6 @@ public class HireNoti {
 
 	public void setHNFinalEdu(String hNFinalEdu) {
 		HNFinalEdu = hNFinalEdu;
-	}
-
-	public String getHNWorkForm() {
-		return HNWorkForm;
-	}
-
-	public void setHNWorkForm(String hNWorkForm) {
-		HNWorkForm = hNWorkForm;
 	}
 
 	public String getHNMajor() {
@@ -253,36 +229,52 @@ public class HireNoti {
 		HNWorkPlace = hNWorkPlace;
 	}
 
-	public String getHN_Stime() {
-		return HN_Stime;
+	public String getHNStime() {
+		return HNStime;
 	}
 
-	public void setHN_Stime(String hN_Stime) {
-		HN_Stime = hN_Stime;
+	public void setHNStime(String hNStime) {
+		HNStime = hNStime;
 	}
 
-	public String getHN_Dtime() {
-		return HN_Dtime;
+	public String getHNDtime() {
+		return HNDtime;
 	}
 
-	public void setHN_Dtime(String hN_Dtime) {
-		HN_Dtime = hN_Dtime;
+	public void setHNDtime(String hNDtime) {
+		HNDtime = hNDtime;
 	}
 
-	public Date getStart() {
-		return start;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setStart(Date start) {
-		this.start = start;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
-	public Date getEnd() {
-		return end;
+	public String getEndDate() {
+		return endDate;
 	}
 
-	public void setEnd(Date end) {
-		this.end = end;
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getHNEve() {
+		return HNEve;
+	}
+
+	public void setHNEve(String hNEve) {
+		HNEve = hNEve;
+	}
+
+	public String getHNReMethod() {
+		return HNReMethod;
+	}
+
+	public void setHNReMethod(String hNReMethod) {
+		HNReMethod = hNReMethod;
 	}
 
 	public String getHNRequired() {
@@ -325,12 +317,12 @@ public class HireNoti {
 		HNDoc = hNDoc;
 	}
 
-	public String getHNinterview() {
-		return HNinterview;
+	public String getHNInterview() {
+		return HNInterview;
 	}
 
-	public void setHNinterview(String hNinterview) {
-		HNinterview = hNinterview;
+	public void setHNInterview(String hNInterview) {
+		HNInterview = hNInterview;
 	}
 
 	public String getHNName() {
@@ -389,20 +381,27 @@ public class HireNoti {
 		HNCount = hNCount;
 	}
 
-	@Override
-	public String toString() {
-		return "HireNoti [HNSeq=" + HNSeq + ", CMemberId=" + CMemberId + ", companyNo=" + companyNo + ", title=" + title
-				+ ", HNSort=" + HNSort + ", HNRecruit=" + HNRecruit + ", HNCareer=" + HNCareer + ", HNCate=" + HNCate
-				+ ", HNChargeTask=" + HNChargeTask + ", HNDept=" + HNDept + ", HNRankPosition=" + HNRankPosition
-				+ ", HNFinalEdu=" + HNFinalEdu + ", HNWorkForm=" + HNWorkForm + ", HNMajor=" + HNMajor
-				+ ", HNPreference=" + HNPreference + ", HNFor=" + HNFor + ", HNGender=" + HNGender + ", HNBirth="
-				+ HNBirth + ", HNSal=" + HNSal + ", HNWorkPlace=" + HNWorkPlace + ", HN_Stime=" + HN_Stime
-				+ ", HN_Dtime=" + HN_Dtime + ", start=" + start + ", end=" + end + ", HNRequired=" + HNRequired
-				+ ", HNOri=" + HNOri + ", HNRe=" + HNRe + ", HNProcess=" + HNProcess + ", HNDoc=" + HNDoc
-				+ ", HNinterview=" + HNinterview + ", HNName=" + HNName + ", HNPhone=" + HNPhone + ", HNCelPhone="
-				+ HNCelPhone + ", HNEMail=" + HNEMail + ", HNFax=" + HNFax + ", HNTitle=" + HNTitle + ", HNCount="
-				+ HNCount + "]";
+	public Date getAddDate() {
+		return AddDate;
 	}
 
-	
+	public void setAddDate(Date addDate) {
+		AddDate = addDate;
+	}
+
+	@Override
+	public String toString() {
+		return "HireNoti [HNSeq=" + HNSeq + ", HNSort=" + HNSort + ", HNCareer=" + HNCareer + ", HNForm=" + HNForm
+				+ ", HNRecruit=" + HNRecruit + ", HNCate=" + HNCate + ", HNChargeTask=" + HNChargeTask + ", HNDept="
+				+ HNDept + ", HNRankPosition=" + HNRankPosition + ", HNFinalEdu=" + HNFinalEdu + ", HNMajor=" + HNMajor
+				+ ", HNPreference=" + HNPreference + ", HNFor=" + HNFor + ", HNGender=" + HNGender + ", HNBirth="
+				+ HNBirth + ", HNSal=" + HNSal + ", HNWorkPlace=" + HNWorkPlace + ", HNStime=" + HNStime + ", HNDtime="
+				+ HNDtime + ", startDate=" + startDate + ", endDate=" + endDate + ", HNEve=" + HNEve + ", HNReMethod="
+				+ HNReMethod + ", HNRequired=" + HNRequired + ", HNOri=" + HNOri + ", HNRe=" + HNRe + ", HNProcess="
+				+ HNProcess + ", HNDoc=" + HNDoc + ", HNInterview=" + HNInterview + ", HNName=" + HNName + ", HNPhone="
+				+ HNPhone + ", HNCelPhone=" + HNCelPhone + ", HNEMail=" + HNEMail + ", HNFax=" + HNFax + ", HNTitle="
+				+ HNTitle + ", HNCount=" + HNCount + ", AddDate=" + AddDate + "]";
+	}
+
+		
 }

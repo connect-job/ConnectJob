@@ -68,8 +68,8 @@ public class CMemberController {
 		System.out.println(m.getCMemberId());
 		
 		CMember result = service.selectOne(m);
-		System.out.println(encoder.encode(m.getCMemberPw()));
-		System.out.println(result.getCMemberPw());
+
+		System.out.println(result);
 		
 		String msg="";
 		String loc = "/";
