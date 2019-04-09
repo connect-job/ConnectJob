@@ -26,13 +26,12 @@
 </head>
 
 <body>
-    <header>
-    
-   
-        <div id="notice">
-        	
+    <header>   	
+   		
+        <div id="notice">        	
             이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　<button>X</button>
         </div>
+        
 	
         <div id="header-top">
             <div class="top-container">
