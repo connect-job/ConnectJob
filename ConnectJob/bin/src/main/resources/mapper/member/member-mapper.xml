@@ -55,7 +55,9 @@
 		select count(*) from p_member where p_id=#{p_id}
 	</select>
 	
-	<!-- <update id="emailConfirm">
-		update p_member set email_confirm=#{email_confirm} where p_id=#{p_id}
-	</update>	 -->
+	<select id="findPw" resultType="member" parameterType="member">
+		select * from p_member where p_id=#{p_id} and phone=#{phone}
+	</select>
+	
+	
 </mapper>

@@ -28,9 +28,11 @@
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="p_id" id="p_id" autocomplete="off" />						
-						<input type="hidden" name="key" id="keyck" value="<%=key %>" autocomplete="off"/>						
-						<input type="button" value="인증번호 전송" id="emailSender"/>																
+						<input type="email" name="p_id" id="p_id" autocomplete="off" />
+						<c:if test="${Member.kakao_id==null}">						
+							<input type="hidden" name="key" id="keyck" value="<%=key %>" autocomplete="off"/>						
+							<input type="button" value="인증번호 전송" id="emailSender"/>
+						</c:if>																
 					</div>
 				</div>
 				
@@ -44,7 +46,8 @@
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
 					<div class="right">
-						<input type="password" name="password" id="pw1" required/>						
+						<input type="password" name="password" id="pw1" required/>
+						<span id="pw_validate"></span>						
 					</div>
 				</div>
 				
@@ -58,16 +61,17 @@
 				<div class="enroll-item">
 					<div class="left">비밀번호 확인</div>
 					<div class="right">
-						<input type="password" name="password2" id="pw2" required />						
+						<input type="password" name="password2" id="pw2" required />
+						<span id="password_result"></span>						
 					</div>
 				</div>
 				
-				<div class="enroll-item" id="pw-result-div2">
+				<!-- <div class="enroll-item" id="pw-result-div2">
 					<div class="left"></div>
 					<div class="right">						
 						<span id="password_result"></span>						
 					</div>					
-				</div>	
+				</div> -->	
 		
 				<div class="enroll-item msgdiv">
 					<div class="left">이름</div>
@@ -141,7 +145,7 @@
 $(document).ready(function(){
 	$('#emailSender').on('click', function(){
 		
-		alert("가입하신 이메일로 인증메일이 발송되었습니다.");
+		alert("이메일로 인증메일이 발송되었습니다.");
 		
 		var p_id=$('#p_id').val();
 		var keyck=$('#keyck').val();
@@ -192,60 +196,45 @@ $(document).ready(function(){
 			}
 		});
 	});
-});
+});	
 
-//비밀번호 일치
-$(function(){
-	$("input[type=password]").blur(function(){
-		var pw1=$('#pw1').val();
-		var pw2=$('#pw2').val();		
-		var result=document.getElementById("password_result");		
-		$("#pw-result-div").show();
-		if(pw1.trim()!=pw2.trim()){
-			$('#password_result').html("비밀번호가 일치하지 않습니다.").css('color', 'red');
-			/* alert("비밀번호가 일치하지 않습니다."); */
-			return false;
-		}
-		if(pw1.trim().length<8){
-			/* $('#pw_validate').html("비밀번호는 8자리 이상 20자리 이하로 입력해주세요.").css('color', 'red'); */
-			alert("비밀번호는 8자리 이상 20자리 이하로 입력해주세요.");
-			return false;
-		}
-		
-		return true;
-		
-	});
-});
-
-
-
-
-	/* $(function(){	
-	var pw1=$('#pw1').val();
-	$("#pw1").blur(function(){		
-		if(pw1.trim().length<8){
-			$('#pw_validate').html("비밀번호는 8자리 이상 20자리 이하로 입력해주세요.").css('color', 'red');
-		}else if(pw1.trim().length8){
-			$('#pw_validate').html("사용가능한 비밀번호입니다.").css('color', 'green');
-		}
-		
-	});
-	
-}); */
-
-/* $(function(){
-	var pw1=$('#pw1').val();
-	var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/; //정규식
+//정규식
+$(document).ready(function(){
 	$("#pw1").blur(function(){
-		if(!regex.test(pw1)){
-			alert('영문, 숫자, 특수문자 혼합해 입력');
-			return false;
-		}
-		return true;
+		var pw=$('#pw1').val();
+		
+		var regex="^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-z])(?=.*[A-Z]).{8,15}$";
+		var checkNumber = pw.search(/[0-9]/g);
+		var checkEnglish = pw.search(/[a-z]/ig);
+		
+		if(checkEnglish<0 || checkNumber<0) {
+			$('#pw_validate').html("숫자와 영문자 혼합").css('color', 'red');
+			$('#pw1').focus();
+		}else if(pw.trim().length<8 || pw.trim().length>16){
+			$('#pw_validate').html("8자리 이상 15자리 이하로 입력해주세요.").css('color', 'red');
+			$('#pw1').focus();
+		}else{
+			$('#pw_validate').html("사용 가능한 비밀번호입니다.").css('color', 'green');
+		}	
+	
 	});
-}) */
+});
 
-
+$(document).ready(function(){
+	
+	$("#pw2").blur(function(){
+		
+		var password=$('#pw1').val();
+		var password2=$('#pw2').val();	
+		
+		if(password.trim()!=password2.trim()){
+			$('#password_result').html("비밀번호가 일치하지 않습니다.").css('color', 'red');
+			$('#pw2').focus();
+		}else{
+			$('#password_result').html("비밀번호가 일치합니다.").css('color', 'green');	
+		}		
+	});
+});
 
 </script>
 

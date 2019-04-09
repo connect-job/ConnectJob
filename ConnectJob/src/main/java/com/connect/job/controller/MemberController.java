@@ -54,7 +54,7 @@ public class MemberController {
 	public String memberEnroll(Member m, Model model) {
 		model.addAttribute("Member", m);
 
-		return "member/memberEnrollKakao";
+		return "member/memberEnrollForm";
 
 	}
 	
@@ -79,7 +79,7 @@ public class MemberController {
 	}	
 
 	//카카오 회원가입
-	@RequestMapping("/member/memberEnrollEndKakao.do")
+	@RequestMapping("/member/memberEnrollEnd.do")
 	public String insertMemberKakao(Member m, Model model) throws Exception {
 			
 		String pw=m.getPassword();
@@ -88,7 +88,7 @@ public class MemberController {
 		logger.debug(enPw);
 		m.setPassword(enPw);
 			
-		int result=service.insertMemberKakao(m);
+		int result=service.insertMember(m);
 			
 		String msg="";
 		String loc="";
@@ -107,7 +107,7 @@ public class MemberController {
 			
 		return "common/msg";
 	}
-	//회원가입
+	/*//회원가입
 	@RequestMapping("/member/memberEnrollEnd.do")
 	public String insertMember(Member m, Model model) throws Exception {
 		
@@ -135,7 +135,7 @@ public class MemberController {
 		model.addAttribute("loc", loc);
 		
 		return "common/msg";
-	}
+	}*/
 	
 	//이메일 보내기
 	/*@ResponseBody*/
