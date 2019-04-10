@@ -8,7 +8,12 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <section>
-	<div style="text-align: left;"><br/>
+	<div id="etc-container">
+	<div class="title">
+		이메일주소무단수집거부
+	</div>
+		<div class="content">
+		
 		<p>본 웹사이트에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적 장치 를 이용하여 무단으로 수집되는
 			것을 거부하며, 이를 위반시 정보통신망법에 의해 형사 처벌됨을 유념하시기 바랍니다.</p>
 		<p class="text01_mem0901">
@@ -38,12 +43,6 @@
 		</ul>
 	</div>
 	</div>
-	<div class="clear"></div>
-	</div>
-	</div>
-	<br/>
-	
-	
 </section>
 
 

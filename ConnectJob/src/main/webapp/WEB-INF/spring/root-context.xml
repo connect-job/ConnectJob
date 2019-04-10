@@ -60,13 +60,10 @@
 	<tx:annotation-driven/>
 	
 	<!-- 웹소켓 빈 -->
-	<bean id="alarm" class="com.connect.job.common.socket.SocketHandler"/>
+	<bean id="alarmHandler" class="com.connect.job.common.socket.SocketHandler"/>
 	
 	<websocket:handlers>
-		<websocket:mapping handler="alarm" path="/alarm"/>
-		<websocket:handshake-interceptors>
-			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"></bean>
-		</websocket:handshake-interceptors>
+		<websocket:mapping handler="alarmHandler" path="/alarm"/>
 	</websocket:handlers>
 	
 <!-- 	<bean class="org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean">

@@ -71,11 +71,11 @@
                 <div class="menu-right">
                     <ul>
                         <c:if test="${loginMember==null && loginCMember==null}">
-                            <li id="login-li" onclick="location.href='${path}/member/login.do'"><i class="fas fa-sign-in-alt"></i><span id="login">로그인</span></li>
-                            <li id="join-li" onclick="location.href='${path}/member/memberEnroll.do'"><i class="fas fa-user-plus"></i><span id="join">회원가입</span></li>
+                            <li id="login-li" onclick="location.href='${path}/member/login.do'">로그인</li>
+                            <li id="join-li" onclick="location.href='${path}/member/memberEnroll.do'">회원가입</li>
                         </c:if>
                         <c:if test="${loginMember!=null}">
-                            <li id="mypage-li"><i class="fas fa-user-check"></i><span id="mypage">MyPage</span>
+                            <li id="mypage-li">마이페이지</span>
                                 <div id="sub-menu-mypage">
                                         <ul>
                                             <li  onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">내 정보관리</li>
@@ -83,11 +83,11 @@
                                                 <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
                                         </ul>
                                 </div></li>
-                            <li id="alarm-li"><i class="far fa-comment-dots"></i><div id="alarm-result" class="alarm-span">5</div>
+                            <li id="alarm-li">알림<div id="alarm-result" class="alarm-span">5</div>
                             <div id="alarm">
                                 최근 소식이 없습니다!
                             </div></li>
-                            <li id="logout-li" onclick="location.href='${path}/member/logout.do'"><i class="fas fa-sign-out-alt"></i><span id="logout">로그아웃</span></li>
+                            <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
                             <li onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">기업페이지</li>
@@ -254,7 +254,7 @@
 
 	<!-- 웹 소켓 사용해서 현재 몇개의 쪽지가 도착했는지 구해오기. --> 
     <script type="text/javascript">
-		    var wsUri = "ws://localhost:8080/job/alarm";
+		    var wsUri = "ws://192.168.20.221:9090/job/alarm";
 		    var nick = '${loginMember.p_id}';
 			console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
 		    
@@ -262,33 +262,39 @@
 		    	function send_message() {
 			        websocket = new WebSocket(wsUri);
 			        websocket.onopen = function(evt) {
+			        	console.log(evt);
 			            onOpen(evt);
 			        };
 			
 			        websocket.onmessage = function(evt) {
+			        	console.log(evt);
 			            onMessage(evt);
 			        };
 			
 			        websocket.onerror = function(evt) {
+			        	console.log(evt);
 			            onError(evt);
 			        };
 			    }
 			
 			    function onOpen(evt) 
 			    {
-			       websocket.send(nick);
+			    	console.log(evt);
+			        websocket.send(nick);
 			    }
 			
 			    function onMessage(evt) {
-			    	$('#alarm-result').empty();
-			    	$('#alarm-result').append(evt.data);
+			    	$('#alarm').empty();
+			    	$('#alarm').html(evt.data);
 			    }
 			
 			    function onError(evt) {
+			    	console.log(evt);
 			    }
-			
-			    $(document).ready(function(){
-			    		send_message();
+			    
+			    $(function() {
+			    	send_message();
 			    });
+			    
 		    });
 		</script>

@@ -6,20 +6,17 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-
-    <link rel="stylesheet" href="css/join.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/pdsr.css">
-    <link rel="stylesheet" href="css/button.css">
-
-    <link href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css' rel='stylesheet' type='text/css'>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
    
  <section>
-	<div style="text-align: left;">
-		 <p>         
+ 	<div id="etc-container">
+     <div class="title">
+       커넥트잡 이용약관
+     </div>
+     
+     <div class="content">
+
 		<h3>제1조(목적)</h3>
-		 이 약관은 oooo 회사(전자상거래 사업자)가 운영하는 oooo 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련
+		 이 약관은 [커넥트잡] 회사(전자상거래 사업자)가 운영하는 [커넥트잡] 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련
 		 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리ㆍ의무 및 책임사항을 규정함을 목적으로 합니다.
 		    
 		 ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다」
@@ -27,7 +24,7 @@
 
  <p>
 <h3>제2조(정의)</h3>
- ①“몰” 이란 oooo 회사가 재화 또는 용역(이하 “재화등”이라 함)을 이용자에게 제공하기 위하여 컴퓨터등 정보통신설비를
+ ①“몰” 이란 [커넥트잡] 회사가 재화 또는 용역(이하 “재화등”이라 함)을 이용자에게 제공하기 위하여 컴퓨터등 정보통신설비를
  이용하여 재화등을 거래할 수 있도록 설정한 가상의 영업장을 말하며, 아울러 사이버몰을 운영하는 사업자의 의미로도 
 사용합니다.
 
@@ -134,8 +131,9 @@
 
  ③ “몰”의 승낙의 의사표시에는 이용자의 구매 신청에 대한 확인 및 판매가능 여부, 구매신청의 정정 취소등에 관한 정보등을 포함하여야 합니다.
 </p>
-    
 </div>
+    </div>
+
 </section>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
