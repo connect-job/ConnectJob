@@ -64,6 +64,18 @@ public class SenierServiceImpl implements SenierService {
 		return dao.selectcomCount();
 	}
 
+	@Override
+	public int updateSenier(Senier s) {
+
+		return dao.updateSenier(s);
+	}
+
+	@Override
+	public int deleteSenier(Senier s) {
+
+		return dao.deleteSenier(s);
+	}
+
 	
 	
 	

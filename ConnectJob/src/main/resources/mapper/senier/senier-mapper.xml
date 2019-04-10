@@ -49,6 +49,13 @@
   	select count(*) from s_comment
   </select>
   
+  <update id="updateSenier" parameterType="senier">
+  	update s_talk set q_type=#{qType}, s_title=#{sTitle}, s_content=#{sContent} where s_no = #{sNo}
+  </update>
+  
+  <delete id="deleteSenier" parameterType="senier">
+  	delete from s_talk where s_no = #{sNo} 
+  </delete>
 
   
   <resultMap type="scomment" id="ScommentMap">

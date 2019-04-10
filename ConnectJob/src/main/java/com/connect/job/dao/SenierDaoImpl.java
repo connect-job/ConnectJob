@@ -66,6 +66,18 @@ public class SenierDaoImpl implements SenierDao {
 		return session.selectOne("senier.selectcomCount");
 	}
 
+	@Override
+	public int updateSenier(Senier s) {
+
+		return session.update("senier.updateSenier",s);
+	}
+
+	@Override
+	public int deleteSenier(Senier s) {
+
+		return session.delete("senier.deleteSenier",s);
+	}
+
 	
 	
 	

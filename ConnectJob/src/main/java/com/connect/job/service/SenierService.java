@@ -15,6 +15,8 @@ public interface SenierService {
 	List<Scomment> selectAll(int cPage, int numPerPage);
 	int selectcomCount();
 	Senier senierOneList(int no);
+	int updateSenier(Senier s);
+	int deleteSenier(Senier s);
 
 
 }

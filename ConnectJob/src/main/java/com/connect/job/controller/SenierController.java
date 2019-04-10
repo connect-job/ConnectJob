@@ -163,29 +163,63 @@ public class SenierController {
 		return html;
 	}
 	
+	@RequestMapping("/senierUpdate.do")
+	public String update(Model model, int no)
+	{
+		Senier  s =service.senierOneList(no);
+		model.addAttribute("s",s);
+		return "senier/senierUpdate";//선배에게 질문하기
+	}
 	
-	/*// 댓글 좋아요
-		@RequestMapping("senier/senierLike.do")
-		@ResponseBody
-		public String SenierLike(String member, int reviewNo, int companyNo) throws UnsupportedEncodingException {
+	@RequestMapping("/senierUpdateEnd.do")
+	public String updateEnd(Senier s, Model model)
+	{
+		
+		int result=service.updateSenier(s);
+		
+		String msg="";
+		String loc="/senierConversation.do"; //리스트시작페이지
+		if(result>0)
+		{
+			msg="질문수정완료";
 			
-			ScommentLike like = new ScommentLike();
-			like.setLikeMember(member);
-			like.setLikeReview(reviewNo);
-			like.setLikeCompany(companyNo);
+		}
+		else
+		{
+			msg="질문수정실패";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	
+		
+	}
+	
+	@RequestMapping("/senierDelete.do")
+	public String Delete(Senier s, Model model)
+	{
+		
+		int result=service.deleteSenier(s);
+		
+		String msg="";
+		String loc="/senierConversation.do"; //리스트시작페이지
+		if(result>0)
+		{
+			msg="질문삭제완료";
 			
-			String message = "";
-			
-			int result = service.scommentLike(like);
-			
-			if(result>0) {
-				message = "좋아요";
-			} else {
-				message = "좋아요 취소";
-			}
-			
-			String msg = URLEncoder.encode(message, "UTF-8");
-			return msg;
-		}*/
+		}
+		else
+		{
+			msg="질문삭제실패";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	
+		
+	}
+	
 	
 }
