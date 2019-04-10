@@ -20,6 +20,11 @@ html, body {
     color: #535353;
 }
 
+::selection {
+    background-color: #404861;
+    color: #fff;
+}
+
 body::-webkit-scrollbar {
     width: 10px;
 }
@@ -175,7 +180,6 @@ header #header-top .top-container .header-top-center #header-search-result {
     width: 402px;
     border: 1px solid #eee;
     box-shadow: 10px 5px 15px 5px #eee;
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 }
 
 header #header-top .top-container .header-top-center #header-search-result ul {
@@ -344,6 +348,11 @@ header  #header-menu .menu-container .menu-right ul li span {
     left: 0;
 }
 
+header  #header-menu .menu-container .menu-right ul li .alarm-span {
+    display: inline-block;
+    margin-left: 7px;
+}
+
 header  #header-menu #sub-menu-mypage {
     margin-top: 12px;
     display: none;
@@ -406,7 +415,7 @@ header  #header-menu #alarm {
     padding-top: 12px;
     display: none;
     position: absolute;
-    width: 200px;
+    width: 210px;
     height: 100px;
     text-align: center;
     left: -50%;
@@ -448,7 +457,29 @@ section #index-container #index-top-left {
     margin: 0 auto;
     animation: mainSlide infinite 15s;
     background-image: url('../images/main-1.jpg');
+    background-size: 100%;
+}
+
+@keyframes mainSlide {
+    0% {
+        background-image: url('../images/main-1.jpg');
         background-size: 100%;
+    }
+
+    40% {
+        background-image: url('../images/main-2.jpg');
+        background-size: 100%;
+    }
+
+    60% {
+        background-image: url('../images/main-3.jpg');
+        background-size: 100%;
+    }
+
+    100% {
+        background-image: url('../images/main-1.jpg');
+        background-size: 100%;
+    }
 }
 
 @-webkit-keyframes mainSlide {

@@ -69,6 +69,14 @@
 		    <version>1.4</version>
 		</dependency>
 		
+		<!-- 웹소켓 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-websocket</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		
 		<!-- 스프링 시큐리티 -->
 		<!-- 스프링 시큐리티를 이용하여 Bcrypt 암호화 하기 -->
 		<dependency>

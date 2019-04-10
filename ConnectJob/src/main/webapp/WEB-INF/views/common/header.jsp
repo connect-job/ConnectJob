@@ -6,8 +6,6 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
-<html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,22 +21,6 @@
 
     <script>
         new WOW().init();
-        
-        
-        $(function(){ 
-        	$("#header-top li#cs").click(function(){
-        			
-        			if(!$(this).next("ul").is(":visible"))
-        			{ 
-        				$(this).next("ul").slideDown();
-        			}
-        			else	
-        			{
-        				$("#header-top ul li#cs").slideUp(); 
-        			}
-        	}) 
-        })
-
     </script>
 </head>
 
@@ -100,7 +82,7 @@
                                                 <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
                                         </ul>
                                 </div></li>
-                            <li id="alarm-li"><i class="far fa-comment-dots"></i>
+                            <li id="alarm-li"><i class="far fa-comment-dots"></i><div id="alarm-result" class="alarm-span">5</div>
                             <div id="alarm">
                                 최근 소식이 없습니다!
                             </div></li>
@@ -143,6 +125,9 @@
 
         $('#join-li').mouseover(function() {
             $('#join').css("display","block");
+            $('#login').css("display","none");
+            $('#alarm').css("display","none");
+            $('#sub-menu').css("display","none");
         });
 
         $('#join-li').mouseleave(function() {
@@ -162,9 +147,14 @@
         $('#alarm-li').mouseover(function() {
             $('#sub-menu-mypage').css("display","none");
             $('#sub-menu').css("display","none");
+        });
+        
+        $('#alarm-li').click(function() {
+            $('#sub-menu-mypage').css("display","none");
+            $('#sub-menu').css("display","none");
             $('#alarm').css("display","block");
         });
-
+        
         $('#alarm-li').mouseleave(function() {
             $('#alarm').css("display","none");
         });
@@ -256,5 +246,48 @@
                 }
             });
         });
-
     </script>
+    
+    
+    
+
+	<!-- 웹 소켓 사용해서 현재 몇개의 쪽지가 도착했는지 구해오기. --> 
+    <script type="text/javascript">
+		    var wsUri = "ws://localhost:8080/job/alarm";
+		    var nick = '${loginMember.p_id}';
+			console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
+		    
+		    $('#alarm-li').click(function() {
+		    	function send_message() {
+			        websocket = new WebSocket(wsUri);
+			        websocket.onopen = function(evt) {
+			            onOpen(evt);
+			        };
+			
+			        websocket.onmessage = function(evt) {
+			            onMessage(evt);
+			        };
+			
+			        websocket.onerror = function(evt) {
+			            onError(evt);
+			        };
+			    }
+			
+			    function onOpen(evt) 
+			    {
+			       websocket.send(nick);
+			    }
+			
+			    function onMessage(evt) {
+			    	$('#alarm-result').empty();
+			    	$('#alarm-result').append(evt.data);
+			    }
+			
+			    function onError(evt) {
+			    }
+			
+			    $(document).ready(function(){
+			    		send_message();
+			    });
+		    });
+		</script>
