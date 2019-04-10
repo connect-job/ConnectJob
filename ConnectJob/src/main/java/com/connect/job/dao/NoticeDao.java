@@ -1,6 +1,7 @@
 package com.connect.job.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.connect.job.model.vo.Notice;
 
@@ -22,8 +23,8 @@ public interface NoticeDao {
 
 	int updateCount(int notice_no);
 
-	int selectCount(String searchType, String searchKey);
+	int searchCount(Map<String, String> map);
 
-	List<Notice> selectList(int cPage, int numPerPage, String searchType, String searchKey);
+	List<Notice> searchList(int cPage, int numPerPage, Map<String, String> map);
 
 }

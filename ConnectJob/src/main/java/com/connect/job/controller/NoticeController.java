@@ -1,14 +1,16 @@
 package com.connect.job.controller;
 
-import java.net.ResponseCache;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ import com.connect.job.service.NoticeService;
 
 @Controller
 public class NoticeController {
+	
+	private Logger logger=LoggerFactory.getLogger(NoticeController.class);
 	
 	@Autowired
 	private NoticeService service;
@@ -38,6 +42,7 @@ public class NoticeController {
 		mv.addObject("total",total);
 		mv.addObject("pageBar",PageBarFactory.getPageBar(total,cPage,numPerPage));
 		
+		
 		mv.setViewName("/notice/notice");
 		
 		return mv;
@@ -50,13 +55,21 @@ public class NoticeController {
 		
 		int numPerPage=10;
 		
-		List<Notice> list=service.selectList(cPage,numPerPage, searchType, searchKey);
-		int total=service.selectCount(searchType, searchKey);
+		Map<String, String> map=new HashMap<>();
+		map.put("searchType", searchType);
+		map.put("searchKey", searchKey);	
 		
-		mv.addObject("list",list);
+		
+		List<Notice> searchList=service.searchList(cPage,numPerPage, map);
+		int total=service.searchCount(map);
+		
+		System.out.println("검색 리스트: " + searchList);
+		System.out.println("map: " + map);
+		
+		mv.addObject("list",searchList);
 		mv.addObject("total",total);
-		mv.addObject("searchType", searchType);
-		mv.addObject("searchKey", searchKey);
+		mv.addObject("map", map);
+		
 		mv.addObject("pageBar",PageBarFactory.getPageBar(total,cPage,numPerPage));
 		
 		mv.setViewName("/notice/notice");

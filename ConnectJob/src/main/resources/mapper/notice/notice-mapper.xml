@@ -39,10 +39,14 @@
 		select count(*) from notice
 	</select>
 	
-	<select id="selectNoticeCount" resultType="_int">
-		<choose>
-			<when test=""></when>
-		</choose>
+	<select id="searchCount" resultType="_int">
+		select count(*) from notice where ${searchType} like '%' || #{searchKey} || '%'
 	</select>
+	
+	<select id="searchList" resultType="notice">	
+		select * from notice where ${searchType} like '%' || #{searchKey} || '%'
+	</select>
+	
+	
 	
 </mapper>
