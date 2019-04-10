@@ -100,7 +100,12 @@ public class CompanyReviewController {
 		} else {
 			for(int i=0; i<list.size(); i++) {
 				html += "<div class=\"review-item\" onclick=\"fn_reviewContent(this," + list.get(i).getReviewNo() + ")\">";
-				html += "<div class=\"item-title\"><i class=\"far fa-edit\"></i>　" + list.get(i).getReviewShort() + "</div>";
+				html += "<div class=\"item-title\"><i class=\"far fa-edit\"></i>　";
+				if(list.get(i).getReviewShort().length()>20) {
+					html += list.get(i).getReviewShort().substring(0, 20) + "</div>";
+				} else {
+					html += list.get(i).getReviewShort() + "</div>";
+				}
 				
 				/*SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
 				String reviewDate = sdf.format(list.get(i).getReviewDate());*/

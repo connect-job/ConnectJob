@@ -60,7 +60,9 @@
 	<tx:annotation-driven/>
 	
 	<!-- 웹소켓 빈 -->
-	<bean id="alarmHandler" class="com.connect.job.common.socket.SocketHandler"/>
+	<bean id="alarmHandler" class="com.connect.job.common.socket.SocketHandler">
+		<property name="sessionTem" ref="sqlSessionTemplate"/>
+	</bean>
 	
 	<websocket:handlers>
 		<websocket:mapping handler="alarmHandler" path="/alarm"/>

@@ -14,6 +14,7 @@ public class MessageDaoImpl implements MessageDao {
 		
 		@Override
 		public Message messageCount(Message m) {
+			System.out.println("sqlsession 값 : " + session);
 			return session.selectOne("message.messageCount", m);
 		}
 	

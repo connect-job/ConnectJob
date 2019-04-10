@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -23,12 +23,22 @@ import com.connect.job.model.vo.Message;
 
 public class SocketHandler extends TextWebSocketHandler {
 	
+	private SqlSessionTemplate sessionTem;
+	
 	private Logger logger = LoggerFactory.getLogger(SocketHandler.class);
 	
 	// 접속한 객체들을 관리하기 위해 컬렉션을 이용하는게 좋다 (List, HashMap등)
 	private List<WebSocketSession> list = new ArrayList<WebSocketSession>();
 	
-	
+	public SqlSessionTemplate getSessionTem() {
+		return sessionTem;
+	}
+
+	public void setSessionTem(SqlSessionTemplate sessionTem) {
+		this.sessionTem = sessionTem;
+	}
+
+
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		logger.debug("세션아이디 (Session ID) : " + session.getId());
@@ -43,18 +53,20 @@ public class SocketHandler extends TextWebSocketHandler {
 		String member = message.getPayload();     // 가공처리
 		logger.debug("들어온 메세지 : " + member);
 		
-/*		//DB에 해당 아이디로온 쪽지 갯수 긁어오잡
 		Message m = new Message();
 		m.setmTo(member);
-		Message result  = new MessageDaoImpl().messageCount(m);
-		logger.debug("쪽지가 몇개나 있니? : " + result.getmCount() + "개");
-		*/
+		System.out.println(m);
+		
+		Message ms = sessionTem.selectOne("message.messageCount",m);
+		
+		System.out.println("메세지 서비스 주입 : " + ms);
+		
 			for(WebSocketSession s : list) {
 				if(s==session) {
 					continue;
 				}
 				try {
-					s.sendMessage(new TextMessage("테스트중"));
+					s.sendMessage(new TextMessage(String.valueOf(ms.getmCount())));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

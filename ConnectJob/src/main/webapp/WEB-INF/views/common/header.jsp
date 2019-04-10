@@ -258,7 +258,6 @@
 		    var nick = '${loginMember.p_id}';
 			console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
 		    
-		    $('#alarm-li').click(function() {
 		    	function send_message() {
 			        websocket = new WebSocket(wsUri);
 			        websocket.onopen = function(evt) {
@@ -267,12 +266,10 @@
 			        };
 			
 			        websocket.onmessage = function(evt) {
-			        	console.log(evt);
 			            onMessage(evt);
 			        };
 			
 			        websocket.onerror = function(evt) {
-			        	console.log(evt);
 			            onError(evt);
 			        };
 			    }
@@ -284,8 +281,8 @@
 			    }
 			
 			    function onMessage(evt) {
-			    	$('#alarm').empty();
-			    	$('#alarm').html(evt.data);
+			    	$('#alarm-li').empty();
+			    	$('#alarm-li').append(evt.data);
 			    }
 			
 			    function onError(evt) {
@@ -296,5 +293,4 @@
 			    	send_message();
 			    });
 			    
-		    });
 		</script>

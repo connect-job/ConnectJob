@@ -47,13 +47,6 @@
 		  <version>1.3.2</version>
 		</dependency>
 		
-		<!-- 스프링 리로드(오토리로드) -->
-		<!-- https://mvnrepository.com/artifact/org.springframework/springloaded -->
-		<!-- <dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>springloaded</artifactId>
-		    <version>1.2.8.RELEASE</version>
-		</dependency> -->
 		
 		<!-- 오라클 JDBC 드라이버 -->
 		<dependency>
@@ -144,22 +137,11 @@
 
 	<!--reload -->
 	<!-- https://mvnrepository.com/artifact/org.springframework/springloaded -->
-	<dependency>
+	<!-- <dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>springloaded</artifactId>
 		<version>1.2.8.RELEASE</version>
-	</dependency>
-		
-		
-		
-		
-		<!-- reload
-		https://mvnrepository.com/artifact/org.springframework/springloaded
-		<dependency>
-    		<groupId>org.springframework</groupId>
-    		<artifactId>springloaded</artifactId>
-    		<version>1.2.8.RELEASE</version>
-		</dependency>	 -->	
+	</dependency> -->
 		
 		<!-- AspectJ -->
 		<dependency>
