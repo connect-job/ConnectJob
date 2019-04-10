@@ -12,11 +12,13 @@
 	</resultMap>
 	
 	<insert id="insertNotice">
-		insert into notice values(seq_notice_no.nextval, #{writer}, #{title}, #{content}, default, default, default)
+		insert into notice values(seq_notice_no.nextval, #{writer}, #{title}, #{content}, default, default, #{status})
 	</insert>
-	
-	<select id="selectList" resultType="notice">
-  		select A.*,(select count(*) from notice where A.notice_no=notice_no) count from notice A order by notice_date desc
+  	
+  	<select id="selectList" resultType="notice">
+		select A.*, (select count(*) from notice where A.notice_no=notice_no) count 
+		from notice A 
+		order by notice_date desc
   	</select>
 	
 	<select id="selectOne" resultMap="noticeResult" parameterType="_int">

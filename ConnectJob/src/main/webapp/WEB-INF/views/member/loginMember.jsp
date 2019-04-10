@@ -2,9 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
 <c:set var="path" value="${pageContext.request.contextPath}"/>
-
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -62,7 +60,15 @@
 </div>
 </section>
 
+
+
 <script>
+
+	
+
+
+	
+
 	$(function(){
 		$("#findbtn").click(function(){
 			location.href='${path}/member/findMember';

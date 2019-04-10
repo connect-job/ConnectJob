@@ -37,7 +37,7 @@ public class NoticeController {
 		ModelAndView mv=new ModelAndView();
 		List<Notice> list=service.selectList(cPage,numPerPage);
 		int total=service.selectCount();
-		
+	
 		mv.addObject("list",list);
 		mv.addObject("total",total);
 		mv.addObject("pageBar",PageBarFactory.getPageBar(total,cPage,numPerPage));
