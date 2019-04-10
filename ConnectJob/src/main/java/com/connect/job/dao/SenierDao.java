@@ -16,6 +16,6 @@ public interface SenierDao {
 	List<Scomment> comList(Scomment sco);
 	List<Scomment> selectAll(int cPage, int numPerPage);
 	int selectcomCount();
-	
-	
+	int updateSenier(Senier s);
+	int deleteSenier(Senier s);
 }

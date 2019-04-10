@@ -19,8 +19,8 @@
 			<div id="right">
 				<c:if test="${loginMember!=null}">
 					<c:if test="${loginMember.p_id == s.pId }">
-								<button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">수정</button>
-								<button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">삭제</button>
+								<button id="btn-senier" onclick="location.href='${path}/senierUpdate.do?no=${s.sNo}'">수정</button>
+								<button id="btn-senier" onclick="location.href='${path}/senierDelete.do?sNo=${s.sNo}'">삭제</button>
 					</c:if>
 				</c:if>
 				
