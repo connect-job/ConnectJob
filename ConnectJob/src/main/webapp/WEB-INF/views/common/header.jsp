@@ -83,7 +83,7 @@
                                                 <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
                                         </ul>
                                 </div></li>
-                            <li id="alarm-li">알림<div id="alarm-result" class="alarm-span">5</div>
+                            <li id="alarm-li">알림<div id="alarm-result" class="alarm-span"></div>
                             <div id="alarm">
                                 최근 소식이 없습니다!
                             </div></li>
@@ -107,8 +107,99 @@
             </div>
         </div>
     </header>
+    
+    <div id="socket-message">
+    	메세지 내용 
+    </div>
 
     <script>
+    
+    // ------------------------------------------------------------ 웹소켓 시작
+    var wsUri = "ws://localhost:8080/job/alarm";
+    var nick = '${loginMember.p_id}';
+	console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
+    
+    	function send_message() {
+	        websocket = new WebSocket(wsUri);
+	        websocket.onopen = function(evt) {
+	        	console.log(evt);
+	            onOpen(evt);
+	        };
+	
+	        websocket.onmessage = function(evt) {
+	            onMessage(evt);
+	        };
+	
+	        websocket.onerror = function(evt) {
+	            onError(evt);
+	        };
+	    }
+	
+	    function onOpen(evt) 
+	    {
+	    	console.log(evt);
+	        websocket.send(nick);
+	    }
+	
+	    function onMessage(evt) {
+	    	playAlarm = setTimeout(function () {
+	    		$('html').scrollTop()==0;
+		    	$('#socket-message').empty();
+		    	$('#socket-message').css("opacity","1");
+		    	$('#socket-message').append("<i class='fas fa-envelope-open-text' style='font-size:20px'></i>　");
+		    	$('#socket-message').append(evt.data);
+		    	$('#socket-message').append("<br><button type='button' onclick='fn_messageClose()'>닫기</button>");
+	    	}, 1000);
+	    	
+	    	if(evt.data!=null) {
+	    		playAlarm;
+	    	} else {
+	    		clearInterval(playAlarm);
+	    	}
+	    	
+	    }
+	
+	    function onError(evt) {
+	    	console.log(evt);
+	    }
+	    
+	    $(document).ready(function() {
+		    	send_message();
+		    	setTimeout(function() {
+		    		send_message();
+		    	},1000);
+	    });
+	    
+	    function fn_messageClose() {
+	    	$('#socket-message').css("opacity","0");
+	    }
+	    
+	    $(document).ready(function() {
+
+	    	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+	    	var floatPosition = parseInt($("#socket-message").css('top'));
+	    	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+	    	$(window).scroll(function() {
+	    		// 현재 스크롤 위치를 가져온다.
+	    		var scrollTop = $(window).scrollTop();
+	    		var newPosition = scrollTop + floatPosition + "px";
+
+	    		/* 애니메이션 없이 바로 따라감
+	    		 $("#floatMenu").css('top', newPosition);
+	    		 */
+
+	    		$("#socket-message").stop().animate({
+	    			"top" : newPosition
+	    		}, 200);
+
+	    	}).scroll();
+
+	    });
+	    
+	    // ------------------------------------------------------------ 웹소켓 끝
+    
+    
         $('#x-btn').click(function() {
             $(this).parent().css("display","none");
             $(this).parent().parent().parent().find('section').css("padding-top","150px");
@@ -248,49 +339,4 @@
             });
         });
     </script>
-    
-    
-    
 
-	<!-- 웹 소켓 사용해서 현재 몇개의 쪽지가 도착했는지 구해오기. --> 
-    <script type="text/javascript">
-		    var wsUri = "ws://192.168.20.221:9090/job/alarm";
-		    var nick = '${loginMember.p_id}';
-			console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
-		    
-		    	function send_message() {
-			        websocket = new WebSocket(wsUri);
-			        websocket.onopen = function(evt) {
-			        	console.log(evt);
-			            onOpen(evt);
-			        };
-			
-			        websocket.onmessage = function(evt) {
-			            onMessage(evt);
-			        };
-			
-			        websocket.onerror = function(evt) {
-			            onError(evt);
-			        };
-			    }
-			
-			    function onOpen(evt) 
-			    {
-			    	console.log(evt);
-			        websocket.send(nick);
-			    }
-			
-			    function onMessage(evt) {
-			    	$('#alarm-li').empty();
-			    	$('#alarm-li').append(evt.data);
-			    }
-			
-			    function onError(evt) {
-			    	console.log(evt);
-			    }
-			    
-			    $(function() {
-			    	send_message();
-			    });
-			    
-		</script>

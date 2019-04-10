@@ -3,7 +3,7 @@
 <mapper namespace="message">
 
 	<select id="messageCount" parameterType="message" resultMap="messageResult">
-		SELECT COUNT(*) m_count FROM M_MESSAGE WHERE M_TO = #{mTo}
+		SELECT COUNT(*) m_count FROM M_MESSAGE WHERE M_TO = #{mTo} AND M_STATUS = 'N'
 	</select>
 	
 	<resultMap type="message" id="messageResult">

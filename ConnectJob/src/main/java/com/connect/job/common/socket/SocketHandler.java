@@ -61,12 +61,18 @@ public class SocketHandler extends TextWebSocketHandler {
 		
 		System.out.println("메세지 서비스 주입 : " + ms);
 		
+		String result = String.valueOf(ms.getmCount());
+		
+		System.out.println("돌려줄 값 : " + result);
+		
 			for(WebSocketSession s : list) {
 				if(s==session) {
 					continue;
 				}
 				try {
-					s.sendMessage(new TextMessage(String.valueOf(ms.getmCount())));
+					if(Integer.parseInt(result)>0) {
+						s.sendMessage(new TextMessage("아직 읽지 않은 메세지가 " + result + "건이 있습니다!"));						
+					}
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
