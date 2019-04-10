@@ -22,4 +22,8 @@ public interface NoticeDao {
 
 	int updateCount(int notice_no);
 
+	int selectCount(String searchType, String searchKey);
+
+	List<Notice> selectList(int cPage, int numPerPage, String searchType, String searchKey);
+
 }

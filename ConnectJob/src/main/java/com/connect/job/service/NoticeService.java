@@ -19,5 +19,10 @@ public interface NoticeService {
 	int selectCount();
 
 	Notice selectOne(int notice_no, boolean hasRead);
+
+	//검색
+	int selectCount(String searchType, String searchKey); 
+
+	List<Notice> selectList(int cPage, int numPerPage, String searchType, String searchKey);
 	
 }

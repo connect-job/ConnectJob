@@ -27,7 +27,7 @@ public class NoticeController {
 	
 	//공지사항 페이지 이동
 	@RequestMapping("/notice.do")
-	public ModelAndView selectNoticeList(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage, Model model) {
+	public ModelAndView selectNoticeList(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage) {
 		
 		int numPerPage=10;
 		ModelAndView mv=new ModelAndView();
@@ -36,6 +36,27 @@ public class NoticeController {
 		
 		mv.addObject("list",list);
 		mv.addObject("total",total);
+		mv.addObject("pageBar",PageBarFactory.getPageBar(total,cPage,numPerPage));
+		
+		mv.setViewName("/notice/notice");
+		
+		return mv;
+	}
+	
+	//검색
+	@RequestMapping("/notice/noticeSearch")
+	public ModelAndView noticeFind(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage, String searchType, String searchKey) {
+		ModelAndView mv=new ModelAndView();
+		
+		int numPerPage=10;
+		
+		List<Notice> list=service.selectList(cPage,numPerPage, searchType, searchKey);
+		int total=service.selectCount(searchType, searchKey);
+		
+		mv.addObject("list",list);
+		mv.addObject("total",total);
+		mv.addObject("searchType", searchType);
+		mv.addObject("searchKey", searchKey);
 		mv.addObject("pageBar",PageBarFactory.getPageBar(total,cPage,numPerPage));
 		
 		mv.setViewName("/notice/notice");

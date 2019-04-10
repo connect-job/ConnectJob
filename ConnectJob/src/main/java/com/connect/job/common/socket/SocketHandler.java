@@ -37,25 +37,25 @@ public class SocketHandler extends TextWebSocketHandler {
 	}
 	
 
-	@Override
+	/*@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) {
 		logger.debug("메시지 (Message) : " + message);
 		String member = message.getPayload();     // 가공처리
 		System.out.println("들어온 메세지 : " + member);
 		logger.debug(member);
 		
-		/*
+		
 		 * // 메세지 파싱처리하기 Map<String, String> map = new HashMap(); ObjectMapper mapper =
 		 * new ObjectMapper(); try { // 담겨있는 String (Json 형식)으로 넘어온 문자열을 // 해쉬맵에 담아
 		 * 변환해주는 것 map = mapper.readValue(msg, HashMap.class); } catch (IOException e) {
 		 * e.printStackTrace(); }
-		 */
+		 
 		
 		
-		/*
+		
 		 * System.out.println("메세지 변환 후 사용자 아이디 : " + map.get("nickName"));
 		 * logger.debug("메세지 변환 후 내용 : " + map.get("msg"));
-		 */
+		 
 		
 		// session.sendMessage() : 세션에 메세지를 보내는 메소드
 		// 전달된 메소드는 페이지의 onmessage함수를 호출!
@@ -75,7 +75,7 @@ public class SocketHandler extends TextWebSocketHandler {
 					e.printStackTrace();
 				}
 			}
-	}
+	}*/
 
 	
 	// 소켓을 관리하는 객체를 만들어야함

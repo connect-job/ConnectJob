@@ -39,5 +39,10 @@
 		select count(*) from notice
 	</select>
 	
+	<select id="selectNoticeCount" resultType="_int">
+		<choose>
+			<when test=""></when>
+		</choose>
+	</select>
 	
 </mapper>

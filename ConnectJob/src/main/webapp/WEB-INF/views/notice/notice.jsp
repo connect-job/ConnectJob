@@ -64,24 +64,24 @@
    	       
    	<div>       
         <select id="searchType">
-            <option value="title">제목</option>
-            <option value="content">내용</option>                
+            <option value="title" ${"title".equals(searchType)?"selected":"" }>제목</option>
+            <option value="content" ${"content".equals(searchType)?"selected":"" }>내용</option>                
         </select>            
 		<div id="search-title">
-        	<form>
+        	<form action="${path }/notice/noticeSearch">
         		<input type="hidden" name="searchType" value="title"/>            		
-            	<input type="hidden" name="cPage"/>
-            	<input type="hidden" name="numPerPage"/>
-            	<input type="search" name="searchKey" placeholder="제목"/>
+            	<input type="hidden" name="cPage" value="${pageBar.cPage }"/>
+            	<input type="hidden" name="numPerPage" value="${pageBar.numPerPage }"/>
+            	<input type="search" name="searchKey" value="${'title' eq searchType?searchKey:'' }" placeholder="제목"/>
             	<button type="submit" id="search-btn">검색</button>
       		</form>
     	</div>            
 		<div id="search-content">
-      		<form>
+      		<form action="${path }/notice/noticeSearch">
             	<input type="hidden" name="searchType" value="content"/>            		
-            	<input type="hidden" name="cPage"/>
-            	<input type="hidden" name="numPerPage"/>
-            	<input type="search" name="searchKey" placeholder="내용"/>
+            	<input type="hidden" name="cPage" value="${pageBar.cPage }"/>
+            	<input type="hidden" name="numPerPage" value="${pageBar.numPerPage }"/>
+            	<input type="search" name="searchKey" value="${'content' eq searchType?searchKey:'' }" placeholder="내용"/>
             	<button type="submit" id="search-btn">검색</button>
         	</form>
 		</div>           	               

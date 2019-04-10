@@ -59,6 +59,18 @@ public class NoticeServiceImpl implements NoticeService {
 		return dao.selectOne(notice_no, hasRead);
 	}
 
+	@Override
+	public int selectCount(String searchType, String searchKey) {
+		// TODO Auto-generated method stub
+		return dao.selectCount(searchType, searchKey);
+	}
+
+	@Override
+	public List<Notice> selectList(int cPage, int numPerPage, String searchType, String searchKey) {
+		// TODO Auto-generated method stub
+		return dao.selectList(cPage, numPerPage, searchType, searchKey);
+	}
+
 	
 	
 	

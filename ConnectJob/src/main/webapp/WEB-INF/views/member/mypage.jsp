@@ -75,7 +75,7 @@
 				<div>
 					<%-- <input type="hidden" value="${list.reviewNo }"/> --%>
 					${list.reviewCompany }
-					<a href="location.href='${path }review/reviewOne.do?reviewNo='+${list.reviewNo}">${list.reviewShort }</a>
+					<a href="${path }/review/reviewOne.do?reviewNo=${list.reviewNo}">${list.reviewShort }</a>
 					${list.reviewDate}
 					
 				</div>
