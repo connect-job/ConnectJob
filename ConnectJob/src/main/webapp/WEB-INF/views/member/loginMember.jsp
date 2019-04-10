@@ -86,48 +86,49 @@
 			}
 		});
 	
-	Kakao.init('60f4385612bb24ab265ce9857acca8ff');
-	
-	//카카오 로그인 버튼 생성
-    Kakao.Auth.createLoginButton({
-      container: '#kakao-login-btn',      
-      success: function(authObj) {    
-    	  Kakao.API.request({
-    	       url: '/v1/user/me',
-    	       success: function(res) {
-    	             /* alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력
-    	             alert(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
-    	             console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다) */
-    	             
-    	             var id = res.id;/* 
-    	             console.log("아이디 저장:" + id) */
-    	             
-    	             $.ajax({
-    	            	 url: '${path}/member/isKakao.do?is_sns=kakao&kakao_id=' + id,
-    	            	 success: function(data) {
-    	            		 /* console.log("돌려받은값 : " + data); */
-    	            		 if(data=='1') {
-    	            			 /* alert('로그인페이지로 이동'); */
-    	            			 location.href="${path}/member/memberLoginKakao.do?kakao_id=" + id;
-    	            		 } else {
-    	            			 /* alert('회원가입페이지로 이동'); */
-    	            			 location.href="${path}/member/memberEnrollKakao.do?is_sns=kakao&kakao_id=" + id + "&p_name=" + res.properties['nickname'];
-    	            		 }
-    	            	 }
-    	             });    	             
-    	             
-    	             /* console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
-    	             console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
-    	         // res.properties.nickname으로도 접근 가능 )
-    	             console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력 */
-    	           }
-    	         });
-      },
-      fail: function(err) {
-    	  //실패
-    	 alert(JSON.stringify(err));
-      }
-    });
+
+		Kakao.init('60f4385612bb24ab265ce9857acca8ff');
+
+		//카카오 로그인 버튼 생성
+	    Kakao.Auth.createLoginButton({
+	      container: '#kakao-login-btn',
+	      success: function(authObj) {    
+	    	  Kakao.API.request({
+	    	       url: '/v1/user/me',
+	    	       success: function(res) {
+	    	             /* alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력
+	    	             alert(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
+	    	             console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다) */
+	    	             
+	    	             var id = res.id;/* 
+	    	             console.log("아이디 저장:" + id) */
+	    	             
+	    	             $.ajax({
+	    	            	 url: '${path}/member/isKakao.do?is_sns=kakao&kakao_id=' + id,
+	    	            	 success: function(data) {
+	    	            		 /* console.log("돌려받은값 : " + data); */
+	    	            		 if(data=='1') {
+	    	            			 /* alert('로그인페이지로 이동'); */
+	    	            			 location.href="${path}/member/memberLoginKakao.do?kakao_id=" + id;
+	    	            		 } else {
+	    	            			 /* alert('회원가입페이지로 이동'); */
+	    	            			 location.href="${path}/member/memberEnrollKakao.do?is_sns=kakao&kakao_id=" + id + "&p_name=" + res.properties['nickname'];
+	    	            		 }
+	    	            	 }
+	    	             });    	             
+	    	             
+	    	             /* console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
+	    	             console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
+	    	         // res.properties.nickname으로도 접근 가능 )
+	    	             console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력 */
+	    	           }
+	    	         });
+	      },
+	      fail: function(err) {
+	    	  //실패
+	    	 alert(JSON.stringify(err));
+	      }
+	    });
 </script>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

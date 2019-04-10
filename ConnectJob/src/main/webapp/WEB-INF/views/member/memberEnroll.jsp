@@ -20,7 +20,6 @@
 		<div class="enroll-item" onclick="location.href='${path}/cmember/cmemberEnroll.do'"><i class="fas fa-building"></i><br>기업회원가입</div>
 	</div>
 </section>
-
 	
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 

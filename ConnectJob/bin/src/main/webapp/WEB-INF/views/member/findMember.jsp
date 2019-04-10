@@ -7,29 +7,44 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <section>
-	<table>
-		<caption>ID찾기</caption>
-		<tr>
-			<td>이름</td>
-			<td><input type="text" name="pName"/></td>
-		</tr>
-		<tr>
-			<td>연락처</td>
-			<td><input type="phone" name="phone"/></td>
-		</tr>
-	</table>
-	<table>
-		<caption>PW찾기</caption>
-		<tr>
-			<td>아이디</td>
-			<td><input type="email" name="pId"/></td>
-		</tr>
-		<tr>
-			<td>연락처</td>
-			<td><input type="phone" name="phone"/></td>
-		</tr>
-	</table>
+	<form action="${path }/member/findId" method="post">
+		<table>
+			<caption>ID찾기</caption>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="p_name"/></td>
+			</tr>
+			<tr>
+				<td>연락처</td>
+				<td><input type="phone" name="phone"/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="ID찾기"/></td>				
+			</tr>
+		</table>
+	</form>
+	
+	<form action="${path }/member/findPw" method="post">
+		<table>
+			<caption>PW찾기</caption>
+			<tr>
+				<td>아이디</td>
+				<td><input type="email" name="p_id" id="p_id"/></td>
+			</tr>
+			<tr>
+				<td>연락처</td>
+				<td><input type="phone" name="phone" id="phone"/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="PW찾기" id="findPw"/></td>				
+			</tr>
+		</table>
+	</form>
 </section>
+
+<script type="text/javascript">
+
+</script>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 

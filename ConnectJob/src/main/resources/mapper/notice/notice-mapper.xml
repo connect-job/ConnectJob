@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="notice">
+	<resultMap type="notice" id="noticeResult">
+		<id column="notice_no" property="notice_no"/>
+		<result column="writer" property="writer"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="read_count" property="read_count"/>		
+		<result column="notice_date" property="notice_date"/>
+		<result column="status" property="status"/>
+	</resultMap>
+	
+	<insert id="insertNotice">
+		insert into notice values(seq_notice_no.nextval, #{writer}, #{title}, #{content}, default, default, default)
+	</insert>
+	
+	<select id="selectList" resultType="notice">
+  		select A.*,(select count(*) from notice where A.notice_no=notice_no) count from notice A order by notice_date desc
+  	</select>
+	
+	<select id="selectOne" resultMap="noticeResult" parameterType="_int">
+		select * from notice where notice_no=#{notice_no}
+	</select>
+	
+	<update id="updateCount" parameterType="member">
+		update notice set read_count=read_count+1 where notice_no=#{notice_no}
+	</update>
+	
+	<delete id="deleteNotice" parameterType="notice">
+		delete from notice where notice_no=#{notice_no}
+	</delete>
+	
+	<update id="updateNotice" parameterType="notice">
+		update notice set title=#{title}, content=#{content} where notice_no=#{notice_no}
+	</update>
+	
+	<select id="selectCount" resultType="_int">
+		select count(*) from notice
+	</select>
+	
+	
+</mapper>

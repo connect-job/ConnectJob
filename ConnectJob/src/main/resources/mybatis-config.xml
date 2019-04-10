@@ -16,8 +16,10 @@
 		<typeAlias type="com.connect.job.model.vo.FinalEduUniv" alias="finalEduUniv"/>
 		<typeAlias type="com.connect.job.model.vo.Career" alias="career"/>
 		<typeAlias type="com.connect.job.model.vo.Scomment" alias="scomment"/>
-		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>
 		<typeAlias type="com.connect.job.model.vo.Inquiry" alias="inquiry"/>
+		<typeAlias type="com.connect.job.model.vo.Notice" alias="Notice"/>
+		
+		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>
 	</typeAliases>
 	 
 </configuration>
