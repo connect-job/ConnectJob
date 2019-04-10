@@ -53,6 +53,15 @@
 					<div class="left">이름</div>
 					<div class="right">
 						<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
+						<%-- <input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/> --%>
+						<%-- <input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/> --%>
+					</div>
+				</div>
+				
+				<div class="enroll-item msgdiv">
+					<div class="left">SNS</div>
+					<div class="right">
+						<%-- <input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/> --%>
 						<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
 						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
 					</div>

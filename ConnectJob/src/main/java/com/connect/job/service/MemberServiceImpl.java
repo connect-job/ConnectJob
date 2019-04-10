@@ -123,6 +123,12 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectReviewList(review);
 	}
 
+	@Override
+	public int deleteReview(int review_no) {
+		// TODO Auto-generated method stub
+		return dao.deleteReview(review_no);
+	}
+
 	
 	
 	

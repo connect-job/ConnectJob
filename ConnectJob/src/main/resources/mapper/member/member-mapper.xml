@@ -92,4 +92,7 @@
 		select * from company_review where review_member=#{reviewMember}
 	</select>
 	
+	<delete id="deleteReview" parameterType="_int">
+		select * from company_review where review_no=#{review_no}
+	</delete>
 </mapper>

@@ -105,6 +105,12 @@ public class MemberDaoImpl implements MemberDao {
 		return session.selectList("member.selectReviewList", review);
 	}
 
+	@Override
+	public int deleteReview(int review_no) {
+		// TODO Auto-generated method stub
+		return session.delete("member.deleteReview", review_no);
+	}
+
 	
 	
 	

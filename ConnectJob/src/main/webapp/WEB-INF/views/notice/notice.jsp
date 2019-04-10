@@ -22,18 +22,22 @@
 		
 		 $('#searchType').trigger("change"); 
 	});
+	
+	function fn_paging(cPage) {
+   		window.location.href="${path}/notice.do?cPage=" + cPage;
+   	}
 </script>
 
  <section>    
     	   	  	
  	<table>
- 		<c:if test="${loginMember!=null && loginMember.p_id eq 'admin@admin.com' }">
+ 		<%-- <c:if test="${loginMember!=null && loginMember.p_id eq 'admin@admin.com' }"> --%>
 			<tr>            	
 				<td>
 					<input type="button" value="글쓰기" onclick="location.href='${path}/notice/noticeForm'"/>
 				</td>
         	</tr> 
-        </c:if>                       
+        <%-- </c:if> --%>                       
         <tr>
             <th>번호</th>
             <th>작성자</th>

@@ -32,11 +32,11 @@ public class NoticeController {
 		int numPerPage=10;
 		ModelAndView mv=new ModelAndView();
 		List<Notice> list=service.selectList(cPage,numPerPage);
-		int totalList=service.selectCount();
+		int total=service.selectCount();
 		
 		mv.addObject("list",list);
-		mv.addObject("totalList",totalList);
-		mv.addObject("pageBar",PageBarFactory.getPageBar(totalList,cPage,numPerPage));
+		mv.addObject("total",total);
+		mv.addObject("pageBar",PageBarFactory.getPageBar(total,cPage,numPerPage));
 		
 		mv.setViewName("/notice/notice");
 		

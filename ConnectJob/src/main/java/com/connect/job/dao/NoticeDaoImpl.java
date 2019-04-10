@@ -2,6 +2,7 @@ package com.connect.job.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,7 +24,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	@Override
 	public List<Notice> selectList(int cPage, int numPerPage) {
 		
-		return session.selectList("notice.selectList");
+		return session.selectList("notice.selectList", null, new RowBounds((cPage-1)*numPerPage,numPerPage));
 	}
 
 	@Override
@@ -40,26 +41,26 @@ public class NoticeDaoImpl implements NoticeDao {
 
 	@Override
 	public int updateNotice(Notice n) {
-		// TODO Auto-generated method stub
+		
 		return session.update("notice.updateNotice", n);
 	}
 
 	@Override
 	public int selectCount() {
-		// TODO Auto-generated method stub
+		
 		return session.selectOne("notice.selectCount");
 	}
 
 
 	@Override
 	public Notice selectOne(int notice_no, boolean hasRead) {
-		// TODO Auto-generated method stub
+		
 		return session.selectOne("notice.selectOne", notice_no);
 	}
 
 	@Override
 	public int updateCount(int notice_no) {
-		// TODO Auto-generated method stub
+		
 		return session.update("notice.updateCount", notice_no);
 	}
 	

@@ -73,19 +73,18 @@
 		<c:forEach var="list" items="${reviewList }">
 			<div>
 				<div>
-					<input type="hidden" value="${list.reviewNo }"/>
+					<%-- <input type="hidden" value="${list.reviewNo }"/> --%>
 					${list.reviewCompany }
-					${list.reviewShort }
+					<a href="location.href='${path }review/reviewOne.do?reviewNo='+${list.reviewNo}">${list.reviewShort }</a>
 					${list.reviewDate}
-					<input type="button" value="수정" onclick="location.href='#'"/>
-					<input type="button" value="삭제" onclick="location.href='#'"/>
+					
 				</div>
 			</div>
 		</c:forEach>
 	</c:if>
 	<c:if test="${reviewList == null }">
 		<div>
-			작성한 리뷰가 없습니다.
+			작성된 리뷰가 없습니다.
 		</div>
 	</c:if>
 </div>

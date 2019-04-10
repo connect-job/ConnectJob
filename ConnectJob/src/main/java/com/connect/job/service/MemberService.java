@@ -28,6 +28,8 @@ public interface MemberService {
 	void insertMember(Member m, StringBuffer sb) throws Exception;
 
 	List<CompanyReview> selectReviewList(CompanyReview review);
+
+	int deleteReview(int review_no);
 	
 	
 }

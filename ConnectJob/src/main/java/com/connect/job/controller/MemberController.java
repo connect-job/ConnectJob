@@ -404,6 +404,23 @@ public class MemberController {
 		model.addAttribute("loc", loc);
 		
 		return "common/msg";
-	}	
+	}
+	
+	@RequestMapping("/member/deleteReview")
+	public String deleteReview(int review_no, Model model) {
+		
+		int result=service.deleteReview(review_no);
+		String msg="";
+		String loc="/member/mypage";
+		
+		if(result>0) {msg="삭제 성공";}
+		else {msg="삭제 실패";}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("loc", loc);
+		
+		return "common/msg";
+	}
+	
 	
 }

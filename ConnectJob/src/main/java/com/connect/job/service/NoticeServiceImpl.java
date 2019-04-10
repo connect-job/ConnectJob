@@ -22,31 +22,31 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public List<Notice> selectList(int cPage, int numPerPage) {
-		// TODO Auto-generated method stub
+		
 		return dao.selectList(cPage, numPerPage);
 	}
 
 	@Override
 	public Notice selectOne(int notice_no) {
-		// TODO Auto-generated method stub
+		
 		return dao.selectOne(notice_no);
 	}
 
 	@Override
 	public int deleteNotice(int notice_no) {
-		// TODO Auto-generated method stub
+		
 		return dao.deleteNotice(notice_no);
 	}
 
 	@Override
 	public int updateNotice(Notice n) {
-		// TODO Auto-generated method stub
+		
 		return dao.updateNotice(n);
 	}
 
 	@Override
 	public int selectCount() {
-		// TODO Auto-generated method stub
+		
 		return dao.selectCount();
 	}
 

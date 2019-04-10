@@ -28,6 +28,8 @@ public interface MemberDao {
 	void insertMember(Member m) throws Exception;
 
 	List<CompanyReview> selectReviewList(CompanyReview review);
+
+	int deleteReview(int review_no);
 	
 	
 
