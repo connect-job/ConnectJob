@@ -18,7 +18,7 @@
 			<div id="left">우리 직종의 취업고민과 선배의 답변이에요</div>
 			<div id="right">
 				<c:if test="${loginMember!=null}">
-					<c:if test="${loginMember.p_id == s.pId }">
+					<c:if test="${loginMember.p_id == s.pId }"> 
 								<button id="btn-senier" onclick="location.href='${path}/senierUpdate.do?no=${s.sNo}'">수정</button>
 								<button id="btn-senier" onclick="location.href='${path}/senierDelete.do?sNo=${s.sNo}'">삭제</button>
 					</c:if>
@@ -59,11 +59,11 @@
 			<br><br><br>
 
 			<div class="senier-comment">
-				<form method="post" name="comment-frm" class="form-inline" onsubmit="return fn_comment_confirm()">
+				<form method="post" name="commentFrm" class="form-inline" action="${path}/senier/comWrite.do">
 					<div class="comment-write">
 						<div class="left">
 							<textarea name="cContent" maxlength="2000" placeholder="후배에게 성의있는 답변부탁드려요"></textarea>
-							<input type="hidden" name="cNo" />
+							<input type="hidden" name="sNo" value="${s.sNo }"/>
 							<input type="hidden" name="cWriter" value="${loginMember.p_id}" />
 						</div>
 						<div class="right">
@@ -78,14 +78,15 @@
 			<div class="senier-top">
 					선배들의 답변
 			</div>
-			<div id="comment-space"></div>
+			<div id="comment-space">
+			</div>
 
 		</div>
 	</div>
 
 	<script>
 		$.ajax({
-			url: "${path}/senier/comAjaxList.do",
+			url: "${path}/senier/comAjaxList.do?no=${s.sNo}",
 			success: function (data) {
 				$("textarea").val("");
 				$("#comment-space").html(data);
@@ -104,12 +105,12 @@
 				$('#comment-message').html("<div style='display: inline-block; width: 700px;'><span>댓글 내용을 입력해주세요!</span></div>");
 			}
 
+			commentFrm.submit();
 
-			$.ajax({
+		/* 	$.ajax({
 				url: "${path}/senier/comWrite.do",
 				type: "post",
 				data: "cContent=" + comment + "&cWriter=${loginMember.p_id}",
-				/* dataType: "json", */
 				success: function (data) {
 					var Ca = /\+/g;
 					var resultData = decodeURIComponent(data.replace(Ca, " "));
@@ -121,13 +122,23 @@
 				error: function (request, status, error) {
 
 				}
-			});
+			}); */
 		});
 	</script>
 
 </section>
 
 <script>
+	function fn_update(num) {
+		
+	}
+	
+	function fn_delete(num) {
+		
+		
+	}
+
+
 	function fn_ajaxPaging(cPage) {
 		var space = $('#comment-space');
 

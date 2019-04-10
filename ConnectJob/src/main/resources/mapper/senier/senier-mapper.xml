@@ -34,15 +34,15 @@
   </select>
   
   <insert id="insertComWrite" parameterType="scomment">
-  	insert into s_comment values(SEQ_C_NO.NEXTVAL,0,0,#{cContent},default,#{cWriter},default)
+  	insert into s_comment values(SEQ_C_NO.NEXTVAL,#{sNo},0,#{cContent},default,#{cWriter},default)
   </insert>
   
   <select id="comList" parameterType="scomment">
   	select * from s_comment where c_no = #{sNo}
   </select>
   
-  <select id="selectcomAll" resultMap="ScommentMap">
-  	select A.*, (SELECT P_NAME FROM P_MEMBER B WHERE A.C_WRITER = B.P_ID) PNAME from s_comment A order by c_regdate desc
+  <select id="selectcomAll" parameterType="_int" resultMap="ScommentMap">
+  	select A.*, (SELECT P_NAME FROM P_MEMBER B WHERE A.C_WRITER = B.P_ID) PNAME from s_comment A where s_no = #{no} order by c_regdate desc
   </select>
   
   <select id="selectcomCount" resultType="_int">

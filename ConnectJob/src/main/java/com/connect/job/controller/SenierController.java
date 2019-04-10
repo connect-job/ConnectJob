@@ -89,25 +89,22 @@ public class SenierController {
 	
 	
 	@RequestMapping(value="/senier/comWrite.do")//댓글등록
-	@ResponseBody
-	public String comWrite(@RequestParam(defaultValue="1")int cNo, String cContent,String cWriter, Model model) throws UnsupportedEncodingException /*Scomment sco*/
+	public String comWrite(Scomment s, Model model) throws UnsupportedEncodingException /*Scomment sco*/
 	{
-		Scomment sco=new Scomment();
-		sco.setsNo(cNo);
-		sco.setcContent(cContent);
-		sco.setcWriter(cWriter);
+		int count = service.insertComWrite(s);
 		
-		int count = service.insertComWrite(sco);
-		String result_temp = "";
+		String msg = "";
+		String loc = "/senierAnswer.do?no=" + s.getsNo();
 		
 		if(count>0) {
-			result_temp = "댓글이 등록되었습니다";
+			msg = "댓글이 등록되었습니다";
 		} else {
-			result_temp = "댓글 등록 실패";
+			msg = "댓글 등록 실패";
 		}
 		
-		String result = URLEncoder.encode(result_temp, "UTF-8");
-		return result;
+		model.addAttribute("msg", msg);
+		model.addAttribute("loc", loc);
+		return "common/msg";
 	}
 	
 	@RequestMapping("/senier/comList.do") //댓글등록 조회
@@ -125,21 +122,16 @@ public class SenierController {
 	
 	@RequestMapping(value="/senier/comAjaxList.do", produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String comAjaxList(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage, Model model, HttpSession session) {
+	public String comAjaxList(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage, int no, Model model, HttpSession session) {
 		
 		int numPerPage=10;
 		
 		
 		String html = "";
-		List<Scomment> list = service.selectAll(cPage,numPerPage);
+		List<Scomment> list = service.selectAll(cPage,numPerPage, no);
 		int total=service.selectcomCount();
 
-	
-		
 		String pageBar=AjaxPageBarFactory.getPageBar(total, cPage, numPerPage);
-		
-
-		
 		
 		html += "<div class=\"comment-item\">";
 			for(int i=0; i<list.size();i++) {
@@ -153,6 +145,8 @@ public class SenierController {
 				
 				html += "<div class=\"date\">";
 				html += list.get(i).getcRegdate();
+				html += "<button onclick=\"fn_update(" + list.get(i).getcNo() + ")\">수정</button>";
+				html += "<button onclick=\"fn_delete(" + list.get(i).getcNo() + ")\">삭제</button>";
 				html += "</div>";
 			}
 			html += "<div id=\"pageBar\">";
