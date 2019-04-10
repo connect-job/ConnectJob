@@ -36,7 +36,9 @@
 						${sen.sTitle}
 						
 					</div>
-					<div class="item-content">${sen.sContent}</div>
+					<div class="item-content">
+                            <c:set var="content" value ="${fn:substring(sen.sContent, 0, 40)}" />
+                        ${content}.... (더 보기)</div>
             </div>
 				</c:forEach>
             

@@ -2000,7 +2000,7 @@ section #senier-container .senier-middle .senier-item .item-title {
 
 section #senier-container .senier-middle .senier-item .item-content {
     padding-left: 25px;
-    width: 100%;
+    width: 400PX;
     font-size: 12px;
 }
 
@@ -2376,11 +2376,66 @@ section #resume-container .item .right select {
     outline: none;
 }
 
+/* ------------------------------------ FAQ  */
 
 
+section #faq-container {
+    width: 990px;
+    display: inline-block;
+    text-align: center;
+}
+
+section #faq-container .faq-top {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    padding-left: 15px;
+    font-size: 25px;
+}
 
 
+section #faq-container .faq-top #left {
+    padding-left: 15px;
+    float: left;
+}
 
+section #faq-container .faq-top #right {
+    float: right;
+}
+
+section #faq-container .faq-middle {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+section #faq-container .faq-middle .faq {
+    display: inline-block;
+    width: 800px;
+    text-align: left;
+}
+
+section #faq-container .faq-middle .faq .q {
+    cursor: pointer;
+    background-color: #e0e2eb;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+
+section #faq-container .faq-middle .faq .q:hover {
+    transition: 500ms;
+    background-color: #404861;
+    color: #fff;
+}
+
+section #faq-container .faq-middle .faq .a {
+    overflow: hidden;
+    height: 0;
+    padding-left: 15px;
+    transition: 500ms;
+}
 
 
 

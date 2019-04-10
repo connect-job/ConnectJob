@@ -16,29 +16,34 @@
 
 		<div class="senier-subTitle">
 			<div id="left">우리 직종의 취업고민과 선배의 답변이에요</div>
-			<div id="right"><button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">선배에게 질문하기</button></div>
+			<div id="right">
+				<c:if test="${loginMember!=null}">
+					<c:if test="${loginMember.p_id == s.pId }">
+								<button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">수정</button>
+								<button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">삭제</button>
+					</c:if>
+				</c:if>
+				
+			<button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">선배에게 질문하기</button>
+			</div>
 		</div>
 
 
 		<div class="senier-middle">
-			<c:forEach var="sen" items="${list}" varStatus="vs">
 				<div class="middle-content">
 					<div class="left">질문유형</div>
 					<div class="right">
-						<c:forEach items="${sen.qType}" var="type" varStatus="vs">
-							${type}
-						</c:forEach>
+							${s.qType}
 					</div>
 				</div>
 				<div class="middle-content">
 					<div class="left">제목</div>
-					<div class="right">${sen.sTitle}</div>
+					<div class="right">${s.sTitle}</div>
 				</div>
 				<div class="middle-content">
 					<div class="left">내용</div>
-					<div class="right">${sen.sContent}</div>
+					<div class="right">${s.sContent}</div>
 				</div>
-			</c:forEach>
 
 			<br><br><br>
 

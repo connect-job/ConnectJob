@@ -30,12 +30,6 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public HashMap<String, Object> kakaoLogin(HashMap<String, Object> userInfo) {
-		
-		return session.selectOne("member.kakaoLogin", userInfo);
-	}
-
-	@Override
 	public Member findId(Member m) {	
 		
 		return session.selectOne("member.findId", m);

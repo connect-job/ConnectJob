@@ -37,9 +37,9 @@ public class SenierDaoImpl implements SenierDao {
 	
 
 	@Override
-	public List<Senier> senierOneList(int no) {
+	public Senier senierOneList(int no) {
 
-		return session.selectList("senier.senierOneList",no);
+		return session.selectOne("senier.senierOneList",no);
 	}
 
 	@Override

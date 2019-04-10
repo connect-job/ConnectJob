@@ -36,7 +36,7 @@ public class SenierServiceImpl implements SenierService {
 	
 
 	@Override
-	public List<Senier> senierOneList(int no) {
+	public Senier senierOneList(int no) {
 		
 		return dao.senierOneList(no);
 	}

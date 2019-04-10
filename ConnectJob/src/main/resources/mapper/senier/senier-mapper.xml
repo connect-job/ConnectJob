@@ -5,7 +5,7 @@
   <resultMap type="senier" id="senierResult">
 		<id property="sNo" column="s_no"/>
 		<result property="sJob" column="s_job"/>
-		<result property="qType" column="q_type" typeHandler="strArr"/>
+		<result property="qType" column="q_type"/>
 		<result property="sTitle" column="s_title"/>
 		<result property="sContent" column="s_content"/>
 		<result property="sHits" column="s_hits"/>
@@ -17,7 +17,7 @@
 	
   
   <insert id="insertSenier" parameterType="senier">
-  	insert into s_talk values(SEQ_S_NO.NEXTVAL,null,#{qType, typeHandler=strArr},#{sTitle},#{sContent},0,default,null,default)
+  	insert into s_talk values(SEQ_S_NO.NEXTVAL,null,#{qType},#{sTitle},#{sContent},0,default,#{pId},default)
   </insert>
   
   <select id="senierList" resultMap="senierResult">
@@ -38,7 +38,7 @@
   </insert>
   
   <select id="comList" parameterType="scomment">
-  	select * from s_comment where c_no = #{cNo}
+  	select * from s_comment where c_no = #{sNo}
   </select>
   
   <select id="selectcomAll" resultMap="ScommentMap">

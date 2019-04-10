@@ -42,6 +42,7 @@
                         <div class="left">내용</div>
                         <div class="right"><textarea name="sContent" placeholder="구체적인 내용을 입력해주세요"></textarea></div>
                     </div>
+                    <input type="hidden" name="pId" value="${loginMember.p_id }"/>
                     <div class="write-btn"><button type="submit">질문하기</button></div>
                 </div>
             </form>

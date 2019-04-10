@@ -63,8 +63,8 @@ public class SenierController {
 	public String answer(Model model, int no)
 	{
 		
-		List<Senier> list=service.senierOneList(no);
-		model.addAttribute("list",list);
+		Senier  s =service.senierOneList(no);
+		model.addAttribute("s",s);
 		return "senier/senierAnswer";//후배에게 답변하기
 	}
 	

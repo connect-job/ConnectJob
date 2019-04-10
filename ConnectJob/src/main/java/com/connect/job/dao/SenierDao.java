@@ -10,7 +10,7 @@ public interface SenierDao {
 	int insertSenier(Senier s);
 	List<Senier> senierList(int cPage, int numPerPage);
 	int selectCount();
-	List<Senier> senierOneList(int no);
+	Senier senierOneList(int no);
 	int insertComWrite(Scomment sco);
 	
 	List<Scomment> comList(Scomment sco);
