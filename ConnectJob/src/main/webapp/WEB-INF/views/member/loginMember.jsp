@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <section>
@@ -31,6 +31,7 @@
 					<a id="kakao-login-btn">
 							<button type="button" class="kakao">카카오톡으로 로그인</button>
 					</a>
+					<div id="naverIdLogin"></div>
 					<input type="submit" value="로그인"/><br>
 					<input type="button" value="ID/PW찾기" id="findbtn"/>
 			</div>
@@ -64,10 +65,17 @@
 
 <script>
 
+	var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "cCy_IBv9txIwa4rP88M8",
+			callbackUrl: "http://localhost:9090/job/",
+			isPopup: false, /* 팝업을 통한 연동처리 여부 */
+			loginButton: {color: "green", type: 3, height: 40} /* 로그인 버튼의 타입을 지정 */
+		}
+	);
 	
-
-
-	
+	/* 설정정보를 초기화하고 연동을 준비 */
+	naverLogin.init();
 
 	$(function(){
 		$("#findbtn").click(function(){

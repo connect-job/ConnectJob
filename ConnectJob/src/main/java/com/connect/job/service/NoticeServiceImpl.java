@@ -72,6 +72,11 @@ public class NoticeServiceImpl implements NoticeService {
 		return dao.searchList(cPage, numPerPage, map);
 	}
 
+	@Override
+	public List<Notice> selectTopList() {
+		return dao.selectTopList();
+	}
+
 	
 	
 	

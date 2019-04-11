@@ -35,13 +35,14 @@ public class NoticeController {
 		
 		int numPerPage=10;
 		ModelAndView mv=new ModelAndView();
+		List<Notice> topList = service.selectTopList();
 		List<Notice> list=service.selectList(cPage,numPerPage);
 		int total=service.selectCount();
 	
+		mv.addObject("topList", topList);
 		mv.addObject("list",list);
 		mv.addObject("total",total);
-		mv.addObject("pageBar",PageBarFactory.getPageBar(total,cPage,numPerPage));
-		
+		mv.addObject("pageBar",PageBarFactory.getPageBar(total,cPage,numPerPage));		
 		
 		mv.setViewName("/notice/notice");
 		
@@ -94,7 +95,7 @@ public class NoticeController {
 		String loc="";
 		if(result>0) {
 			msg="공지사항 등록 성공";
-			loc="/notice/noticeView?notice_no="+result;
+			loc="/notice.do";
 		}else {
 			msg="등록 실패";
 			loc="/";

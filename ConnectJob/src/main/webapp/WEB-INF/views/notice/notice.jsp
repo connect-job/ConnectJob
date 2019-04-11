@@ -33,29 +33,32 @@
 					<input type="button" value="글쓰기" onclick="location.href='${path}/notice/noticeForm'"/>
 				</td>
         	</tr> 
-        <%-- </c:if> --%>                       
-        <tr>        	
+        <%-- </c:if> --%>     
+        <c:forEach var="noticeTop" items="${topList }">
+        	<tr>
+	        	<td>공지사항</td>
+	        	<td><a href="${path }/notice/noticeView?notice_no=${noticeTop.notice_no}">${noticeTop.title }</a></td>
+	        	<td>${noticeTop.notice_date }</td>
+         	</tr>
+        </c:forEach>
+                          
+        <tr>    	
             <th>번호</th>
-            <th>작성자</th>
             <th>제목</th>
             <th>작성일</th>
-            <th>조회수</th>
          </tr>
        
-         <c:forEach var="notice" items="${list }">	
-         	
-         		<tr>         			
+         <c:forEach var="notice" items="${list }">         	
+         		<tr>         			  			         			
             		<td>${notice.notice_no }</td>
-            		<td>${notice.writer }</td>
             		<td><a href="${path }/notice/noticeView?notice_no=${notice.notice_no}">${notice.title }</a></td>
             		<td>${notice.notice_date }</td>
-            		<td>${notice.read_count }</td>
          		</tr>
          	
          </c:forEach>         
 	</table> 
 	
-	<div id="paging-container">${pageBar }</div>
+	<div id="pageBar">${pageBar }</div>
    	       
    	<div>		
 		<div id="searchMember">

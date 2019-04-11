@@ -76,6 +76,11 @@ public class NoticeDaoImpl implements NoticeDao {
 		
 		return session.selectList("notice.searchList", map, new RowBounds((cPage-1)*numPerPage,numPerPage));
 	}
+
+	@Override
+	public List<Notice> selectTopList() {
+		return session.selectList("notice.selectTopList");
+	}
 	
 	
 	

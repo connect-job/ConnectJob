@@ -27,4 +27,6 @@ public interface NoticeDao {
 
 	List<Notice> searchList(int cPage, int numPerPage, Map<String, String> map);
 
+	List<Notice> selectTopList();
+
 }
