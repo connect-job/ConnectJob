@@ -276,8 +276,7 @@ public class MemberController {
 		ModelAndView mv=new ModelAndView();	
 		
 		CompanyReview review=new CompanyReview();
-		review.setReviewMember(m.getP_id());
-		/*List<CompanyReview> list=service.selectReviewList(m);*/
+		review.setReviewMember(m.getP_id());	
 		
 		List<CompanyReview> list=service.selectReviewList(review);
 		
@@ -362,7 +361,7 @@ public class MemberController {
 			MailHandler sendMail = new MailHandler(mailSender);
 			sendMail.setSubject("[ConnectJob] 비밀번호 안내");
 			sendMail.setText(new StringBuffer().append("<h2>비밀번호 변경 링크</h2>")
-			                .append("<a href='http://localhost:9090/job/member/changePw?p_id=").append(m.getP_id())
+			                .append("<a href='http://192.168.20.221:9090/job/member/changePw?p_id=").append(m.getP_id())
 			                .append("' target='_blank'>비밀번호 변경</a>")
 							.toString());
 			sendMail.setFrom("jiany811@gmail.com", "[ConnectJob]");
