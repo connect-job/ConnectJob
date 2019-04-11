@@ -18,6 +18,7 @@ html, body {
     font-size: 14px;
     letter-spacing: -0.4px;
     color: #535353;
+    position: relative;
 }
 
 ::selection {
@@ -81,6 +82,26 @@ a:hover {
 #pageBar ul li.active {
     background-color: #2c3142;
     color: #fff;
+}
+
+
+/* -------------------------------------- 웹소켓 메세지창 */
+
+#socket-message {
+	transition: 1000ms;
+	position: absolute;
+	opacity: 0;
+	padding-top: 25px;
+	width: 300px;
+	height: 70px;
+	right:10px;
+	top: 150px;
+	color: #fff;
+	text-align: center;
+	background-color: #596483a8;
+	border: 1px solid #cfcfcf;
+	z-index: 999999;
+	border-radius: 5px;
 }
 
 /* ------------------------------------- 헤더시작 */
@@ -2390,17 +2411,20 @@ section #faq-container .faq-top {
     width: 100%;
     text-align: left;
     padding-left: 15px;
-    font-size: 25px;
+    
 }
 
 
 section #faq-container .faq-top #left {
     padding-left: 15px;
-    float: left;
+    font-size: 25px;
+    display: inline-block;
+    width: 10%;
 }
 
 section #faq-container .faq-top #right {
-    float: right;
+    display: inline-block;
+
 }
 
 section #faq-container .faq-middle {
@@ -2437,6 +2461,31 @@ section #faq-container .faq-middle .faq .a {
     transition: 500ms;
 }
 
+/* ----------------------------------------- ETC */
+
+section #etc-container {
+    width: 990px;
+    display: inline-block;
+}
+
+
+section #etc-container .title {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    padding-left: 25px;
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+section #etc-container .content {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    padding-left: 25px;
+    font-size: 13px;
+    margin-bottom: 50px;
+}
 
 
 
@@ -2478,11 +2527,14 @@ footer #footer-container .footer-top ul {
 }
 
 footer #footer-container .footer-top ul li {
+    cursor: pointer;
     display: inline-block;
     padding-top: 12px;
     width: 200px;
-    height: 30px;
+    height: 35px;
+    margin-bottom: 15px;
 }
+
 
 footer #footer-container .footer-middle {
     text-align: center;
