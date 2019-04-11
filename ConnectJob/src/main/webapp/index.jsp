@@ -115,6 +115,7 @@
 			clearInterval(rollingId);
 			$(this).css("cursor", "pointer");
 		});
+		
 		//마우스 아웃되면 다시 시작
 		banner.mouseout(function () {
 			rollingId = setInterval(function () { rollingStart(); }, 6000);

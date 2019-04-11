@@ -17,6 +17,7 @@
 		<typeAlias type="com.connect.job.model.vo.FinalEduUniv" alias="finalEduUniv"/>
 		<typeAlias type="com.connect.job.model.vo.Career" alias="career"/>
 		<typeAlias type="com.connect.job.model.vo.Scomment" alias="scomment"/>
+		<typeAlias type="com.connect.job.model.vo.ProfileImg" alias="profileImg"/>
 	</typeAliases>
 	 
 </configuration>

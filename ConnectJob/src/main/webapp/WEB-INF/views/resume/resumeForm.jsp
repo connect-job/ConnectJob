@@ -5,80 +5,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<script>
-$(function(){
-    $("[name=up_file]").change(function(){
-       var iputFiles=document.getElementById('up_file');
-       console.log(iputFiles.files);
-       $.each(iputFiles.files, function(index, item){
-          console.log(item);
-       var reader = new FileReader();
-       reader.onload=function(e){
-          var img = $("<img></img>").attr("src",e.target.result).css({'width':'90px','height':'80px'});
-          $('#images').append(img);
-                
-       }
-       reader.readAsDataURL(item);
-    });
-    });
 
-/* function fileUploadPreview(thisObj, preViewer) {
-    alert(!/(\.gif|\.jpg|\.jpeg|\.png)$/i.test(thisObj.value));
-if(!/(\.gif|\.jpg|\.jpeg|\.png)$/i.test(thisObj.value)) {
-    alert("이미지 형식의 파일을 선택하십시오");
-    return;
-}
-
-preViewer = (typeof(preViewer) == "object") ? preViewer : document.getElementById(preViewer);
-var ua = window.navigator.userAgent;
-
-if (ua.indexOf("MSIE") > -1) {
-    var img_path = "";
-    if (thisObj.value.indexOf("\\fakepath\\") < 0) {
-        img_path = thisObj.value;
-    } else {
-        thisObj.select();
-        var selectionRange = document.selection.createRange();
-        img_path = selectionRange.text.toString();
-        thisObj.blur();
-    }
-    preViewer.style.filter =
-
-           "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fi" +
-
-           "le://" + img_path + "', sizingMethod='scale')";
-  } else {
-    preViewer.innerHTML = "";
-    var W = preViewer.offsetWidth;
-    var H = preViewer.offsetHeight;
-    var tmpImage = document.createElement("img");
-    preViewer.appendChild(tmpImage);
-
-    tmpImage.onerror = function () {
-        return preViewer.innerHTML = "";
-    }
-
-    tmpImage.onload = function () {
-        if (this.width > W) {
-            this.height = this.height / (this.width / W);
-            this.width = W;
-        }
-        if (this.height > H) {
-            this.width = this.width / (this.height / H);
-            this.height = H;
-        }
-    }
-    if (ua.indexOf("Firefox/3") > -1) {
-        var picData = thisObj.files.item(0).getAsDataURL();
-        tmpImage.src = picData;
-    } else {
-        tmpImage.src = "file://" + thisObj.value;
-    }
-}
-} */
-</script>
 <section>
-	<form name="resumeFrm" action="${pageContext.request.contextPath}/resume/resumeRegistEnd.do" method="post">
+	<form name="resumeFrm" action="${pageContext.request.contextPath}/resume/resumeRegistEnd.do" method="post" onsubmit="return validate();"  enctype="multipart/form-data">
 	<div id="resume-container">
 		<div class="resume-top">
 			<i class="far fa-address-card"></i>　내 이력서 작성
@@ -91,8 +20,8 @@ if (ua.indexOf("MSIE") > -1) {
 		<div class="item">
 			<div class="left">이력서 제목</div>
 			<div class="right">
-				<input type="text" name="title" id="title" required>
-				<select name="isPublic" required>
+				<input type="text" name="title" id="title">
+				<select name="isPublic">
 					<option value="" disabled selected>공개여부</option>
 					<option value="true">공개</option>
 					<option value="false">비공개</option>
@@ -103,19 +32,21 @@ if (ua.indexOf("MSIE") > -1) {
 			기본정보
 		</div>
 		<div class="profileUpload">
-			<div id="images" style="border:1px solid lightgray;"></div>
-			 <input id='up_file' type="file" name="up_file" multiple />
+			<div id="images" style="border:1px solid lightgray;width:120px;height:160px">
+			<i class="far fa-plus-square"></i>사진을 추가해주세요
+			</div>
+			 <input id='profileImg' type="file" name="profileImg" multiple />
 		</div>
 		<div class="item">
 			<input type="hidden" name="p_id" value="${loginMember.p_id}">
 			<div class="left">이름</div>
-			<div class="right"><input type="text" name="name" id="name" required></div>
+			<div class="right"><input type="text" name="name" id="name"></div>
 		</div>
 		<div class="item">
 			<div class="left">생년월일</div>
 			<div class="right">
-				<input type="text" id="birth" name="birth" placeholder="YYYYMMDD" required>
-				<select name="gender" required>
+				<input type="text" id="birth" name="birth" placeholder="YYYYMMDD">
+				<select name="gender">
 					<option value="" disabled selected>성별</option>
 					<option value="M">남</option>
 					<option value="F">여</option>
@@ -140,18 +71,21 @@ if (ua.indexOf("MSIE") > -1) {
 		<div class="item">
 			<div class="left">최종 학력정보</div>
 			<div class="right">
-				<select name="finalEdu" onchange="selectFinalEdu()" required>
+				<select name="finalEdu" onchange="selectFinalEdu()" >
 					<option value="" disabled selected>최종학력을 선택하세요</option>
 					<option value="초등학교 졸업">초등학교 졸업</option>
 					<option value="중학교 졸업">중학교 졸업</option>
 					<option value="고등학교 졸업">고등학교 졸업</option>
 					<option value="대학/대학원 이상 졸업">대학/대학원 이상 졸업</option>
 				</select>
+				<button type="button" id="addUnivBtn" onclick="addUniversity()">대학 학력 추가</button>
 			</div>
 		</div>
 
 
 		<div class="finalEduAjaxContainer"></div>
+		<div class="addUnivContainer"></div>
+		<div class="addUnivContainer2"></div>
 
 		<!-- ----------------------------- 경력 -->
 
@@ -162,7 +96,7 @@ if (ua.indexOf("MSIE") > -1) {
 		<div class="item">
 			<div class="left">경력정보</div>
 			<div class="right">
-				<select name="career" onchange="selectCareer()" required>
+				<select name="career" onchange="selectCareer()" >
 					<option value="" disabled selected>경력을 선택하세요</option>
 					<option value="신입">신입</option>
 					<option value="경력">경력</option>
@@ -181,7 +115,7 @@ if (ua.indexOf("MSIE") > -1) {
 		<div class="item">
 			<div class="left">근무형태</div>
 			<div class="right">
-				<select name="hopePosition" required>
+				<select name="hopePosition" >
 					<option value="" disabled selected>근무형태을 선택하세요</option>
 					<option value="정규직">정규직</option>
 					<option value="교육생">교육생</option>
@@ -203,21 +137,22 @@ if (ua.indexOf("MSIE") > -1) {
 		<div class="item">
 			<div class="left">희망연봉</div>
 			<div class="right">
-				<select name="hopeSalary" required>
+				<select name="hopeSalary" >
 					<option value="" disabled selected>희망연봉을 선택하세요</option>
 					<option value="회사내규">회사내규에 따름</option>
-					<option value="2000">2,000만원 이하</option>
-					<option value="2200">2,000~2,200만원</option>
-					<option value="2400">2,200~2,400만원</option>
-					<option value="2600">2,400~2,600만원</option>
-					<option value="2800">2,600~3,800만원</option>
-					<option value="3000">2,800~3,000만원</option>
-					<option value="3200">3,000~3,200만원</option>
-					<option value="3400">3,200~3,400만원</option>
-					<option value="3600">3,400~3,600만원</option>
-					<option value="3800">3,600~3,800만원</option>
-					<option value="4000">3,800~4,000만원</option>
-					<option value="5000">4000만원 이상</option>
+					<option value="상의후 결정">상의후결저</option>
+					<option value="2,000만원 이하">2,000만원 이하</option>
+					<option value="2,000~2,200만원">2,000~2,200만원</option>
+					<option value="2,200~2,400만원">2,200~2,400만원</option>
+					<option value="2,400~2,600만원">2,400~2,600만원</option>
+					<option value="2,600~3,800만원">2,600~3,800만원</option>
+					<option value="2,800~3,000만원">2,800~3,000만원</option>
+					<option value="3,000~3,200만원">3,000~3,200만원</option>
+					<option value="3,200~3,400만원">3,200~3,400만원</option>
+					<option value="3,400~3,600만원">3,400~3,600만원</option>
+					<option value="3,600~3,800만원">3,600~3,800만원</option>
+					<option value="3,800~4,000만원">3,800~4,000만원</option>
+					<option value="4000만원 이상">4000만원 이상</option>
 				</select>
 			</div>
 		</div>
@@ -225,7 +160,7 @@ if (ua.indexOf("MSIE") > -1) {
 		<div class="item">
 			<div class="left">희망지역</div>
 			<div class="right">
-				<select name="hopeArea" required>
+				<select name="hopeArea" >
                   <option value="" disabled selected>지역을 선택하세요</option>
                   <option value="서울">서울</option>
                   <option value="경기">경기</option>
@@ -253,24 +188,23 @@ if (ua.indexOf("MSIE") > -1) {
 		<div class="item">
 			<div class="left">희망직종</div>
 			<div class="right">
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea1" value='웹개발' />웹개발</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea2" value='응용프로그램 개발' />응용프로그램 개발</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea3" value='시스템개발' />시스템개발</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea4" value='서버·네트워크·보안' />서버·네트워크·보안</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea5" value='ERP·시스템분석·설계' />ERP·시스템분석·설계</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea6" value='데이터베이스·DBA' />데이터베이스·DBA</label><br>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea7" value='퍼블리싱·UI개발' />퍼블리싱·UI개발</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea8" value='웹디자인' />웹디자인</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea9" value='하드웨어·소프트웨어' />하드웨어·소프트웨어</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea10" value='통신·모바일' />통신·모바일</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea11" value='웹기획·PM' />웹기획·PM</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea12" value='웹마스터·QA·테스터' />웹마스터·QA·테스터</label><br>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea13" value='컨텐츠·사이트운영' />컨텐츠·사이트운영</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea14" value='게임' />게임</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea15" value='IT/디자인·컴퓨터교육' />IT/디자인·컴퓨터교육</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea16" value='동영상·편집·코덱' />동영상·편집·코덱</label>
-				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea17" value='인공지능(AI)·빅데이터' />인공지능(AI)·빅데이터</label>
-				<button onclick="resetHopeArea()">reset</button>
+				<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea1" value='웹 개발자' />웹 개발자</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea2" value='서버 개발자' />서버 개발자</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea3" value='시스템개발' />시스템개발</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea4" value='프론트엔드 개발자' />프론트엔드 개발자</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea5" value='자바 개발자' />자바 개발자</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea6" value='파이썬 개발자' />파이썬 개발자</label><br>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea7" value='안드로이드 개발자' />안드로이드 개발자</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea8" value='IOS개발자' />IOS개발자</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea9" value='데이터 엔지니어' />데이터 엔지니어</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea10" value='시스템,네트워크 관리자' />시스템,네트워크 관리자</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea11" value='node.js 개발자' />node.js 개발자</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea12" value='php 개발자' />php 개발자</label><br>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea13" value='DevOps / 시스템 관리자' />DevOps / 시스템 관리자</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea14" value='C,C++개발자' />C,C++개발자</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea15" value='개발 매니저' />개발 매니저</label>
+	            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea16" value='데이터 사이언티스트' />데이터 사이언티스트</label>
+	            <button onclick="resetHopeArea()">reset</button>
 			</div>
 		</div>
 
@@ -302,6 +236,22 @@ if (ua.indexOf("MSIE") > -1) {
 </form>
 </section>
 <script>
+	$(function(){
+	    $("#profileImg").change(function(){
+	       var iputFiles=document.getElementById('profileImg');
+	       console.log(iputFiles.files);
+	       $.each(iputFiles.files, function(index, item){
+	          console.log(item);
+	       var reader = new FileReader();
+	       reader.onload=function(e){
+	    	  $('#images').children().remove();
+	          var img = $("<img></img>").attr("src",e.target.result).css({'width':'120px','height':'160px'});
+	          $('#images').append(img);
+	       }
+	       reader.readAsDataURL(item);
+	    });
+	    });
+	});
 	function resetHopeArea(){
 		$('input[name=hopeArea]').prop("checked",false);
 	}
@@ -310,15 +260,21 @@ if (ua.indexOf("MSIE") > -1) {
 	}
 	function selectFinalEdu() {
 		var finalEdu = $('[name=finalEdu]').val();
+		if(finalEdu!="대학/대학원 이상 졸업"){
+			$(".addUnivContainer").empty();
+			$(".addUnivContainer").empty();
+			$("#addUnivBtn").css("display","none");
+		}
 		$.ajax({
 			url: "${path}/selectFinalEdu.do",
 			data: { "finalEdu": finalEdu },
 			success: function (data) {
 				$('.finalEduAjaxContainer').html(data);
+				
 			}
 		})
+	}	
 
-	}
 	function selectCareer() {
 		var career = $('[name=career]').val();
 		if(career=="신입"){
@@ -333,6 +289,46 @@ if (ua.indexOf("MSIE") > -1) {
 			})
 		}
 	}
+	function addUniversity(){
+		console.log("대학추가");
+		$.ajax({
+			url:"${path}/addUniversity.do",
+		    success:function(data){
+		   	    var univ=$(".univ");
+			    if(univ.length==1){
+			    	$('.addUnivContainer').append(data);
+			    }else if(univ.length==2){
+			    	$('.addUnivContainer2').append(data);
+			    }else if(univ.length==3){
+			    	alert("학교는 최대 3개까지만 입력 가능합니다.");
+			    }
+		   		
+			    
+			   
+			    $(".deleteUnivBtn").click(function(){
+			    	var univ=$(".univ");
+			    	console.log(univ.length);
+			    	if(univ.length>1){
+			    		$(this).parent().parent().parent().parent().empty();
+			    	}else{
+			    		console.log($(this).prev());
+			    		$(this).prev().empty();
+			    		$(this).prev().html("대학은 한개 이상 입력하셔야 합니다.");
+			    		/* $(".checkMsg").eq(0).empty();
+			    		$(".checkMsg").eq(0).html("대학은 한개 이상 입력하셔야 합니다.");
+			    		 */
+			    	}
+			    });	
+			}
+		})   
+	};
+	function validate(){
+		var finalEdu = $('[name=finalEdu]').val();
+		if(finalEdu=="대학/대학원 이상 졸업"&&major){
+			var Category=("");
+		}
+	}
+
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
