@@ -63,7 +63,7 @@
 					<div class="comment-write">
 						<div class="left">
 							<textarea name="cContent" maxlength="2000" placeholder="후배에게 성의있는 답변부탁드려요"></textarea>
-							<input type="hidden" name="sNo" value="${s.sNo }"/>
+							<input type="hidden" id="sNo" name="sNo" value="${s.sNo }"/>
 							<input type="hidden" name="cWriter" value="${loginMember.p_id}" />
 						</div>
 						<div class="right">
@@ -83,6 +83,10 @@
 
 		</div>
 	</div>
+
+
+
+
 
 	<script>
 		$.ajax({
@@ -107,43 +111,51 @@
 
 			commentFrm.submit();
 
-		/* 	$.ajax({
-				url: "${path}/senier/comWrite.do",
-				type: "post",
-				data: "cContent=" + comment + "&cWriter=${loginMember.p_id}",
-				success: function (data) {
-					var Ca = /\+/g;
-					var resultData = decodeURIComponent(data.replace(Ca, " "));
-					alert(resultData);
-					window.location.reload();
-
-					$("#comment-space").html(data);
-				},
-				error: function (request, status, error) {
-
-				}
-			}); */
+	
 		});
 	</script>
 
 </section>
 
 <script>
-	function fn_update(num) {
-		
+	var cNo;
+	var content;
+	var sNo=$('#sNo').val();
+
+$(document).on('click', '.updateBtn', function() {
+	cNo = $('#cNo').val();
+	content = $(this).parent().children('.content-container').text();
+	$(this).parent().children('.content-container').html('<input type="text" id="cContent" name="cContent" value="' + content + '"/>');
+	$(this).text('수정완료');
+	$(this).attr("class","afterUpdate");
+});
+
+$(document).on('click', '.deleteBtn', function() {
+	cNo = $('#cNo').val();
+	if(confirm('삭제 하시겠습니까?')) {
+		location.href='${path}/sCommentDelete.do?cNo=' + cNo +'&sNo=' + sNo;
+	} else {
+		return;
 	}
-	
-	function fn_delete(num) {
-		
-		
+});
+
+$(document).on('click', '.afterUpdate', function() {
+	var cContent = $('#cContent').val();
+	if(confirm('수정 하시겠습니까?')) {
+		location.href='${path}/sCommentUpdate.do?cContent=' + cContent + '&cNo=' + cNo +'&sNo=' + sNo;
+	} else {
+		return;
 	}
+});
+
 
 
 	function fn_ajaxPaging(cPage) {
 		var space = $('#comment-space');
 
 		$.ajax({
-			url: '${path}/senier/comAjaxList.do',
+			
+			url: '${path}/senier/comAjaxList.do?no=${s.sNo}', 
 			data: { "cPage": cPage },
 			dataType: "html",
 			success: function (data) {

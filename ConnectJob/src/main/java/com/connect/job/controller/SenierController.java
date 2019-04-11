@@ -1,7 +1,6 @@
 package com.connect.job.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -129,7 +128,7 @@ public class SenierController {
 		
 		String html = "";
 		List<Scomment> list = service.selectAll(cPage,numPerPage, no);
-		int total=service.selectcomCount();
+		int total=service.selectcomCount(no);
 
 		String pageBar=AjaxPageBarFactory.getPageBar(total, cPage, numPerPage);
 		
@@ -140,15 +139,21 @@ public class SenierController {
 				html += "</div>";
 				
 				html += "<div class=\"content\">";
+				html += "<input type=\"hidden\" id=\"cNo\" value=\"" + list.get(i).getcNo() + "\"/>";
+				html += "<div class=\"content-container\">";
 				html += list.get(i).getcContent();
+				html += "</div>";
+				html += "<button class='updateBtn'>수정</button>";
+				html += "<button class='deleteBtn'>삭제</button>";
 				html += "</div>";
 				
 				html += "<div class=\"date\">";
 				html += list.get(i).getcRegdate();
-				html += "<button onclick=\"fn_update(" + list.get(i).getcNo() + ")\">수정</button>";
-				html += "<button onclick=\"fn_delete(" + list.get(i).getcNo() + ")\">삭제</button>";
 				html += "</div>";
 			}
+			
+
+			
 			html += "<div id=\"pageBar\">";
 			html += pageBar;
 			html += "</div>";
@@ -215,5 +220,52 @@ public class SenierController {
 		
 	}
 	
+	@RequestMapping("sCommentUpdate.do")//댓글수정
+	public String commentUpdate(Scomment sc, Model model) {
+		
+		int result=service.commentUpdate(sc);
+		
+		
+		String msg="";
+		String loc = "/senierAnswer.do?no=" + sc.getsNo();
+		
+		if(result>0)
+		{
+			msg="수정이 완료 되었습니다";
+			
+		}
+		else
+		{
+			msg="수정 실패 하였습니다";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	}
+	
+	@RequestMapping("sCommentDelete.do")//댓글삭제
+	public String commentDelete(Scomment sc, Model model) {
+		
+		int result=service.commentDelete(sc);
+		
+		
+		String msg="";
+		String loc = "/senierAnswer.do?no=" + sc.getsNo();
+		
+		if(result>0)
+		{
+			msg="삭제가 완료 되었습니다";
+			
+		}
+		else
+		{
+			msg="삭제 실패 하였습니다";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	}
 	
 }

@@ -59,9 +59,9 @@ public class SenierServiceImpl implements SenierService {
 	}
 
 	@Override
-	public int selectcomCount() {
+	public int selectcomCount(int no) {
 
-		return dao.selectcomCount();
+		return dao.selectcomCount(no);
 	}
 
 	@Override
@@ -74,6 +74,18 @@ public class SenierServiceImpl implements SenierService {
 	public int deleteSenier(Senier s) {
 
 		return dao.deleteSenier(s);
+	}
+
+	@Override
+	public int commentUpdate(Scomment sc) {
+
+		return dao.commentUpdate(sc);
+	}
+
+	@Override
+	public int commentDelete(Scomment sc) {
+
+		return dao.commentDelete(sc);
 	}
 
 	
