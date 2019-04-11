@@ -43,7 +43,7 @@ public class NoticeController {
 
 			if(list.size()>1) {
 				for(int i=0; i<1; i++) {
-					html += "<a class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" href=\"" + request.getContextPath() + "/notice/noticeView?notice_no=" + list.get(i).getNotice_no() + "'\">" + list.get(i).getNotice_date() + "　" +  list.get(i).getTitle() + "</a>";
+					html += "<a class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" href=\"" + request.getContextPath() + "/notice/noticeView?notice_no=" + list.get(i).getNotice_no() + "\">" + list.get(i).getNotice_date() + "　" +  list.get(i).getTitle() + "</a>";
 				}
 			}
 			
