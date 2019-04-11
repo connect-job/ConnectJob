@@ -81,6 +81,11 @@ public class NoticeDaoImpl implements NoticeDao {
 	public List<Notice> selectTopList() {
 		return session.selectList("notice.selectTopList");
 	}
+
+	@Override
+	public List<Notice> latestNotice() {
+		return session.selectList("notice.latestNotice");
+	}
 	
 	
 	

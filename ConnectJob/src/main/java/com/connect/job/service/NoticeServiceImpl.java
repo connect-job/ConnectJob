@@ -77,6 +77,11 @@ public class NoticeServiceImpl implements NoticeService {
 		return dao.selectTopList();
 	}
 
+	@Override
+	public List<Notice> latestNotice() {
+		return dao.latestNotice();
+	}
+
 	
 	
 	

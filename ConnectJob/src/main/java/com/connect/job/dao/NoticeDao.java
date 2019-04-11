@@ -29,4 +29,6 @@ public interface NoticeDao {
 
 	List<Notice> selectTopList();
 
+	List<Notice> latestNotice();
+
 }

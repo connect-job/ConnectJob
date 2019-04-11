@@ -27,9 +27,22 @@
 <body>
     <header>
         <div id="notice">
-            이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　<button id="x-btn">X</button>
+            이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　
         </div>
         
+        <script>
+            var notice = $('#notice');
+			$.ajax({
+				url: '${path}/notice/latestNoticeOne.do',
+				success: function(data) {
+					var Ca = /\+/g;
+	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+	                notice.empty();
+	                notice.html(resultSet);
+                    notice.append("　　　<button id='x-btn'>X</button>");
+				}
+			});
+        </script>
 	
         <div id="header-top">
             <div class="top-container">
@@ -83,7 +96,7 @@
                                                 <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
                                         </ul>
                                 </div></li>
-                            <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터<div id="alarm-result" class="alarm-span"></div></li>
+                            <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터</li>
                             <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
@@ -188,7 +201,7 @@
 
 	    		$("#socket-message").stop().animate({
 	    			"top" : newPosition
-	    		}, 200);
+	    		}, 100);
 
 	    	}).scroll();
 

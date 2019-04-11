@@ -11,6 +11,10 @@
 		<result column="status" property="status"/>
 	</resultMap>
 	
+	<select id="latestNotice" resultMap="noticeResult">
+		SELECT * FROM NOTICE ORDER BY NOTICE_DATE DESC
+	</select>
+	
 	<insert id="insertNotice">
 		insert into notice values(seq_notice_no.nextval, #{writer}, #{title}, #{content}, default, default, #{status})
 	</insert>
