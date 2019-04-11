@@ -46,11 +46,11 @@
 			<div class="login-left">
 				<div class="login-item">
 					<div class="item-left">아이디</div>
-					<div class="item-right"><input type="text" name="CMemberId" autocomplete="off"/></div>
+					<div class="item-right"><input type="text" name="cMemberId" autocomplete="off"/></div>
 				</div>
 				<div class="login-item">
 					<div class="item-left">비밀번호</div>
-					<div class="item-right"><input type="password" name="CMemberPw" autocomplete="new-password"/></div>
+					<div class="item-right"><input type="password" name="cMemberPw" autocomplete="new-password"/></div>
 				</div>
 			</div>
 			<div class="login-right">

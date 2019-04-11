@@ -14,148 +14,64 @@
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <section>
-<script>
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        mapOption = {
-            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-            level: 5 // 지도의 확대 레벨
-        };
-
-    //지도를 미리 생성
-    var map = new daum.maps.Map(mapContainer, mapOption);
-    //주소-좌표 변환 객체를 생성
-    var geocoder = new daum.maps.services.Geocoder();
-    //마커를 미리 생성
-    var marker = new daum.maps.Marker({
-        position: new daum.maps.LatLng(37.537187, 127.005476),
-        map: map
-    });
 
 
-    function sample5_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                var addr = data.address; // 최종 주소 변수
-
-                // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("sample5_address").value = addr;
-                // 주소로 상세 정보를 검색
-                geocoder.addressSearch(data.address, function(results, status) {
-                    // 정상적으로 검색이 완료됐으면
-                    if (status === daum.maps.services.Status.OK) {
-
-                        var result = results[0]; //첫번째 결과의 값을 활용
-
-                        // 해당 주소에 대한 좌표를 받아서
-                        var coords = new daum.maps.LatLng(result.y, result.x);
-                        // 지도를 보여준다.
-                        mapContainer.style.display = "block";
-                        map.relayout();
-                        // 지도 중심을 변경한다.
-                        map.setCenter(coords);
-                        // 마커를 결과값으로 받은 위치로 옮긴다.
-                        marker.setPosition(coords)
-                    }
-                });
-            }
-        }).open();
-    }
-	
-	    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = {
-	        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
-	    };  
-	
-	// 지도를 생성합니다    
-	var map = new daum.maps.Map(mapContainer, mapOption); 
-	
-	// 주소-좌표 변환 객체를 생성합니다
-	var geocoder = new daum.maps.services.Geocoder();
-	
-	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
-	
-	    // 정상적으로 검색이 완료됐으면 
-	     if (status === daum.maps.services.Status.OK) {
-	
-	        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-	
-	        // 결과값으로 받은 위치를 마커로 표시합니다
-	        var marker = new daum.maps.Marker({
-	            map: map,
-	            position: coords
-	        });
-	
-	        // 인포윈도우로 장소에 대한 설명을 표시합니다
-	        var infowindow = new daum.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-	        });
-	        infowindow.open(map, marker);
-	
-	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-	        map.setCenter(coords);
-	    } 
-	});    
-	</script>
-
-<form action="${path }/insertNoti.do" name="hireFrm">
+<form action="${path }/insertNoti.do" name="hireFrm"  method="post" onsubmit="return validate();">
+<input type="hidden" name="cMemberId" value="${loginCMember.cMemberId }"/>
+${loginCMember.cMemberId}
         <div>
             	직종/직무
             <div>
-                <ul id="cate" name="HNSort">
-                    <li>웹 개발자</li>
-                    <li>서버 개발자</li>
-                    <li>프론트엔드 개발자</li>
-                    <li>자바 개발자</li>
-                    <li>파이썬 개발자</li>
-                    <li>안드로이드 개발자</li>
-                    <li>IOS 개발자</li>
-                    <li>데이터 엔지니어</li>
-                    <li>시스템,네트워크관리자</li>
-                    <li>node.js 개발자</li>
-                    <li>php 개발자</li>
-                    <li>DevOps/시스템 관리자</li>
-                    <li>C,C++ 개발자</li>
-                    <li>개발 매니저</li>
-                    <li>데이터 사이언티스트</li>
-                </ul>
-                <script>
-                	var cate=$('#cate li');
-                	cate.click(function(){
-                		if($(this).hasClass('selected')){
-                			$(this).removeClass('selected');
-                		}else{
-                			$(this).addClass('selected');
-                		}
-                	})
-                </script>
+            <label><input type="radio" name="hnSort" id="hopeJobArea1" value='웹 개발자' />웹 개발자</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea2" value='서버 개발자' />서버 개발자</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea3" value='시스템개발' />시스템개발</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea4" value='프론트엔드 개발자' />프론트엔드 개발자</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea5" value='자바 개발자' />자바 개발자</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea6" value='파이썬 개발자' />파이썬 개발자</label><br>
+            <label><input type="radio" name="hnSort" id="hopeJobArea7" value='안드로이드 개발자' />안드로이드 개발자</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea8" value='IOS개발자' />IOS개발자</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea9" value='데이터 엔지니어' />데이터 엔지니어</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea10" value='시스템,네트워크 관리자' />시스템,네트워크 관리자</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea11" value='node.js 개발자' />node.js 개발자</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea12" value='php 개발자' />php 개발자</label><br>
+            <label><input type="radio" name="hnSort" id="hopeJobArea13" value='DevOps / 시스템 관리자' />DevOps / 시스템 관리자</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea14" value='C,C++개발자' />C,C++개발자</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea15" value='개발 매니저' />개발 매니저</label>
+            <label><input type="radio" name="hnSort" id="hopeJobArea16" value='데이터 사이언티스트' />데이터 사이언티스트</label>
+            <button onclick="resetHopeArea()">reset</button>
+				<script>
+					function resetHopeArea(){
+					      $('input[name=hopeArea]').prop("checked",false);
+					   }
+				</script>
             </div>
-            <input type="button"/>
         </div>
         
         <div>경력여부
             <div>
-                <input type="checkbox" name="HNCareer" id="new"/>신입
-                <input type="checkbox" name="HNCareer" id="exp"/>경력
-                <input type="checkbox" name="HNCareer" id="noexp"/>경력무관
+                <input type="radio" name="hnCareer" value="신입"/>신입
+                <input type="radio" name="hnCareer" value="경력"/>경력
             </div>
         </div>
 
         <div>고용형태
             <div>
-                <input type="checkbox" name="HNForm" id="regular"/>정규직
-                <input type="checkbox" name="HNForm" id="contract"/>계약직
-                <input type="checkbox" name="HNForm" id="parttime"/>아르바이트
-                <input type="checkbox" name="HNForm" id="intern"/>인턴직
-                <input type="checkbox" name="HNForm" id="free"/>프리랜서<br/>
-                <input type="checkbox" name="HNForm" id="part"/>파트
-                <input type="checkbox" name="HNForm" id="wichok"/>위촉직
-                <input type="checkbox" name="HNForm" id="dispatch"/>파견직
-                <input type="checkbox" name="HNForm" id="fulltime"/>전임
-                <input type="checkbox" name="HNForm" id="mil-serv"/>병역특례<br/>
-                <input type="checkbox" name="HNForm" id="edu"/>교육생
-                <input type="checkbox" name="HNForm" id="oversea"/>해외취업
+                <select name="hnForm" >
+	               <option value="" disabled selected>근무형태을 선택하세요</option>
+	               <option value="정규직">정규직</option>
+	               <option value="교육생">교육생</option>
+	               <option value="별정직">별정직</option>
+	               <option value="파트">파트</option>
+	               <option value="전임">전임</option>
+	               <option value="계약직">계약직</option>
+	               <option value="병역특례">병역특례</option>
+	               <option value="인턴직">인턴직</option>
+	               <option value="아르바이트">아르바이트</option>
+	               <option value="파견직">파견직</option>
+	               <option value="해외취업">해외취업</option>
+	               <option value="위촉직">위촉직</option>
+	               <option value="프리랜서">프리랜서</option>
+           	 	</select>
             </div>
         </div>
         
@@ -163,19 +79,19 @@
 
         <div>모집요강
             <div>모집인원
-                <input type="number" name="HNRecruit" min="0"/>명
+                <input type="number" name="hnRecruit" min="0"/>명
             </div>
             <div>모집분야
-                <input type="text" name="HNCate"/>
+                <input type="text" name="hnCate"/>
             </div>
             <div>담당업무
-                <input type="text" name="HNChargeTask" placeholder="예)홍보프로그램 운영 및 관리"/>
+                <input type="text" name="hnChargeTask" placeholder="예)홍보프로그램 운영 및 관리"/>
             </div>
             <div>근무부서
-                <input type="text" name="HNDept" placeholder="예)SI,solution"/>
+                <input type="text" name="hnDept" placeholder="예)SI,solution팀"/>
             </div>
             <div>직급/직책
-                <input type="text" name="HNRankPosition" />
+                <input type="text" name="hnRankPosition" />
             </div>
         </div>
 
@@ -183,68 +99,85 @@
             
         <div>자격요건 및 우대조건
             <div>학력
-                <input type="checkbox" name="HNFinalEdu"/>학력무관 <input type="checkbox" name="HNFinalEdu"/>제한
-                <select name="HNFinalEdu">
-                	<option value="HNFinalEdu" disabled selected>제한학력을 선택하세요</option>
-                    <option value="초졸" >초등학교졸업이상</option>
-                    <option value="중졸" >중학교졸업이상</option>
-                    <option value="고졸" >고등학교졸업이상</option>
-                    <option value="대졸(2·3년제)" >대학교(2·3년제)졸업이상</option>
-                    <option value="대졸(4년제)" >대학교(4년제)졸업이상</option>
-                    <option value="석사졸" >대학원(석사)졸업이상</option>
-                    <option value="박사졸" >대학원(박사)졸업이상</option>
-                </select>
-                <input type="checkbox" name="HNFinalEdu"/>졸업예정자 가능
+                <select name="hnFinalEdu" onchange="selectFinalEdu()" >
+               		<option value="" disabled selected>최종학력을 선택하세요</option>
+               		<option value="학력무관">학력무관</option>
+               		<option value="초등학교 졸업">초등학교 졸업</option>
+              		<option value="중학교 졸업">중학교 졸업</option>
+               		<option value="고등학교 졸업">고등학교 졸업</option>
+               		<option value="대학/대학원 이상 졸업">대학/대학원 이상 졸업</option>
+            	</select>
             </div>
             <div>전공/학과
-                <input type="text" name="HNMajor"/>
+                <input type="text" name="hnMajor"/>
             </div>
             <div>우대조건
-                <input type="text" name="HNPreference"/>
-            </div>
-            <div>외국어
-                <input type="text" name="HNFor"/>
+                <input type="text" name="hnPreference"/>
             </div>
             <div>성별
-                <input type="checkbox" name="HNGender"/>성별무관<input type="checkbox" name="HNGender"/>남<input type="checkbox" name="HNGender"/>여
+                <input type="radio" name="hnGender" value="성별무관"/>성별무관
+                <input type="radio" name="hnGender" value="M"/>남
+                <input type="radio" name="hnGender" value="F"/>여
             </div>
             <div>생년월일
-                <input type="checkbox" name="HNBirth"/>연령무관<input type="checkbox" name="HNBirth"/>제한
-                <input type="text" name="HNBirth"/>
-                
+                <input type="radio" name="hnBirth" id="r1" value="1"/>연령무관
+                <input type="radio" name="hnBirth" id="r2" value="0"/>제한
             </div>
+            <div style="width:200px;">
+  				<input type="text" name="hnBirth">
+			</div>            
+                <script>
+                $(document).ready(function(){
+                	 
+                    // 라디오버튼 클릭시 이벤트 발생
+                    $("input:radio[name=hnBirth]").click(function(){
+                 
+                        if($("input[name=hnBirth]:checked").val() == "1"){
+                            $("input:text[name=hnBirth]").attr("disabled",false);
+                            // radio 버튼의 value 값이 1이라면 활성화
+                 
+                        }else if($("input[name=radio]:checked").val() == "0"){
+                              $("input:text[name=hnBirth]").attr("disabled",true);
+                            // radio 버튼의 value 값이 0이라면 비활성화
+                        }
+                    });
+                });
+
+                </script>
+            
 
             <br/>/////////////////나눔선//////////////////<br/><br/>
+            
 		<div>근무조건
             <div>급여
-                <select name="" id="money" name="HNSal">
-                    <option value="HNSal" disabled selected>희망연봉을 선택하세요</option>
-					<option value="회사내규">회사내규에 따름</option>
-					<option value="2000">2,000만원 이하</option>
-					<option value="2200">2,000~2,200만원</option>
-					<option value="2400">2,200~2,400만원</option>
-					<option value="2600">2,400~2,600만원</option>
-					<option value="2800">2,600~3,800만원</option>
-					<option value="3000">2,800~3,000만원</option>
-					<option value="3200">3,000~3,200만원</option>
-					<option value="3400">3,200~3,400만원</option>
-					<option value="3600">3,400~3,600만원</option>
-					<option value="3800">3,600~3,800만원</option>
-					<option value="4000">3,800~4,000만원</option>
-					<option value="5000">4000만원 이상</option>
+                <select  id="money" name="hnSal">
+	               <option value="회사내규에 따름">회사내규에 따름</option>
+	               <option value="2,000만원 이하">2,000만원 이하</option>
+	               <option value="2,000~2,200만원">2,000~2,200만원</option>
+	               <option value="2,200~2,400만원">2,200~2,400만원</option>
+	               <option value="2,400~2,600만원">2,400~2,600만원</option>
+	               <option value="2,600~3,800만원">2,600~3,800만원</option>
+	               <option value="2,800~3,000만원">2,800~3,000만원</option>
+	               <option value="3,000~3,200만원">3,000~3,200만원</option>
+	               <option value="3,200~3,400만원">3,200~3,400만원</option>
+	               <option value="3,400~3,600만원">3,400~3,600만원</option>
+	               <option value="3,600~3,800만원">3,600~3,800만원</option>
+	               <option value="3,800~4,000만원">3,800~4,000만원</option>
+	               <option value="4000만원 이상">4000만원 이상</option>
                 </select>
             </div>
             <div>
 				근무지역
-				<input type="text" id="sample5_address" name="HNWorkPlace" placeholder="주소">
+				<input type="text" id="sample5_address" name="hnWorkPlace" placeholder="주소">
 				<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 				<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 			</div>
             <div>근무요일
-                <input type="text" name="HNDay"/>요일
+                <input type="text" name="hnDay"/>요일
             </div>
             <div>근무시간
-                <select name="HNStime" id="">
+                <select name="hnStime" id="">
+                    <option value="" disabled selected>출근시간</option>
                     <option value="AM1">오전01시(01:00)</option>
                     <option value="AM2">오전02시(02:00)</option>
                     <option value="AM3">오전03시(03:00)</option>
@@ -271,7 +204,8 @@
                     <option value="PM12">오후12시(24:00)</option>
                 </select>
                 ~
-                <select name="HNDtime" id="">
+                <select name="hnDtime" id="">
+                    <option value="" disabled selected>퇴근시간</option>
                     <option value="AM1">오전01시(01:00)</option>
                     <option value="AM2">오전02시(02:00)</option>
                     <option value="AM3">오전03시(03:00)</option>
@@ -307,15 +241,19 @@
 					<input type="text" name="startDate" id="testDatepickers"/>시작일
 						~
 					<input type="text" name="endDate" id="testDatepickere"/>마감일
-					<input type="checkbox" name="HNEve"/>상시 접수
+					<input type="checkbox" name="hnEve" value="" default="N"/>상시 접수
+					<script>
+						
+					</script>
                 </div>
                 <div>접수방법
-                    <input type="checkbox" name="HN_ReMethod"/>Connect-job 온라인 접수<br/>
-                    <input type="checkbox" name="HN_ReMethod"/>홈페이지 접수 <input type="text" name="HN_ReMethod"/><br/>
-                    <input type="checkbox" name="HN_ReMethod"/>우편<input type="checkbox" name="HN_ReMethod"/>방문<input type="checkbox"/>전화<input type="checkbox"/>FAX
-                </div>
-                <div>지원시 참고자료
-                    <input type="file" class="custom-file-input" name="upFile" id="upFile1" name="HNOri">
+                    <input type="radio" name="hnReMethod" value="Connect-job"/>Connect-job 온라인 접수<br/>
+                    <input type="radio" name="hnReMethod" value="홈페이지 접수"/>홈페이지 접수
+                    <input type="radio" name="hnReMethod" value=""/><br/>
+                    <input type="radio" name="hnReMethod" value="우편"/>우편
+                    <input type="radio" name="hnReMethod" value="방문접수"/>방문
+                    <input type="radio" name="hnReMethod" value="전화 접수"/>전화
+                    <input type="radio" name="hnReMethod" value="팩스 접수"/>FAX
                 </div>
             </div>
         </div>
@@ -324,27 +262,13 @@
 
         <div>전형절차 및 제출 서류
             <div>전형절차
-                <input type="text" name="HN_Process" placeholder="전형절차를 입력해주세요">
+                <textarea name="hnProcess" placeholder="전형절차를 입력해주세요"></textarea>
             </div>
             <div>제출서류
-                <input type="text" name="HN_Doc" placeholder="제출서류를 입력해주세요">
+                <textarea name="hnDoc" placeholder="제출서류를 입력해주세요"></textarea>
             </div>
             <div>사전인터뷰
-                <input type="text" name="HN_Interview" placeholder="입사지원 전에 구직자가 꼭 답변해야 할 사전인터뷰 질문을 입력해주세요.">
-            </div>
-        </div>
-
-        <br/>/////////////////나눔선//////////////////<br/><br/>
-
-        <div>담당자 연락처
-            <div>담당자
-               	 이름<input type="text" name="HNName"/>
-            </div>
-            <div>연락처
-                	전화<input type="text" name="HNPhone"/><br/>
-                	휴대폰<input type="text" name="HNCelPhone"/><br/>
-                	email<input type="email" name="HNEMail"/><br/>
-               		FAX<input type="text" name="HNFax"/>
+                <textarea name="hnInterview" placeholder="입사지원 전에 구직자가 꼭 답변해야 할 사전인터뷰 질문을 입력해주세요."></textarea>
             </div>
         </div>
 
@@ -352,17 +276,16 @@
 
         <div>채용제목
             <div>제목
-                <input type="text" name="HNTitle"/>
+                <input type="text" name="hnTitle"/>
             </div>
         </div>
-        <div>
-        	<input type="hidden" name="HNCount" id="HNCount"/>
-        </div>
+      
 	<div class="enroll-text">
 		<button type="button" onclick="fn_submit()">채용공고 작성완료</button>
 	</div>
-		<input type='hidden' name="HNSort" id="HNSort"/>
+		
     </form>
+    
     <!--kakao지도 api-->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=91e0db2af26d873dbe0c8f327f08c6ff&libraries=services"></script>
@@ -375,10 +298,11 @@
 				cateList+=cate.eq(index).text()+',';
 			}
 		});
-		$('#HNSort').val(cateList);
+		$('#hnSort').val(cateList);
+		/* hireFrm.serialize(); */
 		hireFrm.submit();
 	}
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
             level: 5 // 지도의 확대 레벨
@@ -422,12 +346,12 @@
                 });
             }
         }).open();
-    }
+    } 
     
   
     //datepicker
 		$(function() {
-    $( "#testDatepickers" ).datepicker({
+    $("#testDatepickers").datepicker({
     	showOn:"both",
     	changeMonth:true,
     	changeYear:true,

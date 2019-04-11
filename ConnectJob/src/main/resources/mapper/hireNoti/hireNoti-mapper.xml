@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="HireNoti">
+
+<!-- <resultMap type="HireNoti" id="hireNotiResult">
+	<id property="HNSeq" column=""
+</resultMap> -->
+	
+	<!-- <insert id="insertNoti" parameterType="hireNoti">
+		INSERT INTO HIRENOTI VALUES(HNSEQ.NEXTVAL,#{CMemberId},#{HNSort},#{HNCareer},#{HNForm},#{HNRecruit},#{HNCate},#{HNChargeTask},#{HNDept},#{HNRankPosition},#{HNFinalEdu},#{HNMajor},#{HNPreference},#{HNFor},#{HNGender},#{HNBirth, typeHandler=strArr},#{HNSal},#{HNWorkPlace},#{HNDay},#{HNStime},#{HNDtime},#{startDate},#{endDate},#{HNEve},#{HNReMethod},#{HNRequired},#{HNOri},#{HNRe},#{HNProcess},#{HNDoc},#{HNInterview},#{HNTitle},#{HNCount},sysdate)
+	</insert> -->
 	
 	<insert id="insertNoti" parameterType="hireNoti">
-		INSERT INTO HIRENOTI VALUES(HN_SEQ.NEXTVAL,#{HNSort},#{HNCareer},#{HNForm},#{HNRecruit},#{HNCate},#{HNChargeTask},#{HNDept},#{HNRankPosition},#{HNFinalEdu},#{HNMajor},#{HNPreference},#{HNFor},#{HNGender},#{HNBirth},#{HNSal},#{HNWorkPlace},#{HNDay},#{HNStime},#{HNDtime},#{startDate},#{endDate},#{HNEve},#{HNReMethod}#{HNRequired},#{HNOri},#{HNRe},#{HNProcess},#{HNDoc},#{HNInterview},#{HNName},#{HNPhone},#{HNCelPhone},#{HNEMail},#{HNFax},#{HNTitle},#{HNCount},sysdate)
+		INSERT INTO HIRENOTI VALUES(HN_Seq.NEXTVAL,#{cMemberId},#{hnSort, typeHandler=strArr},#{hnCareer},#{hnForm},#{hnRecruit},#{hnCate},#{hnChargeTask},#{hnDept},#{hnRankPosition},#{hnFinalEdu, typeHandler=strArr},#{hnMajor},#{hnPreference},#{hnGender},#{hnBirth, typeHandler=strArr},#{hnSal},#{hnWorkPlace},#{hnDay},#{hnStime},#{hnDtime},#{startDate},#{endDate},#{hnEve, typeHandler=strArr},#{hnReMethod},#{hnProcess},#{hnDoc},#{hnInterview},#{hnTitle},sysdate)
 	</insert>
 </mapper>

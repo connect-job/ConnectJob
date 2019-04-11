@@ -36,11 +36,11 @@ public class CMemberController {
 	@RequestMapping("/cMemberEnrollEnd.do")
 	public String insertCMember(CMember m, Model model) {
 		
-		String pw=m.getCMemberPw();
+		String pw=m.getcMemberPw();
 		logger.debug(pw);
 		String enPw=encoder.encode(pw);
 		logger.debug(enPw);
-		m.setCMemberPw(enPw);
+		m.setcMemberPw(enPw);
 		
 		int result=service.insertMember(m);
 		
@@ -65,7 +65,7 @@ public class CMemberController {
 	@RequestMapping("/cMemberLogin.do")
 	public String selectOne(CMember m, HttpSession session, Model model) {
 		
-		System.out.println(m.getCMemberId());
+		System.out.println(m.getcMemberId());
 		
 		CMember result = service.selectOne(m);
 
@@ -76,7 +76,7 @@ public class CMemberController {
 		
 		if(result!=null) 
 		{
-			if(encoder.matches(m.getCMemberPw(), result.getCMemberPw())) {
+			if(encoder.matches(m.getcMemberPw(), result.getcMemberPw())) {
 				 msg = "로그인 성공!";
 				 session.setAttribute("loginCMember", result); 
 			} 
@@ -143,7 +143,7 @@ public class CMemberController {
 	{
 		int result=service.updateMember(m);
 		String msg="";
-		String loc="/member/cMemberUpdate.do?CMemberId="+m.getCMemberId();
+		String loc="/member/cMemberUpdate.do?cMemberId="+m.getcMemberId();
 		if(result>0)
 		{
 			msg="수정완료";
