@@ -1,5 +1,7 @@
 package com.connect.job.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,9 +17,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.connect.job.common.PageBarFactory;
+import com.connect.job.model.vo.CompanyReview;
 import com.connect.job.model.vo.Notice;
 import com.connect.job.service.NoticeService;
 
@@ -28,6 +32,46 @@ public class NoticeController {
 	
 	@Autowired
 	private NoticeService service;
+	
+	// 메인페이지 상단 공지사항
+		@RequestMapping("/notice/latestNoticeOne.do")
+		@ResponseBody
+		public String latestNoticeOne(HttpServletRequest request) throws UnsupportedEncodingException {
+			String html = "";
+			
+			List<Notice> list = service.latestNotice();
+
+			if(list.size()>1) {
+				for(int i=0; i<1; i++) {
+					html += "<a class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" href=\"" + request.getContextPath() + "/notice/noticeView?notice_no=" + list.get(i).getNotice_no() + "'\">" + list.get(i).getNotice_date() + "　" +  list.get(i).getTitle() + "</a>";
+				}
+			}
+			
+			String result = URLEncoder.encode(html, "UTF-8");
+			return result;
+		}
+	
+	// 메인페이지 최근 공지사항
+	@RequestMapping("/notice/latestNotice.do")
+	@ResponseBody
+	public String latestNotice(HttpServletRequest request) throws UnsupportedEncodingException {
+		String html = "";
+		
+		List<Notice> list = service.latestNotice();
+		
+		html += "<ul>";
+		if(list.size()>5) {
+			for(int i=0; i<5; i++) {
+				html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/notice/noticeView?notice_no=" + list.get(i).getNotice_no() + "'\">·　" + list.get(i).getNotice_date() + "　" +  list.get(i).getTitle() + "</li>";
+			}
+		} else {
+			html += "<li>등록된 리뷰가 없습니다</li>";
+		}
+		html += "</ul>";
+		
+		String result = URLEncoder.encode(html, "UTF-8");
+		return result;
+	}
 	
 	//공지사항 페이지 이동
 	@RequestMapping("/notice.do")

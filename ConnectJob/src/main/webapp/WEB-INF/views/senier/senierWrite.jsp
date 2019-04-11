@@ -29,9 +29,8 @@
                         <div class="right">
                             <input type="radio" name="qType" id="radio1" value="회사고민"><label for="radio1">회사고민</label>
                             <input type="radio" name="qType" id="radio2" value="직무고민"><label for="radio2">직무고민</label>
-                       		<!-- <input type="radio" name="cate" id="radio3"><label for="radio3">업계/산업</label> -->
-                            <input type="radio" name="qType" id="radio4" value="진로고민"><label for="radio4">진로고민</label>
-                            <input type="radio" name="qType" id="radio5" value="기타고민"><label for="radio5">기타고민</label>
+                            <input type="radio" name="qType" id="radio3" value="진로고민"><label for="radio4">진로고민</label>
+                            <input type="radio" name="qType" id="radio4" value="기타고민"><label for="radio5">기타고민</label>
                         </div>
                     </div>
                     <div class="write-title">
@@ -42,6 +41,7 @@
                         <div class="left">내용</div>
                         <div class="right"><textarea name="sContent" placeholder="구체적인 내용을 입력해주세요"></textarea></div>
                     </div>
+                    <input type="hidden" name="pId" value="${loginMember.p_id }"/>
                     <div class="write-btn"><button type="submit">질문하기</button></div>
                 </div>
             </form>

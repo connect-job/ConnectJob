@@ -15,15 +15,39 @@
 		<div id="index-top-left">
 		</div>
 		<div class="index-top-right">
-			<div id="tab-btn" class="notice selected">최근 기업리뷰</div><div id="tab-btn" class="notice2">공지사항</div>
+			<div id="latest1" class="tab-btn selected">최근 기업리뷰</div>
+			<div id="latest2" class="tab-btn">공지사항</div>
 
 			<div id="item">
 					<br><Br>
 				<img src="${path}/resources/images/loading.gif" width="20px">
 			</div>
+			<div id="item-notice">
+
+			</div>
 		</div>
 
 		<script>
+			var latest1 = $('#latest1');
+			var latest2 = $('#latest2');
+
+			var item = $('#item');
+			var itemNotice = $('#item-notice');
+
+			latest1.click(function() {
+				latest1.addClass('selected');
+				latest2.removeClass('selected');
+				item.css("display","block");
+				itemNotice.css("display","none");
+			});
+
+			latest2.click(function() {
+				latest2.addClass('selected');
+				latest1.removeClass('selected');
+				item.css("display","none");
+				itemNotice.css("display","block");
+			});
+
 			// 최근 기업리뷰 AJAX
 			var item = $('#item');
 			$.ajax({
@@ -33,6 +57,17 @@
 	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
 	                item.empty();
 	                item.html(resultSet);
+				}
+			});
+			// 공지사항 AJAX
+			var itemNotice = $('#item-notice');
+			$.ajax({
+				url: '${path}/notice/latestNotice.do',
+				success: function(data) {
+					var Ca = /\+/g;
+	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+	                itemNotice.empty();
+	                itemNotice.html(resultSet);
 				}
 			});
 		</script>

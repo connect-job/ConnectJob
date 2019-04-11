@@ -1,7 +1,6 @@
 package com.connect.job.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -63,8 +62,8 @@ public class SenierController {
 	public String answer(Model model, int no)
 	{
 		
-		List<Senier> list=service.senierOneList(no);
-		model.addAttribute("list",list);
+		Senier  s =service.senierOneList(no);
+		model.addAttribute("s",s);
 		return "senier/senierAnswer";//후배에게 답변하기
 	}
 	
@@ -89,25 +88,22 @@ public class SenierController {
 	
 	
 	@RequestMapping(value="/senier/comWrite.do")//댓글등록
-	@ResponseBody
-	public String comWrite(@RequestParam(defaultValue="1")int cNo, String cContent,String cWriter, Model model) throws UnsupportedEncodingException /*Scomment sco*/
+	public String comWrite(Scomment s, Model model) throws UnsupportedEncodingException /*Scomment sco*/
 	{
-		Scomment sco=new Scomment();
-		sco.setsNo(cNo);
-		sco.setcContent(cContent);
-		sco.setcWriter(cWriter);
+		int count = service.insertComWrite(s);
 		
-		int count = service.insertComWrite(sco);
-		String result_temp = "";
+		String msg = "";
+		String loc = "/senierAnswer.do?no=" + s.getsNo();
 		
 		if(count>0) {
-			result_temp = "댓글이 등록되었습니다";
+			msg = "댓글이 등록되었습니다";
 		} else {
-			result_temp = "댓글 등록 실패";
+			msg = "댓글 등록 실패";
 		}
 		
-		String result = URLEncoder.encode(result_temp, "UTF-8");
-		return result;
+		model.addAttribute("msg", msg);
+		model.addAttribute("loc", loc);
+		return "common/msg";
 	}
 	
 	@RequestMapping("/senier/comList.do") //댓글등록 조회
@@ -125,21 +121,16 @@ public class SenierController {
 	
 	@RequestMapping(value="/senier/comAjaxList.do", produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String comAjaxList(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage, Model model, HttpSession session) {
+	public String comAjaxList(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage, int no, Model model, HttpSession session) {
 		
 		int numPerPage=10;
 		
 		
 		String html = "";
-		List<Scomment> list = service.selectAll(cPage,numPerPage);
-		int total=service.selectcomCount();
+		List<Scomment> list = service.selectAll(cPage,numPerPage, no);
+		int total=service.selectcomCount(no);
 
-	
-		
 		String pageBar=AjaxPageBarFactory.getPageBar(total, cPage, numPerPage);
-		
-
-		
 		
 		html += "<div class=\"comment-item\">";
 			for(int i=0; i<list.size();i++) {
@@ -148,13 +139,21 @@ public class SenierController {
 				html += "</div>";
 				
 				html += "<div class=\"content\">";
+				html += "<input type=\"hidden\" id=\"cNo\" value=\"" + list.get(i).getcNo() + "\"/>";
+				html += "<div class=\"content-container\">";
 				html += list.get(i).getcContent();
+				html += "</div>";
+				html += "<button class='updateBtn'>수정</button>";
+				html += "<button class='deleteBtn'>삭제</button>";
 				html += "</div>";
 				
 				html += "<div class=\"date\">";
 				html += list.get(i).getcRegdate();
 				html += "</div>";
 			}
+			
+
+			
 			html += "<div id=\"pageBar\">";
 			html += pageBar;
 			html += "</div>";
@@ -163,29 +162,110 @@ public class SenierController {
 		return html;
 	}
 	
+	@RequestMapping("/senierUpdate.do")
+	public String update(Model model, int no)
+	{
+		Senier  s =service.senierOneList(no);
+		model.addAttribute("s",s);
+		return "senier/senierUpdate";//선배에게 질문하기
+	}
 	
-	/*// 댓글 좋아요
-		@RequestMapping("senier/senierLike.do")
-		@ResponseBody
-		public String SenierLike(String member, int reviewNo, int companyNo) throws UnsupportedEncodingException {
+	@RequestMapping("/senierUpdateEnd.do")
+	public String updateEnd(Senier s, Model model)
+	{
+		
+		int result=service.updateSenier(s);
+		
+		String msg="";
+		String loc="/senierConversation.do"; //리스트시작페이지
+		if(result>0)
+		{
+			msg="질문수정완료";
 			
-			ScommentLike like = new ScommentLike();
-			like.setLikeMember(member);
-			like.setLikeReview(reviewNo);
-			like.setLikeCompany(companyNo);
+		}
+		else
+		{
+			msg="질문수정실패";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	
+		
+	}
+	
+	@RequestMapping("/senierDelete.do")
+	public String Delete(Senier s, Model model)
+	{
+		
+		int result=service.deleteSenier(s);
+		
+		String msg="";
+		String loc="/senierConversation.do"; //리스트시작페이지
+		if(result>0)
+		{
+			msg="질문삭제완료";
 			
-			String message = "";
+		}
+		else
+		{
+			msg="질문삭제실패";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	
+		
+	}
+	
+	@RequestMapping("sCommentUpdate.do")//댓글수정
+	public String commentUpdate(Scomment sc, Model model) {
+		
+		int result=service.commentUpdate(sc);
+		
+		
+		String msg="";
+		String loc = "/senierAnswer.do?no=" + sc.getsNo();
+		
+		if(result>0)
+		{
+			msg="수정이 완료 되었습니다";
 			
-			int result = service.scommentLike(like);
+		}
+		else
+		{
+			msg="수정 실패 하였습니다";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	}
+	
+	@RequestMapping("sCommentDelete.do")//댓글삭제
+	public String commentDelete(Scomment sc, Model model) {
+		
+		int result=service.commentDelete(sc);
+		
+		
+		String msg="";
+		String loc = "/senierAnswer.do?no=" + sc.getsNo();
+		
+		if(result>0)
+		{
+			msg="삭제가 완료 되었습니다";
 			
-			if(result>0) {
-				message = "좋아요";
-			} else {
-				message = "좋아요 취소";
-			}
-			
-			String msg = URLEncoder.encode(message, "UTF-8");
-			return msg;
-		}*/
+		}
+		else
+		{
+			msg="삭제 실패 하였습니다";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	}
 	
 }

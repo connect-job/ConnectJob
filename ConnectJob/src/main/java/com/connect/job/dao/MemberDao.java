@@ -13,7 +13,6 @@ public interface MemberDao {
 	int insertMemberKako(Member m);
 	
 	Member selectOne(Member m);	
-	
 	Member findId(Member m);
 	int deleteMember(Member m);
 	int updateMember(Member m);

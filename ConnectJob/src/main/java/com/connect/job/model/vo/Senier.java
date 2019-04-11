@@ -14,7 +14,7 @@ public class Senier implements Serializable{
 	
 	private int sNo;
 	private String sJob;
-	private String[] qType;
+	private String qType;
 	private String sTitle;
 	private String sContent;
 	private int sHits;
@@ -26,8 +26,8 @@ public class Senier implements Serializable{
 		
 	}
 
-	public Senier(int sNo, String sJob, String[] qType, String sTitle, String sContent, int sHits, Date sDate,
-			String pId, String status) {
+	public Senier(int sNo, String sJob, String qType, String sTitle, String sContent, int sHits, Date sDate, String pId,
+			String status) {
 		super();
 		this.sNo = sNo;
 		this.sJob = sJob;
@@ -56,11 +56,11 @@ public class Senier implements Serializable{
 		this.sJob = sJob;
 	}
 
-	public String[] getqType() {
+	public String getqType() {
 		return qType;
 	}
 
-	public void setqType(String[] qType) {
+	public void setqType(String qType) {
 		this.qType = qType;
 	}
 
@@ -112,15 +112,16 @@ public class Senier implements Serializable{
 		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return "Senier [sNo=" + sNo + ", sJob=" + sJob + ", qType=" + Arrays.toString(qType) + ", sTitle=" + sTitle
-				+ ", sContent=" + sContent + ", sHits=" + sHits + ", sDate=" + sDate + ", pId=" + pId + ", status="
-				+ status + "]";
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "Senier [sNo=" + sNo + ", sJob=" + sJob + ", qType=" + qType + ", sTitle=" + sTitle + ", sContent="
+				+ sContent + ", sHits=" + sHits + ", sDate=" + sDate + ", pId=" + pId + ", status=" + status + "]";
+	}
+
 	
 	
 }

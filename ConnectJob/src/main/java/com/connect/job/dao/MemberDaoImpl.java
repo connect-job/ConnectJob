@@ -28,7 +28,6 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return session.selectOne("member.selectOne", m);
 	}
-	
 	@Override
 	public Member findId(Member m) {	
 		
