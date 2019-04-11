@@ -99,7 +99,7 @@ a:hover {
 	color: #fff;
 	text-align: center;
 	background-color: #596483a8;
-	z-index: 999999;
+	z-index: -1;
 	border-radius: 5px;
 }
 

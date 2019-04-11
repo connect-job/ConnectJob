@@ -14,6 +14,34 @@
 	<insert id="insertFinalEduUniv" parameterType="finalEduUniv">
 		INSERT INTO FINALEDU_UNIV VALUES(SEQ_FINALEDU_UNIV_ID.NEXTVAL,#{resumeNo},#{schoolFlag},#{schoolName},#{major},#{secondMajorCategory},#{secondMajor},#{score},#{scoreStandard},#{admissionYM},#{graduationYM},#{graduateState})
 	</insert>
+	<insert id="insertProfileImg" parameterType="profileImg">
+		INSERT INTO PROFILE_IMG VALUES(SEQ_IMG_ID.NEXTVAL,#{resumeNo},#{originalFileName},#{renamedFileName},SYSDATE,'Y')
+	</insert>
+	
+	<update id="updateProfileImg" parameterType="profileImg">
+		UPDATE PROFILE_IMG SET ORIGINAL_FILE_NAME=#{originalFileName}, RENAMED_FILE_NAME=#{renamedFileName},upload_date=SYSDATE WHERE PROFILE_IMG_NO=#{profileImgNo}
+	</update>
+	
+	<update id="updateResume" parameterType="resume">
+		UPDATE RESUME SET TITLE=#{title},NAME=#{name},BIRTH=#{birth},GENDER=#{gender},EMAIL=#{email},PHONE=#{phone},FINAL_EDU=#{finalEdu},CAREER=#{career},HOPE_POSITION=#{hopePosition},HOPE_SALARY=#{hopeSalary},HOPE_AREA=#{hopeArea, typeHandler=strArr},HOPE_JOB_AREA=#{hopeJobArea, typeHandler=strArr},HOPE_CATEGORY=#{hopeCategory, typeHandler=strArr},IS_PUBLIC=#{isPublic},CREATION_DATE=SYSDATE WHERE RESUME_NO=#{resumeNo}
+	</update>
+	
+	<update id="updateFinalEdu" parameterType="finalEdu">
+		UPDATE FINALEDU SET SCHOOL_FLAG=#{schoolFlag},SCHOOL_NAME=#{schoolName},GRADUATE_YEAR=#{graduateYear},GRADUATE_STATE=#{graduateState} WHERE FIANLEDU_NO=#{finalEduNo}
+	</update>
+	
+	<update id="updateFinalEduUniv" parameterType="finalEduUniv">
+		UPDATE FINALEDU_UNIV SET SCHOOL_FLAG=#{schoolFlag},SCHOOL_NAME=#{schoolName},MAJOR=#{major},SECOND_MAJOR_CATEGORY=#{secondMajorCategory},SECOND_MAJOR=#{secondMajor},SCORE=#{score},SCORE_STANDARD=#{scoreStandard},ADMISSION_YM=#{admissionYM},GRADUATION_YM=#{graduationYM},GRADUATE_STATE=#{graduateState} WHERE FINALEDU_UNIV_NO=#{finalEduUnivNo}
+	</update>
+	
+	<update id="updateCareer" parameterType="career">
+		UPDATE CAREER SET CAREER_C_NAME=#{careerCName},JOIN_DATE=#{joinDate},RESIGN_DATE=#{resignDate},COMPANY_FLAG=#{companyFlag},POSITION=#{position},JOB=#{job},OCCUPATION=#{occupation} WHERE CAREER_NO=#{careerNo}
+	</update>
+	
+	
+	<select id="selectProfileImg" resultType="profileImg" resultMap="imgMap">
+		SELECT * FROM PROFILE_IMG WHERE RESUME_NO=#{resumeNo}
+	</select>
 	
 	<select id="selectResumeList" resultType="resume" resultMap="resumeResultMap">
 		SELECT * FROM RESUME WHERE P_ID=#{p_id} AND IS_DELETE='FALSE' ORDER BY RESUME_NO DESC
@@ -51,7 +79,14 @@
 
 
 
-
+	<resultMap type="profileImg" id="imgMap">
+		<id property="profileImgNo" column="profile_img_no"></id>
+		<result property="resumeNo" column="resume_no"/>
+		<result property="originalFileName" column="original_file_name"/>
+		<result property="renamedFileName" column="renamed_file_name"/>
+		<result property="uploadDate" column="upload_date"/>
+		<result property="status" column="status"/>
+	</resultMap>
 
 	<resultMap type="career" id="careerMap">
 		<id property="careerNo" column="career_no"></id>

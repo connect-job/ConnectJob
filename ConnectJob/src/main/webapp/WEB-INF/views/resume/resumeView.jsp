@@ -19,7 +19,15 @@
 	<h2>기본 정보</h2>
 	<table>
 		<tr>
-			<th rowspan="5" style="width:150px;border:1px solid lightGray"></th>
+			<th rowspan="5">
+				<div style="width:120px; heigth:160px;border:1px solid lightGray">
+				<script>console.log("${path }/resources/upload/profile/${img.renamedFileName }");</script>
+				<c:if test="${not empty img }">
+					<img src="${path }/resources/upload/profile/${img.renamedFileName }" style="width:120px; heigth:160px;" />
+				</c:if>
+				</div>
+				
+			</th>
 			<td><h2 style="display:inline-block">${resultR.name }</h2></td>
 			<td>|<b> ${fn:substring(resultR.birth,0,4)} 년</b> | <b>${resultR.gender eq 'M'? "남":"여" } </b></td>
 		</tr>
@@ -54,7 +62,7 @@
 					</tr>
 					<tr>
 						<td>전공 | ${u.major}
-							<c:if test="${u.secondMajor eq null?false:true }">
+							<c:if test="${u.secondMajor eq '해당사항 없음'?false:true }">
 								${u.secondMajorCategory } | ${u.secondMajor }
 							</c:if>
 						</td>
@@ -148,7 +156,7 @@
 	</table>
 </div>
 
-	<button onclick="updateResume()">수정</button>
+	<button onclick="location='${path}/resume/updateResume?resumeNo=${resultR.resumeNo}'">수정</button>
 	<button onclick="location='${path}/resume/deleteResume?resumeNo=${resultR.resumeNo}'">삭제</button>
 	
 	<div style="padding-top:100px;">
