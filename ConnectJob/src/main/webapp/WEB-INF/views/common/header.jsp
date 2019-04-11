@@ -156,6 +156,7 @@
 	    		$('html').scrollTop()==0;
 		    	$('#socket-message').empty();
 		    	$('#socket-message').css("opacity","1");
+		    	$('#socket-message').css("z-index","999999999");
 		    	$('#socket-message').append("<i class='fas fa-envelope-open-text' style='font-size:20px'></i>　");
 		    	$('#socket-message').append(evt.data);
 		    	$('#socket-message').append("<br><br><a href='${path}/alarm/alarm.do?id=${loginMember.p_id}'>알림센터 바로가기</a>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
@@ -173,11 +174,13 @@
 	    	console.log(evt);
 	    }
 	    
-	    $(document).ready(function() {
-		    	send_message();
-		    	setTimeout(function() {
-		    		send_message();
-		    	},1000);
+	     $(document).ready(function() {
+             if(${loginMember!=null}) {
+                send_message();
+		     	setTimeout(function() {
+		     		send_message();
+		     	},1000);
+             }
 	    });
 	    
 	    function fn_messageClose() {
@@ -205,7 +208,7 @@
 
 	    	}).scroll();
 
-	    });
+	    }); 
 	    
 	    // ------------------------------------------------------------ 웹소켓 끝
     

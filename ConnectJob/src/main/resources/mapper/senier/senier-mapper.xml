@@ -21,7 +21,7 @@
   </insert>
   
   <select id="senierList" resultMap="senierResult">
-  	select * from s_talk
+  	select * from s_talk order by s_date desc
   </select>
   
   <select id="selectCount" resultType="_int">
