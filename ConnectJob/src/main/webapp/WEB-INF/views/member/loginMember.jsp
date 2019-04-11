@@ -29,11 +29,11 @@
 				</div>
 			</div>
 			<div class="login-right">
-				<div id="naver_id_login"></div>				
+				<!-- <div id="naver_id_login"></div> -->				
 				<a id="custom-login-btn" href="javascript:loginWithKakao()">
 					<img src="${path }/resources/images/kakao_account_login_btn.png" width="250"/>
 				</a>
-				<button onclick="href='javascript:loginWithKakao()'" id="custom-login-btn" class="kakao">카카오 로그인</button>					
+				<!-- <a id="kakao-login-btn"></a> -->									
 				<input type="submit" value="로그인"/><br>
 				<input type="button" value="ID/PW찾기" id="findbtn"/>
 			</div>
@@ -79,12 +79,10 @@
 	    	        $.ajax({
 	    	        	url: '${path}/member/isKakao.do?is_sns=kakao&kakao_id=' + id,
 	    	            success: function(data) {
-	    	            	console.log("돌려받은값 : " + data);
-	    	            	if(data=='1') {
-	    	            		/* alert('로그인페이지로 이동'); */
+	    	            	
+	    	            	if(data=='1') {	    	            		
 	    	            		location.href="${path}/member/memberLoginKakao.do?kakao_id=" + id;
-	    	            	} else {
-	    	            		 /* alert('회원가입페이지로 이동'); */
+	    	            	} else {	    	            		
 	    	            		 location.href="${path}/member/memberEnrollKakao.do?is_sns=kakao&kakao_id=" + id + "&p_name=" + res.properties['nickname'];
 	    	            	}
 	    	            }
@@ -166,24 +164,6 @@
 	    }
 	
 	}); */
-	
-		var naver_id_login = new naver_id_login("cCy_IBv9txIwa4rP88M8", "http://localhost:9090/job/member/login.do");
-	  	var state = naver_id_login.getUniqState();
-	  	naver_id_login.setButton("white", 3, 40);
-	  	naver_id_login.setDomain("http://localhost:9090/job/");
-	  	naver_id_login.setState(state);
-	  	/* naver_id_login.setPopup(); */
-	  	naver_id_login.init_naver_id_login();	
-	  	console.log("access_token: " + naver_id_login.oauthParams.access_token);
-	    // 네이버 사용자 프로필 조회
-	    naver_id_login.get_naver_userprofile("naverSignInCallback()");	    
-	    // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-	    function naverSignInCallback() {
-	    	console.log(naver_id_login.getProfileData('email'));
-	    	console.log(naver_id_login.getProfileData('nickname'));
-	    	console.log(naver_id_login.getProfileData('age'));
-	    }
-	
 	
 </script>
     
