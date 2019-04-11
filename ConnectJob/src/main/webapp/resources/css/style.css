@@ -1674,10 +1674,20 @@ section #company-view-container #company-view-content .view-right #right-company
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right input {
-    width: 80%;
+    width: 90%;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
+    border: 1px solid #eee;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right textarea {
+    width: 90%;
+    height: 150px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border: 1px solid #eee;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right select {
@@ -1685,6 +1695,9 @@ section #company-view-container #company-view-content .view-right #right-company
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
+    font-size:12px;
+    border: 1px solid #eee;
+    outline: none;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right button {
