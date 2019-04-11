@@ -29,12 +29,11 @@
 				</div>
 			</div>
 			<div class="login-right">
-				<div id="naver_id_login"></div>
-				<!-- <a id="kakao-login-btn"></a> -->
-				
+				<div id="naver_id_login"></div>				
 				<a id="custom-login-btn" href="javascript:loginWithKakao()">
 					<img src="${path }/resources/images/kakao_account_login_btn.png" width="250"/>
-				</a>					
+				</a>
+				<button onclick="href='javascript:loginWithKakao()'" id="custom-login-btn" class="kakao">카카오 로그인</button>					
 				<input type="submit" value="로그인"/><br>
 				<input type="button" value="ID/PW찾기" id="findbtn"/>
 			</div>
@@ -74,11 +73,9 @@
         success: function(authObj) {
         	Kakao.API.request({
 	    		url: '/v1/user/me',
-	    	    success: function(res) {
-	    	    	
+	    	    success: function(res) {	    	    	
 	    	        var id = res.id;
-	    	        console.log("아이디 저장:" + id) 
-	    	             
+	    	        console.log("아이디 저장:" + id); 	    	             
 	    	        $.ajax({
 	    	        	url: '${path}/member/isKakao.do?is_sns=kakao&kakao_id=' + id,
 	    	            success: function(data) {
@@ -94,7 +91,7 @@
 	    	        });	    	       
 				}
 			});
-          	alert(JSON.stringify(authObj));
+          	
         },
         fail: function(err) {
           	alert(JSON.stringify(err));
@@ -170,13 +167,23 @@
 	
 	}); */
 	
-	var naver_id_login = new naver_id_login("cCy_IBv9txIwa4rP88M8", "http://localhost:9090/job/member/login.do");
-  	var state = naver_id_login.getUniqState();
-  	naver_id_login.setButton("white", 3, 40);
-  	naver_id_login.setDomain("http://localhost:9090/job/");
-  	naver_id_login.setState(state);
-  	/* naver_id_login.setPopup(false); */
-  	naver_id_login.init_naver_id_login();
+		var naver_id_login = new naver_id_login("cCy_IBv9txIwa4rP88M8", "http://localhost:9090/job/member/login.do");
+	  	var state = naver_id_login.getUniqState();
+	  	naver_id_login.setButton("white", 3, 40);
+	  	naver_id_login.setDomain("http://localhost:9090/job/");
+	  	naver_id_login.setState(state);
+	  	/* naver_id_login.setPopup(); */
+	  	naver_id_login.init_naver_id_login();	
+	  	console.log("access_token: " + naver_id_login.oauthParams.access_token);
+	    // 네이버 사용자 프로필 조회
+	    naver_id_login.get_naver_userprofile("naverSignInCallback()");	    
+	    // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+	    function naverSignInCallback() {
+	    	console.log(naver_id_login.getProfileData('email'));
+	    	console.log(naver_id_login.getProfileData('nickname'));
+	    	console.log(naver_id_login.getProfileData('age'));
+	    }
+	
 	
 </script>
     
