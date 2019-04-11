@@ -42,21 +42,7 @@
 			<td>연락처</td>
 			<td><input type="phone" name="phone" value="${m.phone }"/></td>
 		</tr>
-		<tr>
-			<td>최종학력</td>
-			<td><input type="text" name="final_edu" value="${m.final_edu }"/></td>
-		</tr>
-		<tr>
-			<td>학교</td>
-			<td><input type="text" name="school" value="${m.school }"/></td>
-		</tr>
-		<tr>
-			<td>전공</td>
-			<td>
-				<input type="text" name="major" value="${m.major }"/>
-				
-			</td>
-		</tr>		
+	
 		<tr>
 			<td><input type="submit" value="수정"/></td>
 			<td><input type="button" value="탈퇴" onclick="location.href='${path}/member/deleteMember?p_id=${loginMember.p_id }'"/></td>

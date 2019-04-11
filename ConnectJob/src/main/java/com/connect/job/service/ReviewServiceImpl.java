@@ -64,6 +64,11 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<CompanyReview> reviewLatest() {
 		return dao.reviewLatest();
 	}
+
+	@Override
+	public int reviewDelete(int num) {
+		return dao.reviewDelete(num);
+	}
 	
 	
 

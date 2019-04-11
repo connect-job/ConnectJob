@@ -228,11 +228,37 @@ public class CompanyReviewController {
 		html += "<div class=\"review-detail-top\">";
 		html += "<select name=\"reviewTotalScore\" value=\"" + review.getReviewTotalScore() + "\">";
 		html += "<option>평점</option>";
-		html += "<option value='1'>★</option>";
-		html += "<option value='2'>★★</option>";
-		html += "<option value='3'>★★★</option>";
-		html += "<option value='4'>★★★★</option>";
-		html += "<option value='5'>★★★★★</option>";
+		if(review.getReviewTotalScore()==1) {
+			html += "<option value='1' selected>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewTotalScore()==2) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2' selected>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewTotalScore()==3) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3' selected>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewTotalScore()==4) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4' selected>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewTotalScore()==5) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5' selected>★★★★★</option>";
+		} 
 		html += "</select>";
 		html += "</div>";
 		
@@ -257,54 +283,184 @@ public class CompanyReviewController {
 		html += "승진 기회 및 가능성";
 		html += "<select id=\"reviewGrade01\" name=\"reviewGrade01\">";
 		html += "<option>평점</option>";
-		html += "<option value='1'>★</option>";
-		html += "<option value='2'>★★</option>";
-		html += "<option value='3'>★★★</option>";
-		html += "<option value='4'>★★★★</option>";
-		html += "<option value='5'>★★★★★</option>";
+		if(review.getReviewGrade01()==1) {
+			html += "<option value='1' selected>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade01()==2) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2' selected>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade01()==3) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3' selected>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade01()==4) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4' selected>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade01()==5) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5' selected>★★★★★</option>";
+		} 
 		html += "</select><br>";
 		
 		html += "복지 및 급여";
 		html += "<select id=\"reviewGrade02\" name=\"reviewGrade02\">";
 		html += "<option>평점</option>";
-		html += "<option value='1'>★</option>";
-		html += "<option value='2'>★★</option>";
-		html += "<option value='3'>★★★</option>";
-		html += "<option value='4'>★★★★</option>";
-		html += "<option value='5'>★★★★★</option>";
+		if(review.getReviewGrade02()==1) {
+			html += "<option value='1' selected>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade02()==2) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2' selected>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade02()==3) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3' selected>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade02()==4) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4' selected>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade02()==5) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5' selected>★★★★★</option>";
+		} 
 		html += "</select><br>";
 		
 		html += "업무와 삶의 균형";
 		html += "<select id=\"reviewGrade03\" name=\"reviewGrade03\">";
 		html += "<option>평점</option>";
-		html += "<option value='1'>★</option>";
-		html += "<option value='2'>★★</option>";
-		html += "<option value='3'>★★★</option>";
-		html += "<option value='4'>★★★★</option>";
-		html += "<option value='5'>★★★★★</option>";
+		if(review.getReviewGrade03()==1) {
+			html += "<option value='1' selected>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade03()==2) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2' selected>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade03()==3) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3' selected>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade03()==4) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4' selected>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade03()==5) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5' selected>★★★★★</option>";
+		} 
 		html += "</select><br>";
 		
 		html += "사내문화";
 		html += "<select id=\"reviewGrade04\" name=\"reviewGrade04\">";
 		html += "<option>평점</option>";
-		html += "<option value='1'>★</option>";
-		html += "<option value='2'>★★</option>";
-		html += "<option value='3'>★★★</option>";
-		html += "<option value='4'>★★★★</option>";
-		html += "<option value='5'>★★★★★</option>";
+		if(review.getReviewGrade04()==1) {
+			html += "<option value='1' selected>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade04()==2) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2' selected>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade04()==3) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3' selected>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade04()==4) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4' selected>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade04()==5) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5' selected>★★★★★</option>";
+		} 
 		html += "</select><br>";
 		
 		html += "경영진";
 		html += "<select id=\"reviewGrade05\" name=\"reviewGrade05\">";
 		html += "<option>평점</option>";
-		html += "<option value='1'>★</option>";
-		html += "<option value='2'>★★</option>";
-		html += "<option value='3'>★★★</option>";
-		html += "<option value='4'>★★★★</option>";
-		html += "<option value='5'>★★★★★</option>";
+		if(review.getReviewGrade05()==1) {
+			html += "<option value='1' selected>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade05()==2) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2' selected>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade05()==3) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3' selected>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade05()==4) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4' selected>★★★★</option>";
+			html += "<option value='5'>★★★★★</option>";
+		} else if  (review.getReviewGrade05()==5) {
+			html += "<option value='1'>★</option>";
+			html += "<option value='2'>★★</option>";
+			html += "<option value='3'>★★★</option>";
+			html += "<option value='4'>★★★★</option>";
+			html += "<option value='5' selected>★★★★★</option>";
+		} 
 		html += "</select>";
 		
-		html += "</div>";
+		html += "</div><br><Br>";
 		
 		html += "<div class=\"review-update\">";
 		html += "<button type='button' onclick='fn_updateEnd()'>리뷰 수정</button>";
@@ -420,6 +576,22 @@ public class CompanyReviewController {
 
 			String re = URLEncoder.encode(html, "UTF-8");
 			return re;
+		}
+		
+		@RequestMapping("review/reviewDelete.do")
+		public String reviewDelete(Model model, int num) {
+			String msg = "";
+			String loc = "";
+			
+			int result = service.reviewDelete(num);
+			
+			if(result>0) {
+				msg = "정상적으로 삭제되었습니다";
+			} else {
+				msg = "삭제실패";
+			}
+			
+			return "common/msg";
 		}
 
 }

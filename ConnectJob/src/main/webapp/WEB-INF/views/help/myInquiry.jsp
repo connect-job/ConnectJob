@@ -20,8 +20,6 @@
         </div>
 
         <div class="senier-middle">
-          
-									
             
              	<c:forEach var="inq" items="${list}" varStatus="vs">
              <div class="senier-item" onclick="location.href='${path}/help/myInquiryView.do?no=${inq.iNo}'">
@@ -32,9 +30,7 @@
 					
 					</div>
 					<div class="item-title">
-						
 						${inq.iTitle}
-						
 					</div>
 					<div class="item-content">${inq.iContent}</div>
             </div>
