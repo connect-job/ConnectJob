@@ -83,10 +83,7 @@
                                                 <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
                                         </ul>
                                 </div></li>
-                            <li id="alarm-li">알림<div id="alarm-result" class="alarm-span"></div>
-                            <div id="alarm">
-                                최근 소식이 없습니다!
-                            </div></li>
+                            <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터<div id="alarm-result" class="alarm-span"></div></li>
                             <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
@@ -115,7 +112,7 @@
     <script>
     
     // ------------------------------------------------------------ 웹소켓 시작
-    var wsUri = "ws://localhost:8080/job/alarm";
+    var wsUri = "ws://192.168.20.221:9090/job/alarm";
     var nick = '${loginMember.p_id}';
 	console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
     
@@ -148,7 +145,7 @@
 		    	$('#socket-message').css("opacity","1");
 		    	$('#socket-message').append("<i class='fas fa-envelope-open-text' style='font-size:20px'></i>　");
 		    	$('#socket-message').append(evt.data);
-		    	$('#socket-message').append("<br><button type='button' onclick='fn_messageClose()'>닫기</button>");
+		    	$('#socket-message').append("<br><br><a href='${path}/alarm/alarm.do?id=${loginMember.p_id}'>알림센터 바로가기</a>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
 	    	}, 1000);
 	    	
 	    	if(evt.data!=null) {

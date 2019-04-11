@@ -1,6 +1,7 @@
 package com.connect.job.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -62,6 +63,23 @@ public class NoticeDaoImpl implements NoticeDao {
 	public int updateCount(int notice_no) {
 		
 		return session.update("notice.updateCount", notice_no);
+	}
+
+	@Override
+	public int searchCount(Map<String, String> map) {
+		
+		return session.selectOne("notice.searchCount", map);
+	}
+
+	@Override
+	public List<Notice> searchList(int cPage, int numPerPage, Map<String, String> map) {
+		
+		return session.selectList("notice.searchList", map, new RowBounds((cPage-1)*numPerPage,numPerPage));
+	}
+
+	@Override
+	public List<Notice> selectTopList() {
+		return session.selectList("notice.selectTopList");
 	}
 	
 	

@@ -72,10 +72,8 @@
 	<c:if test="${reviewList != null }">
 		<c:forEach var="list" items="${reviewList }">
 			<div>
-				<div>
-					<%-- <input type="hidden" value="${list.reviewNo }"/> --%>
-					${list.reviewCompany }
-					<a href="location.href='${path }review/reviewOne.do?reviewNo='+${list.reviewNo}">${list.reviewShort }</a>
+				<div>					
+					<a href="${path }/company/companyView.do?no=${list.reviewCompany}">${list.reviewShort }</a>
 					${list.reviewDate}
 					
 				</div>

@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 	<insert id="insertMember" parameterType="member">
-		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, #{final_edu}, #{school}, #{major}, default, default, null, null)
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, null, null, null, default, default, null, null)
 	</insert>
 	
 	<insert id="insertMemberKakao" parameterType="member">
-		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, #{final_edu}, #{school}, #{major}, default, default, #{kakao_id}, 'Y')
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, null, null, null, default, default, #{kakao_id}, 'Y')
 	</insert>
 	
 	<select id="selectOne" resultType="member">

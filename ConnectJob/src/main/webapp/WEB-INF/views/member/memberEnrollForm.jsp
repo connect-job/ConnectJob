@@ -71,23 +71,7 @@
 				<div class="enroll-item">
 					<div class="left">연락처</div>
 					<div class="right"><input type="phone" name="phone" autocomplete="off" /></div>
-				</div>
-				
-				<div class="enroll-item">
-					<div class="left">최종학력</div>
-					<div class="right"><input type="text" name="final_edu" autocomplete="off" /></div>
-				</div>
-				
-				<div class="enroll-item">
-					<div class="left">학교</div>
-					<div class="right"><input type="text" name="school" autocomplete="off" /></div>
-				</div>
-				
-				<div class="enroll-item">
-					<div class="left">전공</div>
-					<div class="right"><input type="text" name="major" autocomplete="off" /></div>
-				</div>
-				
+				</div>				
 				
 				<div class="enroll-text">
 					<b>약관동의</b></br>

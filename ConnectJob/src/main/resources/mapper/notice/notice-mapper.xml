@@ -12,11 +12,21 @@
 	</resultMap>
 	
 	<insert id="insertNotice">
-		insert into notice values(seq_notice_no.nextval, #{writer}, #{title}, #{content}, default, default, default)
+		insert into notice values(seq_notice_no.nextval, #{writer}, #{title}, #{content}, default, default, #{status})
 	</insert>
-	
-	<select id="selectList" resultType="notice">
-  		select A.*,(select count(*) from notice where A.notice_no=notice_no) count from notice A order by notice_date desc
+  	
+  	<!-- <select id="selectList" resultType="notice">
+		select A.*, (select count(*) from notice where A.notice_no=notice_no) count 
+		from notice A 
+		order by notice_date desc
+  	</select> -->
+  	
+  	<select id="selectTopList" resultType="notice">
+  		SELECT * FROM NOTICE WHERE STATUS = 'Y' ORDER BY NOTICE_DATE DESC
+  	</select>
+  	
+  	<select id="selectList" resultType="notice">
+  		SELECT * FROM NOTICE ORDER BY NOTICE_DATE DESC
   	</select>
 	
 	<select id="selectOne" resultMap="noticeResult" parameterType="_int">
@@ -38,6 +48,15 @@
 	<select id="selectCount" resultType="_int">
 		select count(*) from notice
 	</select>
+	
+	<select id="searchCount" resultType="_int">
+		select count(*) from notice where ${searchType} like '%' || #{searchKey} || '%'
+	</select>
+	
+	<select id="searchList" resultType="notice">	
+		select * from notice where ${searchType} like '%' || #{searchKey} || '%'
+	</select>
+	
 	
 	
 </mapper>

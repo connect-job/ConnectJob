@@ -26,6 +26,13 @@
                 <td>
                  	<textarea name="content">${notice.content}</textarea>
                 </td>
+            </tr>
+            <tr>
+            	<th>상단 고정</th>
+            	<td>
+            		<input type="radio" name="status" value="Y"/> Y
+            		<input type="radio" name="status" value="N"/> N
+            	</td>
             </tr>                                 
         </table>  
     	<div id="btn-container">

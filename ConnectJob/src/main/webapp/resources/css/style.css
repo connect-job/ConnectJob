@@ -91,9 +91,9 @@ a:hover {
 	transition: 1000ms;
 	position: absolute;
 	opacity: 0;
-	padding-top: 25px;
+	padding-top: 20px;
 	width: 300px;
-	height: 70px;
+	height: 85px;
 	right:10px;
 	top: 150px;
 	color: #fff;
@@ -102,6 +102,32 @@ a:hover {
 	border: 1px solid #cfcfcf;
 	z-index: 999999;
 	border-radius: 5px;
+}
+
+#socket-message a {
+    color: #fff;
+    font-size: 14px;
+}
+
+#socket-message a:hover {
+    transition: 500ms;
+    text-decoration: underline;
+}
+
+#socket-message button {
+    border: 2px solid #fff;
+    background: none;
+    color: #fff;
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+}
+
+#socket-message button:hover{
+    transition: 700ms;
+    background-color: #fff;
+    color :#000;
 }
 
 /* ------------------------------------- 헤더시작 */
@@ -2488,9 +2514,114 @@ section #etc-container .content {
 }
 
 
+/* --------------------------------------- 알림센터 */
+
+section #alarm-container {
+    display: inline-block;
+    width: 990px;
+}
+
+section #alarm-container .title {
+    width: 100%;
+    height: 50px;
+    font-size: 22px;
+    text-align: left;
+    padding-left: 20px;
+}
 
 
+section #alarm-container .sum {
+    width: 100%;
+}
 
+section #alarm-container .sum .item {
+    vertical-align: top;
+    display: inline-block;
+    margin: 25px;
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+    background-color: #464c6315;
+}
+
+section #alarm-container .sum .top {
+    padding-top: 25px;
+    font-size: 13px;
+}
+
+section #alarm-container .sum .count {
+    padding-top: 5px;
+    font-size: 45px;
+    color: #404861;
+}
+
+section #alarm-container .left {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+    padding-top: 12px;
+    height: 35px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #464c63;
+    color: #fff;
+}
+
+section #alarm-container .right {
+    vertical-align: top;
+    display: inline-block;
+    width: 88%;
+    text-align: left;
+    padding-left: 15px;
+}
+
+section #alarm-container .right .message {
+    padding-top: 18px;
+    border: 1px solid #eee;
+    height: 45px;
+    margin-bottom: 10px;
+    width: 100%;
+    color: #000;
+}
+
+section #alarm-container .right .message:hover {
+    transition: 600ms;
+    background-color: #83889b;
+    color: #fff;
+}
+
+section #alarm-container .right .message .content {
+    display: inline-block;
+    width: 40%;
+    font-size: 14px;
+}
+
+section #alarm-container .right .message .date {
+    display: inline-block;
+    width: 19%;
+    text-align: left;
+}
+
+section #alarm-container .right .message .status {
+    display: inline-block;
+    width: 16%;
+    text-align: center;
+}
+
+
+section #alarm-container .right .message .button {
+    display: inline-block;
+    text-align: left;
+}
+
+section #alarm-container .right .message .button button {
+    width: 90px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    outline: none;
+    color :#000;
+}
 
 
 

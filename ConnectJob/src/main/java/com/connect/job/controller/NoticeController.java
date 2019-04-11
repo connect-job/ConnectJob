@@ -1,14 +1,16 @@
 package com.connect.job.controller;
 
-import java.net.ResponseCache;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,20 +24,53 @@ import com.connect.job.service.NoticeService;
 @Controller
 public class NoticeController {
 	
+	private Logger logger=LoggerFactory.getLogger(NoticeController.class);
+	
 	@Autowired
 	private NoticeService service;
 	
 	//공지사항 페이지 이동
 	@RequestMapping("/notice.do")
-	public ModelAndView selectNoticeList(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage, Model model) {
+	public ModelAndView selectNoticeList(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage) {
 		
 		int numPerPage=10;
 		ModelAndView mv=new ModelAndView();
+		List<Notice> topList = service.selectTopList();
 		List<Notice> list=service.selectList(cPage,numPerPage);
 		int total=service.selectCount();
-		
+	
+		mv.addObject("topList", topList);
 		mv.addObject("list",list);
 		mv.addObject("total",total);
+		mv.addObject("pageBar",PageBarFactory.getPageBar(total,cPage,numPerPage));		
+		
+		mv.setViewName("/notice/notice");
+		
+		return mv;
+	}
+	
+	//검색
+	@RequestMapping("/notice/noticeSearch")
+	public ModelAndView noticeFind(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage, String searchType, String searchKey) {
+		ModelAndView mv=new ModelAndView();
+		
+		int numPerPage=10;
+		
+		Map<String, String> map=new HashMap<>();
+		map.put("searchType", searchType);
+		map.put("searchKey", searchKey);	
+		
+		
+		List<Notice> searchList=service.searchList(cPage,numPerPage, map);
+		int total=service.searchCount(map);
+		
+		System.out.println("검색 리스트: " + searchList);
+		System.out.println("map: " + map);
+		
+		mv.addObject("list",searchList);
+		mv.addObject("total",total);
+		mv.addObject("map", map);
+		
 		mv.addObject("pageBar",PageBarFactory.getPageBar(total,cPage,numPerPage));
 		
 		mv.setViewName("/notice/notice");
@@ -60,7 +95,7 @@ public class NoticeController {
 		String loc="";
 		if(result>0) {
 			msg="공지사항 등록 성공";
-			loc="/notice/noticeView?notice_no="+result;
+			loc="/notice.do";
 		}else {
 			msg="등록 실패";
 			loc="/";

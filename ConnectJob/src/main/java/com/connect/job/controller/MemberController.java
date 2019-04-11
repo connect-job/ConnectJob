@@ -422,5 +422,12 @@ public class MemberController {
 		return "common/msg";
 	}
 	
+	@RequestMapping("/member/memberList")
+	public String memberList(Model model) {
+		List<Member> list=service.selectList();
+		model.addAttribute("list", list);
+		return "member/memberList";
+	}
+	
 	
 }
