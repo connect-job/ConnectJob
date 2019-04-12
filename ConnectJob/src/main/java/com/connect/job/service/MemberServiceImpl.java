@@ -88,12 +88,6 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public List<Member> selectList() {
-	
-		return dao.selectList();
-	}
-
-	@Override
 	public Member selectOneKakao(Member m) {
 		return dao.selectOneKakao(m);
 	}
@@ -113,7 +107,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int selectNickCount(String nickname) {
-		// TODO Auto-generated method stub
+		
 		return dao.selectNickCount(nickname);
 	}
 
@@ -125,14 +119,38 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public List<CompanyReview> selectReviewList(CompanyReview review) {
-		// TODO Auto-generated method stub
+		
 		return dao.selectReviewList(review);
 	}
 
 	@Override
 	public int deleteReview(int review_no) {
-		// TODO Auto-generated method stub
+		
 		return dao.deleteReview(review_no);
+	}
+
+	@Override
+	public int selectCount() {
+		
+		return dao.selectCount();
+	}
+
+	@Override
+	public List<Member> selectList(int cPage, int numPerPage) {
+		
+		return dao.selectList(cPage, numPerPage);
+	}
+
+	@Override
+	public int searchCount(Map<String, String> map) {
+		
+		return dao.searchCount(map);
+	}
+
+	@Override
+	public List<Member> searchList(int cPage, int numPerPage, Map<String, String> map) {
+		
+		return dao.searchList(cPage, numPerPage, map);
 	}
 
 	

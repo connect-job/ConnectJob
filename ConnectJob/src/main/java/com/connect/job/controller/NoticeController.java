@@ -34,22 +34,22 @@ public class NoticeController {
 	private NoticeService service;
 	
 	// 메인페이지 상단 공지사항
-		@RequestMapping("/notice/latestNoticeOne.do")
-		@ResponseBody
-		public String latestNoticeOne(HttpServletRequest request) throws UnsupportedEncodingException {
-			String html = "";
+	@RequestMapping("/notice/latestNoticeOne.do")
+	@ResponseBody
+	public String latestNoticeOne(HttpServletRequest request) throws UnsupportedEncodingException {
+		String html = "";
 			
-			List<Notice> list = service.latestNotice();
+		List<Notice> list = service.latestNotice();
 
-			if(list.size()>1) {
-				for(int i=0; i<1; i++) {
-					html += "<a class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" href=\"" + request.getContextPath() + "/notice/noticeView?notice_no=" + list.get(i).getNotice_no() + "'\">" + list.get(i).getNotice_date() + "　" +  list.get(i).getTitle() + "</a>";
-				}
+		if(list.size()>1) {
+			for(int i=0; i<1; i++) {
+				html += "<a class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" href=\"" + request.getContextPath() + "/notice/noticeView?notice_no=" + list.get(i).getNotice_no() + "'\">" + list.get(i).getNotice_date() + "　" +  list.get(i).getTitle() + "</a>";
 			}
-			
-			String result = URLEncoder.encode(html, "UTF-8");
-			return result;
 		}
+			
+		String result = URLEncoder.encode(html, "UTF-8");
+		return result;
+	}
 	
 	// 메인페이지 최근 공지사항
 	@RequestMapping("/notice/latestNotice.do")

@@ -20,12 +20,11 @@
 		</div>
 		
 		<div id="memberEnroll" class="tab-content current">
-			<form id="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
+			<form id="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post" onsubmit="fn_checkForm();">
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="p_id" id="p_id" autocomplete="off" placeholder="이메일 아이디"/>
-						<span id="id_result"></span>																				
+						<input type="email" name="p_id" id="p_id" autocomplete="off" placeholder="이메일 아이디" required/>																										
 					</div>
 				</div>
 				
@@ -79,7 +78,7 @@
 				<div class="enroll-item">
 					<div class="left">연락처</div>
 					<div class="right">
-						<input type="phone" name="phone" autocomplete="off" />
+						<input type="phone" name="phone" autocomplete="off" required/>
 						<span id="phone_result"></span>
 					</div>
 				</div>				
@@ -88,19 +87,19 @@
 					<b>약관동의</b></br>
 				</div>
 				<div class="enroll-text">
-					<div>전체동의<input type="checkbox" class="chk" id="chk_all" /></div>
+					<div>전체동의<input type="checkbox" class="chk" id="chk_all" value="ACCEPT_TERMS_ALL"/></div>
 				</div>
 				<div class="enroll-text">
-					<div>기업회원 약관에 동의<input type="checkbox" class="chk" name="chk" id="ch2" /></div>
+					<div>기업회원 약관에 동의<input type="checkbox" class="chk" name="chk" id="memberAccept" /></div>
 				</div>
 				<div class="enroll-text">
-					<div>개인정보 수집 및 이용에 동의<input type="checkbox" class="chk" name="chk" id="ch3" /></div>
+					<div>개인정보 수집 및 이용에 동의<input type="checkbox" class="chk" name="chk" id="memberAccept" /></div>
 				</div>
 				<div class="enroll-text">
-					<div>마케팅 정보 수신 동의 - 이메일 (선택)<input type="checkbox" class="chk" name="chk" id="ch4" /></div>
+					<div>마케팅 정보 수신 동의 - 이메일 (선택)<input type="checkbox" class="chk" name="chk" id="memberAccept" /></div>
 				</div>
 				<div class="enroll-text">
-					<div>마케팅 정보 수신 동의 - SMS/MMS (선택)<input type="checkbox" class="chk" name="chk" id="ch5" /></div>
+					<div>마케팅 정보 수신 동의 - SMS/MMS (선택)<input type="checkbox" class="chk" name="chk" id="memberAccept" /></div>
 				</div>
 				<div class="enroll-text">
 					<div>개인정보 제 3자 제공 및 위탁사항 이용약관</div>
@@ -243,6 +242,24 @@ $(document).ready(function(){
 			$('#password_result').html("비밀번호가 일치합니다.").css('color', 'green');	
 		}		
 	});
+});
+
+//체크박스 전체선택 및 전체해제
+$("#chk_all").click(function(){
+    if($("#chk_all").is(":checked")){
+        $(".chk").prop("checked",true);
+    }else{
+        $(".chk").prop("checked",false);
+    }
+});
+
+//한개의 체크박스 선택 해제시 전체선택 체크박스도 해제
+$(".chk").click(function(){
+    if($("input[name='chk']:checked").length == 4){
+        $("#chk_all").prop("checked",true);
+    }else{
+        $("#chk_all").prop("checked",false);
+    }
 });
 
 </script>

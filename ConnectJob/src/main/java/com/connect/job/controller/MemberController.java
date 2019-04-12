@@ -1,6 +1,8 @@
 package com.connect.job.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,10 +16,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.connect.job.common.MailHandler;
+import com.connect.job.common.PageBarFactory;
 import com.connect.job.model.vo.CompanyReview;
 import com.connect.job.model.vo.Member;
 import com.connect.job.service.MemberService;
@@ -440,12 +444,43 @@ public class MemberController {
 		return "common/msg";
 	}
 	
-	/*@RequestMapping("/member/memberList")
-	public String memberList(Model model) {
-		List<Member> list=service.selectList();
-		model.addAttribute("list", list);
-		return "member/memberList";
-	}*/
+	@RequestMapping("/member/memberList")
+	public ModelAndView memberList(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage) {
+		
+		int numPerPage=10;
+		ModelAndView mv=new ModelAndView();
+		
+		int total=service.selectCount();
+		List<Member> list=service.selectList(cPage, numPerPage);
+		
+		String pageBar=PageBarFactory.getPageBar(total, cPage, numPerPage);
+		
+		mv.addObject("pageBar", pageBar);
+		mv.addObject("list", list);
+		mv.setViewName("/member/memberList");
+		
+		return mv;
+	}
 	
-	
+	@RequestMapping("/member/searchMember")
+	public ModelAndView searchMember(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage, String searchType, String searchKey) {
+		
+		int numPerPage=10;
+		ModelAndView mv=new ModelAndView();
+		
+		Map<String, String> map=new HashMap<>();
+		map.put("searchKey", searchKey);
+		map.put("searchType", searchType);
+		
+		int total=service.searchCount(map);
+		List<Member> searchList=service.searchList(cPage, numPerPage, map);
+		
+		String pageBar=PageBarFactory.getPageBar(total, cPage, numPerPage);
+		
+		mv.addObject("list", searchList);
+		mv.addObject("map", map);
+		mv.setViewName("/member/memberList");
+		
+		return mv;
+	}
 }

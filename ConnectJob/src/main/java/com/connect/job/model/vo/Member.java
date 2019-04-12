@@ -8,8 +8,7 @@ public class Member {
 	private String p_name;
 	private String gender;
 	private String phone;
-	private String is_sns;
-	private String is_confirm;
+	private String is_sns;	
 	private Date enroll_date;
 	private int kakao_id;
 	private String email_confirm;
@@ -18,7 +17,7 @@ public class Member {
 	public Member() {}
 
 	public Member(String p_id, String password, String p_name, String gender, String phone, String is_sns,
-			String is_confirm, Date enroll_date, int kakao_id, String email_confirm, String nickname) {
+			Date enroll_date, int kakao_id, String email_confirm, String nickname) {
 		super();
 		this.p_id = p_id;
 		this.password = password;
@@ -26,7 +25,6 @@ public class Member {
 		this.gender = gender;
 		this.phone = phone;
 		this.is_sns = is_sns;
-		this.is_confirm = is_confirm;
 		this.enroll_date = enroll_date;
 		this.kakao_id = kakao_id;
 		this.email_confirm = email_confirm;
@@ -81,14 +79,6 @@ public class Member {
 		this.is_sns = is_sns;
 	}
 
-	public String getIs_confirm() {
-		return is_confirm;
-	}
-
-	public void setIs_confirm(String is_confirm) {
-		this.is_confirm = is_confirm;
-	}
-
 	public Date getEnroll_date() {
 		return enroll_date;
 	}
@@ -124,10 +114,11 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [p_id=" + p_id + ", password=" + password + ", p_name=" + p_name + ", gender=" + gender
-				+ ", phone=" + phone + ", is_sns=" + is_sns + ", is_confirm=" + is_confirm + ", enroll_date="
-				+ enroll_date + ", kakao_id=" + kakao_id + ", email_confirm=" + email_confirm + ", nickname=" + nickname
-				+ "]";
+				+ ", phone=" + phone + ", is_sns=" + is_sns + ", enroll_date=" + enroll_date + ", kakao_id=" + kakao_id
+				+ ", email_confirm=" + email_confirm + ", nickname=" + nickname + "]";
 	}
+
+	
 
 	
 

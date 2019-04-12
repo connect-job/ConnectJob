@@ -52,7 +52,7 @@
 				<div class="enroll-item msgdiv">
 					<div class="left">이름</div>
 					<div class="right">
-						<input type="text" name="p_name"/>
+						<input type="text" name="p_name" id="name"/>
 						<span id="name_result"></span>
 					</div>
 				</div>			
@@ -60,7 +60,7 @@
 				<div class="enroll-item msgdiv">
 					<div class="left">닉네임</div>
 					<div class="right">
-						<input type="text" name="nickname" value="${Member != null ? Member.nickname : '' }"/>
+						<input type="text" name="nickname" id="nickname" value="${Member != null ? Member.nickname : '' }"/>
 						<span id="nickname_result"></span>
 					</div>
 				</div>
