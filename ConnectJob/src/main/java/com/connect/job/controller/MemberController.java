@@ -87,7 +87,7 @@ public class MemberController {
 		m.setPassword(enPw);
 			
 		int result=service.insertMemberKakao(m);
-			
+		
 		String msg="";
 		String loc="";
 			
@@ -205,22 +205,32 @@ public class MemberController {
 	
 	@RequestMapping("/member/isKakao.do")
 	@ResponseBody
-	public String isKakao(Member m, HttpSession session) {
-		List<Member> result = service.selectList();
+	public String isKakao(int kakao_id, String is_sns, HttpSession session) {
+		
+		Member m=new Member();
+		m.setKakao_id(kakao_id);
+		m.setIs_sns(is_sns);
+		
+		Member result = service.selectOneKakao(m);
+		/*List<Member> result = service.selectList();*/
 		
 		String check = "";
 		
-		/*System.out.println("아이디값 담겼니? : " + m.getKakao_id());*/
+		System.out.println("아이디값 담겼니? : " + kakao_id);
 		
-		for(int i=0; i<result.size(); i++) {
-			if(result.get(i).getKakao_id()==m.getKakao_id()) {
+		/*for(int i=0; i<result.size(); i++) {*/
+		if(result!=null) {
+			if(result.getKakao_id()!=0) {
 				// 로그인페이지로 이동
 				check = "1";
+					
 			} else {
 				// 회원가입페이지로 이동
-				check = "2";
+				check = "2";				
 			}
 		}
+		
+		System.out.println(check);
 		return check;
 	}
 	
@@ -421,12 +431,12 @@ public class MemberController {
 		return "common/msg";
 	}
 	
-	@RequestMapping("/member/memberList")
+	/*@RequestMapping("/member/memberList")
 	public String memberList(Model model) {
 		List<Member> list=service.selectList();
 		model.addAttribute("list", list);
 		return "member/memberList";
-	}
+	}*/
 	
 	
 }

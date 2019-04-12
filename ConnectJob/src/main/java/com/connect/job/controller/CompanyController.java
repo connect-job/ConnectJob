@@ -153,8 +153,6 @@ public class CompanyController {
 		Company com = new Company();
 		com.setCompanyLocations(locations);
 		
-		System.out.println("검색한 지역 뭐 들어왔니?" + location);
-		
 		int numPerPage = 10;
 		List<Company> list = service.companyList(com, cPage, numPerPage);
 		int total = service.selectAjaxCount(com);
@@ -163,34 +161,31 @@ public class CompanyController {
 		
 		String html = "";
 		
-		html += "<tr>";
-        html += "<th style=\"width:150px\">기업구분</th>";
-        html += "<th style=\"width:390px\">기업명</th>";
-        html += "<th style=\"width:300px\">기업주소</th>";
-        html += "<th style=\"width:150px\">리뷰 수</th>";
-        html += "</tr>";
-        
+		html += "<div class=\"list-item-top\">";
+		html += "<div class=\"cate\">기업구분</div>";
+		html += "<div class=\"name\">기업명</div>";
+		html += "<div class=\"address\">기업주소</div>";
+		html += "<div class=\"count\">등록된 리뷰수</div>";
+		html += "</div>";
+		
 		for(int i=0; i<list.size(); i++) {
-			html += "<tr>";
-			html += "<td style=\"text-align:center\">";
+			html += "<div class=\"list-item\">";
+			html += "<div class=\"cate\">";
 			if(list.get(i).getCompanyStatus()==1) {
 				html += "법인";
 			} else {
 				html += "개인";
 			}
-			html += "</td>";
-			html += "<td><a href=\"" + request.getContextPath() + "/company/companyView.do?no=" +list.get(i).getCompanyNo() + "\">" + list.get(i).getCompanyName() + "</a></td>";
-			html += "<td>" + list.get(i).getCompanyAddressNew() + "</td>";
-			html += "<td style=\"text-align:center\">28</td>";
-			html += "</tr>";
+			html += "</div>";
+			
+			html += "<div class=\"name\">";
+			html += "<a href=\"" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getCompanyNo() + "\">" + list.get(i).getCompanyName() + "</a>";
+			html += "</div>";
+			html += "<div class=\"address\">" + list.get(i).getCompanyAddressNew() + "</div>";
+			html += "<div class=\"count\">" + list.get(i).getReviewCount() + "</div>";
+			html += "</div>";
 		}
-		
-		html += "<tr>";
-		html += "<td colspan=\"4\" style=\"text-align: center;\"><div id=\"pageBar\">";
-		html +=  pageBar;
-		html += "</div>";
-		html += "</td>";
-		html += "</tr>";
+		html += "<div id=\"pageBar\">" + pageBar + "</div>";
 		
 		String result = URLEncoder.encode(html, "UTF-8");
 		return result;
