@@ -18,7 +18,7 @@
             <div class="company-title">지역선택</div>
 
             <div class="company-middle">
-                <div id="search_location">
+                <div class="search_location">
                     <div id="search_left">
                         <ul>
                             <li>서울</li>

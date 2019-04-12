@@ -5,35 +5,96 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-  <jsp:param value="" name="pageTitle"/>
-</jsp:include>
-<jsp:include page="/WEB-INF/views/common/business-nav.jsp">
-  <jsp:param value="" name="pageTitle"/>
-</jsp:include>
+
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-<section>
-<h1> 이거 제발 뜨게 해주세요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
-	<h1>회사이름 : </h1>
-    <h3>설립일 : </h3>
-    <h3>주소 : </h3>
-    <h3>담당자 : </h3>
-    <br/><br/><br/>
-    <h1>자사지원현황</h1>
-    <h2>전체 : </h2>
-    <h2>열람 : </h2>
-    <h2>미열람 : </h2>
-    <h2>지원취소 : </h2>
-    <br/>
-   	조회기간<input type="text" id="resume-search-sdate"/>~<input type="text" id="resume-search-edate"/>
-    
-    
-    
+
+
+<section id="biz">
+	<div id="biz-container">
+        
+        
+
+		<div class="biz-left">
+            <div class="menu-top">
+                기업페이지
+            </div>
+            <ul>
+                <li class="menu">
+                    채용공고<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="${path }/hireNotiAdd.do">채용공고등록</a></li>
+                        <li><a href="#">전체공고</a></li>
+                        <li><a href="#">진행 중 공고</a></li>
+                        <li><a href="#">대기 중 공고</a></li>
+                        <li><a href="#">대기 중 공고</a></li>
+                        <li><a href="#">마감 된 공고</a></li>
+                    </ul>
+                </li>
+            
+                <li class="menu">
+                    인재관리<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="#">전체 인재정보</a></li>
+                        <li><a href="#">자사 지원 인재정보</a></li>
+                        <li><a href="#">공개 인재정보</a></li>
+                        <li><a href="#">매칭 인재정보</a></li>
+                    </ul>
+                </li>
+            
+                <li class="menu">
+                    기업정보수정<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="#">기업정보수정</a></li>
+                        <li><a href="#">담당자 정보 수정</a></li>
+                        <li><a href="#">비밀번호 변경</a></li>
+                    </ul>
+                </li>
+            
+                <li class="menu">
+                    기업리뷰<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="#">기업 리뷰 조회</a></li>
+                    </ul>
+                </li>
+            </ul>
+		</div>
+		
+		<div class="biz-right">
+                <h1>회사이름 : </h1>
+                <h3>설립일 : </h3>
+                <h3>주소 : </h3>
+                <h3>담당자 : </h3>
+                <br/><br/><br/>
+                <h1>자사지원현황</h1>
+                <h2>전체 : </h2>
+                <h2>열람 : </h2>
+                <h2>미열람 : </h2>
+                <h2>지원취소 : </h2>
+                <br/>
+                   조회기간<input type="text" id="resume-search-sdate"/>~<input type="text" id="resume-search-edate"/>
+		</div>
+	
+	</div>
 </section>
 
 <script>
+        $(document).ready(function(){
+            $(".menu").click(function(){
+                var submenu = $(this).children('ul');
+                if( submenu.is(":visible") ){
+                    submenu.slideUp();
+                    $(this).children('.icon').html("<i class='fas fa-sort-down'></i>");
+                }else{
+                    submenu.slideDown();
+                    $(this).children('.icon').html("<i class='fas fa-sort-up'></i>");
+                }
+            });
+        });
+
 	//조회기간 날짜
 		$(function() {
 		    $( "#resume-search-sdate" ).datepicker({
