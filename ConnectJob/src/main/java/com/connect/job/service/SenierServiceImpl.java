@@ -33,8 +33,6 @@ public class SenierServiceImpl implements SenierService {
 		return dao.selectCount();
 	}
 
-	
-
 	@Override
 	public Senier senierOneList(int no) {
 		
@@ -86,6 +84,16 @@ public class SenierServiceImpl implements SenierService {
 	public int commentDelete(Scomment sc) {
 
 		return dao.commentDelete(sc);
+	}
+
+	@Override
+	public int selectAjaxCount(Senier s) {
+		return dao.selectAjaxCount(s);
+	}
+
+	@Override
+	public List<Senier> selectAjaxAll(int cPage, int numPerPage, Senier s) {
+		return dao.selectAjaxAll(cPage, numPerPage, s);
 	}
 
 	

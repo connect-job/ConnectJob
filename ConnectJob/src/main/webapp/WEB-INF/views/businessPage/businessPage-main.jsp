@@ -30,7 +30,6 @@
                         <li><a href="#">전체공고</a></li>
                         <li><a href="#">진행 중 공고</a></li>
                         <li><a href="#">대기 중 공고</a></li>
-                        <li><a href="#">대기 중 공고</a></li>
                         <li><a href="#">마감 된 공고</a></li>
                     </ul>
                 </li>
@@ -62,20 +61,55 @@
                 </li>
             </ul>
 		</div>
-		
+        
+        
+
 		<div class="biz-right">
-                <h1>회사이름 : </h1>
-                <h3>설립일 : </h3>
-                <h3>주소 : </h3>
-                <h3>담당자 : </h3>
-                <br/><br/><br/>
-                <h1>자사지원현황</h1>
-                <h2>전체 : </h2>
-                <h2>열람 : </h2>
-                <h2>미열람 : </h2>
-                <h2>지원취소 : </h2>
-                <br/>
-                   조회기간<input type="text" id="resume-search-sdate"/>~<input type="text" id="resume-search-edate"/>
+
+            <div class="biz-title">
+                기업정보
+            </div>
+
+            <div class="biz-item">
+                <div class="item-left">회사이름</div>
+                <div class="item-right"></div>
+            </div>
+            <div class="biz-item">
+                <div class="item-left">설립일</div>
+                <div class="item-right"></div>
+            </div>
+            <div class="biz-item">
+                <div class="item-left">주소</div>
+                <div class="item-right"></div>
+            </div>
+            <div class="biz-item">
+                <div class="item-left">담당자</div>
+                <div class="item-right"></div>
+            </div>
+
+            <div class="biz-title">
+                자사지원현황
+            </div>
+
+            <div class="biz-one">
+                <div class="one-item">
+                    <div class="one-top">전체</div>
+                    <div class="one-bottom">524</div>
+                </div>
+                <div class="one-item">
+                    <div class="one-top">열람</div>
+                    <div class="one-bottom">35</div>
+                </div>
+                <div class="one-item">
+                    <div class="one-top">미열람</div>
+                    <div class="one-bottom">206</div>
+                </div>
+                <div class="one-item">
+                    <div class="one-top">지원취소</div>
+                    <div class="one-bottom">14</div>
+                </div>
+            </div>
+
 		</div>
 	
 	</div>

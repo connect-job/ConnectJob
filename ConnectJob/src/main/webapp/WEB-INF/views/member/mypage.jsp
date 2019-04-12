@@ -2,9 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+
 <style>
 	div.tabcontent2{display:none;}
 </style>

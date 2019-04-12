@@ -581,7 +581,7 @@
                     }
                 }
                 $(this).addClass('selected');
-                searchOption.append("<button onclick='fn_selectCancle(this)'>" + $(this).text() + "</button>");
+                searchOption.append("<button onclick='fn_selectCancle(this)'>" + $(this).text() + "　<i class='fas fa-backspace'></i></button>");
             } else {
                 $(this).removeClass('selected');
                 var btn = $('#select_left button');

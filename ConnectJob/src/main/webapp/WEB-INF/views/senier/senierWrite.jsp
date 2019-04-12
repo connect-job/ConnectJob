@@ -24,6 +24,35 @@
         <div class="senier-middle">
             <form action="${path}/senierWriteEnd.do" method="post" onsubmit="return validate();">
                 <div id="senier-write-container">
+                	<div>
+                        <div class="left">직종분류</div>
+                        <div class="right"> 
+
+            				 <select id="hopeJobArea" name="sCate">
+								<option>직종선택</option>
+								<option value="웹 개발자">웹 개발자</option>
+								<option value="서버 개발자">서버 개발자</option>
+								<option value="시스템개발">시스템개발</option>
+								<option value="프론트엔드 개발자">프론트엔드 개발자</option>
+								<option value="자바 개발자">자바 개발자</option>
+								<option value="파이썬 개발자">파이썬 개발자</option>
+								<option value="안드로이드 개발자">안드로이드 개발자</option>
+								<option value="IOS개발자">IOS개발자</option>
+								<option value="데이터 엔지니어">데이터 엔지니어</option>
+								<option value="시스템,네트워크 관리자">시스템,네트워크 관리자</option>
+								<option value="node.js 개발자">node.js 개발자</option>
+								<option value="php 개발자">php 개발자</option>
+								<option value="DevOps / 시스템 관리자">DevOps / 시스템 관리자</option>
+								<option value="C,C++개발자">C,C++개발자</option>
+								<option value="개발 매니저">개발 매니저</option>
+								<option value="데이터 사이언티스트">데이터 사이언티스트</option>
+							</select>
+							
+                        </div>
+                    </div>
+                    
+                    
+                
                     <div class="write-cate">
                         <div class="left">질문유형</div>
                         <div class="right">

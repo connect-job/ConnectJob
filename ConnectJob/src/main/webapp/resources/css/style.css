@@ -51,6 +51,7 @@ a:hover {
 }
 
 button, input , select, option {
+    outline: none;
     font-family: 'NotoKr', sans-serif;
 }
 
@@ -1148,23 +1149,13 @@ section #calendar {
    width: 990px;
 }
 
-
-
-
-
 /* ------------------------------------------- 기업페이지 */
 
-section#biz {
-    background-color: #f4f5f6;
-}
 
 section #biz-container {
     width: 990px;
     display: inline-block;
 }
-
-
-
 
 section #biz-container .biz-left {
     position: fixed;
@@ -1178,7 +1169,6 @@ section #biz-container .biz-left {
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 10px;
-    box-shadow: 5px 5px 5px 5px #eee;
 }
 
 section #biz-container .biz-left .menu-top {
@@ -1229,9 +1219,8 @@ section #biz-container .menu ul.hide li {
 section #biz-container .biz-right {
     float: right;
     vertical-align: top;
-    padding-left: 25px;
+    padding-left: 15px;
     width: 74%;
-    font-size: 22px;
     text-align: left;
 }
 
@@ -1239,10 +1228,81 @@ section #biz-container .biz-right {
 
 
 
+/* ------------------------------------------------------------ 기업페이지 > 채용공고 등록 */
+
+section #biz-container .biz-right .biz-title {
+    margin-top: 25px;
+    width: 100%;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 10px;
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+}
+
+section #biz-container .biz-right .biz-item {
+    vertical-align: top;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+section #biz-container .biz-right .biz-item .item-left {
+    vertical-align: top;
+    display: inline-block;
+    padding-left: 25px;
+    width: 15%;
+}
+
+section #biz-container .biz-right .biz-item .item-right {
+    vertical-align: top;
+    display: inline-block;
+    width: 80%;
+}
 
 
+section #biz-container .biz-right .biz-item input[type=text] {
+    width: 80%;
+    height: 30px;
+    border: 1px solid rgb(231, 231, 231);
+    font-size: 13px;
+    padding-left: 15px;
+}
 
+section #biz-container .biz-right .biz-item select {
+    width: 30%;
+    height: 30px;
+    border: 1px solid rgb(231, 231, 231);
+    font-size: 13px;
+    padding-left: 15px;
+}
 
+section #biz-container .biz-right .biz-one {
+    vertical-align: top;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+section #biz-container .biz-right .biz-one .one-item {
+    text-align: center;
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    border-radius: 100px;
+    border: 1px solid #eee;
+    margin: 15px;
+}
+
+section #biz-container .biz-right .biz-one .one-item .one-top {
+    padding-top: 15px;
+}
+
+section #biz-container .biz-right .biz-one .one-item .one-bottom {
+    padding-top: 15px;
+    font-size: 35px;
+}
 
 
 
@@ -1406,7 +1466,7 @@ section #company-container .company-middle #search_selected #select_left button 
     background: #eee;
     border-radius: 4px;
     width: 110px;
-    height: 30px;
+    height: 35px;
     font-size: 12px;
     letter-spacing: -0.3px;
     font-family: 'NotoKr', sans-serif;
@@ -2334,12 +2394,113 @@ section #senier-container .senier-middle {
     display: inline-block;
     width: 100%;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+}
+
+section #senier-container .senier-middle .senier-title {
+    text-align: left;
+    padding-left: 25px;
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+section #senier-container .senier-middle #senier-cate {
+    width: 100%;
+}
+
+section #senier-container .senier-middle #senier-cate ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+section #senier-container .senier-middle #senier-cate ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    margin: 5px;
+    font-size: 12px;
+}
+
+section #senier-container .senier-middle #search_selected {
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+    padding-top: 10px;
+    vertical-align: top;
+    width: 100%;
+}
+
+section #senier-container .senier-middle #search_selected #select_left {
+    vertical-align: top;
+    float: left;
+    width: 75%;
+    text-align: left;
+    padding-left: 25px;
+    color: rgb(95, 95, 95);
+}
+
+section #senier-container .senier-middle #search_selected #select_left button {
+    border: none;
+    background: none;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+    height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 10px;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+section #senier-container .senier-middle #search_selected #select_left button:hover {
+    transition: 500ms;
+    background-color: #eee;
+}
+
+
+section #senier-container .senier-middle #search_selected #select_right {
+    vertical-align: top;
+    float: right;
+    width: 20%;
+}
+
+section #senier-container .senier-middle #search_selected #select_right button {
+    width: 100px;
+    height: 40px;
+    background: none;
+    border: 1px solid rgb(194, 194, 194);
+}
+
+section #senier-container .senier-middle #search_selected #select_right button:hover {
+    background-color: #686e81;
+    border: none;
+    color: #fff;
+    transition: 500ms;
 }
 
 
 
-section #senier-container .senier-middle .senier-item {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+section #senier-container #senier-result .senier-item {
     cursor: pointer;
     display: inline-block;
     width: 100%;
@@ -2352,38 +2513,53 @@ section #senier-container .senier-middle .senier-item {
     padding-bottom: 10px;
 }
 
-section #senier-container .senier-middle .senier-item:hover {
+section #senier-container #senier-result .senier-item:hover {
     transition: 500ms;
     background-color: #efeff1;
     border: 1px solid #eee;
 }
 
-section #senier-container .senier-middle .senier-item:hover .item-title {
+section #senier-container #senier-result .senier-item:hover .item-title {
     transition: 500ms;
     font-weight: bold;
 }
 
-section #senier-container .senier-middle .senier-item .item-cate {
+section #senier-container #senier-result .senier-item .item-cate {
+    margin-left: 25px;
     padding-left: 25px;
-    width: 100%;
+    width: 10%;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 10px;
+    color: #000;
+    background-color: #eee;
+}
+
+section #senier-container #senier-result .senier-item .item-type {
+    margin-top: 10px;
+    display: inline-block;
+    padding-left: 35px;
+    width: 20%;
     font-size: 12px;
     height: 25px;
 }
 
-section #senier-container .senier-middle .senier-item .item-title {
+section #senier-container #senier-result .senier-item .item-title {
     padding-left: 25px;
     width: 100%;
     font-size: 18px;
-    height: 40px;
+    height: 30px;
 }
 
-section #senier-container .senier-middle .senier-item .item-content {
-    padding-left: 25px;
+section #senier-container #senier-result .senier-item .item-content {
+    padding-left: 35px;
     width: 100%;
     font-size: 12px;
 }
 
-section #senier-container .senier-middle .senier-item .item-info {
+section #senier-container #senier-result .senier-item .item-info {
     padding-left: 25px;
     width: 100%;
     font-size: 12px;

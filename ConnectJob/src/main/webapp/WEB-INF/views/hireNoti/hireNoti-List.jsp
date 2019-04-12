@@ -5,11 +5,57 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-  <jsp:param value="" name="pageTitle"/>
-</jsp:include>
+
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+
 <section>
-<div>카테고리
+    <div id="biz-container">
+        
+            <div class="biz-left">
+                    <div class="menu-top">
+                        기업페이지
+                    </div>
+                    <ul>
+                        <li class="menu">
+                            채용공고<span class="icon"><i class="fas fa-sort-down"></i></span>
+                            <ul class="hide">
+                                <li><a href="${path }/hireNotiAdd.do">채용공고등록</a></li>
+                                <li><a href="#">전체공고</a></li>
+                                <li><a href="#">진행 중 공고</a></li>
+                                <li><a href="#">대기 중 공고</a></li>
+                                <li><a href="#">마감 된 공고</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="menu">
+                            인재관리<span class="icon"><i class="fas fa-sort-down"></i></span>
+                            <ul class="hide">
+                                <li><a href="#">전체 인재정보</a></li>
+                                <li><a href="#">자사 지원 인재정보</a></li>
+                                <li><a href="#">공개 인재정보</a></li>
+                                <li><a href="#">매칭 인재정보</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="menu">
+                            기업정보수정<span class="icon"><i class="fas fa-sort-down"></i></span>
+                            <ul class="hide">
+                                <li><a href="#">기업정보수정</a></li>
+                                <li><a href="#">담당자 정보 수정</a></li>
+                                <li><a href="#">비밀번호 변경</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="menu">
+                            기업리뷰<span class="icon"><i class="fas fa-sort-down"></i></span>
+                            <ul class="hide">
+                                <li><a href="#">기업 리뷰 조회</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="biz-right">카테고리
 	<ul>
             <li>웹 개발자</li>
             <li>서버 개발자</li>
@@ -27,8 +73,6 @@
             <li>개발 매니저</li>
             <li>데이터 사이언티스트</li>
 	</ul>
-</div>
-<section>
         <div id="company-container">
             <div class="company-top">
                 기업탐색
@@ -444,6 +488,8 @@
                     </div>
                 </div>
         </div>
+        </div>
+        
     </section>
 
     <script>

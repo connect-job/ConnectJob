@@ -77,12 +77,9 @@
 	    	        $.ajax({
 	    	        	url: '${path}/member/isKakao.do?is_sns=kakao&kakao_id=' + id,
 	    	            success: function(data) {
-	    	            	console.log("돌려받은값 : " + data);
 	    	            	if(data=='1') {
-	    	            		alert('로그인페이지로 이동');
 	    	            		location.href="${path}/member/memberLoginKakao.do?kakao_id=" + id;
 	    	            	} else {
-	    	            		 alert('회원가입페이지로 이동');
 	    	            		 location.href="${path}/member/memberEnrollKakao.do?is_sns=kakao&kakao_id=" + id + "&p_name=" + res.properties['nickname'];
 	    	            	}
 	    	            }
@@ -93,7 +90,6 @@
           
         },
         fail: function(err) {
-          alert(JSON.stringify(err));
         }
       });
     };
