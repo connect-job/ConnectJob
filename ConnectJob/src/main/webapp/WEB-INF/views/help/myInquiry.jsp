@@ -35,7 +35,8 @@
 					<div class="item-title">
 						
 						${inq.iTitle}
-						
+						${inq.status==false?"답변대기중":"답변완료"}
+							<!-- false면 답변대기중 -->
 					</div>
 					<div class="item-content">${inq.iContent}</div>
             </div>

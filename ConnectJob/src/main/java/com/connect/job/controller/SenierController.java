@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.connect.job.model.vo.Member;
 import com.connect.job.model.vo.Scomment;
 import com.connect.job.model.vo.Senier;
 import com.connect.job.service.SenierService;
@@ -135,7 +135,7 @@ public class SenierController {
 		html += "<div class=\"comment-item\">";
 			for(int i=0; i<list.size();i++) {
 				html += "<div class=\"writer\">";
-				html += list.get(i).getcName();
+				html += list.get(i).getcWriter();
 				html += "</div>";
 				
 				html += "<div class=\"content\">";
@@ -143,8 +143,14 @@ public class SenierController {
 				html += "<div class=\"content-container\">";
 				html += list.get(i).getcContent();
 				html += "</div>";
-				html += "<button class='updateBtn'>수정</button>";
-				html += "<button class='deleteBtn'>삭제</button>";
+				Member m = (Member) session.getAttribute("loginMember");
+				if(m!=null) {
+					if(m.getP_id().equals(list.get(i).getcWriter())) {
+						html += "<button class='updateBtn'>수정</button>";
+						html += "<button class='deleteBtn'>삭제</button>";
+						
+					}
+				}
 				html += "</div>";
 				
 				html += "<div class=\"date\">";
