@@ -12,12 +12,13 @@
 		<result property="sDate" column="s_date"/>
 		<result property="pId" column="p_id"/>
 		<result property="status" column="status"/>
+		<result property="sCate" column="s_cate"/>
 	</resultMap>
 	
 	
   
   <insert id="insertSenier" parameterType="senier">
-  	insert into s_talk values(SEQ_S_NO.NEXTVAL,null,#{qType},#{sTitle},#{sContent},0,default,#{pId},default)
+  	insert into s_talk values(SEQ_S_NO.NEXTVAL,null,#{qType},#{sTitle},#{sContent},0,default,#{pId},default,#{sCate})
   </insert>
   
   <select id="senierList" resultMap="senierResult">

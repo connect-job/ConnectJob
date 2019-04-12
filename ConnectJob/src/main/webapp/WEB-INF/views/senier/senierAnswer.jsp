@@ -31,6 +31,12 @@
 
 		<div class="senier-middle">
 				<div class="middle-content">
+					<div class="left">직종분류</div>
+					<div class="right">
+							${s.sCate}
+					</div>
+				</div>
+				<div class="middle-content">
 					<div class="left">질문유형</div>
 					<div class="right">
 							${s.qType}
