@@ -39,11 +39,11 @@
                     </div>
                     <div class="write-title">
                         <div class="left">제목</div>
-                        <div class="right"><input type="text" name="sTitle" placeholder="궁금한 질문을 입력해주세요" value="${s.sTitle}"></div>
+                        <div class="right"><input type="text" name="sTitle" autocomplete="off" placeholder="궁금한 질문을 입력해주세요" value="${s.sTitle}"></div>
                     </div>
                     <div class="write-content">
                         <div class="left">내용</div>
-                        <div class="right"><textarea name="sContent" placeholder="구체적인 내용을 입력해주세요">${s.sContent}</textarea></div>
+                        <div class="right"><textarea id="editor" name="sContent" placeholder="구체적인 내용을 입력해주세요">${s.sContent}</textarea></div>
                     </div>
                     <input type="hidden" name="pId" value="${loginMember.p_id }"/>
                     <div class="write-btn"><button type="submit">수정하기</button></div>
@@ -51,10 +51,14 @@
             </form>
         </div>
     </div>
-    
-   
-    
-    
 </section>
+
+<script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

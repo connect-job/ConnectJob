@@ -17,7 +17,7 @@
 	</insert>
 	
 	<select id="inquiryList" resultMap="inquiryResult">
-		select * from inquiry
+		select * from inquiry order by i_date desc
 	</select>
 	
 	<select id="selectCount" resultType="_int">

@@ -15,13 +15,12 @@
 	</resultMap>
 	
 	
-  
   <insert id="insertSenier" parameterType="senier">
   	insert into s_talk values(SEQ_S_NO.NEXTVAL,null,#{qType},#{sTitle},#{sContent},0,default,#{pId},default)
   </insert>
   
   <select id="senierList" resultMap="senierResult">
-  	select * from s_talk order by s_date asc
+  	select * from s_talk order by s_date desc
   </select>
   
   <select id="selectCount" resultType="_int">

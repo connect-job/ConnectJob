@@ -19,6 +19,10 @@
             <div id="right"><button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">선배에게 질문하기</button></div>
         </div>
 
+        <div class="senier-cate">
+            
+        </div>
+
         <div class="senier-middle">
             <c:choose>
 					<c:when test="${list!=null }">
@@ -28,16 +32,16 @@
              <div class="senier-item" onclick="location.href='${path}/senierAnswer.do?no=${sen.sNo}'">
 					<div class="item-cate">
 					<c:forEach items="${sen.qType}" var="type" varStatus="vs">
-						${type}
+						#${type}
 					</c:forEach>
 					</div>
 					<div class="item-title">
 						
-						${sen.sTitle}
+                    <i class="fab fa-quora"></i>　${sen.sTitle}
 						
 					</div>
 					<div class="item-content">
-                            <c:set var="content" value ="${fn:substring(sen.sContent, 0, 40)}" />
+                            <c:set var="content" value ="${fn:substring(sen.sContent, 0, 100)}" />
                         ${content}.... (더 보기)</div>
             </div>
 				</c:forEach>

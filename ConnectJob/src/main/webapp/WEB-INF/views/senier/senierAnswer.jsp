@@ -30,18 +30,16 @@
 
 
 		<div class="senier-middle">
-				<div class="middle-content">
-					<div class="left">질문유형</div>
-					<div class="right">
-							${s.qType}
-					</div>
+
+				<div class="middle-title">
+					<i class="fab fa-quora"></i>　${s.sTitle}
 				</div>
-				<div class="middle-content">
-					<div class="left">제목</div>
-					<div class="right">${s.sTitle}</div>
+
+				<div class="middle-subtitle">
+					질문유형　#${s.qType}　|　${s.sDate}
 				</div>
+
 				<div class="middle-content">
-					<div class="left">내용</div>
 					<div class="right">${s.sContent}</div>
 				</div>
 

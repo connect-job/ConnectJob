@@ -19,6 +19,10 @@
     <script src="${path }/resources/js/wow.min.js"></script>
     <script src="${path }/resources/js/jquery-3.3.1.min.js"></script>
 
+    <!-- 게시판 글쓰기 폼 에디터 -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.1.0/inline/ckeditor.js"></script>
+
     <script>
         new WOW().init();
     </script>
@@ -73,12 +77,13 @@
                     <ul>
                         <li onclick="location.href='${path}/calendar.do'">공채달력<div class="menu-line"></div>
                         </li>
+                        <li onclick="location.href='${path}/senierConversation.do'">채용공고<div class="menu-line"></div></li>
                         <li onclick="location.href='${path}/company/companyList.do'">기업탐색<div class="menu-line"></div>
                         </li>
                         <li onclick="location.href='${path}/review/review.do'">기업리뷰<div class="menu-line"></div>
                         </li>
-                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화<div class="menu-line"></div>
-                        </li>
+
+                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화<div class="menu-line"></div></li>
                     </ul>
                 </div>
                 <div class="menu-right">
