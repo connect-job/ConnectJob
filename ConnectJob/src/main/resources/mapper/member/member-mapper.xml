@@ -30,10 +30,11 @@
 		<result column="is_sns" property="is_sns"/>
 		<result column="is_confirm" property="is_confirm"/>
 		<result column="enroll_date" property="enroll_date"/>
+		<result column="kakao_id" property="kakao_id"/>
 		<result column="email_confirm" property="email_confirm"/>
 	</resultMap>
 	
-	<select id="selectList" resultType="member">
+	<select id="selectList" resultMap="memberResult">
 		SELECT * FROM P_MEMBER
 	</select>
 	

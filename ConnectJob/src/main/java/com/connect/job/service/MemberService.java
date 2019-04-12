@@ -8,7 +8,7 @@ import com.connect.job.model.vo.Member;
 
 public interface MemberService {
 
-	/*int insertMember(Member m);*/
+	
 	int insertMemberKakao(Member m);
 	
 	Member selectOne(Member m);
@@ -17,7 +17,9 @@ public interface MemberService {
 	int updateMember(Member m);
 	
 	int updatePw(Member m);
+	
 	List<Member> selectList();
+	
 	Member selectOneKakao(Member m);
 	int emailConfirm(Member m);
 	int selectCount(String p_id);
