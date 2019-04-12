@@ -106,9 +106,15 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int selectCount(String p_id) {
+	public int selectIdCount(String p_id) {
 		
-		return dao.selectCount(p_id);
+		return dao.selectIdCount(p_id);
+	}	
+
+	@Override
+	public int selectNickCount(String nickname) {
+		// TODO Auto-generated method stub
+		return dao.selectNickCount(nickname);
 	}
 
 	@Override

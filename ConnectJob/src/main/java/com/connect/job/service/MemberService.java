@@ -22,7 +22,9 @@ public interface MemberService {
 	
 	Member selectOneKakao(Member m);
 	int emailConfirm(Member m);
-	int selectCount(String p_id);
+	
+	int selectIdCount(String p_id);
+	int selectNickCount(String nickname);
 	Member findPw(Member m);
 	
 	
@@ -32,6 +34,8 @@ public interface MemberService {
 	List<CompanyReview> selectReviewList(CompanyReview review);
 
 	int deleteReview(int review_no);
+
+	
 	
 	
 }

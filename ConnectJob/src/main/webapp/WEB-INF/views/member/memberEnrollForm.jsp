@@ -24,7 +24,8 @@
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="p_id" id="p_id" autocomplete="off" placeholder="이메일 아이디"/>																				
+						<input type="email" name="p_id" id="p_id" autocomplete="off" placeholder="이메일 아이디"/>
+						<span id="id_result"></span>																				
 					</div>
 				</div>
 				
@@ -54,23 +55,33 @@
 				<div class="enroll-item msgdiv">
 					<div class="left">이름</div>
 					<div class="right">
-						<input type="text" name="p_name"/>
-						<%-- <input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
-						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/> --%>
+						<input type="text" name="p_name" required/>
+						<span id="name_result"></span>
+					</div>
+				</div>
+				
+				<div class="enroll-item msgdiv">
+					<div class="left">닉네임</div>
+					<div class="right">
+						<input type="text" name="nickname" required/>
+						<span id="nickname_result"></span>
 					</div>
 				</div>		
 
 				<div class="enroll-item">
 					<div class="left">성별</div>
 					<div class="right">
-						<input type="radio" name="gender" value="M" />남
+						<input type="radio" name="gender" value="M" checked/>남
 						<input type="radio" name="gender" value="F" />여
 					</div>
 				</div>
 				
 				<div class="enroll-item">
 					<div class="left">연락처</div>
-					<div class="right"><input type="phone" name="phone" autocomplete="off" /></div>
+					<div class="right">
+						<input type="phone" name="phone" autocomplete="off" />
+						<span id="phone_result"></span>
+					</div>
 				</div>				
 				
 				<div class="enroll-text">
@@ -103,7 +114,48 @@
 </section>
 
 <script>
-
+$(function(){
+	$('[name=p_name]').blur(function(){
+		var p_name=$('[name=p_name]').val();
+		if(p_name.trim()==""){
+			$('#name_result').html('이름을 입력해주세요').css('color', 'red');
+			$('[name=p_name]').focus();
+		}else{
+			$('#name_result').hide();
+		}
+	});
+	$('[name=nickname]').blur(function(){
+		var nickname=$('[name=nickname]').val();
+		if(nickname.trim()==""){
+			$('#nickname_result').html('닉네임을 입력해주세요').css('color', 'red');
+			$('[name=nickname]').focus();
+		}else{
+			$.ajax({
+				type:"POST",
+				url: "${path}/member/checkNick?nickname="+nickname,
+				success:function(result){
+					if(result!=0){							
+						$("#nickname_result").html("사용 불가능한 닉네임입니다.").css('color', 'red');					
+					}else{							
+						$("#nickname_result").html("사용 가능한 닉네임입니다.").css('color', 'green');					
+					}
+				},error:function(error){
+					$("#nickname_result").html("error");
+				}
+			
+			});	
+		}
+	});
+	$('[name=phone]').blur(function(){
+		var nickname=$('[name=phone]').val();
+		if(nickname.trim()==""){
+			$('#phone_result').html('연락처를 입력해주세요').css('color', 'red');
+			$('[name=phone]').focus();
+		}else{
+			$('#phone_result').hide();
+		}
+	});
+});
 
 //아이디 중복체크
 $(document).ready(function(){	
@@ -130,7 +182,8 @@ $(document).ready(function(){
 				success:function(result){
 					$("#id-result-div").show();
 					if(result!=0){							
-						$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');					
+						$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');
+						$('#p_id').focus();
 					}else{							
 						$("#id_result").html("사용 가능한 아이디입니다.").css('color', 'green');					
 					}
@@ -140,6 +193,12 @@ $(document).ready(function(){
 			});
 		}		
 	});
+});
+
+$(function(){
+	$("input:radio[name='gender']:radio[value='M']").prop('checked', true); // 선택하기
+
+	$("input:radio[name='gender']:radio[value='F']").prop('checked', false); // 해제하기
 });
 
 

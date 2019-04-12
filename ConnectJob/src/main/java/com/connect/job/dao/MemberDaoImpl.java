@@ -63,9 +63,15 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public int selectCount(String p_id) {
+	public int selectIdCount(String p_id) {
 	
-		return session.selectOne("member.selectCount", p_id);
+		return session.selectOne("member.selectIdCount", p_id);
+	}	
+
+	@Override
+	public int selectNickCount(String nickname) {
+		// TODO Auto-generated method stub
+		return session.selectOne("member.selectNickCount", nickname);
 	}
 
 	@Override

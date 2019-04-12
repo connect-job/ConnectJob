@@ -20,7 +20,8 @@ public interface MemberDao {
 	List<Member> selectList();
 	Member selectOneKakao(Member m);
 	int emailConfirm(Member m);
-	int selectCount(String p_id);
+	int selectIdCount(String p_id);
+	int selectNickCount(String nickname);
 	Member findPw(Member m);
 
 	int updateStatus(String p_id);
@@ -29,6 +30,8 @@ public interface MemberDao {
 	List<CompanyReview> selectReviewList(CompanyReview review);
 
 	int deleteReview(int review_no);
+
+	
 	
 	
 

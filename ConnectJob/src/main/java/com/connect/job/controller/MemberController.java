@@ -211,21 +211,21 @@ public class MemberController {
 		m.setKakao_id(kakao_id);
 		m.setIs_sns(is_sns);
 		Member result = service.selectOneKakao(m);
-		/*List<Member> result = service.selectList();*/
 		String check = "";
 		
 		System.out.println("아이디값 담겼니? : " + kakao_id);
 		
-		/*for(int i=0; i<result.size(); i++) {*/
-		if(result.getKakao_id()!=0) {
-			// 로그인페이지로 이동
-			check = "1";
-				
-		} else {
-			// 회원가입페이지로 이동
-			check = "2";				
+		if(result!=null) {
+			if(result.getKakao_id()!=0) {
+				// 로그인페이지로 이동
+				check = "1";				
+			} else {
+				// 회원가입페이지로 이동
+				check = "2";				
+			}
 		}
-		/*}*/
+		
+		
 		
 		System.out.println(check);
 		return check;
@@ -267,10 +267,22 @@ public class MemberController {
 	@RequestMapping("/member/checkId")
 	public String checkId(String p_id) {		
 		
-		int count=service.selectCount(p_id);
+		int count=service.selectIdCount(p_id);
 		String result="";
 		if(count==0) {result="0";}
 		else {result="1";}		
+		return result;
+	}
+	
+	//닉네임 중복확인
+	@ResponseBody
+	@RequestMapping("/member/checkNick")
+	public String checkNick(String nickname) {
+		
+		int count=service.selectNickCount(nickname);
+		String result="";
+		if(count==0) {result="0";}
+		else {result="1";}
 		return result;
 	}
 
