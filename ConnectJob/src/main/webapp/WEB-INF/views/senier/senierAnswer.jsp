@@ -106,7 +106,8 @@
 			var comment = $('textarea[name=cContent]').val();
 
 			if (comment.trim().length == 0) {
-				$('#comment-message').html("<div style='display: inline-block; width: 700px;'><span>댓글 내용을 입력해주세요!</span></div>");
+				alert("댓글 내용을 입력해주세요!");
+				return false;
 			}
 
 			commentFrm.submit();

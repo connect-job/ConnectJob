@@ -22,7 +22,8 @@
         <div class="senier-middle">
             
              	<c:forEach var="inq" items="${list}" varStatus="vs">
-             <div class="senier-item" onclick="location.href='${path}/help/myInquiryView.do?no=${inq.iNo}'">
+             		<c:if test="${loginMember != null && loginMember.p_id eq inq.iWriter}">
+             		<div class="senier-item" onclick="location.href='${path}/help/myInquiryView.do?no=${inq.iNo}'">
 					<div class="item-cate">
 					<c:forEach items="${inq.iType}" var="type" varStatus="vs">
 						${type}
@@ -31,11 +32,13 @@
 					</div>
 					<div class="item-title">
 						${inq.iTitle}
+						${inq.status==false?"답변대기중":"답변완료"}
+							<!-- false면 답변대기중 -->
 					</div>
 					<div class="item-content">${inq.iContent}</div>
             </div>
+            </c:if>
 				</c:forEach>
-            
            
             
         </div>

@@ -11,12 +11,13 @@ public class Inquiry {
 	private String iContent;
 	private Date iDate;
 	private String status;
+	private String iWriter;
 	
 	public Inquiry() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Inquiry(int iNo, String[] iType, String iTitle, String iContent, Date iDate, String status) {
+	public Inquiry(int iNo, String[] iType, String iTitle, String iContent, Date iDate, String status, String iWriter) {
 		super();
 		this.iNo = iNo;
 		this.iType = iType;
@@ -24,6 +25,7 @@ public class Inquiry {
 		this.iContent = iContent;
 		this.iDate = iDate;
 		this.status = status;
+		this.iWriter = iWriter;
 	}
 
 	public int getiNo() {
@@ -74,11 +76,21 @@ public class Inquiry {
 		this.status = status;
 	}
 
+	public String getiWriter() {
+		return iWriter;
+	}
+
+	public void setiWriter(String iWriter) {
+		this.iWriter = iWriter;
+	}
+
 	@Override
 	public String toString() {
 		return "Inquiry [iNo=" + iNo + ", iType=" + Arrays.toString(iType) + ", iTitle=" + iTitle + ", iContent="
-				+ iContent + ", iDate=" + iDate + ", status=" + status + "]";
+				+ iContent + ", iDate=" + iDate + ", status=" + status + ", iWriter=" + iWriter + "]";
 	}
+
+	
 	
 	
 	

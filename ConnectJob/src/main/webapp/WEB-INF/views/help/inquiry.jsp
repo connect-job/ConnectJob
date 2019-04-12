@@ -16,11 +16,12 @@
           1:1문의
         </div>
 
+  	<c:if test="${loginMember != null}">
         <div class="senier-subTitle">
             <div id="left"></div>
             <div id="right"><button id="btn-service" onclick="location.href='${path}/help/myInquiry.do'">나의문의내역</button></div>
         </div>
-
+	</c:if>
         <div class="senier-middle">
             <form action="${path}/help/inquiryWriteEnd.do" method="post" onsubmit="return validate();">
                 <div id="senier-write-container">
@@ -40,6 +41,7 @@
                     <div class="write-content">
                         <div class="left">내용</div>
                         <div class="right"><textarea name="iContent" placeholder="구체적인 내용을 입력해주세요"></textarea></div>
+                        <input type="hidden" name="iWriter"  value="${loginMember.p_id}">
                     </div>
                     <div class="write-btn"><button type="submit">문의하기</button></div>
                 </div>

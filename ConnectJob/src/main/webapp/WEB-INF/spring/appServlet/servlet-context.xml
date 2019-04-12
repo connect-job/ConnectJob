@@ -34,6 +34,7 @@
 			<mapping path="/senierWrite.do"/>
 			<mapping path="/help/myInquiry.do"/>
 			<mapping path="/alarm/alarm.do"/>
+			<mapping path="/help/inquiry.do"/>
 			<beans:bean id="loggerInterceptor" class="com.connect.job.common.LoggerInterceptor"/>
 		</interceptor>
 	</interceptors>

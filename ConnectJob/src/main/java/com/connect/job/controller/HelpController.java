@@ -24,8 +24,11 @@ public class HelpController {
 	private HelpService service;
 	
 	@RequestMapping("/help/inquiry.do")
-	public String inquiry()
+	public String inquiry(HttpSession session, Model model)
 	{
+		Member m=(Member)session.getAttribute("loginMember");
+		model.addAttribute("loginMember",m);
+		
 		return "help/inquiry";//1:1문의첫화면
 	}
 	
@@ -46,17 +49,17 @@ public class HelpController {
 	}
 	
 	@RequestMapping("/help/inquiryWriteEnd.do")
-	public String inquiryWriteEnd(Inquiry i, Model model, HttpSession session)
+	public String inquiryWriteEnd(Inquiry i, Model model)
 	{
 		int result=service.insertInquiry(i);
 		
 		String msg="";
 		String loc="/help/myInquiry.do"; //문의리스트시작페이지
 		
-		/*Member m=(Member)session.getAttribute("loginMember");*/
 		
 		
-		if(result>0 /*&& m!=null*/)
+		
+		if(result>0 )
 		{
 			msg="문의등록완료";
 			
@@ -75,10 +78,13 @@ public class HelpController {
 	}
 	
 	@RequestMapping("/help/myInquiryView.do")
-	public String inquiryView(Model model, int no)
+	public String inquiryView(Model model, int no, HttpSession session)
 	{
 		List<Inquiry> list=service.inquiryView(no);
 		model.addAttribute("list",list);
+		/*Member m=(Member)session.getAttribute("loginMember");
+		model.addAttribute("loginMember",m);*/
+		
 		return "help/myInquiryView";//나의문의내역상세
 	}
 	
