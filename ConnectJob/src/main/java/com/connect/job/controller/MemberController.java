@@ -56,6 +56,7 @@ public class MemberController {
 
 	}
 	
+
 	// 카카오 회원이고, 커넥트잡 회원일 때 로그인처리 세션부여
 	@RequestMapping("/member/memberLoginKakao.do")
 	public String memberLoginKakao(Member m, HttpSession session, Model model) {

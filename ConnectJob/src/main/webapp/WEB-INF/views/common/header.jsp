@@ -30,6 +30,7 @@
 
 <body>
     <header>
+
         <div id="notice">
             이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　
         </div>
@@ -105,9 +106,8 @@
                             <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
-                            <li onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">기업페이지</li>
-                            <li><i class="far fa-comment-dots"></i></li>
-                            <li onclick="location.href='${path}/member/logout.do'"><i class="fas fa-sign-out-alt"></i></li>
+                            <li onclick="location.href='${path}/cmemberBizPage?cMemberId=${logincMember.cMemberId }'">기업페이지</li>
+                            <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <li id="sub">고객센터<div id="sub-menu">
                                 <ul>

@@ -5,11 +5,13 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+
 <style>
 	div#id-result-div{display: none;}
 	/* div#pw-result-div{display: none;}
 	div#pw-result-div2{display: none;} */
 </style>
+
 <section>
 	<div id="enroll-container">
 		<!-- 개인회원가입 -->
@@ -185,7 +187,6 @@ $(document).ready(function(){
 		}		
 	});
 });
-
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

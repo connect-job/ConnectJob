@@ -156,8 +156,13 @@ public class CompanyReviewController {
 	    	case 3 : html += "★★★☆☆"; break;
 	    	case 4 : html += "★★★★☆"; break;
 	    	case 5 : html += "★★★★★"; break;
+<<<<<<< HEAD
 		}
 		html += "　" + review.getReviewJob() + "　" + review.getReviewIsCurrent() + "　" + review.getReviewLocation() + "　";
+=======
+		}
+		html += "　" + review.getReviewJob() + "　" + review.getReviewIsCurrent() + "　" + review.getReviewLocation() + "　" /*+ reviewDate*/;
+>>>>>>> branch 'KJS' of https://github.com/connect-job/ConnectJob.git
 		html += "</div>";
 		
 		html += "<div class=\"review-datail-title\">";

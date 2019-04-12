@@ -33,7 +33,7 @@
 		<result column="kakao_id" property="kakao_id"/>
 		<result column="email_confirm" property="email_confirm"/>
 	</resultMap>
-	
+
 	<select id="selectList" resultMap="memberResult">
 		SELECT * FROM P_MEMBER
 	</select>

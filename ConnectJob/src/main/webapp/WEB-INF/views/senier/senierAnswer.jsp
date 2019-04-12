@@ -9,10 +9,12 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <section>
+
 	<div id="senier-container">
 		<div class="senier-top">
 			선배와의 대화
 		</div>
+
 
 		<div class="senier-subTitle">
 			<div id="left">우리 직종의 취업고민과 선배의 답변이에요</div>
@@ -27,6 +29,7 @@
 			<button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">선배에게 질문하기</button>
 			</div>
 		</div>
+
 
 
 		<div class="senier-middle">
