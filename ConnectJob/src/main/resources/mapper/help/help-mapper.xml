@@ -18,6 +18,7 @@
 	
 	<select id="inquiryList" resultMap="inquiryResult" parameterType="String">
 		select * from inquiry where i_writer = #{id}
+
 	</select>
 	
 	<select id="selectCount" resultType="_int" parameterType="String">

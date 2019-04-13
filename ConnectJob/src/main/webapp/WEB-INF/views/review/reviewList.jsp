@@ -10,46 +10,44 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <section>
-        <div id="company-container">
-            <div class="company-top">
+        <div id="review-container">
+            <div class="review-top">
                 기업리뷰
             </div>
-            <div id="company-content">
-                    <div id="company-list">
-							<table id="ajax_table">
-								<tr>
-                                    <th style="width:200px">기업명</th>
-                                    <th style="width:390px">한줄평</th>
-                                    <th style="width:200px">등록일</th>
-                                    <th style="width:150px">좋아요</th>
-								</tr>
-								<c:choose>
-									<c:when test="${review!=null }">
-										<c:forEach items="${review }" var="list">
-											<tr>
-												<td style="text-align: center;">${list.cName}</td>
-												<td><a href="${path }/company/companyView.do?no=${list.reviewCompany}">${fn:substring(list.reviewShort,0, 30) }</a></td>
-												<td style="text-align: center">
-			                                    <fmt:formatDate value="${list.reviewDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>
-			                                    ${regDate }
-												</td>
-												<td style="text-align: center;">${list.reviewLike }</td>
-											</tr>
-										</c:forEach>
-									</c:when>
-									<c:otherwise>
-										<tr>
-											<td colspan="4"><p align="center">검색 조건을 설정해 주세요</p></td>
-										</tr>
-									</c:otherwise>
-                                </c:choose>
-                                        <tr>
-                                            <td colspan="4" style="text-align: center;"><div id="pageBar">${pageBar }</div></td>
-                                        </tr>
-								</table>
-								
-                    </div>
+            <div id="review-content">
+                    <div id="review-list">
+
+                        <div class="review-item-top">
+                            <div class="cate">기업명</div>
+                            <div class="name">한줄평</div>
+                            <div class="address">작성일</div>
+                            <div class="count">좋아요</div>
+                        </div>
+
+                        <c:choose>
+                        <c:when test="${review!=null }">
+                            <c:forEach items="${review }" var="list">
+                                <div class="review-item">
+                                    <div class="cate">${list.cName}</div>
+                                    <div class="name"><a href="${path }/company/companyView.do?no=${list.reviewCompany}">${fn:substring(list.reviewShort,0, 30) }</a></div>
+                                    <div class="address"><fmt:formatDate value="${list.reviewDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>${regDate }</div>
+                                    <div class="count">${list.reviewLike }</div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+            
+                        <c:otherwise>
+                            <div class="review-item">
+                                작성리뷰가 없습니다.
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
+            </div>
+
+            
+            <div id="pageBar">${pageBar }</div>
+
         </div>
     </section>
 

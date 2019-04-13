@@ -19,6 +19,10 @@
     <script src="${path }/resources/js/wow.min.js"></script>
     <script src="${path }/resources/js/jquery-3.3.1.min.js"></script>
 
+    <!-- 게시판 글쓰기 폼 에디터 -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.1.0/inline/ckeditor.js"></script>
+
     <script>
         new WOW().init();
     </script>
@@ -26,10 +30,24 @@
 
 <body>
     <header>
+
         <div id="notice">
-            이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　<button id="x-btn">X</button>
+            이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　
         </div>
         
+        <script>
+            var notice = $('#notice');
+			$.ajax({
+				url: '${path}/notice/latestNoticeOne.do',
+				success: function(data) {
+					var Ca = /\+/g;
+	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+	                notice.empty();
+	                notice.html(resultSet);
+                    notice.append("　　　<button id='x-btn'>X</button>");
+				}
+			});
+        </script>
 	
         <div id="header-top">
             <div class="top-container">
@@ -60,12 +78,13 @@
                     <ul>
                         <li onclick="location.href='${path}/calendar.do'">공채달력<div class="menu-line"></div>
                         </li>
+                        <li onclick="location.href='${path}/senierConversation.do'">채용공고<div class="menu-line"></div></li>
                         <li onclick="location.href='${path}/company/companyList.do'">기업탐색<div class="menu-line"></div>
                         </li>
                         <li onclick="location.href='${path}/review/review.do'">기업리뷰<div class="menu-line"></div>
                         </li>
-                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화<div class="menu-line"></div>
-                        </li>
+
+                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화<div class="menu-line"></div></li>
                     </ul>
                 </div>
                 <div class="menu-right">
@@ -83,16 +102,12 @@
                                                 <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
                                         </ul>
                                 </div></li>
-                            <li id="alarm-li">알림<div id="alarm-result" class="alarm-span"></div>
-                            <div id="alarm">
-                                최근 소식이 없습니다!
-                            </div></li>
+                            <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터</li>
                             <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
-                            <li onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">기업페이지</li>
-                            <li><i class="far fa-comment-dots"></i></li>
-                            <li onclick="location.href='${path}/member/logout.do'"><i class="fas fa-sign-out-alt"></i></li>
+                            <li onclick="location.href='${path}/cmemberBizPage?cMemberId=${logincMember.cMemberId }'">기업페이지</li>
+                            <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <li id="sub">고객센터<div id="sub-menu">
                                 <ul>
@@ -115,7 +130,7 @@
     <script>
     
     // ------------------------------------------------------------ 웹소켓 시작
-    var wsUri = "ws://localhost:8080/job/alarm";
+    var wsUri = "ws://192.168.20.221:9090/job/alarm";
     var nick = '${loginMember.p_id}';
 	console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
     
@@ -146,9 +161,10 @@
 	    		$('html').scrollTop()==0;
 		    	$('#socket-message').empty();
 		    	$('#socket-message').css("opacity","1");
+		    	$('#socket-message').css("z-index","999999999");
 		    	$('#socket-message').append("<i class='fas fa-envelope-open-text' style='font-size:20px'></i>　");
 		    	$('#socket-message').append(evt.data);
-		    	$('#socket-message').append("<br><button type='button' onclick='fn_messageClose()'>닫기</button>");
+		    	$('#socket-message').append("<br><br><a href='${path}/alarm/alarm.do?id=${loginMember.p_id}'>알림센터 바로가기</a>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
 	    	}, 1000);
 	    	
 	    	if(evt.data!=null) {
@@ -163,11 +179,13 @@
 	    	console.log(evt);
 	    }
 	    
-	    $(document).ready(function() {
-		    	send_message();
-		    	setTimeout(function() {
-		    		send_message();
-		    	},1000);
+	     $(document).ready(function() {
+             if(${loginMember!=null}) {
+                send_message();
+		     	setTimeout(function() {
+		     		send_message();
+		     	},1000);
+             }
 	    });
 	    
 	    function fn_messageClose() {
@@ -191,11 +209,11 @@
 
 	    		$("#socket-message").stop().animate({
 	    			"top" : newPosition
-	    		}, 200);
+	    		}, 100);
 
 	    	}).scroll();
 
-	    });
+	    }); 
 	    
 	    // ------------------------------------------------------------ 웹소켓 끝
     

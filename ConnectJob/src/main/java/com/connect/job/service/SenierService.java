@@ -20,6 +20,9 @@ public interface SenierService {
 	
 	int commentUpdate(Scomment sc);
 	int commentDelete(Scomment sc);
+	
+	int selectAjaxCount(Senier s);
+	List<Senier> selectAjaxAll(int cPage, int numPerPage, Senier s);
 
 
 }

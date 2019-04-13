@@ -1,6 +1,7 @@
 package com.connect.job.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,6 +58,28 @@ public class NoticeServiceImpl implements NoticeService {
 			int result=dao.updateCount(notice_no);			
 		}
 		return dao.selectOne(notice_no, hasRead);
+	}
+
+	@Override
+	public int searchCount(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return dao.searchCount(map);
+	}
+
+	@Override
+	public List<Notice> searchList(int cPage, int numPerPage, Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return dao.searchList(cPage, numPerPage, map);
+	}
+
+	@Override
+	public List<Notice> selectTopList() {
+		return dao.selectTopList();
+	}
+
+	@Override
+	public List<Notice> latestNotice() {
+		return dao.latestNotice();
 	}
 
 	

@@ -1,5 +1,7 @@
 package com.connect.job.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,11 @@ public class MessageServiceImpl implements MessageService {
 		return dao.messageCount(m);
 	}
 
+	@Override
+	public List<Message> selectMessage(String id) {
+		return dao.selectMessage(id);	
+	}
+
+	
 	
 }

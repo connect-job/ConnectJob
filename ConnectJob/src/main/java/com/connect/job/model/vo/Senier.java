@@ -2,6 +2,7 @@ package com.connect.job.model.vo;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Arrays;
 
 public class Senier implements Serializable{
 	
@@ -21,13 +22,14 @@ public class Senier implements Serializable{
 	private String pId;
 	private String status;
 	private String sCate;//직종분류
+	private String[] sJobs;
 	
 	public Senier() {
 		
 	}
 
 	public Senier(int sNo, String sJob, String qType, String sTitle, String sContent, int sHits, Date sDate, String pId,
-			String status, String sCate) {
+			String status, String sCate, String[] sJobs) {
 		super();
 		this.sNo = sNo;
 		this.sJob = sJob;
@@ -39,6 +41,7 @@ public class Senier implements Serializable{
 		this.pId = pId;
 		this.status = status;
 		this.sCate = sCate;
+		this.sJobs = sJobs;
 	}
 
 	public int getsNo() {
@@ -121,15 +124,20 @@ public class Senier implements Serializable{
 		this.sCate = sCate;
 	}
 
+	public String[] getJobs() {
+		return sJobs;
+	}
+
+	public void setJobs(String[] sJobs) {
+		this.sJobs = sJobs;
+	}
+
 	@Override
 	public String toString() {
 		return "Senier [sNo=" + sNo + ", sJob=" + sJob + ", qType=" + qType + ", sTitle=" + sTitle + ", sContent="
 				+ sContent + ", sHits=" + sHits + ", sDate=" + sDate + ", pId=" + pId + ", status=" + status
-				+ ", sCate=" + sCate + "]";
+				+ ", sCate=" + sCate + ", sJobs=" + Arrays.toString(sJobs) + "]";
 	}
 
-	
-	
-	
 	
 }

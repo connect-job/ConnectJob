@@ -56,6 +56,7 @@ public class MemberController {
 
 	}
 	
+
 	// 카카오 회원이고, 커넥트잡 회원일 때 로그인처리 세션부여
 	@RequestMapping("/member/memberLoginKakao.do")
 	public String memberLoginKakao(Member m, HttpSession session, Model model) {
@@ -87,7 +88,7 @@ public class MemberController {
 		m.setPassword(enPw);
 			
 		int result=service.insertMemberKakao(m);
-			
+		
 		String msg="";
 		String loc="";
 			
@@ -205,22 +206,32 @@ public class MemberController {
 	
 	@RequestMapping("/member/isKakao.do")
 	@ResponseBody
-	public String isKakao(Member m, HttpSession session) {
-		List<Member> result = service.selectList();
+	public String isKakao(int kakao_id, String is_sns, HttpSession session) {
+		
+		Member m=new Member();
+		m.setKakao_id(kakao_id);
+		m.setIs_sns(is_sns);
+		
+		Member result = service.selectOneKakao(m);
+		/*List<Member> result = service.selectList();*/
 		
 		String check = "";
 		
-		/*System.out.println("아이디값 담겼니? : " + m.getKakao_id());*/
+		System.out.println("아이디값 담겼니? : " + kakao_id);
 		
-		for(int i=0; i<result.size(); i++) {
-			if(result.get(i).getKakao_id()==m.getKakao_id()) {
+		/*for(int i=0; i<result.size(); i++) {*/
+		if(result!=null) {
+			if(result.getKakao_id()!=0) {
 				// 로그인페이지로 이동
 				check = "1";
+					
 			} else {
 				// 회원가입페이지로 이동
-				check = "2";
+				check = "2";				
 			}
 		}
+		
+		System.out.println(check);
 		return check;
 	}
 	
@@ -276,8 +287,7 @@ public class MemberController {
 		ModelAndView mv=new ModelAndView();	
 		
 		CompanyReview review=new CompanyReview();
-		review.setReviewMember(m.getP_id());
-		/*List<CompanyReview> list=service.selectReviewList(m);*/
+		review.setReviewMember(m.getP_id());	
 		
 		List<CompanyReview> list=service.selectReviewList(review);
 		
@@ -362,7 +372,7 @@ public class MemberController {
 			MailHandler sendMail = new MailHandler(mailSender);
 			sendMail.setSubject("[ConnectJob] 비밀번호 안내");
 			sendMail.setText(new StringBuffer().append("<h2>비밀번호 변경 링크</h2>")
-			                .append("<a href='http://localhost:9090/job/member/changePw?p_id=").append(m.getP_id())
+			                .append("<a href='http://192.168.20.221:9090/job/member/changePw?p_id=").append(m.getP_id())
 			                .append("' target='_blank'>비밀번호 변경</a>")
 							.toString());
 			sendMail.setFrom("jiany811@gmail.com", "[ConnectJob]");
@@ -421,6 +431,13 @@ public class MemberController {
 		
 		return "common/msg";
 	}
+	
+	/*@RequestMapping("/member/memberList")
+	public String memberList(Model model) {
+		List<Member> list=service.selectList();
+		model.addAttribute("list", list);
+		return "member/memberList";
+	}*/
 	
 	
 }

@@ -17,5 +17,6 @@ public interface ReviewDao {
 	int reviewUpdate(CompanyReview r);
 	List<CompanyReviewLike> reviewLikeAll(int reviewNo);
 	List<CompanyReview> reviewLatest();
+	int reviewDelete(int num);
 
 }

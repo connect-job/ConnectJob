@@ -19,7 +19,7 @@
   	<c:if test="${loginCMember!=null}">
         <div class="senier-subTitle">
             <div id="left"></div>
-            <div id="right"><button id="btn-service" onclick="location.href='${path}/help/myInquiry.do?id=${loginCMember.CMemberEmail}'">나의문의내역</button></div>
+            <div id="right"><button id="btn-service" onclick="location.href='${path}/help/myInquiry.do?id=${loginCMember.cMemberEmail}'">나의문의내역</button></div>
         </div>        
 	</c:if>           
 	
@@ -58,7 +58,7 @@
                         	</c:when>
                         
                         	<c:when test="${loginCMember != null}">
-                        		<input type="hidden" name="iWriter"  value="${loginCMember.CMemberEmail}">
+                        		<input type="hidden" name="iWriter"  value="${loginCMember.cMemberEmail}">
                         	</c:when>
                         
                         </c:choose>

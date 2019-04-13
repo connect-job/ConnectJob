@@ -90,6 +90,16 @@ public class SenierDaoImpl implements SenierDao {
 		return session.delete("senier.commentDelete",sc);
 	}
 
+	@Override
+	public int selectAjaxCount(Senier s) {
+		return session.selectOne("senier.selectAjaxOne", s);
+	}
+
+	@Override
+	public List<Senier> selectAjaxAll(int cPage, int numPerPage, Senier s) {
+		return session.selectList("senier.selectAjaxAll", s);
+	}
+
 	
 	
 	

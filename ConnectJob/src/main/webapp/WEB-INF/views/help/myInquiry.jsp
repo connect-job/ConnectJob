@@ -21,8 +21,6 @@
         </div>
 
         <div class="senier-middle">
-          
-									
             
              	<c:forEach var="inq" items="${list}" varStatus="vs">
              		<c:if test="${loginMember != null && loginMember.p_id eq inq.iWriter}">
@@ -34,7 +32,6 @@
 					
 					</div>
 					<div class="item-title">
-						
 						${inq.iTitle}
 						${inq.status==false?"답변대기중":"답변완료"}
 							<!-- false면 답변대기중 -->
@@ -42,7 +39,7 @@
 					<div class="item-content">${inq.iContent}</div>
             		</div>
             	</c:if>
-            	<c:if test="${loginCMember != null && loginCMember.CMemberEmail eq inq.iWriter}">
+            	<c:if test="${loginCMember != null && loginCMember.cMemberEmail eq inq.iWriter}">
             		<div class="senier-item" onclick="location.href='${path}/help/myInquiryView.do?no=${inq.iNo}'">
 					<div class="item-cate">
 					<c:forEach items="${inq.iType}" var="type" varStatus="vs">
@@ -75,7 +72,7 @@
         	var m='${loginMember}';
         	var c='${loginCMember}';
         	var mId='${loginMember.p_id}';
-        	var cId='${loginCMember.CMemberEmail}';
+        	var cId='${loginCMember.cMemberEmail}';
         	if(m!=null)
         	{
         		window.location.href="${path}/help/myInquiry.do?cPage=" + cPage +"&id="+mId;
