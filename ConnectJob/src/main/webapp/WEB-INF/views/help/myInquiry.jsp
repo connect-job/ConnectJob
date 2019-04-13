@@ -64,30 +64,25 @@
          <div id="pageBar">
         	${pageBar}
         </div>
-       
-        <script>
-        	
+
+
+	<script>
+        
         function fn_paging(cPage) {
-        	
-        	var m='${loginMember}';
-        	var c='${loginCMember}';
-        	var mId='${loginMember.p_id}';
-        	var cId='${loginCMember.cMemberEmail}';
-        	if(m!=null)
-        	{
-        		window.location.href="${path}/help/myInquiry.do?cPage=" + cPage +"&id="+mId;
-        	}
-        	else if(c!=null) //기업회원페이징처리안됨
-        	{
-       			window.location.href="${path}/help/myInquiry.do?cPage=" + cPage +"&id="+cId;
-        	}
-        		
-        	
-        	
-       	}
+        
+           if(${loginMember!=null and loginCMember==null})
+           {
+              window.location.href="${path}/help/myInquiry.do?cPage=" + cPage +"&id=${loginMember.p_id}";
+           }
+           else if(${loginMember==null and loginCMember!=null})
+           {
+                window.location.href="${path}/help/myInquiry.do?cPage=" + cPage +"&id=${loginCMember.cMemberEmail}";
+           }
+
+          }
         
         </script>
-        
+
 </section>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

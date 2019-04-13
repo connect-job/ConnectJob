@@ -36,11 +36,11 @@
 			  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
 			  <script type="text/javascript">
 			  
-			    var naver_id_login = new naver_id_login("HcAcv4cf7ZTp1x4Kkbdb", "http://localhost:8080/job/member/naverCallback.do");
+			    var naver_id_login = new naver_id_login("HcAcv4cf7ZTp1x4Kkbdb", "http://localhost:9090/job/member/naverCallback.do");
 			    
 			  	var state = naver_id_login.getUniqState();
 			  	naver_id_login.setButton("green", 2,120);
-			  	naver_id_login.setDomain("http://localhost:8080");
+			  	naver_id_login.setDomain("http://localhost:9090/");
 			  	naver_id_login.setState(state);
 			  	naver_id_login.init_naver_id_login();
 			  
