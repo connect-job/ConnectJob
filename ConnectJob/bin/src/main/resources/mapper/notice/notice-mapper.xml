@@ -16,7 +16,7 @@
 	</insert>
 	
 	<select id="selectList" resultType="notice">
-  		select A.*,(select count(*) from notice where A.notice_no=notice_no) from notice A order by notice_date desc
+  		select A.*,(select count(*) from notice where A.notice_no=notice_no) count from notice A order by notice_date desc
   	</select>
 	
 	<select id="selectOne" resultMap="noticeResult" parameterType="_int">

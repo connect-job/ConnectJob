@@ -22,16 +22,22 @@
 		
 		 $('#searchType').trigger("change"); 
 	});
+	
+	function fn_paging(cPage) {
+   		window.location.href="${path}/notice.do?cPage=" + cPage;
+   	}
 </script>
 
  <section>    
     	   	  	
  	<table>
-		<tr>            	
-			<td>
-				<input type="button" value="글쓰기" onclick="location.href='${path}/notice/noticeForm'"/>
-			</td>
-        </tr>                        
+ 		<%-- <c:if test="${loginMember!=null && loginMember.p_id eq 'admin@admin.com' }"> --%>
+			<tr>            	
+				<td>
+					<input type="button" value="글쓰기" onclick="location.href='${path}/notice/noticeForm'"/>
+				</td>
+        	</tr> 
+        <%-- </c:if> --%>                       
         <tr>
             <th>번호</th>
             <th>작성자</th>
@@ -39,7 +45,7 @@
             <th>작성일</th>
             <th>조회수</th>
          </tr>
-        
+       
          	<c:forEach var="notice" items="${list }">
          		<tr>
             		<td>${notice.notice_no }</td>
@@ -61,12 +67,12 @@
             <option value="title">제목</option>
             <option value="content">내용</option>                
         </select>            
-		<div id="search-text">
+		<div id="search-title">
         	<form>
         		<input type="hidden" name="searchType" value="title"/>            		
             	<input type="hidden" name="cPage"/>
             	<input type="hidden" name="numPerPage"/>
-            	<input type="search" name="searchKey" />
+            	<input type="search" name="searchKey" placeholder="제목"/>
             	<button type="submit" id="search-btn">검색</button>
       		</form>
     	</div>            
@@ -75,7 +81,7 @@
             	<input type="hidden" name="searchType" value="content"/>            		
             	<input type="hidden" name="cPage"/>
             	<input type="hidden" name="numPerPage"/>
-            	<input type="search" name="searchKey"/>
+            	<input type="search" name="searchKey" placeholder="내용"/>
             	<button type="submit" id="search-btn">검색</button>
         	</form>
 		</div>           	               

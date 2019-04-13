@@ -20,22 +20,22 @@ public class HelpServiceImpl implements HelpService {
 		return dao.insertInquiry(i);
 	}
 
-	@Override
-	public List<Inquiry> inquiryList(int cPage, int numPerPage) {
-		
-		return dao.inquiryList(cPage, numPerPage);
-	}
-
-	@Override
-	public int selectCount() {
-		
-		return dao.selectCount();
-	}
+	
 
 	@Override
 	public List<Inquiry> inquiryView(int no) {
 
 		return dao.inquiryView(no);
+	}
+
+	@Override
+	public List<Inquiry> inquiryList(int cPage, int numPerPage, String id) {
+		return dao.inquiryList(cPage, numPerPage, id);
+	}
+
+	@Override
+	public int selectCount(String id) {
+		return dao.selectCount(id);
 	}
 	
 	

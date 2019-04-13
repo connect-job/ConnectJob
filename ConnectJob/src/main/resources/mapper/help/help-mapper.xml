@@ -16,12 +16,12 @@
 		insert into inquiry values(SEQ_I_NO.NEXTVAL,#{iType, typeHandler=strArr},#{iTitle},#{iContent},default,default,#{iWriter})
 	</insert>
 	
-	<select id="inquiryList" resultMap="inquiryResult">
-		select * from inquiry
+	<select id="inquiryList" resultMap="inquiryResult" parameterType="String">
+		select * from inquiry where i_writer = #{id}
 	</select>
 	
-	<select id="selectCount" resultType="_int">
-		select count(*) from inquiry
+	<select id="selectCount" resultType="_int" parameterType="String">
+		select count(*) from inquiry where i_writer = #{id}
 	</select>
 	
 	<select id="inquiryView" parameterType="_int" resultMap="inquiryResult">

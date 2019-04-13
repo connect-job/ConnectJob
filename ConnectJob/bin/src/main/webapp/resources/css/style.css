@@ -1,13 +1,13 @@
 /* @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&subset=korean'); */
 
 @font-face {
-	font-family: 'NotoKr';
-	font-style: normal;
-	font-weight: 300;
-	src: url('../font/notokr-regular.eot');
-	src: url('../font/notokr-regular.eot?#iefix') format('embedded-opentype'),
-		 url('../font/notokr-regular.woff2') format('woff2'),
-		 url('../font/notokr-regular.woff') format('woff');
+   font-family: 'NotoKr';
+   font-style: normal;
+   font-weight: 300;
+   src: url('../font/notokr-regular.eot');
+   src: url('../font/notokr-regular.eot?#iefix') format('embedded-opentype'),
+       url('../font/notokr-regular.woff2') format('woff2'),
+       url('../font/notokr-regular.woff') format('woff');
 }
 
 html, body {
@@ -18,6 +18,12 @@ html, body {
     font-size: 14px;
     letter-spacing: -0.4px;
     color: #535353;
+    position: relative;
+}
+
+::selection {
+    background-color: #404861;
+    color: #fff;
 }
 
 body::-webkit-scrollbar {
@@ -76,6 +82,26 @@ a:hover {
 #pageBar ul li.active {
     background-color: #2c3142;
     color: #fff;
+}
+
+
+/* -------------------------------------- 웹소켓 메세지창 */
+
+#socket-message {
+	transition: 1000ms;
+	position: absolute;
+	opacity: 0;
+	padding-top: 25px;
+	width: 300px;
+	height: 70px;
+	right:10px;
+	top: 150px;
+	color: #fff;
+	text-align: center;
+	background-color: #596483a8;
+	border: 1px solid #cfcfcf;
+	z-index: 999999;
+	border-radius: 5px;
 }
 
 /* ------------------------------------- 헤더시작 */
@@ -184,6 +210,7 @@ header #header-top .top-container .header-top-center #header-search-result ul {
 }
 
 header #header-top .top-container .header-top-center #header-search-result ul li {
+    cursor: pointer;
 	transition: 600ms;
 	background-color: #fff;
 	text-align: left;
@@ -276,11 +303,10 @@ header  #header-menu .menu-container .menu-left ul li {
     cursor: pointer;
     display: inline-block;
     padding-top: 12px;
-    width: 120px;
+    width: 100px;
     height: 30px;
     font-size: 13px;
 }
-
 
 header  #header-menu .menu-container .menu-left ul li .menu-line {
 	margin-top: 5px;
@@ -318,14 +344,10 @@ header  #header-menu .menu-container .menu-right ul li {
     font-size: 13px;
     border-left: 1px solid #eee;
     height: 30px;
-    padding-left: 15px;
-    padding-right: 15px;
-    
-}
-
-header  #header-menu .menu-container .menu-right ul li:hover{
-    background-color: #eee;
-    transition: 300ms;
+    padding-left: 18px;
+    padding-right: 18px;
+    background-color: #fff;
+    position: relative;
 }
 
 header  #header-menu .menu-container .menu-right ul li:nth-last-child(1) {
@@ -333,8 +355,57 @@ header  #header-menu .menu-container .menu-right ul li:nth-last-child(1) {
     position: relative;
 }
 
+header  #header-menu .menu-container .menu-right ul li span {
+    position: absolute;
+    display: none;
+    background-color: #404861;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 11px;
+    margin-top: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-left: 3px;
+    left: 0;
+}
+
+header  #header-menu .menu-container .menu-right ul li .alarm-span {
+    display: inline-block;
+    margin-left: 7px;
+}
+
+header  #header-menu #sub-menu-mypage {
+    margin-top: 12px;
+    display: none;
+    position: absolute;
+    left: 0;
+}
+
+header  #header-menu #sub-menu-mypage ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+
+header  #header-menu #sub-menu-mypage ul li {
+    font-size: 12px;
+    width: 80px;
+    display: block;
+    height: 27px;
+    text-align: left;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+header  #header-menu #sub-menu-mypage ul li:hover {
+    background-color: #eee;
+    transition: 300ms;
+}
+
 header  #header-menu #sub-menu {
-    padding-top: 12px;
+    border: 1px solid #eee;
+    margin-top: 12px;
     display: none;
     position: absolute;
     right: 0;
@@ -346,7 +417,6 @@ header  #header-menu #sub-menu ul {
     list-style-type: none;
 }
 
-
 header  #header-menu #sub-menu ul li {
     font-size: 12px;
     width: 80px;
@@ -356,8 +426,23 @@ header  #header-menu #sub-menu ul li {
     border-bottom: 1px solid #eee;
 }
 
+header  #header-menu #sub-menu ul li:hover {
+    background-color: #eee;
+    transition: 300ms;
+}
 
-
+header  #header-menu #alarm {
+    margin-top: 12px;
+    padding-top: 12px;
+    display: none;
+    position: absolute;
+    width: 210px;
+    height: 100px;
+    text-align: center;
+    left: -50%;
+    border: 1px solid rgb(216, 216, 216);
+    background-color: #fff;
+}
 
 
 
@@ -385,30 +470,59 @@ section #index-container {
 }
 
 section #index-container #index-top-left {
-    vertical-align: top;
     display: inline-block;
     width: 700px;
     height: 210px;
-    position: relative;
     border: 1px solid rgb(209, 209, 209);
     overflow: hidden;
     margin: 0 auto;
+    animation: mainSlide infinite 15s;
+    background-image: url('../images/main-1.jpg');
+    background-size: 100%;
 }
 
-section #index-container #index-top-left ul {
-    width: 700px;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    position: absolute;
+@keyframes mainSlide {
+    0% {
+        background-image: url('../images/main-1.jpg');
+        background-size: 100%;
+    }
+
+    40% {
+        background-image: url('../images/main-2.jpg');
+        background-size: 100%;
+    }
+
+    60% {
+        background-image: url('../images/main-3.jpg');
+        background-size: 100%;
+    }
+
+    100% {
+        background-image: url('../images/main-1.jpg');
+        background-size: 100%;
+    }
 }
 
-section #index-container #index-top-left ul li {
-    float: left;
-    width: 700px;
-    height: 210px;
-    margin: 0;
-    padding: 0;
+@-webkit-keyframes mainSlide {
+    0% {
+        background-image: url('../images/main-1.jpg');
+        background-size: 100%;
+    }
+
+    40% {
+        background-image: url('../images/main-2.jpg');
+        background-size: 100%;
+    }
+
+    60% {
+        background-image: url('../images/main-3.jpg');
+        background-size: 100%;
+    }
+
+    100% {
+        background-image: url('../images/main-1.jpg');
+        background-size: 100%;
+    }
 }
 
 
@@ -417,13 +531,38 @@ section #index-container .index-top-right {
     vertical-align: top;
     display: inline-block;
     width: 27%;
-    height: 200px;
+    border: 1px solid rgb(207, 207, 207);
+    overflow: hidden;
+}
+
+section #index-container .index-top-right #tab-btn {
+    cursor: pointer;
+}
+
+section #index-container .index-top-right #tab-btn:hover {
+    background-color: #4c5268;
+    color: #fff;
+    transition: 500ms;
 }
 
 section #index-container .index-top-right .notice {
+    display: inline-block;
     border-bottom: 1px solid #eee;
     text-align: left;
-    width: 100%;
+    width: 44.3%;
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+    padding-top: 12px;
+    height: 28px;
+    padding-left: 15px;
+}
+
+section #index-container .index-top-right .notice2 {
+    display: inline-block;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    width: 44%;
     font-size: 12px;
     color: #666b7a;
     font-weight: bold;
@@ -433,18 +572,19 @@ section #index-container .index-top-right .notice {
 }
 
 
-section #index-container .index-top-right .item {
+section #index-container .index-top-right #item {
     font-size: 12px;
     width: 100%;
 }
 
-section #index-container .index-top-right .item ul {
+section #index-container .index-top-right #item ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
-section #index-container .index-top-right .item ul li {
+section #index-container .index-top-right #item ul li {
+    cursor: pointer;
     height: 25px;
     border-bottom: 1px solid #eee;
     padding-top: 8px;
@@ -452,18 +592,89 @@ section #index-container .index-top-right .item ul li {
     text-align: left;
 }
 
+section #index-container .index-top-right #item ul li:hover {
+    background-color: #eee;
+    transition: 500ms;
+}
+
+
+section #index-container .index-hire {
+    margin-top: 15px;
+    width: 990px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+section #index-container .index-hire .hire-title {
+    width: 100%;
+    font-size: 16px;
+    text-align: left;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #666b7a;
+}
+
+section #index-container .index-hire .hire-item {
+    border: 2px solid #eee;
+    display: inline-block;
+    width: 184px;   
+    margin-right: 8px;
+    padding-bottom: 15px;
+}
+
+section #index-container .index-hire .hire-item:nth-last-child(1) {
+    margin-right: 0;
+}
+
+section #index-container .index-hire .hire-item .item-title {
+    padding-top: 10px;
+    width: 100%;
+    font-size: 18px;
+}
+
+section #index-container .index-hire .hire-item .item-sub-title {
+    padding-top: 15px;
+    width: 100%;
+    font-size: 12px;
+}
+
+section #index-container .index-hire .hire-item .item-date {
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+section #index-container .index-hire .hire-item .item-btn {
+    width: 100%;
+    font-size: 12px;
+}
+
+section #index-container .index-hire .hire-item .item-btn button {
+    width: 80%;
+    height: 28px;
+    font-size: 12px;
+    background-color: #464c63;
+    color: #fff;
+    border: none;
+    outline: none;
+}
 
 section #index-container .index-middle {
     margin-top: 15px;
     width: 100%;
-    text-align: inherit;
 }
 
 section #index-container .index-middle > div {
     vertical-align: top;
     display: inline-block;
-    width: 32.2%;
+    width: 30%;
     margin: 1px;
+    margin-right: 40px;
+}
+
+section #index-container .index-middle > div:nth-last-child(1) {
+    margin-right: 0;
 }
 
 section #index-container .index-middle > div .top {
@@ -505,6 +716,7 @@ section #index-container .index-middle > div .title {
 
 section #index-container .index-middle > div .content {
     width: 100%;
+    text-align: center;
 }
 
 section #index-container .index-middle > div .content ul {
@@ -514,12 +726,18 @@ section #index-container .index-middle > div .content ul {
 }
 
 section #index-container .index-middle > div .content ul li {
+    cursor: pointer;
     padding-top: 8px;
     font-size: 12px;
     height: 28px;
     border-bottom: 1px solid #eee;
     padding-left: 15px;
     text-align: left;
+}
+
+section #index-container .index-middle > div .content ul li:hover {
+    transition: 500ms;
+    background-color: #eee;
 }
 
 
@@ -697,7 +915,7 @@ section #login-container #cmember .login-right input {
 
 
 section #login-container table {
-	display: inline-block;
+   display: inline-block;
 }
 
 /* ----------------------------------------------------------------------- 회원가입 */
@@ -882,8 +1100,8 @@ section #enroll-container #memberEnroll .enroll-text-end input {
 /* ---------------------------------------------------------------------  캘린더 */
 
 section #calendar {
-	display: inline-block;
-	width: 990px;
+   display: inline-block;
+   width: 990px;
 }
 
 /* ----------------------------------------------------------------- 기업리스트 */
@@ -902,7 +1120,7 @@ section #company-container .company-top {
 
 .selected {
     transition: 800ms;
-    background-color: #2c3142;
+    background-color: #4c5268;
     color: #fff;
 }
 
@@ -1079,7 +1297,7 @@ section #company-container .company-middle #company-location-detail {
 }
 
 section #company-container #company-content {
-	width: 100%;
+   width: 100%;
     text-align: center;
 }
 
@@ -1490,8 +1708,6 @@ section #company-view-container #company-view-content .view-right #right-company
     text-align: center;
 }
 
-
-
 section #company-view-container #company-view-content .view-right #right-company-review .review-bottom {
     border-top: 1px solid #cfcfcf;
     padding-top: 13px;
@@ -1805,7 +2021,7 @@ section #senier-container .senier-middle .senier-item .item-title {
 
 section #senier-container .senier-middle .senier-item .item-content {
     padding-left: 25px;
-    width: 100%;
+    width: 400PX;
     font-size: 12px;
 }
 
@@ -2019,6 +2235,31 @@ section #resume-container .resume-content {
     line-height: 35px;
 }
 
+section #resume-container .resume-sub {
+    width: 100%;
+}
+
+section #resume-container .resume-sub .sub-item {
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 100px;
+    width: 120px;
+    height: 120px;
+    margin: 25px;
+}
+
+section #resume-container .resume-sub .sub-item .item-title {
+    margin-top: 30px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+section #resume-container .resume-sub .sub-item .item-content {
+    padding-top: 5px;
+    font-size: 28px;
+    color: #404861;
+}
+
 section #resume-container .list-header {
     margin-top: 20px;
     padding-left: 25px;
@@ -2156,12 +2397,95 @@ section #resume-container .item .right select {
     outline: none;
 }
 
+/* ------------------------------------ FAQ  */
 
 
+section #faq-container {
+    width: 990px;
+    display: inline-block;
+    text-align: center;
+}
+
+section #faq-container .faq-top {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    padding-left: 15px;
+    
+}
 
 
+section #faq-container .faq-top #left {
+    padding-left: 15px;
+    font-size: 25px;
+    display: inline-block;
+    width: 10%;
+}
+
+section #faq-container .faq-top #right {
+    display: inline-block;
+
+}
+
+section #faq-container .faq-middle {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+section #faq-container .faq-middle .faq {
+    display: inline-block;
+    width: 800px;
+    text-align: left;
+}
+
+section #faq-container .faq-middle .faq .q {
+    cursor: pointer;
+    background-color: #e0e2eb;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+
+section #faq-container .faq-middle .faq .q:hover {
+    transition: 500ms;
+    background-color: #404861;
+    color: #fff;
+}
+
+section #faq-container .faq-middle .faq .a {
+    overflow: hidden;
+    height: 0;
+    padding-left: 15px;
+    transition: 500ms;
+}
+
+/* ----------------------------------------- ETC */
+
+section #etc-container {
+    width: 990px;
+    display: inline-block;
+}
 
 
+section #etc-container .title {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    padding-left: 25px;
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+section #etc-container .content {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    padding-left: 25px;
+    font-size: 13px;
+    margin-bottom: 50px;
+}
 
 
 
@@ -2203,11 +2527,14 @@ footer #footer-container .footer-top ul {
 }
 
 footer #footer-container .footer-top ul li {
+    cursor: pointer;
     display: inline-block;
     padding-top: 12px;
     width: 200px;
-    height: 30px;
+    height: 35px;
+    margin-bottom: 15px;
 }
+
 
 footer #footer-container .footer-middle {
     text-align: center;
@@ -2218,5 +2545,4 @@ footer #footer-container .footer-bottom {
     text-align: center;
     color: #ffffff;
 }
-
 

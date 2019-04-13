@@ -23,13 +23,15 @@
 		<tr>
 			<th>내용</th>
 			<td >${notice.content}</td>
-		</tr>		
-		<tr>					
-			<td>
-				<input type="button" value="수정" onclick="location.href='${path}/notice/updateForm?notice_no=${notice.notice_no }'"/>					
-				<input type="button" value="삭제" onclick="location.href='${path}/notice/deleteNotice?notice_no=${notice.notice_no }'"/>								          	
-			</td>		
-		</tr>		
+		</tr>
+		<c:if test="${loginMember!=null && loginMember.p_id eq 'admin@admin.com' }">		
+			<tr>					
+				<td>
+					<input type="button" value="수정" onclick="location.href='${path}/notice/updateForm?notice_no=${notice.notice_no }'"/>					
+					<input type="button" value="삭제" onclick="location.href='${path}/notice/deleteNotice?notice_no=${notice.notice_no }'"/>								          	
+				</td>		
+			</tr>
+		</c:if>		
 	</table>
 
 			  
