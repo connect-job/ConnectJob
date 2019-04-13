@@ -31,7 +31,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-    background-color: #616472;
+    background-color: #4e536b;
     border-radius: 10px;
 }
 
@@ -80,13 +80,13 @@ button, input , select, option {
 }
 
 #pageBar ul li:hover {
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     transition: 600ms;
 }
 
 #pageBar ul li.active {
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -113,6 +113,41 @@ button, input , select, option {
     color: #fff;
     font-size: 14px;
 }
+
+#socket-message #messageIcon {
+    animation: messageAnimate infinite 2s;
+    -webkit-animation: messageAnimate infinite 2s;
+}
+
+@keyframes messageAnimate {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes messageAnimate {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
 
 #socket-message a:hover {
     transition: 500ms;
@@ -141,7 +176,7 @@ header {
     width: 100%;
     position: fixed;
     text-align: center;
-    /* background-color: #616472c7; */
+    /* background-color: #4e536bc7; */
     color: #303030;
     font-size: 13px;
     letter-spacing: -0.4px;
@@ -217,7 +252,7 @@ header  #header-top .top-container .header-top-center {
 header #header-top .top-container .header-top-center .header-search {
     width:400px;
     background-color: #ffffff;
-    border: 2px solid #616472;
+    border: 2px solid #4e536b;
 }
 
 header #header-top .top-container .header-top-center .header-search input {
@@ -858,7 +893,7 @@ section #login-container #member .login-left .login-item .item-right input {
 
 section #login-container #member .login-left .login-item .item-right input:focus {
     transition: 500ms;
-    outline: 1px solid #616472;
+    outline: 1px solid #4e536b;
 }
 
 
@@ -883,7 +918,7 @@ section #login-container #member .login-right .kakao {
 }
 
 section #login-container #member .login-right input {
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     border: none;
     outline: none;
@@ -937,7 +972,7 @@ section #login-container #cmember .login-left .login-item .item-right input {
 
 section #login-container #cmember .login-left .login-item .item-right input:focus {
     transition: 500ms;
-    outline: 1px solid #616472;
+    outline: 1px solid #4e536b;
 }
 
 
@@ -948,7 +983,7 @@ section #login-container #cmember .login-right {
 }
 
 section #login-container #cmember .login-right input {
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     border: none;
     outline: none;
@@ -1017,8 +1052,8 @@ section #enroll-container .enrollType .enroll-item {
 
 section #enroll-container .enrollType .enroll-item:hover {
     transition: 500ms;
-    background-color: #616472;
-    border: 2px solid #616472;
+    background-color: #4e536b;
+    border: 2px solid #4e536b;
     color: #fff;
 }
 
@@ -1066,12 +1101,12 @@ section #enroll-container #memberEnroll .enroll-item input {
 }
 
 section #enroll-container #memberEnroll .enroll-item input:focus {
-    border: 1px solid #616472;
+    border: 1px solid #4e536b;
     transition: 500ms;
 }
 
 section #enroll-container #memberEnroll .enroll-item input[type=button] {
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     width: 120px;
     padding-left: 7px;
@@ -1080,7 +1115,7 @@ section #enroll-container #memberEnroll .enroll-item input[type=button] {
 
 section #enroll-container #memberEnroll .enroll-item input[type=radio] {
     vertical-align: top;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     width: 16px;
     padding-left: 7px;
@@ -1088,7 +1123,7 @@ section #enroll-container #memberEnroll .enroll-item input[type=radio] {
 
 section #enroll-container #memberEnroll .enroll-item input[type=checkbox] {
     vertical-align: top;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     width: 16px;
     padding-left: 7px;
@@ -1136,11 +1171,159 @@ section #enroll-container #memberEnroll .enroll-text-end {
 section #enroll-container #memberEnroll .enroll-text-end input {
     width: 150px;
     height: 35px;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     border: none;
     margin: 10px;
 }
+
+
+
+
+/* ------------------------------------------ 마이페이지 */
+
+section #mypage-container {
+    width: 990px;
+    display: inline-block;
+}
+
+section #mypage-container .mypage-title {
+    width: 965px;
+    padding-left: 25px;
+    font-size: 22px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+section #mypage-container .mypage-content {
+    width: 100%;
+}
+
+section #mypage-container .mypage-content .content-left {
+    vertical-align: top;
+    float: left;
+    width: 23%;
+    padding-left: 25px;
+    height: 150px;
+}
+
+section #mypage-container .mypage-content .content-left ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+section #mypage-container .mypage-content .content-left ul li {
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #eee;
+    border-right: none;
+    margin-bottom: 2px;
+}
+
+section #mypage-container .mypage-content .content-right {
+    vertical-align: top;
+    float: right;
+    width: 710px;
+    margin-right: 25px;
+    border: 1px solid #d0d1d6;
+    overflow: hidden;
+}
+
+section #mypage-container .mypage-content .content-right #tab-scroll {
+    transition: 900ms;
+    width: 1475px;
+}
+
+section #mypage-container .mypage-content .content-right .tab-container {
+    transition: 500ms;
+    vertical-align: top;
+    display: inline-block;
+    width: 735px;
+}
+
+section #mypage-container .mypage-content .content-right .tab-title {
+    text-align: center;
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 15px;
+}
+
+
+section #mypage-container .mypage-content .content-right .tab-item {
+    width: 100%;
+    height: 50px;
+}
+
+
+section #mypage-container .mypage-content .content-right .tab-item .item-left {
+    float: left;
+    width: 30%;
+    line-height: 30px;
+}
+
+section #mypage-container .mypage-content .content-right .tab-item .item-right {
+    float: right;
+    width: 67%;
+    text-align: left;
+}
+
+section #mypage-container .mypage-content .content-right .tab-item .item-right input {
+    border: 1px solid rgb(231, 231, 231);
+    padding-left: 15px;
+    height: 35px;
+    width: 300px;
+}
+
+section #mypage-container .mypage-content .content-right .tab-item-one {
+    width: 100%;
+}
+
+section #mypage-container .mypage-content .content-right .review-item {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    height: 40px;
+}
+
+section #mypage-container .mypage-content .content-right .review-item:hover {
+    transition: 500ms;
+    background-color: #eee;
+}
+
+section #mypage-container .mypage-content .content-right .review-item .item-title {
+    font-size: 13px;
+    line-height: 40px;
+    text-align: left;
+    padding-left: 25px;
+    float: left;
+}
+
+section #mypage-container .mypage-content .content-right .review-item .item-date {
+    font-size: 12px;
+    line-height: 40px;
+    float: right;
+    padding-right: 45px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ---------------------------------------------------------------------  캘린더 */
 
@@ -1323,7 +1506,7 @@ section #company-container .company-top {
 
 .selected {
     transition: 800ms;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -1348,16 +1531,16 @@ section #company-container .company-middle button {
     width: 240px;
     height: 35px;
     outline: none;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
-    border: 1px solid #616472;
+    border: 1px solid #4e536b;
 }
 
 section #company-container .company-middle button:hover {
     transition: 600ms;
     background-color: #fff;
     color: #000;
-    border: 1px solid #616472;
+    border: 1px solid #4e536b;
 }
 
 section #company-container .company-middle .search_location {
@@ -1471,13 +1654,13 @@ section #company-container .company-middle #search_selected #select_left button 
     letter-spacing: -0.3px;
     font-family: 'NotoKr', sans-serif;
     border-radius: 2px;
-    color: #616472;
+    color: #4e536b;
     margin: 3px;
     border: none;
 }
 
 section #company-container .company-middle #search_selected #select_left button:hover {
-    background-color: #616472;
+    background-color: #4e536b;
     transition: 600ms;
     color: #fff;
 }
@@ -1491,9 +1674,9 @@ section #company-container .company-middle #search_selected #select_right button
     width: 100px;
     height: 35px;
     outline: none;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
-    border: 1px solid #616472;
+    border: 1px solid #4e536b;
 }
 
 section #company-container .company-middle #company-location {
@@ -1620,13 +1803,13 @@ section #company-container #company-content #company-list #pageBar ul li {
 }
 
 section #company-container #company-content #company-list #pageBar ul li:hover {
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     transition: 600ms;
 }
 
 section #company-container #company-content #company-list #pageBar ul li.active {
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -1674,8 +1857,8 @@ section #company-view-container #company-view-content .view-left ul li {
 }
 
 section #company-view-container #company-view-content .view-left ul li:hover {
-    background-color: #616472;
-    border: 1px solid #616472;
+    background-color: #4e536b;
+    border: 1px solid #4e536b;
     color: #fff;
     transition: 600ms;
 }
@@ -1688,7 +1871,7 @@ section #company-view-container #company-view-content .view-right {
 }
 
 section #company-view-container #company-view-content .view-right button {
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     outline: none;
     border: none;
@@ -1721,7 +1904,7 @@ section #company-view-container #company-view-content .view-right #right-company
 
 section #company-view-container #company-view-content .view-right #right-company-info .info-left .info:hover {
     transition: 500ms;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -1786,7 +1969,7 @@ section #company-view-container #company-view-content .view-right #right-company
 }
 
 .line4 {
-    background-color: #616472;
+    background-color: #4e536b;
     height: 10px;
 }
 
@@ -1820,12 +2003,12 @@ section #company-view-container #company-view-content .view-right #right-company
 	background-color: #fff;
 	border: 1px solid #cfcfcf;
 	border-left: none;
-	color: #616472;
+	color: #4e536b;
 	letter-spacing: -0.4px;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-btns button.write {
-	background-color: #616472;
+	background-color: #4e536b;
 	color: #fff;
 	border: none;
 }
@@ -1868,7 +2051,7 @@ section #company-view-container #company-view-content .view-right #right-company
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-left .review-item:hover {
     transition: 500ms;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -1892,7 +2075,6 @@ section #company-view-container #company-view-content .view-right #right-company
     padding-top: 10px;
     padding-bottom: 10px;
     width: 55.5%;
-    height: 340px;
     overflow-x: hidden;
     overflow-y: auto;
     border-left: 2px solid #eee;
@@ -1938,7 +2120,7 @@ section #company-view-container #company-view-content .view-right #right-company
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right button:hover {
     transition: 500ms;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -2016,13 +2198,13 @@ section #company-view-container #company-view-content .view-right #right-company
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-bottom ul li:hover {
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     transition: 600ms;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-bottom ul li.active {
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -2105,7 +2287,7 @@ section #company-view-container #company-view-content .view-right #review-write 
     width: 100%;
     padding-top: 20px;
     height: 40px;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     font-size: 16px;
 }
@@ -2168,7 +2350,7 @@ section #company-view-container #company-view-content .view-right #review-write 
     margin-top: 20px;
     width: 100%;
     height: 50px;
-    border-top: 1px solid #616472;
+    border-top: 1px solid #4e536b;
     background-color: #e1e3e9;
     color: #fff;
     font-size: 16px;
@@ -2182,14 +2364,14 @@ section #company-view-container #company-view-content .view-right #review-write 
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle .middle-right {
     float: right;
-    color: #616472;
+    color: #4e536b;
     font-size: 13px;
     padding-right: 15px;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle button {
     background-color: #fff;
-    color: #616472;
+    color: #4e536b;
     font-weight: bold;
     font-size: 14px;
     width: 120px;
@@ -2199,7 +2381,7 @@ section #company-view-container #company-view-content .view-right #review-write 
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle button:hover {
-    background-color: #616472;
+    background-color: #4e536b;
     transition: 500ms;
     color: #fff;
 }
@@ -2225,83 +2407,164 @@ section #review-container #review-content {
     margin-bottom: 30px;
 }
 
-section #review-container #review-content #review-list {
-    margin-top: 10px;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-section #review-container #review-content #review-list .review-item-top {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    width: 100%;
-    background-color: #eee;
-    border: 1px solid rgb(221, 221, 221);
-}
-
-
-section #review-container #review-content #review-list .review-item-top .cate {
-    color: #797979;
-    display: inline-block;
-    width: 20%;
-}
-
-section #review-container #review-content #review-list .review-item-top .name {
-    display: inline-block;
-    width: 50%;
+section #review-container #review-content .review-middle .senier-title {
     text-align: left;
+    padding-left: 25px;
+    font-size: 16px;
+    padding-bottom: 10px;
 }
 
-section #review-container #review-content #review-list .review-item-top .address {
-    display: inline-block;
-    width: 15%;
-    text-align: left;
+section #review-container #review-content .review-middle #review-cate {
+    width: 100%;
 }
 
-section #review-container #review-content #review-list .review-item-top .count {
+section #review-container #review-content .review-middle #review-cate ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+section #review-container #review-content .review-middle #review-cate ul li {
+    cursor: pointer;
     display: inline-block;
-    width: 10%;
-    color: #797979;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    margin: 5px;
     font-size: 12px;
 }
 
-section #review-container #review-content #review-list .review-item {
-    padding-top: 15px;
-    padding-bottom: 15px;
+section #review-container #review-content .review-middle #search_selected {
+    display: inline-block;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+    padding-top: 10px;
+    vertical-align: top;
     width: 100%;
+}
+
+section #review-container #review-content .review-middle #search_selected #select_left {
+    display: inline-block;
+    vertical-align: top;
+    width: 75%;
+    text-align: left;
+    padding-left: 25px;
+    color: rgb(95, 95, 95);
+}
+
+section #review-container #review-content .review-middle #search_selected #select_left button {
+    border: none;
+    background: none;
     border-bottom: 1px solid #eee;
+    font-size: 12px;
+    height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 10px;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+section #review-container #review-content .review-middle #search_selected #select_left button:hover {
+    transition: 500ms;
+    background-color: #eee;
+}
+
+
+section #review-container #review-content .review-middle #search_selected #select_right {
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    text-align: right;
+}
+
+section #review-container #review-content .review-middle #search_selected #select_right button {
+    width: 100px;
+    height: 40px;
+    background: none;
+    border: 1px solid rgb(194, 194, 194);
+}
+
+section #review-container #review-content .review-middle #search_selected #select_right button:hover {
+    background-color: #686e81;
+    border: none;
+    color: #fff;
+    transition: 500ms;
+}
+
+
+
+
+
+
+
+section #review-container #review-content #review-list {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+section #review-container #review-content #review-list .review-item {
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 25px;
+    width: 990px;
     font-size: 13px;
-    color: rgb(128, 128, 128);
+    color: #424242;
+    margin-bottom: 10px;
+    text-align: left;
 }
 
 section #review-container #review-content #review-list .review-item:hover {
     transition: 500ms;
-    background-color: #f0f0f0;
+    background-color: #eee;
 }
 
 section #review-container #review-content #review-list .review-item .cate {
+    vertical-align: top;
     color: #797979;
     display: inline-block;
     width: 20%;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #eee;
 }
 
-section #review-container #review-content #review-list .review-item .name {
+section #review-container #review-content #review-list .review-item .content {
+    vertical-align: top;
     display: inline-block;
-    width: 50%;
+    width: 55%;
+    padding-left: 25px;
     text-align: left;
 }
 
-section #review-container #review-content #review-list .review-item .address {
-    display: inline-block;
-    width: 15%;
-    text-align: left;
+section #review-container #review-content #review-list .review-item .content .content-title {
+    font-size: 15px;
+    height:30px;
+    line-height: 30px;
 }
 
-section #review-container #review-content #review-list .review-item .count {
-    display: inline-block;
-    width: 10%;
-    color: #797979;
+section #review-container #review-content #review-list .review-item .content .content-content {
     font-size: 12px;
+}
+
+section #review-container #review-content #review-list .review-item .item-right {
+    vertical-align: top;
+    display: inline-block;
+    width: 20%;
+    text-align: right;
+}
+
+section #review-container #review-content #review-list .review-item .item-right #stars {
+    color: #e7be36;
 }
 
 
@@ -2377,16 +2640,16 @@ section #senier-container .senier-subTitle #right button {
     height: 35px;
     letter-spacing: -0.5px;
     color: #fff;
-    border: 2px solid #616472;
+    border: 2px solid #4e536b;
     outline: none;
-    background-color: #616472;
+    background-color: #4e536b;
 }
 
 section #senier-container .senier-subTitle #right button:hover {
     transition: 600ms;
-    border: 2px solid #616472;
+    border: 2px solid #4e536b;
     outline: none;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -2617,16 +2880,16 @@ section #senier-container .senier-middle #senier-write-container .write-btn butt
     height: 35px;
     letter-spacing: -0.5px;
     color: #fff;
-    border: 2px solid #616472;
+    border: 2px solid #4e536b;
     outline: none;
-    background-color: #616472;
+    background-color: #4e536b;
 }
     
 section #senier-container .senier-middle #senier-write-container .write-btn button:hover {
     transition: 600ms;
-    border: 2px solid #616472;
+    border: 2px solid #4e536b;
     outline: none;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -2636,7 +2899,7 @@ section #senier-container .senier-middle #senier-write-container .left {
     border-radius: 4px;
     width: 200px;
     height: 30px;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     display: inline-block;
     border-right: 1px solid #d3d3d3;
@@ -2730,7 +2993,7 @@ section #senier-container .senier-middle .senier-comment .comment-write .right {
 section #senier-container .senier-middle .senier-comment .comment-write .right input[type=button] {
     width: 80%;
     height: 120px;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     border: none;
 }
@@ -2828,8 +3091,8 @@ section #resume-container .list-header button {
 
 section #resume-container .list-header button:hover {
     transition: 500ms;
-    background-color: #616472;
-    border: 1px solid #616472;
+    background-color: #4e536b;
+    border: 1px solid #4e536b;
     color: #fff;
 }
 
@@ -2928,22 +3191,22 @@ section #resume-container .item .right {
 
 section #resume-container .item .right input[type=text]:focus {
     transition: 500ms;
-    border: 2px solid #616472;
+    border: 2px solid #4e536b;
 }
 
 section #resume-container .item .right input[type=email]:focus {
     transition: 500ms;
-    border: 2px solid #616472;
+    border: 2px solid #4e536b;
 }
 
 section #resume-container .item .right input[type=date]:focus {
     transition: 500ms;
-    border: 2px solid #616472;
+    border: 2px solid #4e536b;
 }
 
 section #resume-container .item .right select:focus {
     transition: 500ms;
-    border: 2px solid #616472;
+    border: 2px solid #4e536b;
 }
 
 section #resume-container .item .right input[type=text] {
@@ -3383,7 +3646,7 @@ section #notice-container .notice-content .notice-item-content .right {
 footer {
     width: 100%;
     text-align: center;
-    background-color: #616472;
+    background-color: #4e536b;
     color: #fff;
     font-size: 12px;
     letter-spacing: 0;

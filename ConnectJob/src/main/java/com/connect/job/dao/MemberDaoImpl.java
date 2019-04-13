@@ -18,9 +18,9 @@ public class MemberDaoImpl implements MemberDao {
 	private SqlSessionTemplate session;
 	
 	@Override
-	public int insertMemberKako(Member m) {
+	public int insertMemberSns(Member m) {
 		
-		return session.insert("member.insertMemberKakao", m);
+		return session.insert("member.insertMemberSns", m);
 	}
 
 	@Override
@@ -58,8 +58,8 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public Member selectOneKakao(Member m) {
-		return session.selectOne("member.selectOneKakao", m);
+	public Member selectOneSns(Member m) {
+		return session.selectOne("member.selectOneSns", m);
 	}
 
 	@Override

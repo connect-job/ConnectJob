@@ -26,6 +26,19 @@
     <script>
         new WOW().init();
     </script>
+    
+    <!-- 구글 로그인 -->
+    <meta name="google-signin-scope" content="profile email">
+	<meta name="google-signin-client_id" content="638430037698-srn3c01h0flqs3dg2jfmbe0hogr25qgd.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+    
+    <!-- 네이버 로그인 -->
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    
+    
+    
+    
+    
 </head>
 
 <body>
@@ -130,7 +143,7 @@
     <script>
     
     // ------------------------------------------------------------ 웹소켓 시작
-    var wsUri = "ws://192.168.20.221:9090/job/alarm";
+    var wsUri = "ws://localhost:8080/job/alarm";
     var nick = '${loginMember.p_id}';
 	console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
     
@@ -162,7 +175,7 @@
 		    	$('#socket-message').empty();
 		    	$('#socket-message').css("opacity","1");
 		    	$('#socket-message').css("z-index","999999999");
-		    	$('#socket-message').append("<i class='fas fa-envelope-open-text' style='font-size:20px'></i>　");
+		    	$('#socket-message').append("<span id='messageIcon'><i class='fas fa-envelope-open-text' style='font-size:20px'></i></span>　");
 		    	$('#socket-message').append(evt.data);
 		    	$('#socket-message').append("<br><br><a href='${path}/alarm/alarm.do?id=${loginMember.p_id}'>알림센터 바로가기</a>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
 	    	}, 1000);
