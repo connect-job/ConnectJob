@@ -1,5 +1,6 @@
 package com.connect.job.model.vo;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class CompanyReview {
@@ -25,6 +26,8 @@ public class CompanyReview {
 	private int reviewLike;
 	private Date reviewDate;
 	private String cName;
+	private String[] reviewJobs;
+	private int reviewCount;
 	
 	public CompanyReview() {
 		// TODO Auto-generated constructor stub
@@ -34,7 +37,7 @@ public class CompanyReview {
 			String reviewEmployCate, String reviewCareer, String reviewLocation, int reviewTotalScore,
 			String reviewShort, String reviewMerit, String reviewDisMerit, String reviewRequest, int reviewGrade01,
 			int reviewGrade02, int reviewGrade03, int reviewGrade04, int reviewGrade05, int reviewLike, Date reviewDate,
-			String cName) {
+			String cName, String[] reviewJobs, int reviewCount) {
 		super();
 		this.reviewNo = reviewNo;
 		this.reviewMember = reviewMember;
@@ -57,6 +60,8 @@ public class CompanyReview {
 		this.reviewLike = reviewLike;
 		this.reviewDate = reviewDate;
 		this.cName = cName;
+		this.reviewJobs = reviewJobs;
+		this.reviewCount = reviewCount;
 	}
 
 	public int getReviewNo() {
@@ -227,6 +232,22 @@ public class CompanyReview {
 		this.cName = cName;
 	}
 
+	public String[] getReviewJobs() {
+		return reviewJobs;
+	}
+
+	public void setReviewJobs(String[] reviewJobs) {
+		this.reviewJobs = reviewJobs;
+	}
+
+	public int getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
+
 	@Override
 	public String toString() {
 		return "CompanyReview [reviewNo=" + reviewNo + ", reviewMember=" + reviewMember + ", reviewCompany="
@@ -237,7 +258,7 @@ public class CompanyReview {
 				+ reviewRequest + ", reviewGrade01=" + reviewGrade01 + ", reviewGrade02=" + reviewGrade02
 				+ ", reviewGrade03=" + reviewGrade03 + ", reviewGrade04=" + reviewGrade04 + ", reviewGrade05="
 				+ reviewGrade05 + ", reviewLike=" + reviewLike + ", reviewDate=" + reviewDate + ", cName=" + cName
-				+ "]";
+				+ ", reviewJobs=" + Arrays.toString(reviewJobs) + ", reviewCount=" + reviewCount + "]";
 	}
 
 	

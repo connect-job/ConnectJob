@@ -43,7 +43,12 @@ public class CompanyReviewController {
 		html += "<ul>";
 		if(list.size()>5) {
 			for(int i=0; i<5; i++) {
-				html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getReviewCompany() + "'\">·　" + list.get(i).getReviewShort() + "</li>";
+				html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getReviewCompany() + "'\">·　";
+				if(list.get(i).getReviewShort().length()>15) {
+					html += list.get(i).getReviewShort().substring(0, 15) + "</li>";
+				} else {
+					html += list.get(i).getReviewShort() + "</li>";
+				}
 			}
 		} else {
 			html += "<li>등록된 리뷰가 없습니다</li>";
@@ -58,7 +63,7 @@ public class CompanyReviewController {
 	@RequestMapping("review/review.do")
 	public String reviewList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, CompanyReview review, Model model) {
 		
-		int numPerPage = 10;
+		int numPerPage = 5;
 		List<CompanyReview> list = service.reviewAll(cPage, numPerPage);
 		int total = service.reviewCountAll();
 		
@@ -68,6 +73,82 @@ public class CompanyReviewController {
 		model.addAttribute("pageBar", pageBar);
 		return "review/reviewList";
 	}
+	
+	// 리뷰리스트
+		@RequestMapping("review/reviewListAjax.do")
+		@ResponseBody
+		public String reviewListAjax(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, String job, HttpServletRequest request) throws UnsupportedEncodingException {
+			
+			String[] jobs = job.split(",");
+			
+			System.out.println("뭘 검색하려고하니? : " + job);
+			
+			CompanyReview review = new CompanyReview();
+			review.setReviewJobs(jobs);
+			
+			int numPerPage = 5;
+			List<CompanyReview> list = service.reviewAjaxAll(cPage, numPerPage, review);
+			int total = service.reviewCountAjaxAll(review);
+			
+			String pageBar =  AjaxPageBarFactory.getPageBar(total, cPage, numPerPage);
+			
+			String html = "";
+			
+			if(!list.isEmpty()) {
+				for(int i=0;i<list.size();i++) {
+					html += "<div class=\"review-item\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getReviewCompany() + "'\">";
+					html += "<div class=\"cate\">" + list.get(i).getcName() + "<br>(" + list.get(i).getReviewJob() + ")</div>";
+					html += "<div class=\"content\">";
+					html += "<div class=\"content-title\">";
+					html += list.get(i).getReviewShort().substring(0, 30) + "　|　" + list.get(i).getReviewIsCurrent();
+					html += "</div>";
+					
+					html += "<div class=\"content-content\">";
+					if(list.get(i).getReviewMerit().length()>100) {
+						html += list.get(i).getReviewMerit().substring(0, 100) + "　... 더 보기";
+					} else {
+						html += list.get(i).getReviewMerit();
+					}
+					html += "</div>";
+					
+	                html += "</div>";
+	                
+	                html += "<div class=\"item-right\"><span id=\"stars\">";
+	                if(list.get(i).getReviewTotalScore()==1) {
+	                	html += "<i class='fa fa-star fa-fw'></i>";
+	                } else if(list.get(i).getReviewTotalScore()==2) {
+	                	html += "<i class='fa fa-star fa-fw'></i><i class='fa fa-star fa-fw'></i>";
+	                } else if(list.get(i).getReviewTotalScore()==3) {
+	                	html += "<i class='fa fa-star fa-fw'></i><i class='fa fa-star fa-fw'></i><i class='fa fa-star fa-fw'></i>";
+	                } else if(list.get(i).getReviewTotalScore()==4) {
+	                	html += "<i class='fa fa-star fa-fw'></i><i class='fa fa-star fa-fw'></i><i class='fa fa-star fa-fw'></i><i class='fa fa-star fa-fw'></i>";
+	                } else if(list.get(i).getReviewTotalScore()==5) {
+	                	html += "<i class='fa fa-star fa-fw'></i><i class='fa fa-star fa-fw'></i><i class='fa fa-star fa-fw'></i><i class='fa fa-star fa-fw'></i><i class='fa fa-star fa-fw'></i>";
+	                }
+	                html += "</span><Br>";
+	                
+	                SimpleDateFormat new_format = new SimpleDateFormat("yyyy-MM-dd");
+	                String regDate = new_format.format(list.get(i).getReviewDate());
+	                
+	                html += regDate + "<br>";
+	                html += list.get(i).getReviewLike();
+	                
+	                html += "</div>";
+	                html += "</div>";
+				}
+				
+				html += "<div id=\"pageBar\">" + pageBar + "</div>";
+						
+				
+			} else {
+				html += "<div class=\"review-item\"> 작성리뷰가 없습니다.</div>";
+			}
+			
+			
+            String result = URLEncoder.encode(html, "UTF-8");
+			return result;
+		}
+	
 	
 	// 기업리뷰 (Ajax)
 	@RequestMapping("review/reviewList.do")

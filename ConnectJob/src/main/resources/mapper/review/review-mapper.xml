@@ -2,6 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="review">
 
+	<select id="reviewAjaxAll" parameterType="review" resultMap="reviewMap">
+		SELECT A.*, (SELECT B.COMPANY_NAME FROM COMPANY B WHERE A.REVIEW_COMPANY = B.COMPANY_NO) CNAME, (SELECT COUNT(*) FROM REVIEW_LIKE B GROUP BY B.LIKE_REVIEW HAVING B.LIKE_REVIEW = A.REVIEW_NO) REVIEWLIKE FROM COMPANY_REVIEW A WHERE 1=1
+		<if test="reviewJobs!=null and reviewJobs!=''">
+			AND
+	        <foreach collection="reviewJobs" item="job"  open="(" close=")" separator="or">
+	            REVIEW_JOB = #{job}
+	        </foreach>
+		</if>
+		ORDER BY REVIEW_DATE DESC
+	</select>
+	
+	<select id="reviewCountAjaxAll" parameterType="review" resultType="_int">
+		SELECT COUNT(*) REVIEW_COUNT FROM COMPANY_REVIEW WHERE 1=1
+		<if test="reviewJobs!=null and reviewJobs!=''">
+			AND
+	        <foreach collection="reviewJobs" item="job"  open="(" close=")" separator="or">
+	            REVIEW_JOB = #{job}
+	        </foreach>
+		</if>
+	</select>
+
 	<select id="reviewLatest" resultMap="reviewMap">
 		SELECT * FROM COMPANY_REVIEW ORDER BY REVIEW_DATE DESC
 	</select>
@@ -97,6 +118,7 @@
 		<result column="review_grade_05" property="reviewGrade05"/>
 		<result column="reviewlike" property="reviewLike"/>
 		<result column="review_date" property="reviewDate"/>
+		<result column="review_count" property="reviewCount"/>
 	</resultMap>
 	
 </mapper>

@@ -24,9 +24,9 @@ public class HelpDaoImpl implements HelpDao {
 
 
 	@Override
-	public List<Inquiry> inquiryView(int no) {
+	public Inquiry inquiryView(int no) {
 
-		return session.selectList("help.inquiryView",no);
+		return session.selectOne("help.inquiryView",no);
 	}
 
 	@Override
