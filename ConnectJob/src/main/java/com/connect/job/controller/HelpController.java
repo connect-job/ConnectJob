@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.connect.job.common.PageBarFactory;
 import com.connect.job.model.vo.Inquiry;
-import com.connect.job.model.vo.Member;
 import com.connect.job.service.HelpService;
 
 @Controller
@@ -24,21 +23,20 @@ public class HelpController {
 	private HelpService service;
 	
 	@RequestMapping("/help/inquiry.do")
-	public String inquiry(HttpSession session, Model model)
+	public String inquiry(Model model)
 	{
-		Member m=(Member)session.getAttribute("loginMember");
-		model.addAttribute("loginMember",m);
+		
 		
 		return "help/inquiry";//1:1문의첫화면
 	}
 	
 	@RequestMapping("/help/myInquiry.do")//페이징처리필요
-	public ModelAndView inquiryList(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage)
+	public ModelAndView inquiryList(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage, String id)
 	{
 		int numPerPage=10;
 		ModelAndView mv=new ModelAndView();
-		List<Inquiry>list=service.inquiryList(cPage, numPerPage);
-		int total=service.selectCount();
+		List<Inquiry>list=service.inquiryList(cPage, numPerPage, id);
+		int total=service.selectCount(id);
 		
 		mv.addObject("list",list);
 		mv.addObject("total",total);
@@ -54,7 +52,7 @@ public class HelpController {
 		int result=service.insertInquiry(i);
 		
 		String msg="";
-		String loc="/help/myInquiry.do"; //문의리스트시작페이지
+		String loc="/help/myInquiry.do?id="+i.getiWriter(); //문의리스트시작페이지
 		
 		
 		
@@ -82,8 +80,7 @@ public class HelpController {
 	{
 		List<Inquiry> list=service.inquiryView(no);
 		model.addAttribute("list",list);
-		/*Member m=(Member)session.getAttribute("loginMember");
-		model.addAttribute("loginMember",m);*/
+		
 		
 		return "help/myInquiryView";//나의문의내역상세
 	}

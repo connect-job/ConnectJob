@@ -5,23 +5,24 @@
   <resultMap type="senier" id="senierResult">
 		<id property="sNo" column="s_no"/>
 		<result property="sJob" column="s_job"/>
-		<result property="qType" column="q_type" typeHandler="strArr"/>
+		<result property="qType" column="q_type"/>
 		<result property="sTitle" column="s_title"/>
 		<result property="sContent" column="s_content"/>
 		<result property="sHits" column="s_hits"/>
 		<result property="sDate" column="s_date"/>
 		<result property="pId" column="p_id"/>
 		<result property="status" column="status"/>
+		<result property="sCate" column="s_cate"/>
 	</resultMap>
 	
 	
   
   <insert id="insertSenier" parameterType="senier">
-  	insert into s_talk values(SEQ_S_NO.NEXTVAL,null,#{qType, typeHandler=strArr},#{sTitle},#{sContent},0,default,null,default)
+  	insert into s_talk values(SEQ_S_NO.NEXTVAL,null,#{qType},#{sTitle},#{sContent},0,default,#{pId},default,#{sCate})
   </insert>
   
   <select id="senierList" resultMap="senierResult">
-  	select * from s_talk
+  	select * from s_talk order by s_date asc
   </select>
   
   <select id="selectCount" resultType="_int">
@@ -34,22 +35,37 @@
   </select>
   
   <insert id="insertComWrite" parameterType="scomment">
-  	insert into s_comment values(SEQ_C_NO.NEXTVAL,0,0,#{cContent},default,#{cWriter},default)
+  	insert into s_comment values(SEQ_C_NO.NEXTVAL,#{sNo},0,#{cContent},default,#{cWriter},default)
   </insert>
   
   <select id="comList" parameterType="scomment">
-  	select * from s_comment where c_no = #{cNo}
+  	select * from s_comment where c_no = #{sNo}
   </select>
   
-  <select id="selectcomAll" resultMap="ScommentMap">
-  	select A.*, (SELECT P_NAME FROM P_MEMBER B WHERE A.C_WRITER = B.P_ID) PNAME from s_comment A order by c_regdate desc
+  <select id="selectcomAll" parameterType="_int" resultMap="ScommentMap">
+  	select A.*, (SELECT P_NAME FROM P_MEMBER B WHERE A.C_WRITER = B.P_ID) PNAME from s_comment A where s_no = #{no} order by c_regdate desc
   </select>
   
   <select id="selectcomCount" resultType="_int">
-  	select count(*) from s_comment
+  	select count(*) from s_comment where s_no = #{no}
   </select>
   
-
+  <update id="updateSenier" parameterType="senier">
+  	update s_talk set q_type=#{qType}, s_title=#{sTitle}, s_content=#{sContent} where s_no = #{sNo}
+  </update>
+  
+  <delete id="deleteSenier" parameterType="senier">
+  	delete from s_talk where s_no = #{sNo} 
+  </delete>
+	
+  <update id="commentUpdate" parameterType="scomment">
+  	update s_comment set c_content=#{cContent} where c_no = #{cNo}
+  </update>
+  
+  <delete id="commentDelete">
+  	delete from s_comment where c_no = #{cNo}
+  </delete>
+	
   
   <resultMap type="scomment" id="ScommentMap">
   	<id column="c_no" property="cNo"/>

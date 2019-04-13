@@ -7,8 +7,9 @@ import com.connect.job.model.vo.Inquiry;
 public interface HelpService {
 
 	int insertInquiry(Inquiry i);
-	List<Inquiry> inquiryList(int cPage, int numPerPage);
-	int selectCount();
+	
 	List<Inquiry> inquiryView(int no);
+	List<Inquiry> inquiryList(int cPage, int numPerPage, String id);
+	int selectCount(String id);
 
 }
