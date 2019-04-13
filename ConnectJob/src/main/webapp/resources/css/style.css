@@ -827,7 +827,7 @@ section #login-container {
 	display: inline-block;
     width: 990px;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 20px;
     padding-bottom: 50px;
 }
 
@@ -852,43 +852,41 @@ section #login-container ul li {
 }
 
 section #login-container #member {
-    padding-top: 30px;
+    padding-top: 20px;
     display: inline-block;
     width: 648px;
-    border-top: 1px solid #b0b4c0;
-    border-left: 1px solid #b0b4c0;
-    border-right: 1px solid #b0b4c0;
-    border-bottom: 1px solid #b0b4c0;
+    border: 1px solid #b0b4c0;
 }
 
 section #login-container #member .login-left {
     vertical-align: top;
     display:inline-block;
-    width: 50%;
+    width: 60%;
 }
 
 section #login-container #member .login-left .login-item {
     padding-top: 10px;
     padding-bottom: 20px;
+    width: 100%;
 }
 
 section #login-container #member .login-left .login-item .item-left {
     display: inline-block;
-    width: 29%;
+    width: 30%;
 }
 
 section #login-container #member .login-left .login-item .item-right {
     display: inline-block;
-    width: 68%;
+    width: 65%;
 }
 
 section #login-container #member .login-left .login-item .item-right input {
-    border: 1px solid #eee;
-    width: 100%;
+    border: 1px solid rgb(209, 209, 209);
+    width: 80%;
     height: 30px;
     padding-left: 15px;
     background-color: #fff;
-    outline: 1px solid #fff;
+    outline: 1px solid rgb(255, 255, 255);
 }
 
 section #login-container #member .login-left .login-item .item-right input:focus {
@@ -896,25 +894,45 @@ section #login-container #member .login-left .login-item .item-right input:focus
     outline: 1px solid #4e536b;
 }
 
+section #login-container #member .login-left .login-item input[type=submit] {
+    background-color: #4f5669;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 250px;
+    margin-bottom: 5px;
+}
 
-section #login-container #member .login-right {
-    vertical-align: top;
-    display:inline-block;
-    width: 49%;
+section #login-container #member .login-left .login-item input[type=button] {
+    background-color: #4f5669;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 250px;
+}
+
+section #login-container #member .login-item-sns {
+    width: 100%;
+    display: inline-block;
     padding-bottom: 15px;
 }
 
-section #login-container #member .login-right .kakao {
-    background-color: rgb(255, 215, 35);
-    color: #000;
-    font-size: 12px;
-    letter-spacing: -0.4px;
-    border: none;
-    outline: none;
-    width: 80%;
-    height: 35px;
+section #login-container #member .login-item-sns > div {
+    display: inline-block;
+    margin: 5px;
+}
+
+
+section #login-container #member .login-right {
     vertical-align: top;
-    margin-bottom: 10px;
+    padding-top: 10px;
+    display:inline-block;
+    width: 30%;
+    padding-bottom: 15px;
 }
 
 section #login-container #member .login-right input {
@@ -922,8 +940,9 @@ section #login-container #member .login-right input {
     color: #fff;
     border: none;
     outline: none;
-    width: 80%;
-    margin-bottom: 10px;
+    width: 187px;
+    margin-bottom: 28px;
+    border-radius: 4px;
     height: 35px;
     font-size: 12px;
     letter-spacing: -0.4px;
@@ -977,18 +996,20 @@ section #login-container #cmember .login-left .login-item .item-right input:focu
 
 
 section #login-container #cmember .login-right {
+    padding-top: 10px;
     vertical-align: top;
     display:inline-block;
     width: 49%;
 }
 
-section #login-container #cmember .login-right input {
+section #login-container #cmember .login-right button {
+    cursor: pointer;
     background-color: #4e536b;
     color: #fff;
     border: none;
     outline: none;
     width: 80%;
-    margin-bottom: 10px;
+    margin-bottom: 28px;
     height: 35px;
 }
 
