@@ -18,7 +18,6 @@
 
 <form action="${path }/insertNoti.do" name="hireFrm"  method="post" onsubmit="return validate();">
 <input type="hidden" name="cMemberId" value="${loginCMember.cMemberId }"/>
-${loginCMember.cMemberId}
         <div>
             	직종/직무
             <div>
@@ -38,7 +37,6 @@ ${loginCMember.cMemberId}
             <label><input type="radio" name="hnSort" id="hopeJobArea14" value='C,C++개발자' />C,C++개발자</label>
             <label><input type="radio" name="hnSort" id="hopeJobArea15" value='개발 매니저' />개발 매니저</label>
             <label><input type="radio" name="hnSort" id="hopeJobArea16" value='데이터 사이언티스트' />데이터 사이언티스트</label>
-            <button onclick="resetHopeArea()">reset</button>
 				<script>
 					function resetHopeArea(){
 					      $('input[name=hopeArea]').prop("checked",false);
@@ -105,7 +103,9 @@ ${loginCMember.cMemberId}
                		<option value="초등학교 졸업">초등학교 졸업</option>
               		<option value="중학교 졸업">중학교 졸업</option>
                		<option value="고등학교 졸업">고등학교 졸업</option>
-               		<option value="대학/대학원 이상 졸업">대학/대학원 이상 졸업</option>
+               		<option value="대학교(2·3년제)이상 졸업">대학교(2·3년제)이상 졸업</option>
+               		<option value="대학교(4년제)졸업">대학교(4년제)졸업</option>
+               		<option value="대학원(석·박사)졸업">대학원(석·박사)졸업</option>
             	</select>
             </div>
             <div>전공/학과
@@ -119,7 +119,7 @@ ${loginCMember.cMemberId}
                 <input type="radio" name="hnGender" value="M"/>남
                 <input type="radio" name="hnGender" value="F"/>여
             </div>
-            <div>생년월일
+            <div>나이
                 <input type="radio" name="hnBirth" id="r1" value="1"/>연령무관
                 <input type="radio" name="hnBirth" id="r2" value="0"/>제한
             </div>

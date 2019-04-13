@@ -1,4 +1,4 @@
-package com.connect.job.controller;
+/*package com.connect.job.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,28 +18,11 @@ public class HireNotiController {
 	
 	private Logger logger=LoggerFactory.getLogger(CMemberController.class);
 	
-	/*@RequestMapping("/insertNoti.do")
-	public String insertNoti(HireNoti h, Model model)
+	@RequestMapping("")
+	public String hireNotiUpdate()
 	{
-		int result=service.insertNoti(h);
 		
-		String msg="";
-		String loc="/";
-		if(result>0)
-		{
-			msg="채용공고 등록완료";
-		}
-		else
-		{
-			msg="채용공고 등록 실패";
-		}
-		model.addAttribute("msg",msg);
-		model.addAttribute("loc",loc);
-		
-		
-		return "HireNoti/HireNotiAdd";
-	}*/
-	
-	/*@RequestMapping("/")*/
+	}
 	
 }
+*/

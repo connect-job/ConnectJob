@@ -493,11 +493,6 @@
                     </div>
                 </div>
             </div>
-            <select name="" id="">
-        <option value="">최근등록일순</option>
-        <option value="">마감임박순</option>
-    </select>
-    <button onclick="scrap">스크랩</button>
             <div id="company-content">
                     <div id="company-list">
 							<table id="ajax_table">
@@ -532,8 +527,6 @@
                     </div>
                 </div>
         </div>
-        
-        
     </section>
 
     <!-- //지역별 검색 스크립트 -->

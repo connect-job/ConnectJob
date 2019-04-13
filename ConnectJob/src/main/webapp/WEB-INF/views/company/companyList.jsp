@@ -12,7 +12,7 @@
 <section>
         <div id="company-container">
             <div class="company-top">
-                기업탐색
+                	기업탐색
             </div>
             <div class="company-middle">
                 <button onclick="fn_searchOpen()">지역선택</button>
