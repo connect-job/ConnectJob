@@ -49,7 +49,7 @@
                     </div>
                     <div class="write-content">
                         <div class="left">내용</div>
-                        <div class="right"><textarea name="iContent" placeholder="구체적인 내용을 입력해주세요"></textarea></div>
+                        <div class="right"><textarea style="width:80%" id="editor" name="iContent" placeholder="구체적인 내용을 입력해주세요"></textarea></div>
                         
                         
                         <c:choose>
@@ -70,5 +70,14 @@
         </div>
     </div>
 </section>
+
+
+	<script>
+		ClassicEditor
+			.create(document.querySelector('#editor'))
+			.catch(error => {
+				console.error(error);
+			});
+	</script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Inquiry {
 	
 	private int iNo;
-	private String[] iType;
+	private String iType;
 	private String iTitle;
 	private String iContent;
 	private Date iDate;
@@ -17,7 +17,7 @@ public class Inquiry {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Inquiry(int iNo, String[] iType, String iTitle, String iContent, Date iDate, String status, String iWriter) {
+	public Inquiry(int iNo, String iType, String iTitle, String iContent, Date iDate, String status, String iWriter) {
 		super();
 		this.iNo = iNo;
 		this.iType = iType;
@@ -36,11 +36,11 @@ public class Inquiry {
 		this.iNo = iNo;
 	}
 
-	public String[] getiType() {
+	public String getiType() {
 		return iType;
 	}
 
-	public void setiType(String[] iType) {
+	public void setiType(String iType) {
 		this.iType = iType;
 	}
 
@@ -86,11 +86,10 @@ public class Inquiry {
 
 	@Override
 	public String toString() {
-		return "Inquiry [iNo=" + iNo + ", iType=" + Arrays.toString(iType) + ", iTitle=" + iTitle + ", iContent="
-				+ iContent + ", iDate=" + iDate + ", status=" + status + ", iWriter=" + iWriter + "]";
+		return "Inquiry [iNo=" + iNo + ", iType=" + iType + ", iTitle=" + iTitle + ", iContent=" + iContent + ", iDate="
+				+ iDate + ", status=" + status + ", iWriter=" + iWriter + "]";
 	}
 
-	
 	
 	
 	

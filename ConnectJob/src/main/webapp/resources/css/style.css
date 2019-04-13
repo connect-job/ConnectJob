@@ -50,7 +50,7 @@ a:hover {
     text-decoration: none;
 }
 
-button, input , select, option {
+button, input , select, option, textarea {
     outline: none;
     font-family: 'NotoKr', sans-serif;
 }
@@ -2290,6 +2290,7 @@ section #company-view-container #company-view-content .view-right #review-write 
     background-color: #4e536b;
     color: #fff;
     font-size: 16px;
+    margin-bottom: 20px;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .input {
@@ -2322,7 +2323,7 @@ section #company-view-container #company-view-content .view-right #review-write 
     padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 378px;
+    width: 400px;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .input .right select {
@@ -2349,24 +2350,27 @@ section #company-view-container #company-view-content .view-right #review-write 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle {
     margin-top: 20px;
     width: 100%;
-    height: 50px;
-    border-top: 1px solid #4e536b;
-    background-color: #e1e3e9;
+    height: 35px;
+    border-top: 1px solid #9b9ca3;
     color: #fff;
     font-size: 16px;
     padding-top: 15px;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle .middle-left {
-    float: left;
+    display: inline-block;
+    width: 30%;
     padding-left: 15px;
+    text-align: left;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle .middle-right {
-    float: right;
-    color: #4e536b;
-    font-size: 13px;
+    display: inline-block;
+    width: 65%;
+    color: #3f4149;
+    font-size: 12px;
     padding-right: 15px;
+    text-align: right;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle button {
@@ -2836,39 +2840,35 @@ section #senier-container .senier-middle #senier-write-container {
     width: 100%;
 }
 
-section #senier-container .senier-middle #senier-write-container input {
-    width: 100%;
+section #senier-container .senier-middle #senier-write-container input[type=text] {
+    width: 350px;
     border: none;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgb(218, 218, 218);
     height: 35px;
     outline: #404861;
+    padding-left: 15px;
 }
 
 section #senier-container .senier-middle #senier-write-container .write-cate {
     margin-bottom: 5px;
     width: 100%;
     border-radius: 4px;
-    border: 1px solid #d3d3d3;
+}
+
+section #senier-container .senier-middle #senier-write-container .write-cate input[type=radio] {
+    width: 20px;
 }
 
 section #senier-container .senier-middle #senier-write-container .write-title {
     margin-bottom: 5px;
     width: 100%;
-    border-radius: 4px;
-    border: 1px solid #d3d3d3;
-}
-
-section #senier-container .senier-middle #senier-write-container .write-content {
-    margin-bottom: 5px;
-    width: 100%;
-    border-radius: 4px;
-    border: 1px solid #d3d3d3;
 }
 
 section #senier-container .senier-middle #senier-write-container .write-content {
     margin-bottom: 5px;
     width: 100%;
 }
+
 
 section #senier-container .senier-middle #senier-write-container .write-btn {
     margin-bottom: 5px;
@@ -3298,7 +3298,7 @@ section #faq-container .faq-middle .faq {
 
 section #faq-container .faq-middle .faq .q {
     cursor: pointer;
-    background-color: #e0e2eb;
+    background-color: #f3f4f7;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 15px;
@@ -3307,7 +3307,7 @@ section #faq-container .faq-middle .faq .q {
 
 section #faq-container .faq-middle .faq .q:hover {
     transition: 500ms;
-    background-color: #404861;
+    background-color: #8a91aa;
     color: #fff;
 }
 
@@ -3343,6 +3343,95 @@ section #etc-container .content {
     font-size: 13px;
     margin-bottom: 50px;
 }
+
+/* ------------------------------------------ 1:1 문의 */
+
+section #help-container {
+    width: 990px;
+    display: inline-block;
+}
+
+section #help-container .help-top {
+    width: 965px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 25px;
+    font-size: 20px;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+section #help-container .help-subtitle {
+    width: 965px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 25px;
+    font-size: 13px;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+section #help-container .help-middle {
+    width: 965px;
+    padding-top: 20px;
+    margin-bottom: 25px;
+}
+
+section #help-container .help-middle .help-item {
+    padding-top: 20px;
+    width: 965px;
+    padding-bottom: 20px;
+    display: inline-block;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+section #help-container .help-middle .help-item:hover {
+    background-color: #eee;
+    transition: 500ms;
+}
+
+section #help-container .help-middle .help-item .item-left {
+    vertical-align: top;
+    display: inline-block;
+    width: 20%;
+}
+
+section #help-container .help-middle .help-item .item-center {
+    vertical-align: top;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+}
+
+section #help-container .help-middle .help-item .item-center .center-title {
+    font-size: 15px;
+}
+
+
+section #help-container .help-middle .help-item .item-right {
+    vertical-align: top;
+    display: inline-block;
+    width: 18%;
+    font-size: 15px;
+}
+
+section #help-container .help-middle .help-item .item-right span {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #5e6579;
+    border-radius: 10px;
+    color: #fff;
+}
+
 
 
 /* --------------------------------------- 알림센터 */

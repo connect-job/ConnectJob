@@ -8,7 +8,7 @@ public interface HelpService {
 
 	int insertInquiry(Inquiry i);
 	
-	List<Inquiry> inquiryView(int no);
+	Inquiry inquiryView(int no);
 	List<Inquiry> inquiryList(int cPage, int numPerPage, String id);
 	int selectCount(String id);
 

@@ -4,7 +4,7 @@
 
 	<resultMap type="inquiry" id="inquiryResult">
 		<id property="iNo" column="i_no"/>
-		<result property="iType" column="i_type" typeHandler="strArr"/>
+		<result property="iType" column="i_type"/>
 		<result property="iTitle" column="i_title"/>
 		<result property="iContent" column="i_content"/>
 		<result property="iDate" column="i_date"/>
@@ -18,7 +18,6 @@
 	
 	<select id="inquiryList" resultMap="inquiryResult" parameterType="String">
 		select * from inquiry where i_writer = #{id}
-
 	</select>
 	
 	<select id="selectCount" resultType="_int" parameterType="String">

@@ -23,7 +23,7 @@ public class HelpServiceImpl implements HelpService {
 	
 
 	@Override
-	public List<Inquiry> inquiryView(int no) {
+	public Inquiry inquiryView(int no) {
 
 		return dao.inquiryView(no);
 	}
