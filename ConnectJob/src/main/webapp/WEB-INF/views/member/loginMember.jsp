@@ -28,8 +28,61 @@
 					<div class="item-right"><input type="password" name="password" autocomplete="new-password"/></div>
 				</div>
 			</div>
-			<div class="login-right">							
-				<!-- <a id="kakao-login-btn"></a> -->
+			<div class="login-right">
+			
+				<!-- 네이버 로그인 추가중 -->
+				<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+			  <div id="naver_id_login"></div>
+			  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
+			  <script type="text/javascript">
+			  
+			    var naver_id_login = new naver_id_login("HcAcv4cf7ZTp1x4Kkbdb", "http://localhost:8080/job/member/naverCallback.do");
+			    
+			  	var state = naver_id_login.getUniqState();
+			  	naver_id_login.setButton("green", 2,120);
+			  	naver_id_login.setDomain("http://localhost:8080");
+			  	naver_id_login.setState(state);
+			  	naver_id_login.init_naver_id_login();
+			  
+			  </script>
+			
+				<!-- 구글 로그인 추가중 -->
+				<div class="g-signin2" data-onsuccess="onSignIn" id="googleBtn"></div>
+			    <script>
+			    	var profile;
+			    	var email;
+			    	var id_temp;
+			    	var id;
+			    	var name;
+			    
+			      function onSignIn(googleUser) {
+			        profile = googleUser.getBasicProfile();
+			        email = profile.getEmail();
+			        id_temp = profile.getId();
+			        id = Number(id_temp);
+			        name = profile.getName();
+			      }
+			      
+			      
+			      $('#googleBtn').click(function () {
+			    	  $.ajax({
+		    	        	url: '${path}/member/isSns.do?p_id=test&is_sns=google&google_id=' + id,
+		    	            success: function(data) {
+		    	            	if(data=='1') {
+		    	            		location.href="${path}/member/memberLoginSns.do?is_sns=google&google_id=" + id;
+		    	            	} else {
+		    	            		 location.href="${path}/member/memberEnrollSns.do?p_id=" + email + "&is_sns=google&google_id=" + id + "&p_name=" + name;
+		    	            	}
+		    	            }
+		    	        });
+			      });
+			      
+			    </script>
+
+				<!-- ----------------------- 구글 로그인 끝 -->
+				
+				
+                            
 				<a id="custom-login-btn" href="javascript:loginWithKakao()">
 					<img src="${path }/resources/images/kakao_account_login_btn.png" width="250"/>
 				</a>									
@@ -75,12 +128,12 @@
 	    	    	  	             
 	    	        var id = res.id;    	             
 	    	        $.ajax({
-	    	        	url: '${path}/member/isKakao.do?is_sns=kakao&kakao_id=' + id,
+	    	        	url: '${path}/member/isSns.do?is_sns=kakao&kakao_id=' + id,
 	    	            success: function(data) {
 	    	            	if(data=='1') {
-	    	            		location.href="${path}/member/memberLoginKakao.do?kakao_id=" + id;
+	    	            		location.href="${path}/member/memberLoginSns.do?is_sns=kakao&kakao_id=" + id;
 	    	            	} else {
-	    	            		 location.href="${path}/member/memberEnrollKakao.do?is_sns=kakao&kakao_id=" + id + "&p_name=" + res.properties['nickname'];
+	    	            		 location.href="${path}/member/memberEnrollSns.do?is_sns=kakao&kakao_id=" + id + "&p_name=" + res.properties['nickname'];
 	    	            	}
 	    	            }
 	    	        });

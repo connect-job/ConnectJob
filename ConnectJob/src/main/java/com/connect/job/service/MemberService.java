@@ -9,7 +9,7 @@ import com.connect.job.model.vo.Member;
 public interface MemberService {
 
 	
-	int insertMemberKakao(Member m);
+	int insertMemberSns(Member m);
 	
 	Member selectOne(Member m);
 	Member findId(Member m);
@@ -20,7 +20,7 @@ public interface MemberService {
 	
 	List<Member> selectList();
 	
-	Member selectOneKakao(Member m);
+	Member selectOneSns(Member m);
 	int emailConfirm(Member m);
 	int selectCount(String p_id);
 	Member findPw(Member m);

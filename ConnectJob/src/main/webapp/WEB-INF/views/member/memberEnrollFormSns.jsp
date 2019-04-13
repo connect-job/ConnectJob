@@ -18,11 +18,11 @@
 		</div>
 		
 		<div id="memberEnroll" class="tab-content current">
-			<form action="${path}/member/insertKakao.do" method="post">
+			<form action="${path}/member/insertSns.do" method="post">
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="p_id" id="p_id" autocomplete="off" />															
+						<input type="email" name="p_id" id="p_id" value="${Member.p_id!=null ? Member.p_id : "" }" autocomplete="off" />															
 					</div>
 				</div>
 				
@@ -62,8 +62,10 @@
 					<div class="left">SNS</div>
 					<div class="right">
 						<%-- <input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/> --%>
-						<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
+						<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }" readonly/>
 						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
+						<input type="hidden" name="google_id" value="${Member != null ? Member.google_id : '' }"/>
+						<input type="hidden" name="naver_id" value="${Member != null ? Member.naver_id : '' }"/>
 					</div>
 				</div>		
 
