@@ -21,6 +21,7 @@
                     <li><i class="fas fa-comment-dots"></i><br>기업리뷰</li>
                     <li><i class="fas fa-user-friends"></i><br>채용정보</li>
                     <li><i class="far fa-newspaper"></i><br>기업뉴스</li>
+                    <li id="scrap"><i class="far fa-star"></i><br>스크랩</li>
                     <script>
                         var lmenu = $('.view-left ul li');
                         var delay = 100;
@@ -35,6 +36,14 @@
                         });
                         lmenu.eq(3).on('click', function () {
                             $('html, body').stop().animate({ scrollTop: 1300 }, delay);
+                        });
+                        lmenu.eq(4).on('click', function () {
+                        	if(confirm('스크랩 되었습니다.\n스크랩 페이지로 이동하시겠습니까?')) {
+                            	window.location.href = "${path}/scrap/insertAndViewScrap.do?companyNo=${company.companyNo}";
+                            }else{
+                            	window.location.href="${path}/scrap/insertScrap.do?companyNo=${company.companyNo}";
+                            	return;
+                            } 
                         });
 
                         $(window).scroll(function () { 

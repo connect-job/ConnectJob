@@ -12,15 +12,15 @@
 				<i class="far fa-address-card"></i>　내 이력서 관리
 		</div>
 		<div class="resume-content">
-			· 이력서는 <b>최대 3개</b>까지 등록 가능 합니다.<br>
 			· 작성한 이력서로 회사에 지원 할 수 있습니다.<br>
+			· 이력서를 등록하시면 적절한 <b>채용공고와 매칭</b>이 가능합니다.<br>
 			· 이력서를 공개로 설정하시면 기업으로부터 <b>면접제의</b>를 받을 수 있습니다.
 		</div>
 		
 		<div class="resume-sub">
 			<div class="sub-item">
 				<div class="item-title">작성된 이력서</div>
-				<div class="item-content">5</div>
+				<div class="item-content">${resumeCnt }</div>
 			</div>
 			<div class="sub-item">
 				<div class="item-title">열람한 기업 수</div>

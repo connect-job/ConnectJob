@@ -42,7 +42,8 @@ public class ResumeDaoImpl implements ResumeDao {
 	}
 	
 	
-	
+
+
 	@Override
 	public int updateProfileImg(ProfileImg p) {
 		return session.insert("resume.updateProfileImg", p);
@@ -102,7 +103,11 @@ public class ResumeDaoImpl implements ResumeDao {
 	public int deleteResume(int resumeNo) {
 		return session.update("resume.deleteResume", resumeNo);
 	}
-
+	
+	@Override
+	public int selectedResumeCnt(String pId) {
+		return session.selectOne("resume.selectResumeCnt",pId);
+	}
 	@Override
 	public int selectCntUniv(int resumeNo) {
 		return session.selectOne("resume.selectCntUniv", resumeNo);

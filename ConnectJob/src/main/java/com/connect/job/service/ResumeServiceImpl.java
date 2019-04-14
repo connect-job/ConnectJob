@@ -142,6 +142,12 @@ public class ResumeServiceImpl implements ResumeService {
 		
 		return result;
 	}
+	
+	
+	@Override
+	public int selectedResumeCnt(String pId) {
+		return dao.selectedResumeCnt(pId);
+	}
 
 	@Override
 	public ProfileImg selectedProfileImg(int resumeNo) {

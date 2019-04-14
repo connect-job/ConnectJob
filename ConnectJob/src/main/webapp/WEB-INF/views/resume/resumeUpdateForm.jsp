@@ -212,7 +212,7 @@ List<String> categoryList=new ArrayList();
 					         <option value="석사" ${u.schoolFlag eq '대학원(석사)'?'selected':'' }>대학원(석사)</option>
 					         <option value="박사" ${u.schoolFlag eq '대학원(박사)'?'selected':'' }>대학원(박사)</option>
 					      </select>
-					      <div class="checkMsg"></div>
+					      <div class="checkMsg" style="display:inline-block;"></div>
 					      <button type="button" class="deleteUnivBtn2">대학 학력 삭제</button>
 					   </div>
 					</div>
