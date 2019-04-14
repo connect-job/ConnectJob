@@ -11,6 +11,33 @@
 <section>
     <div id='alarm-container'>
         <div class="title">알림센터</div>
+        
+        <div class="center">
+            알림설정　<button class="selected">알림 ON</button><BUTTON>알림 OFF</BUTTON>
+        </div>
+
+        <div class="subtitle">
+            <div>
+                <div class="top">추천 채용정보 알림</div>
+                <div class="bottom">회원님의 최근 구직활동을 분석하여 꼭 맞는 채용정보를 추천해드립니다.</div>
+            </div>
+
+            <div>
+                <div class="top">입사지원 상태 알림</div>
+                <div class="bottom">입사지원 이력서 열람, 지원한 채용공고 마감, 인사담당자가 발송한 이메일 등 입사지원 상태를 빠르게 알려드립니다.</div>
+            </div>
+
+            <div>
+                <div class="top">인재공개 상태 알림</div>
+                <div class="bottom">내 이력서를 열람한 기업, 기업의 면접/입사 제의를 빠짐없이 알려드립니다.</div>
+            </div>
+
+            <div>
+                <div class="top">관심기업/스크랩 알림</div>
+                <div class="bottom">관심기업 신규공고, 스크랩한 공고의 채용 마감을 꼭 확인하세요.</div>
+            </div>
+        </div>  
+        
         <div class="sum">
             <div class="item">
                 <div class="top">총 알림</div>

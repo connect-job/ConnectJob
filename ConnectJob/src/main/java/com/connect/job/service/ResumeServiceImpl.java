@@ -19,8 +19,6 @@ public class ResumeServiceImpl implements ResumeService {
 	@Autowired
 	private ResumeDao dao;
 	
-	
-
 	@Override
 	@Transactional
 	public int insertResume(Resume r,FinalEdu fe, Career c, ProfileImg p) {
@@ -80,6 +78,7 @@ public class ResumeServiceImpl implements ResumeService {
 	public int updateResume(Resume r, FinalEdu fe, Career c, ProfileImg p) {
 		int result=0;
 		try {
+			
 			result=dao.updateResume(r);
 			if(result==0) {throw new ResumeException("이력서 등록에 문제가 발생하였습니다.");}
 			fe.setResumeNo(r.getResumeNo());
@@ -108,23 +107,36 @@ public class ResumeServiceImpl implements ResumeService {
 	@Transactional
 	public int updateResume(Resume r, List<FinalEduUniv> univList, Career c, ProfileImg p) {
 		int result=0;
+		int univCnt=dao.selectCntUniv(r.getResumeNo());
 		try {
 			result=dao.updateResume(r);
-			if(result==0) {throw new ResumeException("이력서 등록에 문제가 발생하였습니다.");}
+			if(result==0) {throw new ResumeException("이력서 수정에 문제가 발생하였습니다.");}
+			
 			for(int i=0;i<univList.size();i++) {
 				univList.get(i).setResumeNo(r.getResumeNo());
-				result=dao.updateFinalEduUniv(univList.get(i));
+				if(univCnt==0) {
+					result=dao.insertFinalEduUniv(univList.get(i));
+				}else {
+					if(univList.get(i).getFinalEduUnivNo()!=0) {
+						result=dao.updateFinalEduUniv(univList.get(i));
+					}
+				}
 			}
-			if(result==0) {throw new ResumeException("최종학력정보 등록에 문제가 발생하였습니다.");}
+			if(result==0) {throw new ResumeException("최종학력정보 수정에 문제가 발생하였습니다.");}
 			c.setResumeNo(r.getResumeNo());
 			if(c.getCareerCName()!=null) {
-				result=dao.updateCareer(c);
-				if(result==0) {throw new ResumeException("경력정보 등록에 문제가 발생하였습니다.");}
+				if(c.getCareerNo()==0) {
+					result=dao.insertCareer(c);
+				}else {
+					result=dao.updateCareer(c);
+				}
+				if(result==0) {throw new ResumeException("경력정보 수정에 문제가 발생하였습니다.");}
 			}
-			if(p!=null) {
+			if(!p.getOriginalFileName().equals("")) {
 				p.setResumeNo(r.getResumeNo());
+				result=dao.deleteProfileImg(r.getResumeNo());
 				result=dao.updateProfileImg(p);
-				if(result==0) {throw new ResumeException("이미지 등록에 문제가 발생하였습니다.");}
+				if(result==0) {throw new ResumeException("이미지 수정에 문제가 발생하였습니다.");}
 			}
 		}catch(Exception e) {e.printStackTrace();}
 		

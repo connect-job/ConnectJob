@@ -5,7 +5,7 @@
 <div class="item">
 	<div class="left">학교명</div>
 	<div class="right">
-		<input type="hidden" name="schoolFlag" value="고등학교">
+		<input type="hidden" name="schoolFlag" value="고등학교 졸업">
 		<input type="text" id="schoolName" name="schoolName" placeholder="학교명을 입력하세요"  >
 		<input type="checkbox" name="schoolName" value="대입 검정고시" id="noEle">대입 검정고시
 	</div>

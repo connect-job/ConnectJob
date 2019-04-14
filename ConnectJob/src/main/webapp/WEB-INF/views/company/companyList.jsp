@@ -431,6 +431,7 @@
             $.each(locations, function(index) {
                 locations.eq(index).hide();
             });
+
             locations.eq(0).show();
 
             $('#search_left ul li').click(function() {
@@ -550,8 +551,8 @@
 
         $('#location ul li').click(function() {
             if(!$(this).hasClass('selected')) {
-                console.log($(this).text().indexOf("전체"));
-                if($(this).text().indexOf("전체")>0) {
+                console.log($(this).text().trim().indexOf("전체"));
+                if($(this).text().trim().indexOf("전체")>0) {
                     var li = $('#location ul li');
                     for(var i=0;i<li.length;i++) {
                         li[i].removeAttribute("class");
@@ -559,7 +560,7 @@
 
                     var btn = $('#select_left button');
                     for(var i=0;i<btn.length;i++) {
-                        if(btn[i].innerText.indexOf("전체")>0) {
+                        if(btn[i].innerText.trim().indexOf("전체")>0) {
 
                         } else {
                             btn[i].remove();
@@ -569,13 +570,13 @@
                 } else {
                     var li = $('#location ul li');
                     for(var i=0;i<li.length;i++) {
-                        if(li[i].innerText.indexOf("전체")>0) {
+                        if(li[i].innerText.trim().indexOf("전체")>0) {
                             li[i].removeAttribute("class");
                         }
                     }
                     var btn = $('#select_left button');
                     for(var i=0;i<btn.length;i++) {
-                        if(btn[i].innerText.indexOf("전체")>0) {
+                        if(btn[i].innerText.trim().indexOf("전체")>0) {
                             btn[i].remove();
                         }
                     }
@@ -586,7 +587,7 @@
                 $(this).removeClass('selected');
                 var btn = $('#select_left button');
                 for(var i=0;i<btn.length;i++) {
-                    if($(this).text()==btn[i].innerText) {
+                    if($(this).text().trim()==btn[i].innerText.trim()) {
                         btn[i].remove();
                     }
                 }
@@ -594,11 +595,11 @@
         });
 
         function fn_selectCancle(e) {
-            var text = e.innerText;
+            var text = e.innerText.trim();
             var li = $('#location ul li');
             
             for(var i=0;i<li.length;i++) {
-                if(text==li[i].innerText) {
+                if(text==li[i].innerText.trim()) {
                     li[i].removeAttribute("class");
                 }
             }
@@ -639,10 +640,10 @@
             var location = "";
 
             for(var i=0; i<location_temp.length;i++) {
-            	if(location_temp[i].innerText.indexOf("전체")) {
-            		location += location_temp[i].innerText.replace("전체","") + ",";
+            	if(location_temp[i].innerText.trim().indexOf("전체")) {
+            		location += location_temp[i].innerText.trim().replace("전체","") + ",";
             	} else {
-            		location += location_temp[i].innerText + ",";
+            		location += location_temp[i].innerText.trim() + ",";
             	}
                 
             }
