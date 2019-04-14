@@ -48,7 +48,6 @@
 			</div>
 
 			<div class="item">
-				<input type="hidden" name="p_id" value="${loginMember.p_id}">
 				<div class="left">이름</div>
 				<div class="right"><input type="text" name="name" id="name"></div>
 			</div>

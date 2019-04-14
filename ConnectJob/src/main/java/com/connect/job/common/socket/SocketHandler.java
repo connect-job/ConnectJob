@@ -14,6 +14,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.connect.job.model.vo.HireNoti;
 import com.connect.job.model.vo.Member;
+import com.connect.job.model.vo.Message;
 import com.connect.job.model.vo.Resume;
 
 // Socket Handler 객체는 두 개의 상속 객체를 가질 수 있다
@@ -90,7 +91,25 @@ public class SocketHandler extends TextWebSocketHandler {
 						List<HireNoti> list = sessionTem.selectList("message.messageHireNoti", r);
 						System.out.println(list.toString());
 						System.out.println("리스트 사이즈 : " + list.size());
-						session.sendMessage(new TextMessage("회원님의 이력서 " + rList.size() + "건 에 대한<br> 추천 채용공고 " + list.size() + "건 이 매칭되었습니다! <br> <button onclick=\"location.href='/job/alarm/alarm.do?id=" + member+ "\'\">알림센터 바로가기</button>"));
+						
+						// 5. 읽은 메시지와 읽지않은 메시지 카운트
+						List<Message> mList = sessionTem.selectList("message.messageCount", member);
+						int readMessage = 0;
+						int unReadMessage = 0;
+						for(int i=0; i<mList.size(); i++) {
+							if(mList.get(i).getmStatus().equals("Y")) {
+								readMessage++;
+							} else {
+								unReadMessage++;
+							}
+						}
+						
+						String messageText = "";
+						
+						messageText += "회원님의 이력서 " + rList.size() + "건 에 대한<br> 추천 채용공고 " + list.size() + "건 이 매칭되었습니다!<br>";
+						messageText += "읽지 않은 알림 [ " + unReadMessage + " ] 건이 존재합니다";
+						
+						session.sendMessage(new TextMessage(messageText));
 					} catch (IOException e) {
 						e.printStackTrace();
 					}

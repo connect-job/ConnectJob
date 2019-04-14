@@ -97,16 +97,17 @@ button, input , select, option, textarea {
 	transition: 1000ms;
 	position: absolute;
 	opacity: 0;
-	padding-top: 20px;
+	padding-top: 15px;
 	width: 300px;
-	height: 95px;
+	height: 120px;
 	right:10px;
 	top: 150px;
 	color: #fff;
 	text-align: center;
-	background-color: #596483a8;
+	background-color: #596483c2;
 	z-index: -1;
-	border-radius: 5px;
+    border-radius: 5px;
+    font-size:12px;
 }
 
 #socket-message a {
@@ -117,6 +118,47 @@ button, input , select, option, textarea {
 #socket-message #messageIcon {
     animation: messageAnimate infinite 2s;
     -webkit-animation: messageAnimate infinite 2s;
+}
+
+#alarm {
+    margin-left: 3px;
+	display: inline-block;
+    background: #c27979;
+    border: 1px solid #9b4343;
+    color: #fff;
+    font-size: 11px;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 4px;
+    animation: alarmAction infinite 10s;
+}
+
+@keyframes alarmAction {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+@-webkit-keyframes alarmAction {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 @keyframes messageAnimate {
@@ -502,18 +544,6 @@ header  #header-menu #sub-menu ul li:hover {
     transition: 300ms;
 }
 
-header  #header-menu #alarm {
-    margin-top: 12px;
-    padding-top: 12px;
-    display: none;
-    position: absolute;
-    width: 210px;
-    height: 100px;
-    text-align: center;
-    left: -50%;
-    border: 1px solid rgb(216, 216, 216);
-    background-color: #fff;
-}
 
 
 
@@ -3538,72 +3568,72 @@ section #alarm-container .sum .count {
     color: #404861;
 }
 
-section #alarm-container .left {
-    vertical-align: top;
-    display: inline-block;
-    width: 10%;
-    padding-top: 12px;
-    height: 35px;
-    font-size: 16px;
-    border-radius: 5px;
-    background-color: #464c63;
-    color: #fff;
-}
-
-section #alarm-container .right {
-    vertical-align: top;
-    display: inline-block;
-    width: 86%;
+section #alarm-container .list {
+    width: 990px;
     text-align: left;
-    padding-left: 15px;
+    font-weight: normal;
 }
 
-section #alarm-container .right .message {
+
+section #alarm-container .list .message {
     padding-top: 18px;
     border: 1px solid #eee;
     height: 45px;
     margin-bottom: 10px;
-    width: 100%;
+    width: 970px;
     color: #000;
-}
-
-section #alarm-container .right .message:hover {
-    transition: 600ms;
-    background-color: #83889b;
-    color: #fff;
-}
-
-section #alarm-container .right .message .content {
-    display: inline-block;
-    width: 40%;
-    font-size: 14px;
-}
-
-section #alarm-container .right .message .date {
-    display: inline-block;
-    width: 19%;
     text-align: left;
 }
 
-section #alarm-container .right .message .status {
+section #alarm-container .list .message:hover {
+    transition: 600ms;
+    background-color: #ecedf1;
+}
+
+section #alarm-container .list .message .content {
     display: inline-block;
-    width: 16%;
+    width: 50%;
+    font-size: 14px;
+    text-align: left;
+    color: #000;
+}
+
+section #alarm-container .list .message .content a{
+    color: #000;
+}
+
+section #alarm-container .list .message .date {
+    display: inline-block;
+    width: 13%;
+    text-align: left;
+}
+
+section #alarm-container .list .message .status {
+    display: inline-block;
+    width: 8%;
     text-align: center;
 }
 
 
-section #alarm-container .right .message .button {
+section #alarm-container .list .message .button {
+    width: 25%;
     display: inline-block;
-    text-align: left;
+    text-align: right;
 }
 
-section #alarm-container .right .message .button button {
+section #alarm-container .list .message .button button {
     width: 90px;
     height: 30px;
-    background-color: #fff;
-    border: 1px solid #eee;
+    background-color: #495368;
+    border: 1px solid #333946;
     outline: none;
-    color :#000;
+    color :#fff;
+}
+
+section #alarm-container .list .message .button .delete {
+    background-color: #ad5050;
+    border: 1px solid #974545;
+    color: #fff;
 }
 
 /* ------------------------------ 공지사항 */
@@ -3738,6 +3768,8 @@ section #notice-container .notice-list .list-item .no {
 section #notice-container .notice-list .list-item .title {
     display: inline-block;
     width: 70%;
+    font-size: 13px;
+    font-weight: normal;
     text-align: left;
 }
 

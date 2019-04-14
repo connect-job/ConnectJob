@@ -72,6 +72,19 @@ public class AlarmController {
 	@RequestMapping("alarm/alarm.do")
 	public String alarm(Model model, String id) {
 		List<Message> list = service.selectMessage(id);
+		
+		int readMessage = 0;
+		int unReadMessage = 0;
+		
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).getmStatus().equals("Y")) {
+				readMessage++;
+			} else {
+				unReadMessage++;
+			}
+		}
+		model.addAttribute("readMessage", readMessage);
+		model.addAttribute("unReadMessage", unReadMessage);
 		model.addAttribute("list", list);
 		return "alarm/alarmList";
 	}

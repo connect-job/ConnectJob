@@ -23,11 +23,11 @@
             </div>
             <div class="item">
                 <div class="top">읽은 알림</div>
-                <div class="count"></div> 
+                <div class="count">${readMessage }</div> 
             </div>
             <div class="item">
                 <div class="top">읽지 않은 알림</div>
-                <div class="count"></div> 
+                <div class="count">${unReadMessage }</div> 
             </div>
         </div>
 
@@ -56,16 +56,16 @@
         
         
 
-        <div class="right">
+        <div class="list">
             <h3>알림 최신순</h3>
         	<c:forEach var="m" items="${list }">
         		<div class="message">
         			<div class="content">${m.mMessage }</div>
                     <div class="date">
                     	<fmt:formatDate value="${m.mDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>${regDate }</div>
-                    <div class="status">${m.mStatus=='N'? "읽지않음" : "읽음" }</div>
+                    <div class="status"><span class="statusSpan">${m.mStatus=='N'? "<b>읽지않음</b>" : "읽음" }</span></div>
                     <div class="button">
-                    <button style="display:${m.mStatus=='N'? 'inline-block' : 'none'}" onclick='fn_status(${m.mNo})'>읽음</button>　<button onclick="fn_delete(${m.mNo})">알림삭제</button></div>
+                    <button style="display:${m.mStatus=='N'? 'inline-block' : 'none'}" onclick='fn_status(${m.mNo})'>읽음</button>　<button class="delete" onclick="fn_delete(${m.mNo})">알림삭제</button></div>
         		</div>
             </c:forEach>
 

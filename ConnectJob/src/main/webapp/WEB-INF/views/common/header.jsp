@@ -115,7 +115,7 @@
                                                 <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
                                         </ul>
                                 </div></li>
-                            <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터</li>
+                            <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터<div id="alarm">52</div></li>
                             <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
@@ -177,7 +177,7 @@
 		    	$('#socket-message').css("z-index","999999999");
 		    	$('#socket-message').append("<span id='messageIcon'><i class='fas fa-envelope-open-text' style='font-size:20px'></i></span>　");
 		    	$('#socket-message').append(evt.data);
-		    	$('#socket-message').append("<br><br><a href='${path}/alarm/alarm.do?id=${loginMember.p_id}'>알림센터 바로가기</a>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
+		    	$('#socket-message').append("<br><br><button onclick='location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}''>알림센터</button>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
 	    	}, 1000);
 	    	
 	    	if(evt.data!=null) {
@@ -238,7 +238,6 @@
 
         $('#login-li').mouseover(function() {
             $('#login').css("display","block");
-            $('#alarm').css("display","none");
             $('#sub-menu').css("display","none");
         });
 
@@ -249,7 +248,6 @@
         $('#join-li').mouseover(function() {
             $('#join').css("display","block");
             $('#login').css("display","none");
-            $('#alarm').css("display","none");
             $('#sub-menu').css("display","none");
         });
 
@@ -258,7 +256,6 @@
         });
 
         $('#mypage-li').mouseover(function() {
-            $('#alarm').css("display","none");
             $('#sub-menu').css("display","none");
             $('#sub-menu-mypage').css("display","block");
         });
@@ -275,17 +272,13 @@
         $('#alarm-li').click(function() {
             $('#sub-menu-mypage').css("display","none");
             $('#sub-menu').css("display","none");
-            $('#alarm').css("display","block");
         });
         
-        $('#alarm-li').mouseleave(function() {
-            $('#alarm').css("display","none");
-        });
+
 
         $('#logout-li').mouseover(function() {
             $('#sub-menu-mypage').css("display","none");
             $('#sub-menu').css("display","none");
-            $('#alarm').css("display","none");
             $('#logout').css("display","block");
         });
 
@@ -295,7 +288,6 @@
 
         $('#sub').mouseover(function() {
             $('#sub-menu-mypage').css("display","none");
-            $('#alarm').css("display","none");
             $('#logout').css("display","none");
             $('#sub-menu').css("display","block");
         });

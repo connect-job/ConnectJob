@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="message">
 
+	<select id="messageCount" resultMap="messageResultMap">
+		SELECT * FROM M_MESSAGE WHERE M_TO = #{member}
+	</select>
+
 	<select id="memberStatus" resultMap="memberResult">
 		SELECT * FROM P_MEMBER	WHERE P_ID = #{id}
 	</select>
