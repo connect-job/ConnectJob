@@ -2,12 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="message">
 
+	<select id="memberStatus" resultMap="memberResult">
+		SELECT * FROM P_MEMBER	WHERE P_ID = #{id}
+	</select>
+
+	<select id="selectMemberOne" resultMap="memberResult">
+		SELECT * FROM P_MEMBER WHERE P_ID = #{id}
+	</select>
+
+	<update id="updateMessageRead">
+		UPDATE M_MESSAGE SET M_STATUS = 'Y' WHERE M_NO = #{mNo}
+	</update>
+
+	<update id="updateAlarmOn">
+		UPDATE P_MEMBER SET ALARM_STATUS = 'Y' WHERE P_ID = #{id}
+	</update>
+	
+	<update id="updateAlarmOff">
+		UPDATE P_MEMBER SET ALARM_STATUS = 'N' WHERE P_ID = #{id}
+	</update>
+
+	<insert id="messageInsert" parameterType="message">
+		INSERT INTO M_MESSAGE VALUES(SEQ_M_NO.NEXTVAL, #{mTo}, #{mFrom}, #{mMessage}, default, #{mStatus})
+	</insert>
+
 	<select id="messageResumeCount" resultMap="resumeResultMap">
-		SELECT * FROM RESUME WHERE P_ID = #{member}
+		SELECT * FROM RESUME WHERE P_ID = #{member} AND IS_DELETE='FALSE'
 	</select>
 	
 	<select id="messageHireNoti" parameterType="resume" resultMap="hireNotiResult">
-		SELECT * FROM HIRENOTI WHERE 1=1
+		SELECT A.*, C.COMPANY_NAME CNAME FROM HIRENOTI A
+	   	LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID)
+	   	LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO)
+		WHERE 1=1
 		<if test="hopeJobs!=null and hopeJobs!=''">
 			AND
 			<foreach collection="hopeJobs" item="job" open="(" close=")" separator="or">
@@ -25,9 +52,24 @@
 	
 	
 	<select id="selectMessage" resultMap="messageResultMap">
-		SELECT * FROM M_MESSAGE WHERE M_TO = #{id}
+		SELECT * FROM M_MESSAGE WHERE M_TO = #{id} 
 	</select>
 
+
+	<resultMap type="member" id="memberResult">
+		<id column="p_id" property="p_id"/>
+		<result column="password" property="password"/>
+		<result column="p_name" property="p_name"/>
+		<result column="gender" property="gender"/>
+		<result column="phone" property="phone"/>
+		<result column="is_sns" property="is_sns"/>
+		<result column="enroll_date" property="enroll_date"/>
+		<result column="email_confirm" property="email_confirm"/>
+		<result column="kakao_id" property="kakao_id"/>
+		<result column="google_id" property="google_id"/>
+		<result column="naver_id" property="naver_id"/>
+		<result column="alarm_status" property="alarmStatus"/>
+	</resultMap>
 	
 	<resultMap type="message" id="messageResultMap">
 		<id property="mNo" column="m_no"/>
@@ -92,6 +134,7 @@
 		<result property="hnInterview" column="hn_interview"/>
 		<result property="hnTitle" column="hn_title"/>
 		<result property="addDate" column="hn_adddate"/>
+		<result property="cName" column="cname"/>
 	</resultMap>
 
 </mapper>

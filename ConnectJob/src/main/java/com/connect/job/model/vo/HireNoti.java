@@ -34,6 +34,7 @@ public class HireNoti {
 	private String hnInterview;
 	private String hnTitle;
 	private Date addDate;
+	private String cName;
 	
 	public HireNoti() {
 		// TODO Auto-generated constructor stub
@@ -43,7 +44,8 @@ public class HireNoti {
 			String hnCate, String hnChargeTask, String hnDept, String hnRankPosition, String[] hnFinalEdu,
 			String hnMajor, String hnPreference, String hnGender, String[] hnBirth, String hnSal, String hnWorkPlace,
 			String hnDay, String hnStime, String hnDtime, String startDate, String endDate, String[] hnEve,
-			String hnReMethod, String hnProcess, String hnDoc, String hnInterview, String hnTitle, Date addDate) {
+			String hnReMethod, String hnProcess, String hnDoc, String hnInterview, String hnTitle, Date addDate,
+			String cName) {
 		super();
 		this.hnSeq = hnSeq;
 		this.cMemberId = cMemberId;
@@ -74,6 +76,7 @@ public class HireNoti {
 		this.hnInterview = hnInterview;
 		this.hnTitle = hnTitle;
 		this.addDate = addDate;
+		this.cName = cName;
 	}
 
 	public int getHnSeq() {
@@ -308,6 +311,14 @@ public class HireNoti {
 		this.addDate = addDate;
 	}
 
+	public String getcName() {
+		return cName;
+	}
+
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
+
 	@Override
 	public String toString() {
 		return "HireNoti [hnSeq=" + hnSeq + ", cMemberId=" + cMemberId + ", hnSort=" + Arrays.toString(hnSort)
@@ -318,10 +329,8 @@ public class HireNoti {
 				+ ", hnWorkPlace=" + hnWorkPlace + ", hnDay=" + hnDay + ", hnStime=" + hnStime + ", hnDtime=" + hnDtime
 				+ ", startDate=" + startDate + ", endDate=" + endDate + ", hnEve=" + Arrays.toString(hnEve)
 				+ ", hnReMethod=" + hnReMethod + ", hnProcess=" + hnProcess + ", hnDoc=" + hnDoc + ", hnInterview="
-				+ hnInterview + ", hnTitle=" + hnTitle + ", addDate=" + addDate + "]";
+				+ hnInterview + ", hnTitle=" + hnTitle + ", addDate=" + addDate + ", cName=" + cName + "]";
 	}
-
-	
 
 		
 }

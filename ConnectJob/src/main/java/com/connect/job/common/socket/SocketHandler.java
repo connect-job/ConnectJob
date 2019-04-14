@@ -13,7 +13,7 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.connect.job.model.vo.HireNoti;
-import com.connect.job.model.vo.Message;
+import com.connect.job.model.vo.Member;
 import com.connect.job.model.vo.Resume;
 
 // Socket Handler 객체는 두 개의 상속 객체를 가질 수 있다
@@ -54,58 +54,64 @@ public class SocketHandler extends TextWebSocketHandler {
 		
 		
 		// 웹소켓 동작
+		// 회원의 알림 설정 여부 확인하기 (ON/OFF)
+		Member m = sessionTem.selectOne("message.memberStatus", member);
 		
-		// 1. 작성한 이력서가 있는지 DB조회
-		List<Resume> rList = sessionTem.selectList("message.messageResumeCount", member);
-		System.out.println("몇개있니?" + rList.size());
 		
-		// 2. 이력서 직종 담기 -> , 붙여서 -> 또 잘라서 이력서 새로운 이력서 객체에 담아줌
-		String hopeJob_temp = "";
-		if(!rList.isEmpty()) {
-			for(int i=0; i<rList.size(); i++) {
-				for(String s : rList.get(i).getHopeJobArea()) {
-					hopeJob_temp += s + ",";
+		// 알림 설정 ON일때
+		if(m.getAlarmStatus().equals("Y")) {
+			
+			// 1. 작성한 이력서가 있는지 DB조회
+			List<Resume> rList = sessionTem.selectList("message.messageResumeCount", member);
+			System.out.println("몇개있니?" + rList.size());
+			
+			// 2. 이력서 직종 담기 -> , 붙여서 -> 또 잘라서 이력서 새로운 이력서 객체에 담아줌
+			String hopeJob_temp = "";
+			if(!rList.isEmpty()) {
+				for(int i=0; i<rList.size(); i++) {
+					for(String s : rList.get(i).getHopeJobArea()) {
+						hopeJob_temp += s + ",";
+					}
 				}
 			}
-		}
-		String[] hopeJob = hopeJob_temp.split(",");
-	
-		Resume r = new Resume();
-		r.setHopeJobs(hopeJob);
+			String[] hopeJob = hopeJob_temp.split(",");
 		
-		// 3. DB로 보내 -> 채용공고 직종조회
-		if(rList.size()>0) {
-			for(WebSocketSession s : list) {
-				if(s==session) {
-					continue;
+			Resume r = new Resume();
+			r.setHopeJobs(hopeJob);
+			
+			// 3. DB로 보내 -> 채용공고 직종조회
+			if(rList.size()>0) {
+				for(WebSocketSession s : list) {
+					if(s==session) {
+						continue;
+					}
+					try {
+						// 4. 이력서가 있고 -> 희망직종과 일치하는 -> 채용공고 불러오기
+						List<HireNoti> list = sessionTem.selectList("message.messageHireNoti", r);
+						System.out.println(list.toString());
+						System.out.println("리스트 사이즈 : " + list.size());
+						session.sendMessage(new TextMessage("회원님의 이력서 " + rList.size() + "건 에 대한<br> 추천 채용공고 " + list.size() + "건 이 매칭되었습니다! <br> <button onclick=\"location.href='/job/alarm/alarm.do?id=" + member+ "\'\">알림센터 바로가기</button>"));
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
-				try {
-					// 4. 이력서가 있고 -> 희망직종과 일치하는 -> 채용공고 불러오기
-					List<HireNoti> list = sessionTem.selectList("message.messageHireNoti", r);
-					System.out.println(list.toString());
-					System.out.println("리스트 사이즈 : " + list.size());
-					session.sendMessage(new TextMessage("회원님의 이력서 " + rList.size() + "건 에 대한<br> 추천 채용공고 " + list.size() + "건 이 매칭되었습니다! <br> <button>알림센터 바로가기</button>"));
-				} catch (IOException e) {
-					e.printStackTrace();
+			} else {
+				for(WebSocketSession s : list) {
+					if(s==session) {
+						continue;
+					}
+					try {
+						session.sendMessage(new TextMessage("작성한 이력서가 없으시네요!<br><button onclick=\"location.href='/job/resume.do'\">지금 이력서 작성하러 가기</button>"));
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
+		// 알림설정 OFF 했을때
 		} else {
-			for(WebSocketSession s : list) {
-				if(s==session) {
-					continue;
-				}
-				try {
-					session.sendMessage(new TextMessage("작성한 이력서가 없으시네요!<br><button>지금 이력서 작성하러 가기</button>"));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+			
 		}
-		
-		
-		
-		// 3. 이력서 <-> 채용공고 희망직종 매칭하기
-		
+
 		
 	}
 

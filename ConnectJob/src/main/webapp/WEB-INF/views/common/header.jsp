@@ -70,7 +70,7 @@
                 <div class="header-top-center">
                     <div class="header-search">
                         <img src="${path }/resources/images/icon-search.png" width="14px"><input type="search"
-                            id="search" placeholder="기업을 검색해보세요" autocomplete="off" autofocus />
+                            id="search" placeholder="기업을 검색해보세요" autocomplete="off"/>
                     </div>
                     <div id="header-search-result"></div>
                 </div>

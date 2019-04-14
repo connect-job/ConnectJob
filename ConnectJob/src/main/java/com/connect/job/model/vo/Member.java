@@ -14,11 +14,12 @@ public class Member {
 	private int kakao_id;
 	private String google_id;
 	private int naver_id;
+	private String alarmStatus;
 	
 	public Member() {}
 
 	public Member(String p_id, String password, String p_name, String gender, String phone, String is_sns,
-			Date enroll_date, String email_confirm, int kakao_id, String google_id, int naver_id) {
+			Date enroll_date, String email_confirm, int kakao_id, String google_id, int naver_id, String alarmStatus) {
 		super();
 		this.p_id = p_id;
 		this.password = password;
@@ -31,6 +32,7 @@ public class Member {
 		this.kakao_id = kakao_id;
 		this.google_id = google_id;
 		this.naver_id = naver_id;
+		this.alarmStatus = alarmStatus;
 	}
 
 	public String getP_id() {
@@ -121,15 +123,22 @@ public class Member {
 		this.naver_id = naver_id;
 	}
 
+	public String getAlarmStatus() {
+		return alarmStatus;
+	}
+
+	public void setAlarmStatus(String alarmStatus) {
+		this.alarmStatus = alarmStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [p_id=" + p_id + ", password=" + password + ", p_name=" + p_name + ", gender=" + gender
 				+ ", phone=" + phone + ", is_sns=" + is_sns + ", enroll_date=" + enroll_date + ", email_confirm="
 				+ email_confirm + ", kakao_id=" + kakao_id + ", google_id=" + google_id + ", naver_id=" + naver_id
-				+ "]";
+				+ ", alarmStatus=" + alarmStatus + "]";
 	}
 
 	
-
 	
 }

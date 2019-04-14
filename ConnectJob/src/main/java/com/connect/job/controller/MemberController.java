@@ -71,6 +71,8 @@ public class MemberController {
 		String msg = "";
 		String loc = "/";
 		
+		System.out.println("알람값 가져오기 : " + result.getAlarmStatus());
+		
 		if(result!=null) {
 			msg = "로그인 되었습니다";
 			session.setAttribute("loginMember", result);
