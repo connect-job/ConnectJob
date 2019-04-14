@@ -18,7 +18,7 @@ public class HireNotiController {
 	
 	private Logger logger=LoggerFactory.getLogger(CMemberController.class);
 	
-	@RequestMapping("/insertNoti.do")
+	/*@RequestMapping("/insertNoti.do")
 	public String insertNoti(HireNoti h, Model model)
 	{
 		int result=service.insertNoti(h);
@@ -38,6 +38,8 @@ public class HireNotiController {
 		
 		
 		return "HireNoti/HireNotiAdd";
-	}
+	}*/
+	
+	/*@RequestMapping("/")*/
 	
 }

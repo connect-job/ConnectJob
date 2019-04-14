@@ -6,108 +6,108 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <%
-	Resume resultR=(Resume)request.getAttribute("resultR");
-	String[] jobArea=resultR.getHopeJobArea();
-	String[] category=resultR.getHopeCategory();
-	List<String> jobAreaList=new ArrayList();
+   Resume resultR=(Resume)request.getAttribute("resultR");
+   String[] jobArea=resultR.getHopeJobArea();
+   String[] category=resultR.getHopeCategory();
+   List<String> jobAreaList=new ArrayList();
 List<String> categoryList=new ArrayList();
-	if(jobArea!=null){
-		jobAreaList=Arrays.asList(jobArea);
-	}
-	if(category!=null){
-		categoryList=Arrays.asList(category);
-	}
-	
+   if(jobArea!=null){
+      jobAreaList=Arrays.asList(jobArea);
+   }
+   if(category!=null){
+      categoryList=Arrays.asList(category);
+   }
+   
 %>
 <section>
-	<form name="resumeFrm" action="${pageContext.request.contextPath}/resume/resumeUpdateEnd.do?resumeNo=${resultR.resumeNo}" method="post" onsubmit="return validate();"  enctype="multipart/form-data">
-	
-	<div id="resume-container">
-		
-		<div class="resume-top">
-			<i class="far fa-address-card"></i>　내 이력서 작성
-		</div>
+   <form name="resumeFrm" action="${pageContext.request.contextPath}/resume/resumeUpdateEnd.do?resumeNo=${resultR.resumeNo}" method="post" onsubmit="return validate();"  enctype="multipart/form-data">
+   
+   <div id="resume-container">
+      
+      <div class="resume-top">
+         <i class="far fa-address-card"></i>　내 이력서 작성
+      </div>
 
-		<!-- ----------------------------- 기본 -->
-		<div class="sub-title">기본설정</div>
-		<div class="item">
-			<div class="left">이력서 제목</div>
-			<div class="right">
-				<input type="text" name="title" id="title" value="${resultR.title }">
-				<select name="isPublic">
-					<option value="" disabled selected>공개여부</option>
-					<option value="true" ${resultR.isPublic eq "true"?'selected':'' }>공개</option>
-					<option value="false" ${resultR.isPublic eq 'false'?'selected':'' }>비공개</option>
-				</select>
-			</div>
-		</div>
-		<div class="sub-title">
-			기본정보
-		</div>
-		<div class="profileUpload">
-			<c:choose>
-				<c:when test="${not empty img }">
-					<input type="hidden" name="profileImgNo" value="${img.profileImgNo }">
-					<div id="images" style="border:1px solid lightgray;width:120px;height:160px">
-						<img src="${path }/resources/upload/profile/${img.renamedFileName }" style="width:120px; heigth:160px;" />
-					</div>
-						<input id='profileImg' type="file" name="profileImg" multiple />
-					
-					</c:when>
-					<c:otherwise>
-						<div id="images" style="border:1px solid lightgray;width:120px;height:160px">
-						<i class="far fa-plus-square"></i>사진을 추가해주세요
-						</div>
-			 			<input id='profileImg' type="file" name="profileImg" multiple />
-					</c:otherwise>
-				</c:choose> 
-				
-			</div>
-		
-		<div class="item">
-			<input type="hidden" name="p_id" value="${loginMember.p_id}">
-			<div class="left">이름</div>
-			<div class="right"><input type="text" name="name" id="name" value="${resultR.name }"></div>
-		</div>
-		<div class="item">
-			<div class="left">생년월일</div>
-			<div class="right">
-				<input type="text" id="birth" name="birth" placeholder="YYYYMMDD" value="${resultR.birth }">
-				<select name="gender">
-					<option value="" disabled selected>성별</option>
-					<option value="M"  ${resultR.gender eq 'M'?'selected':'' }>남</option>
-					<option value="F"  ${resultR.gender eq 'F'?'selected':'' }>여</option>
-				</select>
-			</div>
-		</div>
-		<div class="item">
-			<div class="left">이메일</div>
-			<div class="right"><input type="email" name="email" id="email" placeholder="example@connectjob.com" value="${resultR.email }"></div>
-		</div>
-		<div class="item">
-			<div class="left">핸드폰</div>
-			<div class="right"><input type="text" name="phone" id="phone" placeholder="-을 제외하고 작성" value="${resultR.phone }"></div>
-		</div>
+      <!-- ----------------------------- 기본 -->
+      <div class="sub-title">기본설정</div>
+      <div class="item">
+         <div class="left">이력서 제목</div>
+         <div class="right">
+            <input type="text" name="title" id="title" value="${resultR.title }">
+            <select name="isPublic">
+               <option value="" disabled selected>공개여부</option>
+               <option value="true" ${resultR.isPublic eq "true"?'selected':'' }>공개</option>
+               <option value="false" ${resultR.isPublic eq 'false'?'selected':'' }>비공개</option>
+            </select>
+         </div>
+      </div>
+      <div class="sub-title">
+         기본정보
+      </div>
+      <div class="profileUpload">
+         <c:choose>
+            <c:when test="${not empty img }">
+               <input type="hidden" name="profileImgNo" value="${img.profileImgNo }">
+               <div id="images" style="border:1px solid lightgray;width:120px;height:160px">
+                  <img src="${path }/resources/upload/profile/${img.renamedFileName }" style="width:120px; heigth:160px;" />
+               </div>
+                  <input id='profileImg' type="file" name="profileImg" multiple />
+               
+               </c:when>
+               <c:otherwise>
+                  <div id="images" style="border:1px solid lightgray;width:120px;height:160px">
+                  <i class="far fa-plus-square"></i>사진을 추가해주세요
+                  </div>
+                   <input id='profileImg' type="file" name="profileImg" multiple />
+               </c:otherwise>
+            </c:choose> 
+            
+         </div>
+      
+      <div class="item">
+         <input type="hidden" name="p_id" value="${loginMember.p_id}">
+         <div class="left">이름</div>
+         <div class="right"><input type="text" name="name" id="name" value="${resultR.name }"></div>
+      </div>
+      <div class="item">
+         <div class="left">생년월일</div>
+         <div class="right">
+            <input type="text" id="birth" name="birth" placeholder="YYYYMMDD" value="${resultR.birth }">
+            <select name="gender">
+               <option value="" disabled selected>성별</option>
+               <option value="M"  ${resultR.gender eq 'M'?'selected':'' }>남</option>
+               <option value="F"  ${resultR.gender eq 'F'?'selected':'' }>여</option>
+            </select>
+         </div>
+      </div>
+      <div class="item">
+         <div class="left">이메일</div>
+         <div class="right"><input type="email" name="email" id="email" placeholder="example@connectjob.com" value="${resultR.email }"></div>
+      </div>
+      <div class="item">
+         <div class="left">핸드폰</div>
+         <div class="right"><input type="text" name="phone" id="phone" placeholder="-을 제외하고 작성" value="${resultR.phone }"></div>
+      </div>
 
-		<!-- ----------------------------- 학력 -->
+      <!-- ----------------------------- 학력 -->
 
-		<div class="sub-title">
-			학력정보
-		</div>
+      <div class="sub-title">
+         학력정보
+      </div>
 
-		<div class="item">
-			<div class="left">최종 학력정보</div>
-			<div class="right">
-				<select name="finalEdu" onchange="selectFinalEdu()" >
-					<option value="" disabled selected>최종학력을 선택하세요</option>
-					<option value="초등학교 졸업" ${resultR.finalEdu eq '초등학교 졸업'?'selected':'' }>초등학교 졸업</option>
-					<option value="중학교 졸업" ${resultR.finalEdu eq '중학교 졸업'?'selected':'' }>중학교 졸업</option>
-					<option value="고등학교 졸업" ${resultR.finalEdu eq '고등학교 졸업'?'selected':'' }>고등학교 졸업</option>
-					<option value="대학/대학원 이상 졸업" ${resultR.finalEdu eq '대학/대학원 이상 졸업'?'selected':'' }>대학/대학원 이상 졸업</option>
-				</select>
-				<button type="button" id="addUnivBtn" onclick="addUniversity()" ${resultR.finalEdu ne '대학/대학원 이상 졸업'?"style='display:none'":""}>대학 학력 추가</button>
-			</div>
-		</div>
+      <div class="item">
+         <div class="left">최종 학력정보</div>
+         <div class="right">
+            <select name="finalEdu" onchange="selectFinalEdu()" >
+               <option value="" disabled selected>최종학력을 선택하세요</option>
+               <option value="초등학교 졸업" ${resultR.finalEdu eq '초등학교 졸업'?'selected':'' }>초등학교 졸업</option>
+               <option value="중학교 졸업" ${resultR.finalEdu eq '중학교 졸업'?'selected':'' }>중학교 졸업</option>
+               <option value="고등학교 졸업" ${resultR.finalEdu eq '고등학교 졸업'?'selected':'' }>고등학교 졸업</option>
+               <option value="대학/대학원 이상 졸업" ${resultR.finalEdu eq '대학/대학원 이상 졸업'?'selected':'' }>대학/대학원 이상 졸업</option>
+            </select>
+            <button type="button" id="addUnivBtn" onclick="addUniversity()" ${resultR.finalEdu ne '대학/대학원 이상 졸업'?"style='display:none'":""}>대학 학력 추가</button>
+         </div>
+      </div>
 
 
 		<div class="finalEduAjaxContainer" >
@@ -140,7 +140,6 @@ List<String> categoryList=new ArrayList();
 			<c:if test="${resultR.finalEdu eq '중학교 졸업'?true:false }">
 				<input type="hidden" name="finalEduNo" value="${finalEdu.finalEduNo }">
 				<h3>중학교 정보 입력</h3>
-
 				<div class="item">
 					<div class="left">학교명</div>
 					<div class="right">
@@ -284,22 +283,22 @@ List<String> categoryList=new ArrayList();
 		<div class="addUnivContainer"> </div>
 		<div class="addUnivContainer2"> </div>
 
-		<!-- ----------------------------- 경력 -->
+      <!-- ----------------------------- 경력 -->
 
-		<div class="sub-title">
-			경력정보
-		</div>
+      <div class="sub-title">
+         경력정보
+      </div>
 
-		<div class="item">
-			<div class="left">경력정보</div>
-			<div class="right">
-				<select name="career" onchange="selectCareer()" >
-					<option value="" disabled selected>경력을 선택하세요</option>
-					<option value="신입"   ${resultR.career eq '신입'?'selected':'' }>신입</option>
-					<option value="경력"   ${resultR.career eq '경력'?'selected':'' }>경력</option>
-				</select>
-			</div>
-		</div>
+      <div class="item">
+         <div class="left">경력정보</div>
+         <div class="right">
+            <select name="career" onchange="selectCareer()" >
+               <option value="" disabled selected>경력을 선택하세요</option>
+               <option value="신입"   ${resultR.career eq '신입'?'selected':'' }>신입</option>
+               <option value="경력"   ${resultR.career eq '경력'?'selected':'' }>경력</option>
+            </select>
+         </div>
+      </div>
 
 		<div class="carrerAjaxContainer">
 			<c:if test="${resultR.career=='경력' }">
@@ -509,8 +508,6 @@ List<String> categoryList=new ArrayList();
 							</div>
 						</div>
 				</div>
-
-				
 </form>
 </section>
 <script>
@@ -609,12 +606,106 @@ List<String> categoryList=new ArrayList();
 		}
 		});
    
-	function validate(){
-		var finalEdu = $('[name=finalEdu]').val();
-		if(finalEdu=="대학/대학원 이상 졸업"&&major){
-			var Category=("");
-		}
-	}
+   $(function(){
+       $("#profileImg").change(function(){
+          var iputFiles=document.getElementById('profileImg');
+          console.log(iputFiles.files);
+          $.each(iputFiles.files, function(index, item){
+             console.log(item);
+          var reader = new FileReader();
+          reader.onload=function(e){
+            $('#images').children().remove();
+             var img = $("<img></img>").attr("src",e.target.result).css({'width':'120px','height':'160px'});
+             $('#images').append(img);
+          }
+         reader.readAsDataURL(item);
+       });
+       });
+   });
+   
+   function resetHopeArea(){
+      $('input[name=hopeArea]').prop("checked",false);
+   }
+   function resetHopeJobArea(){
+      $('input[name=hopeJobArea]').prop("checked",false);
+   }
+   function selectFinalEdu() {
+      var finalEdu = $('[name=finalEdu]').val();
+      if(finalEdu!="대학/대학원 이상 졸업"){
+         $(".addUnivContainer").empty();
+         $(".addUnivContainer").empty();
+         $("#addUnivBtn").css("display","none");
+      }else{
+         $("#addUnivBtn").css("display","inline-block");
+      }
+      $.ajax({
+         url: "${path}/selectFinalEdu.do",
+         data: { "finalEdu": finalEdu },
+         success: function (data) {
+            $('.finalEduAjaxContainer').html(data);
+            
+         }
+      })
+   }   
+   
+    function selectCareer() {
+      var career = $('[name=career]').val();
+      if(career=="신입"){
+         $(".carrerAjaxContainer").empty();
+      }else{
+         $.ajax({
+            url: "${path}/selectCareer.do",
+            data: { "career": career },
+            success: function (data) {
+               $('.carrerAjaxContainer').html(data);
+            }
+         })
+      }
+   } 
+    function addUniversity(){
+      $.ajax({
+         url:"${path}/addUniversity.do",
+          success:function(data){
+                var univ=$(".univ");
+             if(univ.length==1){
+                $('.addUnivContainer').append(data);
+             }else if(univ.length==2){
+                $('.addUnivContainer2').append(data);
+             }else if(univ.length==3){
+                alert("학교는 최대 3개까지만 입력 가능합니다.");
+             }
+             $(".deleteUnivBtn").click(function(){
+                  var univ=$(".univ");
+                  console.log(univ.length);
+                 if(univ.length>1){
+                   $(this).parent().parent().parent().parent().empty();
+                  }else{
+                  $(this).prev().empty();
+                  $(this).prev().html("대학은 한개 이상 입력하셔야 합니다.");
+                }
+             })
+          }
+      })
+   }
+   
+    $(".deleteUnivBtn2").click(function(){
+      var univ=$(".univ");
+      console.log(univ.length);
+      if(univ.length>1){
+         $(this).parent().parent().parent().empty();
+      }else{
+          console.log($(this).prev());
+          $(this).prev().empty();
+          $(this).prev().html("대학은 한개 이상 입력하셔야 합니다.");
+      }
+      });
+   
+   function validate(){
+      var finalEdu = $('[name=finalEdu]').val();
+      if(finalEdu=="대학/대학원 이상 졸업"&&major){
+         var Category=("");
+      }
+   }
 
 </script>
 

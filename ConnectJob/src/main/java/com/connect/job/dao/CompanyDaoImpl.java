@@ -68,6 +68,21 @@ public class CompanyDaoImpl implements CompanyDao {
 	public List<SearchKeyword> selectKeyword() {
 		return session.selectList("company.selectSearchKeyword");
 	}
+
+	@Override
+	public List<Company> latestSalary() {
+		return session.selectList("company.latestSalary");
+	}
+
+	@Override
+	public List<Company> latestReview() {
+		return session.selectList("company.latestReview");
+	}
+
+	@Override
+	public List<Company> latestScore() {
+		return session.selectList("company.latestScore");
+	}
 	
 	
 	

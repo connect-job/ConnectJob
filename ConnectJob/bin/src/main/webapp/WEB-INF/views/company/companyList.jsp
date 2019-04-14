@@ -132,6 +132,255 @@
                                 <li>중구</li>
                             </ul>
                         </div>
+                        <div id="location">
+                            <ul>
+                                <li>부산전체</li>
+                                <li>강서구</li>
+                                <li>금정구</li>
+                                <li>기장군</li>
+                                <li>남구</li>
+                                <li>동구</li>
+                                <li>동래구</li>
+                                <li>부산진구</li>
+                                <li>북구</li>
+                                <li>사상구</li>
+                                <li>사하구</li>
+                                <li>서구</li>
+                                <li>수영구</li>
+                                <li>연제구</li>
+                                <li>영도구</li>
+                                <li>중구</li>
+                                <li>해운대구</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>대구전체</li>
+                                <li>남구</li>
+                                <li>달서구</li>
+                                <li>달성군</li>
+                                <li>동구</li>
+                                <li>북구</li>
+                                <li>서구</li>
+                                <li>수성구</li>
+                                <li>중구</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>광주전체</li>
+                                <li>광산구</li>
+                                <li>남구</li>
+                                <li>동구</li>
+                                <li>북구</li>
+                                <li>서구</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>대전전체</li>
+                                <li>대덕구</li>
+                                <li>동구</li>
+                                <li>서구</li>
+                                <li>유성구</li>
+                                <li>중구</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>울산전체</li>
+                                <li>남구</li>
+                                <li>동구</li>
+                                <li>북구</li>
+                                <li>울주군</li>
+                                <li>중구</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>세종특별자치시</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>강원전체</li>
+                                <li>강릉시</li>
+                                <li>고성군</li>
+                                <li>동해시</li>
+                                <li>삼척시</li>
+                                <li>속초시</li>
+                                <li>양구군</li>
+                                <li>양양군</li>
+                                <li>영월군</li>
+                                <li>원주시</li>
+                                <li>인제군</li>
+                                <li>정선군</li>
+                                <li>철원군</li>
+                                <li>춘천시</li>
+                                <li>태백시</li>
+                                <li>평창군</li>
+                                <li>홍천군</li>
+                                <li>화천군</li>
+                                <li>횡성군</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>경남전체</li>
+                                <li>거제시</li>
+                                <li>거창군</li>
+                                <li>고성군</li>
+                                <li>김해시</li>
+                                <li>남해군</li>
+                                <li>밀양시</li>
+                                <li>사천시</li>
+                                <li>산청군</li>
+                                <li>양산시</li>
+                                <li>의령군</li>
+                                <li>진주시</li>
+                                <li>창녕군</li>
+                                <li>창원시</li>
+                                <li>창원시 마산합포구</li>
+                                <li>창원시 마산회원구</li>
+                                <li>창원시 성산구</li>
+                                <li>창원시 의창구</li>
+                                <li>창원시 진해구</li>
+                                <li>통영시</li>
+                                <li>하동군</li>
+                                <li>함안군</li>
+                                <li>함양군</li>
+                                <li>합천군</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>경북전체</li>
+                                <li>경산시</li>
+                                <li>경주시</li>
+                                <li>고령군</li>
+                                <li>구미시</li>
+                                <li>군위군</li>
+                                <li>김천시</li>
+                                <li>문경시</li>
+                                <li>봉화군</li>
+                                <li>상주시</li>
+                                <li>성주군</li>
+                                <li>안동시</li>
+                                <li>영덕군</li>
+                                <li>영양군</li>
+                                <li>영주시</li>
+                                <li>영천시</li>
+                                <li>예천군</li>
+                                <li>울릉군</li>
+                                <li>울진군</li>
+                                <li>의성군</li>
+                                <li>청도군</li>
+                                <li>청송군</li>
+                                <li>칠곡군</li>
+                                <li>포항시</li>
+                                <li>포항시 남구</li>
+                                <li>포항시 복구</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>전남전체</li>
+                                <li>강진군</li>
+                                <li>고흥군</li>
+                                <li>곡성군</li>
+                                <li>광양시</li>
+                                <li>구례군</li>
+                                <li>나주시</li>
+                                <li>담양군</li>
+                                <li>목포시</li>
+                                <li>무안군</li>
+                                <li>보성군</li>
+                                <li>순천시</li>
+                                <li>신안군</li>
+                                <li>여수시</li>
+                                <li>영광군</li>
+                                <li>영암군</li>
+                                <li>완도군</li>
+                                <li>장성군</li>
+                                <li>장흥군</li>
+                                <li>진도군</li>
+                                <li>함평군</li>
+                                <li>해남군</li>
+                                <li>화순군</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>전북전체</li>
+                                <li>고창군</li>
+                                <li>군산시</li>
+                                <li>김제시</li>
+                                <li>남원시</li>
+                                <li>무주군</li>
+                                <li>부안군</li>
+                                <li>순창군</li>
+                                <li>완주군</li>
+                                <li>익산시</li>
+                                <li>임실군</li>
+                                <li>장수군</li>
+                                <li>전주시</li>
+                                <li>전주시 덕진구</li>
+                                <li>전주시 완산구</li>
+                                <li>정읍시</li>
+                                <li>진안군</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>충남전체</li>
+                                <li>계룡시</li>
+                                <li>공주시</li>
+                                <li>금산군</li>
+                                <li>논산시</li>
+                                <li>당진시</li>
+                                <li>보령시</li>
+                                <li>부여군</li>
+                                <li>서산시</li>
+                                <li>서천군</li>
+                                <li>아산시</li>
+                                <li>연기군</li>
+                                <li>예산군</li>
+                                <li>천안시</li>
+                                <li>천안시 동남구</li>
+                                <li>천안시 서북구</li>
+                                <li>청양군</li>
+                                <li>태안군</li>
+                                <li>홍성군</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>충북전체</li>
+                                <li>괴산군</li>
+                                <li>단양군</li>
+                                <li>보은군</li>
+                                <li>영동군</li>
+                                <li>옥천군</li>
+                                <li>음성군</li>
+                                <li>제천시</li>
+                                <li>증평군</li>
+                                <li>진천군</li>
+                                <li>청원군</li>
+                                <li>청주시</li>
+                                <li>청주시 상당구</li>
+                                <li>청주시 서원구</li>
+                                <li>청주시 청원구</li>
+                                <li>청주시 흥덕구</li>
+                                <li>충주시</li>
+                            </ul>
+                        </div>
+                        <div id="location">
+                            <ul>
+                                <li>제주전체</li>
+                                <li>서귀포시</li>
+                                <li>제주시</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div id="search_selected">
@@ -180,25 +429,122 @@
 
     <script>
             var locations = $('#search_right > div');
-            locations.eq(1).hide();
-            locations.eq(2).hide();
+            $.each(locations, function(index) {
+                locations.eq(index).hide();
+            });
+            locations.eq(0).show();
+
+            $(this).class
 
             $('#search_left ul li').click(function() {
                 switch($(this).text()) {
                     case "서울" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
                         locations.eq(0).show(); 
-                        locations.eq(1).hide();
-                        locations.eq(2).hide();
                         break;
                     case "경기" : 
-                        locations.eq(0).hide();
-                        locations.eq(1).show();
-                        locations.eq(2).hide();
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(1).show(); 
                         break;
                     case "인천" : 
-                        locations.eq(0).hide();
-                        locations.eq(1).hide();
-                        locations.eq(2).show();
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(2).show(); 
+                        break;
+                    case "부산" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(3).show(); 
+                        break;
+                    case "대구" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(4).show(); 
+                        break;
+                    case "광주" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(5).show(); 
+                        break;
+                    case "대전" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(6).show(); 
+                        break;
+                    case "대전" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(7).show(); 
+                        break;
+                    case "울산" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(8).show(); 
+                        break;
+                    case "세종" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(9).show(); 
+                        break;
+                    case "강원" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(10).show(); 
+                        break;
+                    case "경남" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(11).show(); 
+                        break;
+                    case "경북" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(12).show(); 
+                        break;
+                    case "전남" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(13).show(); 
+                        break;
+                    case "전북" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(14).show(); 
+                        break;
+                    case "충남" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(15).show(); 
+                        break;
+                    case "충북" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(16).show(); 
+                        break;
+                    case "제주" : 
+                        $.each(locations, function(index) {
+                            locations.eq(index).hide();
+                        });
+                        locations.eq(17).show(); 
                         break;
                 }
             });
@@ -271,13 +617,48 @@
             e.remove();
         }
 
+       	function fn_paging(cPage) {
+       		window.location.href="${path}/company/companyList.do?cPage=" + cPage;
+       	}
+       	
+       	function fn_ajaxPaging(cPage) {
+       		var comList = $('#ajax_table');
+       		var location_temp = $('#select_left button');
+            var location = "";
+
+            for(var i=0; i<location_temp.length;i++) {
+                location += location_temp[i].innerText + ",";
+            }
+            
+            
+            $.ajax({
+            	url: '${path}/company/companyListEnd.do',
+            	data: {"location":location, "cPage":cPage},
+            	dataType: "html",
+            	success: function(data) {
+					var Ca = /\+/g;
+					var resultSet = decodeURIComponent(data.replace(Ca, " "));
+            		comList.empty();
+            		comList.html(resultSet);
+            	}
+            });
+            
+       	}
+        
         function fn_search() {
             var comList = $('#ajax_table');
             var location_temp = $('#select_left button');
             var location = "";
 
             for(var i=0; i<location_temp.length;i++) {
-                location += location_temp[i].innerText + ",";
+            	console.log(location_temp[i].innerText.indexOf("전체"));
+            	if(location_temp[i].innerText.indexOf("전체")) {
+            		location += location_temp[i].innerText.replace("전체","") + ",";
+            		console.log(location);
+            	} else {
+            		location += location_temp[i].innerText + ",";
+            	}
+                
             }
             
             $.ajax({
@@ -295,59 +676,3 @@
     </script>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
-
-
-<!-- 
-<div id="company-location">
-    지역선택
-    <select>
-        <option>전국</option>
-        <option>서울</option>
-        <option>부산</option>
-        <option>대구</option>
-        <option>인천</option>
-        <option>광주</option>
-        <option>대전</option>
-        <option>울산</option>
-        <option>세종</option>
-        <option>경기</option>
-        <option>강원</option>
-        <option>충북</option>
-        <option>충남</option>
-        <option>전북</option>
-        <option>전남</option>
-        <option>경북</option>
-        <option>경남</option>
-        <option>제주</option>
-    </select>
-</div>
-<div id="company-location-detail">
-    <select>
-        <option>전체</option>
-        <option>강남구</option>
-        <option>강동구</option>
-        <option>강북구</option>
-        <option>강서구</option>
-        <option>관악구</option>
-        <option>광진구</option>
-        <option>구로구</option>
-        <option>금천구</option>
-        <option>노원구</option>
-        <option>도봉구</option>
-        <option>동대문구</option>
-        <option>동작구</option>
-        <option>마포구</option>
-        <option>서대문구</option>
-        <option>서초구</option>
-        <option>성동구</option>
-        <option>성북구</option>
-        <option>송파구</option>
-        <option>양천구</option>
-        <option>영등포구</option>
-        <option>용산구</option>
-        <option>은평구</option>
-        <option>종로구</option>
-        <option>중구</option>
-        <option>중랑구</option>
-    </select>
-</div> -->

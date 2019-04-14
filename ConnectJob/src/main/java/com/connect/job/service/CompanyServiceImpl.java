@@ -66,6 +66,21 @@ public class CompanyServiceImpl implements CompanyService {
 		return dao.selectKeyword();
 	}
 
+	@Override
+	public List<Company> latestSalary() {
+		return dao.latestSalary();
+	}
+
+	@Override
+	public List<Company> latestReview() {
+		return dao.latestReview();
+	}
+
+	@Override
+	public List<Company> latestScore() {
+		return dao.latestScore();
+	}
+
 	
 
 	

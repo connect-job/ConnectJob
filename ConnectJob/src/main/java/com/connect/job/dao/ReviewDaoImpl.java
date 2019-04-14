@@ -76,6 +76,27 @@ public class ReviewDaoImpl implements ReviewDao {
 		return session.selectList("review.reviewLikeAll", reviewNo);
 	}
 
+	@Override
+	public List<CompanyReview> reviewLatest() {
+		return session.selectList("review.reviewLatest");
+	}
+
+	@Override
+	public int reviewDelete(int num) {
+		return session.delete("review.reviewDelete", num);
+	}
+
+	@Override
+	public List<CompanyReview> reviewAjaxAll(int cPage, int numPerPage, CompanyReview review) {
+		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		return session.selectList("review.reviewAjaxAll", review, row);
+	}
+
+	@Override
+	public int reviewCountAjaxAll(CompanyReview review) {
+		return session.selectOne("review.reviewCountAjaxAll", review);
+	}
+
 	
 	
 }

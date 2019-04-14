@@ -36,6 +36,88 @@ public class CompanyController {
 	@Autowired
 	private CompanyService service;
 	
+	// 연봉 TOP 5
+	@RequestMapping("company/latestSalary.do")
+	@ResponseBody
+	public String latestSalary(HttpServletRequest request) throws UnsupportedEncodingException {
+		String html = "";
+		
+		List<Company> list = service.latestSalary();
+		
+		html += "<ul>";
+		if(!list.isEmpty()) {
+			for(int i=0; i<5; i++) {
+				html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getCompanyNo() + "'\">";
+				if(list.get(i).getCompanyName().length()>12) {
+					html += (i+1) + "　" +  list.get(i).getCompanyName().substring(0, 13) + "...";		
+				} else {
+					html += (i+1) + "　"+  list.get(i).getCompanyName();
+				}
+				html += "　|　" + list.get(i).getCompanyPrice() +"원</li>";
+			}
+		} else {
+			html += "<li>리스트가 없습니다</li>";
+		}
+		html += "</ul>";
+		
+		String result = URLEncoder.encode(html, "UTF-8");
+		return result;
+	}
+	
+	// 리뷰 TOP 5
+	@RequestMapping("company/latestReview.do")
+	@ResponseBody
+	public String latestReview(HttpServletRequest request) throws UnsupportedEncodingException {
+		String html = "";
+		
+		List<Company> list = service.latestReview();
+		
+		html += "<ul>";
+		if(!list.isEmpty()) {
+			for(int i=0; i<5; i++) {
+				html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getCompanyNo() + "'\">";
+				if(list.get(i).getCompanyName().length()>12) {
+					html += (i+1) + "　"+  list.get(i).getCompanyName().substring(0, 13) + "...</li>";		
+				} else {
+					html += (i+1) + "　"+  list.get(i).getCompanyName() +"</li>";
+				}
+			}
+		} else {
+			html += "<li>리스트가 없습니다</li>";
+		}
+		html += "</ul>";
+		
+		String result = URLEncoder.encode(html, "UTF-8");
+		return result;
+	}
+	
+	// 기업평점 TOP 5
+		@RequestMapping("company/latestScore.do")
+		@ResponseBody
+		public String latestScore(HttpServletRequest request) throws UnsupportedEncodingException {
+			String html = "";
+			
+			List<Company> list = service.latestScore();
+			
+			html += "<ul>";
+			if(!list.isEmpty()) {
+				for(int i=0; i<5; i++) {
+					html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getCompanyNo() + "'\">";
+					if(list.get(i).getCompanyName().length()>12) {
+						html += (i+1) + "　"+ list.get(i).getCompanyName().substring(0, 13) + "...</li>";		
+					} else {
+						html += (i+1) + "　"+ list.get(i).getCompanyName() + "</li>";
+					}
+				}
+			} else {
+				html += "<li>리스트가 없습니다</li>";
+			}
+			html += "</ul>";
+			
+			String result = URLEncoder.encode(html, "UTF-8");
+			return result;
+		}
+	
 	// 기업 리스트 페이지 이동
 	@RequestMapping("company/companyList.do")
 	public String companyList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model) {
@@ -71,8 +153,6 @@ public class CompanyController {
 		Company com = new Company();
 		com.setCompanyLocations(locations);
 		
-		System.out.println("검색한 지역 뭐 들어왔니?" + location);
-		
 		int numPerPage = 10;
 		List<Company> list = service.companyList(com, cPage, numPerPage);
 		int total = service.selectAjaxCount(com);
@@ -81,34 +161,31 @@ public class CompanyController {
 		
 		String html = "";
 		
-		html += "<tr>";
-        html += "<th style=\"width:150px\">기업구분</th>";
-        html += "<th style=\"width:390px\">기업명</th>";
-        html += "<th style=\"width:300px\">기업주소</th>";
-        html += "<th style=\"width:150px\">리뷰 수</th>";
-        html += "</tr>";
-        
+		html += "<div class=\"list-item-top\">";
+		html += "<div class=\"cate\">기업구분</div>";
+		html += "<div class=\"name\">기업명</div>";
+		html += "<div class=\"address\">기업주소</div>";
+		html += "<div class=\"count\">등록된 리뷰수</div>";
+		html += "</div>";
+		
 		for(int i=0; i<list.size(); i++) {
-			html += "<tr>";
-			html += "<td style=\"text-align:center\">";
+			html += "<div class=\"list-item\">";
+			html += "<div class=\"cate\">";
 			if(list.get(i).getCompanyStatus()==1) {
 				html += "법인";
 			} else {
 				html += "개인";
 			}
-			html += "</td>";
-			html += "<td><a href=\"" + request.getContextPath() + "/company/companyView.do?no=" +list.get(i).getCompanyNo() + "\">" + list.get(i).getCompanyName() + "</a></td>";
-			html += "<td>" + list.get(i).getCompanyAddressNew() + "</td>";
-			html += "<td style=\"text-align:center\">28</td>";
-			html += "</tr>";
+			html += "</div>";
+			
+			html += "<div class=\"name\">";
+			html += "<a href=\"" + request.getContextPath() + "/company/companyView.do?no=" + list.get(i).getCompanyNo() + "\">" + list.get(i).getCompanyName() + "</a>";
+			html += "</div>";
+			html += "<div class=\"address\">" + list.get(i).getCompanyAddressNew() + "</div>";
+			html += "<div class=\"count\">" + list.get(i).getReviewCount() + "</div>";
+			html += "</div>";
 		}
-		
-		html += "<tr>";
-		html += "<td colspan=\"4\" style=\"text-align: center;\"><div id=\"pageBar\">";
-		html +=  pageBar;
-		html += "</div>";
-		html += "</td>";
-		html += "</tr>";
+		html += "<div id=\"pageBar\">" + pageBar + "</div>";
 		
 		String result = URLEncoder.encode(html, "UTF-8");
 		return result;
@@ -240,8 +317,5 @@ public class CompanyController {
         }
 		return "/";
 	}
-	
-	
-	
 	
 }

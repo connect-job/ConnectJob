@@ -1,388 +1,154 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 
-<<<<<<< HEAD
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <script>
-	$('#logo').hide();
-	$('#searchfrm').hide();
-	$('header').css("height","100px");
-	$('header').css("background-color","#2c3142c7");
+	$('#notice').show();
 </script>
 
-    <section id="index">
-=======
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>커넥트잡 Connect Job</title>
-    <link rel="stylesheet" href="${path }/resources/css/index-style.css">
-    <script src="${path }/resources/js/jquery-3.3.1.min.js"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-</head>
-<body>
-    <header>
-        <div id="header-container">
-            <div id="logo">
-                <a href="${path }/"><img src="${path }/resources/images/logo.jpg" width="250px"></a>
-            </div>
-            <div id="header-menu">
-                <div class="menu-left">
-                    <ul>
-                        <li onclick="location.href='${path}/calendar.do'">공채달력</li>
-                        <li onclick="location.href='${path}/company/companyList.do'">기업탐색</li>
-                        <li>기업리뷰</li>
-                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화</li>
-                    </ul>
-                </div>
-                <div class="menu-right">
-                    <ul>
-                        <c:if test="${loginMember==null}">
-                        	<li onclick="location.href='${path}/member/login.do'">로그인</li>
-                        	<li onclick="location.href='${path}/member/memberEnroll.do'">회원가입</li>
-                        </c:if>
-                        <c:if test="${loginMember!=null}">
-                        	<li onclick="location.href='${path}/member/mypage.do'">마이페이지</li>
-                        	<li onclick="location.href='${path}/member/logout.do'">로그아웃</li>                        	
-                        </c:if>
-                        <li>고객센터</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-    <section>
-        <div id="index-container">
-            <img src="${path }/resources/images/index-text.png"><Br>
-            <div class="index">
-                <div class="index-search">
-                    <img src="${path }/resources/images/icon-search.png" width="14px"><input type="search" id="search" placeholder="기업을 검색해보세요" autocomplete="off" autofocus/>
-                </div>
-                <div id="index-search-result"></div>
-            </div>
-        </div>
-        <script>
-	        function fn_keywordCheck(no) {
-	    		location.href="${path}/company/companyView.do?no=" + no;
-	    		$('#index-search-result').css("display","none");
-	    	}
-        
-        
-        	$(function() {
-        		$.ajax({
-        			url: '${path}/company/companyCount.do',
-        			dataType: 'html',
-        			success: function(data) {
-        				      $('#counter').html(data);
-        			}
-        		});
-        		
-        		
-    			var result = $('#index-search-result');
-        		
-        		$('#search').keyup(function () {
-        			var keyword = $('#search').val();
-        			$.ajax({
-        				url: '${path}/company/searchCompany.do?keyword='+ keyword,
-        				type: 'POST',
-        				dataType: 'text',
-        				success: function(data) {
-        					var Ca = /\+/g;
-							var resultSet = decodeURIComponent(data.replace(Ca, " "));
-        					console.log(resultSet);
-							result.css("display","block");
-        					result.empty();
-        					result.html(resultSet);
-        				}
-        			});
-        		});
-        		
-        		/* $('#search').blur(function() {
-        			result.css("display","none");
-        		}) */
-=======
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-=======
-<<<<<<< HEAD
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
-</head>
-<body>
-    <header>
-        <div id="header-container">
-            <div id="logo">
-                <a href="${path }/"><img src="${path }/resources/images/logo.jpg" width="250px"></a>
-            </div>
-            <div id="header-menu">
-                <div class="menu-left">
-                    <ul>
-                        <li onclick="location.href='${path}/calendar.do'">공채달력</li>
-                        <li onclick="location.href='${path}/company/companyList.do'">기업탐색</li>
-                        <li>기업리뷰</li>
-                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화</li>
-                    </ul>
-                </div>
-                <div class="menu-right">
-                    <ul>
-                        <c:if test="${loginMember==null}">
-                        	<li onclick="location.href='${path}/member/login.do'">로그인</li>
-                        	<li onclick="location.href='${path}/member/memberEnroll.do'">회원가입</li>
-                        </c:if>
-                        <c:if test="${loginMember!=null}">
-                        	<li onclick="location.href='${path}/member/mypage.do'">마이페이지</li>
-                        	<li onclick="location.href='${path}/member/logout.do'">로그아웃</li>                        	
-                        </c:if>
-                        <li>고객센터</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-    <section>
-        <div id="index-container">
-            <img src="${path }/resources/images/index-text.png"><Br>
-            <div class="index">
-                <div class="index-search">
-                    <img src="${path }/resources/images/icon-search.png" width="14px"><input type="search" id="search" placeholder="기업을 검색해보세요" autocomplete="off" autofocus/>
-                </div>
-                <div id="index-search-result"></div>
-            </div>
-        </div>
-        <script>
-	        function fn_keywordCheck(no) {
-	    		location.href="${path}/company/companyView.do?no=" + no;
-	    		$('#index-search-result').css("display","none");
-	    	}
-        
-        
-        	$(function() {
-        		$.ajax({
-        			url: '${path}/company/companyCount.do',
-        			dataType: 'html',
-        			success: function(data) {
-        				      $('#counter').html(data);
-        			}
-        		});
-        		
-        		
-    			var result = $('#index-search-result');
-        		
-        		$('#search').keyup(function () {
-        			var keyword = $('#search').val();
-        			$.ajax({
-        				url: '${path}/company/searchCompany.do?keyword='+ keyword,
-        				type: 'POST',
-        				dataType: 'text',
-        				success: function(data) {
-        					var Ca = /\+/g;
-							var resultSet = decodeURIComponent(data.replace(Ca, " "));
-        					console.log(resultSet);
-							result.css("display","block");
-        					result.empty();
-        					result.html(resultSet);
-        				}
-        			});
-        		});
-        		
-        		/* $('#search').blur(function() {
-        			result.css("display","none");
-        		}) */
-=======
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-</head>
-<body>
-    <header>
-        <div id="header-container">
-            <div id="logo">
-                <a href="${path }/"><img src="${path }/resources/images/logo.jpg" width="250px"></a>
-            </div>
-            <div id="header-menu">
-                <div class="menu-left">
-                    <ul>
-                        <li onclick="location.href='${path}/calendar.do'">공채달력</li>
-                        <li onclick="location.href='${path}/company/companyList.do'">기업탐색</li>
-                        <li>기업리뷰</li>
-                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화</li>
-                    </ul>
-                </div>
-                <div class="menu-right">
-                    <ul>
-                        <c:if test="${loginMember==null}">
-                        	<li onclick="location.href='${path}/member/login.do'">로그인</li>
-                        	<li onclick="location.href='${path}/member/memberEnroll.do'">회원가입</li>
-                        </c:if>
-                        <c:if test="${loginMember!=null}">
-                        	<li onclick="location.href='${path}/member/mypage.do'">마이페이지</li>
-                        	<li onclick="location.href='${path}/member/logout.do'">로그아웃</li>                        	
-                        </c:if>
-                        <li>고객센터</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-    <section>
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
-        <div id="index-container">
-				<img src="${path }/resources/images/index-text.png"><br>
-				<div class="index">
-					<div class="index-search">
-						<img src="${path }/resources/images/icon-search.png" width="14px"><input type="search" id="search" placeholder="기업을 검색해보세요" autocomplete="off" autofocus/>
-					</div>
-					<div id="index-search-result"></div>
-				</div>
-			</div>
-        
-        <script>
-	        function fn_keywordCheck(no) {
-	    		location.href="${path}/company/companyView.do?no=" + no;
-	    		$('#index-search-result').css("display","none");
-	    	}
-        
-        
-        	$(function() {
-        		$.ajax({
-        			url: '${path}/company/companyCount.do',
-        			dataType: 'html',
-        			success: function(data) {
-        				      $('#counter').html(data);
-        			}
-        		});
-        		
-        		
-    			var result = $('#index-search-result');
-        		
-        		$('#search').keyup(function () {
-        			var keyword = $('#search').val();
-        			$.ajax({
-        				url: '${path}/company/searchCompany.do?keyword='+ keyword,
-        				type: 'POST',
-        				dataType: 'text',
-        				success: function(data) {
-        					var Ca = /\+/g;
-							var resultSet = decodeURIComponent(data.replace(Ca, " "));
-        					console.log(resultSet);
-							result.css("display","block");
-        					result.empty();
-        					result.html(resultSet);
-        				}
-        			});
-        		});
-        		
-        		/* $('#search').blur(function() {
-        			result.css("display","none");
-        		}) */
-<<<<<<< HEAD
-=======
-        		$("#loginModal").modal({
-                    fadeDuration: 100
-                  });
-<<<<<<< HEAD
-=======
->>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
-=======
-</head>
-<body>
-    <header>
-        <div id="header-container">
-            <div id="logo">
-                <a href="${path }/"><img src="${path }/resources/images/logo.jpg" width="250px"></a>
-            </div>
-            <div id="header-menu">
-                <div class="menu-left">
-                    <ul>
-                        <li onclick="location.href='${path}/calendar.do'">공채달력</li>
-                        <li onclick="location.href='${path}/company/companyList.do'">기업탐색</li>
-                        <li>기업리뷰</li>
-                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화</li>
-                    </ul>
-                </div>
-                <div class="menu-right">
-                    <ul>
-                        <c:if test="${loginMember==null}">
-                        	<li onclick="location.href='${path}/member/login.do'">로그인</li>
-                        	<li onclick="location.href='${path}/member/memberEnroll.do'">회원가입</li>
-                        </c:if>
-                        <c:if test="${loginMember!=null}">
-                        	<li onclick="location.href='${path}/member/mypage.do'">마이페이지</li>
-                        	<li onclick="location.href='${path}/member/logout.do'">로그아웃</li>                        	
-                        </c:if>
-                        <li>고객센터</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-    <section>
-        <div id="index-container">
-            <img src="${path }/resources/images/index-text.png"><Br>
-            <div class="index">
-                <div class="index-search">
-                    <img src="${path }/resources/images/icon-search.png" width="14px"><input type="search" id="search" placeholder="기업을 검색해보세요" autocomplete="off" autofocus/>
-                </div>
-                <div id="index-search-result"></div>
-            </div>
-        </div>
-        <script>
-	        function fn_keywordCheck(no) {
-	    		location.href="${path}/company/companyView.do?no=" + no;
-	    		$('#index-search-result').css("display","none");
-	    	}
-        
-        
-        	$(function() {
-        		$.ajax({
-        			url: '${path}/company/companyCount.do',
-        			dataType: 'html',
-        			success: function(data) {
-        				      $('#counter').html(data);
-        			}
-        		});
-        		
-        		
-    			var result = $('#index-search-result');
-        		
-        		$('#search').keyup(function () {
-        			var keyword = $('#search').val();
-        			$.ajax({
-        				url: '${path}/company/searchCompany.do?keyword='+ keyword,
-        				type: 'POST',
-        				dataType: 'text',
-        				success: function(data) {
-        					var Ca = /\+/g;
-							var resultSet = decodeURIComponent(data.replace(Ca, " "));
-        					console.log(resultSet);
-							result.css("display","block");
-        					result.empty();
-        					result.html(resultSet);
-        				}
-        			});
-        		});
-        		
-        		/* $('#search').blur(function() {
-        			result.css("display","none");
-        		}) */
->>>>>>> branch 'jian' of https://github.com/connect-job/ConnectJob.git
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
-        		
-        	});
-        	
-        </script>
-    </section>
+<section style="padding-top: 200px;">
+	<div id="index-container">
+		<div id="index-top-left">
+		</div>
+		<div class="index-top-right">
+			<div id="tab-btn" class="notice selected">최근 기업리뷰</div><div id="tab-btn" class="notice2">공지사항</div>
 
+			<div id="item">
+					<br><Br>
+				<img src="${path}/resources/images/loading.gif" width="20px">
+			</div>
+		</div>
+
+		<script>
+			// 최근 기업리뷰 AJAX
+			var item = $('#item');
+			$.ajax({
+				url: '${path}/review/reviewLatest.do',
+				success: function(data) {
+					var Ca = /\+/g;
+	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+	                item.empty();
+	                item.html(resultSet);
+				}
+			});
+		</script>
+
+		<div class="index-hire">
+			<div class="hire-title">
+				실시간 채용공고
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date"><span style="color:red">오늘마감</span></div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date">~2019-06-01 까지</div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date">~2019-06-01 까지</div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date">~2019-06-01 까지</div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date">~2019-06-01 까지</div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+		</div>
+
+
+		<div class="index-middle">
+			<div class="index-middle-left">
+				<div class="top">
+					<div class="left">연봉순위 TOP 5</div>
+					<div class="right">국민연금 기준</div>
+				</div>
+				<div class="content" id="salary">
+						<br><Br>
+					<img src="${path}/resources/images/loading.gif" width="20px">
+				</div>
+				<script>
+				// 최근 기업리뷰 AJAX
+					var salary = $('#salary');
+					$.ajax({
+						url: '${path}/company/latestSalary.do',
+						success: function(data) {
+							var Ca = /\+/g;
+			                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+			                salary.empty();
+			                salary.html(resultSet);
+						}
+					});
+				</script>
+			</div>
+
+			<div class="index-middle-center">
+				<div class="top">
+					<div class="left">기업리뷰 TOP 5</div>
+					<div class="right">기업 별 리뷰 많은 순위</div>
+				</div>
+				<div class="content" id="reviews">
+						<br><Br>
+					<img src="${path}/resources/images/loading.gif" width="20px">
+				</div>
+				<script>
+				// 최근 기업리뷰 AJAX
+					var reviews = $('#reviews');
+					$.ajax({
+						url: '${path}/company/latestReview.do',
+						success: function(data) {
+							var Ca = /\+/g;
+			                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+			                reviews.empty();
+			                reviews.html(resultSet);
+						}
+					});
+				</script>
+			</div>
+			<div class="index-middle-right">
+				<div class="top">
+					<div class="left">기업평점 TOP 5</div>
+					<div class="right">기업 총 평점 기준</div>
+				</div>
+				<div class="content" id="score">
+					<br><Br>
+					<img src="${path}/resources/images/loading.gif" width="20px">
+				</div>
+				<script>
+				// 최근 기업리뷰 AJAX
+					var score = $('#score');
+					$.ajax({
+						url: '${path}/company/latestScore.do',
+						success: function(data) {
+							var Ca = /\+/g;
+			                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+			                score.empty();
+			                score.html(resultSet);
+						}
+					});
+				</script>
+			</div>
+		</div>
+
+	</div>
+</section>
 
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
-
-

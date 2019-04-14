@@ -18,18 +18,21 @@
                     <div id="company-list">
 							<table id="ajax_table">
 								<tr>
-                                    <th style="width:150px">기업명</th>
+                                    <th style="width:200px">기업명</th>
                                     <th style="width:390px">한줄평</th>
-                                    <th style="width:300px">등록일</th>
+                                    <th style="width:200px">등록일</th>
                                     <th style="width:150px">좋아요</th>
 								</tr>
 								<c:choose>
 									<c:when test="${review!=null }">
 										<c:forEach items="${review }" var="list">
 											<tr>
-												<td style="text-align: center;">${list.reviewCompany}</td>
-												<td><a href="${path }/company/companyView.do?no=${list.reviewNo}">${fn:substring(list.reviewShort,0, 30) }</a></td>
-												<td>${list.reviewDate }</td>
+												<td style="text-align: center;">${list.cName}</td>
+												<td><a href="${path }/company/companyView.do?no=${list.reviewCompany}">${fn:substring(list.reviewShort,0, 30) }</a></td>
+												<td style="text-align: center">
+			                                    <fmt:formatDate value="${list.reviewDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>
+			                                    ${regDate }
+												</td>
 												<td style="text-align: center;">${list.reviewLike }</td>
 											</tr>
 										</c:forEach>
@@ -144,7 +147,7 @@
         }
 
        	function fn_paging(cPage) {
-       		window.location.href="${path}/company/companyList.do?cPage=" + cPage;
+       		window.location.href="${path}/review/review.do?cPage=" + cPage;
        	}
        	
        	function fn_ajaxPaging(cPage) {
@@ -157,7 +160,7 @@
             }
             
             $.ajax({
-            	url: '${path}/company/companyListEnd.do',
+            	url: '${path}/review/reviewList.do',
             	data: {"location":location, "cPage":cPage},
             	dataType: "html",
             	success: function(data) {

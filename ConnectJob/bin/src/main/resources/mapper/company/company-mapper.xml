@@ -2,6 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="company">
 
+	<select id="latestSalary" resultMap="companyResult">
+		SELECT COMPANY_NO, COMPANY_NAME, ((COMPANY_PRICE*10)*12)/COMPANY_ALL_PEOPLE COMPANY_PRICE FROM COMPANY WHERE COMPANY_ALL_PEOPLE != 0 ORDER BY company_PRICE DESC
+	</select>
+	
+	<select id="latestReview" resultMap="companyResult">
+		SELECT COMPANY_NO, COMPANY_NAME,  (SELECT COUNT(*) FROM COMPANY_REVIEW B WHERE A.COMPANY_NO = B.REVIEW_COMPANY) REVIEW_COUNT FROM COMPANY A WHERE ROWNUM <![CDATA[ < ]]> 7 ORDER BY REVIEW_COUNT DESC
+	</select>
+	
+	<select id="latestScore" resultMap="companyResult">
+		SELECT B.COMPANY_NO, B.COMPANY_NAME, TRUNC(AVG(REVIEW_TOTAL_SCORE)) TOTAL_SCORE FROM COMPANY_REVIEW A LEFT JOIN COMPANY B ON (A.REVIEW_COMPANY = B.COMPANY_NO) GROUP BY B.COMPANY_NO, B.COMPANY_NAME ORDER BY TOTAL_SCORE DESC	
+	</select>
+	
+	<insert id="insertSearchKeyword">
+		INSERT INTO SEARCH_KEYWORD VALUES(#{keyword}, default)
+	</insert>
+
+	<select id="selectSearchKeyword" resultMap="searchMap">
+		SELECT SEARCH_COMPANY, (SELECT COMPANY_NAME FROM COMPANY B WHERE B.COMPANY_NO = A.SEARCH_COMPANY) CNAME, COUNT(*) CNT FROM SEARCH_KEYWORD A GROUP BY SEARCH_COMPANY ORDER BY CNT DESC
+	</select>
+	
+	<resultMap type="searchkeyword" id="searchMap">
+		<result column="search_company" property="searchCompany"/>
+		<result column="CNAME" property="cname"/>
+		<result column="CNT" property="count"/>
+	</resultMap>
+
 	<insert id="insertCompany" parameterType="company">
 		INSERT INTO COMPANY VALUES(#{companyNo}, #{companyUpdate}, #{companyName}, #{companyZipcode}, #{companyAddressOld}, #{companyAddressNew}, #{companyStatus}, #{companyCode}, #{companyCate}, #{companyRegDate}, #{companyAllPeople}, #{companyPrice}, #{companyNewPeople}, #{companyOutPeople})
 	</insert>
@@ -57,6 +83,7 @@
 		<result property="companyPrice" column="company_price"/>
 		<result property="companyNewPeople" column="company_new_people"/>
 		<result property="companyOutPeople" column="company_out_people"/>
+		<result property="reviewCount" column="review_count"/>
+		<result property="totalScore" column="total_score"/>
 	</resultMap>
-	
 </mapper>

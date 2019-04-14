@@ -10,13 +10,15 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <section>
+
         <div id="company-container">
-            <div class="company-top">
-                기업탐색
-            </div>
+        
+            <div class="company-top">기업탐색</div>
+            
+            <div class="company-title">지역선택</div>
+
             <div class="company-middle">
-                <button onclick="fn_searchOpen()">지역선택</button>
-                <div id="search_location">
+                <div class="search_location">
                     <div id="search_left">
                         <ul>
                             <li>서울</li>
@@ -384,46 +386,43 @@
                     </div>
                 </div>
                 <div id="search_selected">
-                    <div id="select_left">
-                    </div>
-                    <div id="select_right">
-                        <button onclick="fn_search()">검색</button>
-                    </div>
+                    <div id="select_left"></div>
+                    <div id="select_right"><button onclick="fn_search()">검색</button></div>
                 </div>
             </div>
+            
             <div id="company-content">
-                    <div id="company-list">
-							<table id="ajax_table">
-								<tr>
-                                    <th style="width:150px">기업구분</th>
-                                    <th style="width:390px">기업명</th>
-                                    <th style="width:300px">기업주소</th>
-                                    <th style="width:150px">리뷰 수</th>
-								</tr>
-								<c:choose>
-									<c:when test="${company!=null }">
-										<c:forEach items="${company }" var="list">
-											<tr>
-												<td style="text-align: center;">${list.companyStatus==1?"법인":"개인" }</td>
-												<td><a href="${path }/company/companyView.do?no=${list.companyNo}">${list.companyName }</a></td>
-												<td>${list.companyAddressNew }</td>
-												<td style="text-align: center;">28</td>
-											</tr>
-										</c:forEach>
-									</c:when>
-									<c:otherwise>
-										<tr>
-											<td colspan="4"><p align="center">검색 조건을 설정해 주세요</p></td>
-										</tr>
-									</c:otherwise>
-                                </c:choose>
-                                        <tr>
-                                            <td colspan="4" style="text-align: center;"><div id="pageBar">${pageBar }</div></td>
-                                        </tr>
-								</table>
-								
+                <div id="company-list">
+            
+                    <div class="list-item-top">
+                        <div class="cate">기업구분</div>
+                        <div class="name">기업명</div>
+                        <div class="address">기업주소</div>
+                        <div class="count">등록된 리뷰수</div>
                     </div>
+
+                    <c:choose>
+                        <c:when test="${company!=null }">
+                            <c:forEach items="${company }" var="list">
+                                <div class="list-item">
+                                    <div class="cate">${list.companyStatus==1?"법인":"개인" }</div>
+                                    <div class="name">
+                                        <a href="${path }/company/companyView.do?no=${list.companyNo}">${list.companyName }</a>
+                                    </div>
+                                    <div class="address">${list.companyAddressNew }</div>
+                                    <div class="count">${list.reviewCount }</div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+            
+                        <c:otherwise>
+                        </c:otherwise>
+                    </c:choose>
+            
+                    <div id="pageBar">${pageBar }</div>
+            
                 </div>
+            </div>
         </div>
     </section>
 
@@ -432,6 +431,7 @@
             $.each(locations, function(index) {
                 locations.eq(index).hide();
             });
+
             locations.eq(0).show();
 
             $('#search_left ul li').click(function() {
@@ -446,7 +446,7 @@
                         $.each(locations, function(index) {
                             locations.eq(index).hide();
                         });
-                        locations.eq(1).show(); 
+                        locations.eq(1).show();
                         break;
                     case "인천" : 
                         $.each(locations, function(index) {
@@ -546,20 +546,13 @@
                         break;
                 }
             });
-    </script>
-
-    <script>
-        // function fn_searchOpen() {
-        //     $('#search_location').toggle(function(){
-        //     });
-        // }
 
         var searchOption = $('#select_left');
 
         $('#location ul li').click(function() {
             if(!$(this).hasClass('selected')) {
-                console.log($(this).text().indexOf("전체"));
-                if($(this).text().indexOf("전체")>0) {
+                console.log($(this).text().trim().indexOf("전체"));
+                if($(this).text().trim().indexOf("전체")>0) {
                     var li = $('#location ul li');
                     for(var i=0;i<li.length;i++) {
                         li[i].removeAttribute("class");
@@ -567,7 +560,7 @@
 
                     var btn = $('#select_left button');
                     for(var i=0;i<btn.length;i++) {
-                        if(btn[i].innerText.indexOf("전체")>0) {
+                        if(btn[i].innerText.trim().indexOf("전체")>0) {
 
                         } else {
                             btn[i].remove();
@@ -577,24 +570,24 @@
                 } else {
                     var li = $('#location ul li');
                     for(var i=0;i<li.length;i++) {
-                        if(li[i].innerText.indexOf("전체")>0) {
+                        if(li[i].innerText.trim().indexOf("전체")>0) {
                             li[i].removeAttribute("class");
                         }
                     }
                     var btn = $('#select_left button');
                     for(var i=0;i<btn.length;i++) {
-                        if(btn[i].innerText.indexOf("전체")>0) {
+                        if(btn[i].innerText.trim().indexOf("전체")>0) {
                             btn[i].remove();
                         }
                     }
                 }
                 $(this).addClass('selected');
-                searchOption.append("<button onclick='fn_selectCancle(this)'>" + $(this).text() + "</button>");
+                searchOption.append("<button onclick='fn_selectCancle(this)'>" + $(this).text() + "　<i class='fas fa-backspace'></i></button>");
             } else {
                 $(this).removeClass('selected');
                 var btn = $('#select_left button');
                 for(var i=0;i<btn.length;i++) {
-                    if($(this).text()==btn[i].innerText) {
+                    if($(this).text().trim()==btn[i].innerText.trim()) {
                         btn[i].remove();
                     }
                 }
@@ -602,13 +595,11 @@
         });
 
         function fn_selectCancle(e) {
-            var text = e.innerText;
-            console.log("text : " + text);
+            var text = e.innerText.trim();
             var li = $('#location ul li');
-            console.log(li);
+            
             for(var i=0;i<li.length;i++) {
-                if(text==li[i].innerText) {
-                    console.log(li[i]);
+                if(text==li[i].innerText.trim()) {
                     li[i].removeAttribute("class");
                 }
             }
@@ -620,7 +611,7 @@
        	}
        	
        	function fn_ajaxPaging(cPage) {
-       		var comList = $('#ajax_table');
+       		var comList = $('#company-list');
        		var location_temp = $('#select_left button');
             var location = "";
 
@@ -644,17 +635,15 @@
        	}
         
         function fn_search() {
-            var comList = $('#ajax_table');
+            var comList = $('#company-list');
             var location_temp = $('#select_left button');
             var location = "";
 
             for(var i=0; i<location_temp.length;i++) {
-            	console.log(location_temp[i].innerText.indexOf("전체"));
-            	if(location_temp[i].innerText.indexOf("전체")) {
-            		location += location_temp[i].innerText.replace("전체","") + ",";
-            		console.log(location);
+            	if(location_temp[i].innerText.trim().indexOf("전체")) {
+            		location += location_temp[i].innerText.trim().replace("전체","") + ",";
             	} else {
-            		location += location_temp[i].innerText + ",";
+            		location += location_temp[i].innerText.trim() + ",";
             	}
                 
             }

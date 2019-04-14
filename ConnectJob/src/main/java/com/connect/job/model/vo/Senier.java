@@ -6,28 +6,30 @@ import java.util.Arrays;
 
 public class Senier implements Serializable{
 	
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -3653406228267432755L;
-	
+	private static final long serialVersionUID = 6386650764643330963L;
 	
 	private int sNo;
 	private String sJob;
-	private String[] qType;
+	private String qType;
 	private String sTitle;
 	private String sContent;
 	private int sHits;
 	private Date sDate;
 	private String pId;
 	private String status;
+	private String sCate;//직종분류
+	private String[] sJobs;
 	
 	public Senier() {
 		
 	}
 
-	public Senier(int sNo, String sJob, String[] qType, String sTitle, String sContent, int sHits, Date sDate,
-			String pId, String status) {
+	public Senier(int sNo, String sJob, String qType, String sTitle, String sContent, int sHits, Date sDate, String pId,
+			String status, String sCate, String[] sJobs) {
 		super();
 		this.sNo = sNo;
 		this.sJob = sJob;
@@ -38,6 +40,8 @@ public class Senier implements Serializable{
 		this.sDate = sDate;
 		this.pId = pId;
 		this.status = status;
+		this.sCate = sCate;
+		this.sJobs = sJobs;
 	}
 
 	public int getsNo() {
@@ -56,11 +60,11 @@ public class Senier implements Serializable{
 		this.sJob = sJob;
 	}
 
-	public String[] getqType() {
+	public String getqType() {
 		return qType;
 	}
 
-	public void setqType(String[] qType) {
+	public void setqType(String qType) {
 		this.qType = qType;
 	}
 
@@ -112,15 +116,28 @@ public class Senier implements Serializable{
 		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return "Senier [sNo=" + sNo + ", sJob=" + sJob + ", qType=" + Arrays.toString(qType) + ", sTitle=" + sTitle
-				+ ", sContent=" + sContent + ", sHits=" + sHits + ", sDate=" + sDate + ", pId=" + pId + ", status="
-				+ status + "]";
+	public String getsCate() {
+		return sCate;
 	}
 
-	
-	
-	
+	public void setsCate(String sCate) {
+		this.sCate = sCate;
+	}
+
+	public String[] getJobs() {
+		return sJobs;
+	}
+
+	public void setJobs(String[] sJobs) {
+		this.sJobs = sJobs;
+	}
+
+	@Override
+	public String toString() {
+		return "Senier [sNo=" + sNo + ", sJob=" + sJob + ", qType=" + qType + ", sTitle=" + sTitle + ", sContent="
+				+ sContent + ", sHits=" + sHits + ", sDate=" + sDate + ", pId=" + pId + ", status=" + status
+				+ ", sCate=" + sCate + ", sJobs=" + Arrays.toString(sJobs) + "]";
+	}
+
 	
 }
