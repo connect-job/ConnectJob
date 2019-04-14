@@ -18,9 +18,9 @@
 		INSERT INTO PROFILE_IMG VALUES(SEQ_IMG_ID.NEXTVAL,#{resumeNo},#{originalFileName},#{renamedFileName},SYSDATE,'Y')
 	</insert>
 	
-	<update id="updateProfileImg" parameterType="profileImg">
-		UPDATE PROFILE_IMG SET ORIGINAL_FILE_NAME=#{originalFileName}, RENAMED_FILE_NAME=#{renamedFileName},upload_date=SYSDATE WHERE PROFILE_IMG_NO=#{profileImgNo}
-	</update>
+	<insert id="updateProfileImg" parameterType="profileImg">
+		INSERT INTO PROFILE_IMG VALUES(SEQ_IMG_ID.NEXTVAL,#{resumeNo},#{originalFileName},#{renamedFileName},SYSDATE,'Y')	
+	</insert>
 	
 	<update id="updateResume" parameterType="resume">
 		UPDATE RESUME SET TITLE=#{title},NAME=#{name},BIRTH=#{birth},GENDER=#{gender},EMAIL=#{email},PHONE=#{phone},FINAL_EDU=#{finalEdu},CAREER=#{career},HOPE_POSITION=#{hopePosition},HOPE_SALARY=#{hopeSalary},HOPE_AREA=#{hopeArea, typeHandler=strArr},HOPE_JOB_AREA=#{hopeJobArea, typeHandler=strArr},HOPE_CATEGORY=#{hopeCategory, typeHandler=strArr},IS_PUBLIC=#{isPublic},CREATION_DATE=SYSDATE WHERE RESUME_NO=#{resumeNo}
@@ -40,7 +40,8 @@
 	
 	
 	<select id="selectProfileImg" resultType="profileImg" resultMap="imgMap">
-		SELECT * FROM PROFILE_IMG WHERE RESUME_NO=#{resumeNo}
+		SELECT * FROM (SELECT * FROM PROFILE_IMG WHERE RESUME_NO=#{resumeNo} AND STATUS='Y' ORDER BY PROFILE_IMG_NO DESC) WHERE ROWNUM = 1
+		
 	</select>
 	
 	<select id="selectResumeList" resultType="resume" resultMap="resumeResultMap">
@@ -50,7 +51,7 @@
 		SELECT * FROM RESUME WHERE RESUME_NO=#{resumeNo}
 	</select>
 	<select id="selectFinalEdu" resultType="finalEdu" resultMap="finalEduMap" parameterType="_int">
-		SELECT * FROM FINALEDU WHERE RESUME_NO=#{resumeNo}
+		SELECT * FROM (SELECT * FROM FINALEDU WHERE RESUME_NO=#{resumeNo} ORDER BY FINALEDU_NO DESC) WHERE ROWNUM = 1
 	</select>
 	<select id="selectFinalEduUniv" resultType="finalEduUniv" resultMap="finalEduUnivMap" parameterType="_int">
 		SELECT * FROM FINALEDU_UNIV WHERE RESUME_NO=#{resumeNo}
@@ -67,7 +68,9 @@
 	<update id="deleteResume" parameterType="_int">
 		UPDATE RESUME SET IS_DELETE='TRUE' WHERE RESUME_NO=#{resumeNo}
 	</update>
-	
+	<update id="deleteProfileImg" parameterType="_int">
+		UPDATE PROFILE_IMG SET STATUS='N' WHERE RESUME_NO=#{resumeNo}
+	</update>
 
 
 
