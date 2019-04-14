@@ -80,22 +80,27 @@ public class ResumeController {
 		int countUniv=service.selectCntUniv(resumeNo);
 		Resume resultR=service.selectedResume(resumeNo);
 		Career career=service.selectedCareer(resumeNo);
-		System.out.println("view 학교갯수 : "+countUniv);
 		FinalEdu finalEdu=service.selectedFinalEdu(resumeNo);
 		FinalEduUniv finalEduUniv=new FinalEduUniv();
 		List<FinalEduUniv> univList=new ArrayList<FinalEduUniv>();
 		System.out.println("------view-----");
+		System.out.println("view 학교갯수 : "+countUniv);
 		System.out.println(finalEdu);
 		System.out.println(resultR);
 		System.out.println(career);
 		System.out.println(finalEduUniv);
-		System.out.println("--------------");
+		
+		
 		if(countUniv>1) {
 			univList=service.selectedFinalEduUnivList(resumeNo);
+			for(FinalEduUniv u:univList) {
+				System.out.println(u);
+			}
 		}else {
 			finalEduUniv=service.selectedFinalEduUniv(resumeNo);
 			univList.add(finalEduUniv);
 		}
+		System.out.println("--------------");
 		System.out.println("select 사진 : "+img);
 		mv.addObject("img",img);
 		mv.addObject("resultR",resultR);
@@ -228,6 +233,7 @@ public class ResumeController {
 		return mv;
 	}
 	
+	
 	@RequestMapping("/resume/updateResume")
 	public ModelAndView updateResume(int resumeNo) {
 		ModelAndView mv=new ModelAndView();
@@ -236,23 +242,31 @@ public class ResumeController {
 		int countUniv=service.selectCntUniv(resumeNo);
 		Resume resultR=service.selectedResume(resumeNo);
 		Career career=service.selectedCareer(resumeNo);
-
 		FinalEdu finalEdu=service.selectedFinalEdu(resumeNo);
 		FinalEduUniv finalEduUniv=new FinalEduUniv();
+		
 		List<FinalEduUniv> univList=new ArrayList<FinalEduUniv>();
 		System.out.println("------update-----");
+		System.out.println("update대학cnt :"+countUniv);
 		System.out.println(img);
 		System.out.println(resultR);
 		System.out.println(career);
 		System.out.println(finalEdu);
 		System.out.println(finalEduUniv);
-		System.out.println("--------------");
-		if(countUniv>1) {
-			univList=service.selectedFinalEduUnivList(resumeNo);
-		}else {
-			finalEduUniv=service.selectedFinalEduUniv(resumeNo);
-			univList.add(finalEduUniv);
+		if(resultR.getFinalEdu().equals("대학/대학원 이상 졸업")) {
+			if(countUniv>0) {
+				univList=service.selectedFinalEduUnivList(resumeNo);
+				for(FinalEduUniv u:univList) {
+					System.out.println(u);
+				}
+			}else {
+				finalEduUniv=service.selectedFinalEduUniv(resumeNo);
+				univList.add(finalEduUniv);
+			}
+
+			System.out.println("--------------");
 		}
+		
 		mv.addObject("img",img);
 		mv.addObject("resultR",resultR);
 		mv.addObject("countUniv",countUniv);
@@ -268,14 +282,15 @@ public class ResumeController {
 		return mv;
 	}
 	@RequestMapping("/resume/resumeUpdateEnd.do")
-	public ModelAndView updateResume(MultipartFile profileImg,int resumeNo,Resume r,FinalEdu fe,FinalEduUniv fu, Career c,HttpSession session,HttpServletRequest re){
-		System.out.println(profileImg);
+	public ModelAndView updateResume(MultipartFile profileImg, Resume r,FinalEdu fe,FinalEduUniv fu, Career c,HttpSession session,HttpServletRequest re){
+		System.out.println("*******수정*******");
+		System.out.println(profileImg.getOriginalFilename());
 		System.out.println(r);
 		System.out.println(fe);
 		System.out.println(fu);
 		System.out.println(c);
-		r.setResumeNo(resumeNo);
-		
+		System.out.println("이렦써 뻔호 왔?ㅋㅋㅋㅋ " + r.getResumeNo());
+
 		ProfileImg p=new ProfileImg();
 		String saveDir=re.getSession().getServletContext().getRealPath("/resources/upload/profile");
 		
@@ -283,7 +298,7 @@ public class ResumeController {
 		if(!dir.exists()) {
 			dir.mkdirs();
 		}
-		if(profileImg!=null){
+		if(!profileImg.getOriginalFilename().equals("")){
 			String oriFileName=profileImg.getOriginalFilename();
 			String ext=oriFileName.substring(oriFileName.indexOf("."));
 			SimpleDateFormat sdf=new SimpleDateFormat("yyyy_MM_dd_HHmmssSSS");
@@ -335,6 +350,7 @@ public class ResumeController {
 				f.setGraduateState(graduateState[i]);
 				univList.add(f);
 			}
+			
 			result=service.updateResume(r, univList, c, p);
 		}else {
 			result=service.updateResume(r, fe, c, p);
