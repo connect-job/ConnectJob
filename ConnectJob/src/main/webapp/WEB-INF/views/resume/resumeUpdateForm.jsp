@@ -110,7 +110,7 @@ List<String> categoryList=new ArrayList();
 		</div>
 
 
-		<div class="finalEduAjaxContainer">
+		<div class="finalEduAjaxContainer" >
 			<!-----------------------------초등학교 졸업 -->
 			<c:if test="${resultR.finalEdu eq '초등학교 졸업'?true:false }">
 				<input type="hidden" name="finalEduNo" value="${finalEdu.finalEduNo }">
@@ -278,9 +278,9 @@ List<String> categoryList=new ArrayList();
 					      </select>
 					   </div>
 					</div>
-					</div>
+				</div>
 				</c:forEach>
-		
+		</div>
 		<div class="addUnivContainer"> </div>
 		<div class="addUnivContainer2"> </div>
 
@@ -480,7 +480,7 @@ List<String> categoryList=new ArrayList();
 					            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea14" value='C,C++개발자' <%=jobAreaList!=null&&jobAreaList.contains("C,C++개발자")?"checked":"" %>/>C,C++개발자</label>
 					            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea15" value='개발 매니저' <%=jobAreaList!=null&&jobAreaList.contains("개발 매니저")?"checked":"" %>/>개발 매니저</label>
 					            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea16" value='데이터 사이언티스트' <%=jobAreaList!=null&&jobAreaList.contains("데이터 사이언티스트")?"checked":"" %>/>데이터 사이언티스트</label>
-					            <button onclick="resetHopeArea()">reset</button>
+					            <button type="button" onclick="resetHopeArea()">reset</button>
 								
 							</div>
 						</div>
@@ -497,7 +497,7 @@ List<String> categoryList=new ArrayList();
 								<label><input type="checkbox" name="hopeCategory" id="hopeCategory7" value='정보보안·백신' <%=categoryList!=null&&categoryList.contains("정보보안·백신")?"checked":"" %>/>정보보안·백신</label>
 								<label><input type="checkbox" name="hopeCategory" id="hopeCategory8" value='IT컨설팅' <%=categoryList!=null&&categoryList.contains("IT컨설팅")?"checked":"" %>/>IT컨설팅</label>
 								<label><input type="checkbox" name="hopeCategory" id="hopeCategory9" value='게임' <%=categoryList!=null&&categoryList.contains("게임")?"checked":"" %>/>게임</label>
-								<button onclick="resetHopeJobArea()">reset</button>
+								<button type="button" onclick="resetHopeJobArea()">reset</button>
 							</div>
 						</div>
 				
@@ -509,7 +509,7 @@ List<String> categoryList=new ArrayList();
 							</div>
 						</div>
 				</div>
-		</div>
+
 				
 </form>
 </section>
@@ -531,6 +531,7 @@ List<String> categoryList=new ArrayList();
 	    });
 	    });
 	});
+	
 	function resetHopeArea(){
 		$('input[name=hopeArea]').prop("checked",false);
 	}
@@ -543,6 +544,8 @@ List<String> categoryList=new ArrayList();
 			$(".addUnivContainer").empty();
 			$(".addUnivContainer").empty();
 			$("#addUnivBtn").css("display","none");
+		}else{
+			$("#addUnivBtn").css("display","inline-block");
 		}
 		$.ajax({
 			url: "${path}/selectFinalEdu.do",
@@ -553,8 +556,8 @@ List<String> categoryList=new ArrayList();
 			}
 		})
 	}	
-
-	function selectCareer() {
+	
+	 function selectCareer() {
 		var career = $('[name=career]').val();
 		if(career=="신입"){
 			$(".carrerAjaxContainer").empty();
@@ -567,8 +570,8 @@ List<String> categoryList=new ArrayList();
 				}
 			})
 		}
-	}
-	function addUniversity(){
+	} 
+	 function addUniversity(){
 		$.ajax({
 			url:"${path}/addUniversity.do",
 		    success:function(data){
@@ -590,6 +593,8 @@ List<String> categoryList=new ArrayList();
 						$(this).prev().html("대학은 한개 이상 입력하셔야 합니다.");
 			    	}
 				 })
+		    }
+		})
 	}
 	
 	 $(".deleteUnivBtn2").click(function(){
