@@ -147,7 +147,7 @@
         }
 
        	function fn_paging(cPage) {
-       		window.location.href="${path}/company/companyList.do?cPage=" + cPage;
+       		window.location.href="${path}/review/review.do?cPage=" + cPage;
        	}
        	
        	function fn_ajaxPaging(cPage) {
@@ -160,7 +160,7 @@
             }
             
             $.ajax({
-            	url: '${path}/company/companyListEnd.do',
+            	url: '${path}/review/reviewList.do',
             	data: {"location":location, "cPage":cPage},
             	dataType: "html",
             	success: function(data) {

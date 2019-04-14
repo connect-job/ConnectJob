@@ -13,7 +13,6 @@
                     <li onclick="location.href='${path}/trmUse.do'">이용약관</li>
                     <li onclick="location.href='${path}/privacyPolicy.do'">개인정보처리방침</li>
                     <li onclick="location.href='${path}/emailUnthClct.do'">이메일무단수집거부</li>
-                   <!--  <li>자주묻는질문</li> -->
                 </ul>
             </div>
             <!-- <div class="footer-middle">

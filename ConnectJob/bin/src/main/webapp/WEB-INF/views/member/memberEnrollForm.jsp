@@ -1,18 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="com.connect.job.common.TempKey"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<%
-	TempKey tempkey=new TempKey();
-	String key=tempkey.getKey(6, false);
-%>
 <style>
 	div#id-result-div{display: none;}
-	div#pw-result-div{display: none;}
-	div#pw-result-div2{display: none;}
+	/* div#pw-result-div{display: none;}
+	div#pw-result-div2{display: none;} */
 </style>
 <section>
 	<div id="enroll-container">
@@ -24,13 +20,11 @@
 		</div>
 		
 		<div id="memberEnroll" class="tab-content current">
-			<form id="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
+			<form id="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post" onsubmit="fn_checkForm();">
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="p_id" id="p_id" autocomplete="off" />						
-						<input type="hidden" name="key" id="keyck" value="<%=key %>" autocomplete="off"/>						
-						<input type="button" value="인증번호 전송" id="emailSender"/>																
+						<input type="email" name="p_id" id="p_id" autocomplete="off" placeholder="이메일 아이디" required/>																										
 					</div>
 				</div>
 				
@@ -44,85 +38,68 @@
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
 					<div class="right">
-						<input type="password" name="password" id="pw1" required/>						
+						<input type="password" name="password" id="pw1" placeholder="영문+숫자+특수문자 8글자 이상 입력" required/>
+						<span id="pw_validate"></span>						
 					</div>
-				</div>
-				
-				<!-- <div class="enroll-item" id="pw-result-div">
-					<div class="left"></div>
-					<div class="right">						
-						<span id="pw_validate"></span>					
-					</div>					
-				</div> -->
+				</div>				
 				
 				<div class="enroll-item">
 					<div class="left">비밀번호 확인</div>
 					<div class="right">
-						<input type="password" name="password2" id="pw2" required />						
-					</div>
-				</div>
-				
-				<div class="enroll-item" id="pw-result-div2">
-					<div class="left"></div>
-					<div class="right">						
+						<input type="password" name="password2" id="pw2" required />
 						<span id="password_result"></span>						
-					</div>					
-				</div>	
+					</div>
+				</div>					
 		
 				<div class="enroll-item msgdiv">
 					<div class="left">이름</div>
 					<div class="right">
-						<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
-						<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
-						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
+						<input type="text" name="p_name" required/>
+						<span id="name_result"></span>
+					</div>
+				</div>
+				
+				<div class="enroll-item msgdiv">
+					<div class="left">닉네임</div>
+					<div class="right">
+						<input type="text" name="nickname" required/>
+						<span id="nickname_result"></span>
 					</div>
 				</div>		
 
 				<div class="enroll-item">
 					<div class="left">성별</div>
 					<div class="right">
-						<input type="radio" name="gender" value="M" />남
+						<input type="radio" name="gender" value="M" checked/>남
 						<input type="radio" name="gender" value="F" />여
 					</div>
 				</div>
 				
 				<div class="enroll-item">
 					<div class="left">연락처</div>
-					<div class="right"><input type="phone" name="phone" autocomplete="off" /></div>
-				</div>
-				
-				<div class="enroll-item">
-					<div class="left">최종학력</div>
-					<div class="right"><input type="text" name="final_edu" autocomplete="off" /></div>
-				</div>
-				
-				<div class="enroll-item">
-					<div class="left">학교</div>
-					<div class="right"><input type="text" name="school" autocomplete="off" /></div>
-				</div>
-				
-				<div class="enroll-item">
-					<div class="left">전공</div>
-					<div class="right"><input type="text" name="major" autocomplete="off" /></div>
-				</div>
+					<div class="right">
+						<input type="phone" name="phone" autocomplete="off" required/>
+						<span id="phone_result"></span>
+					</div>
+				</div>				
 				
 				<div class="enroll-text">
 					<b>약관동의</b></br>
 				</div>
 				<div class="enroll-text">
-					<div>전체동의<input type="checkbox" class="chk" id="chk_all" /></div>
+					<div>전체동의<input type="checkbox" class="chk" id="chk_all" value="ACCEPT_TERMS_ALL"/></div>
 				</div>
 				<div class="enroll-text">
-					<div>기업회원 약관에 동의<input type="checkbox" class="chk" name="chk" id="ch2" /></div>
+					<div>기업회원 약관에 동의<input type="checkbox" class="chk" name="chk" id="memberAccept" /></div>
 				</div>
 				<div class="enroll-text">
-					<div>개인정보 수집 및 이용에 동의<input type="checkbox" class="chk" name="chk" id="ch3" /></div>
+					<div>개인정보 수집 및 이용에 동의<input type="checkbox" class="chk" name="chk" id="memberAccept" /></div>
 				</div>
 				<div class="enroll-text">
-					<div>마케팅 정보 수신 동의 - 이메일 (선택)<input type="checkbox" class="chk" name="chk" id="ch4" /></div>
+					<div>마케팅 정보 수신 동의 - 이메일 (선택)<input type="checkbox" class="chk" name="chk" id="memberAccept" /></div>
 				</div>
 				<div class="enroll-text">
-					<div>마케팅 정보 수신 동의 - SMS/MMS (선택)<input type="checkbox" class="chk" name="chk" id="ch5" /></div>
+					<div>마케팅 정보 수신 동의 - SMS/MMS (선택)<input type="checkbox" class="chk" name="chk" id="memberAccept" /></div>
 				</div>
 				<div class="enroll-text">
 					<div>개인정보 제 3자 제공 및 위탁사항 이용약관</div>
@@ -136,116 +113,154 @@
 </section>
 
 <script>
-
-//인증번호 전송
-$(document).ready(function(){
-	$('#emailSender').on('click', function(){
-		
-		alert("가입하신 이메일로 인증메일이 발송되었습니다.");
-		
-		var p_id=$('#p_id').val();
-		var keyck=$('#keyck').val();
-		/* var key=$('#key').val(); */
-		
-		$.ajax({
-			type:'POST',
-			url:'${path}/emailSender?p_id='+p_id, //이메일 보내기 
-			success:function(data){
-				
-				window.open('${path}/member/emailForm?keyck='+keyck, '', 'width=500, height=200');
-				
-				/* $('#key').blur(function(){
-					if(key!=keyck){					
-						console.log("인증번호 불일치");						
-					}else{
-						
-						console.log("인증번호 일치");
-					} 
-				}); */
-				
-				console.log(keyck);
-			},
-			error:function(error){
-				alert(error);
-			}
-		});			
+$(function(){
+	$('[name=p_name]').blur(function(){
+		var p_name=$('[name=p_name]').val();
+		if(p_name.trim()==""){
+			$('#name_result').html('이름을 입력해주세요').css('color', 'red');
+			$('[name=p_name]').focus();
+		}else{
+			$('#name_result').hide();
+		}
+	});
+	$('[name=nickname]').blur(function(){
+		var nickname=$('[name=nickname]').val();
+		if(nickname.trim()==""){
+			$('#nickname_result').html('닉네임을 입력해주세요').css('color', 'red');
+			$('[name=nickname]').focus();
+		}else{
+			$.ajax({
+				type:"POST",
+				url: "${path}/member/checkNick?nickname="+nickname,
+				success:function(result){
+					if(result!=0){							
+						$("#nickname_result").html("사용 불가능한 닉네임입니다.").css('color', 'red');					
+					}else{							
+						$("#nickname_result").html("사용 가능한 닉네임입니다.").css('color', 'green');					
+					}
+				},error:function(error){
+					$("#nickname_result").html("error");
+				}
 			
+			});	
+		}
+	});
+	$('[name=phone]').blur(function(){
+		var nickname=$('[name=phone]').val();
+		if(nickname.trim()==""){
+			$('#phone_result').html('연락처를 입력해주세요').css('color', 'red');
+			$('[name=phone]').focus();
+		}else{
+			$('#phone_result').hide();
+		}
 	});
 });
 
 //아이디 중복체크
 $(document).ready(function(){	
-	$('#p_id').blur(function(){		
-		var p_id=$('#p_id').val();							
-		$.ajax({
-			type:"POST",
-			url: "${path}/member/checkId?p_id="+p_id,
-			success:function(result){
-				$("#id-result-div").show();
-				if(result!=0){							
-					$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');					
-				}else{							
-					$("#id_result").html("사용 가능한 아이디입니다.").css('color', 'green');					
+	$('#p_id').blur(function(){
+		var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		var p_id=$('#p_id').val();
+		
+		if(p_id.trim()==""){
+			$("#id-result-div").show();
+			$("#id_result").html("아이디를 입력해주세요").css('color', 'red');
+			$('#p_id').focus();
+		}else if(p_id.indexOf(" ")>=0){
+			$("#id-result-div").show();
+			$("#id_result").html("아이디에는 공백이 들어갈 수 없습니다.").css('color', 'red');
+			$('#p_id').focus();
+		}else if(emailRegex.test(p_id)==false){
+			$("#id-result-div").show();
+			$("#id_result").html("이메일 형식이 올바르지 않습니다.").css('color', 'red');
+			$('#p_id').focus();
+		}else{
+			$.ajax({
+				type:"POST",
+				url: "${path}/member/checkId?p_id="+p_id,
+				success:function(result){
+					$("#id-result-div").show();
+					if(result!=0){							
+						$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');
+						$('#p_id').focus();
+					}else{							
+						$("#id_result").html("사용 가능한 아이디입니다.").css('color', 'green');					
+					}
+				},error:function(error){
+					$("#id_result").html("error");
 				}
-			},error:function(error){
-				$("#id_result").html("error");
-			}
-		});
+			});
+		}		
 	});
 });
 
-//비밀번호 일치
 $(function(){
-	$("input[type=password]").blur(function(){
-		var pw1=$('#pw1').val();
-		var pw2=$('#pw2').val();		
-		var result=document.getElementById("password_result");		
-		$("#pw-result-div").show();
-		if(pw1.trim()!=pw2.trim()){
-			$('#password_result').html("비밀번호가 일치하지 않습니다.").css('color', 'red');
-			/* alert("비밀번호가 일치하지 않습니다."); */
-			return false;
-		}
-		if(pw1.trim().length<8){
-			/* $('#pw_validate').html("비밀번호는 8자리 이상 20자리 이하로 입력해주세요.").css('color', 'red'); */
-			alert("비밀번호는 8자리 이상 20자리 이하로 입력해주세요.");
-			return false;
-		}
-		
-		return true;
-		
-	});
+	$("input:radio[name='gender']:radio[value='M']").prop('checked', true); // 선택하기
+
+	$("input:radio[name='gender']:radio[value='F']").prop('checked', false); // 해제하기
 });
 
 
-
-
-	/* $(function(){	
-	var pw1=$('#pw1').val();
-	$("#pw1").blur(function(){		
-		if(pw1.trim().length<8){
-			$('#pw_validate').html("비밀번호는 8자리 이상 20자리 이하로 입력해주세요.").css('color', 'red');
-		}else if(pw1.trim().length8){
-			$('#pw_validate').html("사용가능한 비밀번호입니다.").css('color', 'green');
-		}
-		
-	});
-	
-}); */
-
-/* $(function(){
-	var pw1=$('#pw1').val();
-	var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/; //정규식
+//정규식
+$(document).ready(function(){
 	$("#pw1").blur(function(){
-		if(!regex.test(pw1)){
-			alert('영문, 숫자, 특수문자 혼합해 입력');
-			return false;
-		}
-		return true;
+		var pw=$('#pw1').val();
+		
+		var checkSpe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?-]/gi);
+		var checkNumber = pw.search(/[0-9]/g);
+		var checkEnglish = pw.search(/[a-z]/ig);
+		
+		console.log(checkSpe);
+		
+		if(checkEnglish<0 || checkNumber<0 || checkSpe<0) {
+			$('#pw_validate').html("영문+숫자+특수문자").css('color', 'red');
+			$('#pw1').focus();
+		}else if(pw.trim().length<8 || pw.trim().length>20){
+			$('#pw_validate').html("8자리 이상 20자리 이하로 입력해주세요.").css('color', 'red');
+			$('#pw1').focus();
+		}else if(pw.indexOf(" ")>=0){
+			$('#pw_validate').html("공백 입력 불가").css('color', 'red');
+			$('#pw1').focus();
+		}else{
+			$('#pw_validate').html("사용 가능한 비밀번호입니다.").css('color', 'green');
+		}	
+	
 	});
-}) */
+});
 
+$(document).ready(function(){
+	
+	$("#pw2").blur(function(){
+		
+		var password=$('#pw1').val();
+		var password2=$('#pw2').val();	
+		
+		if(password.trim()!=password2.trim()){
+			$('#password_result').html("비밀번호가 일치하지 않습니다.").css('color', 'red');
+			$('#pw2').focus();
+		}else{
+			$('#password_result').html("비밀번호가 일치합니다.").css('color', 'green');	
+		}		
+	});
+});
 
+//체크박스 전체선택 및 전체해제
+$("#chk_all").click(function(){
+    if($("#chk_all").is(":checked")){
+        $(".chk").prop("checked",true);
+    }else{
+        $(".chk").prop("checked",false);
+    }
+});
+
+//한개의 체크박스 선택 해제시 전체선택 체크박스도 해제
+$(".chk").click(function(){
+    if($("input[name='chk']:checked").length == 4){
+        $("#chk_all").prop("checked",true);
+    }else{
+        $("#chk_all").prop("checked",false);
+    }
+});
 
 </script>
 
