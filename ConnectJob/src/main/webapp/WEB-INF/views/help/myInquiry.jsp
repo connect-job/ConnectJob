@@ -57,24 +57,35 @@
 							<span>${inq.status==false?"답변대기중":"답변완료"}</span>
 						</div>
 					</div>
-				</c:if>
-			</c:forEach>
-		</div>
 
-		<div id="pageBar">
-			${pageBar}
-		</div>
-	</div>
+            	</c:if>
+				</c:forEach>
+           
+            
+        </div>
+    </div>
+         <div id="pageBar">
+        	${pageBar}
+        </div>
+
 
 	<script>
-		function fn_paging(cPage) {
-			if (${ loginMember != null and loginCMember == null }) {
-				window.location.href = "${path}/help/myInquiry.do?cPage=" + cPage + "&id=${loginMember.p_id}";
-			} else if (${ loginMember == null and loginCMember != null }) {
-				window.location.href = "${path}/help/myInquiry.do?cPage=" + cPage + "&id=${loginCMember.cMemberEmail}";
-			}
-		}
-	</script>
+        
+        function fn_paging(cPage) {
+        
+           if(${loginMember!=null and loginCMember==null})
+           {
+              window.location.href="${path}/help/myInquiry.do?cPage=" + cPage +"&id=${loginMember.p_id}";
+           }
+           else if(${loginMember==null and loginCMember!=null})
+           {
+                window.location.href="${path}/help/myInquiry.do?cPage=" + cPage +"&id=${loginCMember.cMemberEmail}";
+           }
+
+          }
+        
+        </script>
+
 
 </section>
 
