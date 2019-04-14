@@ -33,7 +33,7 @@ public class HireNoti {
 	private String hnDoc;
 	private String hnInterview;
 	private String hnTitle;
-	private Date AddDate;
+	private Date addDate;
 	
 	public HireNoti() {
 		// TODO Auto-generated constructor stub
@@ -73,7 +73,7 @@ public class HireNoti {
 		this.hnDoc = hnDoc;
 		this.hnInterview = hnInterview;
 		this.hnTitle = hnTitle;
-		AddDate = addDate;
+		this.addDate = addDate;
 	}
 
 	public int getHnSeq() {
@@ -301,11 +301,11 @@ public class HireNoti {
 	}
 
 	public Date getAddDate() {
-		return AddDate;
+		return addDate;
 	}
 
 	public void setAddDate(Date addDate) {
-		AddDate = addDate;
+		this.addDate = addDate;
 	}
 
 	@Override
@@ -318,8 +318,10 @@ public class HireNoti {
 				+ ", hnWorkPlace=" + hnWorkPlace + ", hnDay=" + hnDay + ", hnStime=" + hnStime + ", hnDtime=" + hnDtime
 				+ ", startDate=" + startDate + ", endDate=" + endDate + ", hnEve=" + Arrays.toString(hnEve)
 				+ ", hnReMethod=" + hnReMethod + ", hnProcess=" + hnProcess + ", hnDoc=" + hnDoc + ", hnInterview="
-				+ hnInterview + ", hnTitle=" + hnTitle + ", AddDate=" + AddDate + "]";
+				+ hnInterview + ", hnTitle=" + hnTitle + ", addDate=" + addDate + "]";
 	}
+
+	
 
 		
 }

@@ -13,4 +13,7 @@
 	<insert id="insertNoti" parameterType="hireNoti">
 		INSERT INTO HIRENOTI VALUES(HN_Seq.NEXTVAL,#{cMemberId},#{hnSort, typeHandler=strArr},#{hnCareer},#{hnForm},#{hnRecruit},#{hnCate},#{hnChargeTask},#{hnDept},#{hnRankPosition},#{hnFinalEdu, typeHandler=strArr},#{hnMajor},#{hnPreference},#{hnGender},#{hnBirth, typeHandler=strArr},#{hnSal},#{hnWorkPlace},#{hnDay},#{hnStime},#{hnDtime},#{startDate},#{endDate},#{hnEve, typeHandler=strArr},#{hnReMethod},#{hnProcess},#{hnDoc},#{hnInterview},#{hnTitle},sysdate)
 	</insert>
+	
+	
+	
 </mapper>
