@@ -16,5 +16,7 @@ public interface ReviewService {
 	int reviewLike(CompanyReviewLike like);
 	int reviewUpdate(CompanyReview r);
 	List<CompanyReviewLike> reviewLikeAll(int reviewNo);
+	List<CompanyReview> reviewLatest();
+	int reviewDelete(int num);
 
 }

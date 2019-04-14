@@ -38,5 +38,14 @@ public interface CompanyService {
 	// 검색어 순위 불러오기
 	List<SearchKeyword> selectKeyword();
 
+	// 연봉순위 TOP 5
+	List<Company> latestSalary();
+
+	// 리뷰순위 TOP 5
+	List<Company> latestReview();
+	
+	// 기업 평점 순 TOP 5
+	List<Company> latestScore();
+
 	
 }

@@ -706,6 +706,14 @@
                             }
                         });
                     }
+                    
+                    function fn_delete(num) {
+                    	if(confirm('해당 리뷰를 삭제하시겠습니까?')) {
+                    		location.href="${path}/review/reviewDelete.do?num=" + num;
+                    	} else {
+                    		return;
+                    	}
+                    }
 
                     // 좋아요
                     function fn_like(num) {

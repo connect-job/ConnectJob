@@ -2,19 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 	<insert id="insertMember" parameterType="member">
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, default, 'N', null, null, null)
+	</insert>
+	
+	<insert id="insertMemberSns" parameterType="member">
+		insert into p_member values
+		<choose>
+			<when test="is_sns == 'kakao'">
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, #{kakao_id}, null, null)
+			</when>
+			<when test="is_sns == 'google'">
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, #{google_id}, null)
+			</when>
+			<when test="is_sns == 'naver'">
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, null, #{naver_id})
+			</when>
+		</choose>
 
-		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, #{final_edu}, #{school}, #{major}, default, default, ${kakao_id})
 	</insert>
 	
 	<select id="selectOne" resultType="member">
-		select * from p_member where p_id=#{p_id}
+		select * from p_member where p_id = #{p_id}
+	</select>
+	
+	<select id="selectOneSns" resultType="member">
+		select * from p_member WHERE 1=1
+		<choose>
+			<when test="is_sns!=null and is_sns == 'kakao'">
+				and kakao_id = #{kakao_id}
+			</when>
+			<when test="is_sns!=null and is_sns == 'google'">
+				and google_id = #{google_id}
+			</when>
+			<when test="is_sns!=null and is_sns == 'naver'">
+				and naver_id = #{naver_id}
+			</when>
+		</choose>
+	</select>
+	
 
-	</select>
-	
-	<select id="selectOneKakao" resultType="member">
-		select * from p_member where kakao_id = #{kakao_id}
-	</select>
-	
 	<select id="findId" resultType="member" parameterType="member">
 		select * from p_member where phone=#{phone} and p_name=#{p_name}
 	</select>
@@ -22,18 +48,18 @@
 	<resultMap type="member" id="memberResult">
 		<id column="p_id" property="p_id"/>
 		<result column="password" property="password"/>
-		<result column="p_name" property="pName"/>
+		<result column="p_name" property="p_name"/>
 		<result column="gender" property="gender"/>
 		<result column="phone" property="phone"/>
-		<result column="is_sns" property="isSns"/>
-		<result column="final_edu" property="finalEdu"/>
-		<result column="school" property="school"/>
-		<result column="major" property="major"/>
-		<result column="is_confirm" property="is_confirm"/>
-		<result column="enroll_date" property="enrollDate"/>
+		<result column="is_sns" property="is_sns"/>
+		<result column="enroll_date" property="enroll_date"/>
+		<result column="email_confirm" property="email_confirm"/>
+		<result column="kakao_id" property="kakao_id"/>
+		<result column="google_id" property="google_id"/>
+		<result column="naver_id" property="naver_id"/>
 	</resultMap>
 
-	<select id="selectList" resultType="member">
+	<select id="selectList" resultMap="memberResult">
 		SELECT * FROM P_MEMBER
 	</select>
 	
@@ -42,10 +68,54 @@
 	</delete>
 	
 	<update id="updateMember" parameterType="member">
-		update p_member set p_name=#{p_name}, phone=#{phone}, final_edu=#{final_edu}, school=#{school}, major=#{major} where p_id=#{p_id}
+		update p_member set p_name=#{p_name}, phone=#{phone} where p_id=#{p_id}
 	</update>
 	
 	<update id="updatePw" parameterType="member">
 		update p_member set password=#{password} where p_id=#{p_id}
-	</update>	
+	</update>
+	
+	<select id="selectCount" resultType="_int" parameterType="String">
+		select count(*) from p_member where p_id=#{p_id}
+	</select>
+	
+	<select id="findPw" resultType="member" parameterType="member">
+		select * from p_member where p_id=#{p_id} and phone=#{phone}
+	</select>
+
+ 	<!-- 메일 인증상태 업데이트 -->	
+	<update id="mailStatus" parameterType="map">
+		UPDATE P_MEMBER SET EMAIL_CONFIRM = 'Y' where P_ID=#{P_ID}
+	</update>
+	
+	<resultMap type="review" id="reviewMap">
+		<id column="review_no" property="reviewNo"/>
+		<result column="review_member" property="reviewMember"/>
+		<result column="review_company" property="reviewCompany"/>
+		<result column="review_iscurrent" property="reviewIsCurrent"/>
+		<result column="review_job" property="reviewJob"/>
+		<result column="review_employ_cate" property="reviewEmployCate"/>
+		<result column="review_career" property="reviewCareer"/>
+		<result column="review_location" property="reviewLocation"/>
+		<result column="review_total_score" property="reviewTotalScore"/>
+		<result column="review_short" property="reviewShort"/>
+		<result column="review_merit" property="reviewMerit"/>
+		<result column="review_dismerit" property="reviewDisMerit"/>
+		<result column="review_request" property="reviewRequest"/>
+		<result column="review_grade_01" property="reviewGrade01"/>
+		<result column="review_grade_02" property="reviewGrade02"/>
+		<result column="review_grade_03" property="reviewGrade03"/>
+		<result column="review_grade_04" property="reviewGrade04"/>
+		<result column="review_grade_05" property="reviewGrade05"/>
+		<result column="reviewlike" property="reviewLike"/>
+		<result column="review_date" property="reviewDate"/>
+	</resultMap>
+	
+	<select id="selectReviewList" resultType="member" resultMap="reviewMap">
+		select * from company_review where review_member=#{reviewMember}
+	</select>
+	
+	<delete id="deleteReview" parameterType="_int">
+		select * from company_review where review_no=#{review_no}
+	</delete>
 </mapper>

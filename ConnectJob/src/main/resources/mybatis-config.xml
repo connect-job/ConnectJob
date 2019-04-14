@@ -10,13 +10,19 @@
 		<typeAlias type="com.connect.job.model.vo.CompanyReview" alias="review"/>
 		<typeAlias type="com.connect.job.model.vo.CompanyReviewLike" alias="reviewlike"/>
 		<typeAlias type="com.connect.job.model.vo.CompanyAvgScore" alias="score"/>
-		<typeAlias type="com.connect.job.model.vo.HireNoti" alias="hireNoti"/>
 		<typeAlias type="com.connect.job.model.vo.Senier" alias="senier"/>
-		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>
+		<typeAlias type="com.connect.job.model.vo.Resume" alias="resume"/>
+		<typeAlias type="com.connect.job.model.vo.FinalEdu" alias="finalEdu"/>
+		<typeAlias type="com.connect.job.model.vo.FinalEduUniv" alias="finalEduUniv"/>
+		<typeAlias type="com.connect.job.model.vo.Career" alias="career"/>
+		<typeAlias type="com.connect.job.model.vo.HireNoti" alias="hireNoti"/>
 		<typeAlias type="com.connect.job.model.vo.Scomment" alias="scomment"/>
-		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="handler"/>
+		<typeAlias type="com.connect.job.model.vo.Inquiry" alias="inquiry"/>
+		<typeAlias type="com.connect.job.model.vo.Notice" alias="notice"/>
+		<typeAlias type="com.connect.job.model.vo.Message" alias="message"/>
+		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>
+		<typeAlias type="com.connect.job.model.vo.ProfileImg" alias="profileImg"/>
 	</typeAliases>
-	
 	 
 </configuration>
 

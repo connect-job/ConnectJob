@@ -16,7 +16,7 @@ html, body {
     scroll-behavior: smooth;
     font-family: 'NotoKr', sans-serif;
     font-size: 14px;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.4px;
     color: #535353;
 }
 
@@ -45,9 +45,8 @@ a:hover {
 }
 
 
-
-
 /* ------------------------------------- 공통 컴포넌트 태그 */
+
 
 
 #pageBar ul {
@@ -85,132 +84,283 @@ header {
     width: 100%;
     position: fixed;
     text-align: center;
-    background-color: #2c3142;
     /* background-color: #2c3142c7; */
-    color: #fff;
+    color: #303030;
+    font-size: 13px;
+    letter-spacing: -0.4px;
     z-index: 5999;
-    height: 120px;
+    transition: 700ms;
+    background-color: #fff;
 }
 
-header #header-container {
-    display: inline-block;
-    width: 990px;
-}
+/* --------------------------------- 로고 */
 
 
-header #header-container #header-top {
-   width: 100%;
-   text-align: right;
-}
+/* -------------------------- 헤더 상단*/
 
-header #header-container #header-top ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-header #header-container #header-top ul li {
-    cursor: pointer;
-    display: inline-block;
-    padding-top: 10px;
-    width: 70px;
-    height: 22px;
+header #notice {
+    display: none;
+    width: 100%;
+    padding-top: 15px;
+    background-color: #d7d9e2;
+    color: #222222;
+    font-size: 14px;
     text-align: center;
-    font-size: 12px;
+    height: 33px;
+    border-bottom: 1px solid #b3b6c0;
 }
 
+header #notice:hover {
+    background-color: #596483;
+    transition: 500ms;
+    color:#fff;
+}
 
-header #header-container #logo {
+header #notice button {
+    background: none;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-size: 15px;
+}
+
+header  #header-top {
+    padding-top: 10px;
+   width: 100%;
+   height: 80px;
+   border-bottom: 1px solid #eee;
+   text-align: center;
+}
+
+header #header-top .top-container {
+    display: inline-block;
     width: 990px;
-    padding-left: 20px;
+}
+
+header  #header-top .top-container .header-top-left {
+    vertical-align: top;
     display: inline-block;
-    text-align: left;
+    width: 300px;
 }
 
-
-header #header-container #logo .logo-text {
+header  #header-top .top-container .header-top-center {
+    padding-top: 15px;
+    vertical-align: top;
     display: inline-block;
-	border: 2px solid #fff;
-	padding-left: 12px;
-    width: 158px;
-    height: 32px;
+    width: 400px;
+    text-align: center;
 }
 
-header #header-container #logo .logo-text:hover {
-    transition: 900ms;
-    background-color: #fff;
+
+header #header-top .top-container .header-top-center .header-search {
+    width:400px;
+    background-color: #ffffff;
+    border: 2px solid #2c3142;
 }
 
-header #header-container #logo .logo-text:hover a{
-    transition: 900ms;
-    background-color: #fff;
-    color: #000;
+header #header-top .top-container .header-top-center .header-search input {
+    width: 80%;
+    height: 38px;
+    font-size: 13px;
+    letter-spacing: -0.4px;
+    color: #272727;
+    border: none;
+    outline: none;
+    padding-left: 15px;
 }
 
-header #header-container #logo .logo-text a {
-	color: #fff;
-    font-weight: 300;
-    font-size: 22px;
+header #header-top .top-container .header-top-center #header-search-result {
+    display: none;
+    position: absolute;
+    width: 402px;
+    border: 1px solid #eee;
+    box-shadow: 10px 5px 15px 5px #eee;
 }
 
+header #header-top .top-container .header-top-center #header-search-result ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+header #header-top .top-container .header-top-center #header-search-result ul li {
+	transition: 600ms;
+	background-color: #fff;
+	text-align: left;
+	color: #2b2b2b;
+    height: 30px;
+    font-size: 12px;
+	padding-top: 12px;
+	padding-left: 15px;
+	border-bottom: 1px solid #e2e2e2;
+}
+
+header #header-top .top-container .header-top-center #header-search-result ul li:hover {
+    transition: 600ms;
+    background-color: #eee;
+    color: #333333;
+    font-weight: bold;
+}
+
+
+header  #header-top .top-container .header-top-right {
+    vertical-align: top;
+    display: inline-block;
+    text-align: right;
+    width: 283px;
+}
+
+header  #header-top .top-container .header-top-right h4 {
+    padding: 0;
+    padding-top: 14px;
+    margin: 0;
+}
+
+header  #header-top .top-container .header-top-right #popular-keyword {
+    display: inline-block;
+    width: 150px;
+    height: 28px;
+    overflow: hidden;
+    padding-top: 8px;
+}
+
+header  #header-top .top-container .header-top-right #popular-keyword #popular-container {
+    position: relative;
+    width: 150px;
+    height: 28px;
+    overflow: hidden;
+}
+
+header  #header-top .top-container .header-top-right #popular-keyword #popular-container ul {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    
+}
+
+header  #header-top .top-container .header-top-right #popular-keyword #popular-container ul li {
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 12px;
+    letter-spacing: -0.4px;
+    height: 28px;
+    line-height: 28px;
+    color: #444444;
+}
 
 /* 헤더 - 중간 */
 
-header #header-container #header-menu {
-	margin-top: 7px;
-    width: 990px;
-    height: 40px;
-    font-size: 14px;
+header #header-menu {
+    width: 100%;
+    height: 42px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
 } 
 
-header #header-container #header-menu .menu-left {
+header  #header-menu .menu-container {
+    display: inline-block;
+    width: 990px;
+}
+
+header  #header-menu .menu-container .menu-left {
     float: left;
 }
 
-header #header-container #header-menu .menu-left ul {
+header  #header-menu .menu-container .menu-left ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
-header #header-container #header-menu .menu-left ul li {
+header  #header-menu .menu-container .menu-left ul li {
     cursor: pointer;
     display: inline-block;
     padding-top: 12px;
     width: 120px;
     height: 30px;
+    font-size: 13px;
 }
 
-header #header-container #header-menu .menu-left ul li .menu-line {
+
+header  #header-menu .menu-container .menu-left ul li .menu-line {
 	margin-top: 5px;
 	transition: 600ms;
-	width: 0%;
-	height: 2px;
-	background-color: #fff;
+    width: 0%;
+    bottom: 0;
+	height: 4px;
+	background-color: #404861;
 }
 
-header #header-container #header-menu .menu-left ul li:hover .menu-line {
+header  #header-menu .menu-container .menu-left ul li:hover .menu-line {
     width: 100%;
     transition: 600ms;
 }
 
-header #header-container #header-menu .menu-right {
+
+/* ------------------- 우측메뉴 */
+
+header  #header-menu .menu-container .menu-right {
     float: right;
+    text-align: right;
 }
 
-header #header-container #header-menu .menu-right #searchfrm {
-    padding-top: 7px;
+header  #header-menu .menu-container .menu-right ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
 }
 
-header #header-container #header-menu .menu-right #searchfrm input {
-    padding-top: 3px;
-    padding-left: 10px;
+header  #header-menu .menu-container .menu-right ul li {
+    cursor: pointer;
+    padding-top: 12px;
+    display: inline-block;
     font-size: 13px;
-    letter-spacing: -0.4px;
-    outline: none;
-    border: none;
-    height:30px;
+    border-left: 1px solid #eee;
+    height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    
 }
+
+header  #header-menu .menu-container .menu-right ul li:hover{
+    background-color: #eee;
+    transition: 300ms;
+}
+
+header  #header-menu .menu-container .menu-right ul li:nth-last-child(1) {
+    border-right: 1px solid #eee;
+    position: relative;
+}
+
+header  #header-menu #sub-menu {
+    padding-top: 12px;
+    display: none;
+    position: absolute;
+    right: 0;
+}
+
+header  #header-menu #sub-menu ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+
+header  #header-menu #sub-menu ul li {
+    font-size: 12px;
+    width: 80px;
+    display: block;
+    height: 27px;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+
+
+
+
+
 
 /* 공통 섹션 */
 
@@ -220,20 +370,11 @@ section {
     width: 100%;
     text-align: center;
     color: #383838;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.4px;
 }
 
 
 /* -------------------------------- 인덱스 */
-
-
-section#index {
-    padding-top: 100px;
-    width: 100%;
-    height: 800px;
-    text-align: center;
-    animation: BgEffect infinite 15s;
-}
 
 
 
@@ -241,101 +382,319 @@ section #index-container {
     display: inline-block;
     width: 990px;
     text-align: center;
-    padding-top: 130px;
 }
 
-
-section #index-container .index {
+section #index-container #index-top-left {
+    vertical-align: top;
     display: inline-block;
-    width: 400px;
+    width: 700px;
+    height: 210px;
+    position: relative;
+    border: 1px solid rgb(209, 209, 209);
+    overflow: hidden;
+    margin: 0 auto;
 }
 
-section #index-container .index .index-search {
-    width: 400px;
-    background-color: #ffffff;
-    border: 2px solid #2c3142;
+section #index-container #index-top-left ul {
+    width: 700px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    position: absolute;
 }
 
-section #index-container .index .index-search input {
-    width: 300px;
-    height: 40px;
-    font-size: 13px;
-    letter-spacing: -0.3px;
-    color: #3b3b3b;
-    border: none;
-    outline: none;
+section #index-container #index-top-left ul li {
+    float: left;
+    width: 700px;
+    height: 210px;
+    margin: 0;
+    padding: 0;
+}
+
+
+section #index-container .index-top-right {
+    margin-left: 5px;
+    vertical-align: top;
+    display: inline-block;
+    width: 27%;
+    height: 200px;
+}
+
+section #index-container .index-top-right .notice {
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    width: 100%;
+    font-size: 12px;
+    color: #666b7a;
+    font-weight: bold;
+    padding-top: 12px;
+    height: 28px;
     padding-left: 15px;
 }
 
-section #index-container .index #index-search-result {
-    display: none;
-    position: absolute;
-    width: 400px;
-    color: #fff;
-}
 
-section #index-container .index #index-search-result ul {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-
-section #index-container .index #index-search-result ul li {
-	transition: 600ms;
-	background-color: #333941d2;
-	text-align: left;
-	color: #fff;
-    height: 30px;
+section #index-container .index-top-right .item {
     font-size: 12px;
-	padding-top: 12px;
-	padding-left: 15px;
-	border-bottom: 1px solid #ffffff54;
+    width: 100%;
 }
 
-section #index-container .index #index-search-result ul li:hover {
-    transition: 600ms;
-    background-color: #252d33f1;
+section #index-container .index-top-right .item ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
-section #index-container .index-right {
-    display: inline-block;
+section #index-container .index-top-right .item ul li {
+    height: 25px;
+    border-bottom: 1px solid #eee;
+    padding-top: 8px;
+    padding-left: 15px;
+    text-align: left;
+}
+
+
+section #index-container .index-middle {
+    margin-top: 15px;
+    width: 100%;
+    text-align: inherit;
+}
+
+section #index-container .index-middle > div {
     vertical-align: top;
-    width: 578px;
-    border: 2px solid #fff;
-    height: 500px;
+    display: inline-block;
+    width: 32.2%;
+    margin: 1px;
 }
 
-
-@keyframes BgEffect {
-    0% {
-        background-image: url(../images/background-02.jpg);
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    50% {
-        background-image: url(../images/background-03.jpg);
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    100% {
-        background-image: url(../images/background-02.jpg);
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
+section #index-container .index-middle > div .top {
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    font-size: 12px;
+    color: #666b7a;
+    font-weight: bold;
+    padding-top: 12px;
+    height: 28px;
+    padding-left: 5px;
 }
+
+section #index-container .index-middle > div .top .left {
+    float: left;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 1px solid rgb(228, 228, 228);
+    border-radius: 3px;
+}
+
+section #index-container .index-middle > div .top .right {
+    padding-right: 10px;
+    padding-top: 3px;
+    float: right;
+    font-size: 11px;
+    letter-spacing: -0.3px;
+}
+
+section #index-container .index-middle > div .title {
+    width: 100%;
+    font-size: 12px;
+    color: #505050;
+    text-align: left;
+    padding-left: 15px;
+}
+
+section #index-container .index-middle > div .content {
+    width: 100%;
+}
+
+section #index-container .index-middle > div .content ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+section #index-container .index-middle > div .content ul li {
+    padding-top: 8px;
+    font-size: 12px;
+    height: 28px;
+    border-bottom: 1px solid #eee;
+    padding-left: 15px;
+    text-align: left;
+}
+
 
 /* ----------------------------------------------------------------------- 로그인 */
 
 section #login-container {
 	display: inline-block;
-	width: 990px;
+    width: 990px;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 50px;
 }
+
+section #login-container ul {
+    margin-top: 50px;
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 650px;
+    text-align: left;
+}
+
+section #login-container ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 16px;
+    padding-top: 12px;
+    width: 307px;
+    height: 33px;
+    transition: 500ms;
+}
+
+section #login-container #member {
+    padding-top: 30px;
+    display: inline-block;
+    width: 648px;
+    border-top: 1px solid #b0b4c0;
+    border-left: 1px solid #b0b4c0;
+    border-right: 1px solid #b0b4c0;
+    border-bottom: 1px solid #b0b4c0;
+}
+
+section #login-container #member .login-left {
+    vertical-align: top;
+    display:inline-block;
+    width: 50%;
+}
+
+section #login-container #member .login-left .login-item {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+section #login-container #member .login-left .login-item .item-left {
+    display: inline-block;
+    width: 29%;
+}
+
+section #login-container #member .login-left .login-item .item-right {
+    display: inline-block;
+    width: 68%;
+}
+
+section #login-container #member .login-left .login-item .item-right input {
+    border: 1px solid #eee;
+    width: 100%;
+    height: 30px;
+    padding-left: 15px;
+    background-color: #fff;
+    outline: 1px solid #fff;
+}
+
+section #login-container #member .login-left .login-item .item-right input:focus {
+    transition: 500ms;
+    outline: 1px solid #2c3142;
+}
+
+
+section #login-container #member .login-right {
+    vertical-align: top;
+    display:inline-block;
+    width: 49%;
+    padding-bottom: 15px;
+}
+
+section #login-container #member .login-right .kakao {
+    background-color: rgb(255, 215, 35);
+    color: #000;
+    font-size: 12px;
+    letter-spacing: -0.4px;
+    border: none;
+    outline: none;
+    width: 80%;
+    height: 35px;
+    vertical-align: top;
+    margin-bottom: 10px;
+}
+
+section #login-container #member .login-right input {
+    background-color: #2c3142;
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 80%;
+    margin-bottom: 10px;
+    height: 35px;
+    font-size: 12px;
+    letter-spacing: -0.4px;
+}
+
+
+section #login-container #cmember {
+    padding-top: 30px;
+    display: none;
+    width: 648px;
+    border-top: 1px solid #b0b4c0;
+    border-left: 1px solid #b0b4c0;
+    border-right: 1px solid #b0b4c0;
+    border-bottom: 1px solid #b0b4c0;
+}
+
+section #login-container #cmember .login-left {
+    vertical-align: top;
+    display:inline-block;
+    width: 50%;
+}
+
+section #login-container #cmember .login-left .login-item {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+section #login-container #cmember .login-left .login-item .item-left {
+    display: inline-block;
+    width: 29%;
+}
+
+section #login-container #cmember .login-left .login-item .item-right {
+    display: inline-block;
+    width: 68%;
+}
+
+section #login-container #cmember .login-left .login-item .item-right input {
+    border: 1px solid #eee;
+    width: 100%;
+    height: 30px;
+    padding-left: 15px;
+    background-color: #fff;
+    outline: 1px solid #fff;
+}
+
+section #login-container #cmember .login-left .login-item .item-right input:focus {
+    transition: 500ms;
+    outline: 1px solid #2c3142;
+}
+
+
+section #login-container #cmember .login-right {
+    vertical-align: top;
+    display:inline-block;
+    width: 49%;
+}
+
+section #login-container #cmember .login-right input {
+    background-color: #2c3142;
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 80%;
+    margin-bottom: 10px;
+    height: 35px;
+}
+
+
 
 section #login-container table {
 	display: inline-block;
@@ -345,11 +704,179 @@ section #login-container table {
 
 section #enroll-container {
 	display: inline-block;
-	width: 990px;
+    width: 990px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 50px;
 }
 
-section #enroll-container table {
-	display: inline-block;
+section #enroll-container .title {
+    display: inline-block;
+    width:650px;
+    height: 50px;
+}
+
+section #enroll-container .title .title-left{
+    vertical-align: top;
+    display: inline-block;
+    text-align: left;
+    width: 30%;
+    font-size: 22px;
+}
+
+section #enroll-container .title .title-right{
+    vertical-align: top;
+    display: inline-block;
+    width: 68%;
+    text-align: right;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+section #enroll-container .enrollType {
+    width: 100%;
+    padding-top: 30px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+section #enroll-container .enrollType .enroll-item {
+    cursor: pointer;
+    padding-top: 80px;
+    display: inline-block;
+    width: 30%;
+    height: 160px;
+    border: 2px solid #dfdfdf;
+    font-size: 25px;
+    margin: 10px;
+}
+
+section #enroll-container .enrollType .enroll-item:hover {
+    transition: 500ms;
+    background-color: #2c3142;
+    border: 2px solid #2c3142;
+    color: #fff;
+}
+
+section #enroll-container ul {
+    margin-top: 50px;
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 650px;
+    text-align: left;
+}
+
+section #enroll-container ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 16px;
+    padding-top: 12px;
+    width: 307px;
+    height: 33px;
+    transition: 500ms;
+}
+
+section #enroll-container #memberEnroll {
+    padding-top: 30px;
+    display: inline-block;
+    width: 652px;
+    border-top: 1px solid #b0b4c0;
+    border-left: 1px solid #b0b4c0;
+    border-right: 1px solid #b0b4c0;
+    border-bottom: 1px solid #b0b4c0;
+}
+
+section #enroll-container #memberEnroll .enroll-item {
+    width: 100%;
+    height: 45px;
+}
+
+section #enroll-container #memberEnroll .enroll-item input {
+    width: 250px;
+    height: 35px;
+    border: 1px solid #dfdfdf;
+    outline: none;
+    padding-left: 15px;
+}
+
+section #enroll-container #memberEnroll .enroll-item input:focus {
+    border: 1px solid #2c3142;
+    transition: 500ms;
+}
+
+section #enroll-container #memberEnroll .enroll-item input[type=button] {
+    background-color: #2c3142;
+    color: #fff;
+    width: 120px;
+    padding-left: 7px;
+}
+
+
+section #enroll-container #memberEnroll .enroll-item input[type=radio] {
+    vertical-align: top;
+    background-color: #2c3142;
+    color: #fff;
+    width: 16px;
+    padding-left: 7px;
+}
+
+section #enroll-container #memberEnroll .enroll-item input[type=checkbox] {
+    vertical-align: top;
+    background-color: #2c3142;
+    color: #fff;
+    width: 16px;
+    padding-left: 7px;
+}
+
+section #enroll-container #memberEnroll .enroll-item .left {
+    vertical-align: top;
+    display: inline-block;
+    width: 28%;
+    text-align: right;
+    padding-top: 7px;
+    padding-right: 15px;
+}
+
+section #enroll-container #memberEnroll .enroll-item .right{
+    vertical-align: top;
+    display: inline-block;
+    width: 65%;
+    text-align: left;
+    padding-left: 20px;
+}
+
+section #enroll-container #memberEnroll .enroll-title {
+    width: 100%;
+    text-align: left;
+    padding-left: 30px;
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+section #enroll-container #memberEnroll .enroll-text {
+    display: inline-block;
+    width: 70%;
+    text-align: left;
+    padding-left: 25px;
+}
+
+section #enroll-container #memberEnroll .enroll-text-end {
+    display: inline-block;
+    width: 70%;
+    text-align: center;
+}
+
+section #enroll-container #memberEnroll .enroll-text-end input {
+    width: 150px;
+    height: 35px;
+    background-color: #2c3142;
+    color: #fff;
+    border: none;
+    margin: 10px;
 }
 
 /* ---------------------------------------------------------------------  캘린더 */
@@ -374,6 +901,7 @@ section #company-container .company-top {
 }
 
 .selected {
+    transition: 800ms;
     background-color: #2c3142;
     color: #fff;
 }
@@ -410,7 +938,6 @@ section #company-container .company-middle #search_location #search_left {
     width: 230px;
     height: 150px;
     padding: 5px;
-    background-color: #fff;
     overflow-y: scroll;
 }
 
@@ -419,8 +946,6 @@ section #company-container .company-middle #search_location #search_left {
 }
 
 #search_left::-webkit-scrollbar-track {
-    background-color: #fff;
-    
     border-radius: 10px;
 }
 
@@ -458,7 +983,6 @@ section #company-container .company-middle #search_location #search_right {
     width: 730px;
     height: 150px;
     border: 1px solid #eee;
-    background-color: #fff;
     padding: 5px;
     overflow-y: scroll;
 }
@@ -468,7 +992,6 @@ section #company-container .company-middle #search_location #search_right {
 }
 
 #search_right::-webkit-scrollbar-track {
-    background-color: #fff;
     border-radius: 10px;
 }
 
@@ -607,6 +1130,7 @@ section #company-container #company-content #company-list #pageBar ul li {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 6px;
+    font-size: 12px;
     height: 23px;
     margin: 1px;
 }
@@ -624,9 +1148,6 @@ section #company-container #company-content #company-list #pageBar ul li.active 
 
 /* ---------------- 기업상세페이지 -------------------- */
 
-section#companyView {
-    background-color: #fff;
-}
 
 section #company-view-container {
     display: inline-block;
@@ -695,6 +1216,7 @@ section #company-view-container #company-view-content .view-right button {
 section #company-view-container #company-view-content .view-right #right-company-info {
     width: 100%;
     margin-bottom: 5px;
+    
 }
 
 section #company-view-container #company-view-content .view-right #right-company-info .info-left {
@@ -750,6 +1272,15 @@ section #company-view-container #company-view-content .view-right #right-company
     overflow: hidden;
 }
 
+
+section #company-view-container #company-view-content .view-right #right-company-info .info-right .review {
+    display: inline-block;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-info .info-right .review .review-info {
+    display: inline-block;
+}
+
 .line {
     background-color: #767b8f;
     height: 10px;
@@ -794,6 +1325,41 @@ section #company-view-container #company-view-content .view-right #right-company
 }
 
 
+section #company-view-container #company-view-content .view-right #right-company-review .review-btns {
+    padding-top: 10px;
+    width: 100%;
+    height: 48px;
+    border-bottom: 1px solid #eee;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-review .review-btns button {
+	background-color: #fff;
+	border: 1px solid #cfcfcf;
+	border-left: none;
+	color: #2c3142;
+	letter-spacing: -0.4px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-review .review-btns button.write {
+	background-color: #2c3142;
+	color: #fff;
+	border: none;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-review .review-btns button.write:hover {
+	transition: 500ms;
+	background-color: #000;
+	color: #fff;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-review .review-btns .left {
+	float: left;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-review .review-btns .right {
+	float: right;
+}
+
 section #company-view-container #company-view-content .view-right #right-company-review .review-top {
     width: 100%;
     text-align: left;
@@ -803,6 +1369,7 @@ section #company-view-container #company-view-content .view-right #right-company
     display: inline-block;
     vertical-align: top;
     width: 39%;
+    text-align: center;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-left .review-item {
@@ -841,12 +1408,41 @@ section #company-view-container #company-view-content .view-right #right-company
     padding-top: 10px;
     padding-bottom: 10px;
     width: 55.5%;
-    height: 326px;
+    height: 340px;
     overflow-x: hidden;
     overflow-y: auto;
     border-left: 2px solid #eee;
     font-size: 13px;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.4px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right input {
+    width: 80%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right select {
+    width: 40%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right button {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 28px;
+    letter-spacing: -0.4px;
+    background-color: #e7e7e7;
+    color: #000;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right button:hover {
+    transition: 500ms;
+    background-color: #2c3142;
+    color: #fff;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right::-webkit-scrollbar {
@@ -862,7 +1458,6 @@ section #company-view-container #company-view-content .view-right #right-company
     border-radius: 10px;
     background-color: #8087a0;
 }
-
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right .review-detail-top {
     width: 100%;
     font-size: 12px;
@@ -874,8 +1469,9 @@ section #company-view-container #company-view-content .view-right #right-company
     width: 100%;
     padding-top: 10px;
     font-size: 16px;
+    font-weight: bold;
     border-bottom: 1px solid #eee;
-    height: 35px;
+    padding-bottom: 10px;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right .review-detail-content {
@@ -885,6 +1481,14 @@ section #company-view-container #company-view-content .view-right #right-company
     padding-bottom: 15px;
 }
 
+section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right .review-like {
+    width: 100%;
+    font-size: 13px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
 
 
 
@@ -894,6 +1498,7 @@ section #company-view-container #company-view-content .view-right #right-company
     width: 100%;
     height: 35px;
     padding-bottom: 12px;
+    text-align: center;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-bottom ul {
@@ -910,6 +1515,7 @@ section #company-view-container #company-view-content .view-right #right-company
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 6px;
+    font-size: 12px;
     height: 23px;
     margin: 1px;
 }
@@ -924,6 +1530,8 @@ section #company-view-container #company-view-content .view-right #right-company
     background-color: #2c3142;
     color: #fff;
 }
+
+
 
 section #company-view-container #company-view-content .view-right #right-company-hire {
     margin-top: 5px;
@@ -1057,7 +1665,7 @@ section #company-view-container #company-view-content .view-right #review-write 
     padding-bottom: 10px;
     width: 380px;
     font-size: 13px;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.4px;
     outline: none;
 }
 
@@ -1167,8 +1775,7 @@ section #senier-container .senier-middle .senier-item {
     margin: 15px;
     display: inline-block;
     width: 450px;
-    border-radius: 4px;
-    border: 1px solid #cfcfcf;
+    border: 2px solid #eee;
     background-color: #fff;
     color: #535353;
     text-align: left;
@@ -1179,6 +1786,7 @@ section #senier-container .senier-middle .senier-item {
 section #senier-container .senier-middle .senier-item:hover {
     transition: 500ms;
     background-color: #2c3142;
+    border: 2px solid #2c3142;
     color: #fff;
 }
 
@@ -1298,6 +1906,97 @@ section #senier-container .senier-middle #senier-write-container .right textarea
     outline: none;
 }
 
+/* ---------------------------- 선배와의 대화 (내용) ---------------------------- */
+
+section #senier-container .senier-middle .middle-content {
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+section #senier-container .senier-middle .middle-content .left {
+    display: inline-block;
+    padding-top: 10px;
+    width: 20%;
+    height: 30px;
+    border-right: 1px solid rgb(207, 207, 207);
+    background-color: #2c3142;
+    color: #fff;
+}
+
+section #senier-container .senier-middle .middle-content .right {
+    padding-top: 10px;
+    display: inline-block;
+    padding-left: 20px;
+    width: 76%;
+    text-align: left;
+    vertical-align: top;
+}
+
+section #senier-container .senier-middle .senier-comment {
+    width: 100%;
+    text-align: center;
+}
+
+section #senier-container .senier-middle .senier-comment .comment-write {
+    display: inline-block;
+    text-align: center;
+    width: 800px;
+}
+
+section #senier-container .senier-middle .senier-comment .comment-write .left {
+    display: inline-block;
+    width: 70%;
+    vertical-align: top;
+}
+
+section #senier-container .senier-middle .senier-comment .comment-write .left textarea {
+    width: 100%;
+    height: 120px;
+    outline: none;
+}
+
+section #senier-container .senier-middle .senier-comment .comment-write .right {
+    display: inline-block;
+    text-align: right;
+    width: 28%;
+    vertical-align: top;
+}
+
+section #senier-container .senier-middle .senier-comment .comment-write .right input[type=button] {
+    width: 80%;
+    height: 120px;
+    background-color: #2c3142;
+    color: #fff;
+    border: none;
+}
+
+section #senier-container .senier-middle .senier-comment .comment-item {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+section #senier-container .senier-middle .comment-item .writer {
+    display: inline-block;
+    width: 20%;
+}
+
+section #senier-container .senier-middle .comment-item .content {
+    text-align: left;
+
+    display: inline-block;
+    width: 50%;
+}
+
+section #senier-container .senier-middle .comment-item .date {
+    display: inline-block;
+    width: 28%;
+}
+
+
 /* ------------------------- 내 이력서  -------------------- */
 
 section #resume-container {
@@ -1365,6 +2064,7 @@ section #resume-container .sub-title {
     text-align: left;
     margin-top: 15px;
     margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
 }
 
 section #resume-container .item {

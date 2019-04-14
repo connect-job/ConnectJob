@@ -3,13 +3,76 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
 
-<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <section>
+    <div id="biz-container">
+        
+            <div class="biz-left">
+                    <div class="menu-top">
+                        기업페이지
+                    </div>
+                    <ul>
+                        <li class="menu">
+                            채용공고<span class="icon"><i class="fas fa-sort-down"></i></span>
+                            <ul class="hide">
+                                <li><a href="${path }/hireNotiAdd.do">채용공고등록</a></li>
+                                <li><a href="#">전체공고</a></li>
+                                <li><a href="#">진행 중 공고</a></li>
+                                <li><a href="#">대기 중 공고</a></li>
+                                <li><a href="#">마감 된 공고</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="menu">
+                            인재관리<span class="icon"><i class="fas fa-sort-down"></i></span>
+                            <ul class="hide">
+                                <li><a href="#">전체 인재정보</a></li>
+                                <li><a href="#">자사 지원 인재정보</a></li>
+                                <li><a href="#">공개 인재정보</a></li>
+                                <li><a href="#">매칭 인재정보</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="menu">
+                            기업정보수정<span class="icon"><i class="fas fa-sort-down"></i></span>
+                            <ul class="hide">
+                                <li><a href="#">기업정보수정</a></li>
+                                <li><a href="#">담당자 정보 수정</a></li>
+                                <li><a href="#">비밀번호 변경</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="menu">
+                            기업리뷰<span class="icon"><i class="fas fa-sort-down"></i></span>
+                            <ul class="hide">
+                                <li><a href="#">기업 리뷰 조회</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="biz-right">카테고리
+					<ul>
+				            <li>웹 개발자</li>
+				            <li>서버 개발자</li>
+				            <li>프론트엔드 개발자</li>
+				            <li>자바 개발자</li>
+				            <li>파이썬 개발자</li>
+				            <li>안드로이드 개발자</li>
+				            <li>IOS개발자</li>
+				            <li>데이터 엔지니어</li>
+				            <li>시스템,네트워크 관리자</li>
+				            <li>node,js 개발자</li>
+				            <li>php개발자</li>
+				            <li>DevOps 개발자</li>
+				            <li>C,C++개발자</li>
+				            <li>개발 매니저</li>
+				            <li>데이터 사이언티스트</li>
+					</ul>
         <div id="company-container">
             <div class="company-top">
                 기업탐색
@@ -391,23 +454,27 @@
                 
                 <div id="search_job" class="search_location tab-content">
                     <div id="search_right">
-                        <div id="location">
-                            <ul>
-                                <li>정규직</li>
-                                <li>교육생</li>
-                                <li>별정직</li>
-                                <li>파트</li>
-                                <li>전임</li>
-                                <li>계약직</li>
-                                <li>병역특례</li>
-                                <li>인턴직</li>
-                                <li>아르바이트</li>
-                                <li>파견직</li>
-                                <li>해외취업</li>
-                                <li>위촉직</li>
-                                <li>프리랜서</li>
-                            </ul>
-                        </div>
+                        <div id="review-cate">
+	                        <ul>
+	                            <li>전체</li>
+	                            <li>웹 개발자</li>
+	                            <li>서버 개발자</li>
+	                            <li>시스템개발</li>
+	                            <li>프론트엔드 개발자</li>
+	                            <li>자바 개발자</li>
+	                            <li>파이썬 개발자</li>
+	                            <li>안드로이드 개발자</li>
+	                            <li>IOS개발자</li>
+	                            <li>데이터 엔지니어</li>
+	                            <li>시스템,네트워크 관리자</li>
+	                            <li>node.js 개발자</li>
+	                            <li>php 개발자</li>
+	                            <li>DevOps / 시스템 관리자</li>
+	                            <li>C,C++개발자</li>
+	                            <li>개발 매니저</li>
+	                            <li>데이터 사이언티스트</li>
+	                        </ul>
+                    	</div>
                     </div>
                 </div>
 
@@ -492,23 +559,34 @@
                         <button onclick="fn_search()">검색</button>
                     </div>
                 </div>
-            </div>
+            </div> 
+            <select name="" id="">
+		        <option value="">최근등록일순</option>
+		        <option value="">마감임박순</option>
+   			 </select>
+    		<button onclick="scrap">스크랩</button>
             <div id="company-content">
                     <div id="company-list">
 							<table id="ajax_table">
 								<tr>
-                                    <th style="width:150px">기업구분</th>
-                                    <th style="width:390px">기업명</th>
-                                    <th style="width:300px">기업주소</th>
-                                    <th style="width:150px">리뷰 수</th>
+									<th><input type="checkbox" /></th>
+                                    <th>기업명</th>
+                                    <th>제목</th>
+                                    <th>지원자격</th>
+                                    <th>근무조건</th>
+                                    <th>마감일</th>
+                                    <th>즉시지원</th>
 								</tr>
 								<c:choose>
 									<c:when test="${company!=null }">
 										<c:forEach items="${company }" var="list">
 											<tr>
+												<td style="text-align: center;"><input type="checkbox"/></td>
 												<td style="text-align: center;">${list.companyStatus==1?"법인":"개인" }</td>
 												<td><a href="${path }/company/companyView.do?no=${list.companyNo}">${list.companyName }</a></td>
 												<td>${list.companyAddressNew }</td>
+												<td style="text-align: center;">28</td>
+												<td style="text-align: center;">28</td>
 												<td style="text-align: center;">28</td>
 											</tr>
 										</c:forEach>
@@ -526,6 +604,8 @@
 								
                     </div>
                 </div>
+        </div>
+        </div>
         </div>
     </section>
 
@@ -1213,7 +1293,7 @@
         })
         </script>
       
-      <style>
+    <style>
             section{
         margin-top: 100px;
         font-family: 'Trebuchet MS', serif;

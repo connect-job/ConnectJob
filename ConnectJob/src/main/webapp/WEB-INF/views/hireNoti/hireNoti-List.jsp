@@ -3,13 +3,60 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
 
-<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <section>
+    <div id="biz-container">
+        
+            <div class="biz-left">
+                    <div class="menu-top">
+                        기업페이지
+                    </div>
+                    <ul>
+                        <li class="menu">
+                            채용공고<span class="icon"><i class="fas fa-sort-down"></i></span>
+                            <ul class="hide">
+                                <li><a href="${path }/hireNotiAdd.do">채용공고등록</a></li>
+                                <li><a href="#">전체공고</a></li>
+                                <li><a href="#">진행 중 공고</a></li>
+                                <li><a href="#">대기 중 공고</a></li>
+                                <li><a href="#">마감 된 공고</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="menu">
+                            인재관리<span class="icon"><i class="fas fa-sort-down"></i></span>
+                            <ul class="hide">
+                                <li><a href="#">전체 인재정보</a></li>
+                                <li><a href="#">자사 지원 인재정보</a></li>
+                                <li><a href="#">공개 인재정보</a></li>
+                                <li><a href="#">매칭 인재정보</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="menu">
+                            기업정보수정<span class="icon"><i class="fas fa-sort-down"></i></span>
+                            <ul class="hide">
+                                <li><a href="#">기업정보수정</a></li>
+                                <li><a href="#">담당자 정보 수정</a></li>
+                                <li><a href="#">비밀번호 변경</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="menu">
+                            기업리뷰<span class="icon"><i class="fas fa-sort-down"></i></span>
+                            <ul class="hide">
+                                <li><a href="#">기업 리뷰 조회</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="biz-right">카테고리
+	
         <div id="company-container">
             <div class="company-top">
                 기업탐색
@@ -500,21 +547,32 @@
     <button onclick="scrap">스크랩</button>
             <div id="company-content">
                     <div id="company-list">
+                    <select name="" id="">
+				        <option value="">최근등록일순</option>
+				        <option value="">마감임박순</option>
+    				</select>
+    				<button onclick="scrap">스크랩</button>
 							<table id="ajax_table">
 								<tr>
-                                    <th style="width:150px">기업구분</th>
-                                    <th style="width:390px">기업명</th>
-                                    <th style="width:300px">기업주소</th>
-                                    <th style="width:150px">리뷰 수</th>
+									<th><input type="checkbox"/></th>
+                                    <th style="width:150px">기업명</th>
+                                    <th style="width:390px">제목</th>
+                                    <th style="width:300px">지원자격</th>
+                                    <th style="width:150px">근무조건</th>
+                                    <th style="width:150px">마감일</th>
+                                    <th style="width:150px">즉시지원</th>
 								</tr>
 								<c:choose>
 									<c:when test="${company!=null }">
-										<c:forEach items="${company }" var="list">
+										<c:forEach items="${company }" var="list" items="${hireNoti }" var="noti">
 											<tr>
-												<td style="text-align: center;">${list.companyStatus==1?"법인":"개인" }</td>
-												<td><a href="${path }/company/companyView.do?no=${list.companyNo}">${list.companyName }</a></td>
-												<td>${list.companyAddressNew }</td>
-												<td style="text-align: center;">28</td>
+												<td><input type="checkbox"/></td>
+												<td style="text-align: center;">${list.companyName}</td>
+												<td><a href="${path }/?seq=${noti.hnSeq}">${noti.hnTitle }</a></td>
+												<td>${noti.hnFinalEdu}</td>
+												<td>${noti.hnDay}</td>
+												<td>${noti.endDate}</td>
+												<td style="text-align: center;"><input type="button" value=""/></td>
 											</tr>
 										</c:forEach>
 									</c:when>
@@ -532,8 +590,8 @@
                     </div>
                 </div>
         </div>
-        
-        
+        </div>
+        </div>
     </section>
 
     <!-- //지역별 검색 스크립트 -->
@@ -1220,7 +1278,7 @@
         })
         </script>
       
-      <style>
+    <style>
             section{
         margin-top: 100px;
         font-family: 'Trebuchet MS', serif;

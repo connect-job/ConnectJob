@@ -37,9 +37,9 @@ public class SenierDaoImpl implements SenierDao {
 	
 
 	@Override
-	public List<Senier> senierOneList(int no) {
+	public Senier senierOneList(int no) {
 
-		return session.selectList("senier.senierOneList",no);
+		return session.selectOne("senier.senierOneList",no);
 	}
 
 	@Override
@@ -55,15 +55,49 @@ public class SenierDaoImpl implements SenierDao {
 	}
 
 	@Override
-	public List<Scomment> selectAll(int cPage, int numPerPage) {
+	public List<Scomment> selectAll(int cPage, int numPerPage, int no) {
 
-		return session.selectList("senier.selectcomAll", null, new RowBounds((cPage-1)*numPerPage, numPerPage));
+		return session.selectList("senier.selectcomAll", no, new RowBounds((cPage-1)*numPerPage, numPerPage));
 	}
 
 	@Override
-	public int selectcomCount() {
+	public int selectcomCount(int no) {
 
-		return session.selectOne("senier.selectcomCount");
+		return session.selectOne("senier.selectcomCount",no);
+	}
+
+	@Override
+	public int updateSenier(Senier s) {
+
+		return session.update("senier.updateSenier",s);
+	}
+
+	@Override
+	public int deleteSenier(Senier s) {
+
+		return session.delete("senier.deleteSenier",s);
+	}
+
+	@Override
+	public int commentUpdate(Scomment sc) {
+
+		return session.update("senier.commentUpdate",sc);
+	}
+
+	@Override
+	public int commentDelete(Scomment sc) {
+
+		return session.delete("senier.commentDelete",sc);
+	}
+
+	@Override
+	public int selectAjaxCount(Senier s) {
+		return session.selectOne("senier.selectAjaxOne", s);
+	}
+
+	@Override
+	public List<Senier> selectAjaxAll(int cPage, int numPerPage, Senier s) {
+		return session.selectList("senier.selectAjaxAll", s);
 	}
 
 	

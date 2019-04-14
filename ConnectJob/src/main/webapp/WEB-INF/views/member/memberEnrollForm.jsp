@@ -1,11 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.HashMap"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
+<style>
+	div#id-result-div{display: none;}
+	/* div#pw-result-div{display: none;}
+	div#pw-result-div2{display: none;} */
+</style>
 
 <section>
 	<div id="enroll-container">
@@ -15,36 +20,48 @@
 			<div class="title-right">심사를 통해 게재된 믿을 수 있는 기업리뷰　|　이력서를 통한 기업 매칭 시스템<br>커넥트잡 회원이 되어 <b>모든 서비스를 무료</b>로 이용하세요
 			</div>
 		</div>
+		
 		<div id="memberEnroll" class="tab-content current">
-			<form name="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
+			<form id="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="p_id" autocomplete="off" />
-						<input type="button" value="중복확인" id="idck" />
+						<input type="email" name="p_id" id="p_id" autocomplete="off" placeholder="이메일 아이디"/>																				
 					</div>
 				</div>
+				
+				<div class="enroll-item" id="id-result-div">
+					<div class="left"></div>
+					<div class="right">						
+						<span id="id_result"></span>						
+					</div>					
+				</div>
+				
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
-					<div class="right"><input type="password" name="password2" id="pw1" onkeyup="verify.check()"
-							required /><span>영.숫자 포함 8글자 이상 작성</span></div>
-				</div>
+					<div class="right">
+						<input type="password" name="password" id="pw1" placeholder="영문+숫자+특수문자 8글자 이상 입력" required/>
+						<span id="pw_validate"></span>						
+					</div>
+				</div>				
+				
 				<div class="enroll-item">
 					<div class="left">비밀번호 확인</div>
-					<div class="right"><input type="password" name="password" id="pw2" onkeyup="verify.check()"
-							required />
-						<div id="password_result"></div>
+					<div class="right">
+						<input type="password" name="password2" id="pw2" required />
+						<span id="password_result"></span>						
 					</div>
-				</div>
-					<div class="enroll-item msgdiv">
-						<div class="left">이름</div>
-						<div class="right">
-							<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
-							<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
-							<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
-						</div>
+				</div>					
+		
+				<div class="enroll-item msgdiv">
+					<div class="left">이름</div>
+					<div class="right">
+						<input type="text" name="p_name"/>
+						<%-- <input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
+						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/> --%>
 					</div>
-					
+				</div>		
+
 				<div class="enroll-item">
 					<div class="left">성별</div>
 					<div class="right">
@@ -52,22 +69,12 @@
 						<input type="radio" name="gender" value="F" />여
 					</div>
 				</div>
+				
 				<div class="enroll-item">
 					<div class="left">연락처</div>
 					<div class="right"><input type="phone" name="phone" autocomplete="off" /></div>
-				</div>
-				<div class="enroll-item">
-					<div class="left">최종학력</div>
-					<div class="right"><input type="text" name="final_edu" autocomplete="off" /></div>
-				</div>
-				<div class="enroll-item">
-					<div class="left">학교</div>
-					<div class="right"><input type="text" name="school" autocomplete="off" /></div>
-				</div>
-				<div class="enroll-item">
-					<div class="left">전공</div>
-					<div class="right"><input type="text" name="major" autocomplete="off" /></div>
-				</div>
+				</div>				
+				
 				<div class="enroll-text">
 					<b>약관동의</b></br>
 				</div>
@@ -90,7 +97,7 @@
 					<div>개인정보 제 3자 제공 및 위탁사항 이용약관</div>
 				</div>
 				<div class="enroll-text-end">
-					<input type="reset" value="취소" /><input type="submit" value="등록" onclick="fn_enroll()" />
+					<input type="reset" value="취소" /><input type="submit" value="등록" id="enrollBtn" />
 				</div>
 		</div>
 		</form>
@@ -98,118 +105,88 @@
 </section>
 
 <script>
-	function verifynotify(field1, field2, result_id, match_html, nomatch_html) {
-		this.field1 = field1;
-		this.field2 = field2;
-		this.result_id = result_id;
-		this.match_html = match_html;
-		this.nomatch_html = nomatch_html;
 
-		this.check = function () {
-			if (!this.result_id) { return false; }
-			if (!document.getElementById) { return false; }
-			r = document.getElementById(this.result_id);
-			if (!r) { return false; }
 
-			if (this.field1.value != "" && this.field1.value == this.field2.value) {
-				r.innerHTML = this.match_html;
-			} else {
-				r.innerHTML = this.nomatch_html;
-			}
-		}
-	}
-
-	function verifyInput() {
-		verify = new verifynotify();
-		verify.field1 = document.memberEnrollFrm.password;
-		verify.field2 = document.memberEnrollFrm.password2;
-		verify.result_id = "password_result";
-		verify.match_html = "<span style=\"color:green\">비밀번호가 일치합니다.<\/span>";
-		verify.nomatch_html = "<span style=\"color:red\">비밀번호가 일치하지않습니다.<\/span>";
-
-		// Update the result message
-		verify.check();
-	}
-
-	function addLoadEvent(func) {
-		var oldonload = window.onload;
-		if (typeof window.onload != 'function') {
-			window.onload = func;
-		} else {
-			window.onload = function () {
-				if (oldonload) {
-					oldonload();
+//아이디 중복체크
+$(document).ready(function(){	
+	$('#p_id').blur(function(){
+		var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		var p_id=$('#p_id').val();
+		
+		if(p_id.trim()==""){
+			$("#id-result-div").show();
+			$("#id_result").html("아이디를 입력해주세요").css('color', 'red');
+			$('#p_id').focus();
+		}else if(p_id.indexOf(" ")>=0){
+			$("#id-result-div").show();
+			$("#id_result").html("아이디에는 공백이 들어갈 수 없습니다.").css('color', 'red');
+			$('#p_id').focus();
+		}else if(emailRegex.test(p_id)==false){
+			$("#id-result-div").show();
+			$("#id_result").html("이메일 형식이 올바르지 않습니다.").css('color', 'red');
+			$('#p_id').focus();
+		}else{
+			$.ajax({
+				type:"POST",
+				url: "${path}/member/checkId?p_id="+p_id,
+				success:function(result){
+					$("#id-result-div").show();
+					if(result!=0){							
+						$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');					
+					}else{							
+						$("#id_result").html("사용 가능한 아이디입니다.").css('color', 'green');					
+					}
+				},error:function(error){
+					$("#id_result").html("error");
 				}
-				func();
-			}
-		}
-	}
-
-	addLoadEvent(function () {
-		verifyInput();
+			});
+		}		
 	});
+});
 
 
-	// 최소길이 & 최대길이 제한
-	var minimum = 8;
-	var maximun = 12;
-
-	function chkPw(obj, viewObj) {
-		var paramVal = obj.value;
-		var msg = chkPwLength(obj);
-		if (msg == "") msg = "안전한 비밀번호 입니다.";
-
-		document.getElementById(viewObj).innerHTML = msg;
-	}
-
-	// 글자 갯수 제한
-	function chkPwLength(paramObj) {
-		var msg = "";
-		var paramCnt = paramObj.value.length;
-
-		if (paramCnt < minimum) {
-			msg = "최소 암호 글자수는 <b>" + minimum + "</b> 입니다.";
-		} else if (paramCnt > maximun) {
-			msg = "최대 암호 글자수는 <b>" + maximun + "</b> 입니다.";
-		} else {
-			msg = chkPwNumber(paramObj);
-		}
-
-		return msg;
-	}
-
-	//비밀번호 유효성 검사
-	function chkPwNumber(paramObj) {
-		var msg = "";
-		// if(!paramObj.value.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/))
-		if (!paramObj.value.match(/([a-zA-Z0-9])|([a-zA-Z0-9])/)) {
-			// msg = "비밀번호는 영어, 숫자, 특수문자의 조합으로 6~16자리로 입력해주세요.";
-			msg = "비밀번호는 영어, 숫자의 조합으로 6~16자리로 입력해주세요.";
-		} else {
-			msg = chkPwContinuity(paramObj);
-		}
-
-		return msg;
-	}
+//정규식
+$(document).ready(function(){
+	$("#pw1").blur(function(){
+		var pw=$('#pw1').val();
+		
+		var checkSpe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?-]/gi);
+		var checkNumber = pw.search(/[0-9]/g);
+		var checkEnglish = pw.search(/[a-z]/ig);
+		
+		console.log(checkSpe);
+		
+		if(checkEnglish<0 || checkNumber<0 || checkSpe<0) {
+			$('#pw_validate').html("영문+숫자+특수문자").css('color', 'red');
+			$('#pw1').focus();
+		}else if(pw.trim().length<8 || pw.trim().length>20){
+			$('#pw_validate').html("8자리 이상 20자리 이하로 입력해주세요.").css('color', 'red');
+			$('#pw1').focus();
+		}else if(pw.indexOf(" ")>=0){
+			$('#pw_validate').html("공백 입력 불가").css('color', 'red');
+			$('#pw1').focus();
+		}else{
+			$('#pw_validate').html("사용 가능한 비밀번호입니다.").css('color', 'green');
+		}	
 	
-	//체크박스 전체선택 및 전체해제
-	   $("#chk_all").click(function(){
-	       if($("#chk_all").is(":checked")){
-	           $(".chk").prop("checked",true);
-	       }
-	       else{
-	           $(".chk").prop("checked",false);
-	       }
-	   });
+	});
+});
 
-	   //한개의 체크박스 선택 해제시 전체선택 체크박스도 해제
-	   $(".chk").click(function(){
-	       if($("input[name='chk']:checked").length == 4){
-	           $("#chk_all").prop("checked",true);
-	       }else{
-	           $("#chk_all").prop("checked",false);
-	       }
-	   });
+$(document).ready(function(){
+	
+	$("#pw2").blur(function(){
+		
+		var password=$('#pw1').val();
+		var password2=$('#pw2').val();	
+		
+		if(password.trim()!=password2.trim()){
+			$('#password_result').html("비밀번호가 일치하지 않습니다.").css('color', 'red');
+			$('#pw2').focus();
+		}else{
+			$('#password_result').html("비밀번호가 일치합니다.").css('color', 'green');	
+		}		
+	});
+});
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

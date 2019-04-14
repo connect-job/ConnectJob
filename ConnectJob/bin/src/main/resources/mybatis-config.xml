@@ -4,6 +4,19 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.connect.job.model.vo.Member" alias="member"/>
+		<typeAlias type="com.connect.job.model.vo.CMember" alias="cmember"/>
 		<typeAlias type="com.connect.job.model.vo.Company" alias="company"/>
+		<typeAlias type="com.connect.job.model.vo.SearchKeyword" alias="searchkeyword"/>
+		<typeAlias type="com.connect.job.model.vo.CompanyReview" alias="review"/>
+		<typeAlias type="com.connect.job.model.vo.CompanyReviewLike" alias="reviewlike"/>
+		<typeAlias type="com.connect.job.model.vo.CompanyAvgScore" alias="score"/>
+		<typeAlias type="com.connect.job.model.vo.Senier" alias="senier"/>
+		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>
+		<typeAlias type="com.connect.job.model.vo.Scomment" alias="scomment"/>
+		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="handler"/>
+		<typeAlias type="com.connect.job.model.vo.Notice" alias="notice"/>
 	</typeAliases>
+	
+	 
 </configuration>
+

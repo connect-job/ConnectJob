@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="help">
+
+	<resultMap type="inquiry" id="inquiryResult">
+		<id property="iNo" column="i_no"/>
+		<result property="iType" column="i_type" typeHandler="strArr"/>
+		<result property="iTitle" column="i_title"/>
+		<result property="iContent" column="i_content"/>
+		<result property="iDate" column="i_date"/>
+		<result property="status" column="status"/>
+		<result property="iWriter" column="i_writer"/>
+	</resultMap>
+
+	<insert id="insertInquiry" parameterType="inquiry">
+		insert into inquiry values(SEQ_I_NO.NEXTVAL,#{iType, typeHandler=strArr},#{iTitle},#{iContent},default,default,#{iWriter})
+	</insert>
+	
+	<select id="inquiryList" resultMap="inquiryResult">
+		select * from inquiry order by i_date desc
+	</select>
+	
+	<select id="selectCount" resultType="_int">
+		select count(*) from inquiry
+	</select>
+	
+	<select id="inquiryView" parameterType="_int" resultMap="inquiryResult">
+		select * from inquiry where i_no=#{no}
+	</select>
+	
+</mapper>

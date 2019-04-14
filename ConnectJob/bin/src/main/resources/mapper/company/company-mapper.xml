@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="company">
+	
+	<insert id="insertSearchKeyword">
+		INSERT INTO SEARCH_KEYWORD VALUES(#{keyword}, default)
+	</insert>
+
+	<select id="selectSearchKeyword" resultMap="searchMap">
+		SELECT SEARCH_COMPANY, (SELECT COMPANY_NAME FROM COMPANY B WHERE B.COMPANY_NO = A.SEARCH_COMPANY) CNAME, COUNT(*) CNT FROM SEARCH_KEYWORD A GROUP BY SEARCH_COMPANY ORDER BY CNT DESC
+	</select>
+	
+	<resultMap type="searchkeyword" id="searchMap">
+		<result column="search_company" property="searchCompany"/>
+		<result column="CNAME" property="cname"/>
+		<result column="CNT" property="count"/>
+	</resultMap>
+	
 
 	<insert id="insertCompany" parameterType="company">
 		INSERT INTO COMPANY VALUES(#{companyNo}, #{companyUpdate}, #{companyName}, #{companyZipcode}, #{companyAddressOld}, #{companyAddressNew}, #{companyStatus}, #{companyCode}, #{companyCate}, #{companyRegDate}, #{companyAllPeople}, #{companyPrice}, #{companyNewPeople}, #{companyOutPeople})

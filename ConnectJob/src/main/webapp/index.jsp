@@ -7,31 +7,107 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <script>
-
 	$('#notice').show();
 </script>
 
 <section style="padding-top: 200px;">
 	<div id="index-container">
 		<div id="index-top-left">
-			<ul>
-				<li><img src="${path}/resources/images/main-1.jpg"></li>
-				<li><img src="${path}/resources/images/main-2.jpg"></li>
-				<li><img src="${path}/resources/images/main-3.jpg"></li>
-			</ul>
 		</div>
 		<div class="index-top-right">
-			<div class="notice">최근 기업리뷰</div>
-			<div class="item">
-				<ul>
-					<li>리뷰제목 - 2019-04-07</li>
-					<li>리뷰제목 - 2019-04-07</li>
-					<li>리뷰제목 - 2019-04-07</li>
-					<li>리뷰제목 - 2019-04-07</li>
-					<li>리뷰제목 - 2019-04-07</li>
-				</ul>
+			<div id="latest1" class="tab-btn selected">최근 기업리뷰</div>
+			<div id="latest2" class="tab-btn">공지사항</div>
+
+			<div id="item">
+					<br><Br>
+				<img src="${path}/resources/images/loading.gif" width="20px">
+			</div>
+			<div id="item-notice">
+
 			</div>
 		</div>
+
+		<script>
+			var latest1 = $('#latest1');
+			var latest2 = $('#latest2');
+
+			var item = $('#item');
+			var itemNotice = $('#item-notice');
+
+			latest1.click(function() {
+				latest1.addClass('selected');
+				latest2.removeClass('selected');
+				item.css("display","block");
+				itemNotice.css("display","none");
+			});
+
+			latest2.click(function() {
+				latest2.addClass('selected');
+				latest1.removeClass('selected');
+				item.css("display","none");
+				itemNotice.css("display","block");
+			});
+
+			// 최근 기업리뷰 AJAX
+			var item = $('#item');
+			$.ajax({
+				url: '${path}/review/reviewLatest.do',
+				success: function(data) {
+					var Ca = /\+/g;
+	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+	                item.empty();
+	                item.html(resultSet);
+				}
+			});
+			// 공지사항 AJAX
+			var itemNotice = $('#item-notice');
+			$.ajax({
+				url: '${path}/notice/latestNotice.do',
+				success: function(data) {
+					var Ca = /\+/g;
+	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+	                itemNotice.empty();
+	                itemNotice.html(resultSet);
+				}
+			});
+		</script>
+
+		<div class="index-hire">
+			<div class="hire-title">
+				실시간 채용공고
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date"><span style="color:red">오늘마감</span></div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date">~2019-06-01 까지</div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date">~2019-06-01 까지</div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date">~2019-06-01 까지</div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+			<div class="hire-item">
+				<div class="item-title">(주) KH Company</div>
+				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
+				<div class="item-date">~2019-06-01 까지</div>
+				<div class="item-btn"><button>즉시지원</button></div>
+			</div>
+		</div>
+
 
 		<div class="index-middle">
 			<div class="index-middle-left">
@@ -39,58 +115,70 @@
 					<div class="left">연봉순위 TOP 5</div>
 					<div class="right">국민연금 기준</div>
 				</div>
-				<div class="title">
-					국민연금 기준 예상평균연봉 순위
+				<div class="content" id="salary">
+						<br><Br>
+					<img src="${path}/resources/images/loading.gif" width="20px">
 				</div>
-				<div class="content">
-					<ul>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-					</ul>
-				</div>
+				<script>
+				// 최근 기업리뷰 AJAX
+					var salary = $('#salary');
+					$.ajax({
+						url: '${path}/company/latestSalary.do',
+						success: function(data) {
+							var Ca = /\+/g;
+			                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+			                salary.empty();
+			                salary.html(resultSet);
+						}
+					});
+				</script>
 			</div>
-
+			
 			<div class="index-middle-center">
 				<div class="top">
 					<div class="left">기업리뷰 TOP 5</div>
-					<div class="right"></div>
+					<div class="right">기업 별 리뷰 많은 순위</div>
 				</div>
-				<div class="title">
-					기업 별 리뷰 많은 순위
+				<div class="content" id="reviews">
+						<br><Br>
+					<img src="${path}/resources/images/loading.gif" width="20px">
 				</div>
-				<div class="content">
-					<ul>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-					</ul>
-				</div>
+				<script>
+				// 최근 기업리뷰 AJAX
+					var reviews = $('#reviews');
+					$.ajax({
+						url: '${path}/company/latestReview.do',
+						success: function(data) {
+							var Ca = /\+/g;
+			                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+			                reviews.empty();
+			                reviews.html(resultSet);
+						}
+					});
+				</script>
 			</div>
 			<div class="index-middle-right">
 				<div class="top">
 					<div class="left">기업평점 TOP 5</div>
 					<div class="right">기업 총 평점 기준</div>
 				</div>
-				<div class="title">
-					기업리뷰의 총 평점 순위
+				<div class="content" id="score">
+					<br><Br>
+					<img src="${path}/resources/images/loading.gif" width="20px">
 				</div>
-				<div class="content">
-					<ul>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-						<li>111</li>
-					</ul>
-				</div>
+				<script>
+				// 최근 기업리뷰 AJAX
+					var score = $('#score');
+					$.ajax({
+						url: '${path}/company/latestScore.do',
+						success: function(data) {
+							var Ca = /\+/g;
+			                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+			                score.empty();
+			                score.html(resultSet);
+						}
+					});
+				</script>
 			</div>
 		</div>
 
@@ -116,6 +204,7 @@
 			clearInterval(rollingId);
 			$(this).css("cursor", "pointer");
 		});
+		
 		//마우스 아웃되면 다시 시작
 		banner.mouseout(function () {
 			rollingId = setInterval(function () { rollingStart(); }, 6000);
@@ -148,11 +237,7 @@
 			rollingId = setInterval(function () { rollingStart(); }, 6000);
 			$(this).css("cursor", "default");
 		});
-
 	});
-
-
-
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
