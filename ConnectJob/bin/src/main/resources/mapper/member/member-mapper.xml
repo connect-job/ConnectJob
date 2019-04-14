@@ -2,11 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 	<insert id="insertMember" parameterType="member">
+<<<<<<< HEAD
 		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, default, null, null, #{nickname})
+=======
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, #{final_edu}, #{school}, #{major}, default, default, null, null)
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 	</insert>
 	
 	<insert id="insertMemberKakao" parameterType="member">
+<<<<<<< HEAD
 		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, #{kakao_id}, 'Y', #{nickname})
+=======
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, #{final_edu}, #{school}, #{major}, default, default, #{kakao_id}, 'Y')
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 	</insert>
 	
 	<select id="selectOne" resultType="member">
@@ -19,6 +27,28 @@
 	
 	<select id="findId" resultType="member" parameterType="member">
 		select * from p_member where phone=#{phone} and p_name=#{p_name}
+<<<<<<< HEAD
+=======
+	</select>
+	
+	<resultMap type="member" id="memberResult">
+		<id column="p_id" property="p_id"/>
+		<result column="password" property="password"/>
+		<result column="p_name" property="p_name"/>
+		<result column="gender" property="gender"/>
+		<result column="phone" property="phone"/>
+		<result column="is_sns" property="is_sns"/>
+		<result column="final_edu" property="final_edu"/>
+		<result column="school" property="school"/>
+		<result column="major" property="major"/>
+		<result column="is_confirm" property="is_confirm"/>
+		<result column="enroll_date" property="enroll_date"/>
+		<result column="email_confirm" property="email_confirm"/>
+	</resultMap>
+	
+	<select id="selectList" resultType="member">
+		SELECT * FROM P_MEMBER
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 	</select>
 	
 	<delete id="deleteMember" parameterType="member">
@@ -79,6 +109,7 @@
 	
 	<delete id="deleteReview" parameterType="_int">
 		select * from company_review where review_no=#{review_no}
+<<<<<<< HEAD
 	</delete>	
 	
 	<resultMap type="member" id="memberResult">
@@ -109,4 +140,7 @@
 	<select id="searchList" resultType="member">
 		select * from p_member where #{searchType} like '%' || #{searchKey} || '%'
 	</select>
+=======
+	</delete>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 </mapper>

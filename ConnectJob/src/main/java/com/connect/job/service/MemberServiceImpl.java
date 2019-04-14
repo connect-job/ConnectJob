@@ -51,9 +51,9 @@ public class MemberServiceImpl implements MemberService{
 		
 	
 	@Override
-	public int insertMemberKakao(Member m) {
+	public int insertMemberSns(Member m) {
 		
-		return dao.insertMemberKako(m);
+		return dao.insertMemberSns(m);
 	}
 	
 	
@@ -87,9 +87,14 @@ public class MemberServiceImpl implements MemberService{
 		return dao.updatePw(m);
 	}
 
+	public List<Member> selectList() {
+	
+		return dao.selectList();
+	}
+
 	@Override
-	public Member selectOneKakao(Member m) {
-		return dao.selectOneKakao(m);
+	public Member selectOneSns(Member m) {
+		return dao.selectOneSns(m);
 	}
 
 

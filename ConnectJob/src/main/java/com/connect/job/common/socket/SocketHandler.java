@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +12,9 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import com.connect.job.dao.MessageDaoImpl;
+import com.connect.job.model.vo.HireNoti;
 import com.connect.job.model.vo.Message;
+import com.connect.job.model.vo.Resume;
 
 // Socket Handler 객체는 두 개의 상속 객체를 가질 수 있다
 // 1. TextWebSocketHandler : 문자만 전송할 때 사용 ( 채팅전용, 알람 기타 문자 )
@@ -53,30 +52,61 @@ public class SocketHandler extends TextWebSocketHandler {
 		String member = message.getPayload();     // 가공처리
 		logger.debug("들어온 메세지 : " + member);
 		
-		Message m = new Message();
-		m.setmTo(member);
-		System.out.println(m);
 		
-		Message ms = sessionTem.selectOne("message.messageCount",m);
+		// 웹소켓 동작
 		
-		System.out.println("메세지 서비스 주입 : " + ms);
+		// 1. 작성한 이력서가 있는지 DB조회
+		List<Resume> rList = sessionTem.selectList("message.messageResumeCount", member);
+		System.out.println("몇개있니?" + rList.size());
 		
-		String result = String.valueOf(ms.getmCount());
+		// 2. 이력서 직종 담기 -> , 붙여서 -> 또 잘라서 이력서 새로운 이력서 객체에 담아줌
+		String hopeJob_temp = "";
+		if(!rList.isEmpty()) {
+			for(int i=0; i<rList.size(); i++) {
+				for(String s : rList.get(i).getHopeJobArea()) {
+					hopeJob_temp += s + ",";
+				}
+			}
+		}
+		String[] hopeJob = hopeJob_temp.split(",");
+	
+		Resume r = new Resume();
+		r.setHopeJobs(hopeJob);
 		
-		System.out.println("돌려줄 값 : " + result);
-		
+		// 3. DB로 보내 -> 채용공고 직종조회
+		if(rList.size()>0) {
 			for(WebSocketSession s : list) {
 				if(s==session) {
 					continue;
 				}
 				try {
-					if(Integer.parseInt(result)>0) {
-						s.sendMessage(new TextMessage("아직 읽지 않은 메세지가 " + result + "건이 있습니다!"));						
-					}
+					// 4. 이력서가 있고 -> 희망직종과 일치하는 -> 채용공고 불러오기
+					List<HireNoti> list = sessionTem.selectList("message.messageHireNoti", r);
+					System.out.println(list.toString());
+					System.out.println("리스트 사이즈 : " + list.size());
+					session.sendMessage(new TextMessage("회원님의 이력서 " + rList.size() + "건 에 대한<br> 추천 채용공고 " + list.size() + "건 이 매칭되었습니다! <br> <button>알림센터 바로가기</button>"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
+		} else {
+			for(WebSocketSession s : list) {
+				if(s==session) {
+					continue;
+				}
+				try {
+					session.sendMessage(new TextMessage("작성한 이력서가 없으시네요!<br><button>지금 이력서 작성하러 가기</button>"));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		
+		// 3. 이력서 <-> 채용공고 희망직종 매칭하기
+		
+		
 	}
 
 	

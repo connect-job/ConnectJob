@@ -9,7 +9,11 @@
         <div id="footer-container">
             <div class="footer-top">
                 <ul> 
+<<<<<<< HEAD
                 	<li onclick="location.href='${path}/notice.do'">공지사항</li>
+=======
+                	<li>공지사항</li>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
                     <li onclick="location.href='${path}/trmUse.do'">이용약관</li>
                     <li onclick="location.href='${path}/privacyPolicy.do'">개인정보처리방침</li>
                     <li onclick="location.href='${path}/emailUnthClct.do'">이메일무단수집거부</li>

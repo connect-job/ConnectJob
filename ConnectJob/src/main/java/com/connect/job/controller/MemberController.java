@@ -40,6 +40,14 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	
+	// 네이버 로그인 콜백
+	@RequestMapping("/member/naverCallback.do") 
+	public String naverCallBack() {
+		return "member/naverCallback";
+	}
+	
+	
 	//회원가입 페이지 이동
 	@RequestMapping("/member/memberEnroll.do")
 	public String memberEnroll() {
@@ -51,28 +59,27 @@ public class MemberController {
 		return "member/memberEnrollForm";
 	}
 	
-	//카카오 회원일때 회원가입 페이지 이동
-	@RequestMapping("/member/memberEnrollKakao.do")
+	// SNS 회원일때 회원가입 페이지 이동
+	@RequestMapping("/member/memberEnrollSns.do")
 	public String memberEnroll(Member m, Model model) {
 		model.addAttribute("Member", m);
-
-		return "member/memberEnrollFormKakao";
-
+		return "member/memberEnrollFormSns";
 	}
 	
-	// 카카오 회원이고, 커넥트잡 회원일 때 로그인처리 세션부여
-	@RequestMapping("/member/memberLoginKakao.do")
-	public String memberLoginKakao(Member m, HttpSession session, Model model) {
-		Member result = service.selectOneKakao(m);
+
+	// SNS인증완료 된 회원이고, 커넥트잡 회원일 때 로그인처리 세션부여
+	@RequestMapping("/member/memberLoginSns.do")
+	public String memberLoginSns(Member m, HttpSession session, Model model) {
+		Member result = service.selectOneSns(m);
 		
 		String msg = "";
 		String loc = "/";
 		
 		if(result!=null) {
-			msg = "카카오 로그인 성공";
+			msg = "로그인 되었습니다";
 			session.setAttribute("loginMember", result);
 		} else {
-			msg = "카카오 로그인 실패!";
+			msg = "로그아웃 되었습니다";
 		}
 		
 		model.addAttribute("msg", msg);
@@ -80,17 +87,17 @@ public class MemberController {
 		return "common/msg";
 	}	
 
-	//카카오 회원가입
-	@RequestMapping("/member/insertKakao.do")
-	public String insertMemberKakao(Member m, Model model){
-			
+	// SNS인증 완료 후, 회원가입
+	@RequestMapping("/member/insertSns.do")
+	public String insertMemberSns(Member m, Model model){
+		
 		String pw=m.getPassword();
 		logger.debug(pw);
 		String enPw=encoder.encode(pw); //암호화
 		logger.debug(enPw);
 		m.setPassword(enPw);
 			
-		int result=service.insertMemberKakao(m);
+		int result=service.insertMemberSns(m);
 		
 		String msg="";
 		String loc="";
@@ -160,7 +167,7 @@ public class MemberController {
 	
 	//로그인 페이지 이동
 	@RequestMapping("/member/login.do")
-	public String login() {
+	public String login(Model model) {
 		return "member/loginMember";
 	}	
 	
@@ -207,31 +214,82 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	
+	// SNS 로그인
+	@RequestMapping("/member/isSns.do")
+	@ResponseBody
+	public String isSns(Member request) {
+		System.out.println("SNS 로그인 체크중");
+		
+		String check = "";
+		
+		// 카카오일때
+		if(request.getIs_sns().equals("kakao")) {
+			Member result = service.selectOneSns(request);
+			
+			if(result!=null) {
+				if(result.getKakao_id()!=0) {
+					check = "1"; // 로그인페이지로 이동
+				} else {
+					check = "2"; // 회원가입페이지로 이동
+				}
+			}
+			
+		// 구글일때
+		} else if (request.getIs_sns().equals("google")) {
+			System.out.println("구글 로그인 체크체크");
+			
+			Member result = service.selectOneSns(request);
+			System.out.println("구글일때 회원 처리 : " + result);
+			
+			if(result!=null) {
+				if(!result.getGoogle_id().equals("")) {
+					check = "1"; // 로그인페이지로 이동
+				} else {
+					check = "2"; // 회원가입페이지로 이동
+				}
+			}
+		// 네이버 일때
+		} else if (request.getIs_sns().equals("naver")) {
+			System.out.println("네이버 로그인 체크체크");
+			
+			Member result = service.selectOneSns(request);
+			System.out.println("네이버 회원 처리 : " + result);
+			
+			if(result!=null) {
+				if(result.getNaver_id()!=0) {
+					check = "1"; // 로그인페이지로 이동
+				} else {
+					check = "2"; // 회원가입페이지로 이동
+				}
+			}
+		}
+		return check;
+	}
+	
 	@RequestMapping("/member/isKakao.do")
 	@ResponseBody
-	public String isKakao(int kakao_id, String is_sns, HttpSession session) {
+	public String isKakao(int kakao_id, String is_sns) {
 		
 		Member m=new Member();
 		m.setKakao_id(kakao_id);
 		m.setIs_sns(is_sns);
-		Member result = service.selectOneKakao(m);
+
+		Member result = service.selectOneSns(m);
+
 		String check = "";
 		
 		System.out.println("아이디값 담겼니? : " + kakao_id);
-		
 		if(result!=null) {
 			if(result.getKakao_id()!=0) {
 				// 로그인페이지로 이동
-				check = "1";				
+				check = "1";
 			} else {
 				// 회원가입페이지로 이동
 				check = "2";				
 			}
 		}
-		
-		
-		
-		System.out.println(check);
+	
 		return check;
 	}
 	
@@ -294,14 +352,14 @@ public class MemberController {
 	@RequestMapping("/member/mypage.do")
 	public ModelAndView mypage(Member m) {
 		
-		Member result=service.selectOne(m);
+		Member result = service.selectOne(m);
 		
 		ModelAndView mv=new ModelAndView();	
 		
 		CompanyReview review=new CompanyReview();
 		review.setReviewMember(m.getP_id());	
 		
-		List<CompanyReview> list=service.selectReviewList(review);
+		List<CompanyReview> list = service.selectReviewList(review);
 		
 		System.out.println(review);
 		

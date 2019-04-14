@@ -31,7 +31,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-    background-color: #2c3142;
+    background-color: #4e536b;
     border-radius: 10px;
 }
 
@@ -49,6 +49,12 @@ a:hover {
     color: #5e6477;
     text-decoration: none;
 }
+
+button, input , select, option, textarea {
+    outline: none;
+    font-family: 'NotoKr', sans-serif;
+}
+
 
 
 /* ------------------------------------- 공통 컴포넌트 태그 */
@@ -74,13 +80,13 @@ a:hover {
 }
 
 #pageBar ul li:hover {
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     transition: 600ms;
 }
 
 #pageBar ul li.active {
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -99,7 +105,7 @@ a:hover {
 	color: #fff;
 	text-align: center;
 	background-color: #596483a8;
-	z-index: 999999;
+	z-index: -1;
 	border-radius: 5px;
 }
 
@@ -107,6 +113,41 @@ a:hover {
     color: #fff;
     font-size: 14px;
 }
+
+#socket-message #messageIcon {
+    animation: messageAnimate infinite 2s;
+    -webkit-animation: messageAnimate infinite 2s;
+}
+
+@keyframes messageAnimate {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes messageAnimate {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
 
 #socket-message a:hover {
     transition: 500ms;
@@ -135,7 +176,7 @@ header {
     width: 100%;
     position: fixed;
     text-align: center;
-    /* background-color: #2c3142c7; */
+    /* background-color: #4e536bc7; */
     color: #303030;
     font-size: 13px;
     letter-spacing: -0.4px;
@@ -211,7 +252,7 @@ header  #header-top .top-container .header-top-center {
 header #header-top .top-container .header-top-center .header-search {
     width:400px;
     background-color: #ffffff;
-    border: 2px solid #2c3142;
+    border: 2px solid #4e536b;
 }
 
 header #header-top .top-container .header-top-center .header-search input {
@@ -569,7 +610,7 @@ section #index-container .index-top-right .tab-btn {
     display: inline-block;
     border-bottom: 1px solid #eee;
     text-align: left;
-    width: 43%;
+    width: 43.5%;
     font-size: 12px;
     font-weight: bold;
     padding-top: 12px;
@@ -786,7 +827,7 @@ section #login-container {
 	display: inline-block;
     width: 990px;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 20px;
     padding-bottom: 50px;
 }
 
@@ -811,78 +852,97 @@ section #login-container ul li {
 }
 
 section #login-container #member {
-    padding-top: 30px;
+    padding-top: 20px;
     display: inline-block;
     width: 648px;
-    border-top: 1px solid #b0b4c0;
-    border-left: 1px solid #b0b4c0;
-    border-right: 1px solid #b0b4c0;
-    border-bottom: 1px solid #b0b4c0;
+    border: 1px solid #b0b4c0;
 }
 
 section #login-container #member .login-left {
     vertical-align: top;
     display:inline-block;
-    width: 50%;
+    width: 60%;
 }
 
 section #login-container #member .login-left .login-item {
     padding-top: 10px;
     padding-bottom: 20px;
+    width: 100%;
 }
 
 section #login-container #member .login-left .login-item .item-left {
     display: inline-block;
-    width: 29%;
+    width: 30%;
 }
 
 section #login-container #member .login-left .login-item .item-right {
     display: inline-block;
-    width: 68%;
+    width: 65%;
 }
 
 section #login-container #member .login-left .login-item .item-right input {
-    border: 1px solid #eee;
-    width: 100%;
+    border: 1px solid rgb(209, 209, 209);
+    width: 80%;
     height: 30px;
     padding-left: 15px;
     background-color: #fff;
-    outline: 1px solid #fff;
+    outline: 1px solid rgb(255, 255, 255);
 }
 
 section #login-container #member .login-left .login-item .item-right input:focus {
     transition: 500ms;
-    outline: 1px solid #2c3142;
+    outline: 1px solid #4e536b;
+}
+
+section #login-container #member .login-left .login-item input[type=submit] {
+    background-color: #4f5669;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 250px;
+    margin-bottom: 5px;
+}
+
+section #login-container #member .login-left .login-item input[type=button] {
+    background-color: #4f5669;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 250px;
+}
+
+section #login-container #member .login-item-sns {
+    width: 100%;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+section #login-container #member .login-item-sns > div {
+    display: inline-block;
+    margin: 5px;
 }
 
 
 section #login-container #member .login-right {
     vertical-align: top;
+    padding-top: 10px;
     display:inline-block;
-    width: 49%;
+    width: 30%;
     padding-bottom: 15px;
 }
 
-section #login-container #member .login-right .kakao {
-    background-color: rgb(255, 215, 35);
-    color: #000;
-    font-size: 12px;
-    letter-spacing: -0.4px;
-    border: none;
-    outline: none;
-    width: 80%;
-    height: 35px;
-    vertical-align: top;
-    margin-bottom: 10px;
-}
-
 section #login-container #member .login-right input {
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     border: none;
     outline: none;
-    width: 80%;
-    margin-bottom: 10px;
+    width: 187px;
+    margin-bottom: 28px;
+    border-radius: 4px;
     height: 35px;
     font-size: 12px;
     letter-spacing: -0.4px;
@@ -931,23 +991,25 @@ section #login-container #cmember .login-left .login-item .item-right input {
 
 section #login-container #cmember .login-left .login-item .item-right input:focus {
     transition: 500ms;
-    outline: 1px solid #2c3142;
+    outline: 1px solid #4e536b;
 }
 
 
 section #login-container #cmember .login-right {
+    padding-top: 10px;
     vertical-align: top;
     display:inline-block;
     width: 49%;
 }
 
-section #login-container #cmember .login-right input {
-    background-color: #2c3142;
+section #login-container #cmember .login-right button {
+    cursor: pointer;
+    background-color: #4e536b;
     color: #fff;
     border: none;
     outline: none;
     width: 80%;
-    margin-bottom: 10px;
+    margin-bottom: 28px;
     height: 35px;
 }
 
@@ -1011,8 +1073,8 @@ section #enroll-container .enrollType .enroll-item {
 
 section #enroll-container .enrollType .enroll-item:hover {
     transition: 500ms;
-    background-color: #2c3142;
-    border: 2px solid #2c3142;
+    background-color: #4e536b;
+    border: 2px solid #4e536b;
     color: #fff;
 }
 
@@ -1060,12 +1122,12 @@ section #enroll-container #memberEnroll .enroll-item input {
 }
 
 section #enroll-container #memberEnroll .enroll-item input:focus {
-    border: 1px solid #2c3142;
+    border: 1px solid #4e536b;
     transition: 500ms;
 }
 
 section #enroll-container #memberEnroll .enroll-item input[type=button] {
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     width: 120px;
     padding-left: 7px;
@@ -1074,7 +1136,7 @@ section #enroll-container #memberEnroll .enroll-item input[type=button] {
 
 section #enroll-container #memberEnroll .enroll-item input[type=radio] {
     vertical-align: top;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     width: 16px;
     padding-left: 7px;
@@ -1082,7 +1144,7 @@ section #enroll-container #memberEnroll .enroll-item input[type=radio] {
 
 section #enroll-container #memberEnroll .enroll-item input[type=checkbox] {
     vertical-align: top;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     width: 16px;
     padding-left: 7px;
@@ -1130,11 +1192,159 @@ section #enroll-container #memberEnroll .enroll-text-end {
 section #enroll-container #memberEnroll .enroll-text-end input {
     width: 150px;
     height: 35px;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     border: none;
     margin: 10px;
 }
+
+
+
+
+/* ------------------------------------------ 마이페이지 */
+
+section #mypage-container {
+    width: 990px;
+    display: inline-block;
+}
+
+section #mypage-container .mypage-title {
+    width: 965px;
+    padding-left: 25px;
+    font-size: 22px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+section #mypage-container .mypage-content {
+    width: 100%;
+}
+
+section #mypage-container .mypage-content .content-left {
+    vertical-align: top;
+    float: left;
+    width: 23%;
+    padding-left: 25px;
+    height: 150px;
+}
+
+section #mypage-container .mypage-content .content-left ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+section #mypage-container .mypage-content .content-left ul li {
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #eee;
+    border-right: none;
+    margin-bottom: 2px;
+}
+
+section #mypage-container .mypage-content .content-right {
+    vertical-align: top;
+    float: right;
+    width: 710px;
+    margin-right: 25px;
+    border: 1px solid #d0d1d6;
+    overflow: hidden;
+}
+
+section #mypage-container .mypage-content .content-right #tab-scroll {
+    transition: 900ms;
+    width: 1475px;
+}
+
+section #mypage-container .mypage-content .content-right .tab-container {
+    transition: 500ms;
+    vertical-align: top;
+    display: inline-block;
+    width: 735px;
+}
+
+section #mypage-container .mypage-content .content-right .tab-title {
+    text-align: center;
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 15px;
+}
+
+
+section #mypage-container .mypage-content .content-right .tab-item {
+    width: 100%;
+    height: 50px;
+}
+
+
+section #mypage-container .mypage-content .content-right .tab-item .item-left {
+    float: left;
+    width: 30%;
+    line-height: 30px;
+}
+
+section #mypage-container .mypage-content .content-right .tab-item .item-right {
+    float: right;
+    width: 67%;
+    text-align: left;
+}
+
+section #mypage-container .mypage-content .content-right .tab-item .item-right input {
+    border: 1px solid rgb(231, 231, 231);
+    padding-left: 15px;
+    height: 35px;
+    width: 300px;
+}
+
+section #mypage-container .mypage-content .content-right .tab-item-one {
+    width: 100%;
+}
+
+section #mypage-container .mypage-content .content-right .review-item {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    height: 40px;
+}
+
+section #mypage-container .mypage-content .content-right .review-item:hover {
+    transition: 500ms;
+    background-color: #eee;
+}
+
+section #mypage-container .mypage-content .content-right .review-item .item-title {
+    font-size: 13px;
+    line-height: 40px;
+    text-align: left;
+    padding-left: 25px;
+    float: left;
+}
+
+section #mypage-container .mypage-content .content-right .review-item .item-date {
+    font-size: 12px;
+    line-height: 40px;
+    float: right;
+    padding-right: 45px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ---------------------------------------------------------------------  캘린더 */
 
@@ -1143,7 +1353,165 @@ section #calendar {
    width: 990px;
 }
 
+/* ------------------------------------------- 기업페이지 */
+
+
+section #biz-container {
+    width: 990px;
+    display: inline-block;
+}
+
+section #biz-container .biz-left {
+    position: fixed;
+    float:left;
+    vertical-align: top;
+    width: 200px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    font-size: 13px;
+    text-align: left;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+
+section #biz-container .biz-left .menu-top {
+    font-size: 22px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+section #biz-container .biz-left ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+section #biz-container .biz-left ul li {
+    cursor: pointer;
+    width: 79%;
+    line-height: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #e7e7e7;
+    margin-bottom: 5px;
+}
+
+section #biz-container .biz-left ul li span {
+    float: right;
+    vertical-align: top;
+}
+
+
+section #biz-container .menu a { cursor:pointer; }
+
+section #biz-container .menu ul.hide { 
+    display:none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+section #biz-container .menu ul.hide li { 
+    height: 30px;
+    line-height: 30px;
+    border: none;
+}
+
+
+
+section #biz-container .biz-right {
+    float: right;
+    vertical-align: top;
+    padding-left: 15px;
+    width: 74%;
+    text-align: left;
+}
+
+
+
+
+
+/* ------------------------------------------------------------ 기업페이지 > 채용공고 등록 */
+
+section #biz-container .biz-right .biz-title {
+    margin-top: 25px;
+    width: 100%;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 10px;
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+}
+
+section #biz-container .biz-right .biz-item {
+    vertical-align: top;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+section #biz-container .biz-right .biz-item .item-left {
+    vertical-align: top;
+    display: inline-block;
+    padding-left: 25px;
+    width: 15%;
+}
+
+section #biz-container .biz-right .biz-item .item-right {
+    vertical-align: top;
+    display: inline-block;
+    width: 80%;
+}
+
+
+section #biz-container .biz-right .biz-item input[type=text] {
+    width: 80%;
+    height: 30px;
+    border: 1px solid rgb(231, 231, 231);
+    font-size: 13px;
+    padding-left: 15px;
+}
+
+section #biz-container .biz-right .biz-item select {
+    width: 30%;
+    height: 30px;
+    border: 1px solid rgb(231, 231, 231);
+    font-size: 13px;
+    padding-left: 15px;
+}
+
+section #biz-container .biz-right .biz-one {
+    vertical-align: top;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+section #biz-container .biz-right .biz-one .one-item {
+    text-align: center;
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    border-radius: 100px;
+    border: 1px solid #eee;
+    margin: 15px;
+}
+
+section #biz-container .biz-right .biz-one .one-item .one-top {
+    padding-top: 15px;
+}
+
+section #biz-container .biz-right .biz-one .one-item .one-bottom {
+    padding-top: 15px;
+    font-size: 35px;
+}
+
+
+
 /* ----------------------------------------------------------------- 기업리스트 */
+
 
 section #company-container {
     display: inline-block;
@@ -1159,8 +1527,18 @@ section #company-container .company-top {
 
 .selected {
     transition: 800ms;
-    background-color: #4c5268;
+    background-color: #4e536b;
     color: #fff;
+}
+
+
+section #company-container .company-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: #eee;
+    border: 1px solid rgb(221, 221, 221);
+    margin-bottom: 5px;
 }
 
 section #company-container .company-middle {
@@ -1174,26 +1552,26 @@ section #company-container .company-middle button {
     width: 240px;
     height: 35px;
     outline: none;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
-    border: 1px solid #2c3142;
+    border: 1px solid #4e536b;
 }
 
 section #company-container .company-middle button:hover {
     transition: 600ms;
     background-color: #fff;
     color: #000;
-    border: 1px solid #2c3142;
+    border: 1px solid #4e536b;
 }
 
-section #company-container .company-middle #search_location {
+section #company-container .company-middle .search_location {
     width: 100%;
 }
 
-section #company-container .company-middle #search_location #search_left {
+section #company-container .company-middle .search_location #search_left {
     display: inline-block;
     width: 230px;
-    height: 150px;
+    height: 170px;
     padding: 5px;
     overflow-y: scroll;
 }
@@ -1211,13 +1589,13 @@ section #company-container .company-middle #search_location #search_left {
     background-color: #b9bbc4;
 }
 
-section #company-container .company-middle #search_location #search_left ul {
+section #company-container .company-middle .search_location #search_left ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
-section #company-container .company-middle #search_location #search_left ul li {
+section #company-container .company-middle .search_location #search_left ul li {
     cursor: pointer;
     display: inline-block;
     padding-left: 15px;
@@ -1229,17 +1607,15 @@ section #company-container .company-middle #search_location #search_left ul li {
     margin-bottom: 2px;
 }
 
-section #company-container .company-middle #search_location #search_left ul li:hover {
+section #company-container .company-middle .search_location #search_left ul li:hover {
     transition: 500ms;
-    background-color: #eee;
-    border: 1px solid #2c3142;
+    border: 1px solid #72757e;
 }
 
-section #company-container .company-middle #search_location #search_right {
+section #company-container .company-middle .search_location #search_right {
     display: inline-block;
     width: 730px;
-    height: 150px;
-    border: 1px solid #eee;
+    height: 170px;
     padding: 5px;
     overflow-y: scroll;
 }
@@ -1257,30 +1633,24 @@ section #company-container .company-middle #search_location #search_right {
     background-color: #b9bbc4;
 }
 
-section #company-container .company-middle #search_location #search_right #location {
-    
-}
-
-section #company-container .company-middle #search_location #search_right #location ul {
+section #company-container .company-middle .search_location #search_right #location ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
 
-section #company-container .company-middle #search_location #search_right #location ul li {
+section #company-container .company-middle .search_location #search_right #location ul li {
     cursor: pointer;
     display: inline-block;
     padding-left: 15px;
-    padding-top: 8px;
+    padding-top: 11px;
     width: 99px;
     height: 28px;
     font-size: 12px;
-    border: 1px solid #eee;
     margin-bottom: 2px;
+    border: 1px solid #eee;
 }
-
-
 
 section #company-container .company-middle #search_selected {
     display: block;
@@ -1292,20 +1662,26 @@ section #company-container .company-middle #search_selected {
 section #company-container .company-middle #search_selected #select_left {
     padding-left: 5px;
     float: left;
+    text-align: left;
+    width: 80%;
 }
 
 section #company-container .company-middle #search_selected #select_left button {
-    background: none;
+    background: #eee;
+    border-radius: 4px;
     width: 110px;
-    height: 30px;
+    height: 35px;
     font-size: 12px;
+    letter-spacing: -0.3px;
+    font-family: 'NotoKr', sans-serif;
     border-radius: 2px;
-    color: #2c3142;
+    color: #4e536b;
     margin: 3px;
+    border: none;
 }
 
 section #company-container .company-middle #search_selected #select_left button:hover {
-    background-color: #2c3142;
+    background-color: #4e536b;
     transition: 600ms;
     color: #fff;
 }
@@ -1319,9 +1695,9 @@ section #company-container .company-middle #search_selected #select_right button
     width: 100px;
     height: 35px;
     outline: none;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
-    border: 1px solid #2c3142;
+    border: 1px solid #4e536b;
 }
 
 section #company-container .company-middle #company-location {
@@ -1340,32 +1716,87 @@ section #company-container #company-content {
     text-align: center;
 }
 
+
 section #company-container #company-content #company-list {
-    display: inline-block;
-    text-align: center;
-    width: 990px;
-    color: #535353;
+    margin-top: 20px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
+section #company-container #company-content #company-list .list-item-top {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: #eee;
+    border: 1px solid rgb(221, 221, 221);
+}
 
-section #company-container #company-content #company-list table {
-    margin-top: 10px;
-    border-top: 2px solid #2c3142;
+section #company-container #company-content #company-list .list-item-top .cate {
+    color: #797979;
+    display: inline-block;
+    width: 10%;
+}
+
+section #company-container #company-content #company-list .list-item-top .name {
+    display: inline-block;
+    width: 40%;
+    text-align: left;
+}
+
+section #company-container #company-content #company-list .list-item-top .address {
+    display: inline-block;
+    width: 35%;
+    text-align: left;
+}
+
+section #company-container #company-content #company-list .list-item-top .count {
+    display: inline-block;
+    width: 10%;
+    color: #797979;
+    font-size: 12px;
+}
+
+section #company-container #company-content #company-list .list-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    border-bottom: 1px solid #eee;
     font-size: 13px;
+    color: rgb(128, 128, 128);
+}
+
+section #company-container #company-content #company-list .list-item:hover {
+    transition: 500ms;
+    background-color: #f0f0f0;
+}
+
+section #company-container #company-content #company-list .list-item .cate {
+    color: #797979;
     display: inline-block;
-    border-collapse: collapse;
+    width: 10%;
 }
 
-section #company-container #company-content #company-list table th {
-    border-bottom: 1px solid #eee;
-    height: 40px;
-    text-align: center;
+section #company-container #company-content #company-list .list-item .name {
+    display: inline-block;
+    width: 40%;
+    text-align: left;
 }
 
-section #company-container #company-content #company-list table td {
-    height: 33px;
-    border-bottom: 1px solid #eee;
+section #company-container #company-content #company-list .list-item .address {
+    display: inline-block;
+    width: 35%;
+    text-align: left;
 }
+
+section #company-container #company-content #company-list .list-item .count {
+    display: inline-block;
+    width: 10%;
+    color: #797979;
+    font-size: 12px;
+}
+
+
+
 
 section #company-container #company-content #company-list #pageBar {
     width: 990px;
@@ -1393,13 +1824,13 @@ section #company-container #company-content #company-list #pageBar ul li {
 }
 
 section #company-container #company-content #company-list #pageBar ul li:hover {
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     transition: 600ms;
 }
 
 section #company-container #company-content #company-list #pageBar ul li.active {
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -1447,8 +1878,8 @@ section #company-view-container #company-view-content .view-left ul li {
 }
 
 section #company-view-container #company-view-content .view-left ul li:hover {
-    background-color: #2c3142;
-    border: 1px solid #2c3142;
+    background-color: #4e536b;
+    border: 1px solid #4e536b;
     color: #fff;
     transition: 600ms;
 }
@@ -1461,7 +1892,7 @@ section #company-view-container #company-view-content .view-right {
 }
 
 section #company-view-container #company-view-content .view-right button {
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     outline: none;
     border: none;
@@ -1494,7 +1925,7 @@ section #company-view-container #company-view-content .view-right #right-company
 
 section #company-view-container #company-view-content .view-right #right-company-info .info-left .info:hover {
     transition: 500ms;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -1559,7 +1990,7 @@ section #company-view-container #company-view-content .view-right #right-company
 }
 
 .line4 {
-    background-color: #2c3142;
+    background-color: #4e536b;
     height: 10px;
 }
 
@@ -1593,12 +2024,12 @@ section #company-view-container #company-view-content .view-right #right-company
 	background-color: #fff;
 	border: 1px solid #cfcfcf;
 	border-left: none;
-	color: #2c3142;
+	color: #4e536b;
 	letter-spacing: -0.4px;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-btns button.write {
-	background-color: #2c3142;
+	background-color: #4e536b;
 	color: #fff;
 	border: none;
 }
@@ -1641,7 +2072,7 @@ section #company-view-container #company-view-content .view-right #right-company
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-left .review-item:hover {
     transition: 500ms;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -1665,7 +2096,6 @@ section #company-view-container #company-view-content .view-right #right-company
     padding-top: 10px;
     padding-bottom: 10px;
     width: 55.5%;
-    height: 340px;
     overflow-x: hidden;
     overflow-y: auto;
     border-left: 2px solid #eee;
@@ -1674,10 +2104,20 @@ section #company-view-container #company-view-content .view-right #right-company
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right input {
-    width: 80%;
+    width: 90%;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
+    border: 1px solid #eee;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right textarea {
+    width: 90%;
+    height: 150px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border: 1px solid #eee;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right select {
@@ -1685,6 +2125,9 @@ section #company-view-container #company-view-content .view-right #right-company
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
+    font-size:12px;
+    border: 1px solid #eee;
+    outline: none;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right button {
@@ -1698,7 +2141,7 @@ section #company-view-container #company-view-content .view-right #right-company
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-top .review-table-right button:hover {
     transition: 500ms;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -1776,13 +2219,13 @@ section #company-view-container #company-view-content .view-right #right-company
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-bottom ul li:hover {
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     transition: 600ms;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-review .review-bottom ul li.active {
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -1865,9 +2308,10 @@ section #company-view-container #company-view-content .view-right #review-write 
     width: 100%;
     padding-top: 20px;
     height: 40px;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     font-size: 16px;
+    margin-bottom: 20px;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .input {
@@ -1900,7 +2344,7 @@ section #company-view-container #company-view-content .view-right #review-write 
     padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 378px;
+    width: 400px;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .input .right select {
@@ -1927,29 +2371,32 @@ section #company-view-container #company-view-content .view-right #review-write 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle {
     margin-top: 20px;
     width: 100%;
-    height: 50px;
-    border-top: 1px solid #2c3142;
-    background-color: #e1e3e9;
+    height: 35px;
+    border-top: 1px solid #9b9ca3;
     color: #fff;
     font-size: 16px;
     padding-top: 15px;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle .middle-left {
-    float: left;
+    display: inline-block;
+    width: 30%;
     padding-left: 15px;
+    text-align: left;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle .middle-right {
-    float: right;
-    color: #2c3142;
-    font-size: 13px;
+    display: inline-block;
+    width: 65%;
+    color: #3f4149;
+    font-size: 12px;
     padding-right: 15px;
+    text-align: right;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle button {
     background-color: #fff;
-    color: #2c3142;
+    color: #4e536b;
     font-weight: bold;
     font-size: 14px;
     width: 120px;
@@ -1959,10 +2406,216 @@ section #company-view-container #company-view-content .view-right #review-write 
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle button:hover {
-    background-color: #2c3142;
+    background-color: #4e536b;
     transition: 500ms;
     color: #fff;
 }
+
+
+
+/* ------------------------------ 기업리뷰 리스트 */
+
+section #review-container {
+    display: inline-block;
+    width: 990px;
+}
+
+section #review-container .review-top {
+    padding-left: 25px;
+    text-align: left;
+    height: 50px;
+    font-size: 24px;
+}
+
+section #review-container #review-content {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+section #review-container #review-content .review-middle .senier-title {
+    text-align: left;
+    padding-left: 25px;
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+section #review-container #review-content .review-middle #review-cate {
+    width: 100%;
+}
+
+section #review-container #review-content .review-middle #review-cate ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+section #review-container #review-content .review-middle #review-cate ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    margin: 5px;
+    font-size: 12px;
+}
+
+section #review-container #review-content .review-middle #search_selected {
+    display: inline-block;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+    padding-top: 10px;
+    vertical-align: top;
+    width: 100%;
+}
+
+section #review-container #review-content .review-middle #search_selected #select_left {
+    display: inline-block;
+    vertical-align: top;
+    width: 75%;
+    text-align: left;
+    padding-left: 25px;
+    color: rgb(95, 95, 95);
+}
+
+section #review-container #review-content .review-middle #search_selected #select_left button {
+    border: none;
+    background: none;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+    height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 10px;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+section #review-container #review-content .review-middle #search_selected #select_left button:hover {
+    transition: 500ms;
+    background-color: #eee;
+}
+
+
+section #review-container #review-content .review-middle #search_selected #select_right {
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    text-align: right;
+}
+
+section #review-container #review-content .review-middle #search_selected #select_right button {
+    width: 100px;
+    height: 40px;
+    background: none;
+    border: 1px solid rgb(194, 194, 194);
+}
+
+section #review-container #review-content .review-middle #search_selected #select_right button:hover {
+    background-color: #686e81;
+    border: none;
+    color: #fff;
+    transition: 500ms;
+}
+
+
+
+
+
+
+
+section #review-container #review-content #review-list {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+section #review-container #review-content #review-list .review-item {
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 25px;
+    width: 990px;
+    font-size: 13px;
+    color: #424242;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+section #review-container #review-content #review-list .review-item:hover {
+    transition: 500ms;
+    background-color: #eee;
+}
+
+section #review-container #review-content #review-list .review-item .cate {
+    vertical-align: top;
+    color: #797979;
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #eee;
+}
+
+section #review-container #review-content #review-list .review-item .content {
+    vertical-align: top;
+    display: inline-block;
+    width: 55%;
+    padding-left: 25px;
+    text-align: left;
+}
+
+section #review-container #review-content #review-list .review-item .content .content-title {
+    font-size: 15px;
+    height:30px;
+    line-height: 30px;
+}
+
+section #review-container #review-content #review-list .review-item .content .content-content {
+    font-size: 12px;
+}
+
+section #review-container #review-content #review-list .review-item .item-right {
+    vertical-align: top;
+    display: inline-block;
+    width: 20%;
+    text-align: right;
+}
+
+section #review-container #review-content #review-list .review-item .item-right #stars {
+    color: #e7be36;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1989,6 +2642,12 @@ section #senier-container .senier-subTitle {
     padding-left: 27px;
     text-align: left;
     font-size: 14px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    height: 35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
 }
 
 section #senier-container .senier-subTitle #left {
@@ -2006,16 +2665,16 @@ section #senier-container .senier-subTitle #right button {
     height: 35px;
     letter-spacing: -0.5px;
     color: #fff;
-    border: 2px solid #2c3142;
+    border: 2px solid #4e536b;
     outline: none;
-    background-color: #2c3142;
+    background-color: #4e536b;
 }
 
 section #senier-container .senier-subTitle #right button:hover {
     transition: 600ms;
-    border: 2px solid #2c3142;
+    border: 2px solid #4e536b;
     outline: none;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -2023,14 +2682,118 @@ section #senier-container .senier-middle {
     display: inline-block;
     width: 100%;
     text-align: center;
+    margin-bottom: 20px;
 }
 
-section #senier-container .senier-middle .senier-item {
+section #senier-container .senier-middle .senier-title {
+    text-align: left;
+    padding-left: 25px;
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+section #senier-container .senier-middle #senier-cate {
+    width: 100%;
+}
+
+section #senier-container .senier-middle #senier-cate ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+section #senier-container .senier-middle #senier-cate ul li {
     cursor: pointer;
-    margin: 15px;
     display: inline-block;
-    width: 450px;
-    border: 2px solid #eee;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    margin: 5px;
+    font-size: 12px;
+}
+
+section #senier-container .senier-middle #search_selected {
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+    padding-top: 10px;
+    vertical-align: top;
+    width: 100%;
+}
+
+section #senier-container .senier-middle #search_selected #select_left {
+    vertical-align: top;
+    float: left;
+    width: 75%;
+    text-align: left;
+    padding-left: 25px;
+    color: rgb(95, 95, 95);
+}
+
+section #senier-container .senier-middle #search_selected #select_left button {
+    border: none;
+    background: none;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+    height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 10px;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+section #senier-container .senier-middle #search_selected #select_left button:hover {
+    transition: 500ms;
+    background-color: #eee;
+}
+
+
+section #senier-container .senier-middle #search_selected #select_right {
+    vertical-align: top;
+    float: right;
+    width: 20%;
+}
+
+section #senier-container .senier-middle #search_selected #select_right button {
+    width: 100px;
+    height: 40px;
+    background: none;
+    border: 1px solid rgb(194, 194, 194);
+}
+
+section #senier-container .senier-middle #search_selected #select_right button:hover {
+    background-color: #686e81;
+    border: none;
+    color: #fff;
+    transition: 500ms;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+section #senier-container #senier-result .senier-item {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #fff;
+    border-bottom: 1px solid #eee;
     background-color: #fff;
     color: #535353;
     text-align: left;
@@ -2038,33 +2801,53 @@ section #senier-container .senier-middle .senier-item {
     padding-bottom: 10px;
 }
 
-section #senier-container .senier-middle .senier-item:hover {
+section #senier-container #senier-result .senier-item:hover {
     transition: 500ms;
-    background-color: #2c3142;
-    border: 2px solid #2c3142;
-    color: #fff;
+    background-color: #efeff1;
+    border: 1px solid #eee;
 }
 
-section #senier-container .senier-middle .senier-item .item-cate {
+section #senier-container #senier-result .senier-item:hover .item-title {
+    transition: 500ms;
+    font-weight: bold;
+}
+
+section #senier-container #senier-result .senier-item .item-cate {
+    margin-left: 25px;
     padding-left: 25px;
-    width: 100%;
+    width: 10%;
     font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 10px;
+    color: #000;
+    background-color: #eee;
 }
 
-section #senier-container .senier-middle .senier-item .item-title {
+section #senier-container #senier-result .senier-item .item-type {
+    margin-top: 10px;
+    display: inline-block;
+    padding-left: 35px;
+    width: 20%;
+    font-size: 12px;
+    height: 25px;
+}
+
+section #senier-container #senier-result .senier-item .item-title {
     padding-left: 25px;
     width: 100%;
     font-size: 18px;
     height: 30px;
 }
 
-section #senier-container .senier-middle .senier-item .item-content {
-    padding-left: 25px;
-    width: 400PX;
+section #senier-container #senier-result .senier-item .item-content {
+    padding-left: 35px;
+    width: 100%;
     font-size: 12px;
 }
 
-section #senier-container .senier-middle .senier-item .item-info {
+section #senier-container #senier-result .senier-item .item-info {
     padding-left: 25px;
     width: 100%;
     font-size: 12px;
@@ -2078,31 +2861,35 @@ section #senier-container .senier-middle #senier-write-container {
     width: 100%;
 }
 
+section #senier-container .senier-middle #senier-write-container input[type=text] {
+    width: 350px;
+    border: none;
+    border-bottom: 1px solid rgb(218, 218, 218);
+    height: 35px;
+    outline: #404861;
+    padding-left: 15px;
+}
+
 section #senier-container .senier-middle #senier-write-container .write-cate {
     margin-bottom: 5px;
     width: 100%;
     border-radius: 4px;
-    border: 1px solid #d3d3d3;
+}
+
+section #senier-container .senier-middle #senier-write-container .write-cate input[type=radio] {
+    width: 20px;
 }
 
 section #senier-container .senier-middle #senier-write-container .write-title {
     margin-bottom: 5px;
     width: 100%;
-    border-radius: 4px;
-    border: 1px solid #d3d3d3;
-}
-
-section #senier-container .senier-middle #senier-write-container .write-content {
-    margin-bottom: 5px;
-    width: 100%;
-    border-radius: 4px;
-    border: 1px solid #d3d3d3;
 }
 
 section #senier-container .senier-middle #senier-write-container .write-content {
     margin-bottom: 5px;
     width: 100%;
 }
+
 
 section #senier-container .senier-middle #senier-write-container .write-btn {
     margin-bottom: 5px;
@@ -2114,16 +2901,16 @@ section #senier-container .senier-middle #senier-write-container .write-btn butt
     height: 35px;
     letter-spacing: -0.5px;
     color: #fff;
-    border: 2px solid #2c3142;
+    border: 2px solid #4e536b;
     outline: none;
-    background-color: #2c3142;
+    background-color: #4e536b;
 }
     
 section #senier-container .senier-middle #senier-write-container .write-btn button:hover {
     transition: 600ms;
-    border: 2px solid #2c3142;
+    border: 2px solid #4e536b;
     outline: none;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
 }
 
@@ -2133,7 +2920,7 @@ section #senier-container .senier-middle #senier-write-container .left {
     border-radius: 4px;
     width: 200px;
     height: 30px;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     display: inline-block;
     border-right: 1px solid #d3d3d3;
@@ -2163,31 +2950,36 @@ section #senier-container .senier-middle #senier-write-container .right textarea
 
 /* ---------------------------- 선배와의 대화 (내용) ---------------------------- */
 
-section #senier-container .senier-middle .middle-content {
+section #senier-container .senier-middle .middle-title {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    padding-left: 25px;
+    font-size: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+section #senier-container .senier-middle .middle-subtitle {
     width: 100%;
     padding-top: 15px;
     padding-bottom: 15px;
-}
-
-
-section #senier-container .senier-middle .middle-content .left {
-    display: inline-block;
-    padding-top: 10px;
-    width: 20%;
-    height: 30px;
-    border-right: 1px solid rgb(207, 207, 207);
-    background-color: #2c3142;
-    color: #fff;
-}
-
-section #senier-container .senier-middle .middle-content .right {
-    padding-top: 10px;
-    display: inline-block;
-    padding-left: 20px;
-    width: 76%;
     text-align: left;
-    vertical-align: top;
+    padding-left: 25px;
+    border-bottom: 1px solid #eee;
 }
+
+section #senier-container .senier-middle .middle-content {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    padding-left: 25px;
+    font-size: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+
 
 section #senier-container .senier-middle .senier-comment {
     width: 100%;
@@ -2222,7 +3014,7 @@ section #senier-container .senier-middle .senier-comment .comment-write .right {
 section #senier-container .senier-middle .senier-comment .comment-write .right input[type=button] {
     width: 80%;
     height: 120px;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     border: none;
 }
@@ -2261,6 +3053,7 @@ section #resume-container {
 
 
 section #resume-container .resume-top {
+    margin-top: 15px;
     padding-left: 25px;
     text-align: left;
     height: 50px;
@@ -2313,14 +3106,14 @@ section #resume-container .list-header button {
     width: 120px;
     height: 33px;
     outline: none;
-    border: 1px solid #c4c4c4;
-    background-color: #fff;
+    background-color: #404861;
+    color: #fff;
 }
 
 section #resume-container .list-header button:hover {
     transition: 500ms;
-    background-color: #2c3142;
-    border: 1px solid #2c3142;
+    background-color: #4e536b;
+    border: 1px solid #4e536b;
     color: #fff;
 }
 
@@ -2346,6 +3139,52 @@ section #resume-container .sub-title {
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
 }
+
+section #resume-container button {
+    background-color: #404861;
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 120px;
+    height: 35px;
+}
+
+section #resume-container .view-content {
+    width: 100%;
+}
+
+section #resume-container .view-content .view-top {
+    width: 100%;
+}
+
+section #resume-container .view-content .view-top .top-left {
+    display: inline-block;
+    width: 200px;
+}
+
+section #resume-container .view-content .view-top .top-right {
+    display: inline-block;
+    width: 700px;
+    text-align: left;
+}
+
+section #resume-container .view-content .view-top .top-right .right-item {
+    display: inline-block;
+    width: 330px;
+    height:40px;
+}
+
+section #resume-container .view-content .view-top .top-right .right-item .item-left {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
+
+section #resume-container .view-content .view-top .top-right .right-item .item-right {
+    display: inline-block;
+    width: 225px;
+}
+
 
 section #resume-container .item {
     margin-top: 5px;
@@ -2373,22 +3212,22 @@ section #resume-container .item .right {
 
 section #resume-container .item .right input[type=text]:focus {
     transition: 500ms;
-    border: 2px solid #2c3142;
+    border: 2px solid #4e536b;
 }
 
 section #resume-container .item .right input[type=email]:focus {
     transition: 500ms;
-    border: 2px solid #2c3142;
+    border: 2px solid #4e536b;
 }
 
 section #resume-container .item .right input[type=date]:focus {
     transition: 500ms;
-    border: 2px solid #2c3142;
+    border: 2px solid #4e536b;
 }
 
 section #resume-container .item .right select:focus {
     transition: 500ms;
-    border: 2px solid #2c3142;
+    border: 2px solid #4e536b;
 }
 
 section #resume-container .item .right input[type=text] {
@@ -2480,7 +3319,7 @@ section #faq-container .faq-middle .faq {
 
 section #faq-container .faq-middle .faq .q {
     cursor: pointer;
-    background-color: #e0e2eb;
+    background-color: #f3f4f7;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 15px;
@@ -2489,7 +3328,7 @@ section #faq-container .faq-middle .faq .q {
 
 section #faq-container .faq-middle .faq .q:hover {
     transition: 500ms;
-    background-color: #404861;
+    background-color: #8a91aa;
     color: #fff;
 }
 
@@ -2526,6 +3365,95 @@ section #etc-container .content {
     margin-bottom: 50px;
 }
 
+/* ------------------------------------------ 1:1 문의 */
+
+section #help-container {
+    width: 990px;
+    display: inline-block;
+}
+
+section #help-container .help-top {
+    width: 965px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 25px;
+    font-size: 20px;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+section #help-container .help-subtitle {
+    width: 965px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 25px;
+    font-size: 13px;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+section #help-container .help-middle {
+    width: 965px;
+    padding-top: 20px;
+    margin-bottom: 25px;
+}
+
+section #help-container .help-middle .help-item {
+    padding-top: 20px;
+    width: 965px;
+    padding-bottom: 20px;
+    display: inline-block;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+section #help-container .help-middle .help-item:hover {
+    background-color: #eee;
+    transition: 500ms;
+}
+
+section #help-container .help-middle .help-item .item-left {
+    vertical-align: top;
+    display: inline-block;
+    width: 20%;
+}
+
+section #help-container .help-middle .help-item .item-center {
+    vertical-align: top;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+}
+
+section #help-container .help-middle .help-item .item-center .center-title {
+    font-size: 15px;
+}
+
+
+section #help-container .help-middle .help-item .item-right {
+    vertical-align: top;
+    display: inline-block;
+    width: 18%;
+    font-size: 15px;
+}
+
+section #help-container .help-middle .help-item .item-right span {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #5e6579;
+    border-radius: 10px;
+    color: #fff;
+}
+
+
 
 /* --------------------------------------- 알림센터 */
 
@@ -2535,11 +3463,53 @@ section #alarm-container {
 }
 
 section #alarm-container .title {
-    width: 100%;
+    width: 960px;
     height: 50px;
     font-size: 22px;
+    font-weight: normal;
     text-align: left;
     padding-left: 20px;
+}
+
+
+section #alarm-container .subtitle {
+    width: 990px;
+    text-align: center;
+}
+
+section #alarm-container .subtitle div {
+    vertical-align: top;
+    display: inline-block;
+    width: 200px;
+    margin: 10px;
+}
+
+section #alarm-container .subtitle > div .top {
+    height: 35px;
+    line-height: 35px;
+    background-color: #eee;
+    border: 1px solid rgb(218, 218, 218);
+    border-left: none;
+    border-right: none;
+}
+
+section #alarm-container .subtitle > div .bottom {
+    font-size: 12px;
+    text-align: left;
+}
+
+
+section #alarm-container .center {
+    width: 940px;
+    font-size: 12px;
+    text-align: right;
+}
+
+section #alarm-container .center button {
+    border: 1px solid #eee;
+    outline: none;
+    width: 100px;
+    height: 30px;
 }
 
 
@@ -2583,7 +3553,7 @@ section #alarm-container .left {
 section #alarm-container .right {
     vertical-align: top;
     display: inline-block;
-    width: 88%;
+    width: 86%;
     text-align: left;
     padding-left: 15px;
 }
@@ -2828,7 +3798,7 @@ section #notice-container .notice-content .notice-item-content .right {
 footer {
     width: 100%;
     text-align: center;
-    background-color: #2c3142;
+    background-color: #4e536b;
     color: #fff;
     font-size: 12px;
     letter-spacing: 0;

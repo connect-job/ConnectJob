@@ -64,6 +64,21 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<CompanyReview> reviewLatest() {
 		return dao.reviewLatest();
 	}
+
+	@Override
+	public int reviewDelete(int num) {
+		return dao.reviewDelete(num);
+	}
+
+	@Override
+	public List<CompanyReview> reviewAjaxAll(int cPage, int numPerPage, CompanyReview review) {
+		return dao.reviewAjaxAll(cPage, numPerPage, review);
+	}
+
+	@Override
+	public int reviewCountAjaxAll(CompanyReview review) {
+		return dao.reviewCountAjaxAll(review);
+	}
 	
 	
 

@@ -19,13 +19,31 @@
     <script src="${path }/resources/js/wow.min.js"></script>
     <script src="${path }/resources/js/jquery-3.3.1.min.js"></script>
 
+    <!-- 게시판 글쓰기 폼 에디터 -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.1.0/inline/ckeditor.js"></script>
+
     <script>
         new WOW().init();
     </script>
+    
+    <!-- 구글 로그인 -->
+    <meta name="google-signin-scope" content="profile email">
+	<meta name="google-signin-client_id" content="638430037698-srn3c01h0flqs3dg2jfmbe0hogr25qgd.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+    
+    <!-- 네이버 로그인 -->
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    
+    
+    
+    
+    
 </head>
 
 <body>
     <header>
+
         <div id="notice">
             이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　
         </div>
@@ -73,12 +91,13 @@
                     <ul>
                         <li onclick="location.href='${path}/calendar.do'">공채달력<div class="menu-line"></div>
                         </li>
+                        <li onclick="location.href='${path}/senierConversation.do'">채용공고<div class="menu-line"></div></li>
                         <li onclick="location.href='${path}/company/companyList.do'">기업탐색<div class="menu-line"></div>
                         </li>
                         <li onclick="location.href='${path}/review/review.do'">기업리뷰<div class="menu-line"></div>
                         </li>
-                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화<div class="menu-line"></div>
-                        </li>
+
+                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화<div class="menu-line"></div></li>
                     </ul>
                 </div>
                 <div class="menu-right">
@@ -100,9 +119,8 @@
                             <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
-                            <li onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">기업페이지</li>
-                            <li><i class="far fa-comment-dots"></i></li>
-                            <li onclick="location.href='${path}/member/logout.do'"><i class="fas fa-sign-out-alt"></i></li>
+                            <li onclick="location.href='${path}/cmemberBizPage?cMemberId=${logincMember.cMemberId }'">기업페이지</li>
+                            <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <li id="sub">고객센터<div id="sub-menu">
                                 <ul>
@@ -125,7 +143,7 @@
     <script>
     
     // ------------------------------------------------------------ 웹소켓 시작
-    var wsUri = "ws://192.168.20.221:9090/job/alarm";
+    var wsUri = "ws://localhost:8080/job/alarm";
     var nick = '${loginMember.p_id}';
 	console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
     
@@ -157,7 +175,7 @@
 		    	$('#socket-message').empty();
 		    	$('#socket-message').css("opacity","1");
 		    	$('#socket-message').css("z-index","999999999");
-		    	$('#socket-message').append("<i class='fas fa-envelope-open-text' style='font-size:20px'></i>　");
+		    	$('#socket-message').append("<span id='messageIcon'><i class='fas fa-envelope-open-text' style='font-size:20px'></i></span>　");
 		    	$('#socket-message').append(evt.data);
 		    	$('#socket-message').append("<br><br><a href='${path}/alarm/alarm.do?id=${loginMember.p_id}'>알림센터 바로가기</a>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
 	    	}, 1000);

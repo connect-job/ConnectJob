@@ -12,16 +12,25 @@
 		<result property="sDate" column="s_date"/>
 		<result property="pId" column="p_id"/>
 		<result property="status" column="status"/>
+		<result property="sCate" column="s_cate"/>
 	</resultMap>
 	
 	
   
   <insert id="insertSenier" parameterType="senier">
+<<<<<<< HEAD
   	insert into s_talk values(SEQ_S_NO.NEXTVAL,null,#{qType},#{sTitle},#{sContent},0,default,#{pId},default)
+=======
+  	insert into s_talk values(SEQ_S_NO.NEXTVAL,null,#{qType},#{sTitle},#{sContent},0,default,#{pId},default,#{sCate})
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
   </insert>
   
   <select id="senierList" resultMap="senierResult">
+<<<<<<< HEAD
   	select * from s_talk order by s_date desc
+=======
+  	select * from s_talk order by s_date asc
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
   </select>
   
   <select id="selectCount" resultType="_int">

@@ -9,10 +9,12 @@
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
 <section>
+
 	<div id="senier-container">
 		<div class="senier-top">
 			선배와의 대화
 		</div>
+
 
 		<div class="senier-subTitle">
 			<div id="left">우리 직종의 취업고민과 선배의 답변이에요</div>
@@ -29,19 +31,26 @@
 		</div>
 
 
+
 		<div class="senier-middle">
+				<div class="middle-content">
+					<div class="left">직종분류</div>
+					<div class="right">
+							${s.sCate}
+					</div>
+				</div>
 				<div class="middle-content">
 					<div class="left">질문유형</div>
 					<div class="right">
 							${s.qType}
 					</div>
 				</div>
-				<div class="middle-content">
-					<div class="left">제목</div>
-					<div class="right">${s.sTitle}</div>
+
+				<div class="middle-subtitle">
+					질문유형　#${s.qType}　|　${s.sDate}
 				</div>
+
 				<div class="middle-content">
-					<div class="left">내용</div>
 					<div class="right">${s.sContent}</div>
 				</div>
 
@@ -106,7 +115,8 @@
 			var comment = $('textarea[name=cContent]').val();
 
 			if (comment.trim().length == 0) {
-				$('#comment-message').html("<div style='display: inline-block; width: 700px;'><span>댓글 내용을 입력해주세요!</span></div>");
+				alert("댓글 내용을 입력해주세요!");
+				return false;
 			}
 
 			commentFrm.submit();

@@ -16,6 +16,7 @@
 </ul>
 	
 <div class="tab_container"> 
+<<<<<<< HEAD
 	
 	<div id="tab1" class="tab_content">	
 		<form action="${path }/member/updateMember" method="post">
@@ -25,7 +26,54 @@
 					<input type="email" name="p_id" id="p_id" readonly value="${m.p_id }"/>																								
 				</div>
 			</div>
+=======
+	<div id="tab1" class="tab_content">
+	
+	<form action="${path }/member/updateMember" method="post">		
+	<table>
+		<tr>
+			<td>아이디</td>
+			<td><input type="email" name="p_id" readonly value="${m.p_id }"/></td>
+		</tr>
+		<tr>
+			<td>비밀번호</td>
+			<td>
+				<input type="button" value="비밀번호 변경" onclick="location.href='${path}/member/changePw?p_id=${m.p_id}'"/>				
+			</td>
+		</tr>
+		<tr>
+			<td>이름</td>
+			<td><input type="text" name="p_name" value="${m.p_name }"/></td>
+		</tr>
+		<tr>
+			<td>성별</td>
+			<td><input type="text" name="gender" value="${m.gender eq 'M'?'남':'여'}" readonly/></td>
+		</tr>
+		<tr>
+			<td>연락처</td>
+			<td><input type="phone" name="phone" value="${m.phone }"/></td>
+		</tr>
+		<tr>
+			<td>최종학력</td>
+			<td><input type="text" name="final_edu" value="${m.final_edu }"/></td>
+		</tr>
+		<tr>
+			<td>학교</td>
+			<td><input type="text" name="school" value="${m.school }"/></td>
+		</tr>
+		<tr>
+			<td>전공</td>
+			<td>
+				<input type="text" name="major" value="${m.major }"/>
 				
+			</td>
+		</tr>		
+		<tr>
+			<td><input type="submit" value="수정"/></td>
+			<td><input type="button" value="탈퇴" onclick="location.href='${path}/member/deleteMember?p_id=${loginMember.p_id }'"/></td>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+				
+<<<<<<< HEAD
 			<div class="enroll-item">
 				<div class="left">비밀번호</div>
 				<div class="right">
@@ -65,6 +113,12 @@
 				<input type="submit" value="수정"/><input type="button" value="탈퇴" onclick="location.href='${path}/member/deleteMember?p_id=${loginMember.p_id }'"/>
 			</div>	
 		</form>
+=======
+		</tr>		
+	</table>
+	</form>		
+
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 	</div>
 </div>
 
@@ -72,8 +126,15 @@
 	<c:if test="${reviewList != null }">
 		<c:forEach var="list" items="${reviewList }">
 			<div>
+<<<<<<< HEAD
 				<div>					
 					<a href="${path }/company/companyView.do?no=${list.reviewCompany}">${list.reviewShort }</a>
+=======
+				<div>
+					<%-- <input type="hidden" value="${list.reviewNo }"/> --%>
+					${list.reviewCompany }
+					<a href="location.href='${path }review/reviewOne.do?reviewNo='+${list.reviewNo}">${list.reviewShort }</a>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 					${list.reviewDate}
 					
 				</div>

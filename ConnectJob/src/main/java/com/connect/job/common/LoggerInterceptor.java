@@ -18,7 +18,7 @@ private Logger logger=LoggerFactory.getLogger(LoggerInterceptor.class);
 		logger.debug("===============START=================");
 		logger.debug(request.getRequestURI());
 		logger.debug("-------------------------------------");
-		if(request.getSession().getAttribute("loginMember")==null)
+		if(request.getSession().getAttribute("loginMember")==null && request.getSession().getAttribute("loginCMember")==null)
 		{
 			request.setAttribute("msg", "로그인 후 이용할 수 있습니다.");
 			request.setAttribute("loc", "/member/login.do");

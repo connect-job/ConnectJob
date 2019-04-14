@@ -1,8 +1,10 @@
 package com.connect.job.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.connect.job.model.vo.Member;
 import com.connect.job.model.vo.Scomment;
 import com.connect.job.model.vo.Senier;
 import com.connect.job.service.SenierService;
@@ -26,6 +28,63 @@ public class SenierController {
 
 	@Autowired
 	private SenierService service;
+	
+	@RequestMapping("/senier/senierListEnd.do")
+	@ResponseBody
+	public String senierListEnd(HttpServletRequest request, String job, @RequestParam(value="cPage",required=false,defaultValue="1") int cPage) throws UnsupportedEncodingException {
+		
+		String[] job_temp;
+		
+		if(job.equals("")) {
+			job_temp = null;
+		} else {
+			job_temp = job.split(",");
+		}
+		
+		System.out.println("들어온 값 : " + job);
+		
+		Senier s = new Senier();
+		s.setJobs(job_temp);
+		
+		int numPerPage=10;
+		int total = service.selectAjaxCount(s);
+
+		String pageBar = AjaxPageBarFactory.getPageBar(total, cPage, numPerPage);
+		List<Senier> list = service.selectAjaxAll(cPage, numPerPage, s);
+		
+		String html = "";
+		
+		for(int i=0; i<list.size(); i++) {
+			html += "<div class=\"senier-item\" onclick=\"location.href='" + request.getContextPath() + "/senierAnswer.do?no=" + list.get(i).getsNo() + "'\">";
+			html += "<div class=\"item-cate\">" + list.get(i).getsCate() + "</div>";
+			html += "<div class=\"item-type\">";
+			html += "#" + list.get(i).getqType();
+			html += "</div>";
+			html += "<div class=\"item-title\">";
+			html += "<i class=\"fab fa-quora\"></i>　";
+			html += list.get(i).getsTitle();
+			html += "</div>";
+			html += "<div class=\"item-content\">";
+			if(list.get(i).getsContent().length()>100) {
+				html += list.get(i).getsContent().substring(0, 100);
+			} else {
+				html += list.get(i).getsContent();
+			}
+			html += "(더 보기)";
+			html += "</div>";
+            html += "</div>";
+		}
+		
+            html += "<div id=\"pageBar\">";
+            html += pageBar;
+            html += "</div>";
+
+		String result = URLEncoder.encode(html, "UTF-8");
+		return result;
+	}
+	
+	
+	
 	
 	@RequestMapping("/senierWrite.do")
 	public String write()
@@ -135,7 +194,7 @@ public class SenierController {
 		html += "<div class=\"comment-item\">";
 			for(int i=0; i<list.size();i++) {
 				html += "<div class=\"writer\">";
-				html += list.get(i).getcName();
+				html += list.get(i).getcWriter();
 				html += "</div>";
 				
 				html += "<div class=\"content\">";
@@ -143,8 +202,14 @@ public class SenierController {
 				html += "<div class=\"content-container\">";
 				html += list.get(i).getcContent();
 				html += "</div>";
-				html += "<button class='updateBtn'>수정</button>";
-				html += "<button class='deleteBtn'>삭제</button>";
+				Member m = (Member) session.getAttribute("loginMember");
+				if(m!=null) {
+					if(m.getP_id().equals(list.get(i).getcWriter())) {
+						html += "<button class='updateBtn'>수정</button>";
+						html += "<button class='deleteBtn'>삭제</button>";
+						
+					}
+				}
 				html += "</div>";
 				
 				html += "<div class=\"date\">";

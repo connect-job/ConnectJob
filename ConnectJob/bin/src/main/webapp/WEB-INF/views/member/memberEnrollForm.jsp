@@ -24,7 +24,11 @@
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
+<<<<<<< HEAD
 						<input type="email" name="p_id" id="p_id" autocomplete="off" placeholder="이메일 아이디" required/>																										
+=======
+						<input type="email" name="p_id" id="p_id" autocomplete="off" placeholder="이메일 아이디"/>																				
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 					</div>
 				</div>
 				
@@ -54,6 +58,7 @@
 				<div class="enroll-item msgdiv">
 					<div class="left">이름</div>
 					<div class="right">
+<<<<<<< HEAD
 						<input type="text" name="p_name" required/>
 						<span id="name_result"></span>
 					</div>
@@ -64,6 +69,11 @@
 					<div class="right">
 						<input type="text" name="nickname" required/>
 						<span id="nickname_result"></span>
+=======
+						<input type="text" name="p_name"/>
+						<%-- <input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
+						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/> --%>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 					</div>
 				</div>		
 
@@ -77,11 +87,32 @@
 				
 				<div class="enroll-item">
 					<div class="left">연락처</div>
+<<<<<<< HEAD
 					<div class="right">
 						<input type="phone" name="phone" autocomplete="off" required/>
 						<span id="phone_result"></span>
 					</div>
 				</div>				
+=======
+					<div class="right"><input type="phone" name="phone" autocomplete="off" /></div>
+				</div>
+				
+				<div class="enroll-item">
+					<div class="left">최종학력</div>
+					<div class="right"><input type="text" name="final_edu" autocomplete="off" /></div>
+				</div>
+				
+				<div class="enroll-item">
+					<div class="left">학교</div>
+					<div class="right"><input type="text" name="school" autocomplete="off" /></div>
+				</div>
+				
+				<div class="enroll-item">
+					<div class="left">전공</div>
+					<div class="right"><input type="text" name="major" autocomplete="off" /></div>
+				</div>
+				
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 				
 				<div class="enroll-text">
 					<b>약관동의</b></br>
@@ -113,6 +144,7 @@
 </section>
 
 <script>
+<<<<<<< HEAD
 $(function(){
 	$('[name=p_name]').blur(function(){
 		var p_name=$('[name=p_name]').val();
@@ -198,6 +230,45 @@ $(function(){
 	$("input:radio[name='gender']:radio[value='M']").prop('checked', true); // 선택하기
 
 	$("input:radio[name='gender']:radio[value='F']").prop('checked', false); // 해제하기
+=======
+
+
+//아이디 중복체크
+$(document).ready(function(){	
+	$('#p_id').blur(function(){
+		var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		var p_id=$('#p_id').val();
+		
+		if(p_id.trim()==""){
+			$("#id-result-div").show();
+			$("#id_result").html("아이디를 입력해주세요").css('color', 'red');
+			$('#p_id').focus();
+		}else if(p_id.indexOf(" ")>=0){
+			$("#id-result-div").show();
+			$("#id_result").html("아이디에는 공백이 들어갈 수 없습니다.").css('color', 'red');
+			$('#p_id').focus();
+		}else if(emailRegex.test(p_id)==false){
+			$("#id-result-div").show();
+			$("#id_result").html("이메일 형식이 올바르지 않습니다.").css('color', 'red');
+			$('#p_id').focus();
+		}else{
+			$.ajax({
+				type:"POST",
+				url: "${path}/member/checkId?p_id="+p_id,
+				success:function(result){
+					$("#id-result-div").show();
+					if(result!=0){							
+						$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');					
+					}else{							
+						$("#id_result").html("사용 가능한 아이디입니다.").css('color', 'green');					
+					}
+				},error:function(error){
+					$("#id_result").html("error");
+				}
+			});
+		}		
+	});
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 });
 
 
@@ -243,6 +314,7 @@ $(document).ready(function(){
 		}		
 	});
 });
+<<<<<<< HEAD
 
 //체크박스 전체선택 및 전체해제
 $("#chk_all").click(function(){
@@ -261,6 +333,8 @@ $(".chk").click(function(){
         $("#chk_all").prop("checked",false);
     }
 });
+=======
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 
 </script>
 

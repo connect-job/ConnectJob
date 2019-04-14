@@ -15,6 +15,7 @@
 		SELECT * FROM NOTICE ORDER BY NOTICE_DATE DESC
 	</select>
 	
+<<<<<<< HEAD
 	<insert id="insertNotice">
 		insert into notice values(seq_notice_no.nextval, #{writer}, #{title}, #{content}, default, default, #{status})
 	</insert>
@@ -31,6 +32,10 @@
   	
   	<select id="selectList" resultType="notice">
   		SELECT * FROM NOTICE ORDER BY NOTICE_DATE DESC
+=======
+	<select id="selectList" resultType="notice">
+  		select A.*,(select count(*) from notice where A.notice_no=notice_no) count from notice A order by notice_date desc
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
   	</select>
 	
 	<select id="selectOne" resultMap="noticeResult" parameterType="_int">

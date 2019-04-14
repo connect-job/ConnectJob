@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.connect.job.model.vo.Career;
 import com.connect.job.model.vo.FinalEdu;
 import com.connect.job.model.vo.FinalEduUniv;
+import com.connect.job.model.vo.ProfileImg;
 import com.connect.job.model.vo.Resume;
 
 @Repository
@@ -35,6 +36,43 @@ public class ResumeDaoImpl implements ResumeDao {
 		return session.insert("resume.insertCareer",c);
 	}
 	
+	@Override
+	public int insertProfileImg(ProfileImg p) {
+		return session.insert("resume.insertProfileImg",p);
+	}
+	
+	
+	
+	@Override
+	public int updateProfileImg(ProfileImg p) {
+		return session.insert("resume.updateProfileImg", p);
+	}
+
+	@Override
+	public int updateResume(Resume r) {
+		return session.update("resume.updateResume", r);
+	}
+
+	@Override
+	public int updateFinalEdu(FinalEdu fe) {
+		return session.update("resume.updateFinalEdu", fe);
+	}
+
+	@Override
+	public int updateFinalEduUniv(FinalEduUniv univ) {
+		return session.update("resume.updateFinalEduUniv", univ);
+	}
+
+	@Override
+	public int updateCareer(Career c) {
+		return session.update("resume.updateCareer", c);
+	}
+
+	@Override
+	public ProfileImg selectedProfileImg(int resumeNo) {
+		return session.selectOne("resume.selectProfileImg",resumeNo);
+	}
+
 	@Override
 	public List<Resume> selectedResumeList(String pId) {
 		return session.selectList("resume.selectResumeList",pId);
@@ -74,7 +112,14 @@ public class ResumeDaoImpl implements ResumeDao {
 	public List<FinalEduUniv> selectedFinalEduUnivList(int resumeNo) {
 		return session.selectList("resume.selectedFinalEduUnivList",resumeNo);
 	}
+
+	@Override
+	public int deleteProfileImg(int resumeNo) {
+		System.out.println("기존이미지삭제");
+		return session.update("resume.deleteProfileImg",resumeNo);
+	}
 	
+
 	
 	
 	

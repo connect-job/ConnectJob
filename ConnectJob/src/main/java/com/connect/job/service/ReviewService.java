@@ -17,5 +17,8 @@ public interface ReviewService {
 	int reviewUpdate(CompanyReview r);
 	List<CompanyReviewLike> reviewLikeAll(int reviewNo);
 	List<CompanyReview> reviewLatest();
+	int reviewDelete(int num);
+	List<CompanyReview> reviewAjaxAll(int cPage, int numPerPage, CompanyReview review);
+	int reviewCountAjaxAll(CompanyReview review);
 
 }

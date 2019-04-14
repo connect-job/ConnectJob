@@ -304,21 +304,22 @@
                                 <div class="right">
                                     <select id="reviewJob" name="reviewJob">
                                         <option>직종상세</option>
-                                        <option value="DBA(Database Admin)">DBA(Database Admin)</option>
-                                        <option value="ERP">ERP</option>
-                                        <option value="QA(Quality Assurance)">QA(Quality Assurance)</option>
-                                        <option value="게임개발">게임개발</option>
-                                        <option value="기획">기획</option>
-                                        <option value="네트워크/보안/운영">네트워크/보안/운영</option>
-                                        <option value="데이터분석">데이터분석</option>
-                                        <option value="모바일앱개발">모바일앱개발</option>
-                                        <option value="소프트웨어 아키텍트">소프트웨어 아키텍트</option>
-                                        <option value="소프트웨어 엔지니어">소프트웨어 엔지니어</option>
-                                        <option value="하드웨어 엔지니어">하드웨어 엔지니어</option>
-                                        <option value="시스템 엔지니어">시스템 엔지니어</option>
-                                        <option value="웹 개발">웹 개발</option>
-                                        <option value="웹 퍼블리셔">웹 퍼블리셔</option>
-                                        <option value="프로젝트 매니저">프로젝트 매니저</option>
+                                        <option value="웹 개발자">웹 개발자</option>
+                                        <option value="서버 개발자">서버 개발자</option>
+                                        <option value="시스템개발">시스템개발</option>
+                                        <option value="프론트엔드 개발자">프론트엔드 개발자</option>
+                                        <option value="자바 개발자">자바 개발자(Java)</option>
+                                        <option value="파이썬 개발자">파이썬 개발자</option>
+                                        <option value="안드로이드 개발자">안드로이드 개발자</option>
+                                        <option value="IOS개발자">IOS개발자</option>
+                                        <option value="데이터 엔지니어">데이터 엔지니어</option>
+                                        <option value="시스템,네트워크 관리자">시스템,네트워크 관리자</option>
+                                        <option value="node.js 개발자">Node.js 개발자</option>
+                                        <option value="php 개발자">PHP 개발자</option>
+                                        <option value="DevOps / 시스템 관리자">DevOps / 시스템 관리자</option>
+                                        <option value="C,C++개발자">C,C++개발자</option>
+                                        <option value="개발 매니저">개발 매니저</option>
+                                        <option value="데이터 사이언티스트">데이터 사이언티스트</option>
                                     </select>
                                 </div>
                             </div>
@@ -409,7 +410,6 @@
                                     <button type="button" onclick="fn_next()">다음</button>
                                 </div>
                             </div>
-                            <div class="form-bottom"></div>
                         </div>
 
 
@@ -542,10 +542,9 @@
                                     <button type="button" onclick="fn_prev()">이전</button>
                                 </div>
                                 <div class="middle-right">
-                                    작성된 정보는 심사과정을 거친 후 게재됩니다.　　<button onclick="return fn_validate()">제출</button>
+                                    홍보성,비방용 등 부적합한 리뷰는 통보없이 삭제될 수 있습니다　<button onclick="return fn_validate()">제출</button>
                                 </div>
                             </div>
-                            <div class="form-bottom"></div>
                         </div>
                     </form>
 
@@ -555,7 +554,7 @@
                         if (${ loginMember != null }) {
                                 $('body').scrollTop(0);
                                 $(".background-blur").eq(0).css("display", "inline-block");
-                                $('#review-write').css("display", "block");
+                                $('#review-write').css("display", "inline-block");
                                 $('.review_form').eq(1).css("display", "none");
                         } else {
                             if (confirm('로그인 후 리뷰를 작성하실 수 있습니다\n로그인 페이지로 이동하시겠습니까?')) {
@@ -579,30 +578,35 @@
 
                     function fn_next() {
                         if ($('#reviewIsCurrent').val() == "현 직장/전 직장") {
+                            $('#reviewIsCurrent').parent().children().next().eq(0).remove();
                             $('#reviewIsCurrent').parent().append("<div class='message'>현/전직장을 체크해주세요</div>");
                             return;
                         } else {
                             $('#reviewIsCurrent').parent().children().eq(1).remove();
                         }
                         if ($('#reviewJob').val() == "직종상세") {
+                            $('#reviewJob').parent().children().next().eq(0).remove();
                             $('#reviewJob').parent().append("<div class='message'>상세 직종을 선택해주세요</div>");
                             return;
                         } else {
                             $('#reviewJob').parent().children().eq(1).remove();
                         }
                         if ($('#reviewEmployCate').val() == "고용형태") {
+                            $('#reviewEmployCate').parent().children().next().eq(0).remove();
                             $('#reviewEmployCate').parent().append("<div class='message'>고용형태를 선택해주세요</div>");
                             return;
                         } else {
                             $('#reviewEmployCate').parent().children().eq(1).remove();
                         }
                         if ($('#reviewCareer').val() == "총 경력 (이전 경력 포함)") {
+                            $('#reviewCareer').parent().children().next().eq(0).remove();
                             $('#reviewCareer').parent().append("<div class='message'>총 경력을 선택해주세요</div>");
                             return;
                         } else {
                             $('#reviewCareer').parent().children().eq(1).remove();
                         }
                         if ($('#reviewLocation').val() == "근무지역") {
+                            $('#reviewLocation').parent().children().next().eq(0).remove();
                             $('#reviewLocation').parent().append("<div class='message'>근무지역 선택해주세요</div>");
                             return;
                         } else {
@@ -617,60 +621,70 @@
 
                     function fn_validate() {
                         if ($('#reviewTotalScore').val() == "평점") {
+                            $('#reviewTotalScore').parent().children().next().eq(0).remove();
                             $('#reviewTotalScore').parent().append("<div class='message'>기업 총 평점을 선택해주세요</div>");
                             return false;
                         } else {
                             $('#reviewTotalScore').parent().children().eq(1).remove();
                         }
                         if ($('#reviewShort').val().length == 0) {
+                            $('#reviewShort').parent().children().next().eq(0).remove();
                             $('#reviewShort').parent().append("<div class='message'>기업 한줄평을 입력해주세요</div>");
                             return false;
                         } else {
                             $('#reviewShort').parent().children().eq(1).remove();
                         }
                         if ($('#reviewMerit').val().length == 0) {
+                            $('#reviewMerit').parent().children().next().eq(0).remove();
                             $('#reviewMerit').parent().append("<div class='message'>기업의 장점을 입력해주세요</div>");
                             return false;
                         } else {
                             $('#reviewMerit').parent().children().eq(1).remove();
                         }
                         if ($('#reviewDisMerit').val().length == 0) {
+                            $('#reviewDisMerit').parent().children().next().eq(0).remove();
                             $('#reviewDisMerit').parent().append("<div class='message'>기업의 단점을 입력해주세요</div>");
                             return false;
                         } else {
                             $('#reviewDisMerit').parent().children().eq(1).remove();
                         }
                         if ($('#reviewRequest').val().length == 0) {
+                            $('#reviewRequest').parent().children().next().eq(0).remove();
                             $('#reviewRequest').parent().append("<div class='message'>경영진에 바라는 점을 입력해주세요</div>");
                             return false;
                         } else {
                             $('#reviewRequest').parent().children().eq(1).remove();
                         }
                         if ($('#reviewGrade01').val() == "평점") {
+                            $('#reviewGrade01').parent().children().next().eq(0).remove();
                             $('#reviewGrade01').parent().append("<div class='message'>승진기회 및 가능성 평점을 선택해주세요</div>");
                             return false;
                         } else {
                             $('#reviewGrade01').parent().children().eq(1).remove();
                         }
                         if ($('#reviewGrade02').val() == "평점") {
+                            $('#reviewGrade02').parent().children().next().eq(0).remove();
                             $('#reviewGrade02').parent().append("<div class='message'>복지 및 급여 평점을 선택해주세요</div>");
                             return false;
                         } else {
                             $('#reviewGrade02').parent().children().eq(1).remove();
                         }
                         if ($('#reviewGrade03').val() == "평점") {
+                            $('#reviewGrade03').parent().children().next().eq(0).remove();
                             $('#reviewGrade03').parent().append("<div class='message'>업무와 삶의 균형 평점을 선택해주세요</div>");
                             return false;
                         } else {
                             $('#reviewGrade03').parent().children().eq(1).remove();
                         }
                         if ($('#reviewGrade04').val() == "평점") {
+                            $('#reviewGrade04').parent().children().next().eq(0).remove();
                             $('#reviewGrade04').parent().append("<div class='message'>사내문화 평점을 선택해주세요</div>");
                             return false;
                         } else {
                             $('#reviewGrade04').parent().children().eq(1).remove();
                         }
                         if ($('#reviewGrade05').val() == "평점") {
+                            $('#reviewGrade05').parent().children().next().eq(0).remove();
                             $('#reviewGrade05').parent().append("<div class='message'>경영진 평점을 선택해주세요</div>");
                             return false;
                         } else {
@@ -705,6 +719,14 @@
                                 reviewContent.html(resultSet);
                             }
                         });
+                    }
+                    
+                    function fn_delete(num) {
+                    	if(confirm('해당 리뷰를 삭제하시겠습니까?')) {
+                    		location.href="${path}/review/reviewDelete.do?num=" + num;
+                    	} else {
+                    		return;
+                    	}
                     }
 
                     // 좋아요

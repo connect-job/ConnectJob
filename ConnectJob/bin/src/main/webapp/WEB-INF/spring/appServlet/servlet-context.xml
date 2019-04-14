@@ -33,7 +33,11 @@
 			<mapping path="/senierAnswer.do"/>
 			<mapping path="/senierWrite.do"/>
 			<mapping path="/help/myInquiry.do"/>
+<<<<<<< HEAD
 			<mapping path="/alarm/alarm.do"/>
+=======
+			<mapping path="/help/inquiry.do"/>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 			<beans:bean id="loggerInterceptor" class="com.connect.job.common.LoggerInterceptor"/>
 		</interceptor>
 	</interceptors>

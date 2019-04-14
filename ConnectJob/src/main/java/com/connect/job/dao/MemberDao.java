@@ -10,15 +10,15 @@ import com.connect.job.model.vo.Member;
 public interface MemberDao {
 
 	/*int insertMember(Member m);*/
-	int insertMemberKako(Member m);
+	int insertMemberSns(Member m);
 	
 	Member selectOne(Member m);	
 	Member findId(Member m);
 	int deleteMember(Member m);
 	int updateMember(Member m);
 	int updatePw(Member m);
-	
-	Member selectOneKakao(Member m);
+	List<Member> selectList();
+	Member selectOneSns(Member m);
 	int emailConfirm(Member m);
 	int selectIdCount(String p_id);
 	int selectNickCount(String nickname);

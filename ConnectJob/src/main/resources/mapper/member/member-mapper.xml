@@ -1,24 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
+
 	<insert id="insertMember" parameterType="member">
 		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, default, null, null, #{nickname})
 	</insert>
 	
-	<insert id="insertMemberKakao" parameterType="member">
-		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, #{kakao_id}, 'Y', #{nickname})
+	<insert id="insertMemberSns" parameterType="member">
+		insert into p_member values
+		<choose>
+			<when test="is_sns == 'kakao'">
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, #{kakao_id}, null, null)
+			</when>
+			<when test="is_sns == 'google'">
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, #{google_id}, null)
+			</when>
+			<when test="is_sns == 'naver'">
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, null, #{naver_id})
+			</when>
+		</choose>
+
 	</insert>
 	
 	<select id="selectOne" resultType="member">
 		select * from p_member where p_id = #{p_id}
 	</select>
 	
-	<select id="selectOneKakao" resultType="member">
-		select * from p_member where kakao_id = #{kakao_id}
-	</select>
+	<select id="selectOneSns" resultType="member">
+		select * from p_member WHERE 1=1
+		<choose>
+			<when test="is_sns!=null and is_sns == 'kakao'">
+				and kakao_id = #{kakao_id}
+			</when>
+			<when test="is_sns!=null and is_sns == 'google'">
+				and google_id = #{google_id}
+			</when>
+			<when test="is_sns!=null and is_sns == 'naver'">
+				and naver_id = #{naver_id}
+			</when>
+		</choose>
+	</select> 
 	
 	<select id="findId" resultType="member" parameterType="member">
 		select * from p_member where phone=#{phone} and p_name=#{p_name}
+	</select>
+	
+	<resultMap type="member" id="memberResult">
+		<id column="p_id" property="p_id"/>
+		<result column="password" property="password"/>
+		<result column="p_name" property="p_name"/>
+		<result column="gender" property="gender"/>
+		<result column="phone" property="phone"/>
+		<result column="is_sns" property="is_sns"/>
+		<result column="enroll_date" property="enroll_date"/>
+		<result column="email_confirm" property="email_confirm"/>
+		<result column="kakao_id" property="kakao_id"/>
+		<result column="google_id" property="google_id"/>
+		<result column="naver_id" property="naver_id"/>
+	</resultMap>
+
+	<select id="selectList" resultMap="memberResult">
+		SELECT * FROM P_MEMBER
 	</select>
 	
 	<delete id="deleteMember" parameterType="member">

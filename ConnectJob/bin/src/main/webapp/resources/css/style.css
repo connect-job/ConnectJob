@@ -91,6 +91,7 @@ a:hover {
 	transition: 1000ms;
 	position: absolute;
 	opacity: 0;
+<<<<<<< HEAD
 	padding-top: 20px;
 	width: 300px;
 	height: 95px;
@@ -127,6 +128,19 @@ a:hover {
     transition: 700ms;
     background-color: #fff;
     color :#000;
+=======
+	padding-top: 25px;
+	width: 300px;
+	height: 70px;
+	right:10px;
+	top: 150px;
+	color: #fff;
+	text-align: center;
+	background-color: #596483a8;
+	border: 1px solid #cfcfcf;
+	z-index: 999999;
+	border-radius: 5px;
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 }
 
 /* ------------------------------------- 헤더시작 */
@@ -563,13 +577,47 @@ section #index-container .index-top-right {
     width: 27%;
     border: 1px solid rgb(207, 207, 207);
     overflow: hidden;
+<<<<<<< HEAD
+=======
 }
 
+section #index-container .index-top-right #tab-btn {
+    cursor: pointer;
+}
+
+section #index-container .index-top-right #tab-btn:hover {
+    background-color: #4c5268;
+    color: #fff;
+    transition: 500ms;
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+}
+
+<<<<<<< HEAD
 section #index-container .index-top-right .tab-btn {
+=======
+section #index-container .index-top-right .notice {
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
     display: inline-block;
     border-bottom: 1px solid #eee;
     text-align: left;
+<<<<<<< HEAD
     width: 43%;
+=======
+    width: 44.3%;
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+    padding-top: 12px;
+    height: 28px;
+    padding-left: 15px;
+}
+
+section #index-container .index-top-right .notice2 {
+    display: inline-block;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    width: 44%;
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
     font-size: 12px;
     font-weight: bold;
     padding-top: 12px;
@@ -610,6 +658,7 @@ section #index-container .index-top-right #item ul li:hover {
     transition: 500ms;
 }
 
+<<<<<<< HEAD
 section #index-container .index-top-right #item-notice {
     display: none;
     font-size: 12px;
@@ -636,6 +685,8 @@ section #index-container .index-top-right #item-notice ul li:hover {
     transition: 500ms;
 }
 
+=======
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 
 section #index-container .index-hire {
     margin-top: 15px;

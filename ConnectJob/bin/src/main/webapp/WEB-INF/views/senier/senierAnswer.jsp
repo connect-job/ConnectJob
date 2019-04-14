@@ -30,6 +30,15 @@
 
 
 		<div class="senier-middle">
+<<<<<<< HEAD
+=======
+				<div class="middle-content">
+					<div class="left">직종분류</div>
+					<div class="right">
+							${s.sCate}
+					</div>
+				</div>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 				<div class="middle-content">
 					<div class="left">질문유형</div>
 					<div class="right">
@@ -106,7 +115,8 @@
 			var comment = $('textarea[name=cContent]').val();
 
 			if (comment.trim().length == 0) {
-				$('#comment-message').html("<div style='display: inline-block; width: 700px;'><span>댓글 내용을 입력해주세요!</span></div>");
+				alert("댓글 내용을 입력해주세요!");
+				return false;
 			}
 
 			commentFrm.submit();

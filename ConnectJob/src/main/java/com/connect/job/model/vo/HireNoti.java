@@ -1,408 +1,327 @@
 package com.connect.job.model.vo;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class HireNoti {
 	
-	private int HNSeq;
-	private String CMemberId;
-	private int companyNo;
-	private String title;
-	private String HNSort;
-	private int HNRecruit;
-	private String HNCareer;
-	private String HNCate;
-	private String HNChargeTask;
-	private String HNDept;
-	private String HNRankPosition;
-	private String HNFinalEdu;
-	private String HNWorkForm;
-	private String HNMajor;
-	private String HNPreference;
-	private String HNFor;
-	private String HNGender;
-	private int HNBirth;
-	private String HNSal;
-	private String HNWorkPlace;
-	private String HN_Stime;
-	private String HN_Dtime;
-	private Date start;
-	private Date end;
-	private String HNRequired;
-	private String HNOri;
-	private String HNRe;
-	private String HNProcess;
-	private String HNDoc;
-	private String HNinterview;
-	private String HNName;
-	private String HNPhone;
-	private String HNCelPhone;
-	private String HNEMail;
-	private String HNFax;
-	private String HNTitle;
-	private int HNCount;
+	private int hnSeq;
+	private String cMemberId;
+	private String[] hnSort;
+	private String hnCareer;
+	private String hnForm;
+	private int hnRecruit;
+	private String hnCate;
+	private String hnChargeTask;
+	private String hnDept;
+	private String hnRankPosition;
+	private String[] hnFinalEdu;
+	private String hnMajor;
+	private String hnPreference;
+	private String hnGender;
+	private String[] hnBirth;
+	private String hnSal;
+	private String hnWorkPlace;
+	private String hnDay;
+	private String hnStime;
+	private String hnDtime;
+	private String startDate;
+	private String endDate;
+	private String[] hnEve;
+	private String hnReMethod;
+	private String hnProcess;
+	private String hnDoc;
+	private String hnInterview;
+	private String hnTitle;
+	private Date addDate;
 	
 	public HireNoti() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public HireNoti(int hNSeq, String cMemberId, int companyNo, String title, String hNSort, int hNRecruit,
-			String hNCareer, String hNCate, String hNChargeTask, String hNDept, String hNRankPosition,
-			String hNFinalEdu, String hNWorkForm, String hNMajor, String hNPreference, String hNFor, String hNGender,
-			int hNBirth, String hNSal, String hNWorkPlace, String hN_Stime, String hN_Dtime, Date start, Date end,
-			String hNRequired, String hNOri, String hNRe, String hNProcess, String hNDoc, String hNinterview,
-			String hNName, String hNPhone, String hNCelPhone, String hNEMail, String hNFax, String hNTitle,
-			int hNCount) {
+	public HireNoti(int hnSeq, String cMemberId, String[] hnSort, String hnCareer, String hnForm, int hnRecruit,
+			String hnCate, String hnChargeTask, String hnDept, String hnRankPosition, String[] hnFinalEdu,
+			String hnMajor, String hnPreference, String hnGender, String[] hnBirth, String hnSal, String hnWorkPlace,
+			String hnDay, String hnStime, String hnDtime, String startDate, String endDate, String[] hnEve,
+			String hnReMethod, String hnProcess, String hnDoc, String hnInterview, String hnTitle, Date addDate) {
 		super();
-		HNSeq = hNSeq;
-		CMemberId = cMemberId;
-		this.companyNo = companyNo;
-		this.title = title;
-		HNSort = hNSort;
-		HNRecruit = hNRecruit;
-		HNCareer = hNCareer;
-		HNCate = hNCate;
-		HNChargeTask = hNChargeTask;
-		HNDept = hNDept;
-		HNRankPosition = hNRankPosition;
-		HNFinalEdu = hNFinalEdu;
-		HNWorkForm = hNWorkForm;
-		HNMajor = hNMajor;
-		HNPreference = hNPreference;
-		HNFor = hNFor;
-		HNGender = hNGender;
-		HNBirth = hNBirth;
-		HNSal = hNSal;
-		HNWorkPlace = hNWorkPlace;
-		HN_Stime = hN_Stime;
-		HN_Dtime = hN_Dtime;
-		this.start = start;
-		this.end = end;
-		HNRequired = hNRequired;
-		HNOri = hNOri;
-		HNRe = hNRe;
-		HNProcess = hNProcess;
-		HNDoc = hNDoc;
-		HNinterview = hNinterview;
-		HNName = hNName;
-		HNPhone = hNPhone;
-		HNCelPhone = hNCelPhone;
-		HNEMail = hNEMail;
-		HNFax = hNFax;
-		HNTitle = hNTitle;
-		HNCount = hNCount;
+		this.hnSeq = hnSeq;
+		this.cMemberId = cMemberId;
+		this.hnSort = hnSort;
+		this.hnCareer = hnCareer;
+		this.hnForm = hnForm;
+		this.hnRecruit = hnRecruit;
+		this.hnCate = hnCate;
+		this.hnChargeTask = hnChargeTask;
+		this.hnDept = hnDept;
+		this.hnRankPosition = hnRankPosition;
+		this.hnFinalEdu = hnFinalEdu;
+		this.hnMajor = hnMajor;
+		this.hnPreference = hnPreference;
+		this.hnGender = hnGender;
+		this.hnBirth = hnBirth;
+		this.hnSal = hnSal;
+		this.hnWorkPlace = hnWorkPlace;
+		this.hnDay = hnDay;
+		this.hnStime = hnStime;
+		this.hnDtime = hnDtime;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.hnEve = hnEve;
+		this.hnReMethod = hnReMethod;
+		this.hnProcess = hnProcess;
+		this.hnDoc = hnDoc;
+		this.hnInterview = hnInterview;
+		this.hnTitle = hnTitle;
+		this.addDate = addDate;
 	}
 
-	public int getHNSeq() {
-		return HNSeq;
+	public int getHnSeq() {
+		return hnSeq;
 	}
 
-	public void setHNSeq(int hNSeq) {
-		HNSeq = hNSeq;
+	public void setHnSeq(int hnSeq) {
+		this.hnSeq = hnSeq;
 	}
 
-	public String getCMemberId() {
-		return CMemberId;
+	public String getcMemberId() {
+		return cMemberId;
 	}
 
-	public void setCMemberId(String cMemberId) {
-		CMemberId = cMemberId;
+	public void setcMemberId(String cMemberId) {
+		this.cMemberId = cMemberId;
 	}
 
-	public int getCompanyNo() {
-		return companyNo;
+	public String[] getHnSort() {
+		return hnSort;
 	}
 
-	public void setCompanyNo(int companyNo) {
-		this.companyNo = companyNo;
+	public void setHnSort(String[] hnSort) {
+		this.hnSort = hnSort;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getHnCareer() {
+		return hnCareer;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setHnCareer(String hnCareer) {
+		this.hnCareer = hnCareer;
 	}
 
-	public String getHNSort() {
-		return HNSort;
+	public String getHnForm() {
+		return hnForm;
 	}
 
-	public void setHNSort(String hNSort) {
-		HNSort = hNSort;
+	public void setHnForm(String hnForm) {
+		this.hnForm = hnForm;
 	}
 
-	public int getHNRecruit() {
-		return HNRecruit;
+	public int getHnRecruit() {
+		return hnRecruit;
 	}
 
-	public void setHNRecruit(int hNRecruit) {
-		HNRecruit = hNRecruit;
+	public void setHnRecruit(int hnRecruit) {
+		this.hnRecruit = hnRecruit;
 	}
 
-	public String getHNCareer() {
-		return HNCareer;
+	public String getHnCate() {
+		return hnCate;
 	}
 
-	public void setHNCareer(String hNCareer) {
-		HNCareer = hNCareer;
+	public void setHnCate(String hnCate) {
+		this.hnCate = hnCate;
 	}
 
-	public String getHNCate() {
-		return HNCate;
+	public String getHnChargeTask() {
+		return hnChargeTask;
 	}
 
-	public void setHNCate(String hNCate) {
-		HNCate = hNCate;
+	public void setHnChargeTask(String hnChargeTask) {
+		this.hnChargeTask = hnChargeTask;
 	}
 
-	public String getHNChargeTask() {
-		return HNChargeTask;
+	public String getHnDept() {
+		return hnDept;
 	}
 
-	public void setHNChargeTask(String hNChargeTask) {
-		HNChargeTask = hNChargeTask;
+	public void setHnDept(String hnDept) {
+		this.hnDept = hnDept;
 	}
 
-	public String getHNDept() {
-		return HNDept;
+	public String getHnRankPosition() {
+		return hnRankPosition;
 	}
 
-	public void setHNDept(String hNDept) {
-		HNDept = hNDept;
+	public void setHnRankPosition(String hnRankPosition) {
+		this.hnRankPosition = hnRankPosition;
 	}
 
-	public String getHNRankPosition() {
-		return HNRankPosition;
+	public String[] getHnFinalEdu() {
+		return hnFinalEdu;
 	}
 
-	public void setHNRankPosition(String hNRankPosition) {
-		HNRankPosition = hNRankPosition;
+	public void setHnFinalEdu(String[] hnFinalEdu) {
+		this.hnFinalEdu = hnFinalEdu;
 	}
 
-	public String getHNFinalEdu() {
-		return HNFinalEdu;
+	public String getHnMajor() {
+		return hnMajor;
 	}
 
-	public void setHNFinalEdu(String hNFinalEdu) {
-		HNFinalEdu = hNFinalEdu;
+	public void setHnMajor(String hnMajor) {
+		this.hnMajor = hnMajor;
 	}
 
-	public String getHNWorkForm() {
-		return HNWorkForm;
+	public String getHnPreference() {
+		return hnPreference;
 	}
 
-	public void setHNWorkForm(String hNWorkForm) {
-		HNWorkForm = hNWorkForm;
+	public void setHnPreference(String hnPreference) {
+		this.hnPreference = hnPreference;
 	}
 
-	public String getHNMajor() {
-		return HNMajor;
+	public String getHnGender() {
+		return hnGender;
 	}
 
-	public void setHNMajor(String hNMajor) {
-		HNMajor = hNMajor;
+	public void setHnGender(String hnGender) {
+		this.hnGender = hnGender;
 	}
 
-	public String getHNPreference() {
-		return HNPreference;
+	public String[] getHnBirth() {
+		return hnBirth;
 	}
 
-	public void setHNPreference(String hNPreference) {
-		HNPreference = hNPreference;
+	public void setHnBirth(String[] hnBirth) {
+		this.hnBirth = hnBirth;
 	}
 
-	public String getHNFor() {
-		return HNFor;
+	public String getHnSal() {
+		return hnSal;
 	}
 
-	public void setHNFor(String hNFor) {
-		HNFor = hNFor;
+	public void setHnSal(String hnSal) {
+		this.hnSal = hnSal;
 	}
 
-	public String getHNGender() {
-		return HNGender;
+	public String getHnWorkPlace() {
+		return hnWorkPlace;
 	}
 
-	public void setHNGender(String hNGender) {
-		HNGender = hNGender;
+	public void setHnWorkPlace(String hnWorkPlace) {
+		this.hnWorkPlace = hnWorkPlace;
 	}
 
-	public int getHNBirth() {
-		return HNBirth;
+	public String getHnDay() {
+		return hnDay;
 	}
 
-	public void setHNBirth(int hNBirth) {
-		HNBirth = hNBirth;
+	public void setHnDay(String hnDay) {
+		this.hnDay = hnDay;
 	}
 
-	public String getHNSal() {
-		return HNSal;
+	public String getHnStime() {
+		return hnStime;
 	}
 
-	public void setHNSal(String hNSal) {
-		HNSal = hNSal;
+	public void setHnStime(String hnStime) {
+		this.hnStime = hnStime;
 	}
 
-	public String getHNWorkPlace() {
-		return HNWorkPlace;
+	public String getHnDtime() {
+		return hnDtime;
 	}
 
-	public void setHNWorkPlace(String hNWorkPlace) {
-		HNWorkPlace = hNWorkPlace;
+	public void setHnDtime(String hnDtime) {
+		this.hnDtime = hnDtime;
 	}
 
-	public String getHN_Stime() {
-		return HN_Stime;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setHN_Stime(String hN_Stime) {
-		HN_Stime = hN_Stime;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
-	public String getHN_Dtime() {
-		return HN_Dtime;
+	public String getEndDate() {
+		return endDate;
 	}
 
-	public void setHN_Dtime(String hN_Dtime) {
-		HN_Dtime = hN_Dtime;
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 
-	public Date getStart() {
-		return start;
+	public String[] getHnEve() {
+		return hnEve;
 	}
 
-	public void setStart(Date start) {
-		this.start = start;
+	public void setHnEve(String[] hnEve) {
+		this.hnEve = hnEve;
 	}
 
-	public Date getEnd() {
-		return end;
+	public String getHnReMethod() {
+		return hnReMethod;
 	}
 
-	public void setEnd(Date end) {
-		this.end = end;
+	public void setHnReMethod(String hnReMethod) {
+		this.hnReMethod = hnReMethod;
 	}
 
-	public String getHNRequired() {
-		return HNRequired;
+	public String getHnProcess() {
+		return hnProcess;
 	}
 
-	public void setHNRequired(String hNRequired) {
-		HNRequired = hNRequired;
+	public void setHnProcess(String hnProcess) {
+		this.hnProcess = hnProcess;
 	}
 
-	public String getHNOri() {
-		return HNOri;
+	public String getHnDoc() {
+		return hnDoc;
 	}
 
-	public void setHNOri(String hNOri) {
-		HNOri = hNOri;
+	public void setHnDoc(String hnDoc) {
+		this.hnDoc = hnDoc;
 	}
 
-	public String getHNRe() {
-		return HNRe;
+	public String getHnInterview() {
+		return hnInterview;
 	}
 
-	public void setHNRe(String hNRe) {
-		HNRe = hNRe;
+	public void setHnInterview(String hnInterview) {
+		this.hnInterview = hnInterview;
 	}
 
-	public String getHNProcess() {
-		return HNProcess;
+	public String getHnTitle() {
+		return hnTitle;
 	}
 
-	public void setHNProcess(String hNProcess) {
-		HNProcess = hNProcess;
+	public void setHnTitle(String hnTitle) {
+		this.hnTitle = hnTitle;
 	}
 
-	public String getHNDoc() {
-		return HNDoc;
+	public Date getAddDate() {
+		return addDate;
 	}
 
-	public void setHNDoc(String hNDoc) {
-		HNDoc = hNDoc;
-	}
-
-	public String getHNinterview() {
-		return HNinterview;
-	}
-
-	public void setHNinterview(String hNinterview) {
-		HNinterview = hNinterview;
-	}
-
-	public String getHNName() {
-		return HNName;
-	}
-
-	public void setHNName(String hNName) {
-		HNName = hNName;
-	}
-
-	public String getHNPhone() {
-		return HNPhone;
-	}
-
-	public void setHNPhone(String hNPhone) {
-		HNPhone = hNPhone;
-	}
-
-	public String getHNCelPhone() {
-		return HNCelPhone;
-	}
-
-	public void setHNCelPhone(String hNCelPhone) {
-		HNCelPhone = hNCelPhone;
-	}
-
-	public String getHNEMail() {
-		return HNEMail;
-	}
-
-	public void setHNEMail(String hNEMail) {
-		HNEMail = hNEMail;
-	}
-
-	public String getHNFax() {
-		return HNFax;
-	}
-
-	public void setHNFax(String hNFax) {
-		HNFax = hNFax;
-	}
-
-	public String getHNTitle() {
-		return HNTitle;
-	}
-
-	public void setHNTitle(String hNTitle) {
-		HNTitle = hNTitle;
-	}
-
-	public int getHNCount() {
-		return HNCount;
-	}
-
-	public void setHNCount(int hNCount) {
-		HNCount = hNCount;
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
 	}
 
 	@Override
 	public String toString() {
-		return "HireNoti [HNSeq=" + HNSeq + ", CMemberId=" + CMemberId + ", companyNo=" + companyNo + ", title=" + title
-				+ ", HNSort=" + HNSort + ", HNRecruit=" + HNRecruit + ", HNCareer=" + HNCareer + ", HNCate=" + HNCate
-				+ ", HNChargeTask=" + HNChargeTask + ", HNDept=" + HNDept + ", HNRankPosition=" + HNRankPosition
-				+ ", HNFinalEdu=" + HNFinalEdu + ", HNWorkForm=" + HNWorkForm + ", HNMajor=" + HNMajor
-				+ ", HNPreference=" + HNPreference + ", HNFor=" + HNFor + ", HNGender=" + HNGender + ", HNBirth="
-				+ HNBirth + ", HNSal=" + HNSal + ", HNWorkPlace=" + HNWorkPlace + ", HN_Stime=" + HN_Stime
-				+ ", HN_Dtime=" + HN_Dtime + ", start=" + start + ", end=" + end + ", HNRequired=" + HNRequired
-				+ ", HNOri=" + HNOri + ", HNRe=" + HNRe + ", HNProcess=" + HNProcess + ", HNDoc=" + HNDoc
-				+ ", HNinterview=" + HNinterview + ", HNName=" + HNName + ", HNPhone=" + HNPhone + ", HNCelPhone="
-				+ HNCelPhone + ", HNEMail=" + HNEMail + ", HNFax=" + HNFax + ", HNTitle=" + HNTitle + ", HNCount="
-				+ HNCount + "]";
+		return "HireNoti [hnSeq=" + hnSeq + ", cMemberId=" + cMemberId + ", hnSort=" + Arrays.toString(hnSort)
+				+ ", hnCareer=" + hnCareer + ", hnForm=" + hnForm + ", hnRecruit=" + hnRecruit + ", hnCate=" + hnCate
+				+ ", hnChargeTask=" + hnChargeTask + ", hnDept=" + hnDept + ", hnRankPosition=" + hnRankPosition
+				+ ", hnFinalEdu=" + Arrays.toString(hnFinalEdu) + ", hnMajor=" + hnMajor + ", hnPreference="
+				+ hnPreference + ", hnGender=" + hnGender + ", hnBirth=" + Arrays.toString(hnBirth) + ", hnSal=" + hnSal
+				+ ", hnWorkPlace=" + hnWorkPlace + ", hnDay=" + hnDay + ", hnStime=" + hnStime + ", hnDtime=" + hnDtime
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", hnEve=" + Arrays.toString(hnEve)
+				+ ", hnReMethod=" + hnReMethod + ", hnProcess=" + hnProcess + ", hnDoc=" + hnDoc + ", hnInterview="
+				+ hnInterview + ", hnTitle=" + hnTitle + ", addDate=" + addDate + "]";
 	}
 
 	
+
+		
 }

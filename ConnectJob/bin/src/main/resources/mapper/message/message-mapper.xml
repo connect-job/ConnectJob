@@ -6,10 +6,13 @@
 		SELECT COUNT(*) m_count FROM M_MESSAGE WHERE M_TO = #{mTo} AND M_STATUS = 'N'
 	</select>
 	
+<<<<<<< HEAD
 	<select id="selectMessage" resultMap="messageResult">
 		SELECT * FROM M_MESSAGE WHERE M_TO = #{id}
 	</select>
 	
+=======
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 	<resultMap type="message" id="messageResult">
 		<id column="m_no" property="mNo"/>
 		<result column="m_to" property="mTo"/>

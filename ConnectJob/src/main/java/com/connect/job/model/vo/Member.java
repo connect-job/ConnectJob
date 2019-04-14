@@ -8,16 +8,18 @@ public class Member {
 	private String p_name;
 	private String gender;
 	private String phone;
-	private String is_sns;	
+	private String is_sns;
 	private Date enroll_date;
-	private int kakao_id;
 	private String email_confirm;
 	private String nickname;
+	private int kakao_id;
+	private String google_id;
+	private int naver_id;
 	
 	public Member() {}
 
 	public Member(String p_id, String password, String p_name, String gender, String phone, String is_sns,
-			Date enroll_date, int kakao_id, String email_confirm, String nickname) {
+			Date enroll_date, String email_confirm, String nickname, int kakao_id, String google_id, int naver_id) {
 		super();
 		this.p_id = p_id;
 		this.password = password;
@@ -26,9 +28,11 @@ public class Member {
 		this.phone = phone;
 		this.is_sns = is_sns;
 		this.enroll_date = enroll_date;
-		this.kakao_id = kakao_id;
 		this.email_confirm = email_confirm;
 		this.nickname = nickname;
+		this.kakao_id = kakao_id;
+		this.google_id = google_id;
+		this.naver_id = naver_id;
 	}
 
 	public String getP_id() {
@@ -87,14 +91,6 @@ public class Member {
 		this.enroll_date = enroll_date;
 	}
 
-	public int getKakao_id() {
-		return kakao_id;
-	}
-
-	public void setKakao_id(int kakao_id) {
-		this.kakao_id = kakao_id;
-	}
-
 	public String getEmail_confirm() {
 		return email_confirm;
 	}
@@ -111,16 +107,37 @@ public class Member {
 		this.nickname = nickname;
 	}
 
+	public int getKakao_id() {
+		return kakao_id;
+	}
+
+	public void setKakao_id(int kakao_id) {
+		this.kakao_id = kakao_id;
+	}
+
+	public String getGoogle_id() {
+		return google_id;
+	}
+
+	public void setGoogle_id(String google_id) {
+		this.google_id = google_id;
+	}
+
+	public int getNaver_id() {
+		return naver_id;
+	}
+
+	public void setNaver_id(int naver_id) {
+		this.naver_id = naver_id;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [p_id=" + p_id + ", password=" + password + ", p_name=" + p_name + ", gender=" + gender
-				+ ", phone=" + phone + ", is_sns=" + is_sns + ", enroll_date=" + enroll_date + ", kakao_id=" + kakao_id
-				+ ", email_confirm=" + email_confirm + ", nickname=" + nickname + "]";
+				+ ", phone=" + phone + ", is_sns=" + is_sns + ", enroll_date=" + enroll_date + ", email_confirm="
+				+ email_confirm + ", nickname=" + nickname + ", kakao_id=" + kakao_id + ", google_id=" + google_id
+				+ ", naver_id=" + naver_id + "]";
 	}
-
-	
-
-	
 
 	
 }

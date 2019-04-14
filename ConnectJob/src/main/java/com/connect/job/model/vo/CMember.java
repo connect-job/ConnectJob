@@ -4,110 +4,123 @@ import java.util.Date;
 
 public class CMember {
 	
-	private String CMemberId;
-	private String CId;
-	private String CMemberPw;
-	private String CMemberName;
-	private String CMemberPhone;
-	private String CMemberCPhone;
-	private String CMemberBNum;
-	private String CMemberDiv;
-	private Date CMemberEnroll;
-	private String CMemberEmail;
+	private String cMemberId;
+	private String cId;
+	private String cMemberPw;
+	private String cMemberName;
+	private String cMemberPhone;
+	private String cMemberCPhone;
+	private String cMemberBNum;
+	private String cMemberDiv;
+	private Date cMemberEnroll;
+	private String cMemberEmail;
 
 	public CMember() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getCMemberId() {
-		return CMemberId;
+	public CMember(String cMemberId, String cId, String cMemberPw, String cMemberName, String cMemberPhone,
+			String cMemberCPhone, String cMemberBNum, String cMemberDiv, Date cMemberEnroll, String cMemberEmail) {
+		super();
+		this.cMemberId = cMemberId;
+		this.cId = cId;
+		this.cMemberPw = cMemberPw;
+		this.cMemberName = cMemberName;
+		this.cMemberPhone = cMemberPhone;
+		this.cMemberCPhone = cMemberCPhone;
+		this.cMemberBNum = cMemberBNum;
+		this.cMemberDiv = cMemberDiv;
+		this.cMemberEnroll = cMemberEnroll;
+		this.cMemberEmail = cMemberEmail;
 	}
 
-	public void setCMemberId(String cMemberId) {
-		CMemberId = cMemberId;
+	public String getcMemberId() {
+		return cMemberId;
 	}
 
-	public String getCId() {
-		return CId;
+	public void setcMemberId(String cMemberId) {
+		this.cMemberId = cMemberId;
 	}
 
-	public void setCId(String cId) {
-		CId = cId;
+	public String getcId() {
+		return cId;
 	}
 
-	public String getCMemberPw() {
-		return CMemberPw;
+	public void setcId(String cId) {
+		this.cId = cId;
 	}
 
-	public void setCMemberPw(String cMemberPw) {
-		CMemberPw = cMemberPw;
+	public String getcMemberPw() {
+		return cMemberPw;
 	}
 
-	public String getCMemberName() {
-		return CMemberName;
+	public void setcMemberPw(String cMemberPw) {
+		this.cMemberPw = cMemberPw;
 	}
 
-	public void setCMemberName(String cMemberName) {
-		CMemberName = cMemberName;
+	public String getcMemberName() {
+		return cMemberName;
 	}
 
-	public String getCMemberPhone() {
-		return CMemberPhone;
+	public void setcMemberName(String cMemberName) {
+		this.cMemberName = cMemberName;
 	}
 
-	public void setCMemberPhone(String cMemberPhone) {
-		CMemberPhone = cMemberPhone;
+	public String getcMemberPhone() {
+		return cMemberPhone;
 	}
 
-	public String getCMemberCPhone() {
-		return CMemberCPhone;
+	public void setcMemberPhone(String cMemberPhone) {
+		this.cMemberPhone = cMemberPhone;
 	}
 
-	public void setCMemberCPhone(String cMemberCPhone) {
-		CMemberCPhone = cMemberCPhone;
+	public String getcMemberCPhone() {
+		return cMemberCPhone;
 	}
 
-	public String getCMemberBNum() {
-		return CMemberBNum;
+	public void setcMemberCPhone(String cMemberCPhone) {
+		this.cMemberCPhone = cMemberCPhone;
 	}
 
-	public void setCMemberBNum(String cMemberBNum) {
-		CMemberBNum = cMemberBNum;
+	public String getcMemberBNum() {
+		return cMemberBNum;
 	}
 
-	public String getCMemberDiv() {
-		return CMemberDiv;
+	public void setcMemberBNum(String cMemberBNum) {
+		this.cMemberBNum = cMemberBNum;
 	}
 
-	public void setCMemberDiv(String cMemberDiv) {
-		CMemberDiv = cMemberDiv;
+	public String getcMemberDiv() {
+		return cMemberDiv;
 	}
 
-	public Date getCMemberEnroll() {
-		return CMemberEnroll;
+	public void setcMemberDiv(String cMemberDiv) {
+		this.cMemberDiv = cMemberDiv;
 	}
 
-	public void setCMemberEnroll(Date cMemberEnroll) {
-		CMemberEnroll = cMemberEnroll;
+	public Date getcMemberEnroll() {
+		return cMemberEnroll;
 	}
 
-	public String getCMemberEmail() {
-		return CMemberEmail;
+	public void setcMemberEnroll(Date cMemberEnroll) {
+		this.cMemberEnroll = cMemberEnroll;
 	}
 
-	public void setCMemberEmail(String cMemberEmail) {
-		CMemberEmail = cMemberEmail;
+	public String getcMemberEmail() {
+		return cMemberEmail;
+	}
+
+	public void setcMemberEmail(String cMemberEmail) {
+		this.cMemberEmail = cMemberEmail;
 	}
 
 	@Override
 	public String toString() {
-		return "CMember [CMemberId=" + CMemberId + ", CId=" + CId + ", CMemberPw=" + CMemberPw + ", CMemberName="
-				+ CMemberName + ", CMemberPhone=" + CMemberPhone + ", CMemberCPhone=" + CMemberCPhone + ", CMemberBNum="
-				+ CMemberBNum + ", CMemberDiv=" + CMemberDiv + ", CMemberEnroll=" + CMemberEnroll + ", CMemberEmail="
-				+ CMemberEmail + "]";
+		return "CMember [cMemberId=" + cMemberId + ", cId=" + cId + ", cMemberPw=" + cMemberPw + ", cMemberName="
+				+ cMemberName + ", cMemberPhone=" + cMemberPhone + ", cMemberCPhone=" + cMemberCPhone + ", cMemberBNum="
+				+ cMemberBNum + ", cMemberDiv=" + cMemberDiv + ", cMemberEnroll=" + cMemberEnroll + ", cMemberEmail="
+				+ cMemberEmail + "]";
 	}
 
-	
-	
 	
 }
