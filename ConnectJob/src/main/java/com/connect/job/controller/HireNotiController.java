@@ -2,7 +2,6 @@ package com.connect.job.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -126,13 +125,12 @@ public class HireNotiController {
 			return result;
 		} 
 	
-	//채용공고 상세 페이지로 이동
+	//채용공고 제목 누르고 상세 페이지로 이동
 	@RequestMapping("/hireNotiView.do")
 	public String hireNotiView(int no, Model model)
 	{
-		HireNoti hn = service.selectOne(no);
-		
-		model.addAttribute("list",hn);
+		HireNoti hn=service.selectOne(no);
+		model.addAttribute("hireNoti",hn);
 		return "hireNoti/hireNoti-selectOne";
 	}
 	
