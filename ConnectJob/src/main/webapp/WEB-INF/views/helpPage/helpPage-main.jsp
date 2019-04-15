@@ -20,23 +20,28 @@
 
 		<div class="biz-left">
             <div class="menu-top">
-              고객센터관리페이지
+              관리자페이지
             </div>
             <ul>
             	<c:if test="${loginCMember!=null}">
-                <li class="menu">
-              1:1문의<span class="icon"><i class="fas fa-sort-down"></i></span>
+                 <li class="menu">
+              고객센터 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
-                        <li><a href="${path }/helpPageInquiry.do?id=${loginCMember.cMemberEmail}">1:1문의</a></li>
+                        <li><a href="${path }/helpPageInquiry.do?id=${loginCMember.cMemberEmail}">1:1문의 관리</a></li>
+                        <li><a href="#">공지사항 관리</a></li>
+                        <li><a href="#">자주묻는질문 관리</a></li>
                     </ul>
                 </li>
             	</c:if>
             	
             	<c:if test="${loginMember!=null}">
+               
                 <li class="menu">
-              1:1문의<span class="icon"><i class="fas fa-sort-down"></i></span>
+              고객센터 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
-                        <li><a href="${path }/helpPageInquiry.do?id=${loginMember.p_id}">1:1문의</a></li>
+                        <li><a href="${path }/helpPageInquiry.do?id=${loginMember.p_id}">1:1문의 관리</a></li>
+                        <li><a href="#">공지사항 관리</a></li>
+                        <li><a href="#">자주묻는질문 관리</a></li>
                     </ul>
                 </li>
             	</c:if>
@@ -46,7 +51,7 @@
                 <li class="menu">
                             공지사항<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
-                        <li><a href="#">공지사항</a></li>
+                        
                         
                     </ul>
                 </li>

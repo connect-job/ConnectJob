@@ -94,10 +94,40 @@ public class SocketHandler extends TextWebSocketHandler {
 						
 						// 5. 읽은 메시지와 읽지않은 메시지 카운트
 						List<Message> mList = sessionTem.selectList("message.messageCount", member);
+						
+						int insertMessage = 0;
+						// 메세지 리스트 없을 때 (새로운 공고들 찾아서 넣어주기)
+						if(mList.isEmpty()) {
+							for(int i=0;i<list.size();i++) {
+								Message newMessage = new Message();
+								newMessage.setmTo(member);
+								newMessage.setmFrom("채용공고");
+								newMessage.setmMessage(list.get(i).getHnTitle());
+								newMessage.setmHireNo(list.get(i).getHnSeq());
+								insertMessage = sessionTem.insert("message.insertMessage", newMessage);
+							}
+						// 메세지 리스트가 있을 때 (위에서 찾은 공고리스트 번호와 일치하지 않은것들만 넣어주기)
+						} else {
+							for(HireNoti hireList : list) {
+								for(Message meList : mList) {
+									if(hireList.getHnSeq()!=meList.getmHireNo()) {
+										Message newMessage = new Message();
+										newMessage.setmTo(member);
+										newMessage.setmFrom("채용공고");
+										newMessage.setmMessage(hireList.getHnTitle());
+										newMessage.setmHireNo(hireList.getHnSeq());
+										insertMessage = sessionTem.insert("message.insertMessage", newMessage);
+									}
+								}
+							}
+						}
+						
+						List<Message> messageList = sessionTem.selectList("message.messageCount", member);
+						
 						int readMessage = 0;
 						int unReadMessage = 0;
-						for(int i=0; i<mList.size(); i++) {
-							if(mList.get(i).getmStatus().equals("Y")) {
+						for(int i=0; i<messageList.size(); i++) {
+							if(messageList.get(i).getmStatus().equals("Y")) {
 								readMessage++;
 							} else {
 								unReadMessage++;

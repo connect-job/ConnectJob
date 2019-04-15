@@ -123,11 +123,11 @@
                             <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
-                            <li onclick="location.href='${path}/helpPage?cMemberId=${logincMember.cMemberId }'">고객센터관리</li>
+                            <li onclick="location.href='${path}/helpPage?cMemberId=${logincMember.cMemberId }'">관리</li>
                             
                         </c:if>
                          <c:if test="${loginMember!=null}">
-                            <li onclick="location.href='${path}/helpPage?id=${loginMember.p_id }'">고객센터관리</li>
+                            <li onclick="location.href='${path}/helpPage?id=${loginMember.p_id }'">관리</li>
                             
                         </c:if>
                         <li id="sub">고객센터<div id="sub-menu">
@@ -151,7 +151,7 @@
     <script>
     
     // ------------------------------------------------------------ 웹소켓 시작
-    var wsUri = "ws://192.168.20.221:9090/job/alarm";
+    var wsUri = "ws://localhost:9090/job/alarm";
     var nick = '${loginMember.p_id}';
 	console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
     
