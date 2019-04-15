@@ -27,7 +27,7 @@
                  <li class="menu">
               고객센터 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
-                        <li><a href="${path}/admin/inquiry/inquiry.do?id=${loginMember.p_id }">1:1문의 관리</a></li>
+                        <li><a href="${path}/admin/inquiry/inquiry.do<%-- ?id=${loginMember.p_id } --%>">1:1문의 관리</a></li>
                         <li><a href="#">자주묻는질문 관리</a></li>
                     </ul>
                 </li>
@@ -38,7 +38,7 @@
                 <li class="menu">
               고객센터 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
-                        <li><a href="${path}/admin/inquiry/inquiry.do?id=${loginMember.p_id }">1:1문의 관리</a></li>
+                        <li><a href="${path}/admin/inquiry/inquiry.do<%-- ?id=${loginMember.p_id } --%>">1:1문의 관리</a></li>
                         <li><a href="#">자주묻는질문 관리</a></li>
                     </ul>
                 </li>
@@ -80,7 +80,7 @@
 		<div class="help-middle">
 
 			<c:forEach var="inq" items="${list}" varStatus="vs">
-				<c:if test="${loginMember != null && loginMember.p_id eq inq.iWriter}">
+				<%-- <c:if test="${loginMember != null && loginMember.p_id eq inq.iWriter}"> --%>
 					<div class="help-item" onclick="location.href='${path}/admin/inquiry/InquiryView.do?no=${inq.iNo}'">
 						<div class="item-left">
 							질문유형 ${inq.iType}
@@ -112,10 +112,10 @@
 						답변내용 ${inq.aContent}
 						</div>
 					</div>
-				</c:if>
+				<%-- </c:if> --%>
 
 
-				<c:if test="${loginCMember != null && loginCMember.cMemberEmail eq inq.iWriter}">
+				<%-- <c:if test="${loginCMember != null && loginCMember.cMemberEmail eq inq.iWriter}"> --%>
 					<div class="help-item" onclick="location.href='${path}/admin/inquiry/InquiryView.do?no=${inq.iNo}'">
 						<div class="item-left">
 							#${inq.iType}
@@ -147,9 +147,11 @@
 						</div>
 					</div>
 
-            	</c:if>
+            	<%-- </c:if> --%>
 				</c:forEach>
-           
+           <div id="pageBar">
+           ${pageBar}
+           </div>
             
         </div>
     </div>
@@ -174,7 +176,20 @@
                 }
             });
         });
+		
+        
+        function fn_paging(cPage) {
+        
+           if(${loginMember!=null and loginCMember==null})
+           {
+              window.location.href="${path}/admin/inquiry/inquiry.do?cPage=" + cPage;
+           }
+           else if(${loginMember==null and loginCMember!=null})
+           {
+                window.location.href="${path}/admin/inquiry/inquiry.do?cPage=" + cPage;
+           }
 
+          }
 	
 </script>
 

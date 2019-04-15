@@ -21,7 +21,7 @@
 
 
 		<div class="senier-middle">
-			<form action="${path}/helpInquiryUpdate.do?iNo=${inq.iNo}" method="post" onsubmit="return validate();">
+			<form action="${path}/admin/inquiry/InquiryUpdate.do?iNo=${inq.iNo}" method="post" onsubmit="return validate();">
 				<div id="senier-write-container">
 					<div class="write-cate">
 						<div class="left">문의종류</div>
@@ -69,7 +69,7 @@
                         
                         </c:choose>
 					
-					
+		
 					<div class="write-btn">
 						<button onclick="history.back();">목록으로</button>
 					</div>

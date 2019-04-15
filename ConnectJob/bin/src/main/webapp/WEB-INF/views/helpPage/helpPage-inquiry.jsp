@@ -88,7 +88,23 @@
 						</div>
 
 						<div class="item-right">
-							<span>답변상태 ${inq.status==false?"답변대기중":"답변완료"}</span>
+							<span>답변상태
+							<c:choose>
+							<c:when test="${inq.status=='답변중'}">
+								${inq.status}
+							</c:when>
+							<c:when test="${inq.status=='답변대기중'}">
+								${inq.status}
+							</c:when>
+							<c:when test="${inq.status=='답변완료'}">
+								${inq.status}
+							</c:when>
+							
+							</c:choose>
+							</span>
+						</div>
+						<div>
+						답변내용 ${inq.aContent}
 						</div>
 					</div>
 				</c:if>
@@ -107,7 +123,22 @@
 						</div>
 
 						<div class="item-right">
-							<span>${inq.status==false?"답변대기중":"답변완료"}</span>
+							<span>답변상태
+							  <c:choose>
+								<c:when test="${inq.status=='답변중'}">
+									${inq.status}
+								</c:when>
+								<c:when test="${inq.status=='답변대기중'}">
+									${inq.status}
+								</c:when>
+								<c:when test="${inq.status=='답변완료'}">
+									${inq.status}
+								</c:when>
+							  </c:choose>
+							</span>
+						</div>
+						<div>
+						답변내용 ${inq.aContent}
 						</div>
 					</div>
 

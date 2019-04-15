@@ -123,7 +123,7 @@
                             <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
-                            <li onclick="location.href='${path}/helpPage?cMemberId=${logincMember.cMemberId }'">관리</li>
+                            <li onclick="location.href='${path}/admin/inquiry/inquiry.do?cMemberId=${logincMember.cMemberId }'">관리</li>
                             
                         </c:if>
                          <c:if test="${loginMember!=null}">
