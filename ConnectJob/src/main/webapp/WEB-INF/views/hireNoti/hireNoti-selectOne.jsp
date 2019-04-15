@@ -5,77 +5,192 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-  <jsp:param value="" name="pageTitle"/>
-</jsp:include>
-<section>
-	<div><input type="button">스크랩</div>
-	<div><input type="button">즉시지원</div>
 
-	 	<div>
-		        회사이름${company.companyName }
-		        채용공고제목${hireNoti.hnTitle }<br/>
-        <div>
-            	지원자격
-            <div>경력${hireNoti.hnCareer }</div>
-            <div>학력${hireNoti.hnFinalEdu }</div>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+
+<section id="hire-view">
+	<div id="hire-view-container">
+	
+		<div class="view-top">
+			<div class="left">${hireNoti.cName }　|　${hireNoti.hnTitle}</div>
+			<div class="right"><button>스크랩</button>　<button>즉시지원</button></div>
+		</div>
 		
-        </div>
-        <div>
-            근무조건
-            <div>고용형태${hireNoti.hnForm }</div>
-            <div>급여${hireNoti.hnSal }</div>
-            <div>지역${hireNoti.hnWorkPlace }</div>
-            <div>근무시간<span>${hireNoti.hnStime }</span>~<span>${hireNoti.hnDtime }</span></div>
-        </div>
-    </div>
-    <div>
-        <div>직종/직무${hireNoti.hnSort }</div>
-        <div>모집인원${hireNoti.hnRecruit }</div>
-        <div>모집분야${hireNoti.hnCate }</div>
-        <div>담당업무${hireNoti.hnChargeTask }</div>
-        <div>근무부서${hireNoti.hnDept }</div>
-        <div>직급/직책${hireNoti.hnRankPosition }</div>
-        <div>전공/학과${hireNoti.hnMajor }</div>
-        <div>우대조건${hireNoti.hnPreference }</div>
-        <div>성별${hireNoti.hnGender }</div>
-        <div>나이${hireNoti.hnBirth }</div>
-        <div>급여${hireNoti.hnSal }</div>
-        <div>근무요일${hireNoti.hnDay }</div>
-        <div>전형절차${hireNoti.hnProcess }</div>
-        <div>제출서류${hireNoti.hnDoc }</div>
-        <div>사전인터뷰${hireNoti.hnInterview }</div>
-    </div>
-    <div>
-        <div>
-            	접수기간/방법
-            <div>
-                	접수기간
-                <div>시작일${hireNoti.startDate }</div>
-                <div>마감일${hireNoti.endDate }</div>
-            </div>
-            <div>
-                	접수방법
-                <div>지원방법${hireNoti.hnReMethod }</div>
-                <div>모집인원${hireNoti.hnRecruit }</div>
-                <div><button>즉시지원</button></div>
-            </div>
-            <div>
-                	인사담당자
-                <div>이름:${CMember.cMemberName }</div>
-            </div>
-        </div>
-    </div>
-   		<div>
-        	기업정보
-	        <div>기업이름${company.companyName }</div>
-	        <div>사원수${company.companyAllPeople }</div>
-	        <div>설립일${company.companyRegDate }</div>
-	        <div>기업구분${company.companyStatus }</div>
-	        <div>산업${company.companyCate }</div>
-	        <div>기업주소 도로명주소${company.companyAddressNew } 지번주소${company.companyAddressOld }</div>
-   		</div>
+		
+		<div class="view-title">지원자격</div>
+		
+		<div class="view-content">
+			<div class="content-item">
+				<div class="left">경력</div>
+				<div class="right">${hireNoti.hnCareer }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">학력</div>
+				<div class="right">
+					<c:forEach var="edu" items="${hireNoti.hnFinalEdu }">
+						${edu }
+					</c:forEach>
+				
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="view-title">근무조건</div>
+		
+		<div class="view-content">
+			<div class="content-item">
+				<div class="left">고용형태</div>
+				<div class="right">${hireNoti.hnForm }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">급여</div>
+				<div class="right">${hireNoti.hnSal }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">지역</div>
+				<div class="right">${hireNoti.hnWorkPlace }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">근무시간</div>
+				<div class="right">${hireNoti.hnSal }<span>${hireNoti.hnStime }</span>~<span>${hireNoti.hnDtime }</span></div>
+			</div>
+		</div>
+		
+		<div class="view-title">채용정보</div>
+		
+		<div class="view-content">
+			<div class="content-item">
+				<div class="left">직종/직무</div>
+				<div class="right">
+					<c:forEach var="sort" items="${hireNoti.hnSort }">
+						${sort }
+					</c:forEach>
+				</div>
+			</div>
+			<div class="content-item">
+				<div class="left">모집인원</div>
+				<div class="right">${hireNoti.hnRecruit }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">모집분야</div>
+				<div class="right">${hireNoti.hnCate }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">담당업무</div>
+				<div class="right">${hireNoti.hnChargeTask}</div>
+			</div>
+			<div class="content-item">
+				<div class="left">근무부서</div>
+				<div class="right">${hireNoti.hnDept}</div>
+			</div>
+			<div class="content-item">
+				<div class="left">직급/직책</div>
+				<div class="right">${hireNoti.hnRankPosition}</div>
+			</div>
+			<div class="content-item">
+				<div class="left">전공/학과</div>
+				<div class="right">${hireNoti.hnMajor}</div>
+			</div>
+			<div class="content-item">
+				<div class="left">우대조건</div>
+				<div class="right">${hireNoti.hnPreference}</div>
+			</div>
+			<div class="content-item">
+				<div class="left">성별</div>
+				<div class="right">${hireNoti.hnGender}</div>
+			</div>
+			<div class="content-item">
+				<div class="left">나이</div>
+				<div class="right">
+					<c:forEach var="birth" items="${hireNoti.hnBirth }">
+						${birth }
+					</c:forEach>
+				</div>
+			</div>
+			<div class="content-item">
+				<div class="left">급여</div>
+				<div class="right">${hireNoti.hnSal}</div>
+			</div>
+			<div class="content-item">
+				<div class="left">근무요일</div>
+				<div class="right">${hireNoti.hnDay}</div>
+			</div>
+			<div class="content-item">
+				<div class="left">전형절차</div>
+				<div class="right">${hireNoti.hnProcess}</div>
+			</div>
+			<div class="content-item">
+				<div class="left">제출서류</div>
+				<div class="right">${hireNoti.hnDoc}</div>
+			</div>
+			<div class="content-item">
+				<div class="left">사전인터뷰</div>
+				<div class="right">${hireNoti.hnInterview}</div>
+			</div>
+		</div>
+	
+	
+	
+		<div class="view-title">접수기간/방법</div>
+		
+		<div class="view-content">
+			<div class="content-item">
+				<div class="left">접수기간</div>
+				<div class="right">${hireNoti.startDate } ~ ${hireNoti.endDate }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">접수방법</div>
+				<div class="right">${hireNoti.hnReMethod }</div>
+			</div>
+			<div class="content-submit">
+				<button>즉시지원</button>
+			</div>
+			<div class="content-item">
+				<div class="left">근무시간</div>
+				<div class="right">${hireNoti.hnSal }<span>${hireNoti.hnStime }</span>~<span>${hireNoti.hnDtime }</span></div>
+			</div>
+		</div>
+	
+		<div class="view-title">인사담당자</div>
+		
+		<div class="view-content">
+			<div class="content-item">
+				<div class="left">이름</div>
+				<div class="right"></div>
+			</div>
+		</div>
+		
+		<div class="view-title">기업정보</div>
+		
+		<div class="view-content">
+			<div class="content-item">
+				<div class="left">기업이름</div>
+				<div class="right">${company.companyName }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">사원수</div>
+				<div class="right">${company.companyAllPeople }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">설립일</div>
+				<div class="right">${company.companyRegDate }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">기업구분</div>
+				<div class="right">${company.companyStatus }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">산업</div>
+				<div class="right">${company.companyCate }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">기업주소</div>
+				<div class="right">${company.companyAddressNew }</div>
+			</div>
+		</div>
 
-
+	</div>
 </section>
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+<%@ include file="/WEB-INF/views/common/header.jsp" %>

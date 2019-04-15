@@ -1826,6 +1826,89 @@ section #hire-container #hire-list .hire-item .option button {
 
 
 
+/* ------------------------------------------------- 채용공고 뷰 */
+
+section#hire-view {
+    background-color: rgb(243, 244, 247);
+}
+
+section #hire-view-container {
+    width: 990px;
+    display: inline-block;
+}
+
+section #hire-view-container .view-top {
+    width: 990px;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: left;
+}
+
+section #hire-view-container .view-top .left {
+    display: inline-block;
+    width: 50%;
+    padding-left: 25px;
+    font-size: 20px;
+    text-align: left;
+}
+
+section #hire-view-container .view-top .right {
+    display: inline-block;
+    width: 45%;
+    font-size: 20px;
+    text-align: right;
+}
+
+section #hire-view-container .view-top .right button {
+    background-color: #404861;
+    border: 1px solid #2a3041;
+    color: #fff;
+    border: none;
+    width: 100px;
+    height: 30px;
+}
+
+section #hire-view-container .view-top .right button:nth-child(2) {
+    background-color: #a54242;
+    border: 1px solid #883737;
+}
+
+section #hire-view-container .view-title {
+    font-size: 15px;
+    text-align: left;
+    padding-left: 25px;
+    height: 50px;
+    line-height: 50px;
+}
+
+section #hire-view-container .view-content {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+section #hire-view-container .view-content .content-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+section #hire-view-container .view-content .content-item .left {
+    width: 25%;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+}
+
+section #hire-view-container .view-content .content-item .right {
+    width: 54%;
+    display: inline-block;
+    text-align: left;
+}
 
 
 /* ------------------------------------------- 기업페이지 */
