@@ -87,7 +87,7 @@
 											</a>
 										</div>
 										<div class="item-date">
-											${list.reviewDate}
+											<fmt:formatDate value="${list.reviewDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>작성일 : ${regDate }<br>
 										</div>
 									</div>
 							</c:forEach>
