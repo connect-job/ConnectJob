@@ -71,7 +71,7 @@
   </select>
   
   <update id="updateSenier" parameterType="senier">
-  	update s_talk set q_type=#{qType}, s_title=#{sTitle}, s_content=#{sContent} where s_no = #{sNo}
+  	update s_talk set s_cate=#{sCate}, q_type=#{qType}, s_title=#{sTitle}, s_content=#{sContent} where s_no = #{sNo}
   </update>
   
   <delete id="deleteSenier" parameterType="senier">
