@@ -45,6 +45,11 @@ public class MessageServiceImpl implements MessageService {
 		return dao.updateMessageRead(m);
 	}
 
+	@Override
+	public int alarmDelete(Message m) {
+		return dao.alarmDelete(m);
+	}
+
 	
 	
 }

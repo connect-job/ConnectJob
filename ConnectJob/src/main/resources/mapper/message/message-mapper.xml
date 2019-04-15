@@ -17,6 +17,10 @@
 	<update id="updateMessageRead">
 		UPDATE M_MESSAGE SET M_STATUS = 'Y' WHERE M_NO = #{mNo}
 	</update>
+	
+	<delete id="deleteMessage">
+		DLETE M_MESSAGE WHERE M_NO \ #{mNo}
+	</delete>
 
 	<update id="updateAlarmOn">
 		UPDATE P_MEMBER SET ALARM_STATUS = 'Y' WHERE P_ID = #{id}

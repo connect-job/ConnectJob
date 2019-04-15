@@ -99,4 +99,13 @@ public class AlarmController {
 		return "alarm/alarmList";
 	}
 	
+	@RequestMapping("alarm/alarmDelete.do")
+	public String alarmDelete(Model model, Message m) {
+		int result = service.alarmDelete(m);
+		
+		List<Message> list = service.selectMessage(m.getmTo());
+		model.addAttribute("list", list);
+		return "alarm/alarmList";
+	}
+	
 }

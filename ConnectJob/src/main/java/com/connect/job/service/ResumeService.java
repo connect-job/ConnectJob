@@ -13,7 +13,9 @@ public interface ResumeService {
 	int insertResume(Resume r,List<FinalEduUniv> univList, Career c,ProfileImg p);
 	int updateResume(Resume r,FinalEdu fe, Career c,ProfileImg p);
 	int updateResume(Resume r,List<FinalEduUniv> univList, Career c,ProfileImg p);
-	List<Resume> selectedResumeList(String userId);
+	
+	int selectedResumeCnt(String pId);
+	List<Resume> selectedResumeList(String pId);
 	
 	ProfileImg selectedProfileImg(int resumeNo);
 	Resume selectedResume(int resumeNo);

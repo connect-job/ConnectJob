@@ -200,7 +200,7 @@
 		     	},1000);
              }
 	    });
-	    
+
 	    function fn_messageClose() {
 	    	$('#socket-message').css("opacity","0");
 	    }

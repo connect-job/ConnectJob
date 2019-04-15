@@ -20,9 +20,9 @@ public interface ResumeDao {
 	int updateFinalEduUniv(FinalEduUniv univ);
 	int updateCareer(Career c);
 	int deleteProfileImg(int resumeNo);
-	
+	int selectedResumeCnt(String pId);
 	ProfileImg selectedProfileImg(int resumeNo);
-	List<Resume> selectedResumeList(String userId);
+	List<Resume> selectedResumeList(String pId);
 	Resume selectedResume(int resumeNo);
 	Career selectedCareer(int resumeNo);
 	FinalEdu selectedFinalEdu(int resumeNo);

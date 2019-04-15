@@ -72,9 +72,9 @@
 		<websocket:mapping handler="alarmHandler" path="/alarm"/>
 	</websocket:handlers>
 	
-	
+	<!-- 
 	<bean class="org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean">
 		<property name="maxBinaryMessageBufferSize" value="1020400"/>
-	</bean> 
+	</bean>  -->
 	
 </beans>

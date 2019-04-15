@@ -68,6 +68,8 @@ public class ResumeController {
 		ModelAndView mv=new ModelAndView();
 		Member m=(Member)session.getAttribute("loginMember");
 		List<Resume> list=service.selectedResumeList(m.getP_id());
+		int resumeCnt=service.selectedResumeCnt(m.getP_id());
+		mv.addObject("resumeCnt",resumeCnt);
 		mv.addObject("list",list);
 		mv.setViewName( "resume/resumeList");
 		return mv;
@@ -83,13 +85,13 @@ public class ResumeController {
 		FinalEdu finalEdu=service.selectedFinalEdu(resumeNo);
 		FinalEduUniv finalEduUniv=new FinalEduUniv();
 		List<FinalEduUniv> univList=new ArrayList<FinalEduUniv>();
-		System.out.println("------view-----");
+		/*System.out.println("------view-----");
 		System.out.println("view 학교갯수 : "+countUniv);
 		System.out.println(finalEdu);
 		System.out.println(resultR);
 		System.out.println(career);
 		System.out.println(finalEduUniv);
-		
+		*/
 		
 		if(countUniv>1) {
 			univList=service.selectedFinalEduUnivList(resumeNo);
@@ -100,8 +102,8 @@ public class ResumeController {
 			finalEduUniv=service.selectedFinalEduUniv(resumeNo);
 			univList.add(finalEduUniv);
 		}
-		System.out.println("--------------");
-		System.out.println("select 사진 : "+img);
+/*		System.out.println("--------------");
+		System.out.println("select 사진 : "+img);*/
 		mv.addObject("img",img);
 		mv.addObject("resultR",resultR);
 		mv.addObject("countUniv",countUniv);
@@ -126,13 +128,13 @@ public class ResumeController {
 		System.out.println(fu);
 		System.out.println(c);
 */
-		System.out.println("------insert-----");
+		/*System.out.println("------insert-----");
 		System.out.println(profileImg);
 		System.out.println(r);
 		System.out.println(c);
 		System.out.println(fe);
 		System.out.println(fu);
-		System.out.println("--------------");
+		System.out.println("--------------");*/
 		//---------------------파일입출력
 		ProfileImg p=new ProfileImg();
 		String saveDir=re.getSession().getServletContext().getRealPath("/resources/upload/profile");
@@ -246,19 +248,19 @@ public class ResumeController {
 		FinalEduUniv finalEduUniv=new FinalEduUniv();
 		
 		List<FinalEduUniv> univList=new ArrayList<FinalEduUniv>();
-		System.out.println("------update-----");
+		/*System.out.println("------update-----");
 		System.out.println("update대학cnt :"+countUniv);
 		System.out.println(img);
 		System.out.println(resultR);
 		System.out.println(career);
 		System.out.println(finalEdu);
-		System.out.println(finalEduUniv);
+		System.out.println(finalEduUniv);*/
 		if(resultR.getFinalEdu().equals("대학/대학원 이상 졸업")) {
 			if(countUniv>0) {
 				univList=service.selectedFinalEduUnivList(resumeNo);
-				for(FinalEduUniv u:univList) {
+				/*for(FinalEduUniv u:univList) {
 					System.out.println(u);
-				}
+				}*/
 			}else {
 				finalEduUniv=service.selectedFinalEduUniv(resumeNo);
 				univList.add(finalEduUniv);
@@ -283,14 +285,14 @@ public class ResumeController {
 	}
 	@RequestMapping("/resume/resumeUpdateEnd.do")
 	public ModelAndView updateResume(MultipartFile profileImg, Resume r,FinalEdu fe,FinalEduUniv fu, Career c,HttpSession session,HttpServletRequest re){
-		System.out.println("*******수정*******");
+		/*System.out.println("*******수정*******");
 		System.out.println(profileImg.getOriginalFilename());
 		System.out.println(r);
 		System.out.println(fe);
 		System.out.println(fu);
 		System.out.println(c);
 		System.out.println("이렦써 뻔호 왔?ㅋㅋㅋㅋ " + r.getResumeNo());
-
+*/
 		ProfileImg p=new ProfileImg();
 		String saveDir=re.getSession().getServletContext().getRealPath("/resources/upload/profile");
 		

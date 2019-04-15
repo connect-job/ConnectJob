@@ -89,7 +89,7 @@
 						<option value="고등학교 졸업">고등학교 졸업</option>
 						<option value="대학/대학원 이상 졸업">대학/대학원 이상 졸업</option>
 					</select>
-					<button type="button" id="addUnivBtn" onclick="addUniversity()">대학 학력 추가</button>
+					<button type="button" id="addUnivBtn" onclick="addUniversity()" style="display:none">대학 학력 추가</button>
 				</div>
 			</div>
 
@@ -293,7 +293,7 @@
 			$(".addUnivContainer").empty();
 			$(".addUnivContainer").empty();
 			$("#addUnivBtn").css("display", "none");
-		}
+		}else{$("#addUnivBtn").css("display", "inline-block");}
 		$.ajax({
 			url: "${path}/selectFinalEdu.do",
 			data: { "finalEdu": finalEdu },
@@ -323,6 +323,7 @@
 		$.ajax({
 			url: "${path}/addUniversity.do",
 			success: function (data) {
+				
 				var univ = $(".univ");
 				if (univ.length == 1) {
 					$('.addUnivContainer').append(data);

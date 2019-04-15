@@ -13,5 +13,6 @@ public interface MessageService {
 	int updateAlarmOff(String id);
 	Member selectMemberOne(String id);
 	int updateMessageRead(Message m);
+	int alarmDelete(Message m);
 
 }

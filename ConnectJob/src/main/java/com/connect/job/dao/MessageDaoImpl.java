@@ -45,6 +45,11 @@ public class MessageDaoImpl implements MessageDao {
 		public int updateMessageRead(Message m) {
 			return session.update("message.updateMessageRead", m);
 		}
+
+		@Override
+		public int alarmDelete(Message m) {
+			return session.delete("message.deleteMessage", m);
+		}
 		
 		
 	
