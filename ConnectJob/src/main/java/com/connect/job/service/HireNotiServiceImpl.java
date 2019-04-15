@@ -32,14 +32,29 @@ public class HireNotiServiceImpl implements HireNotiService {
 
 	@Override
 	public List<HireNoti> selectAll(int cPage, int numPerPage) {
-
 		return dao.selectAll(cPage, numPerPage);
+	}
+	
+
+	@Override
+	public List<HireNoti> selectAllAjax(int cPage, int numPerPage, HireNoti h) {
+		return dao.selectAllAjax(cPage, numPerPage, h);
 	}
 
 	@Override
 	public int selectHireNotiCount() {
 
 		return dao.selectHireNotiCount();
+	}
+
+	@Override
+	public int selectHireNotiCountAjax(HireNoti h) {
+		return dao.selectHireNotiCountAjax(h);
+	}
+
+	@Override
+	public List<HireNoti> selectLatest() {
+		return dao.selectLatest();
 	}
 
 	
