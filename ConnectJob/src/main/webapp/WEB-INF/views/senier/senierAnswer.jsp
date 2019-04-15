@@ -39,15 +39,16 @@
 							${s.sCate}
 					</div>
 				</div>
-				<div class="middle-content">
-					<div class="left">질문유형</div>
-					<div class="right">
-							${s.qType}
-					</div>
-				</div>
 
 				<div class="middle-subtitle">
 					질문유형　#${s.qType}　|　${s.sDate}
+				</div>
+				
+				<div class="middle-content">
+					<div class="left"></div>
+					<div class="right">
+							<i class="fab fa-quora"></i> ${s.sTitle}
+					</div>
 				</div>
 
 				<div class="middle-content">

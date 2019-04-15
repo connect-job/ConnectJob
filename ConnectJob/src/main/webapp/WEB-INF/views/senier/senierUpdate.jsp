@@ -25,7 +25,33 @@
             <form action="${path}/senierUpdateEnd.do?sNo=${s.sNo}" method="post" onsubmit="return validate();">
                 <div id="senier-write-container">
                     <div class="write-cate">
-                   
+                   	
+                   	 <div>
+                        <div class="left">직종분류</div>
+                        <div class="right"> 
+                                                                               
+            				 <select id="hopeJobArea" name="sCate">
+								<option value="">직종선택</option>
+								<option value="웹 개발자" ${s.sCate=="웹 개발자"?"selected":""}>웹 개발자</option>
+								<option value="서버 개발자" ${s.sCate=="서버 개발자"?"selected":""}>서버 개발자</option>
+								<option value="시스템개발" ${s.sCate=="시스템개발"?"selected":""}>시스템개발</option>
+								<option value="프론트엔드 개발자" ${s.sCate=="프론트엔드 개발자"?"selected":""}>프론트엔드 개발자</option>
+								<option value="자바 개발자" ${s.sCate=="자바 개발자"?"selected":""}>자바 개발자</option>
+								<option value="파이썬 개발자" ${s.sCate=="파이썬 개발자"?"selected":""}>파이썬 개발자</option>
+								<option value="안드로이드 개발자" ${s.sCate=="안드로이드 개발자"?"selected":""}>안드로이드 개발자</option>
+								<option value="IOS개발자" ${s.sCate=="IOS개발자"?"selected":""}>IOS개발자</option>
+								<option value="데이터 엔지니어" ${s.sCate=="데이터 엔지니어"?"selected":""}>데이터 엔지니어</option>
+								<option value="시스템,네트워크 관리자" ${s.sCate=="시스템,네트워크 관리자"?"selected":""}>시스템,네트워크 관리자</option>
+								<option value="node.js 개발자" ${s.sCate=="node.js 개발자"?"selected":""}>node.js 개발자</option>
+								<option value="php 개발자" ${s.sCate=="php 개발자"?"selected":""}>php 개발자</option>
+								<option value="DevOps / 시스템 관리자" ${s.sCate=="DevOps / 시스템 관리자"?"selected":""}>DevOps / 시스템 관리자</option>
+								<option value="C,C++개발자" ${s.sCate=="C,C++개발자"?"selected":""}>C,C++개발자</option>
+								<option value="개발 매니저" ${s.sCate=="개발 매니저"?"selected":""}>개발 매니저</option>
+								<option value="데이터 사이언티스트" ${s.sCate=="데이터 사이언티스트"?"selected":""}>데이터 사이언티스트</option>
+							</select>
+							
+                        </div>
+                    </div>
                     
                         <div class="left">질문유형</div> 
                         	
@@ -59,6 +85,13 @@
             .catch(error => {
                 console.error(error);
             });
+    </script>
+    
+    <script>
+    	$(function() {
+    		$('#hopeJobArea').
+		})	
+    
     </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
