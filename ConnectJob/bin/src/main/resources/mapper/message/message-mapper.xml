@@ -2,18 +2,96 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="message">
 
-	<select id="messageCount" parameterType="message" resultMap="messageResult">
-		SELECT COUNT(*) m_count FROM M_MESSAGE WHERE M_TO = #{mTo} AND M_STATUS = 'N'
+	<select id="messageResumeCount" resultMap="resumeResultMap">
+		SELECT * FROM RESUME WHERE P_ID = #{member}
 	</select>
 	
-	<resultMap type="message" id="messageResult">
-		<id column="m_no" property="mNo"/>
-		<result column="m_to" property="mTo"/>
-		<result column="m_from" property="mFrom"/>
-		<result column="m_message" property="mMessage"/>
-		<result column="m_date" property="mDate"/>
-		<result column="m_status" property="mStatus"/>
-		<result column="m_count" property="mCount"/>
+	<select id="messageHireNoti" parameterType="resume" resultMap="hireNotiResult">
+		SELECT * FROM HIRENOTI WHERE 1=1
+		<if test="hopeJobs!=null and hopeJobs!=''">
+			AND
+			<foreach collection="hopeJobs" item="job" open="(" close=")" separator="or">
+				HN_SORT = #{job}
+			</foreach>
+		</if>
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="selectMessage" resultMap="messageResultMap">
+		SELECT * FROM M_MESSAGE WHERE M_TO = #{id}
+	</select>
+
+	
+	<resultMap type="message" id="messageResultMap">
+		<id property="mNo" column="m_no"/>
+		<result property="mTo" column="m_to"/>
+		<result property="mFrom" column="m_from"/>
+		<result property="mMessage" column="m_message"/>
+		<result property="mDate" column="m_date"/>
+		<result property="mStatus" column="m_status"/>
+		<result property="mCount" column="m_count"/>
+	</resultMap>
+	
+	<resultMap type="resume" id="resumeResultMap">
+		<id property="resumeNo" column="resume_no"></id>
+		<result property="p_id" column="p_id"/>
+		<result property="title" column="title"/>
+		<result property="name" column="name"/>
+		<result property="birth" column="birth"/>
+		<result property="gender" column="gender"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="finalEdu" column="final_edu"/>
+		<result property="career" column="career"/>
+		<result property="hopePosition" column="hope_position"/>
+		<result property="hopeSalary" column="hope_salary"/>
+		<result property="hopeArea" column="hope_area" typeHandler="strArr"/>
+		<result property="hopeJobArea" column="hope_job_area" typeHandler="strArr"/>
+		<result property="hopeCategory" column="hope_category" typeHandler="strArr"/>
+		<result property="isPublic" column="is_public"/>
+		<result property="isDelete" column="is_delete"/>
+		<result property="creationDate" column="creation_date"/>
+		<result property="resumeCount" column="resume_count"/>
+	</resultMap>
+	
+	
+	<resultMap type="hireNoti" id="hireNotiResult">
+		<id property="hnSeq" column="hn_seq"/>
+		<result property="cMemberId" column="cmemberid"/>
+		<result property="hnSort" column="hn_sort" typeHandler="strArr"/>
+		<result property="hnCareer" column="hn_career"/>
+		<result property="hnForm" column="hn_form"/>
+		<result property="hnRecruit" column="hn_recruit"/>
+		<result property="hnCate" column="hn_cate"/>
+		<result property="hnChargeTask" column="hn_chargetask"/>
+		<result property="hnDept" column="hn_dept"/>
+		<result property="hnRankPosition" column="hn_rank_position"/>
+		<result property="hnFinalEdu" column="hn_final_edu" typeHandler="strArr"/>
+		<result property="hnMajor" column="hn_major"/>
+		<result property="hnPreference" column="hn_preference"/>
+		<result property="hnGender" column="hn_gender"/>
+		<result property="hnBirth" column="hn_birth" typeHandler="strArr"/>
+		<result property="hnSal" column="hn_sal"/>
+		<result property="hnWorkPlace" column="hn_work_place"/>
+		<result property="hnDay" column="hn_day"/>
+		<result property="hnStime" column="hn_stime"/>
+		<result property="hnDtime" column="hn_dtime"/>
+		<result property="startDate" column="startdate"/>
+		<result property="endDate" column="enddate"/>
+		<result property="hnEve" column="hn_eve" typeHandler="strArr"/>
+		<result property="hnReMethod" column="hn_remethod"/>
+		<result property="hnProcess" column="hn_process"/>
+		<result property="hnDoc" column="hn_doc"/>
+		<result property="hnInterview" column="hn_interview"/>
+		<result property="hnTitle" column="hn_title"/>
+		<result property="addDate" column="hn_adddate"/>
 	</resultMap>
 
 </mapper>

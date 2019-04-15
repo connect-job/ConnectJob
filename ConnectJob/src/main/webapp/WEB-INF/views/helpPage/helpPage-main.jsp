@@ -83,7 +83,7 @@
 
 			<c:forEach var="inq" items="${list}" varStatus="vs">
 				<c:if test="${loginMember != null && loginMember.p_id eq inq.iWriter}">
-					<div class="help-item" onclick="location.href='${path}/help/myInquiryView.do?no=${inq.iNo}'">
+					<div class="help-item" onclick="location.href='${path}/helpPageInquiryView.do?no=${inq.iNo}'">
 						<div class="item-left">
 							질문유형 #${inq.iType}
 						</div>
@@ -102,7 +102,7 @@
 
 
 				<c:if test="${loginCMember != null && loginCMember.cMemberEmail eq inq.iWriter}">
-					<div class="help-item" onclick="location.href='${path}/help/myInquiryView.do?no=${inq.iNo}'">
+					<div class="help-item" onclick="location.href='${path}/helpPageInquiryView.do?no=${inq.iNo}'">
 						<div class="item-left">
 							#${inq.iType}
 						</div>

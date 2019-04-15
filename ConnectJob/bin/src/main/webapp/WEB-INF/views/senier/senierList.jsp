@@ -3,354 +3,230 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <section>
     <div id="senier-container">
-        
+
         <div class="senier-top">
             선배와의 대화
         </div>
 
         <div class="senier-subTitle">
             <div id="left">우리 직종의 취업고민과 선배의 답변이에요</div>
-            <div id="right"><button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">선배에게 질문하기</button></div>
+            <div id="right"><button id="btn-senier" onclick="location.href='${path}/senierWrite.do'">선배에게 질문하기</button>
+            </div>
+        </div>
+
+        <div class="senier-cate">
+
         </div>
 
         <div class="senier-middle">
-       <h2>직종분류</h2>
-        <div id="search_right">
-                    <div id="location">
-        <ul>
-					<li>웹 개발자</li>
-					<li>서버 개발자</li>
-					<li>시스템개발</li>
-					<li>프론트엔드 개발자</li>
-					<li>자바 개발자</li>
-					<li>파이썬 개발자</li>
-					<li>안드로이드 개발자</li>
-					<li>IOS개발자</li>
-					<li>데이터 엔지니어</li>
-					<li>시스템,네트워크 관리자</li>
-					<li>node.js 개발자</li>
-					<li>php 개발자</li>
-					<li>DevOps / 시스템 관리자</li>
-					<li>C,C++개발자</li>
-					<li>개발 매니저</li>
-					<li>데이터 사이언티스트</li>
-			
-        	</ul>  
-        </div>
-        </div>
-                  <div id="search_selected">
-                    <div id="select_left">
-                    </div>
-                    <div id="select_right">
-                        <button onclick="fn_search()">검색</button>
-                    </div>
-                </div>
-        
-            <c:choose>
-					<c:when test="${list!=null }">
-									
-            
-             	<c:forEach var="sen" items="${list}" varStatus="vs">
-             <div class="senier-item" onclick="location.href='${path}/senierAnswer.do?no=${sen.sNo}'">
-             		<div>
-             			${sen.sCate}
-             		</div>
-             
-					<div class="item-cate">
-					<c:forEach items="${sen.qType}" var="type" varStatus="vs">
-						${type}
-					</c:forEach>
-					</div>
-					<div class="item-title">
-						
-						${sen.sTitle}
-						
-					</div>
-					<div class="item-content">
-                            <c:set var="content" value ="${fn:substring(sen.sContent, 0, 40)}" />
-                        ${content}.... (더 보기)</div>
+            <div class="senier-title">직종분류 선택</div>
+            <div id="senier-cate">
+                <ul>
+                    <li>전체</li>
+                    <li>웹 개발자</li>
+                    <li>서버 개발자</li>
+                    <li>시스템개발</li>
+                    <li>프론트엔드 개발자</li>
+                    <li>자바 개발자</li>
+                    <li>파이썬 개발자</li>
+                    <li>안드로이드 개발자</li>
+                    <li>IOS개발자</li>
+                    <li>데이터 엔지니어</li>
+                    <li>시스템,네트워크 관리자</li>
+                    <li>node.js 개발자</li>
+                    <li>php 개발자</li>
+                    <li>DevOps / 시스템 관리자</li>
+                    <li>C,C++개발자</li>
+                    <li>개발 매니저</li>
+                    <li>데이터 사이언티스트</li>
+                </ul>
             </div>
-				</c:forEach>
-            
-            	</c:when>
-			</c:choose>
-            
+            <div id="search_selected">
+                <div id="select_left">
+
+                </div>
+                <div id="select_right">
+                    <button onclick="fn_search()">검색</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div id="senier-result">
+            <c:choose>
+                <c:when test="${list!=null }">
+                    <c:forEach var="sen" items="${list}" varStatus="vs">
+                        <div class="senier-item" onclick="location.href='${path}/senierAnswer.do?no=${sen.sNo}'">
+                            <div class="item-cate">
+                                ${sen.sCate}
+                            </div>
+
+                            <div class="item-type">
+                                <c:forEach items="${sen.qType}" var="type" varStatus="vs">
+                                    #${type}
+                                </c:forEach>
+                            </div>
+                            
+                            <div class="item-title">
+                                <i class="fab fa-quora"></i>　${sen.sTitle}
+                            </div>
+                            
+                            <div class="item-content">
+                                <c:set var="content" value="${fn:substring(sen.sContent, 0, 100)}" />
+                                ${content}.... (더 보기)
+                            </div>
+                        </div>
+                    </c:forEach>
+                </c:when>
+            </c:choose>
+
+            <div id="pageBar">
+                ${pageBar}
+            </div>
+
         </div>
     </div>
-         <div id="pageBar">
-        	${pageBar}
-        </div>
-        <script>
-        	
-        function fn_paging(cPage) {
-       		window.location.href="${path}/senierConversation.do?cPage=" + cPage;
-       	}
-        
-        </script>
-        
-        
-        
-    <script>
-            var locations = $('#search_right > div');
-            $.each(locations, function(index) {
-                locations.eq(index).hide();
-            });
-            locations.eq(0).show();
+</section>
 
-            $(this).class
 
-            $('#search_left ul li').click(function() {
-                switch($(this).text()) {
-                    case "서울" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(0).show(); 
-                        break;
-                    case "경기" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(1).show(); 
-                        break;
-                    case "인천" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(2).show(); 
-                        break;
-                    case "부산" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(3).show(); 
-                        break;
-                    case "대구" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(4).show(); 
-                        break;
-                    case "광주" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(5).show(); 
-                        break;
-                    case "대전" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(6).show(); 
-                        break;
-                    case "대전" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(7).show(); 
-                        break;
-                    case "울산" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(8).show(); 
-                        break;
-                    case "세종" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(9).show(); 
-                        break;
-                    case "강원" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(10).show(); 
-                        break;
-                    case "경남" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(11).show(); 
-                        break;
-                    case "경북" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(12).show(); 
-                        break;
-                    case "전남" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(13).show(); 
-                        break;
-                    case "전북" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(14).show(); 
-                        break;
-                    case "충남" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(15).show(); 
-                        break;
-                    case "충북" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(16).show(); 
-                        break;
-                    case "제주" : 
-                        $.each(locations, function(index) {
-                            locations.eq(index).hide();
-                        });
-                        locations.eq(17).show(); 
-                        break;
+
+<script>
+
+    function fn_paging(cPage) {
+        window.location.href = "${path}/senierConversation.do?cPage=" + cPage;
+    }
+
+
+    var searchOption = $('#select_left');
+
+    $('#senier-cate ul li').click(function () {
+        if (!$(this).hasClass('selected')) {
+            console.log($(this).text().trim().indexOf("전체"));
+            if ($(this).text().trim().indexOf("전체") == 0) {
+                var li = $('#senier-cate ul li');
+                for (var i = 0; i < li.length; i++) {
+                    li[i].removeAttribute("class");
                 }
-            });
-    </script>
 
-    <script>
-        // function fn_searchOpen() {
-        //     $('#search_location').toggle(function(){
-        //     });
-        // }
+                var btn = $('#select_left button');
+                for (var i = 0; i < btn.length; i++) {
+                    if (btn[i].innerText.trim().indexOf("전체") == 0) {
 
-        var searchOption = $('#select_left');
+                    } else {
+                        btn[i].remove();
+                    }
+                }
 
-        $('#location ul li').click(function() {
-            if(!$(this).hasClass('selected')) {
-                console.log($(this).text().indexOf("전체"));
-                if($(this).text().indexOf("전체")>0) {
-                    var li = $('#location ul li');
-                    for(var i=0;i<li.length;i++) {
+            } else {
+                var li = $('#senier-cate ul li');
+                for (var i = 0; i < li.length; i++) {
+                    if (li[i].innerText.trim().indexOf("전체") == 0) {
                         li[i].removeAttribute("class");
                     }
-
-                    var btn = $('#select_left button');
-                    for(var i=0;i<btn.length;i++) {
-                        if(btn[i].innerText.indexOf("전체")>0) {
-
-                        } else {
-                            btn[i].remove();
-                        }
-                    }
-                    
-                } else {
-                    var li = $('#location ul li');
-                    for(var i=0;i<li.length;i++) {
-                        if(li[i].innerText.indexOf("전체")>0) {
-                            li[i].removeAttribute("class");
-                        }
-                    }
-                    var btn = $('#select_left button');
-                    for(var i=0;i<btn.length;i++) {
-                        if(btn[i].innerText.indexOf("전체")>0) {
-                            btn[i].remove();
-                        }
-                    }
                 }
-                $(this).addClass('selected');
-                searchOption.append("<button onclick='fn_selectCancle(this)'>" + $(this).text() + "</button>");
-            } else {
-                $(this).removeClass('selected');
                 var btn = $('#select_left button');
-                for(var i=0;i<btn.length;i++) {
-                    if($(this).text()==btn[i].innerText) {
+                for (var i = 0; i < btn.length; i++) {
+                    if (btn[i].innerText.trim().indexOf("전체") == 0) {
                         btn[i].remove();
                     }
                 }
             }
-        });
-
-        function fn_selectCancle(e) {
-            var text = e.innerText;
-            console.log("text : " + text);
-            var li = $('#location ul li');
-            console.log(li);
-            for(var i=0;i<li.length;i++) {
-                if(text==li[i].innerText) {
-                    console.log(li[i]);
-                    li[i].removeAttribute("class");
+            $(this).addClass('selected');
+            searchOption.append("<button onclick='fn_selectCancle(this)'>" + $(this).text() + "　<i class='fas fa-backspace'></i></button>");
+        } else {
+            $(this).removeClass('selected');
+            var btn = $('#select_left button');
+            for (var i = 0; i < btn.length; i++) {
+                if ($(this).text() == btn[i].innerText.trim()) {
+                    btn[i].remove();
                 }
             }
-            e.remove();
+        }
+    });
+
+    function fn_selectCancle(e) {
+        var text = e.innerText.trim();
+        console.log("text : " + text);
+        var li = $('#senier-cate ul li');
+        console.log(li);
+        for (var i = 0; i < li.length; i++) {
+            if (text == li[i].innerText) {
+                console.log(li[i]);
+                li[i].removeAttribute("class");
+            }
+        }
+        e.remove();
+    }
+
+    function fn_paging(cPage) {
+        window.location.href = "${path}/senierConversation.do?cPage=" + cPage;
+    }
+
+    function fn_ajaxPaging(cPage) {
+        var sResult = $('#senier-result');
+        var job_temp = $('#select_left button');
+
+        var job = "";
+
+        for (var i = 0; i < job_temp.length; i++) {
+            job += job_temp[i].innerText.trim() + ",";
         }
 
-       	function fn_paging(cPage) {
-       		window.location.href="${path}/company/companyList.do?cPage=" + cPage;
-       	}
-       	
-       	function fn_ajaxPaging(cPage) {
-       		var comList = $('#ajax_table');
-       		var location_temp = $('#select_left button');
-            var location = "";
 
-            for(var i=0; i<location_temp.length;i++) {
-                location += location_temp[i].innerText + ",";
+        $.ajax({
+            url: '${path}/senier/senierListEnd.do',
+            data: { "job": job, "cPage": cPage },
+            dataType: "html",
+            success: function (data) {
+                var Ca = /\+/g;
+                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+                sResult.html(resultSet);
             }
-            
-            
-            $.ajax({
-            	url: '${path}/senier/senierListEnd.do',
-            	data: {"location":location, "cPage":cPage},
-            	dataType: "html",
-            	success: function(data) {
-					var Ca = /\+/g;
-					var resultSet = decodeURIComponent(data.replace(Ca, " "));
-            		comList.empty();
-            		comList.html(resultSet);
-            	}
-            });
-            
-       	}
+        });
+
+    }
+
+    function fn_search() {
+        var sResult = $('#senier-result');
+        var job_temp = $('#select_left button');
         
-        function fn_search() {
-            var comList = $('#ajax_table');
-            var location_temp = $('#select_left button');
-            var location = "";
+        var job = "";
 
-            for(var i=0; i<location_temp.length;i++) {
-            	console.log(location_temp[i].innerText.indexOf("전체"));
-            	if(location_temp[i].innerText.indexOf("전체")) {
-            		location += location_temp[i].innerText.replace("전체","") + ",";
-            		console.log(location);
-            	} else {
-            		location += location_temp[i].innerText + ",";
-            	}
-                
+
+        if(job_temp.length!=0) {
+            for (var i = 0; i < job_temp.length; i++) {
+                if (job_temp[i].innerText.trim().indexOf("전체")==0) {
+                    job += "";
+                } else {
+                    job += job_temp[i].innerText.trim() + ",";
+                }
             }
-            
+
             $.ajax({
-            	url: '${path}/senier/senierListEnd.do',
-            	data: {"location":location},
-            	dataType: "html",
-            	success: function(data) {
-					var Ca = /\+/g;
-					var resultSet = decodeURIComponent(data.replace(Ca, " "));
-            		comList.empty();
-            		comList.html(resultSet);
-            	}
+                url: '${path}/senier/senierListEnd.do',
+                data: {"job": job},
+                dataType: "html",
+                success: function (data) {
+                    var Ca = /\+/g;
+                    var resultSet = decodeURIComponent(data.replace(Ca, " "));
+                    sResult.html(resultSet);
+                }
             });
+        } else {
+            alert('검색 조건을 설정해 주세요');
         }
-    </script>
         
+
         
-        
-</section>
-    
+    }
+</script>
+
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
-
-
-
-
-

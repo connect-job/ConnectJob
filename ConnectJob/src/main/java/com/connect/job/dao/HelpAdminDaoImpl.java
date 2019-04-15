@@ -25,4 +25,16 @@ public class HelpAdminDaoImpl implements HelpAdminDao {
 		return session.selectOne("helpAdmin.selectCount",id);
 	}
 
+	@Override
+	public Inquiry helpPageInquiryView(int no) {
+		return session.selectOne("helpAdmin.helpPageInquiryView",no);
+	}
+
+	@Override
+	public int helpInquiryUpdate(Inquiry i) {
+		return session.update("helpAdmin.helpInquiryUpdate",i);
+	}
+
+	
+	
 }

@@ -21,13 +21,23 @@
 		<div class="biz-left">
 			<div class="menu-top">고객센터관리페이지</div>
 			<ul>
-				<li class="menu">1:1문의<span class="icon"><i
-						class="fas fa-sort-down"></i></span>
-					<ul class="hide">
-						<li><a href="${path }/helpPageInquiry.do">1:1문의</a></li>
-
-					</ul>
-				</li>
+				<c:if test="${loginCMember!=null}">
+                <li class="menu">
+              1:1문의<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="${path }/helpPageInquiry.do?id=${loginCMember.cMemberEmail}">1:1문의</a></li>
+                    </ul>
+                </li>
+            	</c:if>
+            	
+            	<c:if test="${loginMember!=null}">
+                <li class="menu">
+              1:1문의<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="${path }/helpPageInquiry.do?id=${loginMember.p_id}">1:1문의</a></li>
+                    </ul>
+                </li>
+            	</c:if>
 
 				<li class="menu">공지사항<span class="icon"><i
 						class="fas fa-sort-down"></i></span>
@@ -66,9 +76,9 @@
 
 			<c:forEach var="inq" items="${list}" varStatus="vs">
 				<c:if test="${loginMember != null && loginMember.p_id eq inq.iWriter}">
-					<div class="help-item" onclick="location.href='${path}/help/myInquiryView.do?no=${inq.iNo}'">
+					<div class="help-item" onclick="location.href='${path}/helpPageInquiryView.do?no=${inq.iNo}'">
 						<div class="item-left">
-							질문유형 #${inq.iType}
+							질문유형 ${inq.iType}
 						</div>
 
 						<div class="item-center">
@@ -78,14 +88,30 @@
 						</div>
 
 						<div class="item-right">
-							<span>답변상태 ${inq.status==false?"답변대기중":"답변완료"}</span>
+							<span>답변상태
+							<c:choose>
+							<c:when test="${inq.status=='답변중'}">
+								${inq.status}
+							</c:when>
+							<c:when test="${inq.status=='답변대기중'}">
+								${inq.status}
+							</c:when>
+							<c:when test="${inq.status=='답변완료'}">
+								${inq.status}
+							</c:when>
+							
+							</c:choose>
+							</span>
+						</div>
+						<div>
+						답변내용 ${inq.aContent}
 						</div>
 					</div>
 				</c:if>
 
 
 				<c:if test="${loginCMember != null && loginCMember.cMemberEmail eq inq.iWriter}">
-					<div class="help-item" onclick="location.href='${path}/help/myInquiryView.do?no=${inq.iNo}'">
+					<div class="help-item" onclick="location.href='${path}/helpPageInquiryView.do?no=${inq.iNo}'">
 						<div class="item-left">
 							#${inq.iType}
 						</div>
@@ -97,7 +123,22 @@
 						</div>
 
 						<div class="item-right">
-							<span>${inq.status==false?"답변대기중":"답변완료"}</span>
+							<span>답변상태
+							  <c:choose>
+								<c:when test="${inq.status=='답변중'}">
+									${inq.status}
+								</c:when>
+								<c:when test="${inq.status=='답변대기중'}">
+									${inq.status}
+								</c:when>
+								<c:when test="${inq.status=='답변완료'}">
+									${inq.status}
+								</c:when>
+							  </c:choose>
+							</span>
+						</div>
+						<div>
+						답변내용 ${inq.aContent}
 						</div>
 					</div>
 
