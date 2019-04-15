@@ -17,6 +17,9 @@
   <select id="selectOne" resultType="cmember">
   		select * from c_member where cmemberid = #{cMemberId}
   </select>
+  <update id="updateMember" parameterType="cmember">
+  		UPDATE C_MEMBER SET CMEMBERNAME=#{cMemberName}, cMemberPhone=#{cMemberPhone}, cMemberEmail=#{cMemberEmail}, cMemberPw=#{cMemberPw} where cMemberId=#{cMemberId}
+  </update>
   
   
 </mapper>
