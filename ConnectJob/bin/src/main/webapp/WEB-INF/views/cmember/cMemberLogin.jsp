@@ -13,7 +13,7 @@
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="cmemberId"/></td>
+				<td><input type="text" name="cMemberId"/></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>

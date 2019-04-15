@@ -17,6 +17,7 @@ public class Inquiry implements Serializable{
 	private Date iDate;
 	private String status;
 	private String iWriter;
+	private String aContent;
 	
 	
 	public Inquiry() {
@@ -24,7 +25,8 @@ public class Inquiry implements Serializable{
 	}
 
 
-	public Inquiry(int iNo, String iType, String iTitle, String iContent, Date iDate, String status, String iWriter) {
+	public Inquiry(int iNo, String iType, String iTitle, String iContent, Date iDate, String status, String iWriter,
+			String aContent) {
 		super();
 		this.iNo = iNo;
 		this.iType = iType;
@@ -33,6 +35,7 @@ public class Inquiry implements Serializable{
 		this.iDate = iDate;
 		this.status = status;
 		this.iWriter = iWriter;
+		this.aContent = aContent;
 	}
 
 
@@ -106,12 +109,24 @@ public class Inquiry implements Serializable{
 	}
 
 
+	public String getaContent() {
+		return aContent;
+	}
+
+
+	public void setaContent(String aContent) {
+		this.aContent = aContent;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Inquiry [iNo=" + iNo + ", iType=" + iType + ", iTitle=" + iTitle + ", iContent=" + iContent + ", iDate="
-				+ iDate + ", status=" + status + ", iWriter=" + iWriter + "]";
+				+ iDate + ", status=" + status + ", iWriter=" + iWriter + ", aContent=" + aContent + "]";
 	}
 
+
+	
 
 	
 	

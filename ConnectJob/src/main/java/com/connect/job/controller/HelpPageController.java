@@ -52,8 +52,20 @@ public class HelpPageController {
 	{
 		int result=service.helpInquiryUpdate(i);
 		
+		String msg="";
+		String loc="/helpPageInquiry.do?id="+i.getiWriter(); //문의리스트시작페이지
 		
-		return "helpPage/helpPage-inquiry";
+		if(result>0 ) {
+			msg="답변등록완료";
+		} else {
+			msg="답변등록실패";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+		
+		//return "helpPage/helpPage-inquiry";
 	}
 	
 	

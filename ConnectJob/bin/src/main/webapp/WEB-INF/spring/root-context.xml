@@ -7,6 +7,8 @@
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xmlns:google="http://www.springframework.org/schema/social/google"
+	xmlns:social="http://www.springframework.org/schema/social"
 	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
@@ -14,7 +16,9 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/social/google http://www.springframework.org/schema/social/spring-social-google.xsd
+		http://www.springframework.org/schema/social http://www.springframework.org/schema/social/spring-social-1.1.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
@@ -68,8 +72,9 @@
 		<websocket:mapping handler="alarmHandler" path="/alarm"/>
 	</websocket:handlers>
 	
-<!-- 	<bean class="org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean">
+	
+	<bean class="org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean">
 		<property name="maxBinaryMessageBufferSize" value="1020400"/>
-	</bean> -->
+	</bean> 
 	
 </beans>

@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="senier">
+
+	<select id="selectAjaxOne" parameterType="senier" resultType="_int">
+		SELECT COUNT(*) FROM S_TALK WHERE 1=1
+		<if test="sJobs!=null and sJobs!=''">
+			AND
+			<foreach collection="sJobs" item="cate" open="(" close=")" separator="or">
+				S_CATE = #{cate}
+			</foreach>
+		</if>
+	</select>
+	
+	<select id="selectAjaxAll" resultMap="senierResult">
+		SELECT * FROM S_TALK WHERE 1=1
+		<if test="sJobs!=null and sJobs!=''">
+			AND
+			<foreach collection="sJobs" item="cate" open="(" close=")" separator="or">
+				S_CATE = #{cate}
+			</foreach>
+		</if>
+		ORDER BY S_DATE DESC
+	</select>
   
   <resultMap type="senier" id="senierResult">
 		<id property="sNo" column="s_no"/>
@@ -16,13 +37,12 @@
 	</resultMap>
 	
 	
-  
   <insert id="insertSenier" parameterType="senier">
   	insert into s_talk values(SEQ_S_NO.NEXTVAL,null,#{qType},#{sTitle},#{sContent},0,default,#{pId},default,#{sCate})
   </insert>
   
   <select id="senierList" resultMap="senierResult">
-  	select * from s_talk order by s_date asc
+  	select * from s_talk order by s_date desc
   </select>
   
   <select id="selectCount" resultType="_int">
@@ -51,7 +71,7 @@
   </select>
   
   <update id="updateSenier" parameterType="senier">
-  	update s_talk set q_type=#{qType}, s_title=#{sTitle}, s_content=#{sContent} where s_no = #{sNo}
+  	update s_talk set s_cate=#{sCate}, q_type=#{qType}, s_title=#{sTitle}, s_content=#{sContent} where s_no = #{sNo}
   </update>
   
   <delete id="deleteSenier" parameterType="senier">

@@ -11,11 +11,11 @@
 	</delete>
 
   <insert id="insertCMember" parameterType="cmember">
-  		insert into C_Member values(#{CMemberId},#{CId},#{CMemberPw},#{CMemberName},#{CMemberPhone},#{CMemberCPhone},#{CMemberBNum},#{CMemberDiv},DEFAULT,#{CMemberEmail})
+  		insert into C_Member values(#{cMemberId},#{cId},#{cMemberPw},#{cMemberName},#{cMemberPhone},#{cMemberCPhone},#{cMemberBNum},#{cMemberDiv},DEFAULT,#{cMemberEmail})
   </insert>
   
   <select id="selectOne" resultType="cmember">
-  		select * from c_member where cmemberid = #{CMemberId}
+  		select * from c_member where cmemberid = #{cMemberId}
   </select>
   
   
