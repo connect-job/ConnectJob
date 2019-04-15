@@ -1,5 +1,7 @@
 package com.connect.job.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.connect.job.model.vo.Member;
 import com.connect.job.model.vo.Message;
@@ -87,6 +90,18 @@ public class AlarmController {
 		model.addAttribute("unReadMessage", unReadMessage);
 		model.addAttribute("list", list);
 		return "alarm/alarmList";
+	}
+	
+	@RequestMapping("alarm/alarmCount.do")
+	@ResponseBody
+	public String alarmCount(String id) throws UnsupportedEncodingException {
+		int count = service.selectAlarmCount(id);
+		
+		System.out.println("읽지않은 알람:" + count + "개");
+		
+		String temp = String.valueOf(count);
+		String result = URLEncoder.encode(temp, "UTF-8");
+		return result;
 	}
 	
 	// 알림 읽음 처리

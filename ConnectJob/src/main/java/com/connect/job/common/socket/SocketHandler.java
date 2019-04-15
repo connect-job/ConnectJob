@@ -58,7 +58,6 @@ public class SocketHandler extends TextWebSocketHandler {
 		// 회원의 알림 설정 여부 확인하기 (ON/OFF)
 		Member m = sessionTem.selectOne("message.memberStatus", member);
 		
-		
 		// 알림 설정 ON일때
 		if(m.getAlarmStatus().equals("Y")) {
 			
@@ -93,35 +92,6 @@ public class SocketHandler extends TextWebSocketHandler {
 						System.out.println("리스트 사이즈 : " + list.size());
 						
 						// 5. 읽은 메시지와 읽지않은 메시지 카운트
-						List<Message> mList = sessionTem.selectList("message.messageCount", member);
-						
-						int insertMessage = 0;
-						// 메세지 리스트 없을 때 (새로운 공고들 찾아서 넣어주기)
-						if(mList.isEmpty()) {
-							for(int i=0;i<list.size();i++) {
-								Message newMessage = new Message();
-								newMessage.setmTo(member);
-								newMessage.setmFrom("채용공고");
-								newMessage.setmMessage(list.get(i).getHnTitle());
-								newMessage.setmHireNo(list.get(i).getHnSeq());
-								insertMessage = sessionTem.insert("message.insertMessage", newMessage);
-							}
-						// 메세지 리스트가 있을 때 (위에서 찾은 공고리스트 번호와 일치하지 않은것들만 넣어주기)
-						} else {
-							for(HireNoti hireList : list) {
-								for(Message meList : mList) {
-									if(hireList.getHnSeq()!=meList.getmHireNo()) {
-										Message newMessage = new Message();
-										newMessage.setmTo(member);
-										newMessage.setmFrom("채용공고");
-										newMessage.setmMessage(hireList.getHnTitle());
-										newMessage.setmHireNo(hireList.getHnSeq());
-										insertMessage = sessionTem.insert("message.insertMessage", newMessage);
-									}
-								}
-							}
-						}
-						
 						List<Message> messageList = sessionTem.selectList("message.messageCount", member);
 						
 						int readMessage = 0;
@@ -134,12 +104,15 @@ public class SocketHandler extends TextWebSocketHandler {
 							}
 						}
 						
-						String messageText = "";
+						if(unReadMessage!=0) {
+							String messageText = "";
+							
+							messageText += "회원님의 이력서 " + rList.size() + "건 에 대한<br> 추천 채용공고 " + list.size() + "건 이 매칭되었습니다!<br>";
+							messageText += "읽지 않은 알림 [ " + unReadMessage + " ] 건이 존재합니다";
+							
+							session.sendMessage(new TextMessage(messageText));
+						}
 						
-						messageText += "회원님의 이력서 " + rList.size() + "건 에 대한<br> 추천 채용공고 " + list.size() + "건 이 매칭되었습니다!<br>";
-						messageText += "읽지 않은 알림 [ " + unReadMessage + " ] 건이 존재합니다";
-						
-						session.sendMessage(new TextMessage(messageText));
 					} catch (IOException e) {
 						e.printStackTrace();
 					}

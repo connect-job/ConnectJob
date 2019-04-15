@@ -1,10 +1,12 @@
 package com.connect.job.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.socket.WebSocketSession;
 
 import com.connect.job.common.MailHandler;
+import com.connect.job.common.socket.SocketHandler;
 import com.connect.job.model.vo.CompanyReview;
+import com.connect.job.model.vo.HireNoti;
 import com.connect.job.model.vo.Member;
+import com.connect.job.model.vo.Message;
+import com.connect.job.model.vo.Resume;
 import com.connect.job.service.MemberService;
 
 @Controller
@@ -35,6 +42,9 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private SqlSessionTemplate sessionTem;
 	
 	
 	// 네이버 로그인 콜백
@@ -76,6 +86,40 @@ public class MemberController {
 		if(result!=null) {
 			msg = "로그인 되었습니다";
 			session.setAttribute("loginMember", result);
+			
+			// 현재 존재하는 알림 모두 지우고 시작
+			int deleteNum = sessionTem.delete("message.deleteMessage", result);
+			
+			String member = result.getP_id();
+			
+			// 1. 작성한 이력서 조회
+			List<Resume> rList = sessionTem.selectList("message.messageResumeCount", member);
+			
+			String hopeJob_temp = "";
+			if(!rList.isEmpty()) {
+				for(int i=0; i<rList.size(); i++) {
+					for(String s : rList.get(i).getHopeJobArea()) {
+						hopeJob_temp += s + ",";
+					}
+				}
+			}
+			String[] hopeJob = hopeJob_temp.split(",");
+		
+			Resume r = new Resume();
+			r.setHopeJobs(hopeJob);
+			
+			// 2. 이력서와 매칭된 채용공고 찾기
+			List<HireNoti> list = sessionTem.selectList("message.messageHireNoti", r);
+			
+			// 알림 찾아서 집어넣기
+			for(int i=0; i<list.size();i++) {
+				Message newMessage = new Message();
+				newMessage.setmTo(member);
+				newMessage.setmFrom("채용공고");
+				newMessage.setmMessage(list.get(i).getHnTitle());
+				int insertMessage = sessionTem.insert("message.insertMessage", newMessage);
+			}
+			
 		} else {
 			msg = "로그아웃 되었습니다";
 		}

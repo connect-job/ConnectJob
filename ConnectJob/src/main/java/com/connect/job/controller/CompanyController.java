@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.CompanyAvgScore;
+import com.connect.job.model.vo.HireNoti;
 import com.connect.job.model.vo.News;
 import com.connect.job.model.vo.SearchKeyword;
 import com.connect.job.openapi.NaverSearch;
@@ -118,6 +119,30 @@ public class CompanyController {
 			return result;
 		}
 	
+		@RequestMapping("company/companyHire.do")
+		@ResponseBody
+		public String companyHire(int no) throws UnsupportedEncodingException {
+			String html = "";
+			
+			List<HireNoti> list = service.latestHire(no);
+			
+			for(int i=0; i<list.size(); i++) {
+				html += "<div class=\"hire-item\">";
+				html += "<div class=\"item-title\">";
+				if(list.get(i).getHnTitle().length()>15) {
+					html += list.get(i).getHnTitle().substring(0, 16) + "...</div>";
+				} else {
+					html += list.get(i).getHnTitle() + "</div>";
+				}
+				html += "<div class=\"item-sub-title\">" + list.get(i).getcName() + "</div>";
+				html += "<div class=\"item-btn\"><button>지원하기</button></div>";
+				html += "</div>";
+			}
+			
+			String result = URLEncoder.encode(html, "UTF-8");
+			return result;
+		}
+		
 	// 기업 리스트 페이지 이동
 	@RequestMapping("company/companyList.do")
 	public String companyList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model) {

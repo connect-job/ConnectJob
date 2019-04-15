@@ -115,7 +115,7 @@
                                                 <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
                                         </ul>
                                 </div></li>
-                            <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터<div id="alarm">52</div></li>
+                            <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터<div id="alarm"></div></li>
                             <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
@@ -144,6 +144,17 @@
         </div>
     </header>
     
+    <script>
+    	$.ajax({
+    		url: '${path}/alarm/alarmCount.do?id=${loginMember.p_id}',
+    		success: function(data) {
+    			 var Ca = /\+/g;
+                 var resultSet = decodeURIComponent(data.replace(Ca, " "));
+    			$('#alarm').html(resultSet);
+    		}
+    	});
+    </script>
+    
     <div id="socket-message">
     	메세지 내용 
     </div>
@@ -151,7 +162,7 @@
     <script>
     
     // ------------------------------------------------------------ 웹소켓 시작
-    var wsUri = "ws://localhost:9090/job/alarm";
+    var wsUri = "ws://localhost:8080/job/alarm";
     var nick = '${loginMember.p_id}';
 	console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
     

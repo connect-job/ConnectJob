@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.CompanyAvgScore;
+import com.connect.job.model.vo.HireNoti;
 import com.connect.job.model.vo.SearchKeyword;
 
 public interface CompanyDao {
@@ -21,5 +22,6 @@ public interface CompanyDao {
 	List<Company> latestSalary();
 	List<Company> latestReview();
 	List<Company> latestScore();
+	List<HireNoti> latestHire(int no);
 
 }

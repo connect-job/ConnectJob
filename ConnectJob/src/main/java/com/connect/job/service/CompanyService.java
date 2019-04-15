@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.CompanyAvgScore;
+import com.connect.job.model.vo.HireNoti;
 import com.connect.job.model.vo.SearchKeyword;
 
 public interface CompanyService {
@@ -46,6 +47,9 @@ public interface CompanyService {
 	
 	// 기업 평점 순 TOP 5
 	List<Company> latestScore();
+
+	// 해당기업 채용공고
+	List<HireNoti> latestHire(int no);
 
 	
 }

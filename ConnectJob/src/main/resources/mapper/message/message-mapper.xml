@@ -19,8 +19,8 @@
 		UPDATE M_MESSAGE SET M_STATUS = 'Y' WHERE M_NO = #{mNo}
 	</update>
 	
-	<delete id="deleteMessage">
-		DLETE M_MESSAGE WHERE M_NO \ #{mNo}
+	<delete id="deleteMessage" parameterType="member">
+		DELETE M_MESSAGE WHERE M_TO = #{p_id}
 	</delete>
 
 	<update id="updateAlarmOn">
@@ -32,7 +32,7 @@
 	</update>
 
 	<insert id="insertMessage" parameterType="message">
-		INSERT INTO M_MESSAGE VALUES(SEQ_M_NO.NEXTVAL, #{mTo}, #{mFrom}, #{mMessage}, default, default, #{mHireNo})
+		INSERT INTO M_MESSAGE VALUES(SEQ_M_NO.NEXTVAL, #{mTo}, #{mFrom}, #{mMessage}, default, default)
 	</insert>
 
 	<select id="messageResumeCount" resultMap="resumeResultMap">
@@ -57,14 +57,16 @@
 	</delete>
 	
 	
-	
-	
-	
-	
-	
 	<select id="selectMessage" resultMap="messageResultMap">
 		SELECT * FROM M_MESSAGE WHERE M_TO = #{id} 
 	</select>
+
+	<select id="selectMessageCount" resultType="_int">
+		SELECT COUNT(*) FROM M_MESSAGE WHERE M_TO = #{id} AND M_STATUS = 'N'
+	</select>
+
+
+
 
 
 	<resultMap type="member" id="memberResult">

@@ -322,11 +322,11 @@
                                         <option value="안드로이드 개발자">안드로이드 개발자</option>
                                         <option value="IOS개발자">IOS개발자</option>
                                         <option value="데이터 엔지니어">데이터 엔지니어</option>
-                                        <option value="시스템,네트워크 관리자">시스템,네트워크 관리자</option>
+                                        <option value="시스템,네트워크 관리자">시스템/네트워크 관리자</option>
                                         <option value="node.js 개발자">Node.js 개발자</option>
                                         <option value="php 개발자">PHP 개발자</option>
                                         <option value="DevOps / 시스템 관리자">DevOps / 시스템 관리자</option>
-                                        <option value="C,C++개발자">C,C++개발자</option>
+                                        <option value="C,C++개발자">C/C++개발자</option>
                                         <option value="개발 매니저">개발 매니저</option>
                                         <option value="데이터 사이언티스트">데이터 사이언티스트</option>
                                     </select>
@@ -768,13 +768,26 @@
                     }
                 </script>
 
-                <h3>채용공고</h3>
-                <div id="right-company-hire">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+                <h3>${company.companyName } 채용공고</h3>
+                <div id="right-company-hire"></div>
+
+			<script>
+				var result = $('#right-company-hire');
+				$.ajax({
+					url: '${path}/company/companyHire.do?no=${company.companyNo}',
+					success: function(data) {
+						console.log(data);
+						if(data!='') {
+							var Ca = /\+/g;
+					        var resultSet = decodeURIComponent(data.replace(Ca, " "));
+					        result.html(resultSet);
+						} else {
+							result.html("<br><Br><Br>해당기업의 채용공고가 없습니다");
+						}
+						
+					}
+				});
+			</script>
 
 
 

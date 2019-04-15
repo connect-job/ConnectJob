@@ -100,7 +100,12 @@ public class CompanyReviewController {
 					html += "<div class=\"cate\">" + list.get(i).getcName() + "<br>(" + list.get(i).getReviewJob() + ")</div>";
 					html += "<div class=\"content\">";
 					html += "<div class=\"content-title\">";
-					html += list.get(i).getReviewShort().substring(0, 30) + "　|　" + list.get(i).getReviewIsCurrent();
+					if(list.get(i).getReviewShort().length()>30) {
+						html += list.get(i).getReviewShort().substring(0, 30) + "　|　" + list.get(i).getReviewIsCurrent();
+					} else {
+						html += list.get(i).getReviewShort() + "　|　" + list.get(i).getReviewIsCurrent();
+					}
+					
 					html += "</div>";
 					
 					html += "<div class=\"content-content\">";
