@@ -42,7 +42,7 @@ public class ScrapController {
 		
 	}
 	
-	@RequestMapping("/scrap/insertAndViewScrap.do")
+/*	@RequestMapping("/scrap/insertAndViewScrap.do")
 	public ModelAndView insertAndViewScrap(HttpSession session,int companyNo) {
 		ModelAndView mv=new ModelAndView();
 		Member m=(Member)session.getAttribute("loginMember");
@@ -50,7 +50,7 @@ public class ScrapController {
 		s.setCompanyNo(companyNo);
 		s.setpId(m.getP_id());
 		s.setsCategory("기업");
-		int result=service.insertCPScrap(s);
+		int result=service.insertScrap(s);
 		List<Scrap> allList=service.selectAllScrapList(s);
 		if(result>0) {
 			mv.addObject("allList",allList);
@@ -61,18 +61,42 @@ public class ScrapController {
 			mv.setViewName("common/msg");
 		}
 		return mv;
-	}
-	@RequestMapping("/scrap/insertCPScrap.do")
-	public void insertCPScrap(HttpSession session,int companyNo){
+	}*/
+	@RequestMapping("/scrap/insertScrap.do")
+	public ModelAndView insertCPScrap(HttpSession session,int companyNo,String category){
+		ModelAndView mv=new ModelAndView();
 		Member m=(Member)session.getAttribute("loginMember");
 		Scrap s=new Scrap();
 		s.setCompanyNo(companyNo);
 		s.setpId(m.getP_id());
-		s.setsCategory("기업");
-		int result=service.insertCPScrap(s);
+		s.setsCategory(category);
+		System.out.println("insert에서 갔다온 service");
+		Scrap isExist=service.selectScrap(s);
+
+		System.out.println("**********insertScrap*******");
+		System.out.println(s);
+		
+		int result=service.insertScrap(s);/*
+		List<Scrap> allList=service.selectAllScrapList(s);*/
+		
+		if(result>0) {/*
+			mv.addObject("allList", allList);*/
+			mv.addObject("loc", "/company/companyView.do?no="+companyNo);
+			mv.addObject("scrap",s);
+			System.out.println("**********insert Result>0*******");
+			System.out.println(s);
+			mv.addObject("msg", "스크랩에 성공했습니다.");
+			mv.setViewName("common/msg");
+		}else {
+			mv.addObject("loc","/");
+			mv.addObject("msg","스크랩에 실패하였습니다.");
+			mv.setViewName("common/msg");
+		}
+		return mv;
+		
 	}
 	@RequestMapping("/scrap/delete.do")
-	public ModelAndView deleteScrap(HttpSession session, int scrapNo) {
+	public ModelAndView deleteScrap(HttpSession session, int scrapNo, int companyNo) {
 		ModelAndView mv=new ModelAndView();
 		Member m=(Member)session.getAttribute("loginMember");
 		Scrap s=new Scrap();
@@ -92,9 +116,15 @@ public class ScrapController {
 		mv.addObject("CPScrapCnt",CPScrapCnt);
 		mv.addObject("HNScrapCnt",HNScrapCnt);
 		
-		if(result>0) {
+		if(result>0&&companyNo!=0) {
+			mv.addObject("loc", "/company/companyView.do?no="+companyNo);
+			mv.addObject("msg","스크랩이 취소되었습니다.");
+			mv.setViewName("common/msg");
+		}else if(result>0&&companyNo==0) {
 			mv.setViewName("scrap/scrapList");
-		}else {
+		}
+		
+		else {
 			mv.addObject("msg","삭제에 실패하였습니다.");
 			mv.addObject("loc","/scrap.do");
 			mv.setViewName("common/msg");
