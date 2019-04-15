@@ -21,13 +21,23 @@
 		<div class="biz-left">
 			<div class="menu-top">고객센터관리페이지</div>
 			<ul>
-				<li class="menu">1:1문의<span class="icon"><i
-						class="fas fa-sort-down"></i></span>
-					<ul class="hide">
-						<li><a href="${path }/helpPageInquiry.do">1:1문의</a></li>
-
-					</ul>
-				</li>
+				<c:if test="${loginCMember!=null}">
+                <li class="menu">
+              1:1문의<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="${path }/helpPageInquiry.do?id=${loginCMember.cMemberEmail}">1:1문의</a></li>
+                    </ul>
+                </li>
+            	</c:if>
+            	
+            	<c:if test="${loginMember!=null}">
+                <li class="menu">
+              1:1문의<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="${path }/helpPageInquiry.do?id=${loginMember.p_id}">1:1문의</a></li>
+                    </ul>
+                </li>
+            	</c:if>
 
 				<li class="menu">공지사항<span class="icon"><i
 						class="fas fa-sort-down"></i></span>
@@ -66,9 +76,9 @@
 
 			<c:forEach var="inq" items="${list}" varStatus="vs">
 				<c:if test="${loginMember != null && loginMember.p_id eq inq.iWriter}">
-					<div class="help-item" onclick="location.href='${path}/help/myInquiryView.do?no=${inq.iNo}'">
+					<div class="help-item" onclick="location.href='${path}/helpPageInquiryView.do?no=${inq.iNo}'">
 						<div class="item-left">
-							질문유형 #${inq.iType}
+							질문유형 ${inq.iType}
 						</div>
 
 						<div class="item-center">
@@ -85,7 +95,7 @@
 
 
 				<c:if test="${loginCMember != null && loginCMember.cMemberEmail eq inq.iWriter}">
-					<div class="help-item" onclick="location.href='${path}/help/myInquiryView.do?no=${inq.iNo}'">
+					<div class="help-item" onclick="location.href='${path}/helpPageInquiryView.do?no=${inq.iNo}'">
 						<div class="item-left">
 							#${inq.iType}
 						</div>

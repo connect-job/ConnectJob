@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,6 +37,23 @@ public class HelpPageController {
 		mv.addObject("pageBar",PageBarFactory.getPageBar(total, cPage, numPerPage)); 
 		mv.setViewName("helpPage/helpPage-inquiry"); //문의리스트 시작페이지
 		return mv;
+	}
+	
+	@RequestMapping("/helpPageInquiryView.do")
+	public String helpPageInquiryView(Model model, int no)
+	{
+		Inquiry inq = service.helpPageInquiryView(no);
+		model.addAttribute("inq",inq);
+		return "helpPage/helpPage-inquiryView";
+	}
+	
+	@RequestMapping("/helpInquiryUpdate.do")
+	public String helpInquiryUpdate(Model model, Inquiry i) 
+	{
+		int result=service.helpInquiryUpdate(i);
+		
+		
+		return "helpPage/helpPage-inquiry";
 	}
 	
 	

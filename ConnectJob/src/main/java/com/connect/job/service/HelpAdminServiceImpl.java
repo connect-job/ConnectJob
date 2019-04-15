@@ -24,4 +24,17 @@ public class HelpAdminServiceImpl implements HelpAdminService {
 		return dao.selectCount(id);
 	}
 
+	@Override
+	public Inquiry helpPageInquiryView(int no) {
+
+		return dao.helpPageInquiryView(no);
+	}
+
+	@Override
+	public int helpInquiryUpdate(Inquiry i) {
+
+		return dao.helpInquiryUpdate(i);
+	}
+	
+	
 }

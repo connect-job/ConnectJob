@@ -19,4 +19,12 @@
 	<select id="selectCount" resultType="_int" parameterType="String">
 		select count(*) from inquiry where i_writer = #{id}
 	</select>
+	
+	<select id="helpPageInquiryView" parameterType="_int" resultMap="inquiryResult">
+		select * from inquiry where i_no=#{no}
+	</select>
+	
+	<update id="helpInquiryUpdate" parameterType="inquiry">
+		update inquiry set a_content=#{aContent}, status=#{status} where i_no=#{iNo}
+	</update>
 </mapper>
