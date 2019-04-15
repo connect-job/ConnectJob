@@ -7,15 +7,37 @@
 		INSERT INTO HIRENOTI VALUES(HN_Seq.NEXTVAL,#{cMemberId},#{hnSort, typeHandler=strArr},#{hnCareer},#{hnForm},#{hnRecruit},#{hnCate},#{hnChargeTask},#{hnDept},#{hnRankPosition},#{hnFinalEdu, typeHandler=strArr},#{hnMajor},#{hnPreference},#{hnGender},#{hnBirth, typeHandler=strArr},#{hnSal},#{hnWorkPlace},#{hnDay},#{hnStime},#{hnDtime},#{startDate},#{endDate},#{hnEve, typeHandler=strArr},#{hnReMethod},#{hnProcess},#{hnDoc},#{hnInterview},#{hnTitle},sysdate)
 	</insert>
 	
-	<select id="selectAll" resultType="hireNoti" resultMap="hireNotiResult">
-		SELECT A.*, C.COMPANY_NAME FROM HIRENOTI A LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID) LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO)
+	<select id="selectAll" resultMap="hireNotiResult">
+		SELECT A.*, C.COMPANY_NAME CNAME FROM HIRENOTI A LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID) LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO) ORDER BY HN_ADDDATE DESC
+	</select>
+
+	
+	<select id="selectAllAjax"  resultMap="hireNotiResult">
+		SELECT A.*, C.COMPANY_NAME CNAME FROM HIRENOTI A LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID) LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO) WHERE 1=1
+		<if test="category!=null and category!=''">
+			AND
+			<foreach collection="category" item="cate" open="(" close=")" separator="or">
+				HN_WORK_PLACE LIKE '%'|| #{cate} ||'%' OR HN_FORM = #{cate} OR HN_SAL = #{cate} OR HN_SORT = #{cate} OR HN_GENDER = #{cate} OR HN_FINAL_EDU = #{cate} OR HN_CAREER = #{cate}
+			</foreach>
+		</if>
+		ORDER BY HN_ADDDATE DESC
 	</select>
 	
 	<select id="selectHireNotiCount" resultType="_int">
 		SELECT COUNT(*) FROM HIRENOTI
 	</select>
 	
-	<select id="selectOne" parameterType="_int" resultType="hireNoti" resultMap="hireNotiResult">
+	<select id="selectHireNotiCountAjax" resultType="_int">
+		SELECT COUNT(*) FROM HIRENOTI WHERE 1=1
+		<if test="category!=null and category!=''">
+			AND
+			<foreach collection="category" item="cate" open="(" close=")" separator="or">
+				HN_WORK_PLACE LIKE '%'|| #{cate} ||'%' OR HN_FORM = #{cate} OR HN_SAL = #{cate} OR HN_SORT = #{cate} OR HN_GENDER = #{cate} OR HN_FINAL_EDU = #{cate} OR HN_CAREER = #{cate}
+			</foreach>
+		</if>
+	</select>
+	
+	<select id="selectOne" parameterType="_int"  resultMap="hireNotiResult">
 		SELECT * FROM HIRENOTI WHERE HN_SEQ=#(hnseq)
 	</select>
 	

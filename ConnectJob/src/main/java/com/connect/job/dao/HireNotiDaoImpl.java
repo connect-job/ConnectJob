@@ -22,20 +22,39 @@ public class HireNotiDaoImpl implements HireNotiDao {
 
 		return session.selectOne("HireNoti.selectOne",no);
 	}
+	
 	@Override
 	public int insertNoti(HireNoti h) {
 
 		return session.insert("HireNoti.insertNoti",h);
 	}
+	
 	@Override
 	public List<HireNoti> selectAll(int cPage, int numPerPage) {
 		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
 		return session.selectList("HireNoti.selectAll", null, row);
 	}
+	
+	@Override
+	public List<HireNoti> selectAllAjax(int cPage, int numPerPage, HireNoti h) {
+		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		return session.selectList("HireNoti.selectAllAjax", h, row);
+	}
+	
 	@Override
 	public int selectHireNotiCount() {
 
 		return session.selectOne("HireNoti.selectHireNotiCount");
+	}
+
+	@Override
+	public int selectHireNotiCountAjax(HireNoti h) {
+		return session.selectOne("HireNoti.selectHireNotiCountAjax", h);
+	}
+
+	@Override
+	public List<HireNoti> selectLatest() {
+		return session.selectList("HireNoti.selectAll");
 	}
 	
 	

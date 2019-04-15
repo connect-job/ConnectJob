@@ -716,8 +716,9 @@ section #index-container .index-hire {
 }
 
 section #index-container .index-hire .hire-title {
+    display: inline-block;
     width: 100%;
-    font-size: 16px;
+    font-size: 14px;
     text-align: left;
     padding-left: 15px;
     margin-bottom: 10px;
@@ -725,7 +726,7 @@ section #index-container .index-hire .hire-title {
     color: #666b7a;
 }
 
-section #index-container .index-hire .hire-item {
+section #index-container .index-hire #hire-latest .hire-item {
     border: 2px solid #eee;
     display: inline-block;
     width: 184px;   
@@ -733,34 +734,33 @@ section #index-container .index-hire .hire-item {
     padding-bottom: 15px;
 }
 
-section #index-container .index-hire .hire-item:nth-last-child(1) {
+section #index-container .index-hire #hire-latest .hire-item:nth-last-child(1) {
     margin-right: 0;
 }
 
-section #index-container .index-hire .hire-item .item-title {
+section #index-container .index-hire #hire-latest .hire-item .item-title {
     padding-top: 10px;
     width: 100%;
-    font-size: 18px;
-}
-
-section #index-container .index-hire .hire-item .item-sub-title {
-    padding-top: 15px;
-    width: 100%;
     font-size: 12px;
 }
 
-section #index-container .index-hire .hire-item .item-date {
+section #index-container .index-hire #hire-latest .hire-item .item-sub-title {
     width: 100%;
-    font-size: 12px;
+    font-size: 14px;
+}
+
+section #index-container .index-hire #hire-latest .hire-item .item-date {
+    width: 100%;
+    font-size: 11px;
     margin-bottom: 10px;
 }
 
-section #index-container .index-hire .hire-item .item-btn {
+section #index-container .index-hire #hire-latest .hire-item .item-btn {
     width: 100%;
     font-size: 12px;
 }
 
-section #index-container .index-hire .hire-item .item-btn button {
+section #index-container .index-hire #hire-latest .hire-item .item-btn button {
     width: 80%;
     height: 28px;
     font-size: 12px;
@@ -1382,6 +1382,428 @@ section #calendar {
    display: inline-block;
    width: 990px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------- 채용공고 */
+
+section #hire-container {
+    display: inline-block;
+    width: 990px;
+}
+
+
+section #hire-container .hire-top {
+    width: 965px;
+    text-align: left;
+    padding-left: 25px;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+section #hire-container .hire-cate {
+    width: 990px;
+    text-align: left;
+    border: 1px solid #eee;
+    padding: 5px;
+}
+
+section #hire-container .hire-cate ul#cate-menu {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+section #hire-container .hire-cate ul#cate-menu li.cate-li {
+    cursor: pointer;
+    display: inline-block;
+    width: 200px;
+    padding-left: 15px;
+    height: 30px;
+    padding-top: 10px;
+    border: 1px solid rgb(221, 221, 221);
+
+}
+
+
+section #hire-container .hire-cate #search-location {
+    width: 100%;
+}
+
+section #hire-container .hire-cate #search-location #search_left {
+    display: inline-block;
+    width: 230px;
+    height: 170px;
+    padding: 5px;
+    overflow-y: scroll;
+}
+
+#search_left::-webkit-scrollbar {
+    width: 9px;
+}
+
+#search_left::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+#search_left::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b9bbc4;
+}
+
+section #hire-container .hire-cate #search-location #search_left ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+section #hire-container .hire-cate #search-location #search_left ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 15px;
+    padding-top: 8px;
+    width: 92px;
+    height: 27px;
+    font-size: 12px;
+    border: 1px solid #eee;
+    margin-bottom: 2px;
+}
+
+section #hire-container .hire-cate #search-location #search_left ul li:hover {
+    transition: 500ms;
+    border: 1px solid #72757e;
+}
+
+
+
+
+section #hire-container .hire-cate #search-location #search_right {
+    display: inline-block;
+    width: 730px;
+    height: 170px;
+    padding: 5px;
+    overflow-y: scroll;
+}
+
+#search_right::-webkit-scrollbar {
+    width: 9px;
+}
+
+#search_right::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+#search_right::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b9bbc4;
+}
+
+section #hire-container .hire-cate #search-location #search_right #location ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+section #hire-container .hire-cate #search-location #search_right #location ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 15px;
+    padding-top: 11px;
+    width: 99px;
+    height: 28px;
+    font-size: 12px;
+    margin-bottom: 2px;
+    border: 1px solid #eee;
+}
+
+
+section #hire-container .hire-cate #search-job ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+section #hire-container .hire-cate #search-job ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 15px;
+    padding-top: 11px;
+    width: 95px;
+    height: 28px;
+    font-size: 12px;
+    margin-bottom: 2px;
+    border: 1px solid #eee;
+}
+
+
+section #hire-container .hire-cate #search-etc {
+    width: 100%;
+}
+
+section #hire-container .hire-cate #search-etc .search_left {
+    display: inline-block;
+    width: 230px;
+    height: 170px;
+    padding: 5px;
+    overflow-y: scroll;
+}
+
+.search_left::-webkit-scrollbar {
+    width: 9px;
+}
+
+.search_left::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.search_left::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b9bbc4;
+}
+
+section #hire-container .hire-cate #search-etc .search_left ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+section #hire-container .hire-cate #search-etc .search_left ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 15px;
+    padding-top: 8px;
+    width: 92px;
+    height: 27px;
+    font-size: 12px;
+    border: 1px solid #eee;
+    margin-bottom: 2px;
+}
+
+section #hire-container .hire-cate #search-etc .search_left ul li:hover {
+    transition: 500ms;
+    border: 1px solid #72757e;
+}
+
+
+
+
+section #hire-container .hire-cate #search-etc .search_right {
+    display: inline-block;
+    width: 730px;
+    height: 170px;
+    padding: 5px;
+    overflow-y: scroll;
+}
+
+.search_right::-webkit-scrollbar {
+    width: 9px;
+}
+
+.search_right::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.search_right::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b9bbc4;
+}
+
+section #hire-container .hire-cate #search-etc .search_right #etc ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+section #hire-container .hire-cate #search-etc .search_right #etc ul li {
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 15px;
+    padding-top: 11px;
+    width: 99px;
+    height: 28px;
+    font-size: 12px;
+    margin-bottom: 2px;
+    border: 1px solid #eee;
+}
+
+section #hire-container .hire-cate #search_selected {
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 30px;
+}
+
+section #hire-container .hire-cate #search_selected #select_left {
+    padding-left: 5px;
+    float: left;
+    text-align: left;
+    width: 80%;
+}
+
+section #hire-container .hire-cate #search_selected #select_left button {
+    border: none;
+    background: none;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+    height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 10px;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+section #hire-container .hire-cate #search_selected #select_left button:hover {
+    transition: 500ms;
+    background-color: #eee;
+}
+
+
+section #hire-container .hire-cate #search_selected #select_right {
+    float: right;
+}
+
+section #hire-container .hire-cate #search_selected #select_right button {
+    width: 100px;
+    height: 35px;
+    outline: none;
+    background-color: #4e536b;
+    color: #fff;
+    border: 1px solid #4e536b;
+}
+
+section #hire-container #hire-list {
+    width: 990px;
+    display: inline-block;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+section #hire-container #hire-list .hire-item {
+    display: inline-block;
+    width: 990px;
+    font-size: 12px;
+    text-align: left;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+section #hire-container #hire-list .hire-item .cname {
+    vertical-align: top;
+    display: inline-block;
+    padding-left: 15px;
+    font-size: 13px;
+    width: 155px;
+}
+
+section #hire-container #hire-list .hire-item .subject {
+    vertical-align: top;
+    display: inline-block;
+    width: 330px;
+}
+
+section #hire-container #hire-list .hire-item .subject .h-title {
+    font-size:15px;
+}
+
+section #hire-container #hire-list .hire-item .subject .h-subtitle {
+}
+
+section #hire-container #hire-list .hire-item .career {
+    vertical-align: top;
+    display: inline-block;
+    width: 150px;
+}
+
+section #hire-container #hire-list .hire-item .career .c-career {
+}
+
+section #hire-container #hire-list .hire-item .career .c-finaledu {
+}
+
+section #hire-container #hire-list .hire-item .form {
+    vertical-align: top;
+    display: inline-block;
+    width: 150px;
+}
+
+section #hire-container #hire-list .hire-item .form .f-form {
+}
+
+section #hire-container #hire-list .hire-item .form .f-location {
+}
+
+
+section #hire-container #hire-list .hire-item .date {
+    vertical-align: top;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+}
+
+section #hire-container #hire-list .hire-item .date .d-submit button.submit {
+    width: 90px;
+    height: 30px;
+    background-color: #c35656;
+    border: 1px solid #a84a4a;
+    color: #fff;
+}
+
+section #hire-container #hire-list .hire-item .date .d-date {
+}
+
+section #hire-container #hire-list .hire-item .option {
+    vertical-align: top;
+    display: inline-block;
+    width: 70px;
+    text-align: center;
+}
+
+section #hire-container #hire-list .hire-item .option button {
+    vertical-align: top;
+    display: inline-block;
+    width: 65px;
+    height: 40px;
+    background-color: #404861;
+    border: none;
+    color: #fff;
+    
+}
+
+
+
+
+
 
 /* ------------------------------------------- 기업페이지 */
 
