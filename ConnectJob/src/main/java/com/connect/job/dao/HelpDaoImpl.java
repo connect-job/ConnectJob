@@ -21,22 +21,22 @@ public class HelpDaoImpl implements HelpDao {
 		return session.insert("help.insertInquiry",i);
 	}
 
-	@Override
-	public List<Inquiry> inquiryList(int cPage, int numPerPage) {
 
-		return session.selectList("help.inquiryList", null, new RowBounds((cPage-1)*numPerPage, numPerPage));
+
+	@Override
+	public Inquiry inquiryView(int no) {
+
+		return session.selectOne("help.inquiryView",no);
 	}
 
 	@Override
-	public int selectCount() {
-
-		return session.selectOne("help.selectCount");
+	public List<Inquiry> inquiryList(int cPage, int numPerPage, String id) {
+		return session.selectList("help.inquiryList", id, new RowBounds((cPage-1)*numPerPage, numPerPage));
 	}
 
 	@Override
-	public List<Inquiry> inquiryView(int no) {
-
-		return session.selectList("help.inquiryView",no);
+	public int selectCount(String id) {
+		return session.selectOne("help.selectCount",id);
 	}
 	
 	

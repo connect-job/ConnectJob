@@ -20,7 +20,7 @@
                             채용공고<span class="icon"><i class="fas fa-sort-down"></i></span>
                             <ul class="hide">
                                 <li><a href="${path }/hireNotiAdd.do">채용공고등록</a></li>
-                                <li><a href="#">전체공고</a></li>
+                                <li><a href="${path }/hireNotiList">전체공고</a></li>
                                 <li><a href="#">진행 중 공고</a></li>
                                 <li><a href="#">대기 중 공고</a></li>
                                 <li><a href="#">마감 된 공고</a></li>
@@ -55,11 +55,11 @@
                     </ul>
                 </div>
                 
-                <div class="biz-right">카테고리
+                <div class="biz-right">
 	
         <div id="company-container">
             <div class="company-top">
-                기업탐색
+                	채용공고
             </div>
             <div class="company-middle">
 	            <ul class="tabs">
@@ -547,14 +547,8 @@
     <button onclick="scrap">스크랩</button>
             <div id="company-content">
                     <div id="company-list">
-                    <select name="" id="">
-				        <option value="">최근등록일순</option>
-				        <option value="">마감임박순</option>
-    				</select>
-    				<button onclick="scrap">스크랩</button>
 							<table id="ajax_table">
 								<tr>
-									<th><input type="checkbox"/></th>
                                     <th style="width:150px">기업명</th>
                                     <th style="width:390px">제목</th>
                                     <th style="width:300px">지원자격</th>
@@ -563,18 +557,17 @@
                                     <th style="width:150px">즉시지원</th>
 								</tr>
 								<c:choose>
-									<c:when test="${company!=null }">
-										<c:forEach items="${company }" var="list" items="${hireNoti }" var="noti">
-											<tr>
-												<td><input type="checkbox"/></td>
-												<td style="text-align: center;">${list.companyName}</td>
-												<td><a href="${path }/?seq=${noti.hnSeq}">${noti.hnTitle }</a></td>
-												<td>${noti.hnFinalEdu}</td>
-												<td>${noti.hnDay}</td>
-												<td>${noti.endDate}</td>
-												<td style="text-align: center;"><input type="button" value=""/></td>
-											</tr>
-										</c:forEach>
+									<c:when test="${HireNoti!=null }" >
+										<c:forEach items="${HireNoti }" var="list" >
+												<tr>
+													<td style="text-align: center;">${list.companyName}</td>
+													<td><a href="${path }/hireNotiView.do?seq=${noti.hnSeq}">${noti.hnTitle }</a></td>
+													<td>${noti.hnFinalEdu}</td>
+													<td>${noti.hnDay}</td>
+													<td>${noti.endDate}</td>
+													<td style="text-align: center;"><input type="button" value=""/></td>
+												</tr>
+											</c:forEach>
 									</c:when>
 									<c:otherwise>
 										<tr>

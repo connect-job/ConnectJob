@@ -23,6 +23,9 @@ public class Resume {
 	private String isPublic;
 	private String isDelete;
 	private Date creationDate;
+	// 웹소켓용
+	private int resumeCount;
+	private String[] hopeJobs;
 	
 	public Resume() {
 		// TODO Auto-generated constructor stub
@@ -30,7 +33,8 @@ public class Resume {
 
 	public Resume(String p_id, int resumeNo, String title, String name, String birth, String gender, String email,
 			String phone, String finalEdu, String career, String hopePosition, String hopeSalary, String[] hopeArea,
-			String[] hopeJobArea, String[] hopeCategory, String isPublic, String isDelete, Date creationDate) {
+			String[] hopeJobArea, String[] hopeCategory, String isPublic, String isDelete, Date creationDate,
+			int resumeCount, String[] hopeJobs) {
 		super();
 		this.p_id = p_id;
 		this.resumeNo = resumeNo;
@@ -50,6 +54,8 @@ public class Resume {
 		this.isPublic = isPublic;
 		this.isDelete = isDelete;
 		this.creationDate = creationDate;
+		this.resumeCount = resumeCount;
+		this.hopeJobs = hopeJobs;
 	}
 
 	public String getP_id() {
@@ -196,6 +202,22 @@ public class Resume {
 		this.creationDate = creationDate;
 	}
 
+	public int getResumeCount() {
+		return resumeCount;
+	}
+
+	public void setResumeCount(int resumeCount) {
+		this.resumeCount = resumeCount;
+	}
+
+	public String[] getHopeJobs() {
+		return hopeJobs;
+	}
+
+	public void setHopeJobs(String[] hopeJobs) {
+		this.hopeJobs = hopeJobs;
+	}
+
 	@Override
 	public String toString() {
 		return "Resume [p_id=" + p_id + ", resumeNo=" + resumeNo + ", title=" + title + ", name=" + name + ", birth="
@@ -203,9 +225,12 @@ public class Resume {
 				+ ", career=" + career + ", hopePosition=" + hopePosition + ", hopeSalary=" + hopeSalary + ", hopeArea="
 				+ Arrays.toString(hopeArea) + ", hopeJobArea=" + Arrays.toString(hopeJobArea) + ", hopeCategory="
 				+ Arrays.toString(hopeCategory) + ", isPublic=" + isPublic + ", isDelete=" + isDelete
-				+ ", creationDate=" + creationDate + "]";
+				+ ", creationDate=" + creationDate + ", resumeCount=" + resumeCount + ", hopeJobs="
+				+ Arrays.toString(hopeJobs) + "]";
 	}
 
+	
+	
 	
 	
 }

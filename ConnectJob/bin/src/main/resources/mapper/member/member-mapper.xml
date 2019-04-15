@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 	<insert id="insertMember" parameterType="member">
-		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, #{final_edu}, #{school}, #{major}, default, default, ${kakao_id})
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, #{final_edu}, #{school}, #{major}, default, default, null, null)
 	</insert>
 	
 	<insert id="insertMemberKakao" parameterType="member">
-		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, #{final_edu}, #{school}, #{major}, default, default, ${kakao_id})
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, #{final_edu}, #{school}, #{major}, default, default, #{kakao_id}, 'Y')
 	</insert>
 	
 	<select id="selectOne" resultType="member">
@@ -24,15 +24,16 @@
 	<resultMap type="member" id="memberResult">
 		<id column="p_id" property="p_id"/>
 		<result column="password" property="password"/>
-		<result column="p_name" property="pName"/>
+		<result column="p_name" property="p_name"/>
 		<result column="gender" property="gender"/>
 		<result column="phone" property="phone"/>
-		<result column="is_sns" property="isSns"/>
-		<result column="final_edu" property="finalEdu"/>
+		<result column="is_sns" property="is_sns"/>
+		<result column="final_edu" property="final_edu"/>
 		<result column="school" property="school"/>
 		<result column="major" property="major"/>
 		<result column="is_confirm" property="is_confirm"/>
-		<result column="enroll_date" property="enrollDate"/>
+		<result column="enroll_date" property="enroll_date"/>
+		<result column="email_confirm" property="email_confirm"/>
 	</resultMap>
 	
 	<select id="selectList" resultType="member">
@@ -58,6 +59,40 @@
 	<select id="findPw" resultType="member" parameterType="member">
 		select * from p_member where p_id=#{p_id} and phone=#{phone}
 	</select>
+
+ 	<!-- 메일 인증상태 업데이트 -->	
+	<update id="mailStatus" parameterType="map">
+		UPDATE P_MEMBER SET EMAIL_CONFIRM = 'Y' where P_ID=#{P_ID}
+	</update>
 	
+	<resultMap type="review" id="reviewMap">
+		<id column="review_no" property="reviewNo"/>
+		<result column="review_member" property="reviewMember"/>
+		<result column="review_company" property="reviewCompany"/>
+		<result column="review_iscurrent" property="reviewIsCurrent"/>
+		<result column="review_job" property="reviewJob"/>
+		<result column="review_employ_cate" property="reviewEmployCate"/>
+		<result column="review_career" property="reviewCareer"/>
+		<result column="review_location" property="reviewLocation"/>
+		<result column="review_total_score" property="reviewTotalScore"/>
+		<result column="review_short" property="reviewShort"/>
+		<result column="review_merit" property="reviewMerit"/>
+		<result column="review_dismerit" property="reviewDisMerit"/>
+		<result column="review_request" property="reviewRequest"/>
+		<result column="review_grade_01" property="reviewGrade01"/>
+		<result column="review_grade_02" property="reviewGrade02"/>
+		<result column="review_grade_03" property="reviewGrade03"/>
+		<result column="review_grade_04" property="reviewGrade04"/>
+		<result column="review_grade_05" property="reviewGrade05"/>
+		<result column="reviewlike" property="reviewLike"/>
+		<result column="review_date" property="reviewDate"/>
+	</resultMap>
 	
+	<select id="selectReviewList" resultType="member" resultMap="reviewMap">
+		select * from company_review where review_member=#{reviewMember}
+	</select>
+	
+	<delete id="deleteReview" parameterType="_int">
+		select * from company_review where review_no=#{review_no}
+	</delete>
 </mapper>

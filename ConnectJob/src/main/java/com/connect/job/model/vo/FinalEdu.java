@@ -76,10 +76,12 @@ public class FinalEdu {
 
 	@Override
 	public String toString() {
-		return "FinalEdu [resumeNo=" + resumeNo + ", schoolFlag=" + schoolFlag + ", schoolName=" + schoolName
-				+ ", graduateYear=" + graduateYear + ", graduateState=" + graduateState + "]";
+		return "FinalEdu [finalEduNo=" + finalEduNo + ", resumeNo=" + resumeNo + ", schoolFlag=" + schoolFlag
+				+ ", schoolName=" + schoolName + ", graduateYear=" + graduateYear + ", graduateState=" + graduateState
+				+ "]";
 	}
-	
+
+
 	
 
 }

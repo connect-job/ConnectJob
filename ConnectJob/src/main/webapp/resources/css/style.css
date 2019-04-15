@@ -50,7 +50,7 @@ a:hover {
     text-decoration: none;
 }
 
-button, input , select, option {
+button, input , select, option, textarea {
     outline: none;
     font-family: 'NotoKr', sans-serif;
 }
@@ -827,7 +827,7 @@ section #login-container {
 	display: inline-block;
     width: 990px;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 20px;
     padding-bottom: 50px;
 }
 
@@ -852,43 +852,41 @@ section #login-container ul li {
 }
 
 section #login-container #member {
-    padding-top: 30px;
+    padding-top: 20px;
     display: inline-block;
     width: 648px;
-    border-top: 1px solid #b0b4c0;
-    border-left: 1px solid #b0b4c0;
-    border-right: 1px solid #b0b4c0;
-    border-bottom: 1px solid #b0b4c0;
+    border: 1px solid #b0b4c0;
 }
 
 section #login-container #member .login-left {
     vertical-align: top;
     display:inline-block;
-    width: 50%;
+    width: 60%;
 }
 
 section #login-container #member .login-left .login-item {
     padding-top: 10px;
     padding-bottom: 20px;
+    width: 100%;
 }
 
 section #login-container #member .login-left .login-item .item-left {
     display: inline-block;
-    width: 29%;
+    width: 30%;
 }
 
 section #login-container #member .login-left .login-item .item-right {
     display: inline-block;
-    width: 68%;
+    width: 65%;
 }
 
 section #login-container #member .login-left .login-item .item-right input {
-    border: 1px solid #eee;
-    width: 100%;
+    border: 1px solid rgb(209, 209, 209);
+    width: 80%;
     height: 30px;
     padding-left: 15px;
     background-color: #fff;
-    outline: 1px solid #fff;
+    outline: 1px solid rgb(255, 255, 255);
 }
 
 section #login-container #member .login-left .login-item .item-right input:focus {
@@ -896,25 +894,45 @@ section #login-container #member .login-left .login-item .item-right input:focus
     outline: 1px solid #4e536b;
 }
 
+section #login-container #member .login-left .login-item input[type=submit] {
+    background-color: #4f5669;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 250px;
+    margin-bottom: 5px;
+}
 
-section #login-container #member .login-right {
-    vertical-align: top;
-    display:inline-block;
-    width: 49%;
+section #login-container #member .login-left .login-item input[type=button] {
+    background-color: #4f5669;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 250px;
+}
+
+section #login-container #member .login-item-sns {
+    width: 100%;
+    display: inline-block;
     padding-bottom: 15px;
 }
 
-section #login-container #member .login-right .kakao {
-    background-color: rgb(255, 215, 35);
-    color: #000;
-    font-size: 12px;
-    letter-spacing: -0.4px;
-    border: none;
-    outline: none;
-    width: 80%;
-    height: 35px;
+section #login-container #member .login-item-sns > div {
+    display: inline-block;
+    margin: 5px;
+}
+
+
+section #login-container #member .login-right {
     vertical-align: top;
-    margin-bottom: 10px;
+    padding-top: 10px;
+    display:inline-block;
+    width: 30%;
+    padding-bottom: 15px;
 }
 
 section #login-container #member .login-right input {
@@ -922,8 +940,9 @@ section #login-container #member .login-right input {
     color: #fff;
     border: none;
     outline: none;
-    width: 80%;
-    margin-bottom: 10px;
+    width: 187px;
+    margin-bottom: 28px;
+    border-radius: 4px;
     height: 35px;
     font-size: 12px;
     letter-spacing: -0.4px;
@@ -977,18 +996,20 @@ section #login-container #cmember .login-left .login-item .item-right input:focu
 
 
 section #login-container #cmember .login-right {
+    padding-top: 10px;
     vertical-align: top;
     display:inline-block;
     width: 49%;
 }
 
-section #login-container #cmember .login-right input {
+section #login-container #cmember .login-right button {
+    cursor: pointer;
     background-color: #4e536b;
     color: #fff;
     border: none;
     outline: none;
     width: 80%;
-    margin-bottom: 10px;
+    margin-bottom: 28px;
     height: 35px;
 }
 
@@ -2587,6 +2608,7 @@ section #company-view-container #company-view-content .view-right #review-write 
     background-color: #4e536b;
     color: #fff;
     font-size: 16px;
+    margin-bottom: 20px;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .input {
@@ -2619,7 +2641,7 @@ section #company-view-container #company-view-content .view-right #review-write 
     padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 378px;
+    width: 400px;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .input .right select {
@@ -2646,24 +2668,27 @@ section #company-view-container #company-view-content .view-right #review-write 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle {
     margin-top: 20px;
     width: 100%;
-    height: 50px;
-    border-top: 1px solid #4e536b;
-    background-color: #e1e3e9;
+    height: 35px;
+    border-top: 1px solid #9b9ca3;
     color: #fff;
     font-size: 16px;
     padding-top: 15px;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle .middle-left {
-    float: left;
+    display: inline-block;
+    width: 30%;
     padding-left: 15px;
+    text-align: left;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle .middle-right {
-    float: right;
-    color: #4e536b;
-    font-size: 13px;
+    display: inline-block;
+    width: 65%;
+    color: #3f4149;
+    font-size: 12px;
     padding-right: 15px;
+    text-align: right;
 }
 
 section #company-view-container #company-view-content .view-right #review-write .review_form .form-middle button {
@@ -3133,39 +3158,35 @@ section #senier-container .senier-middle #senier-write-container {
     width: 100%;
 }
 
-section #senier-container .senier-middle #senier-write-container input {
-    width: 100%;
+section #senier-container .senier-middle #senier-write-container input[type=text] {
+    width: 350px;
     border: none;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgb(218, 218, 218);
     height: 35px;
     outline: #404861;
+    padding-left: 15px;
 }
 
 section #senier-container .senier-middle #senier-write-container .write-cate {
     margin-bottom: 5px;
     width: 100%;
     border-radius: 4px;
-    border: 1px solid #d3d3d3;
+}
+
+section #senier-container .senier-middle #senier-write-container .write-cate input[type=radio] {
+    width: 20px;
 }
 
 section #senier-container .senier-middle #senier-write-container .write-title {
     margin-bottom: 5px;
     width: 100%;
-    border-radius: 4px;
-    border: 1px solid #d3d3d3;
-}
-
-section #senier-container .senier-middle #senier-write-container .write-content {
-    margin-bottom: 5px;
-    width: 100%;
-    border-radius: 4px;
-    border: 1px solid #d3d3d3;
 }
 
 section #senier-container .senier-middle #senier-write-container .write-content {
     margin-bottom: 5px;
     width: 100%;
 }
+
 
 section #senier-container .senier-middle #senier-write-container .write-btn {
     margin-bottom: 5px;
@@ -3595,7 +3616,7 @@ section #faq-container .faq-middle .faq {
 
 section #faq-container .faq-middle .faq .q {
     cursor: pointer;
-    background-color: #e0e2eb;
+    background-color: #f3f4f7;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 15px;
@@ -3604,7 +3625,7 @@ section #faq-container .faq-middle .faq .q {
 
 section #faq-container .faq-middle .faq .q:hover {
     transition: 500ms;
-    background-color: #404861;
+    background-color: #8a91aa;
     color: #fff;
 }
 
@@ -3641,6 +3662,95 @@ section #etc-container .content {
     margin-bottom: 50px;
 }
 
+/* ------------------------------------------ 1:1 문의 */
+
+section #help-container {
+    width: 990px;
+    display: inline-block;
+}
+
+section #help-container .help-top {
+    width: 965px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 25px;
+    font-size: 20px;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+section #help-container .help-subtitle {
+    width: 965px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 25px;
+    font-size: 13px;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+section #help-container .help-middle {
+    width: 965px;
+    padding-top: 20px;
+    margin-bottom: 25px;
+}
+
+section #help-container .help-middle .help-item {
+    padding-top: 20px;
+    width: 965px;
+    padding-bottom: 20px;
+    display: inline-block;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+section #help-container .help-middle .help-item:hover {
+    background-color: #eee;
+    transition: 500ms;
+}
+
+section #help-container .help-middle .help-item .item-left {
+    vertical-align: top;
+    display: inline-block;
+    width: 20%;
+}
+
+section #help-container .help-middle .help-item .item-center {
+    vertical-align: top;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+}
+
+section #help-container .help-middle .help-item .item-center .center-title {
+    font-size: 15px;
+}
+
+
+section #help-container .help-middle .help-item .item-right {
+    vertical-align: top;
+    display: inline-block;
+    width: 18%;
+    font-size: 15px;
+}
+
+section #help-container .help-middle .help-item .item-right span {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #5e6579;
+    border-radius: 10px;
+    color: #fff;
+}
+
+
 
 /* --------------------------------------- 알림센터 */
 
@@ -3650,11 +3760,53 @@ section #alarm-container {
 }
 
 section #alarm-container .title {
-    width: 100%;
+    width: 960px;
     height: 50px;
     font-size: 22px;
+    font-weight: normal;
     text-align: left;
     padding-left: 20px;
+}
+
+
+section #alarm-container .subtitle {
+    width: 990px;
+    text-align: center;
+}
+
+section #alarm-container .subtitle div {
+    vertical-align: top;
+    display: inline-block;
+    width: 200px;
+    margin: 10px;
+}
+
+section #alarm-container .subtitle > div .top {
+    height: 35px;
+    line-height: 35px;
+    background-color: #eee;
+    border: 1px solid rgb(218, 218, 218);
+    border-left: none;
+    border-right: none;
+}
+
+section #alarm-container .subtitle > div .bottom {
+    font-size: 12px;
+    text-align: left;
+}
+
+
+section #alarm-container .center {
+    width: 940px;
+    font-size: 12px;
+    text-align: right;
+}
+
+section #alarm-container .center button {
+    border: 1px solid #eee;
+    outline: none;
+    width: 100px;
+    height: 30px;
 }
 
 
@@ -3698,7 +3850,7 @@ section #alarm-container .left {
 section #alarm-container .right {
     vertical-align: top;
     display: inline-block;
-    width: 88%;
+    width: 86%;
     text-align: left;
     padding-left: 15px;
 }

@@ -53,11 +53,11 @@
                         <c:choose>
                         <c:when test="${review!=null }">
                             <c:forEach items="${review }" var="list">
-                                <div class="review-item">
-                                    <div class="cate">${list.cName}</div>
+                                <div class="review-item" onclick="location.href='${path }/company/companyView.do?no=${list.reviewCompany}'">
+                                    <div class="cate">${list.cName}<br>(${list.reviewJob })</div>
                                     <div class="content">
                                         <div class="content-title">
-                                            <a href="${path }/company/companyView.do?no=${list.reviewCompany}">${fn:substring(list.reviewShort,0, 30) }</a>
+                                           ${fn:substring(list.reviewShort,0, 30) }　|　${list.reviewIsCurrent }
                                         </div>
                                         <div class="content-content">
                                             <c:choose>
@@ -86,12 +86,11 @@
                             </div>
                         </c:otherwise>
                     </c:choose>
+		            <div id="pageBar">${pageBar }</div>
                 </div>
-            </div>
-
             
-            <div id="pageBar">${pageBar }</div>
-
+            
+            </div>
         </div>
     </section>
     <script>
@@ -161,7 +160,7 @@
             }
         
             function fn_ajaxPaging(cPage) {
-                var sResult = $('#senier-result');
+                var reviewResultHtml = $('#review-list');
                 var job_temp = $('#select_left button');
         
                 var job = "";
@@ -172,20 +171,20 @@
         
         
                 $.ajax({
-                    url: '${path}/senier/senierListEnd.do',
+                    url: '${path}/review/reviewListAjax.do',
                     data: { "job": job, "cPage": cPage },
                     dataType: "html",
                     success: function (data) {
                         var Ca = /\+/g;
                         var resultSet = decodeURIComponent(data.replace(Ca, " "));
-                        sResult.html(resultSet);
+                        reviewResultHtml.html(resultSet);
                     }
                 });
         
             }
         
             function fn_search() {
-                var sResult = $('#senier-result');
+            	var reviewResultHtml = $('#review-list');
                 var job_temp = $('#select_left button');
                 
                 var job = "";
@@ -201,13 +200,13 @@
                     }
         
                     $.ajax({
-                        url: '${path}/senier/senierListEnd.do',
+                        url: '${path}/review/reviewListAjax.do',
                         data: {"job": job},
                         dataType: "html",
                         success: function (data) {
                             var Ca = /\+/g;
                             var resultSet = decodeURIComponent(data.replace(Ca, " "));
-                            sResult.html(resultSet);
+                            reviewResultHtml.html(resultSet);
                         }
                     });
                 } else {
