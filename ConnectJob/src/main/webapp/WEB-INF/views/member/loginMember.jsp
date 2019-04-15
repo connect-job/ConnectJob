@@ -98,7 +98,7 @@
 						var naver_id_login = new naver_id_login("HcAcv4cf7ZTp1x4Kkbdb", "http://localhost:8080/job/member/naverCallback.do");
 						var state = naver_id_login.getUniqState();
 						naver_id_login.setButton("green", 3, 40);
-						naver_id_login.setDomain("http://localhost:8080");
+						naver_id_login.setDomain("http://localhost:9090");
 						naver_id_login.setState(state);
 						naver_id_login.init_naver_id_login();
 					</script>
@@ -154,22 +154,20 @@
 	    	    success: function(res) {	    	    	             
 	    	        var id = res.id;    	             
 	    	        $.ajax({
-	    	        	url: '${path}/member/isKakao.do?is_sns=kakao&kakao_id=' + id,
+	    	        	url: '${path}/member/isSns.do?is_sns=kakao&kakao_id=' + id,
 	    	            success: function(data) {
 	    	            	console.log("돌려받은값 : " + data);
 	    	            	if(data=='1') {	    	            		
-	    	            		location.href="${path}/member/memberLoginKakao.do?kakao_id=" + id;
+	    	            		location.href = "${path}/member/memberLoginSns.do?is_sns=kakao&kakao_id=" + id;
 	    	            	} else {	    	            		 
-	    	            		 location.href="${path}/member/memberEnrollKakao.do?is_sns=kakao&kakao_id=" + id + "&nickname=" + res.properties['nickname'];
+	    	            		 location.href="${path}/member/memberEnrollSns.do?is_sns=kakao&kakao_id=" + id + "&nickname=" + res.properties['nickname'];
 	    	            	}
 	    	            }
 	    	        });
 	    	       
 				}
-			});
-          
-        },
-        fail: function(err) {
+			});          
+        },fail: function(err) {
           alert(JSON.stringify(err));
         }
       });
@@ -183,7 +181,6 @@
 			location.href = '${path}/member/findMember';
 		});
 	});
-
 
 	//개인회원 기업회원 나누는 탭설정
 	$('.tab-link').click(function () {

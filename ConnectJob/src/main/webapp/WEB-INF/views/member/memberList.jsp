@@ -17,8 +17,7 @@ function checkSearch(){
 }
 </script>
 	
-<section>
-	
+<section>	
 	<div>회원 리스트</div>
 	
 	<div class="notice-search">
@@ -38,7 +37,7 @@ function checkSearch(){
 			<div>아이디</div>
 			<div>이름</div>			
 			<div>SNS</div>
-			<div>인증여부</div>
+			<div>이메일 인증</div>
 		</div>
 		<c:forEach var="member" items="${list }" varStatus="vs">
 			<div>				

@@ -22,7 +22,7 @@
 		</div>
 		
 		<div id="memberEnroll" class="tab-content current">
-			<form id="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post" onsubmit="fn_checkForm();">
+			<form id="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post" onsubmit="fn_checkForm()">
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
@@ -56,7 +56,7 @@
 				<div class="enroll-item msgdiv">
 					<div class="left">이름</div>
 					<div class="right">
-						<input type="text" name="p_name" required/>
+						<input type="text" name="p_name" autocomplete="off" required/>
 						<span id="name_result"></span>
 					</div>
 				</div>
@@ -64,7 +64,7 @@
 				<div class="enroll-item msgdiv">
 					<div class="left">닉네임</div>
 					<div class="right">
-						<input type="text" name="nickname" required/>
+						<input type="text" name="nickname" autocomplete="off" required/>
 						<span id="nickname_result"></span>
 					</div>
 				</div>		
@@ -245,6 +245,7 @@ $(document).ready(function(){
 		}		
 	});
 });
+
 //체크박스 전체선택 및 전체해제
 $("#chk_all").click(function(){
     if($("#chk_all").is(":checked")){
@@ -262,6 +263,7 @@ $(".chk").click(function(){
         $("#chk_all").prop("checked",false);
     }
 });
+
 
 </script>
 

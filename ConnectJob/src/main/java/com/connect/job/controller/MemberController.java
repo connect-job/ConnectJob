@@ -45,8 +45,7 @@ public class MemberController {
 	@RequestMapping("/member/naverCallback.do") 
 	public String naverCallBack() {
 		return "member/naverCallback";
-	}
-	
+	}	
 	
 	//회원가입 페이지 이동
 	@RequestMapping("/member/memberEnroll.do")
@@ -130,7 +129,7 @@ public class MemberController {
 		StringBuffer sb = request.getRequestURL();
 		service.insertMember(m, sb);
 		
-		String msg="인증메일 확인";
+		String msg="가입시 사용한 이메일로 인증을 완료해주세요";
 		String loc="/";
 		
 		model.addAttribute("msg", msg);
@@ -212,15 +211,14 @@ public class MemberController {
 		
 		session.invalidate();
 		return "redirect:/";
-	}
-	
+	}	
 	
 	// SNS 로그인
 	@RequestMapping("/member/isSns.do")
 	@ResponseBody
 	public String isSns(Member request) {
 		System.out.println("SNS 로그인 체크중");
-		
+		System.out.println("request: " + request);
 		String check = "";
 		
 		// 카카오일때
@@ -234,6 +232,8 @@ public class MemberController {
 					check = "2"; // 회원가입페이지로 이동
 				}
 			}
+			
+			System.out.println("result: " + result);
 			
 		// 구글일때
 		} else if (request.getIs_sns().equals("google")) {
@@ -264,34 +264,9 @@ public class MemberController {
 				}
 			}
 		}
-		return check;
-	}
-	
-	@RequestMapping("/member/isKakao.do")
-	@ResponseBody
-	public String isKakao(int kakao_id, String is_sns) {
 		
-		Member m=new Member();
-		m.setKakao_id(kakao_id);
-		m.setIs_sns(is_sns);
-
-		Member result = service.selectOneSns(m);
-
-		String check = "";
-		
-		System.out.println("아이디값 담겼니? : " + kakao_id);
-		if(result!=null) {
-			if(result.getKakao_id()!=0) {
-				// 로그인페이지로 이동
-				check = "1";
-			} else {
-				// 회원가입페이지로 이동
-				check = "2";				
-			}
-		}
-	
 		return check;
-	}
+	}	
 	
 	//id,pw찾기 페이지 이동
 	@RequestMapping("/member/findMember")
@@ -442,7 +417,8 @@ public class MemberController {
 			MailHandler sendMail = new MailHandler(mailSender);
 			sendMail.setSubject("[ConnectJob] 비밀번호 안내");
 			sendMail.setText(new StringBuffer().append("<h2>비밀번호 변경 링크</h2>")
-			                .append("<a href='http://192.168.20.221:9090/job/member/changePw?p_id=").append(m.getP_id())
+			                /*.append("<a href='http://192.168.20.221:9090/job/member/changePw?p_id=").append(m.getP_id())*/
+							.append("<a href='http://localhost:9090/job/member/changePw?p_id=").append(m.getP_id())
 			                .append("' target='_blank'>비밀번호 변경</a>")
 							.toString());
 			sendMail.setFrom("jiany811@gmail.com", "[ConnectJob]");
