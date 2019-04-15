@@ -253,7 +253,10 @@
 	    }); 
 	    
 	    // ------------------------------------------------------------ 웹소켓 끝
-    
+        
+        $(document).ready(function() {
+
+        
     
         $('#x-btn').click(function() {
             $(this).parent().css("display","none");
@@ -320,6 +323,8 @@
             $('#sub-menu').css("display","none");
         });
 
+        
+
         var pop = $('#popular-container');
         $.ajax({
             url: '${path}/company/selectKeyword.do',
@@ -330,6 +335,8 @@
                 pop.html(resultSet);
             }
         });
+
+    });
 
         $(document).ready(function () {
             var height = $("#popular-container").height();

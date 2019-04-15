@@ -53,7 +53,7 @@
 			</div>
 			<div class="content-item">
 				<div class="left">근무시간</div>
-				<div class="right">${hireNoti.hnSal }<span>${hireNoti.hnStime }</span>~<span>${hireNoti.hnDtime }</span></div>
+				<div class="right"><span>${hireNoti.hnStime }</span>~<span>${hireNoti.hnDtime }</span></div>
 			</div>
 		</div>
 		
@@ -141,14 +141,7 @@
 			</div>
 			<div class="content-item">
 				<div class="left">접수방법</div>
-				<div class="right">${hireNoti.hnReMethod }</div>
-			</div>
-			<div class="content-submit">
-				<button>즉시지원</button>
-			</div>
-			<div class="content-item">
-				<div class="left">근무시간</div>
-				<div class="right">${hireNoti.hnSal }<span>${hireNoti.hnStime }</span>~<span>${hireNoti.hnDtime }</span></div>
+				<div class="right">${hireNoti.hnReMethod }　<button>즉시지원</button></div>
 			</div>
 		</div>
 	

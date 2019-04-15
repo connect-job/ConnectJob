@@ -401,14 +401,14 @@
                     <li>파이썬 개발자</li>
                     <li>안드로이드 개발자</li>
                     <li>IOS개발자</li>
-                    <li>데이터 엔지니어</li>
-                    <li>시스템,네트워크<br/>관리자</li>
+                    <li>데이터 엔지니어</li><br>
+                    <li>시스템,네트워크 관리자</li>
                     <li>node.js개발자</li>
                     <li>php개발자</li>
-                    <li>DevOps/시스템<br/>관리자</li>
+                    <li>DevOps/시스템 관리자</li>
                     <li>C,C++개발자</li>
                     <li>개발매니저</li>
-                    <li>데이터<br/>사이언티스트</li>
+                    <li>데이터 사이언티스트</li>
                 </ul>
             </div>
 
