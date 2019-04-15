@@ -54,10 +54,12 @@ public class SocketHandler extends TextWebSocketHandler {
 		logger.debug("들어온 메세지 : " + member);
 		
 		
+		// 관리자인지아닌지 파악
+		if(!member.equals("admin@admin.com")) {
+		
 		// 웹소켓 동작
 		// 회원의 알림 설정 여부 확인하기 (ON/OFF)
 		Member m = sessionTem.selectOne("message.memberStatus", member);
-		
 		
 		// 알림 설정 ON일때
 		if(m.getAlarmStatus().equals("Y")) {
@@ -93,23 +95,27 @@ public class SocketHandler extends TextWebSocketHandler {
 						System.out.println("리스트 사이즈 : " + list.size());
 						
 						// 5. 읽은 메시지와 읽지않은 메시지 카운트
-						List<Message> mList = sessionTem.selectList("message.messageCount", member);
+						List<Message> messageList = sessionTem.selectList("message.messageCount", member);
+						
 						int readMessage = 0;
 						int unReadMessage = 0;
-						for(int i=0; i<mList.size(); i++) {
-							if(mList.get(i).getmStatus().equals("Y")) {
+						for(int i=0; i<messageList.size(); i++) {
+							if(messageList.get(i).getmStatus().equals("Y")) {
 								readMessage++;
 							} else {
 								unReadMessage++;
 							}
 						}
 						
-						String messageText = "";
+						if(unReadMessage!=0) {
+							String messageText = "";
+							
+							messageText += "회원님의 이력서 " + rList.size() + "건 에 대한<br> 추천 채용공고 " + list.size() + "건 이 매칭되었습니다!<br>";
+							messageText += "읽지 않은 알림 [ " + unReadMessage + " ] 건이 존재합니다";
+							
+							session.sendMessage(new TextMessage(messageText));
+						}
 						
-						messageText += "회원님의 이력서 " + rList.size() + "건 에 대한<br> 추천 채용공고 " + list.size() + "건 이 매칭되었습니다!<br>";
-						messageText += "읽지 않은 알림 [ " + unReadMessage + " ] 건이 존재합니다";
-						
-						session.sendMessage(new TextMessage(messageText));
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -120,7 +126,7 @@ public class SocketHandler extends TextWebSocketHandler {
 						continue;
 					}
 					try {
-						session.sendMessage(new TextMessage("작성한 이력서가 없으시네요!<br><button onclick=\"location.href='/job/resume.do'\">지금 이력서 작성하러 가기</button>"));
+						session.sendMessage(new TextMessage("작성한 이력서가 없으시네요!<br><a href='/job/resume.do'\">지금 이력서 작성하러 가기</a>"));
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -130,7 +136,7 @@ public class SocketHandler extends TextWebSocketHandler {
 		} else {
 			
 		}
-
+		}
 		
 	}
 

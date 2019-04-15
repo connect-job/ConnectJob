@@ -14,8 +14,8 @@ public class ScrapServiceImpl implements ScrapService {
 	private ScrapDao dao;
 
 	@Override
-	public int insertCPScrap(Scrap s) {
-		return dao.insertCPScrap(s);
+	public int insertScrap(Scrap s) {
+		return dao.insertScrap(s);
 	}
 
 	@Override
@@ -51,6 +51,13 @@ public class ScrapServiceImpl implements ScrapService {
 	@Override
 	public int deleteScrap(int scrapNo) {
 		return dao.deleteScrap(scrapNo);
+	}
+
+	@Override
+	public Scrap selectScrap(Scrap s) {
+		System.out.println("****service");
+		System.out.println(s);
+		return dao.selectScrap(s);
 	}
 	
 	

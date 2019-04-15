@@ -14,5 +14,6 @@ public interface MessageService {
 	Member selectMemberOne(String id);
 	int updateMessageRead(Message m);
 	int alarmDelete(Message m);
+	int selectAlarmCount(String id);
 
 }

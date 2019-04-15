@@ -14,8 +14,8 @@ public class ScrapDaoImpl implements ScrapDao {
 	private SqlSessionTemplate session;
 	
 	@Override
-	public int insertCPScrap(Scrap s) {
-		return session.insert("scrap.insertCPScrap", s);
+	public int insertScrap(Scrap s) {
+		return session.insert("scrap.insertScrap", s);
 	}
 
 	@Override
@@ -51,6 +51,11 @@ public class ScrapDaoImpl implements ScrapDao {
 	@Override
 	public int deleteScrap(int scrapNo) {
 		return session.update("scrap.deleteScrap", scrapNo);
+	}
+
+	@Override
+	public Scrap selectScrap(Scrap s) {
+		return session.selectOne("scrap.selectScrap", s);
 	}
 	
 	

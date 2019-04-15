@@ -21,7 +21,16 @@
                     <li><i class="fas fa-comment-dots"></i><br>기업리뷰</li>
                     <li><i class="fas fa-user-friends"></i><br>채용정보</li>
                     <li><i class="far fa-newspaper"></i><br>기업뉴스</li>
-                    <li id="scrap"><i class="far fa-star"></i><br>스크랩</li>
+                    <c:if test="${not empty loginMember}">
+                    	<c:choose>
+                    		<c:when test="${scrap.isDelete eq 'true' || scrap.isDelete eq '' ||scrap.isDelete eq null}">
+                    			<li onclick="insertScrap()"><i class="far fa-star"></i><br>스크랩</li>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<li onclick="deleteScrap()"><i class="fas fa-star"></i><br>스크랩</li>
+                    		</c:otherwise>
+                    	</c:choose>
+                    </c:if>
                     <script>
                         var lmenu = $('.view-left ul li');
                         var delay = 100;
@@ -37,15 +46,18 @@
                         lmenu.eq(3).on('click', function () {
                             $('html, body').stop().animate({ scrollTop: 1300 }, delay);
                         });
-                        lmenu.eq(4).on('click', function () {
-                        	if(confirm('스크랩 되었습니다.\n스크랩 페이지로 이동하시겠습니까?')) {
-                            	window.location.href = "${path}/scrap/insertAndViewScrap.do?companyNo=${company.companyNo}";
+                        function insertScrap(){
+                        	location.href="${path}/scrap/insertScrap.do?companyNo=${company.companyNo}&category='기업'";
+                        	/* if(confirm('스크랩 되었습니다.\n스크랩 페이지로 이동하시겠습니까?')) {
+                            	window.location.href = "${path}/scrap.do";
                             }else{
-                            	window.location.href="${path}/scrap/insertScrap.do?companyNo=${company.companyNo}";
                             	return;
-                            } 
-                        });
-
+                            }  */
+                        }
+                        function deleteScrap(){
+                        	location.href="${path}/scrap/delete.do?scrapNo=${scrap.scrapNo}&companyNo=${scrap.companyNo}";
+                        }
+                        
                         $(window).scroll(function () { 
                             var sc = $(document).scrollTop();
 
@@ -322,11 +334,11 @@
                                         <option value="안드로이드 개발자">안드로이드 개발자</option>
                                         <option value="IOS개발자">IOS개발자</option>
                                         <option value="데이터 엔지니어">데이터 엔지니어</option>
-                                        <option value="시스템,네트워크 관리자">시스템,네트워크 관리자</option>
+                                        <option value="시스템,네트워크 관리자">시스템/네트워크 관리자</option>
                                         <option value="node.js 개발자">Node.js 개발자</option>
                                         <option value="php 개발자">PHP 개발자</option>
                                         <option value="DevOps / 시스템 관리자">DevOps / 시스템 관리자</option>
-                                        <option value="C,C++개발자">C,C++개발자</option>
+                                        <option value="C,C++개발자">C/C++개발자</option>
                                         <option value="개발 매니저">개발 매니저</option>
                                         <option value="데이터 사이언티스트">데이터 사이언티스트</option>
                                     </select>
@@ -768,13 +780,26 @@
                     }
                 </script>
 
-                <h3>채용공고</h3>
-                <div id="right-company-hire">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+                <h3>${company.companyName } 채용공고</h3>
+                <div id="right-company-hire"></div>
+
+			<script>
+				var result = $('#right-company-hire');
+				$.ajax({
+					url: '${path}/company/companyHire.do?no=${company.companyNo}',
+					success: function(data) {
+						console.log(data);
+						if(data!='') {
+							var Ca = /\+/g;
+					        var resultSet = decodeURIComponent(data.replace(Ca, " "));
+					        result.html(resultSet);
+						} else {
+							result.html("<br><Br><Br>해당기업의 채용공고가 없습니다");
+						}
+						
+					}
+				});
+			</script>
 
 
 

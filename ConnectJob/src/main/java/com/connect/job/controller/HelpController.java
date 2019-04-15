@@ -2,8 +2,6 @@ package com.connect.job.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,7 +58,7 @@ public class HelpController {
 	
 	
 	@RequestMapping("/help/myInquiryView.do")
-	public String inquiryView(Model model, int no, HttpSession session) {
+	public String inquiryView(Model model, int no) {
 		Inquiry inq = service.inquiryView(no);
 		model.addAttribute("inq",inq);
 		return "help/myInquiryView";//나의문의내역상세

@@ -48,7 +48,12 @@ public class MessageDaoImpl implements MessageDao {
 
 		@Override
 		public int alarmDelete(Message m) {
-			return session.delete("message.deleteMessage", m);
+			return session.delete("message.messageDelete", m);
+		}
+
+		@Override
+		public int alarmCount(String id) {
+			return session.selectOne("message.selectMessageCount", id);
 		}
 		
 		

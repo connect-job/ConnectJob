@@ -13,7 +13,7 @@
 	</resultMap>
 
 	<insert id="insertInquiry" parameterType="inquiry">
-		insert into inquiry values(SEQ_I_NO.NEXTVAL,#{iType, typeHandler=strArr},#{iTitle},#{iContent},default,default,#{iWriter})
+		insert into inquiry values(SEQ_I_NO.NEXTVAL,#{iType},#{iTitle},#{iContent},default,default,#{iWriter})
 	</insert>
 	
 	<select id="inquiryList" resultMap="inquiryResult" parameterType="String">

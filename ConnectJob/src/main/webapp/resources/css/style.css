@@ -729,10 +729,23 @@ section #index-container .index-hire .hire-title {
 section #index-container .index-hire #hire-latest .hire-item {
     border: 2px solid #eee;
     display: inline-block;
-    width: 184px;   
+    width: 184px;
+    height: 200px;
     margin-right: 8px;
     padding-bottom: 15px;
 }
+
+section #index-container .index-hire #hire-latest .hire-item:hover {
+    border: 2px solid #404861;
+    transition: 900ms;
+}
+
+section #index-container .index-hire #hire-latest .hire-item:hover .item-title {
+    transition: 800ms;
+    color: #2c3142;
+    font-weight: bold;
+}
+
 
 section #index-container .index-hire #hire-latest .hire-item:nth-last-child(1) {
     margin-right: 0;
@@ -741,21 +754,31 @@ section #index-container .index-hire #hire-latest .hire-item:nth-last-child(1) {
 section #index-container .index-hire #hire-latest .hire-item .item-title {
     padding-top: 10px;
     width: 100%;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 section #index-container .index-hire #hire-latest .hire-item .item-sub-title {
     width: 100%;
-    font-size: 14px;
+    font-size: 11px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+section #index-container .index-hire #hire-latest .hire-item .item {
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 6px;
 }
 
 section #index-container .index-hire #hire-latest .hire-item .item-date {
     width: 100%;
-    font-size: 11px;
+    font-size: 12px;
     margin-bottom: 10px;
 }
 
 section #index-container .index-hire #hire-latest .hire-item .item-btn {
+    padding-top: 10px;
     width: 100%;
     font-size: 12px;
 }
@@ -1803,6 +1826,89 @@ section #hire-container #hire-list .hire-item .option button {
 
 
 
+/* ------------------------------------------------- 채용공고 뷰 */
+
+section#hire-view {
+    background-color: rgb(243, 244, 247);
+}
+
+section #hire-view-container {
+    width: 990px;
+    display: inline-block;
+}
+
+section #hire-view-container .view-top {
+    width: 990px;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: left;
+}
+
+section #hire-view-container .view-top .left {
+    display: inline-block;
+    width: 50%;
+    padding-left: 25px;
+    font-size: 20px;
+    text-align: left;
+}
+
+section #hire-view-container .view-top .right {
+    display: inline-block;
+    width: 45%;
+    font-size: 20px;
+    text-align: right;
+}
+
+section #hire-view-container .view-top .right button {
+    background-color: #404861;
+    border: 1px solid #2a3041;
+    color: #fff;
+    border: none;
+    width: 100px;
+    height: 30px;
+}
+
+section #hire-view-container .view-top .right button:nth-child(2) {
+    background-color: #a54242;
+    border: 1px solid #883737;
+}
+
+section #hire-view-container .view-title {
+    font-size: 15px;
+    text-align: left;
+    padding-left: 25px;
+    height: 50px;
+    line-height: 50px;
+}
+
+section #hire-view-container .view-content {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+section #hire-view-container .view-content .content-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+section #hire-view-container .view-content .content-item .left {
+    width: 25%;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+}
+
+section #hire-view-container .view-content .content-item .right {
+    width: 54%;
+    display: inline-block;
+    text-align: left;
+}
 
 
 /* ------------------------------------------- 기업페이지 */
@@ -2983,10 +3089,60 @@ section #company-view-container #company-view-content .view-right #right-company
 section #company-view-container #company-view-content .view-right #right-company-hire {
     margin-top: 5px;
     margin-bottom: 5px;
-    width: 100%;
-    height: 200px;
+    width: 855px;
     border: 1px solid #d3d3d3;
     background-color: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item {
+    border: 2px solid #eee;
+    display: inline-block;
+    width: 184px;   
+    margin-right: 8px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item:nth-last-child(1) {
+    margin-right: 0;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item .item-title {
+    padding-top: 10px;
+    width: 100%;
+    font-size: 15px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item .item-sub-title {
+    width: 100%;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item .item-date {
+    width: 100%;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item .item-btn {
+    width: 100%;
+    font-size: 12px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item .item-btn button {
+    width: 80%;
+    height: 28px;
+    font-size: 12px;
+    background-color: #464c63;
+    color: #fff;
+    border: none;
+    outline: none;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-news {

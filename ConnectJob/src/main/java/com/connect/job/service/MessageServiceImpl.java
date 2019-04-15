@@ -50,6 +50,11 @@ public class MessageServiceImpl implements MessageService {
 		return dao.alarmDelete(m);
 	}
 
+	@Override
+	public int selectAlarmCount(String id) {
+		return dao.alarmCount(id);
+	}
+
 	
 	
 }

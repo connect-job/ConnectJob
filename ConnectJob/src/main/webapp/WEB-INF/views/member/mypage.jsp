@@ -75,10 +75,19 @@
 							<c:forEach var="list" items="${reviewList }">
 									<div class="review-item">
 										<div class="item-title">
-											<i class="far fa-comment-dots"></i>　<a href="${path }/company/companyView.do?no=${list.reviewCompany}">${list.reviewShort}</a>
+											<i class="far fa-comment-dots"></i>　<a href="${path }/company/companyView.do?no=${list.reviewCompany}">
+												<c:choose>
+													<c:when test="${fn:length(list.reviewShort)>30}">
+														${fn:substring(list.reviewShort,0,30) }
+													</c:when>
+													<c:otherwise>
+														${list.reviewShort }
+													</c:otherwise>
+													</c:choose>
+											</a>
 										</div>
 										<div class="item-date">
-											${list.reviewDate}
+											<fmt:formatDate value="${list.reviewDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>작성일 : ${regDate }<br>
 										</div>
 									</div>
 							</c:forEach>

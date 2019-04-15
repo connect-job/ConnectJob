@@ -51,7 +51,7 @@
 								<td>${aList.sCategory eq '기업'?'기업 스크랩':'채용공고 스크랩'}</td>
 								<td><a href="${path }/company/companyView.do?no=${aList.companyNo}">${aList.companyName }</a></td>
 								<td>2개</td>
-								<td><button type="button" onclick="location.href='${path}/scrap/delete.do?scrapNo=${aList.scrapNo }'">삭제</button></td>
+								<td><button type="button" onclick="location.href='${path}/scrap/delete.do?scrapNo=${aList.scrapNo }&companyNo=0'">삭제</button></td>
 							</tr>
 							<script>console.log("${aList}")</script>
 						</c:forEach>

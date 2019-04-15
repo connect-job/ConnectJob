@@ -8,12 +8,8 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-<<<<<<< HEAD
-
-
-=======
 <script src="https://apis.google.com/js/api:client.js"></script>
->>>>>>> branch 'KJS' of https://github.com/connect-job/ConnectJob.git
+
 
 <script>
 	var googleUser = {};
@@ -102,10 +98,10 @@
 					<!-- 네이버아이디로로그인 -->
 					<div id="naver_id_login"></div>
 					<script type="text/javascript">
-						var naver_id_login = new naver_id_login("HcAcv4cf7ZTp1x4Kkbdb", "http://192.168.20.221:9090/job/member/naverCallback.do");
+						var naver_id_login = new naver_id_login("HcAcv4cf7ZTp1x4Kkbdb", "http://localhost:9090/job/member/naverCallback.do");
 						var state = naver_id_login.getUniqState();
 						naver_id_login.setButton("green", 3, 40);
-						naver_id_login.setDomain("http://192.168.20.221:9090");
+						naver_id_login.setDomain("http://localhost:9090");
 						naver_id_login.setState(state);
 						naver_id_login.init_naver_id_login();
 					</script>

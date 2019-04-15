@@ -5,11 +5,13 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+
 <style>
 	div#id-result-div{display: none;}
 	/* div#pw-result-div{display: none;}
 	div#pw-result-div2{display: none;} */
 </style>
+
 <section>
 	<div id="enroll-container">
 		<!-- 개인회원가입 -->
@@ -71,23 +73,7 @@
 				<div class="enroll-item">
 					<div class="left">연락처</div>
 					<div class="right"><input type="phone" name="phone" autocomplete="off" /></div>
-				</div>
-				
-				<div class="enroll-item">
-					<div class="left">최종학력</div>
-					<div class="right"><input type="text" name="final_edu" autocomplete="off" /></div>
-				</div>
-				
-				<div class="enroll-item">
-					<div class="left">학교</div>
-					<div class="right"><input type="text" name="school" autocomplete="off" /></div>
-				</div>
-				
-				<div class="enroll-item">
-					<div class="left">전공</div>
-					<div class="right"><input type="text" name="major" autocomplete="off" /></div>
-				</div>
-				
+				</div>				
 				
 				<div class="enroll-text">
 					<b>약관동의</b></br>
@@ -201,7 +187,6 @@ $(document).ready(function(){
 		}		
 	});
 });
-
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
