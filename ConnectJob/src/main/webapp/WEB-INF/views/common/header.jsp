@@ -91,7 +91,7 @@
                     <ul>
                         <li onclick="location.href='${path}/calendar.do'">공채달력<div class="menu-line"></div>
                         </li>
-                        <li onclick="location.href='${path}/senierConversation.do'">채용공고<div class="menu-line"></div></li>
+                        <li onclick="location.href='${path}/hireNotiAll.do'">채용공고<div class="menu-line"></div></li>
                         <li onclick="location.href='${path}/company/companyList.do'">기업탐색<div class="menu-line"></div>
                         </li>
                         <li onclick="location.href='${path}/review/review.do'">기업리뷰<div class="menu-line"></div>

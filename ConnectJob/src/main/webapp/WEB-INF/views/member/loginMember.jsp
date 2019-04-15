@@ -8,8 +8,12 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
+<<<<<<< HEAD
 
 
+=======
+<script src="https://apis.google.com/js/api:client.js"></script>
+>>>>>>> branch 'KJS' of https://github.com/connect-job/ConnectJob.git
 
 <script>
 	var googleUser = {};
