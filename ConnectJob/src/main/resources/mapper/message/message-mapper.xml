@@ -52,8 +52,8 @@
 		</if>
 	</select>
 	
-	<delete id="messageDelete">
-		DELETE M_MESSAGE WHERE M_TO = #{member}
+	<delete id="messageDelete" parameterType="message">
+		DELETE M_MESSAGE WHERE M_NO = #{mNo}
 	</delete>
 	
 	

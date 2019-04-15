@@ -54,6 +54,9 @@ public class SocketHandler extends TextWebSocketHandler {
 		logger.debug("들어온 메세지 : " + member);
 		
 		
+		// 관리자인지아닌지 파악
+		if(!member.equals("admin@admin.com")) {
+		
 		// 웹소켓 동작
 		// 회원의 알림 설정 여부 확인하기 (ON/OFF)
 		Member m = sessionTem.selectOne("message.memberStatus", member);
@@ -133,7 +136,7 @@ public class SocketHandler extends TextWebSocketHandler {
 		} else {
 			
 		}
-
+		}
 		
 	}
 

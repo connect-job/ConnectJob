@@ -196,7 +196,7 @@
 		    	$('#socket-message').css("z-index","999999999");
 		    	$('#socket-message').append("<span id='messageIcon'><i class='fas fa-envelope-open-text' style='font-size:20px'></i></span>　");
 		    	$('#socket-message').append(evt.data);
-		    	$('#socket-message').append("<br><br><button onclick='location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}''>알림센터</button>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
+		    	$('#socket-message').append("<br><br><button onclick='fn_alarmCenter()'>알림센터</button>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
 	    	}, 1000);
 	    	
 	    	if(evt.data!=null) {
@@ -222,6 +222,11 @@
 
 	    function fn_messageClose() {
 	    	$('#socket-message').css("opacity","0");
+	    	$('#socket-message').css("z-index","-1");
+	    }
+	    
+	    function fn_alarmCenter() {
+	    	window.location.href="${path}/alarm/alarm.do?id=${loginMember.p_id}";
 	    }
 	    
 	    $(document).ready(function() {

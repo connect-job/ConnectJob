@@ -48,7 +48,7 @@ public class MessageDaoImpl implements MessageDao {
 
 		@Override
 		public int alarmDelete(Message m) {
-			return session.delete("message.deleteMessage", m);
+			return session.delete("message.messageDelete", m);
 		}
 
 		@Override

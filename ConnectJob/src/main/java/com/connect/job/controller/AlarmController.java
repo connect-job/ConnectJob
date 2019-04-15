@@ -110,6 +110,19 @@ public class AlarmController {
 		int result = service.updateMessageRead(m);
 		
 		List<Message> list = service.selectMessage(m.getmTo());
+		int readMessage = 0;
+		int unReadMessage = 0;
+		
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).getmStatus().equals("Y")) {
+				readMessage++;
+			} else {
+				unReadMessage++;
+			}
+		}
+		model.addAttribute("readMessage", readMessage);
+		model.addAttribute("unReadMessage", unReadMessage);
+		
 		model.addAttribute("list", list);
 		return "alarm/alarmList";
 	}
@@ -119,6 +132,18 @@ public class AlarmController {
 		int result = service.alarmDelete(m);
 		
 		List<Message> list = service.selectMessage(m.getmTo());
+		int readMessage = 0;
+		int unReadMessage = 0;
+		
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).getmStatus().equals("Y")) {
+				readMessage++;
+			} else {
+				unReadMessage++;
+			}
+		}
+		model.addAttribute("readMessage", readMessage);
+		model.addAttribute("unReadMessage", unReadMessage);
 		model.addAttribute("list", list);
 		return "alarm/alarmList";
 	}

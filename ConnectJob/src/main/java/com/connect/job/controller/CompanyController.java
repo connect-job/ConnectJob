@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,21 +22,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.connect.job.common.AjaxPageBarFactory;
+import com.connect.job.common.PageBarFactory;
 import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.CompanyAvgScore;
 import com.connect.job.model.vo.HireNoti;
+import com.connect.job.model.vo.Member;
 import com.connect.job.model.vo.News;
+import com.connect.job.model.vo.Scrap;
 import com.connect.job.model.vo.SearchKeyword;
 import com.connect.job.openapi.NaverSearch;
 import com.connect.job.service.CompanyService;
-import com.connect.job.common.AjaxPageBarFactory;
-import com.connect.job.common.PageBarFactory;
+import com.connect.job.service.ScrapService;
 
 @Controller
 public class CompanyController {
 	
 	@Autowired
 	private CompanyService service;
+	
+	@Autowired
+	private ScrapService sService;
 	
 	// 연봉 TOP 5
 	@RequestMapping("company/latestSalary.do")
@@ -156,14 +163,33 @@ public class CompanyController {
 	
 	// 기업 상세 페이지 이동
 	@RequestMapping("company/companyView.do")
-	public String companyView(int no, Model model) {
+	public String companyView(int no, Model model, HttpSession session) {
 		Company com = service.selectOne(no);
+		Member m=(Member) session.getAttribute("loginMember");
 		
 		// 총 평점 및 각 점수 가져오기
 		CompanyAvgScore cas = service.selectScore(no);
 		
 		List<News> news = new NaverSearch().naverSearch(com.getCompanyName());
-		
+		Scrap s=new Scrap();
+		Scrap scrap=new Scrap();
+		//로그인했을때 Scrap값 가져오기
+		if(m!=null) {
+			
+			s.setCompanyNo(com.getCompanyNo());
+			s.setpId(m.getP_id());
+			System.out.println("기업페이지에서 갔다온 service");
+			scrap=sService.selectScrap(s);
+			
+			System.out.println("*******기업페이지");
+			System.out.println("session에 멤버 : "+m);
+			System.out.println("companyNo"+com.getCompanyNo());
+			System.out.println("s : "+s);
+			System.out.println("scrap : "+scrap);
+			System.out.println("*********");
+		}
+		model.addAttribute("scrap",scrap);
+		model.addAttribute("loginMember", m);
 		model.addAttribute("score", cas);
 		model.addAttribute("company",com);
 		model.addAttribute("news", news);

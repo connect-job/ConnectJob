@@ -5,7 +5,7 @@ import java.util.List;
 import com.connect.job.model.vo.Scrap;
 
 public interface ScrapDao {
-	int insertCPScrap(Scrap s);
+	int insertScrap(Scrap s);
 	
 	List<Scrap> selectCPScrapList(Scrap s);
 	List<Scrap> selectAllScrapList(Scrap s);
@@ -14,6 +14,7 @@ public interface ScrapDao {
 	int selectAllScrapCnt(Scrap s);
 	int selectCPScrapCnt(Scrap s);
 	int selectHNScrapCnt(Scrap s);
+	Scrap selectScrap(Scrap s);
 	
 	int deleteScrap(int scrapNo);
 }

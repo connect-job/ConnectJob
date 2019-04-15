@@ -21,7 +21,16 @@
                     <li><i class="fas fa-comment-dots"></i><br>기업리뷰</li>
                     <li><i class="fas fa-user-friends"></i><br>채용정보</li>
                     <li><i class="far fa-newspaper"></i><br>기업뉴스</li>
-                    <li id="scrap"><i class="far fa-star"></i><br>스크랩</li>
+                    <c:if test="${not empty loginMember}">
+                    	<c:choose>
+                    		<c:when test="${scrap.isDelete eq 'true' || scrap.isDelete eq '' ||scrap.isDelete eq null}">
+                    			<li onclick="insertScrap()"><i class="far fa-star"></i><br>스크랩</li>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<li onclick="deleteScrap()"><i class="fas fa-star"></i><br>스크랩</li>
+                    		</c:otherwise>
+                    	</c:choose>
+                    </c:if>
                     <script>
                         var lmenu = $('.view-left ul li');
                         var delay = 100;
@@ -37,15 +46,18 @@
                         lmenu.eq(3).on('click', function () {
                             $('html, body').stop().animate({ scrollTop: 1300 }, delay);
                         });
-                        lmenu.eq(4).on('click', function () {
-                        	if(confirm('스크랩 되었습니다.\n스크랩 페이지로 이동하시겠습니까?')) {
-                            	window.location.href = "${path}/scrap/insertAndViewScrap.do?companyNo=${company.companyNo}";
+                        function insertScrap(){
+                        	location.href="${path}/scrap/insertScrap.do?companyNo=${company.companyNo}&category='기업'";
+                        	/* if(confirm('스크랩 되었습니다.\n스크랩 페이지로 이동하시겠습니까?')) {
+                            	window.location.href = "${path}/scrap.do";
                             }else{
-                            	window.location.href="${path}/scrap/insertScrap.do?companyNo=${company.companyNo}";
                             	return;
-                            } 
-                        });
-
+                            }  */
+                        }
+                        function deleteScrap(){
+                        	location.href="${path}/scrap/delete.do?scrapNo=${scrap.scrapNo}&companyNo=${scrap.companyNo}";
+                        }
+                        
                         $(window).scroll(function () { 
                             var sc = $(document).scrollTop();
 
