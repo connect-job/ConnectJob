@@ -741,12 +741,13 @@ section #index-container .index-hire #hire-latest .hire-item:nth-last-child(1) {
 section #index-container .index-hire #hire-latest .hire-item .item-title {
     padding-top: 10px;
     width: 100%;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 section #index-container .index-hire #hire-latest .hire-item .item-sub-title {
     width: 100%;
-    font-size: 14px;
+    font-size: 11px;
+    margin-bottom: 5px;
 }
 
 section #index-container .index-hire #hire-latest .hire-item .item-date {
