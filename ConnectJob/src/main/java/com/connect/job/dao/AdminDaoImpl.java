@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.connect.job.model.vo.Inquiry;
 
 @Repository
-public class HelpAdminDaoImpl implements HelpAdminDao {
+public class AdminDaoImpl implements AdminDao {
 
 	@Autowired
 	private SqlSessionTemplate session;

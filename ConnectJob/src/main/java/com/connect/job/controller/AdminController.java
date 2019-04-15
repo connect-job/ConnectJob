@@ -11,21 +11,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.connect.job.common.PageBarFactory;
 import com.connect.job.model.vo.Inquiry;
-import com.connect.job.service.HelpAdminService;
+import com.connect.job.service.AdminService;
 
 @Controller
-public class HelpPageController {
+public class AdminController {
 	
 	@Autowired
-	private HelpAdminService service;
+	private AdminService service;
 	
-	@RequestMapping("/helpPage")
-	public String csMain()
-	{
-		return "helpPage/helpPage-main";
-	}
-	
-	@RequestMapping("/helpPageInquiry.do")
+
+	@RequestMapping("/admin/inquiry/inquiry.do")
 	public ModelAndView helpPageInquiry(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage, String id) {
 		int numPerPage=10;
 		ModelAndView mv=new ModelAndView();
@@ -35,25 +30,25 @@ public class HelpPageController {
 		mv.addObject("list",list);
 		mv.addObject("total",total);
 		mv.addObject("pageBar",PageBarFactory.getPageBar(total, cPage, numPerPage)); 
-		mv.setViewName("helpPage/helpPage-inquiry"); //문의리스트 시작페이지
+		mv.setViewName("admin/inquiry/inquiry"); //문의리스트 시작페이지
 		return mv;
 	}
 	
-	@RequestMapping("/helpPageInquiryView.do")
+	@RequestMapping("/admin/inquiry/InquiryView.do")
 	public String helpPageInquiryView(Model model, int no)
 	{
 		Inquiry inq = service.helpPageInquiryView(no);
 		model.addAttribute("inq",inq);
-		return "helpPage/helpPage-inquiryView";
+		return "admin/inquiry/inquiryView";
 	}
 	
-	@RequestMapping("/helpInquiryUpdate.do")
+	@RequestMapping("/admin/inquiry/InquiryUpdate.do")
 	public String helpInquiryUpdate(Model model, Inquiry i) 
 	{
 		int result=service.helpInquiryUpdate(i);
 		
 		String msg="";
-		String loc="/helpPageInquiry.do?id="+i.getiWriter(); //문의리스트시작페이지
+		String loc="/admin/inquiry/inquiry.do?id="+i.getiWriter(); //문의리스트시작페이지
 		
 		if(result>0 ) {
 			msg="답변등록완료";

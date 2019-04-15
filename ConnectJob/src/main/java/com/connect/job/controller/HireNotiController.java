@@ -38,12 +38,20 @@ public class HireNotiController {
 		for(int i=0; i<list.size(); i++) {
 			html += "<div class=\"hire-item\">";
 			html += "<div class=\"item-title\">";
-			if(list.get(i).getHnTitle().length()>15) {
-				html += list.get(i).getHnTitle().substring(0, 16) + "...</div>";
+			if(list.get(i).getHnTitle().length()>12) {
+				html += list.get(i).getHnTitle().substring(0, 12) + "...</div>";
 			} else {
 				html += list.get(i).getHnTitle() + "</div>";
 			}
 			html += "<div class=\"item-sub-title\">" + list.get(i).getcName() + "</div>";
+			html += "<div class=\"item\">모집부분 : " + list.get(i).getHnCareer() + "</div>"; 
+			html += "<div class=\"item\">경력 : " + list.get(i).getHnForm() + "</div>"; 
+			html += "<div class=\"item\">경력 : " + list.get(i).getHnCareer() + "</div>"; 
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yy년 MM월 dd일");
+			String regDate = sdf.format(list.get(i).getAddDate());
+			
+			html +="<div class=\"item\">등록일 : " + regDate + "</div>";
 			html += "<div class=\"item-btn\"><button>지원하기</button></div>";
 			html += "</div>";
 		}

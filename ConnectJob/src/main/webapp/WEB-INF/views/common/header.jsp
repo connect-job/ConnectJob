@@ -127,7 +127,7 @@
                             
                         </c:if>
                          <c:if test="${loginMember!=null}">
-                            <li onclick="location.href='${path}/helpPage?id=${loginMember.p_id }'">관리</li>
+                            <li onclick="location.href='${path}/admin/inquiry/inquiry.do?id=${loginMember.p_id }'">관리</li>
                             
                         </c:if>
                         <li id="sub">고객센터<div id="sub-menu">
@@ -162,7 +162,7 @@
     <script>
     
     // ------------------------------------------------------------ 웹소켓 시작
-    var wsUri = "ws://localhost:8080/job/alarm";
+    var wsUri = "ws://localhost:9090/job/alarm";
     var nick = '${loginMember.p_id}';
 	console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
     

@@ -333,7 +333,7 @@
                         <input type="text" style="width: 150px" name="startDate" id="testDatepickers" />시작일
                         ~
                         <input type="text" style="width: 150px" name="endDate" id="testDatepickere" />마감일
-                        　<label><input type="checkbox" name="hnEve" value="" default="N" />상시 접수</label>
+                        　<label><input type="checkbox" name="hnEve" value="Y"/>상시 접수</label>
                     </div>
                 </div>
                 
