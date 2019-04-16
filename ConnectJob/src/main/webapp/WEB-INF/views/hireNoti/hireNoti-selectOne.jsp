@@ -14,7 +14,10 @@
 		<p align="left" style="padding-left:15px;"><button onclick="history.back()" style="background-color:#4e536b; width: 110px; height: 30px; border: none; color:#fff;"><i class="fas fa-arrow-left"></i>　뒤로가기</button></p><Br>
 		<div class="view-top">
 			<div class="left">${hireNoti.cName }　|　${hireNoti.hnTitle}</div>
-			<div class="right"><button>스크랩</button>　<button>즉시지원</button></div>
+			<div class="right">
+				<button type="button" onclick="location.href='${path}/scrap/insertHNScrap.do?cMemberId=${hireNoti.cMemberId}&hnTitle=${hireNoti.hnTitle }&hnSeq=${hireNoti.hnSeq }'">스크랩</button>　
+				<button>즉시지원</button>
+			</div>
 		</div>
 		
 		
@@ -144,7 +147,7 @@
 			</div>
 			<div class="content-item">
 				<div class="left">접수방법</div>
-				<div class="right">${hireNoti.hnReMethod }　<button>즉시지원</button></div>
+				<div class="right">${hireNoti.hnReMethod }　<button type="button" >즉시지원</button></div>
 			</div>
 		</div>
 	

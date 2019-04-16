@@ -505,7 +505,7 @@
 
                     <div class="cname">${list.cName }</div>
                     <div class="subject">
-                        <div class="h-title"><a>${list.hnTitle }</a></div>
+                        <div class="h-title"><a href="${path }/hireNotiView.do?no=${list.hnSeq}">${list.hnTitle }</a></div>
                         <div class="h-subtitle">모집부문 : 
                             <c:forEach var="sort" items="${list.hnSort }">
                             	${sort }
@@ -992,9 +992,6 @@
         } else {
             alert('검색 조건을 설정해 주세요');
         }
-
-
-
     }
 
 </script>
