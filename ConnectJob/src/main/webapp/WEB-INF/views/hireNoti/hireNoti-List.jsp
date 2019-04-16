@@ -9,6 +9,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <section>
+    <div class="background-blur"></div>
     <div id="hire-container">
 
         <div class="hire-top">
@@ -497,27 +498,26 @@
             </div>
         </div>
 
-
-
         <div id="hire-list">
             <c:forEach items="${hireNoti }" var="list">
                 <div class="hire-item">
 
                     <div class="cname">${list.cName }</div>
                     <div class="subject">
-                        <div class="h-title"><a href="${path }/hireNotiView.do?no=${list.hnSeq }">${list.hnTitle }</a></div>
-                        <div class="h-subtitle">모집부문 : 
+                        <div class="h-title"><a href="${path }/hireNotiView.do?no=${list.hnSeq }">${list.hnTitle }</a>
+                        </div>
+                        <div class="h-subtitle">모집부문 :
                             <c:forEach var="sort" items="${list.hnSort }">
-                            	${sort }
+                                ${sort }
                             </c:forEach>
                         </div>
-                        
+
                     </div>
                     <div class="career">
                         <div class="c-career">${list.hnCareer }</div>
                         <div class="c-finaledu">
-                        	<c:forEach var="edu" items="${list.hnFinalEdu }">
-                            	${edu }
+                            <c:forEach var="edu" items="${list.hnFinalEdu }">
+                                ${edu }
                             </c:forEach>
                         </div>
                     </div>
@@ -526,20 +526,37 @@
                         <div class="f-location">${list.hnWorkPlace }</div>
                     </div>
                     <div class="date">
-                        <div class="d-submit"><button class="submit">즉시지원</button></div>
+                        <div class="d-submit"><button onclick="fn_apply()" class="submit">즉시지원</button></div>
                         <div class="d-date">
-                            <fmt:formatDate value="${list.addDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>${regDate }</div>
+                            <fmt:formatDate value="${list.addDate}" pattern="yyyy년 MM월 dd일" var="regDate" />${regDate }
+                        </div>
                     </div>
                     <div class="option">
-                        <button type="button" onclick="location.href='${path}/scrap/insertHNScrap.do?cMemberId=${list.cMemberId}&hnTitle=${list.hnTitle }&hnSeq=${list.hnSeq }'">스크랩</button>
+                        <button type="button"
+                            onclick="location.href='${path}/scrap/insertHNScrap.do?cMemberId=${list.cMemberId}&hnTitle=${list.hnTitle }&hnSeq=${list.hnSeq }'">스크랩</button>
                     </div>
                 </div>
             </c:forEach>
         </div>
 
-                <div id="pageBar">${pageBar }</div>
+        <div id="pageBar">${pageBar }</div>
 
-
+        <!-- 모달 -->
+        <div id="applyModal">
+            <div class="top">지원하기</div>
+            <div class="applyTitle">해당 공고에 지원하시려면 이력서를 선택하세요</div>
+            <div class="applySelect">
+                내 이력서　
+                <select>
+                    <option>이력서 선택</option>
+                    <option>이력서 선택</option>
+                    <option>이력서 선택</option>
+                </select>
+            </div>
+            <div class="applyBottom">
+                <button>지원하기</button>　<button onclick="fn_applyCancle()">취소</button>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -577,11 +594,30 @@
         $('#search-etc').css("display", "inline-block");
     });
 
+    function fn_apply() {
+        if (${ loginMember != null }) {
+            $('body').scrollTop(0);
+            $(".background-blur").eq(0).css("display", "inline-block");
+            $('#applyModal').css("display", "inline-block");
+        } else {
+            if (confirm('로그인 후 지원하실 수 있습니다\n로그인 페이지로 이동하시겠습니까?')) {
+                window.location.href = "${path}/member/login.do";
+            } else {
+                return;
+            }
+        }
+    }
+
+    function fn_applyCancle() {
+        $(".background-blur").eq(0).css("display", "none");
+        $('#applyModal').css("display", "none");
+    }
+
 </script>
 
 
 <!-- //지역별 검색 스크립트 -->
-	<script>
+<script>
     var locations = $('#search_right > div');
     $.each(locations, function (index) {
         locations.eq(index).hide();
@@ -747,7 +783,7 @@
 </script>
 
 <!-- //지역별 검색후 버튼 만들고 밑으로  쏴주는 스크립트 -->
-	<script>
+<script>
     // function fn_searchOpen() {
     //     $('#search_location').toggle(function(){
     //     });
