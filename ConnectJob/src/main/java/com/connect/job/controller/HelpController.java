@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.connect.job.common.PageBarFactory;
+import com.connect.job.model.vo.Faq;
 import com.connect.job.model.vo.Inquiry;
 import com.connect.job.service.HelpService;
 
@@ -64,9 +65,65 @@ public class HelpController {
 		return "help/myInquiryView";//나의문의내역상세
 	}
 	
-	@RequestMapping("/help/fag.do")
+	/*@RequestMapping("/help/fag.do")
 	public String fag() {
 		return "help/fag";
+	}*/
+	
+	@RequestMapping("/help/fag.do")
+	public String fag(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage, Model model) {
+		
+		int numPerPage=10;
+		List<Faq>list=service.faqView(cPage, numPerPage);
+		int total=service.selectFaqCountOne();
+		
+		model.addAttribute("list",list);
+		model.addAttribute("total",total);
+		model.addAttribute("pageBar",PageBarFactory.getPageBar(total, cPage, numPerPage));
+		
+		return "help/fag";
 	}
+	
+	@RequestMapping("/help/faq/FaqWrite.do")
+	public String faqWrite()
+	{
+		return "help/faqWrite";
+	}
+	
+	@RequestMapping("/help/faq/FaqWriteEnd.do")
+	public String faqWriteEnd(Faq f, Model model)
+	{
+		int result=service.insertFaq(f);
+		
+		String msg="";
+		String loc="/help/fag.do"; /*?id="+i.getiWriter()*/
+		
+		if(result>0 ) {
+			msg="질문등록완료";
+		} else {
+			msg="질문등록실패";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	}
+	
+	/*@RequestMapping("/help/faq/faqView.do")
+	public ModelAndView faq(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage)
+	{
+		int numPerPage=10;
+		ModelAndView mv=new ModelAndView();
+		List<Faq>list=service.faqView(cPage, numPerPage);
+		int total=service.selectFaqCountOne();
+		System.out.println(list);
+		
+		mv.addObject("list",list);
+		mv.addObject("total",total);
+		mv.addObject("pageBar",PageBarFactory.getPageBar(total, cPage, numPerPage)); 
+		mv.setViewName("help/faq"); 
+		return mv;
+		
+	}*/
 	
 }

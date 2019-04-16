@@ -25,7 +25,7 @@
          <div class="title-right">무료 채용공고 등록　|　원하는 인재 찜하기 서비스<br>커넥트잡 기업회원에게 <b>모든 서비스를 무료</b>로 이용 가능합니다</div>
       </div><br>
       <div id="memberEnroll">
-         <form action="${path }/cMemberEnrollEnd.do" method="post" class="signup-frm" autocomplete="off"/>
+         <form action="${path }/cMemberEnrollEnd.do" method="post" class="signup-frm" autocomplete="off">
             <div class="enroll-title">
                	기업정보
             </div>

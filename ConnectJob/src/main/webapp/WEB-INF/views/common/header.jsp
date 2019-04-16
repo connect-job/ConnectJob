@@ -106,7 +106,7 @@
                             <li id="login-li" onclick="location.href='${path}/member/login.do'">로그인</li>
                             <li id="join-li" onclick="location.href='${path}/member/memberEnroll.do'">회원가입</li>
                         </c:if>
-                        <c:if test="${loginMember!=null}">
+                        <c:if test="${loginMember!=null and loginMember.p_id!='admin@admin.com'}">
                             <li id="mypage-li">마이페이지</span>
                                 <div id="sub-menu-mypage">
                                         <ul>
@@ -118,17 +118,13 @@
                             <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터<div id="alarm"></div></li>
                             <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
-                        <c:if test="${loginCMember!=null}">
+                        <c:if test="${loginCMember!=null and loginMember.p_id!='admin@admin.com'}">
                             <li onclick="location.href='${path}/cmemberBizPage?cMemberId=${logincMember.cMemberId }'">기업페이지</li>
                             <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
-                        <c:if test="${loginCMember!=null}">
-                            <li onclick="location.href='${path}/admin/inquiry/inquiry.do?cMemberId=${logincMember.cMemberId }'">관리</li>
-                            
-                        </c:if>
-                         <c:if test="${loginMember!=null}">
-                            <li onclick="location.href='${path}/admin/inquiry/inquiry.do?id=${loginMember.p_id }'">관리</li>
-                            
+                        <c:if test="${loginMember!=null and loginMember.p_id=='admin@admin.com'}">
+                        	<li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
+                            <li onclick="location.href='${path}/admin/inquiry/inquiry.do'">관리</li>
                         </c:if>
                         <li id="sub">고객센터<div id="sub-menu">
                                 <ul>

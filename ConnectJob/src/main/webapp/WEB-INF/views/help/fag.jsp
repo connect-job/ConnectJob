@@ -15,8 +15,14 @@
 		</div>
 
 		<div class="faq-middle">
+		<c:forEach var="faq" items="${list}" varStatus="vs">
 			<div class="faq">
-				<div class="q" onclick="fn_open()">Q : 가입한 이메일 계정이 기억나지 않아요.</div>
+				<div class="q" onclick="fn_open()">Q : ${faq.fTitle}</div>
+				<div class="a">A : ${faq.fContent}<br>
+				</div>
+			
+			
+				<!-- <div class="q" onclick="fn_open()">Q : 가입한 이메일 계정이 기억나지 않아요.</div>
 				<div class="a">A : 커넥트잡은 회원의 개인정보 보호를 위해 이메일 등의 정보를 접근을 제한하고 있습니다.
 					관리자조차 특정 회원의 이메일 주소를 확인할 방법이 없습니다. 계정을 찾기 위해선, 평소 이용하는 이메일 주소를 차례로 테스트해보는 방법 밖에 없습니다.
 					계정을 완전히 분실한 경우에는 재가입해야 합니다.
@@ -52,14 +58,17 @@
 				<div class="a">A : 해당 회사의 국민연금 납부액 또는 고용보험 납부액과 납부인원수를 역산하여 계산합니다. </div>
 				
 				<div class="q" onclick="fn_open()">Q : 회원탈퇴는 어떻게 하나요?</div>
-				<div class="a">A : 커넥트잡 회원탈퇴는 아래 절차에 따라 진행하실 수 있습니다. 
+				<div class="a">
+					A : 커넥트잡 회원탈퇴는 아래 절차에 따라 진행하실 수 있습니다. 회원 로그인 후 마이페이지 [내정보관리]를 클릭해
+					주세요.<br /> [탈퇴]버튼을 클릭하시면 탈퇴가 완료됩니다.<br /> ※회원 탈퇴 시 회원 정보도 삭제되므로 신중히
+					탈퇴해 주시기 바랍니다.
+				</div> -->
 
-회원 로그인 후 마이페이지 [내정보관리]를 클릭해 주세요.<br/>
-[탈퇴]버튼을 클릭하시면 탈퇴가 완료됩니다.<br/> 
-※회원 탈퇴 시  회원 정보도 삭제되므로 신중히 탈퇴해 주시기 바랍니다. 
-</div>
+				
 			</div>
+			</c:forEach>
 		</div>
+			<button onclick="location.href='${path}/help/faq/FaqWrite.do'">질문하기</button>
 
 	</div>
 </section>
@@ -72,6 +81,20 @@
 			$(this).next().css("height","150px");
 		}
 	});
+	
+	 function fn_paging(cPage) {
+	        
+         if(${loginMember!=null and loginCMember==null})
+         {
+            window.location.href="${path}/help/faq.do?cPage=" + cPage;
+         }
+         else if(${loginMember==null and loginCMember!=null})
+         {
+              window.location.href="${path}/help/faq.do?cPage=" + cPage;
+         }
+
+        }
+	
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

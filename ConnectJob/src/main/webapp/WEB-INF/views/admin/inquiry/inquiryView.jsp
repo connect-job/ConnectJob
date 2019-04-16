@@ -10,35 +10,11 @@
 
 <section>
 		<div id="admin-container">
-	
-		<div class="admin-left">
+			<!-- ---------------------------------------------------------------------- 좌측메뉴 -->
+		<%@ include file="/WEB-INF/views/admin/admin-menu.jsp"%>
 
-				<div class="menu-top">관리자페이지</div>
-	
-				<ul>
-						<li class="menu">고객센터 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
-							<ul class="hide">
-								<li><a href="${path}/admin/inquiry/inquiry.do<%-- ?id=${loginMember.p_id } --%>">1:1문의
-										관리</a></li>
-								<li><a href="#">자주묻는질문 관리</a></li>
-							</ul>
-						</li>
-	
-					<li class="menu">공지사항 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
-						<ul class="hide">
-							<li><a href="#">공지사항</a></li>
-						</ul>
-					</li>
-	
-<li class="menu">기업리뷰 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
-					<ul class="hide">
-						<li><a href="${path }/review/adminReview.do">기업리뷰</a></li>
-					</ul>
-				</li>
-	
-	
-				</ul>
-			</div>
+
+		<!-- ---------------------------------------------------------------------- 우측페이지  -->
 
 			<div class="admin-right">
 					<div class="admin-title">1:1 문의내역 관리</div>
@@ -71,7 +47,7 @@
 					</div>
 
 					<div class="admin-item">
-					<button type="submit">답변등록</button>　<button onclick="history.back();">목록으로</button>
+					<button type="submit">답변등록</button>　<button type="button" onclick="history.back();">목록으로</button>
 					</div>
 			</form>
 		</div>
@@ -79,19 +55,6 @@
 </section>
 
 <script>
-	$(document).ready(function () {
-		$(".menu").click(function () {
-			var submenu = $(this).children('ul');
-			if (submenu.is(":visible")) {
-				submenu.slideUp();
-				$(this).children('.icon').html("<i class='fas fa-sort-down'></i>");
-			} else {
-				submenu.slideDown();
-				$(this).children('.icon').html("<i class='fas fa-sort-up'></i>");
-			}
-		});
-	});
-	
 	ClassicEditor
         .create(document.querySelector('#aContent'))
         .catch(error => {

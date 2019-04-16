@@ -31,11 +31,11 @@ public interface MemberService {
 	List<CompanyReview> selectReviewList(CompanyReview review);
 	int deleteReview(int review_no);
 
-	int selectCount();	
+	/*int selectCount();	
 	List<Member> selectList(int cPage, int numPerPage);
 
 	int searchCount(Map<String, String> map);
-	List<Member> searchList(int cPage, int numPerPage, Map<String, String> map);
+	List<Member> searchList(int cPage, int numPerPage, Map<String, String> map);*/
 	
 	
 	

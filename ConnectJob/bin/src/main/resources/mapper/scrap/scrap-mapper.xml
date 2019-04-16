@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scrap">
+	<insert id="insertScrap" parameterType="scrap">
+		INSERT INTO SCRAP VALUES(SEQ_SCRAP_ID.NEXTVAL,#{sCategory},#{companyNo},#{pId},'false')
+	</insert>
+	<select id="selectCPScrapList" parameterType="scrap" resultType="scrap" resultMap="scrapJoinMap">
+		SELECT S.SCRAP_NO, S.S_CATEGORY,S.COMPANY_NO,C.COMPANY_NAME,S.P_ID,S.IS_DELETE FROM SCRAP S, COMPANY C WHERE S.COMPANY_NO=C.COMPANY_NO AND P_ID=#{pId} AND S_CATEGORY='기업' AND S.IS_DELETE='false'
+		
+	</select>
+	<select id="selectAllScrapList" parameterType="scrap" resultType="scrap" resultMap="scrapJoinMap">
+		SELECT S.SCRAP_NO, S.S_CATEGORY,S.COMPANY_NO,C.COMPANY_NAME,S.P_ID,S.IS_DELETE FROM SCRAP S, COMPANY C WHERE S.COMPANY_NO=C.COMPANY_NO AND P_ID=#{pId} AND S.IS_DELETE='false'
+	</select>
+	<select id="selectHNScrapList" parameterType="scrap" resultType="scrap" resultMap="scrapJoinMap">
+		SELECT S.SCRAP_NO, S.S_CATEGORY,S.COMPANY_NO,C.COMPANY_NAME,S.P_ID,S.IS_DELETE FROM SCRAP S, COMPANY C WHERE S.COMPANY_NO=C.COMPANY_NO AND P_ID=#{pId} AND S_CATEGORY='공고' AND S.IS_DELETE='false'
+	</select>
+	
+	<select id="selectHNScrapCnt" parameterType="scrap" resultType="_int">
+		SELECT COUNT(*) FROM SCRAP WHERE P_ID=#{pId} AND S_CATEGORY='공고' AND IS_DELETE='false'
+	</select>
+	<select id="selectCPScrapCnt" parameterType="scrap" resultType="_int">
+		SELECT COUNT(*) FROM SCRAP WHERE P_ID=#{pId} AND S_CATEGORY='기업' AND IS_DELETE='false'
+	</select>
+	<select id="selectAllScrapCnt" parameterType="scrap" resultType="_int">
+		SELECT COUNT(*) FROM SCRAP WHERE P_ID=#{pId} AND IS_DELETE='false'
+	</select>
+	<select id="selectScrap" parameterType="scrap" resultMap="scrapJoinMap">
+		SELECT * FROM (SELECT * FROM SCRAP WHERE P_ID=#{pId} AND COMPANY_NO=#{companyNo} ORDER BY SCRAP_NO DESC) WHERE ROWNUM=1
+	</select>
+	
+	<update id="deleteScrap" parameterType="_int">
+		UPDATE SCRAP SET IS_DELETE='true' WHERE SCRAP_NO=#{scrapNo}
+	</update>
+
+	<resultMap type="scrap" id="scrapJoinMap">
+			<id property="scrapNo" column="scrap_no"></id>
+			<result property="sCategory" column="s_category"/>
+			<result property="companyNo" column="company_no"/>	
+			<result property="pId" column="p_id"/>	
+			<result property="isDelete" column="is_delete"></result>
+			<result property="companyName" column="company_name"></result>
+	</resultMap>
+	
+</mapper>

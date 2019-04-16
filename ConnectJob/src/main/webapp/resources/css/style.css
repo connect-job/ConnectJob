@@ -4160,8 +4160,6 @@ section #resume-container #resume-list .list-item-top .item5 {
 section #resume-container #resume-list .list-item {
     display: inline-block;
     width: 950px;
-    height: 50px;
-    line-height: 50px;
     font-size: 13px;
     border: 1px solid #eee;
     border-radius: 5px;
@@ -4173,22 +4171,30 @@ section #resume-container #resume-list .list-item button {
     height: 28px;
 }
 
+section #resume-container #resume-list .list-item a {
+    font-size: 13px;
+    line-height: 20px;
+}
+
 section #resume-container #resume-list .list-item:hover {
     transition: 900ms;
     border: 1px solid #4b546e;
 }
 
 section #resume-container #resume-list .list-item .item1 {
+    padding-top: 14px;
     vertical-align: top;
     display: inline-block;
     width: 50%;
 }
 section #resume-container #resume-list .list-item .item2 {
+    padding-top: 14px;
     vertical-align: top;
     display: inline-block;
     width: 10%;
 }
 section #resume-container #resume-list .list-item .item3 {
+    padding-top: 14px;
     vertical-align: top;
     display: inline-block;
     width: 10%;
@@ -5060,6 +5066,7 @@ section #admin-container .admin-right .admin-item button {
     outline: none;
     color :#fff;
 }
+
 
 section #admin-container .admin-right .admin-item:hover {
     background-color: rgb(246, 246, 246);

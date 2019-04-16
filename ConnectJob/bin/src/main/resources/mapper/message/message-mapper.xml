@@ -1,30 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="message">
+	
+	
+	<select id="messageCount" resultMap="messageResultMap">
+		SELECT * FROM M_MESSAGE WHERE M_TO = #{member}
+	</select>
+
+	<select id="memberStatus" resultMap="memberResult">
+		SELECT * FROM P_MEMBER	WHERE P_ID = #{id}
+	</select>
+
+	<select id="selectMemberOne" resultMap="memberResult">
+		SELECT * FROM P_MEMBER WHERE P_ID = #{id}
+	</select>
+
+	<update id="updateMessageRead">
+		UPDATE M_MESSAGE SET M_STATUS = 'Y' WHERE M_NO = #{mNo}
+	</update>
+	
+	<delete id="deleteMessage" parameterType="member">
+		DELETE M_MESSAGE WHERE M_TO = #{p_id}
+	</delete>
+
+	<update id="updateAlarmOn">
+		UPDATE P_MEMBER SET ALARM_STATUS = 'Y' WHERE P_ID = #{id}
+	</update>
+	
+	<update id="updateAlarmOff">
+		UPDATE P_MEMBER SET ALARM_STATUS = 'N' WHERE P_ID = #{id}
+	</update>
+
+	<insert id="insertMessage" parameterType="message">
+		INSERT INTO M_MESSAGE VALUES(SEQ_M_NO.NEXTVAL, #{mTo}, #{mFrom}, #{mMessage}, default, default)
+	</insert>
 
 	<select id="messageResumeCount" resultMap="resumeResultMap">
-		SELECT * FROM RESUME WHERE P_ID = #{member}
+		SELECT * FROM RESUME WHERE P_ID = #{member} AND IS_DELETE='FALSE'
 	</select>
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
-	<select id="selectMessage" resultMap="messageResult">
-		SELECT * FROM M_MESSAGE WHERE M_TO = #{id}
-	</select>
-	
-=======
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
-	<resultMap type="message" id="messageResult">
-		<id column="m_no" property="mNo"/>
-		<result column="m_to" property="mTo"/>
-		<result column="m_from" property="mFrom"/>
-		<result column="m_message" property="mMessage"/>
-		<result column="m_date" property="mDate"/>
-		<result column="m_status" property="mStatus"/>
-		<result column="m_count" property="mCount"/>
-=======
 	<select id="messageHireNoti" parameterType="resume" resultMap="hireNotiResult">
-		SELECT * FROM HIRENOTI WHERE 1=1
+		SELECT A.*, C.COMPANY_NAME CNAME FROM HIRENOTI A
+	   	LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID)
+	   	LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO)
+		WHERE '1'='1'
 		<if test="hopeJobs!=null and hopeJobs!=''">
 			AND
 			<foreach collection="hopeJobs" item="job" open="(" close=")" separator="or">
@@ -33,18 +52,37 @@
 		</if>
 	</select>
 	
-	
-	
-	
-	
-	
-	
+	<delete id="messageDelete" parameterType="message">
+		DELETE M_MESSAGE WHERE M_NO = #{mNo}
+	</delete>
 	
 	
 	<select id="selectMessage" resultMap="messageResultMap">
-		SELECT * FROM M_MESSAGE WHERE M_TO = #{id}
+		SELECT * FROM M_MESSAGE WHERE M_TO = #{id} 
 	</select>
 
+	<select id="selectMessageCount" resultType="_int">
+		SELECT COUNT(*) FROM M_MESSAGE WHERE M_TO = #{id} AND M_STATUS = 'N'
+	</select>
+
+
+
+
+
+	<resultMap type="member" id="memberResult">
+		<id column="p_id" property="p_id"/>
+		<result column="password" property="password"/>
+		<result column="p_name" property="p_name"/>
+		<result column="gender" property="gender"/>
+		<result column="phone" property="phone"/>
+		<result column="is_sns" property="is_sns"/>
+		<result column="enroll_date" property="enroll_date"/>
+		<result column="email_confirm" property="email_confirm"/>
+		<result column="kakao_id" property="kakao_id"/>
+		<result column="google_id" property="google_id"/>
+		<result column="naver_id" property="naver_id"/>
+		<result column="alarm_status" property="alarmStatus"/>
+	</resultMap>
 	
 	<resultMap type="message" id="messageResultMap">
 		<id property="mNo" column="m_no"/>
@@ -54,6 +92,7 @@
 		<result property="mDate" column="m_date"/>
 		<result property="mStatus" column="m_status"/>
 		<result property="mCount" column="m_count"/>
+		<result property="mHireNo" column="m_hire_no"/>
 	</resultMap>
 	
 	<resultMap type="resume" id="resumeResultMap">
@@ -109,7 +148,7 @@
 		<result property="hnInterview" column="hn_interview"/>
 		<result property="hnTitle" column="hn_title"/>
 		<result property="addDate" column="hn_adddate"/>
->>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
+		<result property="cName" column="cname"/>
 	</resultMap>
 
 </mapper>

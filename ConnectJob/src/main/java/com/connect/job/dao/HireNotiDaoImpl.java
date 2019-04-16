@@ -18,10 +18,32 @@ public class HireNotiDaoImpl implements HireNotiDao {
 
 	
 	
+
 	@Override
-	public List<HireNoti> selectAllList(int cPage, int numPerPage) {
+	public List<HireNoti> selectWaitList(int cPage, int numPerPage, HireNoti h) {
 		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
-		return session.selectList("hireNoti.selectAllList", null, row);
+		return session.selectList("hireNoti.selectWaitList", h, row);
+	}
+
+	@Override
+	public int selectHireNotiWaitCount(String id) {
+		return session.selectOne("hireNoti.selectNotiWaitCount",id);
+	}
+
+	@Override
+	public List<HireNoti> selectDoList(int cPage, int numPerPage, String id) {
+		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		return session.selectList("hireNoti.selectDoList", id, row);
+	}
+
+	@Override
+	public int selectHireNotiDoCount(String id) {
+		return session.selectOne("hireNoti.selectNotiDoCount",id);
+	}
+
+	@Override
+	public int selectHireNotiCount(String id) {
+		return session.selectOne("hireNoti.selectNotiCount",id);
 	}
 
 	@Override
@@ -61,6 +83,12 @@ public class HireNotiDaoImpl implements HireNotiDao {
 	@Override
 	public List<HireNoti> selectLatest() {
 		return session.selectList("hireNoti.selectAll");
+	}
+
+	@Override
+	public List<HireNoti> selectAllList(int cPage, int numPerPage, String id) {
+		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		return session.selectList("hireNoti.selectAllCompanyList", id, row);
 	}
 	
 	

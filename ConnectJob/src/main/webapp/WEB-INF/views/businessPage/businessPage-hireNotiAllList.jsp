@@ -61,6 +61,41 @@
         </div>
         
         <!-- ----------------------- -->
+        
+        <div id="company-content">
+                <div id="company-list">
+            
+                    <div class="list-item-top">
+                        <div class="cate">기업구분</div>
+                        <div class="name">기업명</div>
+                        <div class="address">기업주소</div>
+                        <div class="count">등록된 리뷰수</div>
+                    </div>
+
+                    <c:choose>
+                        <c:when test="${company!=null }">
+                            <c:forEach items="${company }" var="list">
+                                <div class="list-item">
+                                    <div class="cate">${list.companyStatus==1?"법인":"개인" }</div>
+                                    <div class="name">
+                                        <a href="${path }/company/companyView.do?no=${list.companyNo}">${list.companyName }</a>
+                                    </div>
+                                    <div class="address">${list.companyAddressNew }</div>
+                                    <div class="count">${list.reviewCount }</div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+            
+                        <c:otherwise>
+                        </c:otherwise>
+                    </c:choose>
+            
+                    <div id="pageBar">${pageBar }</div>
+            
+                </div>
+            </div>
+        
+        
 	<div id="hire-list">
             <c:forEach items="${hireNoti }" var="list">
                 <div class="hire-item">
@@ -91,9 +126,6 @@
                         <div class="d-submit"><button class="submit" value="${path }/hireNoti/apply.do">즉시지원</button></div>
                         <div class="d-date">
                             <fmt:formatDate value="${list.addDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>${regDate }</div>
-                    </div>
-                    <div class="option">
-                        <button type="button" onclick="location.href='${path}/scrap/insertHNScrap.do?cMemberId=${list.cMemberId}&hnTitle=${list.hnTitle }&hnSeq=${list.hnSeq }'">스크랩</button>
                     </div>
                 </div>
             </c:forEach>

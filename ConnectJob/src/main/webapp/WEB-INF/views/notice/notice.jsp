@@ -29,7 +29,10 @@
 
 		<div class="notice-title">공지사항　|　NOTICE</div>
 
-		<div class="notice-write">관리자일 때만 보여짐　　<input type="button" value="글쓰기" onclick="location.href='${path}/notice/noticeForm'"/></div>
+		<div class="notice-write">
+		<c:if test="${loginMember!=null and loginMember.p_id=='admin@admin.com'}">
+                            <input type="button" value="글쓰기" onclick="location.href='${path}/notice/noticeForm'"/>
+                        </c:if></div>
 
 		<div class="notice-top-list">
 			<c:forEach var="noticeTop" items="${topList }">
