@@ -40,10 +40,7 @@
 	</select>
 	
 	<select id="messageHireNoti" parameterType="resume" resultMap="hireNotiResult">
-		SELECT A.*, C.COMPANY_NAME CNAME FROM HIRENOTI A
-	   	LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID)
-	   	LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO)
-		WHERE '1'='1'
+		SELECT A.*, C.COMPANY_NAME CNAME FROM HIRENOTI A LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID) LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO) WHERE 1=1
 		<if test="hopeJobs!=null and hopeJobs!=''">
 			AND
 			<foreach collection="hopeJobs" item="job" open="(" close=")" separator="or">

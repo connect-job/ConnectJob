@@ -5,7 +5,7 @@ import java.util.Date;
 public class CMember {
 	
 	private String cMemberId;
-	private String cId;
+	private String cId; //==Company.companyNo
 	private String cMemberPw;
 	private String cMemberName;
 	private String cMemberPhone;

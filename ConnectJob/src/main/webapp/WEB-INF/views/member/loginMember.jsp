@@ -93,6 +93,7 @@
 					<input type="button" value="ID/PW찾기" id="findbtn" />
 				</div>
 				<div class="login-item-sns">
+<<<<<<< HEAD
 					<!-- 네이버아이디로로그인 -->
 					<div id="naver_id_login"></div>
 					<script type="text/javascript">
@@ -100,6 +101,15 @@
 						var state = naver_id_login.getUniqState();
 						naver_id_login.setButton("green", 3, 40);
 						naver_id_login.setDomain("http://localhost:9090");
+=======
+					<!-- 네이버아이디로로그인 -->
+					<div id="naver_id_login"></div>
+					<script type="text/javascript">
+						var naver_id_login = new naver_id_login("HcAcv4cf7ZTp1x4Kkbdb", "http://localhost:9090/job/member/naverCallback.do");
+						var state = naver_id_login.getUniqState();
+						naver_id_login.setButton("green", 3, 40);
+						naver_id_login.setDomain("http://localhost:9090");
+>>>>>>> branch 'miri' of https://github.com/connect-job/ConnectJob.git
 						naver_id_login.setState(state);
 						naver_id_login.init_naver_id_login();
 					</script>

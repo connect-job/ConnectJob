@@ -87,7 +87,7 @@
 				url: '${path}/hireLatest.do',
 				success: function(data) {
 					var Ca = /\+/g;
-			        var resultSet = decodeURIComponent(data.replace(Ca, " "));
+			       var resultSet = decodeURIComponent(data.replace(Ca, " "));
 			        result.html(resultSet);
 				}
 			});

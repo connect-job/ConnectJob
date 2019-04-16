@@ -151,7 +151,7 @@
 					<select name="hopeSalary">
 						<option value="" disabled selected>희망연봉을 선택하세요</option>
 						<option value="회사내규">회사내규에 따름</option>
-						<option value="상의후 결정">상의후결저</option>
+						<option value="상의후 결정">상의후 결정</option>
 						<option value="2,000만원 이하">2,000만원 이하</option>
 						<option value="2,000~2,200만원">2,000~2,200만원</option>
 						<option value="2,200~2,400만원">2,200~2,400만원</option>

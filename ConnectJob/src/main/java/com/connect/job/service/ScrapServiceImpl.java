@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.connect.job.dao.ScrapDao;
-import com.connect.job.model.vo.Scrap;
+import com.connect.job.model.vo.CPScrap;
+import com.connect.job.model.vo.HNScrap;
 
 @Service
 public class ScrapServiceImpl implements ScrapService {
@@ -14,51 +15,55 @@ public class ScrapServiceImpl implements ScrapService {
 	private ScrapDao dao;
 
 	@Override
-	public int insertScrap(Scrap s) {
-		return dao.insertScrap(s);
+	public int insertCPScrap(CPScrap cp) {
+		return dao.insertCPScrap(cp);
 	}
 
 	@Override
-	public List<Scrap> selectCPScrapList(Scrap s) {
-		return dao.selectCPScrapList(s);
+	public int insertHNScrap(HNScrap hn) {
+		return dao.insertHNScrap(hn);
 	}
 
 	@Override
-	public int selectAllScrapCnt(Scrap s) {
-		return dao.selectAllScrapCnt(s);
+	public List<CPScrap> selectCPScrapList(CPScrap cp) {
+		return dao.selectCPScrapList(cp);
 	}
 
 	@Override
-	public int selectCPScrapCnt(Scrap s) {
-		return dao.selectCPScrapCnt(s);
+	public List<HNScrap> selectHNScrapList(HNScrap hn) {
+		return dao.selectHNScrapList(hn);
 	}
 
 	@Override
-	public int selectHNScrapCnt(Scrap s) {
-		return dao.selectHNScrapCnt(s);
+	public int selectCPScrapCnt(CPScrap cp) {
+		return dao.selectCPScrapCnt(cp);
 	}
 
 	@Override
-	public List<Scrap> selectAllScrapList(Scrap s) {
-		return dao.selectAllScrapList(s);
+	public int selectHNScrapCnt(HNScrap hn) {
+		return dao.selectHNScrapCnt(hn);
 	}
 
 	@Override
-	public List<Scrap> selectHNScrapList(Scrap s) {
-		return dao.selectHNScrapList(s);
+	public CPScrap selectCPScrap(CPScrap cp) {
+		return dao.selectCPScrap(cp);
 	}
 
 	@Override
-	public int deleteScrap(int scrapNo) {
-		return dao.deleteScrap(scrapNo);
+	public HNScrap selectHNScrap(HNScrap hn) {
+		return dao.selectHNScrap(hn);
 	}
 
 	@Override
-	public Scrap selectScrap(Scrap s) {
-		System.out.println("****service");
-		System.out.println(s);
-		return dao.selectScrap(s);
+	public int deleteCPScrap(int cpScrapNo) {
+		return dao.deleteCPScrap(cpScrapNo);
 	}
+
+	@Override
+	public int deleteHNScrap(int hnScrapNo) {
+		return dao.deleteHNScrap(hnScrapNo);
+	}
+
 	
 	
 	
