@@ -122,6 +122,42 @@ public class BusinessPageController {
 		return "businessPage/businessPage-review";
 	}
 	
+	//기업페이지-전체채용공고 페이지로 이동
+	@RequestMapping("/hireNotiAllList.do")
+	public String hireNotiAllList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model)
+	{
+		int numPerPage = 10;
+		List<HireNoti> list= service.selectAllList(cPage, numPerPage);
+		int total = service.selectHireNotiCount();
+				
+		model.addAttribute("pageBar", PageBarFactory.getPageBar(total, cPage, numPerPage));
+		model.addAttribute("hireNoti",list);
+		return "businessPage/businessPage-hireNotiAllList";
+	}
+	
+	
+	
+	//기업페이지-진행중채용공고 페이지로 이동
+	@RequestMapping("/hireNotiDoList.do")
+	public String hireNotiDo()
+	{
+		return "businessPage/businessPage-hireNotiDoList";
+	}
+	
+	//기업페이지-대기중채용공고 페이지로 이동
+	@RequestMapping("/hireNotiWaitList.do")
+	public String hireNotiWait()
+	{
+		return "businessPage/businessPage-hireNotiWaitList";
+	}
+	
+	//기업페이지-마감된채용공고 페이지로 이동
+	@RequestMapping("/hireNotiEndList.do")
+	public String hireNotiEnd()
+	{
+		return "businessPage/businessPage-hireNotiEndList";
+	}
+	
 	
 	
 	

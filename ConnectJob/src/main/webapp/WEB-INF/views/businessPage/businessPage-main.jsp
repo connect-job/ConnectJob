@@ -27,10 +27,10 @@
                     채용공고<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
                         <li><a href="${path }/hireNotiAdd.do">채용공고등록</a></li>
-                        <li><a href="${path }/hireNotiAll.do">전체공고</a></li>
-                        <li><a href="${path }/hireNoti">진행 중 공고</a></li>
-                        <li><a href="#">대기 중 공고</a></li>
-                        <li><a href="#">마감 된 공고</a></li>
+                        <li><a href="${path }/hireNotiAllList.do">전체공고</a></li>
+                        <li><a href="${path }/hireNotiDoList.do">진행 중 공고</a></li>
+                        <li><a href="${path }/hireNotiWaitList.do">대기 중 공고</a></li>
+                        <li><a href="${path }/hireNotiEndList.do">마감 된 공고</a></li>
                     </ul>
                 </li>
 

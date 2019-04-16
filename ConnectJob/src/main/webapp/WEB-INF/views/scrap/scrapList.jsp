@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<<<<<<< HEAD
 
 
 <section id="resumeView">
@@ -20,15 +21,15 @@
 		<div class="resume-sub">
 			<div class="sub-item">
 				<div class="item-title">전체 스크랩</div>
-				<div class="item-content"><a href="#">${allScrapCnt}</a></div>
+				<div class="item-content"><a href="#">${cpScrapCnt+hnScrapCnt }</a></div>
 			</div>
 			<div class="sub-item">
 				<div class="item-title">기업 스크랩</div>
-				<div class="item-content"><a href="#">${CPScrapCnt }</a></div>
+				<div class="item-content"><a href="#">${cpScrapCnt }</a></div>
 			</div>
 			<div class="sub-item">
 				<div class="item-title">채용공고 스크랩</div>
-				<div class="item-content"><a href="#">${HNScrapCnt }</a></div>
+				<div class="item-content"><a href="#">${hnScrapCnt }</a></div>
 			</div>
 		</div>
 		
@@ -44,24 +45,34 @@
 						<div class="item4">삭제</div>
 					</div>
 			<c:choose>
-				<c:when test="${not empty allList}">
-						<c:forEach items="${allList }" var="aList">
+				<c:when test="${not empty cpList}">
+						<c:forEach items="${cpList }" var="cpList">
 								<div class="list-item">
-										<div class="item1" style="width: 20%">${aList.sCategory eq '기업'?'기업 스크랩':'채용공고 스크랩'}</div>
-										<div class="item2" style="width: 40%"><a href="${path }/company/companyView.do?no=${aList.companyNo}">${aList.companyName }</a></div>
-										<div class="item3">2개</div>
-										<div class="item4"><button type="button" onclick="location.href='${path}/scrap/delete.do?scrapNo=${aList.scrapNo }&companyNo=0'">삭제</button></div>
+										<div class="item1" style="width: 20%">기업 스크랩</div>
+										<div class="item2" style="width: 40%"><a href="${path }/company/companyView.do?no=${cpList.companyNo}">${cpList.companyName }</a></div>
+										<div class="item3">1개</div>
+										<div class="item4"><button type="button" onclick="location.href='${path}/scrap/deleteCPScrap.do?scrapNo=${cpList.scrapNo }&companyNo=0'">삭제</button></div>
 									</div>
 						</c:forEach>
 				</c:when>
+				
+				<c:when test="${not empty hnList}">
+						<c:forEach items="${hnList }" var="hnList">
+						<div class="list-item">
+										<div class="item1" style="width: 20%">채용공고 스크랩</div>
+										<div class="item2" style="width: 40%"><a href="${path }/hireNotiView.do?no=${hnList.hnSeq}">${hnList.hnTitle }</a></div>
+										<div class="item3"><a href="${path }/company/companyView.do?no=${hnList.companyNo}">${hnList.companyName }</a></div>
+										<div class="item4"><button type="button">지원하기</button><button type="button" onclick="location.href='${path}/scrap/deleteHNScrap.do?scrapNo=${hnList.scrapNo}&hnSeq=0'">삭제</button></div>
+									</div>
+				</c:forEach>
+				</c:when>
 				<c:otherwise>
-						<div class="list-item-top">
-								스크랩 내역이 없습니다.	</div>
-					
+					스크랩 내역이 없습니다.
 				</c:otherwise>
 			</c:choose> 
 			
 		</div>
+			
 	</div>
 </section>
 

@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.connect.job.common.PageBarFactory;
 import com.connect.job.model.vo.HireNoti;
+import com.connect.job.model.vo.Member;
+import com.connect.job.model.vo.Resume;
 import com.connect.job.service.HireNotiService;
 
 @Controller
@@ -36,7 +39,7 @@ public class HireNotiController {
 		
 		List<HireNoti> list = service.selectLatest();
 		
-		for(int i=0; i<list.size(); i++) {
+		for(int i=0; i<5; i++) {
 			html += "<div class=\"hire-item\" onclick=\"location.href=\'" + request.getContextPath() + "/hireNotiView.do?no=" + list.get(i).getHnSeq() + "\'\">";
 			html += "<div class=\"item-title\">";
 			if(list.get(i).getHnTitle().length()>12) {
@@ -139,17 +142,15 @@ public class HireNotiController {
 	@RequestMapping("/hireNotiView.do")
 	public String hireNotiView(int no, Model model)
 	{
-		HireNoti hn=service.selectOne(no);
-		model.addAttribute("hireNoti",hn);
+		System.out.println("공고번호 : "+no);
+		HireNoti hn = service.selectOne(no);
+		
+		model.addAttribute("list",hn);
 		return "hireNoti/hireNoti-selectOne";
 	}
 	
-	/*//채용공고 리스트에서 즉시지원
-	@RequestMapping("/hireNoti/apply.do")
-	public String applyDirect()
-	{
-		
-	}*/
+
+	
 	
 		
 }

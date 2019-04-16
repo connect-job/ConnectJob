@@ -23,10 +23,10 @@
                     채용공고<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
                         <li><a href="${path }/hireNotiAdd.do">채용공고등록</a></li>
-                        <li><a href="${path }/hireNotiAll.do">전체공고</a></li>
-                        <li><a href="${path }/hireNoti">진행 중 공고</a></li>
-                        <li><a href="#">대기 중 공고</a></li>
-                        <li><a href="#">마감 된 공고</a></li>
+                        <li><a href="${path }/hireNotiAllList.do">전체공고</a></li>
+                        <li><a href="${path }/hireNotiDoList.do">진행 중 공고</a></li>
+                        <li><a href="${path }/hireNotiWaitList.do">대기 중 공고</a></li>
+                        <li><a href="${path }/hireNotiEndList.do">마감 된 공고</a></li>
                     </ul>
                 </li>
 
@@ -43,16 +43,15 @@
                 <li class="menu">
                     기업정보수정<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
-                        <li><a href="/updateI.do">기업정보수정</a></li>
-                        <li><a href="/cMemberUpdate.do">담당자 정보 수정</a></li>
-                        <li><a href="/updatePw.do">비밀번호 변경</a></li>
+                        <li><a href="${path }/updateI.do">기업정보수정</a></li>
+                        <li><a href="${path }/cMemberUpdate.do">담당자 정보 수정</a></li>
                     </ul>
                 </li>
 
                 <li class="menu">
                     기업리뷰<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
-                        <li><a href="/review.do">기업 리뷰 조회</a></li>
+                        <li><a href="${path }/review.do">기업 리뷰 조회</a></li>
                     </ul>
                 </li>
             </ul>

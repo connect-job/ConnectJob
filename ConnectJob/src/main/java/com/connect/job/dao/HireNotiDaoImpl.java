@@ -16,6 +16,14 @@ public class HireNotiDaoImpl implements HireNotiDao {
 	@Autowired
 	private SqlSessionTemplate session;
 
+	
+	
+	@Override
+	public List<HireNoti> selectAllList(int cPage, int numPerPage) {
+		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		return session.selectList("hireNoti.selectAllList", null, row);
+	}
+
 	@Override
 	public HireNoti selectOne(int no) {
 		return session.selectOne("hireNoti.selectOne",no);

@@ -511,6 +511,7 @@
                             	${sort }
                             </c:forEach>
                         </div>
+                        
                     </div>
                     <div class="career">
                         <div class="c-career">${list.hnCareer }</div>
@@ -525,12 +526,12 @@
                         <div class="f-location">${list.hnWorkPlace }</div>
                     </div>
                     <div class="date">
-                        <div class="d-submit"><button class="submit" value="${path }/hireNoti/apply.do">즉시지원</button></div>
+                        <div class="d-submit"><button class="submit">즉시지원</button></div>
                         <div class="d-date">
                             <fmt:formatDate value="${list.addDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>${regDate }</div>
                     </div>
                     <div class="option">
-                        <button>스크랩</button>
+                        <button type="button" onclick="location.href='${path}/scrap/insertHNScrap.do?cMemberId=${list.cMemberId}&hnTitle=${list.hnTitle }&hnSeq=${list.hnSeq }'">스크랩</button>
                     </div>
                 </div>
             </c:forEach>

@@ -2,6 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="hireNoti">
 
+	<select id="selectAllList" resultMap="hireNotiResult">
+		SELECT A.*, C.COMPANY_NAME CNAME FROM HIRENOTI A LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID) LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO) WHERE B.CMEMBERID=#{cMemberId}; 	
+	</select>
 	
 	<insert id="insertNoti" parameterType="hireNoti">
 		INSERT INTO HIRENOTI VALUES(HN_Seq.NEXTVAL,#{cMemberId},#{hnSort, typeHandler=strArr},#{hnCareer},#{hnForm},#{hnRecruit},#{hnCate},#{hnChargeTask},#{hnDept},#{hnRankPosition},#{hnFinalEdu, typeHandler=strArr},#{hnMajor},#{hnPreference},#{hnGender},#{hnBirth, typeHandler=strArr},#{hnSal},#{hnWorkPlace},#{hnDay},#{hnStime},#{hnDtime},#{startDate},#{endDate},#{hnEve, typeHandler=strArr},#{hnReMethod},#{hnProcess},#{hnDoc},#{hnInterview},#{hnTitle},sysdate)
@@ -36,7 +39,7 @@
 		</if>
 	</select>
 	
-	<select id="selectOne" parameterType="_int" resultMap="hireNotiResult">
+	<select id="selectOne" parameterType="_int"  resultMap="hireNotiResult">
 		SELECT A.*, B. CMEMBERNAME CMNAME ,CMEMBERPHONE CMPHONE,CMEMBEREMAIL CMMAIL , C. COMPANY_NAME CNAME, COMPANY_ALL_PEOPLE CAP, COMPANY_REGDATE CRD, COMPANY_CATE CC, COMPANY_ADDRESS_NEW CAN FROM HIRENOTI A LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID) LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO) WHERE HN_SEQ = #{no}
 	</select>
 	

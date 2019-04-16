@@ -11,7 +11,7 @@
 	</delete>
 
   <insert id="insertCMember" parameterType="cmember">
-  		insert into C_Member values(#{cMemberId},#{cId},#{cMemberPw},#{cMemberName},#{cMemberPhone},#{cMemberCPhone},#{cMemberBNum},#{cMemberDiv},DEFAULT,#{cMemberEmail})
+  		insert into C_Member values(#{cMemberId},#{cId},#{cMemberPw},#{cMemberName},#{cMemberPhone},#{cMemberCPhone},#{cMemberDiv},DEFAULT,#{cMemberEmail})
   </insert>
   
   <select id="selectOne" resultType="cmember">

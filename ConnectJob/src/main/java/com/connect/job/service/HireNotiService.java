@@ -28,6 +28,13 @@ public interface HireNotiService {
 	int selectHireNotiCountAjax(HireNoti h);
 
 	List<HireNoti> selectLatest();
+
+	//기업페이지 - 전체체용공고 불러오기
+	List<HireNoti> selectAllList(int cPage, int numPerPage);
+
+	
+	
+
 	
 	
 

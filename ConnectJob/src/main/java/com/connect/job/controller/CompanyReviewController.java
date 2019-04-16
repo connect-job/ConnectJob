@@ -74,6 +74,21 @@ public class CompanyReviewController {
 		return "review/reviewList";
 	}
 	
+	// 관리자리뷰리스트
+		@RequestMapping("review/adminReview.do")
+		public String reviewAdminList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, CompanyReview review, Model model) {
+			
+			int numPerPage = 10;
+			List<CompanyReview> list = service.reviewAll(cPage, numPerPage);
+			int total = service.reviewCountAll();
+			
+			String pageBar =  PageBarFactory.getPageBar(total, cPage, numPerPage);
+			
+			model.addAttribute("review", list);
+			model.addAttribute("pageBar", pageBar);
+			return "admin/review/review";
+		}
+	
 	// 리뷰리스트
 		@RequestMapping("review/reviewListAjax.do")
 		@ResponseBody
@@ -297,6 +312,14 @@ public class CompanyReviewController {
 		String result = URLEncoder.encode(html, "UTF-8");
 		return result;
 	}
+	
+	// 리뷰 Select One
+		@RequestMapping("review/adminReviewOne.do")
+		public String adminReviewOne(HttpSession session, int reviewNo, Model model) throws UnsupportedEncodingException {
+			CompanyReview review = service.reviewOne(reviewNo);
+			model.addAttribute("review", review);
+			return "admin/review/reviewView";
+		}
 	
 	// 리뷰 수정
 	@RequestMapping("review/reviewUpdate.do")
