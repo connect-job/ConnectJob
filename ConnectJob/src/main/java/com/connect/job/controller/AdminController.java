@@ -21,11 +21,11 @@ public class AdminController {
 	
 
 	@RequestMapping("/admin/inquiry/inquiry.do")
-	public ModelAndView helpPageInquiry(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage, String id) {
+	public ModelAndView helpPageInquiry(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage/*, String id*/) {
 		int numPerPage=10;
 		ModelAndView mv=new ModelAndView();
-		List<Inquiry>list=service.helpPageInquiryList(cPage, numPerPage, id);
-		int total=service.selectCount(id);
+		List<Inquiry>list=service.helpPageInquiryList(cPage, numPerPage/*, id*/);
+		int total=service.selectCount(/*id*/);
 		
 		mv.addObject("list",list);
 		mv.addObject("total",total);

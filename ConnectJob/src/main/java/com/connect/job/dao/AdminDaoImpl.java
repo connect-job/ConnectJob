@@ -16,13 +16,13 @@ public class AdminDaoImpl implements AdminDao {
 	private SqlSessionTemplate session;
 	
 	@Override
-	public List<Inquiry> helpPageInquiryList(int cPage, int numPerPage, String id) {
-		return session.selectList("helpAdmin.helpPageInquiryList",id, new RowBounds((cPage-1)*numPerPage, numPerPage));
+	public List<Inquiry> helpPageInquiryList(int cPage, int numPerPage/*, String id*/) {
+		return session.selectList("helpAdmin.helpPageInquiryList",/*id,*/ null,new RowBounds((cPage-1)*numPerPage, numPerPage));
 	}
 
 	@Override
-	public int selectCount(String id) {
-		return session.selectOne("helpAdmin.selectCount",id);
+	public int selectCount(/*String id*/) {
+		return session.selectOne("helpAdmin.selectCount"/*,id*/);
 	}
 
 	@Override

@@ -35,7 +35,8 @@ public class MemberServiceImpl implements MemberService{
 	    sendMail.setSubject("[ConnectJob] 이메일 인증");
 	    sendMail.setText(new StringBuffer().append("<h1>[ConnectJob] 메일인증</h1>")
 	                	.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-	                	.append("<a href='http://192.168.20.221:9090/job/member/emailForm?p_id=").append(m.getP_id())
+	                	/*.append("<a href='http://192.168.20.221:9090/job/member/emailForm?p_id=").append(m.getP_id())*/
+	                	.append("<a href='http://localhost:9090/job/member/emailForm?p_id=").append(m.getP_id())
 	                	.append("' target='_blank'>이메일 인증 확인</a>").toString());
 	    sendMail.setFrom("jiany811@gmail.com", "[ConnectJob]");
 	    sendMail.setTo(m.getP_id());
@@ -87,7 +88,6 @@ public class MemberServiceImpl implements MemberService{
 		return dao.updatePw(m);
 	}
 
-	@Override
 	public List<Member> selectList() {
 	
 		return dao.selectList();
@@ -106,9 +106,15 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int selectCount(String p_id) {
+	public int selectIdCount(String p_id) {
 		
-		return dao.selectCount(p_id);
+		return dao.selectIdCount(p_id);
+	}	
+
+	@Override
+	public int selectNickCount(String nickname) {
+		
+		return dao.selectNickCount(nickname);
 	}
 
 	@Override
@@ -119,14 +125,38 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public List<CompanyReview> selectReviewList(CompanyReview review) {
-		// TODO Auto-generated method stub
+		
 		return dao.selectReviewList(review);
 	}
 
 	@Override
 	public int deleteReview(int review_no) {
-		// TODO Auto-generated method stub
+		
 		return dao.deleteReview(review_no);
+	}
+
+	@Override
+	public int selectCount() {
+		
+		return dao.selectCount();
+	}
+
+	@Override
+	public List<Member> selectList(int cPage, int numPerPage) {
+		
+		return dao.selectList(cPage, numPerPage);
+	}
+
+	@Override
+	public int searchCount(Map<String, String> map) {
+		
+		return dao.searchCount(map);
+	}
+
+	@Override
+	public List<Member> searchList(int cPage, int numPerPage, Map<String, String> map) {
+		
+		return dao.searchList(cPage, numPerPage, map);
 	}
 
 	

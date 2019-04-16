@@ -15,13 +15,13 @@ public class AdminServiceImpl implements AdminService {
 	private AdminDao dao;
 	
 	@Override
-	public List<Inquiry> helpPageInquiryList(int cPage, int numPerPage, String id) {
-		return dao.helpPageInquiryList(cPage, numPerPage, id);
+	public List<Inquiry> helpPageInquiryList(int cPage, int numPerPage/*, String id*/) {
+		return dao.helpPageInquiryList(cPage, numPerPage/*, id*/);
 	}
 
 	@Override
-	public int selectCount(String id) {
-		return dao.selectCount(id);
+	public int selectCount(/*String id*/) {
+		return dao.selectCount(/*id*/);
 	}
 
 	@Override

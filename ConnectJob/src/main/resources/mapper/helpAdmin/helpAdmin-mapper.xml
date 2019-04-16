@@ -13,12 +13,12 @@
 		<result property="aContent" column="a_content"/>
 	</resultMap>
 
-	<select id="helpPageInquiryList" resultMap="inquiryResult" parameterType="String">
-		select * from inquiry where i_writer = #{id}
+	<select id="helpPageInquiryList" resultMap="inquiryResult">
+		select * from inquiry order by i_date desc
 	</select>
 	
-	<select id="selectCount" resultType="_int" parameterType="String">
-		select count(*) from inquiry where i_writer = #{id}
+	<select id="selectCount" resultType="_int"> 
+		select count(*) from inquiry 
 	</select>
 	
 	<select id="helpPageInquiryView" parameterType="_int" resultMap="inquiryResult">

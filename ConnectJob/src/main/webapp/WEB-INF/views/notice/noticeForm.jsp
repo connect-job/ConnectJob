@@ -49,6 +49,14 @@
         .catch(error => {
             console.error(error);
         });
+    
+    function cancle(){
+    	if(confirm('취소하시겠습니까?')){
+    		location.href="${path}/notice.do";
+    	}else{
+    		return;
+    	}
+    }
 </script>
 
 

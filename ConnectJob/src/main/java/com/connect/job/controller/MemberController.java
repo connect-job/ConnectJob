@@ -1,7 +1,9 @@
 package com.connect.job.controller;
 
-import java.util.ArrayList;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,11 +18,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.socket.WebSocketSession;
 
 import com.connect.job.common.MailHandler;
+import com.connect.job.common.PageBarFactory;
 import com.connect.job.common.socket.SocketHandler;
 import com.connect.job.model.vo.CompanyReview;
 import com.connect.job.model.vo.HireNoti;
@@ -51,8 +55,7 @@ public class MemberController {
 	@RequestMapping("/member/naverCallback.do") 
 	public String naverCallBack() {
 		return "member/naverCallback";
-	}
-	
+	}	
 	
 	//회원가입 페이지 이동
 	@RequestMapping("/member/memberEnroll.do")
@@ -172,7 +175,7 @@ public class MemberController {
 		StringBuffer sb = request.getRequestURL();
 		service.insertMember(m, sb);
 		
-		String msg="인증메일 확인";
+		String msg="가입시 사용한 이메일로 인증을 완료해주세요";
 		String loc="/";
 		
 		model.addAttribute("msg", msg);
@@ -254,15 +257,14 @@ public class MemberController {
 		
 		session.invalidate();
 		return "redirect:/";
-	}
-	
+	}	
 	
 	// SNS 로그인
 	@RequestMapping("/member/isSns.do")
 	@ResponseBody
 	public String isSns(Member request) {
 		System.out.println("SNS 로그인 체크중");
-		
+		System.out.println("request: " + request);
 		String check = "";
 		
 		// 카카오일때
@@ -276,6 +278,8 @@ public class MemberController {
 					check = "2"; // 회원가입페이지로 이동
 				}
 			}
+			
+			System.out.println("result: " + result);
 			
 		// 구글일때
 		} else if (request.getIs_sns().equals("google")) {
@@ -306,39 +310,9 @@ public class MemberController {
 				}
 			}
 		}
+		
 		return check;
-	}
-	
-	@RequestMapping("/member/isKakao.do")
-	@ResponseBody
-	public String isKakao(int kakao_id, String is_sns) {
-		
-		Member m=new Member();
-		m.setKakao_id(kakao_id);
-		m.setIs_sns(is_sns);
-		
-		Member result = service.selectOneSns(m);
-		/*List<Member> result = service.selectList();*/
-		
-		String check = "";
-		
-		System.out.println("아이디값 담겼니? : " + kakao_id);
-		
-		/*for(int i=0; i<result.size(); i++) {*/
-		if(result!=null) {
-			if(result.getKakao_id()!=0) {
-				// 로그인페이지로 이동
-				check = "1";
-					
-			} else {
-				// 회원가입페이지로 이동
-				check = "2";				
-			}
-		}
-		
-		System.out.println(check);
-		return check;
-	}
+	}	
 	
 	//id,pw찾기 페이지 이동
 	@RequestMapping("/member/findMember")
@@ -376,10 +350,22 @@ public class MemberController {
 	@RequestMapping("/member/checkId")
 	public String checkId(String p_id) {		
 		
-		int count=service.selectCount(p_id);
+		int count=service.selectIdCount(p_id);
 		String result="";
 		if(count==0) {result="0";}
 		else {result="1";}		
+		return result;
+	}
+	
+	//닉네임 중복확인
+	@ResponseBody
+	@RequestMapping("/member/checkNick")
+	public String checkNick(String nickname) {
+		
+		int count=service.selectNickCount(nickname);
+		String result="";
+		if(count==0) {result="0";}
+		else {result="1";}
 		return result;
 	}
 
@@ -477,7 +463,8 @@ public class MemberController {
 			MailHandler sendMail = new MailHandler(mailSender);
 			sendMail.setSubject("[ConnectJob] 비밀번호 안내");
 			sendMail.setText(new StringBuffer().append("<h2>비밀번호 변경 링크</h2>")
-			                .append("<a href='http://192.168.20.221:9090/job/member/changePw?p_id=").append(m.getP_id())
+			                /*.append("<a href='http://192.168.20.221:9090/job/member/changePw?p_id=").append(m.getP_id())*/
+							.append("<a href='http://localhost:9090/job/member/changePw?p_id=").append(m.getP_id())
 			                .append("' target='_blank'>비밀번호 변경</a>")
 							.toString());
 			sendMail.setFrom("jiany811@gmail.com", "[ConnectJob]");
@@ -537,12 +524,43 @@ public class MemberController {
 		return "common/msg";
 	}
 	
-	/*@RequestMapping("/member/memberList")
-	public String memberList(Model model) {
-		List<Member> list=service.selectList();
-		model.addAttribute("list", list);
-		return "member/memberList";
-	}*/
+	@RequestMapping("/member/memberList")
+	public ModelAndView memberList(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage) {
+		
+		int numPerPage=10;
+		ModelAndView mv=new ModelAndView();
+		
+		int total=service.selectCount();
+		List<Member> list=service.selectList(cPage, numPerPage);
+		
+		String pageBar=PageBarFactory.getPageBar(total, cPage, numPerPage);
+		
+		mv.addObject("pageBar", pageBar);
+		mv.addObject("list", list);
+		mv.setViewName("/member/memberList");
+		
+		return mv;
+	}
 	
-	
+	@RequestMapping("/member/searchMember")
+	public ModelAndView searchMember(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage, String searchType, String searchKey) {
+		
+		int numPerPage=10;
+		ModelAndView mv=new ModelAndView();
+		
+		Map<String, String> map=new HashMap<>();
+		map.put("searchKey", searchKey);
+		map.put("searchType", searchType);
+		
+		int total=service.searchCount(map);
+		List<Member> searchList=service.searchList(cPage, numPerPage, map);
+		
+		String pageBar=PageBarFactory.getPageBar(total, cPage, numPerPage);
+		
+		mv.addObject("list", searchList);
+		mv.addObject("map", map);
+		mv.setViewName("/member/memberList");
+		
+		return mv;
+	}
 }

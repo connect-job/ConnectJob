@@ -36,7 +36,11 @@
 					</div>
 					<div class="write-content">
 						<div class="left">답변상태</div>
-						<div class="right">${inq.status==false?"답변대기중":"답변완료"}</div>
+						<div class="right">${inq.status}</div>
+					</div>
+					<div class="write-content">
+						<div class="left">답변내용</div>
+						<div class="right">${inq.aContent}</div>
 					</div>
 					<div class="write-btn"><button onclick="history.back();">목록으로</button></div>
 		</div>

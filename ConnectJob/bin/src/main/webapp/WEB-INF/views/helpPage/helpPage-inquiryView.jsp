@@ -21,7 +21,7 @@
 
 
 		<div class="senier-middle">
-			<form action="${path}/helpInquiryUpdate.do" method="post" onsubmit="return validate();">
+			<form action="${path}/helpInquiryUpdate.do?iNo=${inq.iNo}" method="post" onsubmit="return validate();">
 				<div id="senier-write-container">
 					<div class="write-cate">
 						<div class="left">문의종류</div>
@@ -40,20 +40,35 @@
 						<div class="right">
 							<select id="answer" name="status">
 								<option value="">답변상태</option>
-								<option value="답변완료">답변완료</option>
-								<option value="답변중">답변중</option>
-								<option value="답변대기중" ${inq.status==false?"selected":""}>답변대기중</option>
+								<option value="답변완료" ${inq.status=="답변완료"?"selected":""}>답변완료</option>
+								<option value="답변중" ${inq.status=="답변중"?"selected":""}>답변중</option>
+								<option value="답변대기중" ${inq.status=="답변대기중"?"selected":""}>답변대기중</option>
 							</select>
 						</div>
 					</div>
 					<div class="write-content">
 						<div class="left">답변내용</div>
 						<div class="right">
-							<textarea id="aContent" name="aContent" placeholder="내용을 입력해주세요"></textarea>
+							<textarea id="aContent" name="aContent" placeholder="내용을 입력해주세요">${inq.aContent}</textarea>
+							
 						</div>
 					</div>
 
 					<button type="submit">답변등록</button>
+					
+					   <c:choose>
+                        	<c:when test="${loginMember!=null}">
+                        		<input type="hidden" name="iWriter"  value="${loginMember.p_id}">
+                        		
+                        	</c:when>
+                        
+                        	<c:when test="${loginCMember != null}">
+                        		<input type="hidden" name="iWriter"  value="${loginCMember.cMemberEmail}">
+                        		
+                        	</c:when>
+                        
+                        </c:choose>
+					
 					
 					<div class="write-btn">
 						<button onclick="history.back();">목록으로</button>

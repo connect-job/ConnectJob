@@ -123,7 +123,7 @@
                             <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
-                            <li onclick="location.href='${path}/helpPage?cMemberId=${logincMember.cMemberId }'">관리</li>
+                            <li onclick="location.href='${path}/admin/inquiry/inquiry.do?cMemberId=${logincMember.cMemberId }'">관리</li>
                             
                         </c:if>
                          <c:if test="${loginMember!=null}">
@@ -375,7 +375,7 @@
             $('#header-search-result').css("display", "none");
         }
 
-        var result = $('#header-search-result');
+        var result2 = $('#header-search-result');
 
         $('#search').keyup(function () {
             var keyword = $('#search').val();
@@ -386,9 +386,9 @@
                 success: function (data) {
                     var Ca = /\+/g;
                     var resultSet = decodeURIComponent(data.replace(Ca, " "));
-                    result.css("display", "block");
-                    result.empty();
-                    result.html(resultSet);
+                    result2.css("display", "block");
+                    result2.empty();
+                    result2.html(resultSet);
                 }
             });
         });
