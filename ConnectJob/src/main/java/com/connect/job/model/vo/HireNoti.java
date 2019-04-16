@@ -36,6 +36,14 @@ public class HireNoti {
 	private Date addDate;
 	private String cName;
 	private String[] category;
+	private String cMemberPhone;
+	private String cMemberEmail;
+	private String cMemberName;
+	private int companyAllPeople;
+	private String companyRegDate;
+	private String companyCate;
+	private String companyAddressNew;
+	private String companyName;
 	
 	public HireNoti() {
 		// TODO Auto-generated constructor stub
@@ -46,7 +54,9 @@ public class HireNoti {
 			String hnMajor, String hnPreference, String hnGender, String[] hnBirth, String hnSal, String hnWorkPlace,
 			String hnDay, String hnStime, String hnDtime, String startDate, String endDate, String[] hnEve,
 			String hnReMethod, String hnProcess, String hnDoc, String hnInterview, String hnTitle, Date addDate,
-			String cName, String[] category) {
+			String cName, String[] category, String cMemberPhone, String cMemberEmail, String cMemberName,
+			int companyAllPeople, String companyRegDate, String companyCate, String companyAddressNew,
+			String companyName) {
 		super();
 		this.hnSeq = hnSeq;
 		this.cMemberId = cMemberId;
@@ -79,6 +89,14 @@ public class HireNoti {
 		this.addDate = addDate;
 		this.cName = cName;
 		this.category = category;
+		this.cMemberPhone = cMemberPhone;
+		this.cMemberEmail = cMemberEmail;
+		this.cMemberName = cMemberName;
+		this.companyAllPeople = companyAllPeople;
+		this.companyRegDate = companyRegDate;
+		this.companyCate = companyCate;
+		this.companyAddressNew = companyAddressNew;
+		this.companyName = companyName;
 	}
 
 	public int getHnSeq() {
@@ -329,6 +347,70 @@ public class HireNoti {
 		this.category = category;
 	}
 
+	public String getcMemberPhone() {
+		return cMemberPhone;
+	}
+
+	public void setcMemberPhone(String cMemberPhone) {
+		this.cMemberPhone = cMemberPhone;
+	}
+
+	public String getcMemberEmail() {
+		return cMemberEmail;
+	}
+
+	public void setcMemberEmail(String cMemberEmail) {
+		this.cMemberEmail = cMemberEmail;
+	}
+
+	public String getcMemberName() {
+		return cMemberName;
+	}
+
+	public void setcMemberName(String cMemberName) {
+		this.cMemberName = cMemberName;
+	}
+
+	public int getCompanyAllPeople() {
+		return companyAllPeople;
+	}
+
+	public void setCompanyAllPeople(int companyAllPeople) {
+		this.companyAllPeople = companyAllPeople;
+	}
+
+	public String getCompanyRegDate() {
+		return companyRegDate;
+	}
+
+	public void setCompanyRegDate(String companyRegDate) {
+		this.companyRegDate = companyRegDate;
+	}
+
+	public String getCompanyCate() {
+		return companyCate;
+	}
+
+	public void setCompanyCate(String companyCate) {
+		this.companyCate = companyCate;
+	}
+
+	public String getCompanyAddressNew() {
+		return companyAddressNew;
+	}
+
+	public void setCompanyAddressNew(String companyAddressNew) {
+		this.companyAddressNew = companyAddressNew;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
 	@Override
 	public String toString() {
 		return "HireNoti [hnSeq=" + hnSeq + ", cMemberId=" + cMemberId + ", hnSort=" + Arrays.toString(hnSort)
@@ -340,10 +422,11 @@ public class HireNoti {
 				+ ", startDate=" + startDate + ", endDate=" + endDate + ", hnEve=" + Arrays.toString(hnEve)
 				+ ", hnReMethod=" + hnReMethod + ", hnProcess=" + hnProcess + ", hnDoc=" + hnDoc + ", hnInterview="
 				+ hnInterview + ", hnTitle=" + hnTitle + ", addDate=" + addDate + ", cName=" + cName + ", category="
-				+ Arrays.toString(category) + "]";
+				+ Arrays.toString(category) + ", cMemberPhone=" + cMemberPhone + ", cMemberEmail=" + cMemberEmail
+				+ ", cMemberName=" + cMemberName + ", companyAllPeople=" + companyAllPeople + ", companyRegDate="
+				+ companyRegDate + ", companyCate=" + companyCate + ", companyAddressNew=" + companyAddressNew
+				+ ", companyName=" + companyName + "]";
 	}
 
-	
-
-		
+					
 }

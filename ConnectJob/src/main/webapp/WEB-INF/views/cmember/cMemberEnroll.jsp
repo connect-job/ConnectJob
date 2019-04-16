@@ -13,6 +13,10 @@
 <script src="http://code.jquery.com/jQuery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+<style>
+	div#id-result-div{display: none;}
+</style>
+
 
 <section>
    <div id="enroll-container">
@@ -21,13 +25,13 @@
          <div class="title-right">무료 채용공고 등록　|　원하는 인재 찜하기 서비스<br>커넥트잡 기업회원에게 <b>모든 서비스를 무료</b>로 이용 가능합니다</div>
       </div><br>
       <div id="memberEnroll">
-         <form action="${path }/cMemberEnrollEnd.do" method="post" class="signup-frm" autocomplete="off">
+         <form action="${path }/cMemberEnrollEnd.do" method="post" class="signup-frm" autocomplete="off"/>
             <div class="enroll-title">
-               기업정보 인증
+               	기업정보 인증
             </div>
             <div class="enroll-item">
                <div class="left">
-                  사업자번호
+                 	 사업자번호
                </div>
                <div class="right">
                   <input type="text" class="CMember" id="CMemberBNum" name="CMemberBNum"  required maxlength="12"/>
@@ -73,25 +77,40 @@
 
             <div class="enroll-item">
                <div class="left">아이디</div>
-               <div class="right"><input type="text" class="CMember" id="CMemberId" name="CMemberId"  maxlength="12"/></div>
+               <div class="right"><input type="text" class="CMember" id="CMemberId" name="CMemberId"/></div>
             </div>
+            
+            <div class="enroll-item" id="id-result-div">
+				<div class="left"></div>
+				<div class="right">						
+					<span id="id_result"></span>						
+				</div>					
+			</div>
 
             <div class="enroll-item">
                <div class="left">비밀번호</div>
-               <div class="right"><input type="password" class="CMember" id="CMemberPw"/></div>
+               <div class="right"><input type="password" class="CMember" id="CMemberPw" placeholder="영문+숫자+특수문자 8글자 이상 입력" required/>
+               		<span id="pw_validate"></span>
+               </div>
             </div>
 
             <div class="enroll-item">
                <div class="left">비밀번호 확인</div>
-               <div class="right"><input type="password" class="CMember" id="CMemberPwCk" name="CMemberPw"/></div>
+               <div class="right">
+               		<input type="password" class="CMember" id="CMemberPwCk" name="CMemberPw" required/>
+               		<span id="password_result"></span>
+               </div>
             </div>
             <div class="enroll-item">
                <div class="left">담당자 이름</div>
-               <div class="right"><input type="text" class="CMember" id="CMemberName" name="CMemberName"/></div>
+               <div class="right">
+               		<input type="text" class="CMember" id="CMemberName" name="CMemberName"/>
+               
+               </div>
             </div>
             <div class="enroll-item">
                <div class="left">담당자 연락처</div>
-               <div class="right"><input type="text" class="CMember" id="CMemberPhone" name="CMemberPhone"/></div>
+               <div class="right"><input type="text" class="CMember" id="CMemberPhone" name="CMemberPhone" /></div>
             </div>
 
             <div class="enroll-item">
@@ -137,87 +156,86 @@
 </section>
 <script>
 
-   //회원가입 유효성 검사
-   const signupFrm = $('.signup-frm');
-   const signupPw = $('.signup-frm #CMemberPw');
-   const signupPwCk = $('.signup-frm #CMemberPwCk');
-   const signupId = $('.signup-frm #CMemberId');
-   const signupEmail = $('.signup-frm #emailCksub');
-   const signupPhone = $('.signup-frm #CMemberPhone');
-
-   const validationMsg = $('.validation-msg');
-   const signupInputs = $('.validation-msg').prev();
-   const idAvail = $('#idAvail');
-
-   //회원가입 submit시 체크
-   $(() => {
-      signupFrm.on('submit', e => {
-         let invalidCount = 0;
-
-         checkBlank();
-         if (!idRegExpValid(e)) invalidCount++;
-         if (idAvail.val() == 'false') invalidCount++;
-         if (!pwRegExpValid(e)) invalidCount++;
-         if (!emailRegExpValid(e)) invalidCount++;
-         if (!pwCkValid(e)) invalidCount++;
-         if (!phoneRegExpValid(e)) invalidCount++;
-
-         if (invalidCount == 0) {
-            console.log('됩니까?');
-            return true;
-         }
-         else {
-            alert('회원가입 양식에 수정이 필요합니다.');
-            return false;
-         }
-      });
-   });
-
-   //아이디 중복체크
-   const idAvailAjax = (e) => {
-      $.ajax({
-         url: '${path}/checkId?memberId=' + signupId.val(),
-         type: 'get',
-         dataType: 'text',
-         success: data => {
-            if (data == 'true') {
-               idAvail.val('false');
-               $(e.target).next().css('color', 'crimson');
-               $(e.target).next().text('해당 아이디가 이미 존재합니다.');
+$(document).ready(function(){	
+	$('#CMemberId').blur(function(){
+		var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		var CMemberId=$('#CMemberId').val();
+		
+		if(CMemberId.trim()==""){
+			$("#id-result-div").show();
+			$("#id_result").html("아이디를 입력해주세요").css('color', 'red');
+			$('#CMemberId').focus();
+		}else if(CMemberId.indexOf(" ")>=0){
+			$("#id-result-div").show();
+			$("#id_result").html("아이디에는 공백이 들어갈 수 없습니다.").css('color', 'red');
+			$('#CMemberId').focus();
+		}/* else if(emailRegex.test(CMemberId)==false){
+			$("#id-result-div").show();
+			$("#id_result").html("이메일 형식이 올바르지 않습니다.").css('color', 'red');
+			$('#CMemberId').focus();
+		 */}else{
+			$.ajax({
+				type:"POST",
+				url: "${path}/member/checkId?CMemberId="+CMemberId,
+				success:function(result){
+					$("#id-result-div").show();
+					if(result!=0){							
+						$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');					
+					}else{							
+						$("#id_result").html("사용 가능한 아이디입니다.").css('color', 'green');					
+					}
+				},error:function(error){
+					$("#id_result").html("error");
+				}
+			});
+		}		
+	});
+});
 
 
-            }
-            else {
-               idAvail.val('true');
-               $(e.target).next().css('color', 'green');
-               $(e.target).next().text('사용가능한 아이디입니다.');
+//정규식
+$(document).ready(function(){
+	$("#CMemberPw").keyup(function(){
+		var pw=$('#CMemberPw').val();
+		
+		var checkSpe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?-]/gi);
+		var checkNumber = pw.search(/[0-9]/g);
+		var checkEnglish = pw.search(/[a-z]/ig);
+		
+		console.log(checkSpe);
+		
+		if(checkEnglish<0 || checkNumber<0 || checkSpe<0) {
+			$('#pw_validate').html("영문+숫자+특수문자").css('color', 'red');
+			$('#CMemberPw').focus();
+		}else if(pw.trim().length<8 || pw.trim().length>20){
+			$('#pw_validate').html("8자리 이상 20자리 이하로 입력해주세요.").css('color', 'red');
+			$('#CMemberPw').focus();
+		}else if(pw.indexOf(" ")>=0){
+			$('#pw_validate').html("공백 입력 불가").css('color', 'red');
+			$('#CMemberPw').focus();
+		}else{
+			$('#pw_validate').html("사용 가능한 비밀번호입니다.").css('color', 'green');
+		}	
+	
+	});
+});
 
-               $(e.target).parent().next().children().show();
-
-            }
-         }
-      });
-   }
-
-   //회원가입란 공백체크
-   const checkBlank = () => {
-      for (let i = 0; i < signupInputs.length; i++) {
-         if (signupInputs[i].value.trim().length == 0) {
-            signupInputs[i].focus();
-            return;
-         }
-      }
-   }
-
-   //아이디 정규식
-   const idRegExpValid = (e) => {
-      if (signupId.val().length == 0) return;
-
-      const regex = new RegExp('^[a-zA-Z][a-zA-Z0-9]{3,11}$');
-      const result = regex.test(signupId.val());
-      if (!result) $(e.target).next().css('color', 'crimson').text('잘못된 아이디 문자 조합입니다.');
-      return result;
-   }
+$(document).ready(function(){
+	
+	$("#CMemberPwCk").blur(function(){
+		
+		var password=$('#CMemberPw').val();
+		var password2=$('#CMemberPwCk').val();	
+		
+		if(password.trim()!=password2.trim()){
+			$('#password_result').html("비밀번호가 일치하지 않습니다.").css('color', 'red');
+			$('#CMemberPwCk').focus();
+		}else{
+			$('#password_result').html("비밀번호가 일치합니다.").css('color', 'green');	
+		}		
+	});
+});
+   
    
  //체크박스 전체선택 및 전체해제
    $("#ACCEPT_TERMS").click(function(){
