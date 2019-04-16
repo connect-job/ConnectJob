@@ -6,6 +6,25 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <script>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	function fn_paging(cPage) {
+   		window.location.href="${path}/notice.do?cPage=" + cPage;
+   	}
+	
+	function checkSearch(){
+		if($('#select').val()==null){
+			alert("옵션을 선택하세요");
+			return false;
+		}
+		if($('#searchKey').val().length==0){
+			alert("검색할 키워드를 입력하세요");
+			return false;
+		}	
+	}
+	
+=======
 	$(function(){		
 		var searchTitle=$('#search-title');
 		var searchContent=$('#search-content');		
@@ -23,12 +42,78 @@
 		 $('#searchType').trigger("change"); 
 	});
 	
+=======
+
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	function fn_paging(cPage) {
    		window.location.href="${path}/notice.do?cPage=" + cPage;
    	}
+<<<<<<< HEAD
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+	
+	function checkSearch(){
+		if($('#select').val()==null){
+			alert("옵션을 선택하세요");
+			return false;
+		}
+		if($('#searchKey').val().length==0){
+			alert("검색할 키워드를 입력하세요");
+			return false;
+		}	
+	}
+	
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 </script>
 
  <section>    
+<<<<<<< HEAD
+<<<<<<< HEAD
+	<div id="notice-container">
+
+		<div class="notice-title">공지사항　|　NOTICE</div>
+
+		<div class="notice-write">관리자일 때만 보여짐　　<input type="button" value="글쓰기" onclick="location.href='${path}/notice/noticeForm'"/></div>
+
+		<div class="notice-top-list">
+			<c:forEach var="noticeTop" items="${topList }">
+				<div class="item-top">
+					<div class="head">NOTICE</div>
+					<dlv class="title"><a href="${path }/notice/noticeView?notice_no=${noticeTop.notice_no}">${noticeTop.title}</a></dlv>
+					<div class="date">${noticeTop.notice_date}</div>
+				</div>
+			</c:forEach>
+		</div>
+
+		<div class="notice-search">
+			<form method="post" action="${path }/notice/noticeSearch" onsubmit="return checkSearch();">			
+				<select name="searchType" id="select">
+					<option value="none" disabled selected>검색타입</option>
+					<option value="title" <c:if test="${map.searchType eq 'title'}">selected</c:if>>제목</option>
+					<option value="content"<c:if test="${map.searchType eq 'content'}">selected</c:if>>내용</option>
+				</select>
+			
+				<input type="text" id="searchKey" name="searchKey" value="${map.searchKey!=null?map.searchKey:''}"/>
+				<input type="submit" value="검색">			
+			</form>
+		</div>
+
+		<div class="notice-list">
+			<c:forEach var="notice" items="${list }">
+				<div class="list-item">
+					<div class="no">${notice.notice_no}</div>
+					<div class="title"><a href="${path }/notice/noticeView?notice_no=${notice.notice_no}">${notice.title }</a></div>
+					<div class="date">${notice.notice_date }</div>
+				</div>
+         	</c:forEach> 
+		</div>
+
+		<div id="pageBar" class="notice-bottom">
+				${pageBar }
+		</div>
+
+	</div>
+=======
     	   	  	
  	<table>
  		<%-- <c:if test="${loginMember!=null && loginMember.p_id eq 'admin@admin.com' }"> --%>
@@ -88,5 +173,52 @@
 	</div> 
               
 	
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+	<div id="notice-container">
+
+		<div class="notice-title">공지사항　|　NOTICE</div>
+
+		<div class="notice-write">관리자일 때만 보여짐　　<input type="button" value="글쓰기" onclick="location.href='${path}/notice/noticeForm'"/></div>
+
+		<div class="notice-top-list">
+			<c:forEach var="noticeTop" items="${topList }">
+				<div class="item-top">
+					<div class="head">NOTICE</div>
+					<dlv class="title"><a href="${path }/notice/noticeView?notice_no=${noticeTop.notice_no}">${noticeTop.title}</a></dlv>
+					<div class="date">${noticeTop.notice_date}</div>
+				</div>
+			</c:forEach>
+		</div>
+
+		<div class="notice-search">
+			<form method="post" action="${path }/notice/noticeSearch" onsubmit="return checkSearch();">			
+				<select name="searchType" id="select">
+					<option value="none" disabled selected>검색타입</option>
+					<option value="title" <c:if test="${map.searchType eq 'title'}">selected</c:if>>제목</option>
+					<option value="content"<c:if test="${map.searchType eq 'content'}">selected</c:if>>내용</option>
+				</select>
+			
+				<input type="text" id="searchKey" name="searchKey" value="${map.searchKey!=null?map.searchKey:''}"/>
+				<input type="submit" value="검색">			
+			</form>
+		</div>
+
+		<div class="notice-list">
+			<c:forEach var="notice" items="${list }">
+				<div class="list-item">
+					<div class="no">${notice.notice_no}</div>
+					<div class="title"><a href="${path }/notice/noticeView?notice_no=${notice.notice_no}">${notice.title }</a></div>
+					<div class="date">${notice.notice_date }</div>
+				</div>
+         	</c:forEach> 
+		</div>
+
+		<div id="pageBar" class="notice-bottom">
+				${pageBar }
+		</div>
+
+	</div>
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 </section>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

@@ -22,11 +22,11 @@
 		</div>
 		
 		<div id="memberEnroll" class="tab-content current">
-			<form id="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post">
+			<form id="memberEnrollFrm" action="${path}/member/memberEnrollEnd.do" method="post" onsubmit="fn_checkForm()">
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="p_id" id="p_id" autocomplete="off" placeholder="이메일 아이디"/>																				
+						<input type="email" name="p_id" id="p_id" autocomplete="off" placeholder="이메일 아이디" required/>																										
 					</div>
 				</div>
 				
@@ -56,42 +56,52 @@
 				<div class="enroll-item msgdiv">
 					<div class="left">이름</div>
 					<div class="right">
-						<input type="text" name="p_name"/>
-						<%-- <input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
-						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/> --%>
+						<input type="text" name="p_name" autocomplete="off" required/>
+						<span id="name_result"></span>
+					</div>
+				</div>
+				
+				<div class="enroll-item msgdiv">
+					<div class="left">닉네임</div>
+					<div class="right">
+						<input type="text" name="nickname" autocomplete="off" required/>
+						<span id="nickname_result"></span>
 					</div>
 				</div>		
 
 				<div class="enroll-item">
 					<div class="left">성별</div>
 					<div class="right">
-						<input type="radio" name="gender" value="M" />남
+						<input type="radio" name="gender" value="M" checked/>남
 						<input type="radio" name="gender" value="F" />여
 					</div>
 				</div>
 				
 				<div class="enroll-item">
 					<div class="left">연락처</div>
-					<div class="right"><input type="phone" name="phone" autocomplete="off" /></div>
+					<div class="right">
+						<input type="phone" name="phone" autocomplete="off" required/>
+						<span id="phone_result"></span>
+					</div>
 				</div>				
 				
 				<div class="enroll-text">
 					<b>약관동의</b></br>
 				</div>
 				<div class="enroll-text">
-					<div>전체동의<input type="checkbox" class="chk" id="chk_all" /></div>
+					<div>전체동의<input type="checkbox" class="chk" id="chk_all" value="ACCEPT_TERMS_ALL"/></div>
 				</div>
 				<div class="enroll-text">
-					<div>기업회원 약관에 동의<input type="checkbox" class="chk" name="chk" id="ch2" /></div>
+					<div>기업회원 약관에 동의<input type="checkbox" class="chk" name="chk" id="memberAccept" /></div>
 				</div>
 				<div class="enroll-text">
-					<div>개인정보 수집 및 이용에 동의<input type="checkbox" class="chk" name="chk" id="ch3" /></div>
+					<div>개인정보 수집 및 이용에 동의<input type="checkbox" class="chk" name="chk" id="memberAccept" /></div>
 				</div>
 				<div class="enroll-text">
-					<div>마케팅 정보 수신 동의 - 이메일 (선택)<input type="checkbox" class="chk" name="chk" id="ch4" /></div>
+					<div>마케팅 정보 수신 동의 - 이메일 (선택)<input type="checkbox" class="chk" name="chk" id="memberAccept" /></div>
 				</div>
 				<div class="enroll-text">
-					<div>마케팅 정보 수신 동의 - SMS/MMS (선택)<input type="checkbox" class="chk" name="chk" id="ch5" /></div>
+					<div>마케팅 정보 수신 동의 - SMS/MMS (선택)<input type="checkbox" class="chk" name="chk" id="memberAccept" /></div>
 				</div>
 				<div class="enroll-text">
 					<div>개인정보 제 3자 제공 및 위탁사항 이용약관</div>
@@ -105,7 +115,48 @@
 </section>
 
 <script>
-
+$(function(){
+	$('[name=p_name]').blur(function(){
+		var p_name=$('[name=p_name]').val();
+		if(p_name.trim()==""){
+			$('#name_result').html('이름을 입력해주세요').css('color', 'red');
+			$('[name=p_name]').focus();
+		}else{
+			$('#name_result').hide();
+		}
+	});
+	$('[name=nickname]').blur(function(){
+		var nickname=$('[name=nickname]').val();
+		if(nickname.trim()==""){
+			$('#nickname_result').html('닉네임을 입력해주세요').css('color', 'red');
+			$('[name=nickname]').focus();
+		}else{
+			$.ajax({
+				type:"POST",
+				url: "${path}/member/checkNick?nickname="+nickname,
+				success:function(result){
+					if(result!=0){							
+						$("#nickname_result").html("사용 불가능한 닉네임입니다.").css('color', 'red');					
+					}else{							
+						$("#nickname_result").html("사용 가능한 닉네임입니다.").css('color', 'green');					
+					}
+				},error:function(error){
+					$("#nickname_result").html("error");
+				}
+			
+			});	
+		}
+	});
+	$('[name=phone]').blur(function(){
+		var nickname=$('[name=phone]').val();
+		if(nickname.trim()==""){
+			$('#phone_result').html('연락처를 입력해주세요').css('color', 'red');
+			$('[name=phone]').focus();
+		}else{
+			$('#phone_result').hide();
+		}
+	});
+});
 
 //아이디 중복체크
 $(document).ready(function(){	
@@ -132,7 +183,8 @@ $(document).ready(function(){
 				success:function(result){
 					$("#id-result-div").show();
 					if(result!=0){							
-						$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');					
+						$("#id_result").html("사용 불가능한 아이디입니다.").css('color', 'red');
+						$('#p_id').focus();
 					}else{							
 						$("#id_result").html("사용 가능한 아이디입니다.").css('color', 'green');					
 					}
@@ -142,6 +194,12 @@ $(document).ready(function(){
 			});
 		}		
 	});
+});
+
+$(function(){
+	$("input:radio[name='gender']:radio[value='M']").prop('checked', true); // 선택하기
+
+	$("input:radio[name='gender']:radio[value='F']").prop('checked', false); // 해제하기
 });
 
 
@@ -187,6 +245,26 @@ $(document).ready(function(){
 		}		
 	});
 });
+
+//체크박스 전체선택 및 전체해제
+$("#chk_all").click(function(){
+    if($("#chk_all").is(":checked")){
+        $(".chk").prop("checked",true);
+    }else{
+        $(".chk").prop("checked",false);
+    }
+});
+
+//한개의 체크박스 선택 해제시 전체선택 체크박스도 해제
+$(".chk").click(function(){
+    if($("input[name='chk']:checked").length == 4){
+        $("#chk_all").prop("checked",true);
+    }else{
+        $("#chk_all").prop("checked",false);
+    }
+});
+
+
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

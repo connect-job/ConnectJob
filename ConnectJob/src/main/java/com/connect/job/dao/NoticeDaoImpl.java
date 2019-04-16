@@ -47,8 +47,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
 
 	@Override
-	public int selectCount() {
-		
+	public int selectCount() {		
 		return session.selectOne("notice.selectCount");
 	}
 

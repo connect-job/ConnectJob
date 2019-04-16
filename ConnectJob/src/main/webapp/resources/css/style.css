@@ -236,8 +236,7 @@ header #notice {
     display: none;
     width: 100%;
     padding-top: 15px;
-    background-color: #eaebf1;
-    color: #222222;
+    background-color: #ffffff;
     font-size: 14px;
     text-align: center;
     height: 33px;
@@ -245,22 +244,34 @@ header #notice {
 }
 
 header #notice:hover {
-    background-color: #b4b9c7;
-    transition: 500ms;
-    color:#fff;
+    transition: 900ms;
+    background-color: #ececec;
+    color: #fff;
 }
 
-header #notice a{
-    color:#000;
+header #notice a {
+    color:#444444;
+}
+
+header #notice a:hover {
+    color:rgb(68, 68, 68);
+    font-weight: normal;
 }
 
 
 header #notice button {
     background: none;
-    color: #fff;
+    color: rgb(77, 77, 77);
     outline: none;
-    border: none;
-    font-size: 15px;
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    border: 1px solid #eee;
+}
+
+header #notice button:hover {
+    color: #757f96;
 }
 
 header  #header-top {
@@ -650,7 +661,6 @@ section #index-container .index-top-right .tab-btn {
 }
 
 section #index-container .index-top-right .tab-btn:hover {
-    background-color: #4c5268;
     color: #fff;
     transition: 500ms;
 }
@@ -727,12 +737,26 @@ section #index-container .index-hire .hire-title {
 }
 
 section #index-container .index-hire #hire-latest .hire-item {
-    border: 2px solid #eee;
     display: inline-block;
-    width: 184px;   
+    cursor: pointer;
+    border: 2px solid #eee;
+    width: 184px;
+    height: 200px;
     margin-right: 8px;
     padding-bottom: 15px;
 }
+
+section #index-container .index-hire #hire-latest .hire-item:hover {
+    border: 2px solid #404861;
+    transition: 900ms;
+}
+
+section #index-container .index-hire #hire-latest .hire-item:hover .item-title {
+    transition: 800ms;
+    color: #2c3142;
+    font-weight: bold;
+}
+
 
 section #index-container .index-hire #hire-latest .hire-item:nth-last-child(1) {
     margin-right: 0;
@@ -741,21 +765,31 @@ section #index-container .index-hire #hire-latest .hire-item:nth-last-child(1) {
 section #index-container .index-hire #hire-latest .hire-item .item-title {
     padding-top: 10px;
     width: 100%;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 section #index-container .index-hire #hire-latest .hire-item .item-sub-title {
     width: 100%;
-    font-size: 14px;
+    font-size: 11px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+section #index-container .index-hire #hire-latest .hire-item .item {
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 6px;
 }
 
 section #index-container .index-hire #hire-latest .hire-item .item-date {
     width: 100%;
-    font-size: 11px;
+    font-size: 12px;
     margin-bottom: 10px;
 }
 
 section #index-container .index-hire #hire-latest .hire-item .item-btn {
+    padding-top: 10px;
     width: 100%;
     font-size: 12px;
 }
@@ -764,7 +798,7 @@ section #index-container .index-hire #hire-latest .hire-item .item-btn button {
     width: 80%;
     height: 28px;
     font-size: 12px;
-    background-color: #464c63;
+    background-color: #404861;
     color: #fff;
     border: none;
     outline: none;
@@ -1228,7 +1262,10 @@ section #enroll-container #memberEnroll .enroll-text-end input {
     margin: 10px;
 }
 
-
+section #enroll-container #companySearchResult {
+    width: 265px;
+    background-color: #fff;
+}
 
 
 /* ------------------------------------------ 마이페이지 */
@@ -1551,7 +1588,8 @@ section #hire-container .hire-cate #search-job ul li {
     display: inline-block;
     padding-left: 15px;
     padding-top: 11px;
-    width: 95px;
+    padding-left: 15px;
+    padding-right: 15px;
     height: 28px;
     font-size: 12px;
     margin-bottom: 2px;
@@ -1651,15 +1689,16 @@ section #hire-container .hire-cate #search-etc .search_right #etc ul li {
 }
 
 section #hire-container .hire-cate #search_selected {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
     display: block;
     text-align: center;
     width: 100%;
-    height: 30px;
 }
 
 section #hire-container .hire-cate #search_selected #select_left {
     padding-left: 5px;
-    float: left;
+    display: inline-block;
     text-align: left;
     width: 80%;
 }
@@ -1685,7 +1724,9 @@ section #hire-container .hire-cate #search_selected #select_left button:hover {
 
 
 section #hire-container .hire-cate #search_selected #select_right {
-    float: right;
+    display: inline-block;
+    text-align: right;
+    width: 19%;
 }
 
 section #hire-container .hire-cate #search_selected #select_right button {
@@ -1715,6 +1756,11 @@ section #hire-container #hire-list .hire-item {
     padding-bottom: 20px;
     padding-top: 20px;
     margin-bottom: 10px;
+}
+
+section #hire-container #hire-list .hire-item:hover {
+    transition: 900ms;
+    border: 1px solid #757b8b;
 }
 
 
@@ -1803,6 +1849,102 @@ section #hire-container #hire-list .hire-item .option button {
 
 
 
+/* ------------------------------------------------- 채용공고 뷰 */
+
+section#hire-view {
+    background-color: rgb(243, 244, 247);
+}
+
+section #hire-view-container {
+    width: 990px;
+    display: inline-block;
+}
+
+section #hire-view-container .view-top {
+    width: 990px;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: left;
+}
+
+section #hire-view-container .view-top .left {
+    display: inline-block;
+    width: 50%;
+    padding-left: 25px;
+    font-size: 20px;
+    text-align: left;
+}
+
+section #hire-view-container .view-top .right {
+    display: inline-block;
+    width: 45%;
+    font-size: 20px;
+    text-align: right;
+}
+
+section #hire-view-container .view-top .right button {
+    background-color: #404861;
+    border: 1px solid #2a3041;
+    color: #fff;
+    border: none;
+    width: 100px;
+    height: 30px;
+}
+
+section #hire-view-container .view-top .right button:nth-child(2) {
+    background-color: #a54242;
+    border: 1px solid #883737;
+}
+
+section #hire-view-container .view-title {
+    font-size: 15px;
+    text-align: left;
+    padding-left: 25px;
+    height: 50px;
+    line-height: 50px;
+}
+
+section #hire-view-container .view-content {
+    background-color: #fff;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+section #hire-view-container .view-content:hover {
+    transition: 900ms;
+    border:2px solid #333946;
+}
+
+section #hire-view-container .view-content .content-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+section #hire-view-container .view-content .content-item button {
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    background-color: #a54242;
+    border: 1px solid #883737;
+}
+
+section #hire-view-container .view-content .content-item .left {
+    width: 25%;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+}
+
+section #hire-view-container .view-content .content-item .right {
+    width: 54%;
+    display: inline-block;
+    text-align: left;
+}
 
 
 /* ------------------------------------------- 기업페이지 */
@@ -2302,11 +2444,7 @@ section #company-container .company-top {
     font-size: 24px;
 }
 
-.selected {
-    transition: 800ms;
-    background-color: #2c3142;
-    color: #fff;
-}
+
 
 section #company-container .company-middle {
     display: inline-block;
@@ -2983,10 +3121,83 @@ section #company-view-container #company-view-content .view-right #right-company
 section #company-view-container #company-view-content .view-right #right-company-hire {
     margin-top: 5px;
     margin-bottom: 5px;
-    width: 100%;
-    height: 200px;
+    width: 855px;
     border: 1px solid #d3d3d3;
     background-color: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item {
+    cursor: pointer;
+    border: 2px solid #eee;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-right: 8px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item:hover {
+    border: 2px solid #404861;
+    transition: 900ms;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item:hover .item-title {
+    transition: 800ms;
+    color: #2c3142;
+    font-weight: bold;
+}
+
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item:nth-last-child(1) {
+    margin-right: 0;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item .item-title {
+    padding-top: 10px;
+    width: 100%;
+    font-size: 15px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item .item-sub-title {
+    width: 100%;
+    font-size: 11px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item .item {
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item .item-date {
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item .item-btn {
+    padding-top: 10px;
+    width: 100%;
+    font-size: 12px;
+}
+
+section #company-view-container #company-view-content .view-right #right-company-hire .hire-item .item-btn button {
+    width: 80%;
+    height: 28px;
+    font-size: 12px;
+    background-color: #464c63;
+    color: #fff;
+    border: none;
+    outline: none;
 }
 
 section #company-view-container #company-view-content .view-right #right-company-news {
@@ -3795,6 +4006,8 @@ section #senier-container .senier-middle .comment-item .date {
 
 /* ------------------------- 내 이력서  -------------------- */
 
+
+
 section #resume-container {
     width: 990px;
     display: inline-block;
@@ -3811,9 +4024,24 @@ section #resume-container .resume-top {
 }
 
 section #resume-container .resume-content {
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 25px;
+    border-radius: 6px;
     text-align: left;
-    line-height: 35px;
+    line-height: 30px;
+    font-size: 13px;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    background-color: #64697a;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #fff;
 }
 
 section #resume-container .resume-sub {
@@ -3823,31 +4051,46 @@ section #resume-container .resume-sub {
 section #resume-container .resume-sub .sub-item {
     display: inline-block;
     background-color: #eee;
+    border:1px solid #dbdbdb;
     border-radius: 100px;
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     margin: 25px;
 }
 
 section #resume-container .resume-sub .sub-item .item-title {
     margin-top: 30px;
     font-size: 13px;
-    font-weight: bold;
 }
 
 section #resume-container .resume-sub .sub-item .item-content {
     padding-top: 5px;
-    font-size: 28px;
+    font-size: 35px;
     color: #404861;
 }
 
 section #resume-container .list-header {
+    width: 990px;
     margin-top: 20px;
-    padding-left: 25px;
     text-align: left;
     padding-top: 15px;
     font-size: 24px;
     height: 50px;
+}
+
+section #resume-container .list-header .left {
+    text-align: left;
+    padding-left: 25px;
+    display: inline-block;
+    width: 50%;
+}
+
+
+section #resume-container .list-header .right {
+    text-align: right;
+    display: inline-block;
+    width: 45%;
+    
 }
 
 section #resume-container .list-header button {
@@ -3855,6 +4098,7 @@ section #resume-container .list-header button {
     width: 120px;
     height: 33px;
     outline: none;
+    border: 1px solid #404861;
     background-color: #404861;
     color: #fff;
 }
@@ -3869,17 +4113,104 @@ section #resume-container .list-header button:hover {
 section #resume-container #resume-list {
     margin-top: 20px;
     display: inline-block;
-    width: 900px;
-    border: 1px solid #cfcfcf;
-    padding-top: 15px;
+    width: 990px;
     padding-bottom: 15px;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #dbdbdb;
 }
+
+section #resume-container #resume-list .list-item-top {
+    background-color: #eee;
+    border-bottom: 1px solid #dbdbdb;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 20px;
+}
+
+section #resume-container #resume-list .list-item-top .item1 {
+    vertical-align: top;
+    display: inline-block;
+    width: 50%;
+}
+section #resume-container #resume-list .list-item-top .item2 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+section #resume-container #resume-list .list-item-top .item3 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+section #resume-container #resume-list .list-item-top .item4 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+section #resume-container #resume-list .list-item-top .item5 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+
+
+
+section #resume-container #resume-list .list-item {
+    display: inline-block;
+    width: 950px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 13px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+section #resume-container #resume-list .list-item button {
+    vertical-align: top;
+    height: 28px;
+}
+
+section #resume-container #resume-list .list-item:hover {
+    transition: 900ms;
+    border: 1px solid #4b546e;
+}
+
+section #resume-container #resume-list .list-item .item1 {
+    vertical-align: top;
+    display: inline-block;
+    width: 50%;
+}
+section #resume-container #resume-list .list-item .item2 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+section #resume-container #resume-list .list-item .item3 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+section #resume-container #resume-list .list-item .item4 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+section #resume-container #resume-list .list-item .item5 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+
+
 
 section #resume-container .sub-title {
     border-radius: 3px;
     background-color: #f1f1f1;
     color: #000;
-    font-size: 16px;
+    font-size: 18px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 25px;
@@ -3890,7 +4221,19 @@ section #resume-container .sub-title {
 }
 
 section #resume-container button {
-    background-color: #404861;
+    margin: 10px;
+    background-color: #474e62;
+    border: 1px solid rgb(50, 56, 75);
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 120px;
+    height: 35px;
+}
+
+section #resume-container button.delete {
+    background-color: #a75252;
+    border: 1px solid #914848;
     color: #fff;
     border: none;
     outline: none;
@@ -3899,7 +4242,17 @@ section #resume-container button {
 }
 
 section #resume-container .view-content {
+    padding-top: 20px;
     width: 100%;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+section #resume-container .view-content:hover {
+    transition: 700ms;
+    border: 2px solid #5f6579;
 }
 
 section #resume-container .view-content .view-top {
@@ -3907,11 +4260,14 @@ section #resume-container .view-content .view-top {
 }
 
 section #resume-container .view-content .view-top .top-left {
+    vertical-align: top;
     display: inline-block;
     width: 200px;
 }
 
 section #resume-container .view-content .view-top .top-right {
+    padding-top: 10px;
+    vertical-align: top;
     display: inline-block;
     width: 700px;
     text-align: left;
@@ -3938,16 +4294,16 @@ section #resume-container .view-content .view-top .top-right .right-item .item-r
 section #resume-container .item {
     margin-top: 5px;
     margin-bottom: 5px;
-    width: 100%;
+    width: 990px;
     display: inline-block;
 }
 
 section #resume-container .item .left {
     display: inline-block;
-    width: 15%;
+    width: 20%;
     padding-top: 10px;
     height: 30px;
-    padding-left: 25px;
+    padding-left: 15px;
     text-align: left;
 }
 
@@ -3990,6 +4346,17 @@ section #resume-container .item .right input[type=text] {
     outline: none;
 }
 
+section #resume-container .item .right input[type=month] {
+    vertical-align: top;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    border: 2px solid #eee;
+    width: 150px;
+    outline: none;
+}
+
 section #resume-container .item .right input[type=email] {
     vertical-align: top;
     padding-left: 15px;
@@ -4012,12 +4379,25 @@ section #resume-container .item .right input[type=date] {
     outline: none;
 }
 
+section #resume-container .item .right input[type=file] {
+    vertical-align: top;
+    padding-left: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 13px;
+    border: none;
+    background-color: #404861;
+    color: #fff;
+    width: 100px;
+    outline: none;
+}
+
 
 section #resume-container .item .right select {
     vertical-align: top;
     padding-left: 15px;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     font-size: 13px;
     width: 200px;
     border: 2px solid #eee;
@@ -4544,6 +4924,227 @@ section #notice-container .notice-content .notice-item-content .right {
 }
 
 
+/* ------------------------------------------------------- 관리자 */
+
+section #admin-container{
+    display: inline-block;
+    width: 990px;
+}
+
+section #admin-container .admin-left {
+    position: fixed;
+    float:left;
+    vertical-align: top;
+    width: 200px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    font-size: 13px;
+    text-align: left;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+
+section #admin-container .admin-left .menu-top {
+    font-size: 22px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+section #admin-container .admin-left ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+section #admin-container .admin-left ul li {
+    cursor: pointer;
+    width: 79%;
+    line-height: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #e7e7e7;
+    margin-bottom: 5px;
+}
+
+section #admin-container .admin-left ul li span {
+    float: right;
+    vertical-align: top;
+}
+
+
+section #admin-container .menu a { cursor:pointer; }
+
+section #admin-container .menu ul.hide { 
+    display:none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+section #admin-container .menu ul.hide li { 
+    height: 30px;
+    line-height: 30px;
+    border: none;
+}
+
+
+
+section #admin-container .admin-right {
+    float: right;
+    vertical-align: top;
+    padding-left: 15px;
+    width: 74%;
+    text-align: left;
+}
+
+
+
+section #admin-container .admin-right .admin-title {
+    margin-top: 25px;
+    width: 700px;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+}
+
+section #admin-container .admin-right .admin-item-top {
+    margin-top: 10px;
+    vertical-align: top;
+    text-align: center;
+    width: 715px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #eee;
+}
+
+section #admin-container .admin-right .admin-item-top .item1{
+    width: 150px;
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-item-top .item2{
+    width: 400px;
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-item-top .item3{
+    width: 150px;
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-item-top .item4{
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-item {
+    cursor: pointer;
+    vertical-align: top;
+    text-align: center;
+    width: 715px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 12px;
+}
+
+section #admin-container .admin-right .admin-item button {
+    width: 90px;
+    height: 30px;
+    background-color: #495368;
+    border: 1px solid #333946;
+    outline: none;
+    color :#fff;
+}
+
+section #admin-container .admin-right .admin-item:hover {
+    background-color: rgb(246, 246, 246);
+    transition: 400ms;
+}
+
+section #admin-container .admin-right .admin-item .item1{
+    width: 150px;
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-item .item2{
+    width: 400px;
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-item .item3{
+    width: 150px;
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-item .item4{
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-content {
+    font-size: 13px;
+    width: 715px;
+}
+
+section #admin-container .admin-right .admin-content .left {
+    vertical-align: top;
+    text-align: center;
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+}
+
+section #admin-container .admin-right .admin-content .right {
+    display: inline-block;
+    padding-left: 15px;
+    width: 535px;
+    line-height: 40px;
+}
+
+section #admin-container .admin-right .admin-content select {
+    width: 40%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-size:12px;
+    border: 1px solid #eee;
+    outline: none;
+}
+
+
+section #admin-container .admin-right .admin-one {
+    vertical-align: top;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+section #admin-container .admin-right .admin-one .one-item {
+    text-align: center;
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    border-radius: 100px;
+    border: 1px solid #eee;
+    margin: 15px;
+}
+
+section #admin-container .admin-right .admin-one .one-item .one-top {
+    padding-top: 15px;
+}
+
+section #admin-container .admin-right .admin-one .one-item .one-bottom {
+    padding-top: 15px;
+    font-size: 35px;
+}
+
+
+/* ------------------------------------------------------------------------ */
 
 
 footer {

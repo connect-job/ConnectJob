@@ -2,6 +2,8 @@ package com.connect.job.service;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
+
 import com.connect.job.model.vo.HireNoti;
 
 
@@ -26,8 +28,8 @@ public interface HireNotiService {
 	int selectHireNotiCountAjax(HireNoti h);
 
 	List<HireNoti> selectLatest();
-	List<HireNoti> selectAllList(); //달력에서 쓸 리스트
 	
+	List<HireNoti> selectAllList();
 
 	
 }

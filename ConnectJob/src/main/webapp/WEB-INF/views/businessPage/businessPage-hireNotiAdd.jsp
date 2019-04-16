@@ -28,7 +28,7 @@
                     <ul class="hide">
                         <li><a href="${path }/hireNotiAdd.do">채용공고등록</a></li>
                         <li><a href="${path }/hireNotiAll.do">전체공고</a></li>
-                        <li><a href="#">진행 중 공고</a></li>
+                        <li><a href="${path }/hireNoti">진행 중 공고</a></li>
                         <li><a href="#">대기 중 공고</a></li>
                         <li><a href="#">마감 된 공고</a></li>
                     </ul>
@@ -37,26 +37,26 @@
                 <li class="menu">
                     인재관리<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
-                        <li><a href="#">전체 인재정보</a></li>
-                        <li><a href="#">자사 지원 인재정보</a></li>
-                        <li><a href="#">공개 인재정보</a></li>
-                        <li><a href="#">매칭 인재정보</a></li>
+                        <li><a href="${path }/AllResume.do">전체 인재정보</a></li>
+                        <li><a href="${path }/comResume.do">자사 지원 인재정보</a></li>
+                        <li><a href="${path }/openResume.do">공개 인재정보</a></li>
+                        <li><a href="${path }/matchResume.do">매칭 인재정보</a></li>
                     </ul>
                 </li>
 
                 <li class="menu">
                     기업정보수정<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
-                        <li><a href="#">기업정보수정</a></li>
-                        <li><a href="#">담당자 정보 수정</a></li>
-                        <li><a href="#">비밀번호 변경</a></li>
+                        <li><a href="/updateI.do">기업정보수정</a></li>
+                        <li><a href="/cMemberUpdate.do">담당자 정보 수정</a></li>
+                        <li><a href="/updatePw.do">비밀번호 변경</a></li>
                     </ul>
                 </li>
 
                 <li class="menu">
                     기업리뷰<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
-                        <li><a href="#">기업 리뷰 조회</a></li>
+                        <li><a href="/review.do">기업 리뷰 조회</a></li>
                     </ul>
                 </li>
             </ul>
@@ -183,8 +183,8 @@
                     <div class="item-left">성별</div>
                     <div class="item-right">
                         <label><input type="radio" name="hnGender" value="성별무관" />성별무관</label>
-                        <label><input type="radio" name="hnGender" value="M" />남</label>
-                        <label><input type="radio" name="hnGender" value="F" />여</label>
+                        <label><input type="radio" name="hnGender" value="남자" />남</label>
+                        <label><input type="radio" name="hnGender" value="여자" />여</label>
                     </div>
                 </div>
                 <div class="biz-item">
@@ -333,7 +333,7 @@
                         <input type="text" style="width: 150px" name="startDate" id="testDatepickers" />시작일
                         ~
                         <input type="text" style="width: 150px" name="endDate" id="testDatepickere" />마감일
-                        　<label><input type="checkbox" name="hnEve" value="" default="N" />상시 접수</label>
+                        　<label><input type="checkbox" name="hnEve" value="Y"/>상시 접수</label>
                     </div>
                 </div>
                 
@@ -351,7 +351,7 @@
 	                        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 	                        currentText: '오늘날짜',
 	                        closeText: '닫기',
-	                        dateFormat: "yy.mm.dd",
+	                        dateFormat: "yy-mm-dd",
 	                        minDate: 0
 	                    });
 	
@@ -366,7 +366,7 @@
 	                        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 	                        currentText: '오늘날짜',
 	                        closeText: '닫기',
-	                        dateFormat: "yy.mm.dd",
+	                        dateFormat: "yy-mm-dd",
 	                        minDate: 0
 	                    });
 	                });

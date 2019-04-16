@@ -2,23 +2,72 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 	<insert id="insertMember" parameterType="member">
+<<<<<<< HEAD
+<<<<<<< HEAD
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, default, null, null, #{nickname})
+=======
 		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, #{final_edu}, #{school}, #{major}, default, default, null, null)
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, default, 'N', null, null, null)
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	</insert>
 	
+<<<<<<< HEAD
 	<insert id="insertMemberKakao" parameterType="member">
+<<<<<<< HEAD
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, #{kakao_id}, 'Y', #{nickname})
+=======
 		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, #{final_edu}, #{school}, #{major}, default, default, #{kakao_id}, 'Y')
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 	</insert>
+=======
+	<insert id="insertMemberSns" parameterType="member">
+		insert into p_member values
+		<choose>
+			<when test="is_sns == 'kakao'">
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, #{kakao_id}, null, null)
+			</when>
+			<when test="is_sns == 'google'">
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, #{google_id}, null)
+			</when>
+			<when test="is_sns == 'naver'">
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, null, #{naver_id})
+			</when>
+		</choose>
+
+	</insert>
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	
+<<<<<<< HEAD
 	<select id="selectOne" resultType="member">
-		select * from p_member where p_id=#{p_id}
+		select * from p_member where p_id = #{p_id}
+=======
+	<select id="selectOne" resultType="member">
+		select * from p_member where p_id = #{p_id}
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	</select>
 	
-	<select id="selectOneKakao" resultType="member">
-		select * from p_member where kakao_id = #{kakao_id}
+	<select id="selectOneSns" resultType="member">
+		select * from p_member WHERE 1=1
+		<choose>
+			<when test="is_sns!=null and is_sns == 'kakao'">
+				and kakao_id = #{kakao_id}
+			</when>
+			<when test="is_sns!=null and is_sns == 'google'">
+				and google_id = #{google_id}
+			</when>
+			<when test="is_sns!=null and is_sns == 'naver'">
+				and naver_id = #{naver_id}
+			</when>
+		</choose>
 	</select>
 	
+
 	<select id="findId" resultType="member" parameterType="member">
 		select * from p_member where phone=#{phone} and p_name=#{p_name}
+<<<<<<< HEAD
+=======
 	</select>
 	
 	<resultMap type="member" id="memberResult">
@@ -28,16 +77,16 @@
 		<result column="gender" property="gender"/>
 		<result column="phone" property="phone"/>
 		<result column="is_sns" property="is_sns"/>
-		<result column="final_edu" property="final_edu"/>
-		<result column="school" property="school"/>
-		<result column="major" property="major"/>
-		<result column="is_confirm" property="is_confirm"/>
 		<result column="enroll_date" property="enroll_date"/>
 		<result column="email_confirm" property="email_confirm"/>
+		<result column="kakao_id" property="kakao_id"/>
+		<result column="google_id" property="google_id"/>
+		<result column="naver_id" property="naver_id"/>
 	</resultMap>
-	
-	<select id="selectList" resultType="member">
+
+	<select id="selectList" resultMap="memberResult">
 		SELECT * FROM P_MEMBER
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 	</select>
 	
 	<delete id="deleteMember" parameterType="member">
@@ -45,15 +94,23 @@
 	</delete>
 	
 	<update id="updateMember" parameterType="member">
-		update p_member set p_name=#{p_name}, phone=#{phone}, final_edu=#{final_edu}, school=#{school}, major=#{major} where p_id=#{p_id}
+<<<<<<< HEAD
+		update p_member set p_name=#{p_name}, phone=#{phone}, nickname=#{nickname} where p_id=#{p_id}
+=======
+		update p_member set p_name=#{p_name}, phone=#{phone} where p_id=#{p_id}
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	</update>
 	
 	<update id="updatePw" parameterType="member">
 		update p_member set password=#{password} where p_id=#{p_id}
 	</update>
 	
-	<select id="selectCount" resultType="_int" parameterType="String">
+	<select id="selectIdCount" resultType="_int" parameterType="String">
 		select count(*) from p_member where p_id=#{p_id}
+	</select>
+	
+	<select id="selectNickCount" resultType="_int" parameterType="String">
+		select count(*) from p_member where nickname=#{nickname}
 	</select>
 	
 	<select id="findPw" resultType="member" parameterType="member">
@@ -94,5 +151,38 @@
 	
 	<delete id="deleteReview" parameterType="_int">
 		select * from company_review where review_no=#{review_no}
+<<<<<<< HEAD
+	</delete>	
+	
+	<resultMap type="member" id="memberResult">
+		<id column="p_id" property="p_id"/>
+		<result column="password" property="password"/>
+		<result column="p_name" property="p_name"/>
+		<result column="gender" property="gender"/>
+		<result column="phone" property="phone"/>
+		<result column="is_sns" property="is_sns"/>
+		<result column="enroll_date" property="enroll_date"/>
+		<result column="kakao_id" property="kakao_id"/>
+		<result column="email_confirm" property="email_confirm"/>
+		<result column="nickname" property="nickname"/>
+	</resultMap>	
+	
+	<select id="selectList" resultType="member">
+		SELECT * FROM P_MEMBER order by p_id
+	</select>
+	
+	<select id="selectCount" resultType="_int">
+		select count(*) from p_member
+	</select>
+	
+	<select id="searchCount" resultType="_int">	
+		select count(*) from p_member where #{searchType} like '%' || #{searchKey} || '%'
+	</select>
+	
+	<select id="searchList" resultType="member">
+		select * from p_member where #{searchType} like '%' || #{searchKey} || '%'
+	</select>
+=======
 	</delete>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 </mapper>

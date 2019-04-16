@@ -22,7 +22,7 @@
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="p_id" id="p_id" value="${Member.p_id!=null ? Member.p_id : "" }" autocomplete="off" />															
+						<input type="email" name="p_id" id="p_id" value="${Member.p_id!=null ? Member.p_id : '' }" placeholder="이메일 아이디" autocomplete="off" />															
 					</div>
 				</div>
 				
@@ -36,7 +36,7 @@
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
 					<div class="right">
-						<input type="password" name="password" id="pw1" required/>
+						<input type="password" name="password" id="pw1" placeholder="영문+숫자+특수문자 8글자 이상 입력" required/>
 						<span id="pw_validate"></span>						
 					</div>
 				</div>			
@@ -52,16 +52,21 @@
 				<div class="enroll-item msgdiv">
 					<div class="left">이름</div>
 					<div class="right">
-						<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
-						<%-- <input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/> --%>
-						<%-- <input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/> --%>
+						<input type="text" name="p_name"/>						
+					</div>
+				</div>
+				
+				<div class="enroll-item msgdiv">
+					<div class="left">닉네임</div>
+					<div class="right">
+						<input type="text" name="nickname" value="${Member != null ? Member.nickname : '' }" required/>
+						<span id="nickname_result"></span>
 					</div>
 				</div>
 				
 				<div class="enroll-item msgdiv">
 					<div class="left">SNS</div>
-					<div class="right">
-						<%-- <input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/> --%>
+					<div class="right">						
 						<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }" readonly/>
 						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
 						<input type="hidden" name="google_id" value="${Member != null ? Member.google_id : '' }"/>
@@ -112,6 +117,55 @@
 </section>
 
 <script>
+
+$(function(){
+	$("input:radio[name='gender']:radio[value='M']").prop('checked', true); // 선택하기
+
+	$("input:radio[name='gender']:radio[value='F']").prop('checked', false); // 해제하기
+});
+
+$(function(){
+	$('[name=p_name]').blur(function(){
+		var p_name=$('[name=p_name]').val();
+		if(p_name.trim()==""){
+			$('#name_result').html('이름을 입력해주세요').css('color', 'red');
+			$('[name=p_name]').focus();
+		}else{
+			$('#name_result').hide();
+		}
+	});
+	$('[name=nickname]').blur(function(){
+		var nickname=$('[name=nickname]').val();
+		if(nickname.trim()==""){
+			$('#nickname_result').html('닉네임을 입력해주세요').css('color', 'red');
+			$('[name=nickname]').focus();
+		}else{
+			$.ajax({
+				type:"POST",
+				url: "${path}/member/checkNick?nickname="+nickname,
+				success:function(result){
+					if(result!=0){							
+						$("#nickname_result").html("사용 불가능한 닉네임입니다.").css('color', 'red');					
+					}else{							
+						$("#nickname_result").html("사용 가능한 닉네임입니다.").css('color', 'green');					
+					}
+				},error:function(error){
+					$("#nickname_result").html("error");
+				}
+			
+			});	
+		}
+	});
+	$('[name=phone]').blur(function(){
+		var nickname=$('[name=phone]').val();
+		if(nickname.trim()==""){
+			$('#phone_result').html('연락처를 입력해주세요').css('color', 'red');
+			$('[name=phone]').focus();
+		}else{
+			$('#phone_result').hide();
+		}
+	});
+});
 
 //아이디 중복체크
 $(document).ready(function(){	
@@ -192,6 +246,24 @@ $(document).ready(function(){
 			$('#password_result').html("비밀번호가 일치합니다.").css('color', 'green');	
 		}		
 	});
+});
+
+//체크박스 전체선택 및 전체해제
+$("#chk_all").click(function(){
+    if($("#chk_all").is(":checked")){
+        $(".chk").prop("checked",true);
+    }else{
+        $(".chk").prop("checked",false);
+    }
+});
+
+//한개의 체크박스 선택 해제시 전체선택 체크박스도 해제
+$(".chk").click(function(){
+    if($("input[name='chk']:checked").length == 4){
+        $("#chk_all").prop("checked",true);
+    }else{
+        $("#chk_all").prop("checked",false);
+    }
 });
 </script>
 

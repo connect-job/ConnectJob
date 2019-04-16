@@ -2,10 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <section>
+<<<<<<< HEAD
+<<<<<<< HEAD
+	<div id="notice-container">
+=======
 	<table>
 		<tr>
 			<td><input type="button" value="목록" onclick="location.href='${path}/notice.do'"/></td>
@@ -33,10 +37,48 @@
 			</tr>
 		</c:if>		
 	</table>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+	<div id="notice-container">
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 
-			  
+		<div class="notice-title">공지사항　|　NOTICE</div>
+
+		<div class="notice-subtitle">${notice.title }</div>
+
+		<div class="notice-write"><input type="button" value="목록" onclick="location.href='${path}/notice.do'" /></div>
+
+		<div class="notice-content">
+			<div class="notice-item">
+				<div class="left">제목</div>
+				<div class="right">${notice.title }</div>
+			</div>
+			<div class="notice-item">
+				<div class="left">작성자</div>
+				<div class="right">${notice.writer }</div>
+			</div>
+			<div class="notice-item">
+				<div class="left">작성일</div>
+				<div class="right">${notice.notice_date }</div>
+			</div>
+			<div class="notice-item-content">
+				<div class="left">내용</div>
+				<div class="right">${notice.content }</div>
+			</div>
+		</div>
+
+		<div class="notice-write">
+			<c:if test="${loginMember!=null && loginMember.p_id eq 'admin@admin.com' }">
+
+				<input type="button" value="수정"
+					onclick="location.href='${path}/notice/updateForm?notice_no=${notice.notice_no }'" />
+				<input type="button" value="삭제"
+					onclick="location.href='${path}/notice/deleteNotice?notice_no=${notice.notice_no }'" />
+
+			</c:if>
+		</div>
+
+	</div>
 </section>
-<script>
 
-</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

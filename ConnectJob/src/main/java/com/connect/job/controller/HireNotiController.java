@@ -2,9 +2,10 @@ package com.connect.job.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,20 +31,28 @@ public class HireNotiController {
 	// 메인페이지 -> 최신 채용공고
 	@RequestMapping("/hireLatest.do")
 	@ResponseBody
-	public String hireLatest() throws UnsupportedEncodingException {
+	public String hireLatest(HttpServletRequest request) throws UnsupportedEncodingException {
 		String html = "";
 		
 		List<HireNoti> list = service.selectLatest();
 		
-		for(int i=0; i<list.size(); i++) {
-			html += "<div class=\"hire-item\">";
+		for(int i=0; i<5; i++) {
+			html += "<div class=\"hire-item\" onclick=\"location.href=\'" + request.getContextPath() + "/hireNotiView.do?no=" + list.get(i).getHnSeq() + "\'\">";
 			html += "<div class=\"item-title\">";
-			if(list.get(i).getHnTitle().length()>15) {
-				html += list.get(i).getHnTitle().substring(0, 16) + "...</div>";
+			if(list.get(i).getHnTitle().length()>12) {
+				html += list.get(i).getHnTitle().substring(0, 12) + "...</div>";
 			} else {
 				html += list.get(i).getHnTitle() + "</div>";
 			}
 			html += "<div class=\"item-sub-title\">" + list.get(i).getcName() + "</div>";
+			html += "<div class=\"item\">모집부분 : " + list.get(i).getHnCareer() + "</div>"; 
+			html += "<div class=\"item\">경력 : " + list.get(i).getHnForm() + "</div>"; 
+			html += "<div class=\"item\">경력 : " + list.get(i).getHnCareer() + "</div>"; 
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yy년 MM월 dd일");
+			String regDate = sdf.format(list.get(i).getAddDate());
+			
+			html +="<div class=\"item\">등록일 : " + regDate + "</div>";
 			html += "<div class=\"item-btn\"><button>지원하기</button></div>";
 			html += "</div>";
 		}
@@ -126,14 +135,14 @@ public class HireNotiController {
 			return result;
 		} 
 	
-	//채용공고 상세 페이지로 이동
+	//채용공고 제목 누르고 상세 페이지로 이동
 	@RequestMapping("/hireNotiView.do")
 	public String hireNotiView(int no, Model model)
 	{
 		System.out.println("공고번호 : "+no);
 		HireNoti hn = service.selectOne(no);
 		
-		model.addAttribute("list",hn);
+		model.addAttribute("hireNoti",hn);
 		return "hireNoti/hireNoti-selectOne";
 	}
 	

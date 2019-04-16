@@ -126,7 +126,7 @@ public class SocketHandler extends TextWebSocketHandler {
 						continue;
 					}
 					try {
-						session.sendMessage(new TextMessage("작성한 이력서가 없으시네요!<br><button onclick=\"location.href='/job/resume.do'\">지금 이력서 작성하러 가기</button>"));
+						session.sendMessage(new TextMessage("작성한 이력서가 없으시네요!<br><a href='/job/resume.do'\">지금 이력서 작성하러 가기</a>"));
 					} catch (IOException e) {
 						e.printStackTrace();
 					}

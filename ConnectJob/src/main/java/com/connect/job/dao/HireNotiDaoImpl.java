@@ -6,6 +6,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import com.connect.job.model.vo.HireNoti;
 
@@ -15,52 +16,50 @@ public class HireNotiDaoImpl implements HireNotiDao {
 	@Autowired
 	private SqlSessionTemplate session;
 
-	
-	
 	@Override
 	public HireNoti selectOne(int no) {
-
-		return session.selectOne("HireNoti.selectOne",no);
+		return session.selectOne("hireNoti.selectOne",no);
 	}
-	
+
 	@Override
 	public int insertNoti(HireNoti h) {
 
-		return session.insert("HireNoti.insertNoti",h);
+		return session.insert("hireNoti.insertNoti",h);
 	}
 	
 	@Override
 	public List<HireNoti> selectAll(int cPage, int numPerPage) {
 		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
-		return session.selectList("HireNoti.selectAll", null, row);
+		return session.selectList("hireNoti.selectAll", null, row);
 	}
 	
 	@Override
 	public List<HireNoti> selectAllAjax(int cPage, int numPerPage, HireNoti h) {
 		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
-		return session.selectList("HireNoti.selectAllAjax", h, row);
+		return session.selectList("hireNoti.selectAllAjax", h, row);
 	}
 	
 	@Override
 	public int selectHireNotiCount() {
 
-		return session.selectOne("HireNoti.selectHireNotiCount");
+		return session.selectOne("hireNoti.selectHireNotiCount");
 	}
 
 	@Override
 	public int selectHireNotiCountAjax(HireNoti h) {
-		return session.selectOne("HireNoti.selectHireNotiCountAjax", h);
+		return session.selectOne("hireNoti.selectHireNotiCountAjax", h);
 	}
 
 	@Override
 	public List<HireNoti> selectLatest() {
-		return session.selectList("HireNoti.selectAll");
+		return session.selectList("hireNoti.selectAll");
 	}
 
 	@Override
 	public List<HireNoti> selectAllList() {
-		return session.selectList("HireNoti.selectAllList");
+		return session.selectList("hireNoti.selectAllList");
 	}
+	
 	
 	
 	

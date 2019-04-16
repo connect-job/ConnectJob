@@ -2,6 +2,8 @@ package com.connect.job.dao;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
+
 import com.connect.job.model.vo.HireNoti;
 
 public interface HireNotiDao {
@@ -10,8 +12,11 @@ public interface HireNotiDao {
 	List<HireNoti> selectAll(int cPage, int numPerPage);
 	List<HireNoti> selectAllAjax(int cPage, int numPerPage, HireNoti h);
 	int selectHireNotiCount();
-	HireNoti selectOne(int no);
 	int selectHireNotiCountAjax(HireNoti h);
 	List<HireNoti> selectLatest();
+
 	List<HireNoti> selectAllList();
+
+	HireNoti selectOne(int no);
+
 }

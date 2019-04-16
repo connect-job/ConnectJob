@@ -5,8 +5,8 @@
 <div class="item">
 	<div class="left">학교명</div>
 	<div class="right">
-		<input type="hidden" name="schoolFlag" value="중학교">
-		<input type="text" id="schoolName" name="schoolName" required>
+		<input type="hidden" name="schoolFlag" value="중학교 졸업">
+		<input type="text" id="schoolName" name="schoolName" >
 		<input type="checkbox" name="schoolName" value="고입 검정고시" id="noMid">고입 검정고시
 	</div>
 </div>
@@ -14,7 +14,7 @@
 	<div class="left">졸업년도</div>
 	<div class="right">
 		<input type="number" name="graduateYear" id="graduateYear" placeholder="YYYY">
-		<select name="graduateState" required>
+		<select name="graduateState" >
                   <option value="" disabled selected>졸업상태</option>
                   <option value="졸업">졸업</option>
                   <option value="졸업예정">졸업예정</option>

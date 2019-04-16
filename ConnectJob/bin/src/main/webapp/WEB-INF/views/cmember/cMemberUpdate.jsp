@@ -16,11 +16,10 @@
 	    <input type="text" id="updateName"/>이름수정
 	    <input type="text" id="updatePhone"/>연락처
 	    <input type="text" id="updateCPhone"/>기업연락처
-	    <input type="text" id="updateBNum" readonly/>사업자번호
+	    <input type="text" id="updateBNum"/>사업자번호
 	    <input type="text" id="updateDiv"/>기업회원구분
 	    <input type="text" id="updateEmail"/>기업회원담당자 이메일
 	    <input type="button" id="updateComplete" />수정완료
-	    
 	</form>
 	<form action="${path }/cMemberdelete.do">
 		<input type="button" id="deleteCMember"/>회원탈퇴

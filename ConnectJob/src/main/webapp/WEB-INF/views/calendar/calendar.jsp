@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*"%>
+    pageEncoding="UTF-8" import="java.util.*,com.connect.job.model.vo.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -13,40 +13,45 @@
 <script src='${path }/resources/packages/daygrid/main.js'></script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+<%
+	List<HireEvent> eventList=(List<HireEvent>)request.getAttribute("eventList");
+%>
+document.addEventListener('DOMContentLoaded', function() { 
+	 var eventDataSet=[
+		<%for(int i=0;i<eventList.size();i++){
+			if(i<eventList.size()-1){
+		%>
+			{
+				"title":'[<%=eventList.get(i).getSeFlag()%>] <%=eventList.get(i).getCompanyName()%>',
+				"start":'<%=eventList.get(i).getEventDate()%>',
+				<%if(eventList.get(i).getSeFlag().equals("시작")){%>
+				"color":"RGB(71,78,98)"
+				<%}else{%>
+				"color":"RGB(167,82,82)"
+				<%}%>
+			},
+		<%}else{%>
+			{
+				"title":'[<%=eventList.get(i).getSeFlag()%>] <%=eventList.get(i).getCompanyName()%>',
+				"start":'<%=eventList.get(i).getEventDate()%>',
+				<%if(eventList.get(i).getSeFlag().equals("시작")){%>
+				"color":"RGB(71,78,98)"
+				<%}else{%>
+				"color":"RGB(167,82,82)"
+				<%}%>
+			}
+		<%}
+		}%>
+	]; 
+	 console.log(eventDataSet);
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: [ 'interaction', 'dayGrid' ],
-      defaultDate: '2019-03-12',
+      defaultDate: '2019-04-16',
       editable: true,
       eventLimit: true, // allow "more" link when too many events
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2019-03-01'
-        },
-        {
-          title: 'Long Event',
-          start: '2019-03-07',
-          end: '2019-03-10'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2019-03-09T16:00:00'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2019-03-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2019-03-11',
-          end: '2019-03-13'
-        }
-      ]
+      events: eventDataSet
     });
 
     calendar.render();

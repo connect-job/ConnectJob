@@ -8,6 +8,7 @@ import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -128,20 +129,28 @@ public class CompanyController {
 	
 		@RequestMapping("company/companyHire.do")
 		@ResponseBody
-		public String companyHire(int no) throws UnsupportedEncodingException {
+		public String companyHire(HttpServletRequest request, int no) throws UnsupportedEncodingException {
 			String html = "";
 			
 			List<HireNoti> list = service.latestHire(no);
 			
-			for(int i=0; i<list.size(); i++) {
-				html += "<div class=\"hire-item\">";
+			for(int i=0; i<4; i++) {
+				html += "<div class=\"hire-item\" onclick=\"location.href=\'" + request.getContextPath() + "/hireNotiView.do?no=" + list.get(i).getHnSeq() + "\'\">";
 				html += "<div class=\"item-title\">";
-				if(list.get(i).getHnTitle().length()>15) {
-					html += list.get(i).getHnTitle().substring(0, 16) + "...</div>";
+				if(list.get(i).getHnTitle().length()>12) {
+					html += list.get(i).getHnTitle().substring(0, 12) + "...</div>";
 				} else {
 					html += list.get(i).getHnTitle() + "</div>";
 				}
 				html += "<div class=\"item-sub-title\">" + list.get(i).getcName() + "</div>";
+				html += "<div class=\"item\">모집부분 : " + list.get(i).getHnCareer() + "</div>"; 
+				html += "<div class=\"item\">경력 : " + list.get(i).getHnForm() + "</div>"; 
+				html += "<div class=\"item\">경력 : " + list.get(i).getHnCareer() + "</div>"; 
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("yy년 MM월 dd일");
+				String regDate = sdf.format(list.get(i).getAddDate());
+				
+				html +="<div class=\"item\">등록일 : " + regDate + "</div>";
 				html += "<div class=\"item-btn\"><button>지원하기</button></div>";
 				html += "</div>";
 			}
@@ -262,6 +271,24 @@ public class CompanyController {
 		String result = "<ul>";
 		for(int i=0; i<list.size(); i++) {
 			result += "<li onclick='fn_keywordCheck("+ list.get(i).getCompanyNo() +")'>" + list.get(i).getCompanyName() + "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; " + list.get(i).getCompanyAddressNew().substring(0,10) + "</li>";
+		}
+		result += "</ul>";
+		
+		String html = URLEncoder.encode(result, "UTF-8");
+		return html;
+	}
+	
+	// 기업회원가입 -> 기업 검색 폼
+	@RequestMapping("company/searchCompanyEnroll.do")
+	@ResponseBody
+	public String searchCompanyEnroll(String keyword) throws UnsupportedEncodingException {
+		System.out.println(keyword);
+		
+		List<Company> list = service.searchCompany(keyword);
+		
+		String result = "<ul>";
+		for(int i=0; i<list.size(); i++) {
+			result += "<li onclick='fn_keywordCk(this, "+ list.get(i).getCompanyNo() +")'>" + list.get(i).getCompanyName() + "</li>";
 		}
 		result += "</ul>";
 		

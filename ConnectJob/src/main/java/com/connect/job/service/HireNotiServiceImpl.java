@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.connect.job.common.HireNotiException;
 import com.connect.job.dao.HireNotiDao;
 import com.connect.job.model.vo.HireNoti;
 
@@ -20,9 +19,9 @@ public class HireNotiServiceImpl implements HireNotiService {
 
 	@Override
 	public HireNoti selectOne(int no) {
-
 		return dao.selectOne(no);
 	}
+
 
 	@Override
 	public int insertNoti(HireNoti h) {
@@ -57,10 +56,12 @@ public class HireNotiServiceImpl implements HireNotiService {
 		return dao.selectLatest();
 	}
 
+
 	@Override
 	public List<HireNoti> selectAllList() {
 		return dao.selectAllList();
 	}
+	
 
 	
 	

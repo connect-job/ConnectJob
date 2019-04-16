@@ -35,7 +35,7 @@
 						</div>
 
 						<div class="item-right">
-							<span>${inq.status==false?"답변대기중":"답변완료"}</span>
+							<span>${inq.status}</span>
 						</div>
 					</div>
 				</c:if>
@@ -54,7 +54,15 @@
 						</div>
 
 						<div class="item-right">
-							<span>${inq.status==false?"답변대기중":"답변완료"}</span>
+							<span>
+							<%-- <c:if test="${inq.status==false}">
+							${inq.status=='답변대기중'}
+							</c:if>
+							<c:if test="${inq.status!=false}">
+							${inq.status=='답변완료'}
+							</c:if> --%>
+							${inq.status}
+							</span>
 						</div>
 					</div>
 
