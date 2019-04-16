@@ -46,7 +46,7 @@
 					</div>
 			<c:choose>
 				<c:when test="${not empty cpList}">
-						<c:forEach items="${allList }" var="aList">
+						<c:forEach items="${cpList }" var="cpList">
 								<div class="list-item">
 										<div class="item1" style="width: 20%">기업 스크랩</div>
 										<div class="item2" style="width: 40%"><a href="${path }/company/companyView.do?no=${cpList.companyNo}">${cpList.companyName }</a></div>
