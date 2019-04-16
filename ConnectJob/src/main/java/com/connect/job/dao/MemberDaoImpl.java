@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -52,7 +53,7 @@ public class MemberDaoImpl implements MemberDao {
 		return session.update("member.updatePw", m);
 	}
 
-	@Override
+	
 	public List<Member> selectList() {
 		return session.selectList("member.selectList");
 	}
@@ -63,9 +64,15 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public int selectCount(String p_id) {
+	public int selectIdCount(String p_id) {
 	
-		return session.selectOne("member.selectCount", p_id);
+		return session.selectOne("member.selectIdCount", p_id);
+	}	
+
+	@Override
+	public int selectNickCount(String nickname) {
+		// TODO Auto-generated method stub
+		return session.selectOne("member.selectNickCount", nickname);
 	}
 
 	@Override
@@ -82,26 +89,49 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public int updateStatus(String p_id) {
-		// TODO Auto-generated method stub
+		
 		return session.update("member.mailStatus", p_id);
 	}
 
 	@Override
 	public void insertMember(Member m) throws Exception {
-		// TODO Auto-generated method stub
+		
 		session.insert("member.insertMember", m);
 	}
 
 	@Override
 	public List<CompanyReview> selectReviewList(CompanyReview review) {
-		// TODO Auto-generated method stub
+		
 		return session.selectList("member.selectReviewList", review);
 	}
 
 	@Override
 	public int deleteReview(int review_no) {
-		// TODO Auto-generated method stub
+		
 		return session.delete("member.deleteReview", review_no);
+	}
+
+	@Override
+	public int selectCount() {
+		
+		return session.selectOne("member.selectCount");
+	}
+
+	@Override
+	public List<Member> selectList(int cPage, int numPerPage) {
+		
+		return session.selectList("member.selectList", null, new RowBounds((cPage-1)*numPerPage, numPerPage));
+	}
+
+	@Override
+	public int searchCount(Map<String, String> map) {
+		
+		return session.selectOne("member.searchCount", map);
+	}
+
+	@Override
+	public List<Member> searchList(int cPage, int numPerPage, Map<String, String> map) {
+		return session.selectList("member.searchList", map, new RowBounds((cPage-1)*numPerPage, numPerPage));
 	}
 
 	

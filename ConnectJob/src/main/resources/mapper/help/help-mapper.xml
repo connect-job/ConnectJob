@@ -18,7 +18,7 @@
 	</insert>
 	
 	<select id="inquiryList" resultMap="inquiryResult" parameterType="String">
-		select * from inquiry where i_writer = #{id}
+		select * from inquiry where i_writer = #{id} order by i_date desc
 	</select>
 	
 	<select id="selectCount" resultType="_int" parameterType="String">

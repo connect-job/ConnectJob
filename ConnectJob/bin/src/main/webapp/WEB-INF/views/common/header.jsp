@@ -45,9 +45,19 @@
     <header>
 
         <div id="notice">
+<<<<<<< HEAD
+<<<<<<< HEAD
             이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　
+=======
+            이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　<button id="x-btn">X</button>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+            이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
         </div>
         
+<<<<<<< HEAD
+<<<<<<< HEAD
         <script>
             var notice = $('#notice');
 			$.ajax({
@@ -61,6 +71,23 @@
 				}
 			});
         </script>
+=======
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+        <script>
+            var notice = $('#notice');
+			$.ajax({
+				url: '${path}/notice/latestNoticeOne.do',
+				success: function(data) {
+					var Ca = /\+/g;
+	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+	                notice.empty();
+	                notice.html(resultSet);
+                    notice.append("　　　<button id='x-btn'>X</button>");
+				}
+			});
+        </script>
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	
         <div id="header-top">
             <div class="top-container">
@@ -115,7 +142,18 @@
                                                 <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
                                         </ul>
                                 </div></li>
+<<<<<<< HEAD
+<<<<<<< HEAD
                             <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터</li>
+=======
+                            <li id="alarm-li">알림<div id="alarm-result" class="alarm-span"></div>
+                            <div id="alarm">
+                                최근 소식이 없습니다!
+                            </div></li>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+                            <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터</li>
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
                             <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
@@ -151,6 +189,92 @@
     <script>
     
     // ------------------------------------------------------------ 웹소켓 시작
+<<<<<<< HEAD
+    var wsUri = "ws://192.168.20.221:9090/job/alarm";
+    var nick = '${loginMember.p_id}';
+	console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
+    
+    	function send_message() {
+	        websocket = new WebSocket(wsUri);
+	        websocket.onopen = function(evt) {
+	        	console.log(evt);
+	            onOpen(evt);
+	        };
+	
+	        websocket.onmessage = function(evt) {
+	            onMessage(evt);
+	        };
+	
+	        websocket.onerror = function(evt) {
+	            onError(evt);
+	        };
+	    }
+	
+	    function onOpen(evt) 
+	    {
+	    	console.log(evt);
+	        websocket.send(nick);
+	    }
+	
+	    function onMessage(evt) {
+	    	playAlarm = setTimeout(function () {
+	    		$('html').scrollTop()==0;
+		    	$('#socket-message').empty();
+		    	$('#socket-message').css("opacity","1");
+		    	$('#socket-message').css("z-index","999999999");
+		    	$('#socket-message').append("<i class='fas fa-envelope-open-text' style='font-size:20px'></i>　");
+		    	$('#socket-message').append(evt.data);
+		    	$('#socket-message').append("<br><br><a href='${path}/alarm/alarm.do?id=${loginMember.p_id}'>알림센터 바로가기</a>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
+	    	}, 1000);
+	    	
+	    	if(evt.data!=null) {
+	    		playAlarm;
+	    	} else {
+	    		clearInterval(playAlarm);
+	    	}
+	    	
+	    }
+	
+	    function onError(evt) {
+	    	console.log(evt);
+	    }
+	    
+	     $(document).ready(function() {
+             if(${loginMember!=null}) {
+                send_message();
+		     	setTimeout(function() {
+		     		send_message();
+		     	},1000);
+             }
+	    });
+	    
+	    function fn_messageClose() {
+	    	$('#socket-message').css("opacity","0");
+	    }
+	    
+	    $(document).ready(function() {
+
+	    	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+	    	var floatPosition = parseInt($("#socket-message").css('top'));
+	    	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+	    	$(window).scroll(function() {
+	    		// 현재 스크롤 위치를 가져온다.
+	    		var scrollTop = $(window).scrollTop();
+	    		var newPosition = scrollTop + floatPosition + "px";
+
+	    		/* 애니메이션 없이 바로 따라감
+	    		 $("#floatMenu").css('top', newPosition);
+	    		 */
+
+	    		$("#socket-message").stop().animate({
+	    			"top" : newPosition
+	    		}, 100);
+
+	    	}).scroll();
+
+	    }); 
+=======
     var wsUri = "ws://localhost:8080/job/alarm";
     var nick = '${loginMember.p_id}';
 	console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
@@ -234,7 +358,12 @@
 
 	    	}).scroll();
 
+<<<<<<< HEAD
+	    });
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
 	    }); 
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	    
 	    // ------------------------------------------------------------ 웹소켓 끝
     
@@ -378,4 +507,4 @@
             });
         });
     </script>
-
+

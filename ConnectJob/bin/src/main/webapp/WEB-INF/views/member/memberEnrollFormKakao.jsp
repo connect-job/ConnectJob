@@ -18,11 +18,11 @@
 		</div>
 		
 		<div id="memberEnroll" class="tab-content current">
-			<form action="${path}/member/insertSns.do" method="post">
+			<form action="${path}/member/insertKakao.do" method="post">
 				<div class="enroll-item">
 					<div class="left">아이디</div>
 					<div class="right">
-						<input type="email" name="p_id" id="p_id" value="${Member.p_id!=null ? Member.p_id : '' }" placeholder="이메일 아이디" autocomplete="off" />															
+						<input type="email" name="p_id" id="p_id" autocomplete="off" />															
 					</div>
 				</div>
 				
@@ -36,6 +36,7 @@
 				<div class="enroll-item">
 					<div class="left">비밀번호</div>
 					<div class="right">
+<<<<<<< HEAD
 						<input type="password" name="password" id="pw1" placeholder="영문+숫자+특수문자 8글자 이상 입력" required/>
 						<span id="pw_validate"></span>						
 					</div>
@@ -47,19 +48,20 @@
 						<input type="password" name="password2" id="pw2" required />
 						<span id="password_result"></span>						
 					</div>
-				</div>				
-		
-				<div class="enroll-item msgdiv">
-					<div class="left">이름</div>
-					<div class="right">
-						<input type="text" name="p_name"/>						
-					</div>
 				</div>
 				
 				<div class="enroll-item msgdiv">
+					<div class="left">이름</div>
+					<div class="right">
+						<input type="text" name="p_name" id="name"/>
+						<span id="name_result"></span>
+					</div>
+				</div>			
+		
+				<div class="enroll-item msgdiv">
 					<div class="left">닉네임</div>
 					<div class="right">
-						<input type="text" name="nickname" value="${Member != null ? Member.nickname : '' }" required/>
+						<input type="text" name="nickname" id="nickname" value="${Member != null ? Member.nickname : '' }"/>
 						<span id="nickname_result"></span>
 					</div>
 				</div>
@@ -67,10 +69,8 @@
 				<div class="enroll-item msgdiv">
 					<div class="left">SNS</div>
 					<div class="right">						
-						<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }" readonly/>
+						<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
 						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
-						<input type="hidden" name="google_id" value="${Member != null ? Member.google_id : '' }"/>
-						<input type="hidden" name="naver_id" value="${Member != null ? Member.naver_id : '' }"/>
 					</div>
 				</div>		
 
@@ -85,6 +85,7 @@
 				<div class="enroll-item">
 					<div class="left">연락처</div>
 					<div class="right"><input type="phone" name="phone" autocomplete="off" /></div>
+					<span id="phone_result"></span>
 				</div>			
 				
 				<div class="enroll-text">
@@ -117,12 +118,6 @@
 </section>
 
 <script>
-
-$(function(){
-	$("input:radio[name='gender']:radio[value='M']").prop('checked', true); // 선택하기
-
-	$("input:radio[name='gender']:radio[value='F']").prop('checked', false); // 해제하기
-});
 
 $(function(){
 	$('[name=p_name]').blur(function(){
@@ -166,6 +161,97 @@ $(function(){
 		}
 	});
 });
+=======
+						<input type="password" name="password" id="pw1" required/>
+						<span id="pw_validate"></span>						
+					</div>
+				</div>			
+				
+				<div class="enroll-item">
+					<div class="left">비밀번호 확인</div>
+					<div class="right">
+						<input type="password" name="password2" id="pw2" required />
+						<span id="password_result"></span>						
+					</div>
+				</div>				
+		
+				<div class="enroll-item msgdiv">
+					<div class="left">이름</div>
+					<div class="right">
+						<input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/>
+						<%-- <input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/> --%>
+						<%-- <input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/> --%>
+					</div>
+				</div>
+				
+				<div class="enroll-item msgdiv">
+					<div class="left">SNS</div>
+					<div class="right">
+						<%-- <input type="text" name="p_name" value="${Member != null ? Member.p_name : '' }"/> --%>
+						<input type="text" name="is_sns" value="${Member != null ? Member.is_sns : '' }"/>
+						<input type="hidden" name="kakao_id" value="${Member != null ? Member.kakao_id : '' }"/>
+					</div>
+				</div>		
+
+				<div class="enroll-item">
+					<div class="left">성별</div>
+					<div class="right">
+						<input type="radio" name="gender" value="M" />남
+						<input type="radio" name="gender" value="F" />여
+					</div>
+				</div>
+				
+				<div class="enroll-item">
+					<div class="left">연락처</div>
+					<div class="right"><input type="phone" name="phone" autocomplete="off" /></div>
+				</div>
+				
+				<div class="enroll-item">
+					<div class="left">최종학력</div>
+					<div class="right"><input type="text" name="final_edu" autocomplete="off" /></div>
+				</div>
+				
+				<div class="enroll-item">
+					<div class="left">학교</div>
+					<div class="right"><input type="text" name="school" autocomplete="off" /></div>
+				</div>
+				
+				<div class="enroll-item">
+					<div class="left">전공</div>
+					<div class="right"><input type="text" name="major" autocomplete="off" /></div>
+				</div>
+				
+				<div class="enroll-text">
+					<b>약관동의</b></br>
+				</div>
+				<div class="enroll-text">
+					<div>전체동의<input type="checkbox" class="chk" id="chk_all" /></div>
+				</div>
+				<div class="enroll-text">
+					<div>기업회원 약관에 동의<input type="checkbox" class="chk" name="chk" id="ch2" /></div>
+				</div>
+				<div class="enroll-text">
+					<div>개인정보 수집 및 이용에 동의<input type="checkbox" class="chk" name="chk" id="ch3" /></div>
+				</div>
+				<div class="enroll-text">
+					<div>마케팅 정보 수신 동의 - 이메일 (선택)<input type="checkbox" class="chk" name="chk" id="ch4" /></div>
+				</div>
+				<div class="enroll-text">
+					<div>마케팅 정보 수신 동의 - SMS/MMS (선택)<input type="checkbox" class="chk" name="chk" id="ch5" /></div>
+				</div>
+				<div class="enroll-text">
+					<div>개인정보 제 3자 제공 및 위탁사항 이용약관</div>
+				</div>
+				<div class="enroll-text-end">
+					<input type="reset" value="취소" /><input type="submit" value="등록" id="enrollBtn" />
+				</div>
+		</div>
+		</form>
+	</div>
+</section>
+
+<script>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 
 //아이디 중복체크
 $(document).ready(function(){	
@@ -246,24 +332,6 @@ $(document).ready(function(){
 			$('#password_result').html("비밀번호가 일치합니다.").css('color', 'green');	
 		}		
 	});
-});
-
-//체크박스 전체선택 및 전체해제
-$("#chk_all").click(function(){
-    if($("#chk_all").is(":checked")){
-        $(".chk").prop("checked",true);
-    }else{
-        $(".chk").prop("checked",false);
-    }
-});
-
-//한개의 체크박스 선택 해제시 전체선택 체크박스도 해제
-$(".chk").click(function(){
-    if($("input[name='chk']:checked").length == 4){
-        $("#chk_all").prop("checked",true);
-    }else{
-        $("#chk_all").prop("checked",false);
-    }
 });
 </script>
 

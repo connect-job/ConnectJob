@@ -110,44 +110,12 @@
 						</div>
 						<div>
 						답변내용 ${inq.aContent}
-						</div>
+						</div><br>
 					</div>
 				<%-- </c:if> --%>
 
 
-				<%-- <c:if test="${loginCMember != null && loginCMember.cMemberEmail eq inq.iWriter}"> --%>
-					<div class="help-item" onclick="location.href='${path}/admin/inquiry/InquiryView.do?no=${inq.iNo}'">
-						<div class="item-left">
-							#${inq.iType}
-						</div>
-
-						<div class="item-center">
-							<div class="center-title">
-								${inq.iTitle}
-							</div>
-						</div>
-
-						<div class="item-right">
-							<span>답변상태
-							  <c:choose>
-								<c:when test="${inq.status=='답변중'}">
-									${inq.status}
-								</c:when>
-								<c:when test="${inq.status=='답변대기중'}">
-									${inq.status}
-								</c:when>
-								<c:when test="${inq.status=='답변완료'}">
-									${inq.status}
-								</c:when>
-							  </c:choose>
-							</span>
-						</div>
-						<div>
-						답변내용 ${inq.aContent}
-						</div>
-					</div>
-
-            	<%-- </c:if> --%>
+				
 				</c:forEach>
            <div id="pageBar">
            ${pageBar}

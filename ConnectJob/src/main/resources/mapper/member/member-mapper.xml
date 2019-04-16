@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
+
 	<insert id="insertMember" parameterType="member">
-		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, default, 'N', null, null, null, default)
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, default, null, null, null, null, default, #{nickname})
+
 	</insert>
 	
 	<insert id="insertMemberSns" parameterType="member">
 		insert into p_member values
 		<choose>
 			<when test="is_sns == 'kakao'">
-				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, #{kakao_id}, null, null, default)
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, #{kakao_id}, null, null, default,#{nickname})
 			</when>
 			<when test="is_sns == 'google'">
-				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, #{google_id}, null, default)
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, #{google_id}, null, default, #{nickname})
 			</when>
 			<when test="is_sns == 'naver'">
-				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, null, #{naver_id}, default)
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, null, #{naver_id}, default, #{nickname})
 			</when>
 		</choose>
 
@@ -38,9 +40,8 @@
 				and naver_id = #{naver_id}
 			</when>
 		</choose>
-	</select>
+	</select> 
 	
-
 	<select id="findId" resultMap="memberResult" parameterType="member">
 		select * from p_member where phone=#{phone} and p_name=#{p_name}
 	</select>
@@ -57,6 +58,7 @@
 		<result column="kakao_id" property="kakao_id"/>
 		<result column="google_id" property="google_id"/>
 		<result column="naver_id" property="naver_id"/>
+		<result column="nickname" property="nickname"/>
 		<result column="alarm_status" property="alarmStatus"/>
 	</resultMap>
 
@@ -69,15 +71,19 @@
 	</delete>
 	
 	<update id="updateMember" parameterType="member">
-		update p_member set p_name=#{p_name}, phone=#{phone} where p_id=#{p_id}
+		update p_member set p_name=#{p_name}, phone=#{phone}, nickname=#{nickname} where p_id=#{p_id}
 	</update>
 	
 	<update id="updatePw" parameterType="member">
 		update p_member set password=#{password} where p_id=#{p_id}
 	</update>
 	
-	<select id="selectCount" resultType="_int" parameterType="String">
+	<select id="selectIdCount" resultType="_int" parameterType="String">
 		select count(*) from p_member where p_id=#{p_id}
+	</select>
+	
+	<select id="selectNickCount" resultType="_int" parameterType="String">
+		select count(*) from p_member where nickname=#{nickname}
 	</select>
 	
 	<select id="findPw" resultType="member" parameterType="member">
@@ -118,5 +124,17 @@
 	
 	<delete id="deleteReview" parameterType="_int">
 		select * from company_review where review_no=#{review_no}
-	</delete>
+	</delete>	
+	
+	<select id="selectCount" resultType="_int">
+		select count(*) from p_member
+	</select>
+	
+	<select id="searchCount" resultType="_int">	
+		select count(*) from p_member where #{searchType} like '%' || #{searchKey} || '%'
+	</select>
+	
+	<select id="searchList" resultType="member">
+		select * from p_member where #{searchType} like '%' || #{searchKey} || '%'
+	</select>
 </mapper>

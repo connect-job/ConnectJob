@@ -15,6 +15,10 @@
 		<div id="index-top-left">
 		</div>
 		<div class="index-top-right">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 			<div id="latest1" class="tab-btn selected">최근 기업리뷰</div>
 			<div id="latest2" class="tab-btn">공지사항</div>
 
@@ -24,10 +28,24 @@
 			</div>
 			<div id="item-notice">
 
+<<<<<<< HEAD
+=======
+			<div id="tab-btn" class="notice selected">최근 기업리뷰</div><div id="tab-btn" class="notice2">공지사항</div>
+
+			<div id="item">
+					<br><Br>
+				<img src="${path}/resources/images/loading.gif" width="20px">
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 			</div>
 		</div>
 
 		<script>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 			var latest1 = $('#latest1');
 			var latest2 = $('#latest2');
 
@@ -68,6 +86,20 @@
 	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
 	                itemNotice.empty();
 	                itemNotice.html(resultSet);
+<<<<<<< HEAD
+=======
+			// 최근 기업리뷰 AJAX
+			var item = $('#item');
+			$.ajax({
+				url: '${path}/review/reviewLatest.do',
+				success: function(data) {
+					var Ca = /\+/g;
+	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+	                item.empty();
+	                item.html(resultSet);
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 				}
 			});
 		</script>

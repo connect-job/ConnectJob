@@ -15,6 +15,38 @@
 			나의 문의내역
 		</div>
 
+<<<<<<< HEAD
+        <div class="senier-middle">
+          
+									
+            
+             	<c:forEach var="inq" items="${list}" varStatus="vs">
+<<<<<<< HEAD
+             <div class="senier-item" onclick="location.href='${path}/help/myInquiryView.do?no=${inq.iNo}'">
+					<div class="item-cate">
+					<c:forEach items="${inq.iType}" var="type" varStatus="vs">
+						${type}
+					</c:forEach>
+					
+					</div>
+					<div class="item-title">
+						
+						${inq.iTitle}
+						
+					</div>
+					<div class="item-content">${inq.iContent}</div>
+            </div>
+				</c:forEach>
+            
+=======
+             		<c:if test="${loginMember != null && loginMember.p_id eq inq.iWriter}">
+             		<div class="senier-item" onclick="location.href='${path}/help/myInquiryView.do?no=${inq.iNo}'">
+					<div class="item-cate">
+					<c:forEach items="${inq.iType}" var="type" varStatus="vs">
+						${type}
+					</c:forEach>
+					
+=======
 		<div class="help-subtitle">
 			나의 1:1 문의내역 목록
 		</div>
@@ -37,6 +69,7 @@
 						<div class="item-right">
 							<span>${inq.status==false?"답변대기중":"답변완료"}</span>
 						</div>
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 					</div>
 				</c:if>
 
@@ -60,6 +93,7 @@
 
             	</c:if>
 				</c:forEach>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
            
             
         </div>
