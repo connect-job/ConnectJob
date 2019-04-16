@@ -37,7 +37,7 @@
 	</select>
 	
 	<select id="selectOne" parameterType="_int"  resultMap="hireNotiResult">
-		SELECT * FROM HIRENOTI WHERE HN_SEQ=#(hnseq)
+		SELECT * FROM HIRENOTI WHERE HN_SEQ=#{hnseq}
 	</select>
 	
 	<resultMap type="hireNoti" id="hireNotiResult">

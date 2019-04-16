@@ -24,12 +24,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.connect.job.common.AjaxPageBarFactory;
 import com.connect.job.common.PageBarFactory;
+import com.connect.job.model.vo.CPScrap;
 import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.CompanyAvgScore;
 import com.connect.job.model.vo.HireNoti;
 import com.connect.job.model.vo.Member;
 import com.connect.job.model.vo.News;
-import com.connect.job.model.vo.Scrap;
 import com.connect.job.model.vo.SearchKeyword;
 import com.connect.job.openapi.NaverSearch;
 import com.connect.job.service.CompanyService;
@@ -171,15 +171,15 @@ public class CompanyController {
 		CompanyAvgScore cas = service.selectScore(no);
 		
 		List<News> news = new NaverSearch().naverSearch(com.getCompanyName());
-		Scrap s=new Scrap();
-		Scrap scrap=new Scrap();
+		CPScrap s=new CPScrap();
+		CPScrap scrap=new CPScrap();
 		//로그인했을때 Scrap값 가져오기
 		if(m!=null) {
 			
 			s.setCompanyNo(com.getCompanyNo());
 			s.setpId(m.getP_id());
 			System.out.println("기업페이지에서 갔다온 service");
-			scrap=sService.selectScrap(s);
+			scrap=sService.selectCPScrap(s);
 			
 			System.out.println("*******기업페이지");
 			System.out.println("session에 멤버 : "+m);

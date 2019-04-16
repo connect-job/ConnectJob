@@ -15,9 +15,9 @@ public class CalendarController {
 	@Autowired
 	private	CalendarService service;
 	
-/*	@RequestMapping("/calendar.do")
-	public ModelAndView connectCalendar() {
-		List<HireNoti> list=service.select
+	@RequestMapping("/calendar.do")
+	public String connectCalendar() {
+		/*List<HireNoti> list=service.select*/
 		return "calendar/calendar";
-	}*/
+	}
 }

@@ -130,6 +130,7 @@ public class HireNotiController {
 	@RequestMapping("/hireNotiView.do")
 	public String hireNotiView(int no, Model model)
 	{
+		System.out.println("공고번호 : "+no);
 		HireNoti hn = service.selectOne(no);
 		
 		model.addAttribute("list",hn);
