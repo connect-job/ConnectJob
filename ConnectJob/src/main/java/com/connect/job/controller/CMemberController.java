@@ -127,36 +127,38 @@ public class CMemberController {
 		return "common/msg";
 	}
 	
-	//회원 수정
+	//회원 수정페이지로 이동
 	@RequestMapping("/cMemberUpdate.do")
-	public ModelAndView updateMember(CMember m, Model model)
+	public String updateMember()
 	{
-		CMember re=service.selectOne(m);
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("member/");
-		mv.addObject("m",re);
-		return mv;
+		return "businessPage/businessPage-comMUpdate";
 	}
 	
-	@RequestMapping("/member/updateEnd.do")
-	public ModelAndView updateEnd(CMember m)
+	//기업회원정보 변경
+	@RequestMapping("/cmember/updateEnd.do")
+	public String updateEnd(CMember m, Model model)
 	{
+		String pw=m.getcMemberPw();
+		String enPw=encoder.encode(pw);
+		m.setcMemberPw(enPw);
+		
 		int result=service.updateMember(m);
+		
+		
 		String msg="";
 		String loc="/member/cMemberUpdate.do?cMemberId="+m.getcMemberId();
 		if(result>0)
 		{
-			msg="수정완료";
+			msg="회원정보 수정완료";
 		}
 		else
 		{
-			msg="수정실패";
+			msg="회원정보 수정실패";
 		}
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("common/msg");
-		mv.addObject("msg",msg);
-		mv.addObject("loc",loc);
-		return mv;
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		return "common/msg";
 	}
 	
 	//기업회원조회

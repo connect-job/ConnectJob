@@ -2,6 +2,8 @@ package com.connect.job.service;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
+
 import com.connect.job.model.vo.HireNoti;
 
 

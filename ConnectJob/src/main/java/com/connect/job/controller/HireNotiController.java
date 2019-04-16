@@ -2,9 +2,10 @@ package com.connect.job.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,13 +31,13 @@ public class HireNotiController {
 	// 메인페이지 -> 최신 채용공고
 	@RequestMapping("/hireLatest.do")
 	@ResponseBody
-	public String hireLatest() throws UnsupportedEncodingException {
+	public String hireLatest(HttpServletRequest request) throws UnsupportedEncodingException {
 		String html = "";
 		
 		List<HireNoti> list = service.selectLatest();
 		
 		for(int i=0; i<list.size(); i++) {
-			html += "<div class=\"hire-item\">";
+			html += "<div class=\"hire-item\" onclick=\"location.href=\'" + request.getContextPath() + "/hireNotiView.do?no=" + list.get(i).getHnSeq() + "\'\">";
 			html += "<div class=\"item-title\">";
 			if(list.get(i).getHnTitle().length()>12) {
 				html += list.get(i).getHnTitle().substring(0, 12) + "...</div>";
@@ -134,13 +135,12 @@ public class HireNotiController {
 			return result;
 		} 
 	
-	//채용공고 상세 페이지로 이동
+	//채용공고 제목 누르고 상세 페이지로 이동
 	@RequestMapping("/hireNotiView.do")
 	public String hireNotiView(int no, Model model)
 	{
-		HireNoti hn = service.selectOne(no);
-		
-		model.addAttribute("list",hn);
+		HireNoti hn=service.selectOne(no);
+		model.addAttribute("hireNoti",hn);
 		return "hireNoti/hireNoti-selectOne";
 	}
 	
