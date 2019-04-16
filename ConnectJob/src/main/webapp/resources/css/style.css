@@ -2112,6 +2112,14 @@ section #biz-container .biz-right .biz-item {
     padding-top: 20px;
 }
 
+
+section #biz-container .biz-right .biz-item-top {
+    vertical-align: top;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
 section #biz-container .biz-right .biz-item .item-left {
     vertical-align: top;
     display: inline-block;
@@ -2168,7 +2176,55 @@ section #biz-container .biz-right .biz-one .one-item .one-bottom {
     font-size: 35px;
 }
 
+section #biz-container .biz-right #biz-list {
+    width: 715px;
+    display: inline-block;
+}
 
+section #biz-container .biz-right #biz-list .biz-item {
+    display: inline-block;
+    width: 700px;
+    text-align: center;
+}
+
+section #biz-container .biz-right #biz-list .biz-item .item1 {
+    display: inline-block;
+    width: 25%;
+}
+section #biz-container .biz-right #biz-list .biz-item .item2 {
+    display: inline-block;
+    width: 35%;
+}
+section #biz-container .biz-right #biz-list .biz-item .item3 {
+    display: inline-block;
+    width: 25%;
+}
+section #biz-container .biz-right #biz-list .biz-item .item4 {
+    display: inline-block;
+    width: 10%;
+}
+section #biz-container .biz-right #biz-list .biz-item .item5 {
+    display: inline-block;
+}
+
+section #biz-container .biz-right .biz-item-one {
+    width: 700px;
+    display: inline-block;
+    text-align: center;
+}
+
+section #biz-container .biz-right .biz-item-one #pageBar {
+    margin-top: 15px;
+    display: inline-block;
+}
+
+section #biz-container .biz-right input {
+    width: 250px;
+    height: 35px;
+    border: 1px solid #dfdfdf;
+    outline: none;
+    padding-left: 15px;
+}
 
 /* ----------------------------------------------------------------- 기업리스트 */
 
