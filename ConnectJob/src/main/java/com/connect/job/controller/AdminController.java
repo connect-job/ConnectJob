@@ -112,6 +112,35 @@ public class AdminController {
 	}
 	
 	
+	@RequestMapping("/admin/faq/FaqDelete.do")
+	public String faqDelete(Model model, Faq f)
+	{
+		int result=service.faqDelete(f);
+		
+		String msg="";
+		String loc="/admin/faq/faq.do"; 
+		
+		if(result>0 ) {
+			msg="질문삭제완료";
+		} else {
+			msg="질문삭제실패";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//회원관리	
 	@RequestMapping("/admin/member/memberList")
 	public ModelAndView memberList(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage) {
@@ -262,4 +291,7 @@ public class AdminController {
 			
 		return "common/msg";
 	}
+	
+	
+	
 }

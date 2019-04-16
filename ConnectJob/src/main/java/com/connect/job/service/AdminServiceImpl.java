@@ -65,6 +65,14 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	
+	
+	@Override
+	public int faqDelete(Faq f) {
+
+		return dao.faqDelete(f);
+	}
+
+	
 	//회원관리
 	@Override
 	public List<Member> memberList(int cPage, int numPerPage) {

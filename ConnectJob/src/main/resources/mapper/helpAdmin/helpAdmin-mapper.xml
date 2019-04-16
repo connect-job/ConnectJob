@@ -53,6 +53,10 @@
 		update faq set f_content=#{fContent}, f_title=#{fTitle} where f_no=#{fNo}
 	</update>
 	
+	<delete id="faqDelete" parameterType="faq">
+		delete from faq where f_no=#{fNo}
+	</delete>
+	
 	<resultMap type="member" id="memberResult">
 		<id column="p_id" property="p_id"/>
 		<result column="password" property="password"/>
@@ -118,4 +122,7 @@
 	<update id="updateNotice" parameterType="notice">
 		update notice set title=#{title}, content=#{content} where notice_no=#{notice_no}
 	</update>
+	
+	
+	
 </mapper>

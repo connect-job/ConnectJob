@@ -34,8 +34,9 @@
 					</div>
 					
 
-					<button type="submit">수정</button>
-					
+					<!-- <button type="submit">수정</button> -->
+					<%-- <button type="submit" onclick="${path}/admin/faq/FaqDelete.do?fNo=${faq.fNo}">삭제</button> --%>
+					<%-- <input type="button" value="삭제" onclick="${path}/admin/faq/FaqDelete.do?fNo=${faq.fNo}"> --%>
 					   <c:choose>
                         	<c:when test="${loginMember!=null}">
                         		<input type="hidden" name="iWriter"  value="${loginMember.p_id}">
@@ -54,7 +55,12 @@
 						<button onclick="history.back();">목록으로</button>
 					</div>
 				</div>
+				<button type="submit">수정</button>
 			</form>
+			<form action="${path}/admin/faq/FaqDelete.do?fNo=${faq.fNo}" method="post" onsubmit="return validate();">
+				<input type="submit" value="삭제">
+			</form>
+			
 		</div>
 	</div>
 </section>

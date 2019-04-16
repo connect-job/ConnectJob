@@ -30,5 +30,6 @@ public interface AdminService {
 	int deleteNotice(int notice_no);
 	Notice selectNoticeOne(int notice_no);
 	int updateNotice(Notice n);
+	int faqDelete(Faq f);
 
 }

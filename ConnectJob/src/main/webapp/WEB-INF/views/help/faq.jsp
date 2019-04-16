@@ -68,7 +68,7 @@
 			</div>
 			</c:forEach>
 		</div>
-			<button onclick="location.href='${path}/help/faq/FaqWrite.do'">질문하기</button>
+			
 		<div id="pageBar" class="admin-item">${pageBar}</div>
 	</div>
 </section>
