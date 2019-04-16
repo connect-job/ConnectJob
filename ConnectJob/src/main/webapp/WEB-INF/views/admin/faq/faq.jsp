@@ -121,11 +121,11 @@
         
            if(${loginMember!=null and loginCMember==null})
            {
-              window.location.href="${path}/admin/inquiry/inquiry.do?cPage=" + cPage;
+              window.location.href="${path}/admin/faq/faq.do?cPage=" + cPage;
            }
            else if(${loginMember==null and loginCMember!=null})
            {
-                window.location.href="${path}/admin/inquiry/inquiry.do?cPage=" + cPage;
+                window.location.href="${path}/admin/faq/faq.do?cPage=" + cPage;
            }
 
           }

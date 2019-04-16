@@ -17,7 +17,7 @@
          <option value="석사">대학원(석사)</option>
          <option value="박사">대학원(박사)</option>
       </select>
-      <div class="checkMsg"></div>
+      <div class="checkMsg" style="display:inline-block;"></div>
       <button type="button" class="deleteUnivBtn">대학 학력 삭제</button>
    </div>
 </div>

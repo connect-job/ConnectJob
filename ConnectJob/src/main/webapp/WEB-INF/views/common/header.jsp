@@ -133,7 +133,7 @@
                         <li id="sub">고객센터<div id="sub-menu">
                                 <ul>
                                     <li onclick="location.href='${path}/help/inquiry.do'">1:1 문의</li>
-                                    <li onclick="location.href='${path}/help/fag.do'">자주묻는질문</li>
+                                    <li onclick="location.href='${path}/help/faq.do'">자주묻는질문</li>
                                 </ul>
                         </div></li>
                         
@@ -375,7 +375,7 @@
             $('#header-search-result').css("display", "none");
         }
 
-        var result = $('#header-search-result');
+        var result2 = $('#header-search-result');
 
         $('#search').keyup(function () {
             var keyword = $('#search').val();
@@ -386,9 +386,9 @@
                 success: function (data) {
                     var Ca = /\+/g;
                     var resultSet = decodeURIComponent(data.replace(Ca, " "));
-                    result.css("display", "block");
-                    result.empty();
-                    result.html(resultSet);
+                    result2.css("display", "block");
+                    result2.empty();
+                    result2.html(resultSet);
                 }
             });
         });

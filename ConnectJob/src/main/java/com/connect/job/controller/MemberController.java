@@ -513,7 +513,7 @@ public class MemberController {
 		
 		int result=service.deleteReview(review_no);
 		String msg="";
-		String loc="/member/mypage";
+		String loc="/member/mypage.do";
 		
 		if(result>0) {msg="삭제 성공";}
 		else {msg="삭제 실패";}
@@ -524,43 +524,5 @@ public class MemberController {
 		return "common/msg";
 	}
 	
-	@RequestMapping("/member/memberList")
-	public ModelAndView memberList(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage) {
-		
-		int numPerPage=10;
-		ModelAndView mv=new ModelAndView();
-		
-		int total=service.selectCount();
-		List<Member> list=service.selectList(cPage, numPerPage);
-		
-		String pageBar=PageBarFactory.getPageBar(total, cPage, numPerPage);
-		
-		mv.addObject("pageBar", pageBar);
-		mv.addObject("list", list);
-		mv.setViewName("/member/memberList");
-		
-		return mv;
-	}
 	
-	@RequestMapping("/member/searchMember")
-	public ModelAndView searchMember(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage, String searchType, String searchKey) {
-		
-		int numPerPage=10;
-		ModelAndView mv=new ModelAndView();
-		
-		Map<String, String> map=new HashMap<>();
-		map.put("searchKey", searchKey);
-		map.put("searchType", searchType);
-		
-		int total=service.searchCount(map);
-		List<Member> searchList=service.searchList(cPage, numPerPage, map);
-		
-		String pageBar=PageBarFactory.getPageBar(total, cPage, numPerPage);
-		
-		mv.addObject("list", searchList);
-		mv.addObject("map", map);
-		mv.setViewName("/member/memberList");
-		
-		return mv;
-	}
 }

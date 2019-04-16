@@ -25,7 +25,7 @@ List<String> categoryList=new ArrayList();
    <div id="resume-container">
       
       <div class="resume-top">
-         <i class="far fa-address-card"></i>　내 이력서 작성
+         내 이력서 수정
       </div>
 
       <!-- ----------------------------- 기본 -->
@@ -44,50 +44,57 @@ List<String> categoryList=new ArrayList();
       <div class="sub-title">
          기본정보
       </div>
-      <div class="profileUpload">
-         <c:choose>
-            <c:when test="${not empty img }">
-               <input type="hidden" name="profileImgNo" value="${img.profileImgNo }">
-               <div id="images" style="border:1px solid lightgray;width:120px;height:160px">
-                  <img src="${path }/resources/upload/profile/${img.renamedFileName }" style="width:120px; heigth:160px;" />
-               </div>
-                  <input id='profileImg' type="file" name="profileImg" multiple />
-               
-               </c:when>
-               <c:otherwise>
-                  <div id="images" style="border:1px solid lightgray;width:120px;height:160px">
-                  <i class="far fa-plus-square"></i>사진을 추가해주세요
-                  </div>
-                   <input id='profileImg' type="file" name="profileImg" multiple />
-               </c:otherwise>
-            </c:choose> 
-            
-         </div>
       
-      <div class="item">
-         <input type="hidden" name="p_id" value="${loginMember.p_id}">
-         <div class="left">이름</div>
-         <div class="right"><input type="text" name="name" id="name" value="${resultR.name }"></div>
-      </div>
-      <div class="item">
-         <div class="left">생년월일</div>
-         <div class="right">
-            <input type="text" id="birth" name="birth" placeholder="YYYYMMDD" value="${resultR.birth }">
-            <select name="gender">
-               <option value="" disabled selected>성별</option>
-               <option value="M"  ${resultR.gender eq 'M'?'selected':'' }>남</option>
-               <option value="F"  ${resultR.gender eq 'F'?'selected':'' }>여</option>
-            </select>
-         </div>
-      </div>
-      <div class="item">
-         <div class="left">이메일</div>
-         <div class="right"><input type="email" name="email" id="email" placeholder="example@connectjob.com" value="${resultR.email }"></div>
-      </div>
-      <div class="item">
-         <div class="left">핸드폰</div>
-         <div class="right"><input type="text" name="phone" id="phone" placeholder="-을 제외하고 작성" value="${resultR.phone }"></div>
-      </div>
+			
+			<div class="item">
+					<input type="hidden" name="p_id" value="${loginMember.p_id}">
+					<div class="left"><div class="profileUpload" style="text-align: left; display:inline-block;">
+							<c:choose>
+								<c:when test="${not empty img }">
+									<input type="hidden" name="profileImgNo" value="${img.profileImgNo }">
+									<div id="images" style="border:1px solid lightgray;width:120px;height:160px">
+										<img src="${path }/resources/upload/profile/${img.renamedFileName }" style="width:120px; heigth:160px;" />
+									</div>
+										<input id='profileImg' type="file" name="profileImg" multiple />
+									
+									</c:when>
+									<c:otherwise>
+										<div id="images" style="border:1px solid lightgray;width:120px;height:160px">
+										<i class="far fa-plus-square"></i>사진을 추가해주세요
+										</div>
+										 <input id='profileImg' type="file" name="profileImg" multiple />
+									</c:otherwise>
+								</c:choose> 
+								
+							</div></div>
+					<div class="right"><div class="item">
+							<input type="hidden" name="p_id" value="${loginMember.p_id}">
+							<div class="left" style="width:10%">이름</div>
+							<div class="right"><input type="text" name="name" id="name" value="${resultR.name }"></div>
+						</div>
+						<div class="item">
+							<div class="left" style="width:10%">생년월일</div>
+							<div class="right">
+								<input type="text" id="birth" name="birth" placeholder="YYYYMMDD" value="${resultR.birth }">
+								<select name="gender" style="width:120px">
+									<option value="" disabled selected>성별</option>
+									<option value="M"  ${resultR.gender eq 'M'?'selected':'' }>남</option>
+									<option value="F"  ${resultR.gender eq 'F'?'selected':'' }>여</option>
+								</select>
+							</div>
+						</div>
+						<div class="item">
+							<div class="left" style="width:10%">이메일</div>
+							<div class="right"><input type="email" name="email" id="email" placeholder="example@connectjob.com" value="${resultR.email }"></div>
+						</div>
+						<div class="item">
+							<div class="left" style="width:10%">핸드폰</div>
+							<div class="right"><input type="text" name="phone" id="phone" placeholder="-을 제외하고 작성" value="${resultR.phone }"></div>
+						</div></div>
+				</div>
+			
+
+      
 
       <!-- ----------------------------- 학력 -->
 
@@ -267,8 +274,8 @@ List<String> categoryList=new ArrayList();
 					<div class="item">
 					   <div class="left">학점</div>
 					   <div class="right">
-					      <input type="text" id="score" name="score" value="${u.score }"> /
-					      <select name="scoreStandard" >
+					      <input type="text" style="width:120px;" id="score" name="score" value="${u.score }"> /
+					      <select name="scoreStandard"  style="width:140px;">
 					         <option value="" disabled selected>학점기준</option>
 					         <option value="4.0" ${u.scoreStandard eq '4.0'?'selected':'' }>4.0</option>
 					         <option value="4.3" ${u.scoreStandard eq '4.3'?'selected':'' }>4.3</option>
@@ -479,7 +486,7 @@ List<String> categoryList=new ArrayList();
 					            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea14" value='C,C++개발자' <%=jobAreaList!=null&&jobAreaList.contains("C,C++개발자")?"checked":"" %>/>C,C++개발자</label>
 					            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea15" value='개발 매니저' <%=jobAreaList!=null&&jobAreaList.contains("개발 매니저")?"checked":"" %>/>개발 매니저</label>
 					            <label><input type="checkbox" name="hopeJobArea" id="hopeJobArea16" value='데이터 사이언티스트' <%=jobAreaList!=null&&jobAreaList.contains("데이터 사이언티스트")?"checked":"" %>/>데이터 사이언티스트</label>
-					            <button type="button" onclick="resetHopeArea()">reset</button>
+
 								
 							</div>
 						</div>
@@ -496,16 +503,15 @@ List<String> categoryList=new ArrayList();
 								<label><input type="checkbox" name="hopeCategory" id="hopeCategory7" value='정보보안·백신' <%=categoryList!=null&&categoryList.contains("정보보안·백신")?"checked":"" %>/>정보보안·백신</label>
 								<label><input type="checkbox" name="hopeCategory" id="hopeCategory8" value='IT컨설팅' <%=categoryList!=null&&categoryList.contains("IT컨설팅")?"checked":"" %>/>IT컨설팅</label>
 								<label><input type="checkbox" name="hopeCategory" id="hopeCategory9" value='게임' <%=categoryList!=null&&categoryList.contains("게임")?"checked":"" %>/>게임</label>
-								<button type="button" onclick="resetHopeJobArea()">reset</button>
 							</div>
 						</div>
 				
 						<div class="carrerAjaxContainer22"></div>
 						<div class="item">
-							<div class=right>
-								<input type="submit" value="수정완료">
-								<button onclick="history.back(-1);">취소</button>	
-							</div>
+							<p align="center">
+								<button type="submit">수정완료</button>
+								<button onclick="history.back(-1);">취소</button>
+							</p>
 						</div>
 				</div>
 </form>
@@ -529,12 +535,12 @@ List<String> categoryList=new ArrayList();
 	    });
 	});
 	
-	function resetHopeArea(){
-		$('input[name=hopeArea]').prop("checked",false);
-	}
-	function resetHopeJobArea(){
-		$('input[name=hopeJobArea]').prop("checked",false);
-	}
+	// function resetHopeArea(){
+	// 	$('input[name=hopeArea]').prop("checked",false);
+	// }
+	// function resetHopeJobArea(){
+	// 	$('input[name=hopeJobArea]').prop("checked",false);
+	// }
 	function selectFinalEdu() {
 		var finalEdu = $('[name=finalEdu]').val();
 		if(finalEdu!="대학/대학원 이상 졸업"){

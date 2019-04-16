@@ -11,7 +11,7 @@
 		insert into p_member values
 		<choose>
 			<when test="is_sns == 'kakao'">
-				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, #{kakao_id}, null, null, default,#{nickname})
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, #{kakao_id}, null, null, default, #{nickname})
 			</when>
 			<when test="is_sns == 'google'">
 				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, #{google_id}, null, default, #{nickname})
@@ -126,15 +126,5 @@
 		select * from company_review where review_no=#{review_no}
 	</delete>	
 	
-	<select id="selectCount" resultType="_int">
-		select count(*) from p_member
-	</select>
 	
-	<select id="searchCount" resultType="_int">	
-		select count(*) from p_member where #{searchType} like '%' || #{searchKey} || '%'
-	</select>
-	
-	<select id="searchList" resultType="member">
-		select * from p_member where #{searchType} like '%' || #{searchKey} || '%'
-	</select>
 </mapper>

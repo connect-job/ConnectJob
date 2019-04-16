@@ -183,8 +183,8 @@
                     <div class="item-left">성별</div>
                     <div class="item-right">
                         <label><input type="radio" name="hnGender" value="성별무관" />성별무관</label>
-                        <label><input type="radio" name="hnGender" value="M" />남</label>
-                        <label><input type="radio" name="hnGender" value="F" />여</label>
+                        <label><input type="radio" name="hnGender" value="남자" />남</label>
+                        <label><input type="radio" name="hnGender" value="여자" />여</label>
                     </div>
                 </div>
                 <div class="biz-item">

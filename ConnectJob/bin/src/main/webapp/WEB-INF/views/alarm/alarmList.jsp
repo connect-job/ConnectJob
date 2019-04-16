@@ -11,11 +11,24 @@
 <section>
     <div id='alarm-container'>
         <div class="title">알림센터</div>
-<<<<<<< HEAD
-=======
         
         <div class="center">
-            알림설정　<button class="selected">알림 ON</button><BUTTON>알림 OFF</BUTTON>
+            알림설정　<button id="alarmOn" onclick="fn_alarmOn()">알림 ON</button><button  id="alarmOff" onclick="fn_alarmOff()">알림 OFF</button>
+        </div>
+
+		<div class="sum">
+            <div class="item">
+                <div class="top">총 알림</div>
+                <div class="count">${fn:length(list)}</div> 
+            </div>
+            <div class="item">
+                <div class="top">읽은 알림</div>
+                <div class="count">${readMessage }</div> 
+            </div>
+            <div class="item">
+                <div class="top">읽지 않은 알림</div>
+                <div class="count">${unReadMessage }</div> 
+            </div>
         </div>
 
         <div class="subtitle">
@@ -40,70 +53,61 @@
             </div>
         </div>  
         
->>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
-        <div class="sum">
-            <div class="item">
-                <div class="top">총 알림</div>
-                <div class="count">${fn:length(list)}</div> 
-            </div>
-            <div class="item">
-                <div class="top">읽은 알림</div>
-                <div class="count"></div> 
-            </div>
-            <div class="item">
-                <div class="top">읽지 않은 알림</div>
-                <div class="count"></div> 
-            </div>
-        </div>
-        <div class="left">2019-04-11</div>
-        <div class="right">
-            <h3>맞춤채용공고 알림</h3>
+        
+        
+
+        <div class="list">
+            <h3>알림 최신순</h3>
         	<c:forEach var="m" items="${list }">
         		<div class="message">
         			<div class="content">${m.mMessage }</div>
-                    <div class="date">${m.mDate }</div>
-                    <div class="status">${m.mStatus=='N'? "읽지않음" : "읽음" }</div>
-                    <div class="button"><button onclick="fn_status(${m.mNo})">읽음</button>　<button onclick="fn_delete(${m.mNo})">알림삭제</button></div>
+                    <div class="date">
+                    	<fmt:formatDate value="${m.mDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>${regDate }</div>
+                    <div class="status"><span class="statusSpan">${m.mStatus=='N'? "<b>읽지않음</b>" : "읽음" }</span></div>
+                    <div class="button">
+                    <button style="display:${m.mStatus=='N'? 'inline-block' : 'none'}" onclick='fn_status(${m.mNo})'>읽음</button>　<button class="delete" onclick="fn_delete(${m.mNo})">알림삭제</button></div>
         		</div>
             </c:forEach>
-            <h3>이력서 지원현황 알림</h3>
-        	<c:forEach var="m" items="${list }">
-        		<div class="message">
-        			<div class="content">${m.mMessage }</div>
-                    <div class="date">${m.mDate }</div>
-                    <div class="status">${m.mStatus=='N'? "읽지않음" : "읽음" }</div>
-                    <div class="button"><button onclick="fn_status(${m.mNo})">읽음</button>　<button onclick="fn_delete(${m.mNo})">알림삭제</button></div>
-        		</div>
-        	</c:forEach>
-        </div>
-        <div class="left">2019-04-10</div>
-        <div class="right">
-            <h3>맞춤채용공고 알림</h3>
-        	<c:forEach var="m" items="${list }">
-        		<div class="message">
-        			<div class="content">${m.mMessage }</div>
-                    <div class="date">${m.mDate }</div>
-                    <div class="status">${m.mStatus=='N'? "읽지않음" : "읽음" }</div>
-                    <div class="button"><button onclick="fn_status(${m.mNo})">읽음</button>　<button onclick="fn_delete(${m.mNo})">알림삭제</button></div>
-        		</div>
-            </c:forEach>
-            <h3>이력서 지원현황 알림</h3>
-        	<c:forEach var="m" items="${list }">
-        		<div class="message">
-        			<div class="content">${m.mMessage }</div>
-                    <div class="date">${m.mDate }</div>
-                    <div class="status">${m.mStatus=='N'? "읽지않음" : "읽음" }</div>
-                    <div class="button"><button onclick="fn_status(${m.mNo})">읽음</button>　<button onclick="fn_delete(${m.mNo})">알림삭제</button></div>
-        		</div>
-        	</c:forEach>
+
         </div>
     </div>
 </section>
 
+
 <script>
+	
+	$(function() {
+		var alarmStatus = '${loginMember.alarmStatus}';
+		
+		var alarmOn = $('#alarmOn');
+		var alarmOff = $('#alarmOff');
+		
+		if(alarmStatus=='Y') {
+			alarmOn.addClass('selected');
+		} else if (alarmStatus=='N') {
+			alarmOff.addClass('selected');
+		}
+	});
+	
+	function fn_alarmOn() {
+		if(confirm('알림기능을 ON 하시겠습니까? ')) {
+			location.href="${path}/alarm/alarmOn.do?id=${loginMember.p_id}";
+		} else {
+			return;
+		}
+	}
+	
+	function fn_alarmOff() {
+		if(confirm('알림기능을 OFF 하시겠습니까? ')) {
+			location.href="${path}/alarm/alarmOff.do?id=${loginMember.p_id}";
+		} else {
+			return;
+		}
+	}
+
 	function fn_status(num) {
 		if(confirm('알림을 읽음으로 처리하시겠습니까?')) {
-			location.href="${path}/alarm/alarmStatus.do?no=" + num;		
+			location.href="${path}/alarm/alarmStatus.do?mNo=" + num + "&mTo=${loginMember.p_id}";
 		} else {
 			return;
 		}
@@ -111,7 +115,7 @@
 	
 	function fn_delete(num) {
 		if(confirm('알림을 삭제하시겠습니까?')) {
-			location.href="${path}/alarm/alarmDelete.do?no=" + num;		
+			location.href="${path}/alarm/alarmDelete.do?mNo=" + num + "&mTo=${loginMember.p_id}";
 		} else {
 			return;
 		}

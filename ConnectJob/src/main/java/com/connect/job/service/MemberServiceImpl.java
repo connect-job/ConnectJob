@@ -135,7 +135,7 @@ public class MemberServiceImpl implements MemberService{
 		return dao.deleteReview(review_no);
 	}
 
-	@Override
+	/*@Override
 	public int selectCount() {
 		
 		return dao.selectCount();
@@ -157,7 +157,7 @@ public class MemberServiceImpl implements MemberService{
 	public List<Member> searchList(int cPage, int numPerPage, Map<String, String> map) {
 		
 		return dao.searchList(cPage, numPerPage, map);
-	}
+	}*/
 
 	
 	
