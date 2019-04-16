@@ -5047,6 +5047,9 @@ section #admin-container .admin-right .admin-item-top .item3{
 section #admin-container .admin-right .admin-item-top .item4{
     display: inline-block;
 }
+section #admin-container .admin-right .admin-item-top .item5{
+    display: inline-block;
+}
 
 section #admin-container .admin-right .admin-item {
     cursor: pointer;
@@ -5058,7 +5061,46 @@ section #admin-container .admin-right .admin-item {
     font-size: 12px;
 }
 
+
+section #admin-container .admin-right  select {
+    width: 100px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-size:12px;
+    border: 1px solid #eee;
+    outline: none;
+}
+
+section #admin-container .admin-right  input {
+    width: 100px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    font-size:12px;
+    border: 1px solid #eee;
+    outline: none;
+}
+
+section #admin-container .admin-right  input[type=submit] {
+    width: 90px;
+    height: 30px;
+    background-color: #495368;
+    border: 1px solid #333946;
+    outline: none;
+    color :#fff;
+}
+
 section #admin-container .admin-right .admin-item button {
+    width: 90px;
+    height: 30px;
+    background-color: #495368;
+    border: 1px solid #333946;
+    outline: none;
+    color :#fff;
+}
+
+section #admin-container .admin-right .admin-item input[type=button] {
     width: 90px;
     height: 30px;
     background-color: #495368;
@@ -5092,9 +5134,15 @@ section #admin-container .admin-right .admin-item .item4{
     display: inline-block;
 }
 
+
+section #admin-container .admin-right .admin-item .item5{
+    display: inline-block;
+}
+
 section #admin-container .admin-right .admin-content {
     font-size: 13px;
     width: 715px;
+    text-align: center;
 }
 
 section #admin-container .admin-right .admin-content .left {
@@ -5129,6 +5177,7 @@ section #admin-container .admin-right .admin-one {
     width: 100%;
     padding-bottom: 20px;
     padding-top: 20px;
+    text-align: center;
 }
 
 section #admin-container .admin-right .admin-one .one-item {

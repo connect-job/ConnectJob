@@ -351,7 +351,7 @@
 	                        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 	                        currentText: '오늘날짜',
 	                        closeText: '닫기',
-	                        dateFormat: "yy.mm.dd",
+	                        dateFormat: "yy-mm-dd",
 	                        minDate: 0
 	                    });
 	
@@ -366,7 +366,7 @@
 	                        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 	                        currentText: '오늘날짜',
 	                        closeText: '닫기',
-	                        dateFormat: "yy.mm.dd",
+	                        dateFormat: "yy-mm-dd",
 	                        minDate: 0
 	                    });
 	                });

@@ -39,6 +39,9 @@
 	<select id="selectOne" parameterType="_int"  resultMap="hireNotiResult">
 		SELECT A.*, B. CMEMBERNAME CMNAME ,CMEMBERPHONE CMPHONE,CMEMBEREMAIL CMMAIL , C. COMPANY_NAME CNAME, COMPANY_ALL_PEOPLE CAP, COMPANY_REGDATE CRD, COMPANY_CATE CC, COMPANY_ADDRESS_NEW CAN FROM HIRENOTI A LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID) LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO) WHERE HN_SEQ = #{no}
 	</select>
+	<select id="selectAllList" parameterType="hireNoti" resultMap="hireNotiResult">
+		SELECT * FROM HIRENOTI
+	</select>
 	
 	<resultMap type="hireNoti" id="hireNotiResult">
       <id property="hnSeq" column="hn_seq"/>

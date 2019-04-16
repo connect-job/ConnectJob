@@ -20,6 +20,15 @@
 		<%@ include file="/WEB-INF/views/admin/admin-menu.jsp"%>
 
 		<!-- ---------------------------------------------------------------------- 우측페이지  -->
+		<div class="admin-right">
+				<div class="admin-title">자주묻는질문 관리</div>
+				<br>
+				<div class="admin-item-top">
+					<div class="item1" style="width:25%;">질문명</div>
+					<div class="item4" style="width:10%;">삭제</div>
+				</div>
+
+
 
 		<div class="biz-right">
 			<div class="biz-title">자주묻는질문 목록</div>

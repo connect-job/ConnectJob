@@ -14,6 +14,9 @@ public interface HireNotiDao {
 	int selectHireNotiCount();
 	int selectHireNotiCountAjax(HireNoti h);
 	List<HireNoti> selectLatest();
+
+	List<HireNoti> selectAllList();
+
 	HireNoti selectOne(int no);
 
 }

@@ -29,7 +29,7 @@ public interface HireNotiService {
 
 	List<HireNoti> selectLatest();
 	
-	
+	List<HireNoti> selectAllList();
 
 	
 }
