@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.connect.job.common.PageBarFactory;
 import com.connect.job.model.vo.HireNoti;
+import com.connect.job.model.vo.Member;
+import com.connect.job.model.vo.Resume;
 import com.connect.job.service.HireNotiService;
 
 @Controller
@@ -145,6 +148,9 @@ public class HireNotiController {
 		model.addAttribute("hireNoti",hn);
 		return "hireNoti/hireNoti-selectOne";
 	}
+	
+
+	
 	
 		
 }

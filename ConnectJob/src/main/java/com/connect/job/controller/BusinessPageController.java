@@ -122,6 +122,63 @@ public class BusinessPageController {
 		return "businessPage/businessPage-review";
 	}
 	
+	//기업페이지-전체채용공고 페이지로 이동
+	@RequestMapping("/hireNotiAllList.do")
+	public String hireNotiAllList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, String id, Model model)
+	{
+		int numPerPage = 10;
+		List<HireNoti> list= service.selectAllList(cPage, numPerPage, id);
+		int total = service.selectHireNotiCount(id);
+	
+		model.addAttribute("pageBar", PageBarFactory.getPageBar(total, cPage, numPerPage));
+		model.addAttribute("hireNoti",list);
+		model.addAttribute("id",id);
+		return "businessPage/businessPage-hireNotiAllList";
+	}
+	
+	
+	
+	//기업페이지-진행중채용공고 페이지로 이동
+	@RequestMapping("/hireNotiDoList.do")
+	public String hireNotiDo(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, String id, Model model)
+	{
+		int numPerPage = 10;
+		List<HireNoti> list= service.selectDoList(cPage, numPerPage, id);
+		int total = service.selectHireNotiDoCount(id);
+	
+		model.addAttribute("pageBar", PageBarFactory.getPageBar(total, cPage, numPerPage));
+		model.addAttribute("hireNoti",list);
+		model.addAttribute("id",id);
+		return "businessPage/businessPage-hireNotiDoList";
+	}
+	
+	//기업페이지-대기중채용공고 페이지로 이동
+	@RequestMapping("/hireNotiWaitList.do")
+	public String hireNotiWait(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, String id, Model model, String sd, String ed)
+	{
+		
+		HireNoti h = new HireNoti();
+		h.setcMemberId(id);
+		h.setStartDate(sd);
+		h.setEndDate(ed);
+		
+		int numPerPage = 10;
+		List<HireNoti> list= service.selectWaitList(cPage, numPerPage, h);
+		int total = service.selectHireNotiWaitCount(id);
+	
+		model.addAttribute("pageBar", PageBarFactory.getPageBar(total, cPage, numPerPage));
+		model.addAttribute("hireNoti",list);
+		model.addAttribute("id",id);
+		return "businessPage/businessPage-hireNotiWaitList";
+	}
+	
+	//기업페이지-마감된채용공고 페이지로 이동
+	@RequestMapping("/hireNotiEndList.do")
+	public String hireNotiEnd()
+	{
+		return "businessPage/businessPage-hireNotiEndList";
+	}
+	
 	
 	
 	

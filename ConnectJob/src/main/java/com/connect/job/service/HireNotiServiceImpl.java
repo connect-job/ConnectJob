@@ -16,6 +16,40 @@ public class HireNotiServiceImpl implements HireNotiService {
 	
 	
 	
+	
+
+	@Override
+	public List<HireNoti> selectWaitList(int cPage, int numPerPage, HireNoti h) {
+		return dao.selectWaitList(cPage, numPerPage, h);
+	}
+
+
+	@Override
+	public int selectHireNotiWaitCount(String id) {
+		// TODO Auto-generated method stub
+		return dao.selectHireNotiWaitCount(id);
+	}
+
+
+	@Override
+	public List<HireNoti> selectDoList(int cPage, int numPerPage, String id) {
+		return dao.selectDoList(cPage, numPerPage, id);
+	}
+
+
+	@Override
+	public int selectHireNotiDoCount(String id) {
+		// TODO Auto-generated method stub
+		return dao.selectHireNotiDoCount(id);
+	}
+
+
+	@Override
+	public int selectHireNotiCount(String id) {
+	
+		return dao.selectHireNotiCount(id);
+	}
+
 
 	@Override
 	public HireNoti selectOne(int no) {
@@ -58,10 +92,9 @@ public class HireNotiServiceImpl implements HireNotiService {
 
 
 	@Override
-	public List<HireNoti> selectAllList() {
-		return dao.selectAllList();
+	public List<HireNoti> selectAllList(int cPage, int numPerPage, String id) {
+		return dao.selectAllList(cPage, numPerPage, id);
 	}
-	
 
 	
 	

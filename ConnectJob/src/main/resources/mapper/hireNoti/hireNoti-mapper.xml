@@ -3,6 +3,31 @@
 <mapper namespace="hireNoti">
 
 	
+
+	<select id="selectNotiWaitCount" parameterType="hireNoti" resultType="_int"> 
+		SELECT COUNT(*) FROM HIRENOTI WHERE SYSDATE <![CDATA[ > ]]> #{startDate} AND CMEMBERID = #{cMemberId} ORDER BY HN_ADDDATE DESC
+	</select>
+
+	<select id="selectWaitList" parameterType="hireNoti" resultMap="hireNotiResult">
+		SELECT A.*, C.COMPANY_NAME CNAME FROM HIRENOTI A LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID) LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO) WHERE SYSDATE <![CDATA[ > ]]> #{startDate} AND B.CMEMBERID=#{cMemberId} ORDER BY HN_ADDDATE DESC
+	</select>
+
+	<select id="selectNotiDoCount" resultType="_int"> 
+		SELECT COUNT(*) FROM HIRENOTI WHERE STARTDATE <![CDATA[ > ]]>= #{startDate} AND ENDDATE <![CDATA[ < ]]>= #{endDate} AND CMEMBERID = #{cMemberId} ORDER BY HN_ADDDATE DESC
+	</select>
+
+	<select id="selectDoList" resultMap="hireNotiResult">
+		SELECT A.*, C.COMPANY_NAME CNAME FROM HIRENOTI A LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID) LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO) WHERE STARTDATE <![CDATA[ > ]]>= #{startDate} AND ENDDATE <![CDATA[ < ]]>=#{endDate} AND B.CMEMBERID=#{cMemberId} ORDER BY HN_ADDDATE DESC
+	</select>
+	
+	<select id="selectAllCompanyList" resultMap="hireNotiResult">
+		SELECT A.*, C.COMPANY_NAME CNAME FROM HIRENOTI A LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID) LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO) WHERE B.CMEMBERID = #{id}	
+	</select>
+	
+	<select id="selectNotiCount" resultType="_int">
+		SELECT COUNT(*) FROM HIRENOTI WHERE CMEMBERID = #{id}
+	</select>
+	
 	<insert id="insertNoti" parameterType="hireNoti">
 		INSERT INTO HIRENOTI VALUES(HN_Seq.NEXTVAL,#{cMemberId},#{hnSort, typeHandler=strArr},#{hnCareer},#{hnForm},#{hnRecruit},#{hnCate},#{hnChargeTask},#{hnDept},#{hnRankPosition},#{hnFinalEdu, typeHandler=strArr},#{hnMajor},#{hnPreference},#{hnGender},#{hnBirth, typeHandler=strArr},#{hnSal},#{hnWorkPlace},#{hnDay},#{hnStime},#{hnDtime},#{startDate},#{endDate},#{hnEve, typeHandler=strArr},#{hnReMethod},#{hnProcess},#{hnDoc},#{hnInterview},#{hnTitle},sysdate)
 	</insert>
@@ -42,6 +67,10 @@
 	<select id="selectAllList" parameterType="hireNoti" resultMap="hireNotiResult">
 		SELECT * FROM HIRENOTI
 	</select>
+	
+	
+	
+	
 	
 	<resultMap type="hireNoti" id="hireNotiResult">
       <id property="hnSeq" column="hn_seq"/>

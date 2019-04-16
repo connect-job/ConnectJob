@@ -13,7 +13,7 @@
     <div id="hire-container">
 
         <div class="hire-top">
-            채용공고
+            	채용공고
         </div>
 
         <div class="hire-cate">
@@ -539,6 +539,7 @@
             </c:forEach>
         </div>
 
+
         <div id="pageBar">${pageBar }</div>
 
         <!-- 모달 -->
@@ -619,7 +620,7 @@
 <!-- //지역별 검색 스크립트 -->
 <script>
     var locations = $('#search_right > div');
-    $.each(locations, function (index) {
+   $.each(locations, function (index) {
         locations.eq(index).hide();
     });
     locations.eq(0).show();
