@@ -172,7 +172,7 @@
 			</div>
 			<div class="content-item">
 				<div class="left">사원수</div>
-				<div class="right">${hireNoti.companyAllPeople }명</div>
+				<div class="right">${hireNoti.companyAllPeople } 명</div>
 			</div>
 			<div class="content-item">
 				<div class="left">설립일</div>

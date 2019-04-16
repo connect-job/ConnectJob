@@ -12,7 +12,7 @@
     <div id="hire-container">
 
         <div class="hire-top">
-            채용공고
+            	채용공고
         </div>
 
         <div class="hire-cate">
@@ -525,7 +525,7 @@
                         <div class="f-location">${list.hnWorkPlace }</div>
                     </div>
                     <div class="date">
-                        <div class="d-submit"><button class="submit">즉시지원</button></div>
+                        <div class="d-submit"><button class="submit" value="${path }/hireNoti/apply.do">즉시지원</button></div>
                         <div class="d-date">
                             <fmt:formatDate value="${list.addDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>${regDate }</div>
                     </div>
@@ -535,10 +535,7 @@
                 </div>
             </c:forEach>
         </div>
-
                 <div id="pageBar">${pageBar }</div>
-
-
     </div>
     </div>
     </div>
@@ -585,7 +582,7 @@
 <!-- //지역별 검색 스크립트 -->
 	<script>
     var locations = $('#search_right > div');
-    $.each(locations, function (index) {
+   $.each(locations, function (index) {
         locations.eq(index).hide();
     });
     locations.eq(0).show();

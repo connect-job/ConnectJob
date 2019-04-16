@@ -144,5 +144,12 @@ public class HireNotiController {
 		return "hireNoti/hireNoti-selectOne";
 	}
 	
+	/*//채용공고 리스트에서 즉시지원
+	@RequestMapping("/hireNoti/apply.do")
+	public String applyDirect()
+	{
+		
+	}*/
+	
 		
 }

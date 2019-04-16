@@ -74,7 +74,7 @@
 					<td>${list.finalEdu }</td>
 					<td>${list.creationDate }</td>
 				</tr>    
-			</c:forEach>    
+			</c:forEach>
 		</c:when>
 	
 	
