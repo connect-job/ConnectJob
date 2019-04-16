@@ -11,7 +11,7 @@
 						<li><a
 							href="${path}/admin/inquiry/inquiry.do">1:1문의
 								</a></li>
-						<li><a href="#">자주묻는질문</a></li>
+						<li><a href="${path}/admin/faq/faq.do">자주묻는질문</a></li>
 					</ul>
 				</li>
 

@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.connect.job.model.vo.Faq;
 import com.connect.job.model.vo.Inquiry;
 
 @Repository
@@ -37,6 +38,30 @@ public class HelpDaoImpl implements HelpDao {
 	@Override
 	public int selectCount(String id) {
 		return session.selectOne("help.selectCount",id);
+	}
+
+
+
+	@Override
+	public int insertFaq(Faq f) {
+
+		return session.insert("help.insertFaq",f);
+	}
+
+
+
+	@Override
+	public List<Faq> faqView(int cPage, int numPerPage) {
+		
+		return session.selectList("help.faqView",null,new RowBounds((cPage-1)*numPerPage, numPerPage));
+	}
+
+
+
+	@Override
+	public int selectFaqCountOne() {
+		
+		return session.selectOne("help.selectFaqCountOne");
 	}
 	
 	

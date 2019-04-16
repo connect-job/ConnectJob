@@ -55,7 +55,7 @@
 							<div class="right">${review.reviewGrade05}</div>
 							<Br><Br>
 							<div class="left">작성일</div>
-							<div class="right"><fmt:formatDate value="${list.reviewDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>${regDate }</div>
+							<div class="right"><fmt:formatDate value="${review.reviewDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>${regDate }</div>
 					</div>
 					
 					<p align="center"><button onclick="history.back();">목록으로</button></p>

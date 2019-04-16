@@ -142,7 +142,7 @@ public class HireNotiController {
 		System.out.println("공고번호 : "+no);
 		HireNoti hn = service.selectOne(no);
 		
-		model.addAttribute("list",hn);
+		model.addAttribute("hireNoti",hn);
 		return "hireNoti/hireNoti-selectOne";
 	}
 	

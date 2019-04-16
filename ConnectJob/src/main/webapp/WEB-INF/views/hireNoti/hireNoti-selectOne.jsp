@@ -170,7 +170,7 @@
 		<div class="view-content">
 			<div class="content-item">
 				<div class="left">기업이름</div>
-				<div class="right">${hireNoti.companyName }</div>
+				<div class="right">${hireNoti.cName }</div>
 			</div>
 			<div class="content-item">
 				<div class="left">사원수</div>
@@ -197,4 +197,4 @@
 	</div>
 </section>
 
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
