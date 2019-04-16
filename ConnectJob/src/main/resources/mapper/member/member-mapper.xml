@@ -3,7 +3,7 @@
 <mapper namespace="member">
 
 	<insert id="insertMember" parameterType="member">
-		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, default, null, null, null, null, #{nickname})
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, default, null, null, null, null, default, #{nickname})
 
 	</insert>
 	
@@ -11,13 +11,13 @@
 		insert into p_member values
 		<choose>
 			<when test="is_sns == 'kakao'">
-				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, #{kakao_id}, null, null, #{nickname})
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, #{kakao_id}, null, null, default,#{nickname})
 			</when>
 			<when test="is_sns == 'google'">
-				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, #{google_id}, null, #{nickname})
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, #{google_id}, null, default, #{nickname})
 			</when>
 			<when test="is_sns == 'naver'">
-				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, null, #{naver_id}, #{nickname})
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, null, #{naver_id}, default, #{nickname})
 			</when>
 		</choose>
 
