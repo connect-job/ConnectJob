@@ -37,7 +37,7 @@
         </table>  
     	<div id="btn-container">
         	<input type="submit" value="수정" />
-        	<input type="button" value="취소" onclick="fn_cancle()"/>                
+        	<input type="button" value="삭제" onclick="location.href='${path}/admin/deleteNotice?notice_no=${notice.notice_no }'"/>                
     	</div>
     </form>
 </section>

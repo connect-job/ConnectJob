@@ -15,42 +15,43 @@ function checkSearch(){
 		return false;
 	}	
 }
+
+function fn_paging(cPage) {
+		window.location.href="${path}/notice.do?cPage=" + cPage;
+}
 </script>
 	
 <section>	
 	<div>회원 리스트</div>
 	
-	<div class="notice-search">
-		<form method="post" action="${path }/member/memberSearch" onsubmit="return checkSearch();">			
+	<div class="member-search">
+		<form method="post" action="${path }/admin/member/searchMember" onsubmit="return checkSearch();">			
 			<select name="searchType" id="select">
 				<option value="none" disabled selected>검색타입</option>
-				<option value="p_id" <c:if test="${map.searchType eq 'p_id'}">selected</c:if>>제목</option>
-				<option value="p_name"<c:if test="${map.searchType eq 'p_name'}">selected</c:if>>내용</option>
+				<option value="p_id" <c:if test="${map.searchType eq 'p_id'}">selected</c:if>>아이디</option>
+				<option value="p_name"<c:if test="${map.searchType eq 'p_name'}">selected</c:if>>이름</option>
 			</select>			
 			<input type="text" id="searchKey" name="searchKey" value="${map.searchKey!=null?map.searchKey:''}"/>
 			<input type="submit" value="검색">			
 		</form>
 	</div>
 	
-	<div>
-		<div>
-			<div>아이디</div>
-			<div>이름</div>			
-			<div>SNS</div>
-			<div>이메일 인증</div>
-		</div>
-		<c:forEach var="member" items="${list }" varStatus="vs">
-			<div>				
-				<div>${member.p_id }</div>
-				<div>${member.name }</div>				
-				<div>${member.is_sns }</div>
-				<div>${member.email_confrim}</div>
-				<div>					
-					<input type="button" value="삭제" onclick="${path}/member/deleteMember?p_id=${member.p_id}"/>
-				</div>
+	
+	<div class="member-list">
+		<c:forEach var="member" items="${list }">
+			<div class="list-item">
+				<div class="id">${member.p_id}</div>
+				<div class="name">${member.p_name }</div>
+				<div class="date">${member.enroll_date }</div>
+				<div><input type="button" value="삭제" onclick="location.href='${path}/admin/deleteMember?p_id=${member.p_id}'"/></div>				
 			</div>
-		</c:forEach>
+         </c:forEach> 
 	</div>
+		
+	<div id="pageBar">
+			${pageBar }
+	</div>
+	
 </section>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

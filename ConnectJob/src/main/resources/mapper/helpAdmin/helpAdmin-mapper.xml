@@ -28,4 +28,70 @@
 	<update id="helpInquiryUpdate" parameterType="inquiry">
 		update inquiry set a_content=#{aContent}, status=#{status} where i_no=#{iNo}
 	</update>
+	
+	<resultMap type="member" id="memberResult">
+		<id column="p_id" property="p_id"/>
+		<result column="password" property="password"/>
+		<result column="p_name" property="p_name"/>
+		<result column="gender" property="gender"/>
+		<result column="phone" property="phone"/>
+		<result column="is_sns" property="is_sns"/>
+		<result column="enroll_date" property="enroll_date"/>
+		<result column="email_confirm" property="email_confirm"/>
+		<result column="kakao_id" property="kakao_id"/>
+		<result column="google_id" property="google_id"/>
+		<result column="naver_id" property="naver_id"/>
+		<result column="nickname" property="nickname"/>
+		<result column="alarm_status" property="alarmStatus"/>
+	</resultMap>
+	
+	<!-- 회원관리 -->
+	<select id="memberList" resultMap="memberResult">
+		SELECT * FROM P_MEMBER order by p_id
+	</select>
+	
+	<select id="memberCount" resultType="_int">
+		select count(*) from p_member
+	</select>
+	
+	<select id="searchMemberCount" resultType="_int" parameterType="map">	
+		select count(*) from p_member where ${searchType} like '%' || #{searchKey} || '%'
+	</select>
+	
+	<select id="searchMemberList" resultMap="memberResult" parameterType="map">
+		select * from p_member where ${searchType} like '%' || #{searchKey} || '%'
+	</select>
+	
+	<delete id="deleteMember" parameterType="String">
+		delete from p_member where p_id = #{p_id}
+	</delete>
+	
+	<!-- 공지사항 관리 -->
+	<select id="noticeList" resultType="notice">
+		select * from notice order by notice_date desc
+	</select>
+	
+	<select id="noticeCount" resultType="_int">
+		select count(*) from notice 
+	</select>
+	
+	<select id="searchNoticeCount" resultType="_int" parameterType="map">
+		select count(*) from notice where ${searchType} like '%' || #{searchKey} || '%'
+	</select>
+	
+	<select id="searchNoticeList" resultType="notice" parameterType="map">	
+		select * from notice where ${searchType} like '%' || #{searchKey} || '%'
+	</select>
+	
+	<delete id="deleteNotice" parameterType="_int">
+		delete from notice where notice_no=#{notice_no}
+	</delete>
+	
+	<select id="selectNoticeOne" resultType="notice" parameterType="_int">
+		select * from notice where notice_no=#{notice_no}
+	</select>
+	
+	<update id="updateNotice" parameterType="notice">
+		update notice set title=#{title}, content=#{content} where notice_no=#{notice_no}
+	</update>
 </mapper>

@@ -53,12 +53,12 @@
 		select count(*) from notice
 	</select>
 	
-	<select id="searchCount" resultType="_int">
-		select count(*) from notice where #{searchType} like '%' || #{searchKey} || '%'
+	<select id="searchCount" resultType="_int" parameterType="map">
+		select count(*) from notice where ${searchType} like '%' || #{searchKey} || '%'
 	</select>
 	
-	<select id="searchList" resultType="notice">	
-		select * from notice where #{searchType} like '%' || #{searchKey} || '%'
+	<select id="searchList" resultType="notice" parameterType="map">	
+		select * from notice where ${searchType} like '%' || #{searchKey} || '%'
 	</select>
 	
 	
