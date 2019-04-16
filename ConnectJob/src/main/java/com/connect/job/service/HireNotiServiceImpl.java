@@ -57,6 +57,11 @@ public class HireNotiServiceImpl implements HireNotiService {
 		return dao.selectLatest();
 	}
 
+	@Override
+	public List<HireNoti> selectAllList() {
+		return dao.selectAllList();
+	}
+
 	
 	
 	

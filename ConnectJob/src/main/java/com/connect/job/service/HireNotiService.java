@@ -26,7 +26,7 @@ public interface HireNotiService {
 	int selectHireNotiCountAjax(HireNoti h);
 
 	List<HireNoti> selectLatest();
-	
+	List<HireNoti> selectAllList(); //달력에서 쓸 리스트
 	
 
 	

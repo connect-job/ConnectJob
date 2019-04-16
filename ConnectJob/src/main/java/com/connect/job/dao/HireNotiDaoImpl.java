@@ -56,6 +56,11 @@ public class HireNotiDaoImpl implements HireNotiDao {
 	public List<HireNoti> selectLatest() {
 		return session.selectList("HireNoti.selectAll");
 	}
+
+	@Override
+	public List<HireNoti> selectAllList() {
+		return session.selectList("HireNoti.selectAllList");
+	}
 	
 	
 	
