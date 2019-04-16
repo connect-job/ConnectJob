@@ -35,6 +35,21 @@
                </div>
                <div class="right">
                   <input type="text" class="CMember" id="CMemberBNum" name="CMemberBNum"  required maxlength="12"/>
+                  <select type="select" class="CMember" id="CMemberDiv" name="CMemberDiv" required><i class="fas fa-arrow-down"></i></br>
+                     <option value="divide" selected disabled>기업구분</option>
+                     <option value="normal">일반</option>
+                     <option value="staffing">인재파견</option>
+                     <option value="headhunting">헤드헌팅</option>
+                  </select>
+               </div>
+            </div>
+            
+            <div class="enroll-item">
+               <div class="left">
+                  	기업선택
+               </div>
+               <div class="right">
+                  <input type="text" class="CMember" id="cId" name="cId"  required/>
                </div>
             </div>
             
@@ -158,7 +173,7 @@ $(document).ready(function(){
 			$("#id-result-div").show();
 			$("#id_result").html("이메일 형식이 올바르지 않습니다.").css('color', 'red');
 			$('#CMemberId').focus();
-		 */}else{
+		 }*/else{
 			$.ajax({
 				type:"POST",
 				url: "${path}/member/checkId?CMemberId="+CMemberId,
@@ -222,24 +237,28 @@ $(document).ready(function(){
 });
    
    
- //체크박스 전체선택 및 전체해제
-   $("#ACCEPT_TERMS").click(function(){
-       if($("#ACCEPT_TERMS").is(":checked")){
-           $(".chk").prop("checked",true);
-       }
-       else{
-           $(".chk").prop("checked",false);
-       }
-   });
+ 	//체크박스 전체선택 및 전체해제
+	   $("#ACCEPT_TERMS").click(function(){
+	       if($("#ACCEPT_TERMS").is(":checked")){
+	           $(".chk").prop("checked",true);
+	       }
+	       else{
+	           $(".chk").prop("checked",false);
+	       }
+	   });
 
    //한개의 체크박스 선택 해제시 전체선택 체크박스도 해제
-   $(".chk").click(function(){
-       if($("input[name='chk']:checked").length == 4){
-           $("#ACCEPT_TERMS").prop("checked",true);
-       }else{
-           $("#ACCEPT_TERMS").prop("checked",false);
-       }
-   });
+	   $(".chk").click(function(){
+	       if($("input[name='chk']:checked").length == 4){
+	           $("#ACCEPT_TERMS").prop("checked",true);
+	       }else{
+	           $("#ACCEPT_TERMS").prop("checked",false);
+	       }
+	   });
+
+
+
+
 
 
 </script>
