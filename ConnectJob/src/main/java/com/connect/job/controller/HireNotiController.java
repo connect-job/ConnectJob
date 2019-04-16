@@ -5,6 +5,8 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +31,13 @@ public class HireNotiController {
 	// 메인페이지 -> 최신 채용공고
 	@RequestMapping("/hireLatest.do")
 	@ResponseBody
-	public String hireLatest() throws UnsupportedEncodingException {
+	public String hireLatest(HttpServletRequest request) throws UnsupportedEncodingException {
 		String html = "";
 		
 		List<HireNoti> list = service.selectLatest();
 		
 		for(int i=0; i<list.size(); i++) {
-			html += "<div class=\"hire-item\">";
+			html += "<div class=\"hire-item\" onclick=\"location.href=\'" + request.getContextPath() + "/hireNotiView.do?no=" + list.get(i).getHnSeq() + "\'\">";
 			html += "<div class=\"item-title\">";
 			if(list.get(i).getHnTitle().length()>12) {
 				html += list.get(i).getHnTitle().substring(0, 12) + "...</div>";
