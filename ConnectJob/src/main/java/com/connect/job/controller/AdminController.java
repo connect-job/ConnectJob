@@ -103,7 +103,7 @@ public class AdminController {
 		
 		mv.addObject("list", searchList);
 		mv.addObject("map", map);
-		mv.setViewName("/admin/inquiry/memberList");
+		mv.setViewName("/admin/member/memberList");
 		
 		return mv;
 	}
@@ -177,7 +177,7 @@ public class AdminController {
 		int result=service.deleteNotice(notice_no);
 			
 		String msg="";
-		String loc="/";
+		String loc="/admin/notice";
 		if(result>0) {msg="공지사항 삭제 성공";}
 		else {msg="공지사항 삭제 실패";}
 		model.addAttribute("msg", msg);
@@ -190,8 +190,9 @@ public class AdminController {
 	@RequestMapping("/admin/updateForm")
 	public String updateForm(int notice_no, Model model) {
 		Notice result=service.selectNoticeOne(notice_no);
-			
+		System.out.println(result);
 		model.addAttribute("notice", result);
+		
 		return "admin/notice/noticeUpdate";
 	}
 		
@@ -201,15 +202,14 @@ public class AdminController {
 		int result=service.updateNotice(n);
 			
 		String msg="";
-		String loc="";
+		String loc="/admin/notice";
 			
 		if(result>0) {
-			msg="수정 성공";
-			loc="/notice/noticeView?notice_no="+n.getNotice_no();
+			msg="수정 성공";			
 				
 		}else {
 			msg="수정 실패";
-				loc="/";
+			
 		}
 			
 		model.addAttribute("msg", msg);

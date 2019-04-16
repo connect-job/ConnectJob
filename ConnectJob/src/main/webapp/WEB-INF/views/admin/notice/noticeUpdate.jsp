@@ -7,49 +7,52 @@
 <section>
 	<div id="admin-container">
 	
-		<!-- ---------------------------------------------------------------------- 좌측메뉴 -->
-		<%@ include file="/WEB-INF/views/admin/admin-menu.jsp"%>
+	<!-- ---------------------------------------------------------------------- 좌측메뉴 -->
+	<%@ include file="/WEB-INF/views/admin/admin-menu.jsp"%>
+	<!-- ---------------------------------------------------------------------- 우측 메뉴 -->
+	<div class="admin-right">
+	
+		<div class="admin-title">공지사항 관리</div>
 		
-		<!-- ---------------------------------------------------------------------- 우측 메뉴 -->
-
-	<form name="updateFrm" method="post" action="${path }/notice/updateNotice">
-    	<table>    	
-         	<tr>
-         		
-            	<th>작성자</th>
-            	<td>                
-               		<input type="text" name="writer" value="${notice.writer }" readonly/>
-               		<input type="hidden" name="notice_no" value="${notice.notice_no }"/>
-            	</td>
-            </tr>
-            <tr>
-                <th>제목</th>
-                <td>
-                 	<input type="text" name="title" value="${notice.title }"/>
-                </td>
-            </tr>             
-            <tr>
-                <th>내용</th>
-                <td>
-                 	<textarea name="content">${notice.content}</textarea>
-                </td>
-            </tr>
-            <tr>
-            	<th>상단 고정</th>
-            	<td>
-            		<input type="radio" name="status" value="Y"/> Y
-            		<input type="radio" name="status" value="N"/> N
-            	</td>
-            </tr>                                 
-        </table>  
-    	<div id="btn-container">
-        	<input type="submit" value="수정" />
-        	<input type="button" value="삭제" onclick="location.href='${path}/admin/deleteNotice?notice_no=${notice.notice_no }'"/>                
-    	</div>
-    </form>
+		<form name="updateFrm" method="post" action="${path }/admin/updateNotice">
+		
+			<div class="enroll-item">
+				<div class="left">작성자</div>
+				<div class="right">
+					<input type="text" name="writer" readonly value="관리자"/>
+               		<input type="hidden" name="notice_no" value="${notice.notice_no }"/>																									
+				</div>
+			</div>
+			
+			<div class="enroll-item">
+				<div class="left">제목</div>
+				<div class="right">
+					<input type="text" name="title" value="${notice.title }"/>																									
+				</div>
+			</div>
+			
+			<div class="enroll-item">
+				<div class="left">내용</div>
+				<div class="right">
+					<textarea name="content">${notice.content}</textarea>																									
+				</div>
+			</div>
+			
+			<div class="enroll-item">
+				<div class="left">상단고정여부</div>
+				<div class="right">
+					<input type="radio" name="status" value="Y" ${notice.status eq 'Y'? 'checked' :'' }/> Y
+            		<input type="radio" name="status" value="N" ${notice.status eq 'N'? 'checked' :'' }/> N																								
+				</div>
+			</div>
+    	 
+    		<div id="btn-container">
+        		<input type="submit" value="수정" />
+        		<input type="button" value="삭제" onclick="location.href='${path}/admin/deleteNotice?notice_no=${notice.notice_no }'"/>                
+    		</div>
+    	</form>
+    </div>
+    </div>
 </section>
 
-<script>
-	
-</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
