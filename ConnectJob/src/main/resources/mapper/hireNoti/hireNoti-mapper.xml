@@ -37,7 +37,7 @@
 	</select>
 	
 	<select id="selectOne" parameterType="_int" resultMap="hireNotiResult">
-		SELECT A.*, C.COMPANY_NAME CNAME FROM HIRENOTI A LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID) LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO) WHERE HN_SEQ = #{no}
+		SELECT A.*, B. CMEMBERNAME CMNAME ,CMEMBERPHONE CMPHONE,CMEMBEREMAIL CMMAIL , C. COMPANY_NAME CNAME, COMPANY_ALL_PEOPLE CAP, COMPANY_REGDATE CRD, COMPANY_CATE CC, COMPANY_ADDRESS_NEW CAN FROM HIRENOTI A LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID) LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO) WHERE HN_SEQ = #{no}
 	</select>
 	
 	<resultMap type="hireNoti" id="hireNotiResult">
@@ -71,6 +71,14 @@
       <result property="hnTitle" column="hn_title"/>
       <result property="addDate" column="hn_adddate"/>
       <result property="cName" column="cname"/>
+      <result property="cMemberPhone" column="cmphone"/>
+      <result property="cMemberEmail" column="cMMail"/>
+      <result property="cMemberName" column="cmname"/>
+      <result property="companyAllPeople" column="cap"/>
+      <result property="companyRegDate" column="crd"/>
+      <result property="companyCate" column="cc"/>
+      <result property="companyAddressNew" column="can"/>
+      <result property="companyName" column="cname"/>
    </resultMap>
 	
 	

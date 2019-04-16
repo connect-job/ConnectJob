@@ -12,7 +12,7 @@
 	<div id="hire-view-container">
 	
 		<div class="view-top">
-			<div class="left">${hireNoti.cName }　|　${hireNoti.hnTitle}</div>
+			<div class="left"><button>뒤로가기</button>${hireNoti.cName }　|　${hireNoti.hnTitle}</div>
 			<div class="right"><button>스크랩</button>　<button>즉시지원</button></div>
 		</div>
 		
@@ -53,7 +53,7 @@
 			</div>
 			<div class="content-item">
 				<div class="left">근무시간</div>
-				<div class="right">${hireNoti.hnSal }<span>${hireNoti.hnStime }</span>~<span>${hireNoti.hnDtime }</span></div>
+				<div class="right"><span>${hireNoti.hnStime }</span>~<span>${hireNoti.hnDtime }</span></div>
 			</div>
 		</div>
 		
@@ -98,7 +98,9 @@
 			</div>
 			<div class="content-item">
 				<div class="left">성별</div>
-				<div class="right">${hireNoti.hnGender}</div>
+				<div class="right">
+					${hireNoti.hnGender}
+				</div>
 			</div>
 			<div class="content-item">
 				<div class="left">나이</div>
@@ -148,7 +150,7 @@
 			</div>
 			<div class="content-item">
 				<div class="left">근무시간</div>
-				<div class="right">${hireNoti.hnSal }<span>${hireNoti.hnStime }</span>~<span>${hireNoti.hnDtime }</span></div>
+				<div class="right"><span>${hireNoti.hnStime }</span>~<span>${hireNoti.hnDtime }</span></div>
 			</div>
 		</div>
 	
@@ -156,8 +158,16 @@
 		
 		<div class="view-content">
 			<div class="content-item">
-				<div class="left">이름</div>
-				<div class="right"></div>
+				<div class="left">담당자 이름</div>
+				<div class="right">${hireNoti.cMemberName }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">담당자 전화번호</div>
+				<div class="right">${hireNoti.cMemberPhone }</div>
+			</div>
+			<div class="content-item">
+				<div class="left">담당자 이메일</div>
+				<div class="right">${hireNoti.cMemberEmail }</div>
 			</div>
 		</div>
 		
@@ -166,27 +176,27 @@
 		<div class="view-content">
 			<div class="content-item">
 				<div class="left">기업이름</div>
-				<div class="right">${company.companyName }</div>
+				<div class="right">${hireNoti.companyName }</div>
 			</div>
 			<div class="content-item">
 				<div class="left">사원수</div>
-				<div class="right">${company.companyAllPeople }</div>
+				<div class="right">${hireNoti.companyAllPeople }</div>
 			</div>
 			<div class="content-item">
 				<div class="left">설립일</div>
-				<div class="right">${company.companyRegDate }</div>
+				<div class="right">
+					<fmt:parseDate value="${hireNoti.companyRegDate}" var="date" pattern="yyyyMMdd" />
+                    <fmt:formatDate value="${date}" pattern="yyyy년 MM월 dd일" var="regDate" />
+                    ${regDate }
+				</div>
 			</div>
 			<div class="content-item">
-				<div class="left">기업구분</div>
-				<div class="right">${company.companyStatus }</div>
-			</div>
-			<div class="content-item">
-				<div class="left">산업</div>
-				<div class="right">${company.companyCate }</div>
+				<div class="left">산업분류</div>
+				<div class="right">${hireNoti.companyCate }</div>
 			</div>
 			<div class="content-item">
 				<div class="left">기업주소</div>
-				<div class="right">${company.companyAddressNew }</div>
+				<div class="right">${hireNoti.companyAddressNew }</div>
 			</div>
 		</div>
 
