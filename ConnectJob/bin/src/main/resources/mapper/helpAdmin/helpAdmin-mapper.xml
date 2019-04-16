@@ -10,6 +10,7 @@
 		<result property="iDate" column="i_date"/>
 		<result property="status" column="status"/>
 		<result property="iWriter" column="i_writer"/>
+		<result property="aContent" column="a_content"/>
 	</resultMap>
 
 	<select id="helpPageInquiryList" resultMap="inquiryResult" parameterType="String">
