@@ -393,19 +393,22 @@
 
             <div id="search-job">
                 <ul>
-                    <li>정규직</li>
-                    <li>교육생</li>
-                    <li>별정직</li>
-                    <li>파트</li>
-                    <li>전임</li>
-                    <li>계약직</li>
-                    <li>병역특례</li>
-                    <li>인턴직</li>
-                    <li>아르바이트</li>
-                    <li>파견직</li>
-                    <li>해외취업</li>
-                    <li>위촉직</li>
-                    <li>프리랜서</li>
+                    <li>웹 개발자</li>
+                    <li>서버 개발자</li>
+                    <li>시스템 개발</li>
+                    <li>프론트엔드 개발자</li>
+                    <li>자바 개발자</li>
+                    <li>파이썬 개발자</li>
+                    <li>안드로이드 개발자</li>
+                    <li>IOS개발자</li>
+                    <li>데이터 엔지니어</li><br>
+                    <li>시스템,네트워크 관리자</li>
+                    <li>node.js개발자</li>
+                    <li>php개발자</li>
+                    <li>DevOps/시스템 관리자</li>
+                    <li>C,C++개발자</li>
+                    <li>개발매니저</li>
+                    <li>데이터 사이언티스트</li>
                 </ul>
             </div>
 
@@ -502,7 +505,7 @@
 
                     <div class="cname">${list.cName }</div>
                     <div class="subject">
-                        <div class="h-title">${list.hnTitle }</div>
+                        <div class="h-title"><a href="${path }/hireNotiView.do?no=${list.hnSeq}">${list.hnTitle }</a></div>
                         <div class="h-subtitle">모집부문 : 
                             <c:forEach var="sort" items="${list.hnSort }">
                             	${sort }
@@ -580,7 +583,7 @@
 
 
 <!-- //지역별 검색 스크립트 -->
-<script>
+	<script>
     var locations = $('#search_right > div');
     $.each(locations, function (index) {
         locations.eq(index).hide();
@@ -746,7 +749,7 @@
 </script>
 
 <!-- //지역별 검색후 버튼 만들고 밑으로  쏴주는 스크립트 -->
-<script>
+	<script>
     // function fn_searchOpen() {
     //     $('#search_location').toggle(function(){
     //     });
