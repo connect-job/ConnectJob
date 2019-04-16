@@ -18,6 +18,10 @@
 				<td>연락처</td>
 				<td><input type="phone" name="phone"/></td>
 			</tr>
+			<!-- <tr>
+				<td>닉네임</td>
+				<td><input type="text" name="nickname"/></td>
+			</tr> -->
 			<tr>
 				<td colspan="2"><input type="submit" value="ID찾기"/></td>				
 			</tr>

@@ -5,6 +5,13 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <section>
+	<div id="admin-container">
+	
+		<!-- ---------------------------------------------------------------------- 좌측메뉴 -->
+		<%@ include file="/WEB-INF/views/admin/admin-menu.jsp"%>
+		
+		<!-- ---------------------------------------------------------------------- 우측 메뉴 -->
+
 	<form name="updateFrm" method="post" action="${path }/notice/updateNotice">
     	<table>    	
          	<tr>
@@ -37,7 +44,7 @@
         </table>  
     	<div id="btn-container">
         	<input type="submit" value="수정" />
-        	<input type="button" value="취소" onclick="fn_cancle()"/>                
+        	<input type="button" value="삭제" onclick="location.href='${path}/admin/deleteNotice?notice_no=${notice.notice_no }'"/>                
     	</div>
     </form>
 </section>

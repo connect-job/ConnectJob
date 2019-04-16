@@ -111,13 +111,13 @@ public class MemberDaoImpl implements MemberDao {
 		return session.delete("member.deleteReview", review_no);
 	}
 
-	@Override
+	/*@Override
 	public int selectCount() {
 		
 		return session.selectOne("member.selectCount");
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public List<Member> selectList(int cPage, int numPerPage) {
 		
 		return session.selectList("member.selectList", null, new RowBounds((cPage-1)*numPerPage, numPerPage));
@@ -132,7 +132,7 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public List<Member> searchList(int cPage, int numPerPage, Map<String, String> map) {
 		return session.selectList("member.searchList", map, new RowBounds((cPage-1)*numPerPage, numPerPage));
-	}
+	}*/
 
 	
 	

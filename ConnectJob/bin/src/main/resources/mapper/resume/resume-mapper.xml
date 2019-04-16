@@ -38,6 +38,9 @@
 		UPDATE CAREER SET CAREER_C_NAME=#{careerCName},JOIN_DATE=#{joinDate},RESIGN_DATE=#{resignDate},COMPANY_FLAG=#{companyFlag},POSITION=#{position},JOB=#{job},OCCUPATION=#{occupation} WHERE CAREER_NO=#{careerNo}
 	</update>
 	
+	<select id="selectResumeCnt" resultType="_int" parameterType="String">
+		SELECT COUNT(*) FROM RESUME WHERE P_ID=#{pId} AND IS_DELETE='FALSE'
+	</select>
 	
 	<select id="selectProfileImg" resultType="profileImg" resultMap="imgMap">
 		SELECT * FROM (SELECT * FROM PROFILE_IMG WHERE RESUME_NO=#{resumeNo} AND STATUS='Y' ORDER BY PROFILE_IMG_NO DESC) WHERE ROWNUM = 1

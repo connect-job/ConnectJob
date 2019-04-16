@@ -16,37 +16,7 @@
           1:1문의
         </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <div class="senier-subTitle">
-            <div id="left"></div>
-            <div id="right"><button id="btn-service" onclick="location.href='${path}/help/myInquiry.do'">나의문의내역</button></div>
-        </div>
-
-        <div class="senier-middle">
-            <form action="${path}/help/inquiryWriteEnd.do" method="post" onsubmit="return validate();">
-                <div id="senier-write-container">
-                    <div class="write-cate">
-                        <div class="left">문의종류</div>
-                        <div class="right">
-                            <input type="radio" name="iType" id="radio1" value="서비스이용문의"><label for="radio1">서비스이용문의</label>
-                            <input type="radio" name="iType" id="radio2" value="오류신고"><label for="radio2">오류신고</label>
-                            <input type="radio" name="iType" id="radio4" value="서비스칭찬"><label for="radio4">서비스칭찬</label>
-                            <input type="radio" name="iType" id="radio5" value="서비스제안"><label for="radio5">서비스제안</label>
-                        </div>
-                    </div>
-                    <div class="write-title">
-                        <div class="left">제목</div>
-                        <div class="right"><input type="text" name="iTitle" placeholder="제목을 입력해주세요"></div>
-                    </div>
-                    <div class="write-content">
-                        <div class="left">내용</div>
-                        <div class="right"><textarea name="iContent" placeholder="구체적인 내용을 입력해주세요"></textarea></div>
-=======
-  	<c:if test="${loginMember != null}">
-=======
   	<c:if test="${loginCMember!=null}">
->>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
         <div class="senier-subTitle">
             <div id="left"></div>
             <div id="right"><button id="btn-service" onclick="location.href='${path}/help/myInquiry.do?id=${loginCMember.cMemberEmail}'">나의문의내역</button></div>
@@ -79,11 +49,6 @@
                     </div>
                     <div class="write-content">
                         <div class="left">내용</div>
-<<<<<<< HEAD
-                        <div class="right"><textarea name="iContent" placeholder="구체적인 내용을 입력해주세요"></textarea></div>
-                        <input type="hidden" name="iWriter"  value="${loginMember.p_id}">
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
-=======
                         <div class="right"><textarea style="width:80%" id="editor" name="iContent" placeholder="구체적인 내용을 입력해주세요"></textarea></div>
                         
                         
@@ -98,7 +63,6 @@
                         
                         </c:choose>
                         
->>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
                     </div>
                     <div class="write-btn"><button type="submit">문의하기</button></div>
                 </div>

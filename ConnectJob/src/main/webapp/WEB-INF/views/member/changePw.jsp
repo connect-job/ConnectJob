@@ -55,7 +55,7 @@ $(document).ready(function(){
 
 <form action="${path}/member/changePwEnd" method="post">
 	
-	<input type="hidden" value="${param.p_id }" name="p_id"/>
+	<input type="text" value="${param.p_id }" name="p_id"/>
 	<div class="enroll-item">
 		<div class="left">비밀번호</div>
 		<div class="right">

@@ -614,15 +614,17 @@
        		var comList = $('#company-list');
        		var location_temp = $('#select_left button');
             var location = "";
+            
+            var pageNum = Number(cPage);
 
             for(var i=0; i<location_temp.length;i++) {
-                location += location_temp[i].innerText + ",";
+                location += location_temp[i].innerText.trim() + ",";
             }
             
             
             $.ajax({
-            	url: '${path}/company/companyListEnd.do',
-            	data: {"location":location, "cPage":cPage},
+            	url: '${path}/company/companyListEnd.do?cPage=' + cPage,
+            	data: {"location":location},
             	dataType: "html",
             	success: function(data) {
 					var Ca = /\+/g;
