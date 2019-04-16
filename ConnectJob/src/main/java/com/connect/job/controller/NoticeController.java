@@ -63,7 +63,7 @@ public class NoticeController {
 		html += "<ul>";
 		if(list.size()>5) {
 			for(int i=0; i<5; i++) {
-				html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/notice/noticeView?notice_no=" + list.get(i).getNotice_no() + "'\">·　" + list.get(i).getNotice_date() + "　" +  list.get(i).getTitle() + "</li>";
+				html += "<li class=\"wow fadeInUp\"  data-wow-delay=\"0.1s\" onclick=\"location.href='" + request.getContextPath() + "/notice/noticeView?notice_no=" + list.get(i).getNotice_no() + "'\">·　"  +  list.get(i).getTitle() + "</li>";
 			}
 		} else {
 			html += "<li>등록된 리뷰가 없습니다</li>";

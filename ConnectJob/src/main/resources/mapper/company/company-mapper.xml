@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="company">
 
+	<select id="latestHire" parameterType="_int" resultMap="hireNotiResult">
+		SELECT A.*, C.COMPANY_NAME CNAME FROM HIRENOTI A
+	   	LEFT JOIN C_MEMBER B ON (A.CMEMBERID = B.CMEMBERID)
+	   	LEFT JOIN COMPANY C ON (B.CID = C.COMPANY_NO)
+		WHERE C.COMPANY_NO = #{no}
+	</select>
+
 	<select id="latestSalary" resultMap="companyResult">
 		SELECT COMPANY_NO, COMPANY_NAME, ((COMPANY_PRICE*10)*12)/COMPANY_ALL_PEOPLE COMPANY_PRICE FROM COMPANY WHERE COMPANY_ALL_PEOPLE != 0 ORDER BY company_PRICE DESC
 	</select>
@@ -33,7 +40,7 @@
 	</insert>
 	
 	<select id="selectAll" resultType="company" resultMap="companyResult">
-		SELECT * FROM COMPANY
+		SELECT A.*, (SELECT COUNT(*) FROM COMPANY_REVIEW B WHERE A.COMPANY_NO = B.REVIEW_COMPANY) REVIEW_COUNT FROM COMPANY A
 	</select>
 	
 	<select id="companyOne" parameterType="_int" resultType="company" resultMap="companyResult">
@@ -85,5 +92,38 @@
 		<result property="companyOutPeople" column="company_out_people"/>
 		<result property="reviewCount" column="review_count"/>
 		<result property="totalScore" column="total_score"/>
+	</resultMap>
+	
+	<resultMap type="hireNoti" id="hireNotiResult">
+		<id property="hnSeq" column="hn_seq"/>
+		<result property="cMemberId" column="cmemberid"/>
+		<result property="hnSort" column="hn_sort" typeHandler="strArr"/>
+		<result property="hnCareer" column="hn_career"/>
+		<result property="hnForm" column="hn_form"/>
+		<result property="hnRecruit" column="hn_recruit"/>
+		<result property="hnCate" column="hn_cate"/>
+		<result property="hnChargeTask" column="hn_chargetask"/>
+		<result property="hnDept" column="hn_dept"/>
+		<result property="hnRankPosition" column="hn_rank_position"/>
+		<result property="hnFinalEdu" column="hn_final_edu" typeHandler="strArr"/>
+		<result property="hnMajor" column="hn_major"/>
+		<result property="hnPreference" column="hn_preference"/>
+		<result property="hnGender" column="hn_gender"/>
+		<result property="hnBirth" column="hn_birth" typeHandler="strArr"/>
+		<result property="hnSal" column="hn_sal"/>
+		<result property="hnWorkPlace" column="hn_work_place"/>
+		<result property="hnDay" column="hn_day"/>
+		<result property="hnStime" column="hn_stime"/>
+		<result property="hnDtime" column="hn_dtime"/>
+		<result property="startDate" column="startdate"/>
+		<result property="endDate" column="enddate"/>
+		<result property="hnEve" column="hn_eve" typeHandler="strArr"/>
+		<result property="hnReMethod" column="hn_remethod"/>
+		<result property="hnProcess" column="hn_process"/>
+		<result property="hnDoc" column="hn_doc"/>
+		<result property="hnInterview" column="hn_interview"/>
+		<result property="hnTitle" column="hn_title"/>
+		<result property="addDate" column="hn_adddate"/>
+		<result property="cName" column="cname"/>
 	</resultMap>
 </mapper>

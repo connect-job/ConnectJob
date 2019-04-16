@@ -22,14 +22,12 @@
             <div class="menu-top">
                 기업페이지
             </div>
-
-
             <ul>
                 <li class="menu">
                     채용공고<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
                         <li><a href="${path }/hireNotiAdd.do">채용공고등록</a></li>
-                        <li><a href="#">전체공고</a></li>
+                        <li><a href="${path }/hireNotiAll.do">전체공고</a></li>
                         <li><a href="#">진행 중 공고</a></li>
                         <li><a href="#">대기 중 공고</a></li>
                         <li><a href="#">마감 된 공고</a></li>
@@ -63,7 +61,6 @@
                 </li>
             </ul>
         </div>
-
 
 
         <!-- ---------------------------------------------------------------------- 우측페이지  -->
@@ -336,7 +333,7 @@
                         <input type="text" style="width: 150px" name="startDate" id="testDatepickers" />시작일
                         ~
                         <input type="text" style="width: 150px" name="endDate" id="testDatepickere" />마감일
-                        　<label><input type="checkbox" name="hnEve" value="" default="N" />상시 접수</label>
+                        　<label><input type="checkbox" name="hnEve" value="Y"/>상시 접수</label>
                     </div>
                 </div>
                 

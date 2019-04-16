@@ -10,10 +10,11 @@
 		<result property="iDate" column="i_date"/>
 		<result property="status" column="status"/>
 		<result property="iWriter" column="i_writer"/>
+		<result property="aContent" column="a_content"/>
 	</resultMap>
 
 	<insert id="insertInquiry" parameterType="inquiry">
-		insert into inquiry values(SEQ_I_NO.NEXTVAL,#{iType, typeHandler=strArr},#{iTitle},#{iContent},default,default,#{iWriter})
+		insert into inquiry values(SEQ_I_NO.NEXTVAL,#{iType},#{iTitle},#{iContent},default,default,#{iWriter},null)
 	</insert>
 	
 	<select id="inquiryList" resultMap="inquiryResult" parameterType="String">

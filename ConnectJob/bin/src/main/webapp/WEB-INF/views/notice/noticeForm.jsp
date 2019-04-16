@@ -24,7 +24,7 @@
             <tr>
                 <th>내용</th>
                 <td>
-                 	<textarea name="content" id="content"></textarea>                 	
+                 	<textarea id="editor" name="content" id="content"></textarea>                 	
                 </td>
             </tr>
             <tr>
@@ -42,6 +42,14 @@
     	</div>
     </form>
 </section>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

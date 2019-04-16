@@ -76,37 +76,22 @@
 			<div class="hire-title">
 				실시간 채용공고
 			</div>
-			<div class="hire-item">
-				<div class="item-title">(주) KH Company</div>
-				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
-				<div class="item-date"><span style="color:red">오늘마감</span></div>
-				<div class="item-btn"><button>즉시지원</button></div>
-			</div>
-			<div class="hire-item">
-				<div class="item-title">(주) KH Company</div>
-				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
-				<div class="item-date">~2019-06-01 까지</div>
-				<div class="item-btn"><button>즉시지원</button></div>
-			</div>
-			<div class="hire-item">
-				<div class="item-title">(주) KH Company</div>
-				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
-				<div class="item-date">~2019-06-01 까지</div>
-				<div class="item-btn"><button>즉시지원</button></div>
-			</div>
-			<div class="hire-item">
-				<div class="item-title">(주) KH Company</div>
-				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
-				<div class="item-date">~2019-06-01 까지</div>
-				<div class="item-btn"><button>즉시지원</button></div>
-			</div>
-			<div class="hire-item">
-				<div class="item-title">(주) KH Company</div>
-				<div class="item-sub-title">웹개발/프론트/백엔드 채용</div>
-				<div class="item-date">~2019-06-01 까지</div>
-				<div class="item-btn"><button>즉시지원</button></div>
+			<div id="hire-latest">
+
 			</div>
 		</div>
+
+		<script>
+			var result = $('#hire-latest');
+			$.ajax({
+				url: '${path}/hireLatest.do',
+				success: function(data) {
+					var Ca = /\+/g;
+			        var resultSet = decodeURIComponent(data.replace(Ca, " "));
+			        result.html(resultSet);
+				}
+			});
+		</script>
 
 
 		<div class="index-middle">

@@ -4,7 +4,7 @@
 <div class="item">
 	<div class="left">회사명</div>
 	<div class="right">
-		<input type="text" placeholder="회사명 입력" required>
+		<input type="text" placeholder="회사명 입력" name="careerCName">
 	</div>
 </div>
 

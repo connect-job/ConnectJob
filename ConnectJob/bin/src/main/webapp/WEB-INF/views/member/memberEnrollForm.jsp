@@ -5,11 +5,13 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+
 <style>
 	div#id-result-div{display: none;}
 	/* div#pw-result-div{display: none;}
 	div#pw-result-div2{display: none;} */
 </style>
+
 <section>
 	<div id="enroll-container">
 		<!-- 개인회원가입 -->
@@ -95,6 +97,7 @@
 				</div>				
 =======
 					<div class="right"><input type="phone" name="phone" autocomplete="off" /></div>
+<<<<<<< HEAD
 				</div>
 				
 				<div class="enroll-item">
@@ -113,6 +116,9 @@
 				</div>
 				
 >>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+				</div>				
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 				
 				<div class="enroll-text">
 					<b>약관동의</b></br>
@@ -315,6 +321,7 @@ $(document).ready(function(){
 	});
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 //체크박스 전체선택 및 전체해제
 $("#chk_all").click(function(){
@@ -336,6 +343,8 @@ $(".chk").click(function(){
 =======
 >>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 
+=======
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

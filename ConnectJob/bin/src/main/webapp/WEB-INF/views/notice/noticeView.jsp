@@ -7,6 +7,7 @@
 
 <section>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<div id="notice-container">
 =======
 	<table>
@@ -37,6 +38,9 @@
 		</c:if>		
 	</table>
 >>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+	<div id="notice-container">
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 
 		<div class="notice-title">공지사항　|　NOTICE</div>
 

@@ -8,6 +8,7 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://apis.google.com/js/api:client.js"></script>
+
 <script>
 	var googleUser = {};
 	var startApp = function () {

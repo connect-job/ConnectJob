@@ -3,12 +3,17 @@
 <mapper namespace="member">
 	<insert id="insertMember" parameterType="member">
 <<<<<<< HEAD
+<<<<<<< HEAD
 		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, default, null, null, #{nickname})
 =======
 		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, #{final_edu}, #{school}, #{major}, default, default, null, null)
 >>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, default, 'N', null, null, null)
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	</insert>
 	
+<<<<<<< HEAD
 	<insert id="insertMemberKakao" parameterType="member">
 <<<<<<< HEAD
 		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, #{kakao_id}, 'Y', #{nickname})
@@ -16,15 +21,49 @@
 		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, #{final_edu}, #{school}, #{major}, default, default, #{kakao_id}, 'Y')
 >>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 	</insert>
+=======
+	<insert id="insertMemberSns" parameterType="member">
+		insert into p_member values
+		<choose>
+			<when test="is_sns == 'kakao'">
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, #{kakao_id}, null, null)
+			</when>
+			<when test="is_sns == 'google'">
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, #{google_id}, null)
+			</when>
+			<when test="is_sns == 'naver'">
+				(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, #{is_sns}, default, default, null, null, #{naver_id})
+			</when>
+		</choose>
+
+	</insert>
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	
+<<<<<<< HEAD
 	<select id="selectOne" resultType="member">
 		select * from p_member where p_id = #{p_id}
+=======
+	<select id="selectOne" resultType="member">
+		select * from p_member where p_id = #{p_id}
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	</select>
 	
-	<select id="selectOneKakao" resultType="member">
-		select * from p_member where kakao_id = #{kakao_id}
+	<select id="selectOneSns" resultType="member">
+		select * from p_member WHERE 1=1
+		<choose>
+			<when test="is_sns!=null and is_sns == 'kakao'">
+				and kakao_id = #{kakao_id}
+			</when>
+			<when test="is_sns!=null and is_sns == 'google'">
+				and google_id = #{google_id}
+			</when>
+			<when test="is_sns!=null and is_sns == 'naver'">
+				and naver_id = #{naver_id}
+			</when>
+		</choose>
 	</select>
 	
+
 	<select id="findId" resultType="member" parameterType="member">
 		select * from p_member where phone=#{phone} and p_name=#{p_name}
 <<<<<<< HEAD
@@ -38,15 +77,14 @@
 		<result column="gender" property="gender"/>
 		<result column="phone" property="phone"/>
 		<result column="is_sns" property="is_sns"/>
-		<result column="final_edu" property="final_edu"/>
-		<result column="school" property="school"/>
-		<result column="major" property="major"/>
-		<result column="is_confirm" property="is_confirm"/>
 		<result column="enroll_date" property="enroll_date"/>
 		<result column="email_confirm" property="email_confirm"/>
+		<result column="kakao_id" property="kakao_id"/>
+		<result column="google_id" property="google_id"/>
+		<result column="naver_id" property="naver_id"/>
 	</resultMap>
-	
-	<select id="selectList" resultType="member">
+
+	<select id="selectList" resultMap="memberResult">
 		SELECT * FROM P_MEMBER
 >>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 	</select>
@@ -56,7 +94,11 @@
 	</delete>
 	
 	<update id="updateMember" parameterType="member">
+<<<<<<< HEAD
 		update p_member set p_name=#{p_name}, phone=#{phone}, nickname=#{nickname} where p_id=#{p_id}
+=======
+		update p_member set p_name=#{p_name}, phone=#{phone} where p_id=#{p_id}
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	</update>
 	
 	<update id="updatePw" parameterType="member">

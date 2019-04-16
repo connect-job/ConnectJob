@@ -29,13 +29,16 @@
 	
 	<interceptors>
 		<interceptor>
-			<mapping path="/senier/*"/>
 			<mapping path="/senierAnswer.do"/>
 			<mapping path="/senierWrite.do"/>
 			<mapping path="/help/myInquiry.do"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 			<mapping path="/alarm/alarm.do"/>
 =======
+=======
+			<mapping path="/alarm/alarm.do"/>
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 			<mapping path="/help/inquiry.do"/>
 >>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 			<beans:bean id="loggerInterceptor" class="com.connect.job.common.LoggerInterceptor"/>

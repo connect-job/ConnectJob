@@ -14,6 +14,15 @@ public class HireNotiServiceImpl implements HireNotiService {
 
 	@Autowired
 	private HireNotiDao dao;
+	
+	
+	
+
+	@Override
+	public HireNoti selectOne(int no) {
+
+		return dao.selectOne(no);
+	}
 
 	@Override
 	public int insertNoti(HireNoti h) {
@@ -21,28 +30,38 @@ public class HireNotiServiceImpl implements HireNotiService {
 		return dao.insertNoti(h);
 	}
 
+	@Override
+	public List<HireNoti> selectAll(int cPage, int numPerPage) {
+		return dao.selectAll(cPage, numPerPage);
+	}
 	
-	
-	/*@Override
-	public int insertNoti(HireNoti h, List<HireNoti> list) {
 
-		int result=0;
-		try {
-			result=dao.insertNoti(h);
-			if(result==0) throw new HireNotiException();
-			
-			if(list.size()>0) {
-				for(HireNoti a: list)
-				{
-					a.setHNSeq(h.getHNSeq());
-					result=dao.insertNoti(h);
-					if(result==0) throw new HireNotiException();
-				}
-			}
-		}catch(Exception e) {e.printStackTrace();
-		}
-		return result;
-	}*/
+	@Override
+	public List<HireNoti> selectAllAjax(int cPage, int numPerPage, HireNoti h) {
+		return dao.selectAllAjax(cPage, numPerPage, h);
+	}
+
+	@Override
+	public int selectHireNotiCount() {
+
+		return dao.selectHireNotiCount();
+	}
+
+	@Override
+	public int selectHireNotiCountAjax(HireNoti h) {
+		return dao.selectHireNotiCountAjax(h);
+	}
+
+	@Override
+	public List<HireNoti> selectLatest() {
+		return dao.selectLatest();
+	}
+
+	
+	
+	
+	
+	
 
 	
 	

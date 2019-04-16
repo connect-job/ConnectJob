@@ -4,6 +4,7 @@
 
 	<insert id="insertMember" parameterType="member">
 		insert into p_member values(#{p_id}, #{password}, #{p_name}, #{gender}, #{phone}, null, default, null, null, null, null, #{nickname})
+
 	</insert>
 	
 	<insert id="insertMemberSns" parameterType="member">
@@ -58,6 +59,7 @@
 		<result column="google_id" property="google_id"/>
 		<result column="naver_id" property="naver_id"/>
 		<result column="nickname" property="nickname"/>
+		<result column="alarm_status" property="alarmStatus"/>
 	</resultMap>
 
 	<select id="selectList" resultMap="memberResult">

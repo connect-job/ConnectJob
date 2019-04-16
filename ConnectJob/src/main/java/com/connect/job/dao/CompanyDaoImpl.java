@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.CompanyAvgScore;
+import com.connect.job.model.vo.HireNoti;
 import com.connect.job.model.vo.SearchKeyword;
 
 @Repository
@@ -82,6 +83,11 @@ public class CompanyDaoImpl implements CompanyDao {
 	@Override
 	public List<Company> latestScore() {
 		return session.selectList("company.latestScore");
+	}
+
+	@Override
+	public List<HireNoti> latestHire(int no) {
+		return session.selectList("company.latestHire", no);
 	}
 	
 	

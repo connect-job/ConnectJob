@@ -19,21 +19,44 @@
     <script src="${path }/resources/js/wow.min.js"></script>
     <script src="${path }/resources/js/jquery-3.3.1.min.js"></script>
 
+    <!-- 게시판 글쓰기 폼 에디터 -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.1.0/inline/ckeditor.js"></script>
+
     <script>
         new WOW().init();
     </script>
+    
+    <!-- 구글 로그인 -->
+    <meta name="google-signin-scope" content="profile email">
+	<meta name="google-signin-client_id" content="638430037698-srn3c01h0flqs3dg2jfmbe0hogr25qgd.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+    
+    <!-- 네이버 로그인 -->
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    
+    
+    
+    
+    
 </head>
 
 <body>
     <header>
+
         <div id="notice">
+<<<<<<< HEAD
 <<<<<<< HEAD
             이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　
 =======
             이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　<button id="x-btn">X</button>
 >>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+            이곳은 가장 최신 공지사항이 들어감 커넥트잡 사이트 개편 안내 (19.04.07)　　　　
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
         </div>
         
+<<<<<<< HEAD
 <<<<<<< HEAD
         <script>
             var notice = $('#notice');
@@ -50,6 +73,21 @@
         </script>
 =======
 >>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+        <script>
+            var notice = $('#notice');
+			$.ajax({
+				url: '${path}/notice/latestNoticeOne.do',
+				success: function(data) {
+					var Ca = /\+/g;
+	                var resultSet = decodeURIComponent(data.replace(Ca, " "));
+	                notice.empty();
+	                notice.html(resultSet);
+                    notice.append("　　　<button id='x-btn'>X</button>");
+				}
+			});
+        </script>
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	
         <div id="header-top">
             <div class="top-container">
@@ -80,12 +118,13 @@
                     <ul>
                         <li onclick="location.href='${path}/calendar.do'">공채달력<div class="menu-line"></div>
                         </li>
+                        <li onclick="location.href='${path}/senierConversation.do'">채용공고<div class="menu-line"></div></li>
                         <li onclick="location.href='${path}/company/companyList.do'">기업탐색<div class="menu-line"></div>
                         </li>
                         <li onclick="location.href='${path}/review/review.do'">기업리뷰<div class="menu-line"></div>
                         </li>
-                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화<div class="menu-line"></div>
-                        </li>
+
+                        <li onclick="location.href='${path}/senierConversation.do'">선배와의대화<div class="menu-line"></div></li>
                     </ul>
                 </div>
                 <div class="menu-right">
@@ -104,6 +143,7 @@
                                         </ul>
                                 </div></li>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터</li>
 =======
                             <li id="alarm-li">알림<div id="alarm-result" class="alarm-span"></div>
@@ -111,12 +151,22 @@
                                 최근 소식이 없습니다!
                             </div></li>
 >>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+                            <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터</li>
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
                             <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
-                            <li onclick="location.href='${path}/member/mypage.do?p_id=${loginMember.p_id }'">기업페이지</li>
-                            <li><i class="far fa-comment-dots"></i></li>
-                            <li onclick="location.href='${path}/member/logout.do'"><i class="fas fa-sign-out-alt"></i></li>
+                            <li onclick="location.href='${path}/cmemberBizPage?cMemberId=${logincMember.cMemberId }'">기업페이지</li>
+                            <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
+                        </c:if>
+                        <c:if test="${loginCMember!=null}">
+                            <li onclick="location.href='${path}/helpPage?cMemberId=${logincMember.cMemberId }'">고객센터관리</li>
+                            
+                        </c:if>
+                         <c:if test="${loginMember!=null}">
+                            <li onclick="location.href='${path}/helpPage?id=${loginMember.p_id }'">고객센터관리</li>
+                            
                         </c:if>
                         <li id="sub">고객센터<div id="sub-menu">
                                 <ul>
@@ -256,9 +306,10 @@
 	    		$('html').scrollTop()==0;
 		    	$('#socket-message').empty();
 		    	$('#socket-message').css("opacity","1");
-		    	$('#socket-message').append("<i class='fas fa-envelope-open-text' style='font-size:20px'></i>　");
+		    	$('#socket-message').css("z-index","999999999");
+		    	$('#socket-message').append("<span id='messageIcon'><i class='fas fa-envelope-open-text' style='font-size:20px'></i></span>　");
 		    	$('#socket-message').append(evt.data);
-		    	$('#socket-message').append("<br><button type='button' onclick='fn_messageClose()'>닫기</button>");
+		    	$('#socket-message').append("<br><br><a href='${path}/alarm/alarm.do?id=${loginMember.p_id}'>알림센터 바로가기</a>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
 	    	}, 1000);
 	    	
 	    	if(evt.data!=null) {
@@ -273,11 +324,13 @@
 	    	console.log(evt);
 	    }
 	    
-	    $(document).ready(function() {
-		    	send_message();
-		    	setTimeout(function() {
-		    		send_message();
-		    	},1000);
+	     $(document).ready(function() {
+             if(${loginMember!=null}) {
+                send_message();
+		     	setTimeout(function() {
+		     		send_message();
+		     	},1000);
+             }
 	    });
 	    
 	    function fn_messageClose() {
@@ -301,12 +354,16 @@
 
 	    		$("#socket-message").stop().animate({
 	    			"top" : newPosition
-	    		}, 200);
+	    		}, 100);
 
 	    	}).scroll();
 
+<<<<<<< HEAD
 	    });
 >>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+	    }); 
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	    
 	    // ------------------------------------------------------------ 웹소켓 끝
     

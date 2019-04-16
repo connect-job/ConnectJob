@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<<<<<<< HEAD
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <script>
 function checkSearch(){
@@ -49,6 +50,32 @@ function checkSearch(){
 				<div>					
 					<input type="button" value="삭제" onclick="${path}/member/deleteMember?p_id=${member.p_id}"/>
 				</div>
+=======
+
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+
+<section>
+	
+	<div>회원 리스트</div>
+	<div>검색</div>
+	<div>
+		<div>
+			<div>아이디</div>
+			<div>이름</div>
+			<div>성별</div>
+			<div>연락처</div>
+			<div>SNS</div>
+			<div>인증여부</div>
+		</div>
+		<c:forEach var="member" items="${list }">
+			<div>
+				<div>${member.p_id }</div>
+				<div>${member.name }</div>
+				<div>${member.gender }</div>
+				<div>${member.phone }</div>
+				<div>${member.is_sns }</div>
+				<div>${member.is_confirm }</div>
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 			</div>
 		</c:forEach>
 	</div>

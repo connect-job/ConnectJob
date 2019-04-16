@@ -22,14 +22,14 @@
         </div>
 
         <div class="senier-middle">
-            <form action="${path}/senierWriteEnd.do" method="post" onsubmit="return validate();">
+            <form action="${path}/senierWriteEnd.do" method="post" onsubmit="return check();">
                 <div id="senier-write-container">
                 	<div>
                         <div class="left">직종분류</div>
                         <div class="right"> 
 
             				 <select id="hopeJobArea" name="sCate">
-								<option>직종선택</option>
+								<option value="" disabled="disabled">직종선택</option>
 								<option value="웹 개발자">웹 개발자</option>
 								<option value="서버 개발자">서버 개발자</option>
 								<option value="시스템개발">시스템개발</option>
@@ -88,6 +88,22 @@
         .catch(error => {
             console.error(error);
         });
+    
+    
+    function check() {
+    	
+    	
+    	 if($('#hopeJobArea').val()==""){
+    	    	alert('직종을 선택해주세요');
+    	     	return false;
+    	    } 
+    	 
+
+	}
+    
+   
+
 </script>
+
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

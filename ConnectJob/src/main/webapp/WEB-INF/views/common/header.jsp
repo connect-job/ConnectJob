@@ -70,7 +70,7 @@
                 <div class="header-top-center">
                     <div class="header-search">
                         <img src="${path }/resources/images/icon-search.png" width="14px"><input type="search"
-                            id="search" placeholder="기업을 검색해보세요" autocomplete="off" autofocus />
+                            id="search" placeholder="기업을 검색해보세요" autocomplete="off"/>
                     </div>
                     <div id="header-search-result"></div>
                 </div>
@@ -91,7 +91,7 @@
                     <ul>
                         <li onclick="location.href='${path}/calendar.do'">공채달력<div class="menu-line"></div>
                         </li>
-                        <li onclick="location.href='${path}/senierConversation.do'">채용공고<div class="menu-line"></div></li>
+                        <li onclick="location.href='${path}/hireNotiAll.do'">채용공고<div class="menu-line"></div></li>
                         <li onclick="location.href='${path}/company/companyList.do'">기업탐색<div class="menu-line"></div>
                         </li>
                         <li onclick="location.href='${path}/review/review.do'">기업리뷰<div class="menu-line"></div>
@@ -115,12 +115,20 @@
                                                 <li onclick="location.href='${path}/scrap.do'">스크랩<div class="menu-line"></div></li>
                                         </ul>
                                 </div></li>
-                            <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터</li>
+                            <li id="alarm-li" onclick="location.href='${path}/alarm/alarm.do?id=${loginMember.p_id}'">알림센터<div id="alarm"></div></li>
                             <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null}">
                             <li onclick="location.href='${path}/cmemberBizPage?cMemberId=${logincMember.cMemberId }'">기업페이지</li>
                             <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
+                        </c:if>
+                        <c:if test="${loginCMember!=null}">
+                            <li onclick="location.href='${path}/admin/inquiry/inquiry.do?cMemberId=${logincMember.cMemberId }'">관리</li>
+                            
+                        </c:if>
+                         <c:if test="${loginMember!=null}">
+                            <li onclick="location.href='${path}/admin/inquiry/inquiry.do?id=${loginMember.p_id }'">관리</li>
+                            
                         </c:if>
                         <li id="sub">고객센터<div id="sub-menu">
                                 <ul>
@@ -136,6 +144,17 @@
         </div>
     </header>
     
+    <script>
+    	$.ajax({
+    		url: '${path}/alarm/alarmCount.do?id=${loginMember.p_id}',
+    		success: function(data) {
+    			 var Ca = /\+/g;
+                 var resultSet = decodeURIComponent(data.replace(Ca, " "));
+    			$('#alarm').html(resultSet);
+    		}
+    	});
+    </script>
+    
     <div id="socket-message">
     	메세지 내용 
     </div>
@@ -143,7 +162,7 @@
     <script>
     
     // ------------------------------------------------------------ 웹소켓 시작
-    var wsUri = "ws://localhost:8080/job/alarm";
+    var wsUri = "ws://localhost:9090/job/alarm";
     var nick = '${loginMember.p_id}';
 	console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
     
@@ -177,7 +196,7 @@
 		    	$('#socket-message').css("z-index","999999999");
 		    	$('#socket-message').append("<span id='messageIcon'><i class='fas fa-envelope-open-text' style='font-size:20px'></i></span>　");
 		    	$('#socket-message').append(evt.data);
-		    	$('#socket-message').append("<br><br><a href='${path}/alarm/alarm.do?id=${loginMember.p_id}'>알림센터 바로가기</a>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
+		    	$('#socket-message').append("<br><br><button onclick='fn_alarmCenter()'>알림센터</button>　<button type='button' onclick='fn_messageClose()'>닫기</button>");
 	    	}, 1000);
 	    	
 	    	if(evt.data!=null) {
@@ -200,9 +219,14 @@
 		     	},1000);
              }
 	    });
-	    
+
 	    function fn_messageClose() {
 	    	$('#socket-message').css("opacity","0");
+	    	$('#socket-message').css("z-index","-1");
+	    }
+	    
+	    function fn_alarmCenter() {
+	    	window.location.href="${path}/alarm/alarm.do?id=${loginMember.p_id}";
 	    }
 	    
 	    $(document).ready(function() {
@@ -238,7 +262,6 @@
 
         $('#login-li').mouseover(function() {
             $('#login').css("display","block");
-            $('#alarm').css("display","none");
             $('#sub-menu').css("display","none");
         });
 
@@ -249,7 +272,6 @@
         $('#join-li').mouseover(function() {
             $('#join').css("display","block");
             $('#login').css("display","none");
-            $('#alarm').css("display","none");
             $('#sub-menu').css("display","none");
         });
 
@@ -258,7 +280,6 @@
         });
 
         $('#mypage-li').mouseover(function() {
-            $('#alarm').css("display","none");
             $('#sub-menu').css("display","none");
             $('#sub-menu-mypage').css("display","block");
         });
@@ -275,17 +296,13 @@
         $('#alarm-li').click(function() {
             $('#sub-menu-mypage').css("display","none");
             $('#sub-menu').css("display","none");
-            $('#alarm').css("display","block");
         });
         
-        $('#alarm-li').mouseleave(function() {
-            $('#alarm').css("display","none");
-        });
+
 
         $('#logout-li').mouseover(function() {
             $('#sub-menu-mypage').css("display","none");
             $('#sub-menu').css("display","none");
-            $('#alarm').css("display","none");
             $('#logout').css("display","block");
         });
 
@@ -295,7 +312,6 @@
 
         $('#sub').mouseover(function() {
             $('#sub-menu-mypage').css("display","none");
-            $('#alarm').css("display","none");
             $('#logout').css("display","none");
             $('#sub-menu').css("display","block");
         });
