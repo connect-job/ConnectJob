@@ -29,7 +29,7 @@
                         <div class="right"> 
 
             				 <select id="hopeJobArea" name="sCate">
-								<option value="">직종선택</option>
+								<option value="" disabled="disabled">직종선택</option>
 								<option value="웹 개발자">웹 개발자</option>
 								<option value="서버 개발자">서버 개발자</option>
 								<option value="시스템개발">시스템개발</option>
