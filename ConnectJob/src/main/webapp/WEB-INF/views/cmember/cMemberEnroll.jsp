@@ -35,21 +35,6 @@
                </div>
                <div class="right">
                   <input type="text" class="CMember" id="CMemberBNum" name="CMemberBNum"  required maxlength="12"/>
-                  <select type="select" class="CMember" id="CMemberDiv" name="CMemberDiv" required><i class="fas fa-arrow-down"></i></br>
-                     <option value="divide" selected disabled>기업구분</option>
-                     <option value="normal">일반</option>
-                     <option value="staffing">인재파견</option>
-                     <option value="headhunting">헤드헌팅</option>
-                  </select>
-               </div>
-            </div>
-            
-            <div class="enroll-item">
-               <div class="left">
-                  	기업선택
-               </div>
-               <div class="right">
-                  <input type="text" class="CMember" id="cId" name="cId"  required/>
                </div>
             </div>
             
@@ -255,10 +240,6 @@ $(document).ready(function(){
            $("#ACCEPT_TERMS").prop("checked",false);
        }
    });
-
-
-
-
 
 
 </script>
