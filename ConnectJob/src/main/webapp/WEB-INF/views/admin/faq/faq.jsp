@@ -27,7 +27,7 @@
                  <li class="menu">
               고객센터 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
-                        <li><a href="${path}/admin/inquiry/inquiry.do<%-- ?id=${loginMember.p_id } --%>">1:1문의 관리</a></li>
+                        <li><a href="${path}/admin/inquiry/inquiry.do">1:1문의 관리</a></li>
                         <li><a href="${path}/admin/faq/faq.do">자주묻는질문 관리</a></li>
                     </ul>
                 </li>
@@ -53,7 +53,6 @@
 				</li>
 
 
-
 			</ul>
 		</div>
 
@@ -62,7 +61,7 @@
 		<!-- ---------------------------------------------------------------------- 우측페이지  -->
 
 		<div class="biz-right">
-			<div class="biz-title">나의 1:1 문의내역 목록</div>
+			<div class="biz-title">자주묻는질문 목록</div>
 
 	
         <div class="biz-right">
@@ -73,42 +72,20 @@
 
 		<div class="help-middle">
 
-			<c:forEach var="inq" items="${list}" varStatus="vs">
-				<%-- <c:if test="${loginMember != null && loginMember.p_id eq inq.iWriter}"> --%>
-					<div class="help-item" onclick="location.href='${path}/admin/inquiry/InquiryView.do?no=${inq.iNo}'">
-						<div class="item-left">
-							질문유형 ${inq.iType}
-						</div>
+			<c:forEach var="faq" items="${list}" varStatus="vs">
+					<div class="help-item" onclick="location.href='${path}/admin/faq/faqView.do?no=${faq.fNo}'">
 
 						<div class="item-center">
 							<div class="center-title">
-								제목 ${inq.iTitle}
+								제목 ${faq.fTitle}
 							</div>
-						</div>
-
-						<div class="item-right">
-							<span>답변상태
-							<c:choose>
-							<c:when test="${inq.status=='답변중'}">
-								${inq.status}
-							</c:when>
-							<c:when test="${inq.status=='답변대기중'}">
-								${inq.status}
-							</c:when>
-							<c:when test="${inq.status=='답변완료'}">
-								${inq.status}
-							</c:when>
+							<div class="item-right">
+								내용 ${faq.fContent}
+							</div>
 							
-							</c:choose>
-							</span>
 						</div>
-						<div>
-						답변내용 ${inq.aContent}
-						</div><br>
+
 					</div>
-				<%-- </c:if> --%>
-
-
 				
 				</c:forEach>
            <div id="pageBar">

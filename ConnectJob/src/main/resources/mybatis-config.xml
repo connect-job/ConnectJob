@@ -23,6 +23,7 @@
 		<typeAlias type="com.connect.job.common.StringArrTypeHandler" alias="strArr"/>
 		<typeAlias type="com.connect.job.model.vo.ProfileImg" alias="profileImg"/>
 		<typeAlias type="com.connect.job.model.vo.Scrap" alias="scrap"/>
+		<typeAlias type="com.connect.job.model.vo.Faq" alias="faq"/>
 	</typeAliases>
 	 
 </configuration>
