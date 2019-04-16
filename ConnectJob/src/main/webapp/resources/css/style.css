@@ -5180,6 +5180,15 @@ section #admin-container .admin-right .admin-one {
     text-align: center;
 }
 
+section #admin-container .admin-right .admin-one button {
+    width: 90px;
+    height: 30px;
+    background-color: #495368;
+    border: 1px solid #333946;
+    outline: none;
+    color :#fff;
+}
+
 section #admin-container .admin-right .admin-one .one-item {
     text-align: center;
     display: inline-block;

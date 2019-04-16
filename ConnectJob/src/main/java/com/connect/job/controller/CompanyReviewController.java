@@ -267,7 +267,7 @@ public class CompanyReviewController {
 		Member m = (Member) session.getAttribute("loginMember");
 		if(m!=null) {
 			if(m.getP_id().equals(review.getReviewMember())) {
-				html += "　　<br><button onclick='fn_update(" + review.getReviewNo() + ")'>수정</button>　<button onclick='fn_delete(" + review.getReviewNo() +  ")'>삭제</button>";
+				html += "　　<br><button onclick='fn_update(" + review.getReviewNo() + ")'>수정</button>　<button onclick='fn_delete(" + review.getReviewNo() + "," + review.getReviewCompany() + ")'>삭제</button>";
 			}
 		}
 		
@@ -688,9 +688,9 @@ public class CompanyReviewController {
 		}
 		
 		@RequestMapping("review/reviewDelete.do")
-		public String reviewDelete(Model model, int num) {
+		public String reviewDelete(Model model, int num, int no) {
 			String msg = "";
-			String loc = "";
+			String loc = "/company/companyView.do?no=" + no;
 			
 			int result = service.reviewDelete(num);
 			
@@ -699,6 +699,9 @@ public class CompanyReviewController {
 			} else {
 				msg = "삭제실패";
 			}
+			
+			model.addAttribute("msg", msg);
+			model.addAttribute("loc", loc);
 			
 			return "common/msg";
 		}

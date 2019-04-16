@@ -30,5 +30,6 @@ public interface AdminService {
 	int selectFaqCount();
 	Faq faqView(int no);
 	int faqUpdate(Faq f);
+	int faqDelete(Faq f);
 
 }

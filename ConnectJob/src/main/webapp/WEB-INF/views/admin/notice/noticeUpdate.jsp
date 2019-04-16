@@ -11,9 +11,6 @@
 		<%@ include file="/WEB-INF/views/admin/admin-menu.jsp"%>
 		
 		<!-- ---------------------------------------------------------------------- 우측 메뉴 -->
-
-	
-
 		<div class="admin-right">
 				<div class="admin-title">공지사항 관리</div>
 	
@@ -48,7 +45,8 @@
 						<input type="submit" value="수정" />
 						<input type="button" value="삭제" onclick="location.href='${path}/admin/deleteNotice?notice_no=${notice.notice_no }'"/>
 				</div>
-    			</form>
+				</form>
+		</div>
 </section>
 
 <script>

@@ -129,7 +129,7 @@
                         <li id="sub">고객센터<div id="sub-menu">
                                 <ul>
                                     <li onclick="location.href='${path}/help/inquiry.do'">1:1 문의</li>
-                                    <li onclick="location.href='${path}/help/fag.do'">자주묻는질문</li>
+                                    <li onclick="location.href='${path}/help/faq.do'">자주묻는질문</li>
                                 </ul>
                         </div></li>
                         

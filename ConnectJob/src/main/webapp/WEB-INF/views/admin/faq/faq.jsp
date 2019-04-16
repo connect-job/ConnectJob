@@ -24,48 +24,20 @@
 				<div class="admin-title">자주묻는질문 관리</div>
 				<br>
 				<div class="admin-item-top">
-					<div class="item1" style="width:25%;">질문명</div>
-					<div class="item4" style="width:10%;">삭제</div>
+					<div class="item1" style="width:100%;">질문명</div>
 				</div>
 
-
-
-		<div class="biz-right">
-			<div class="biz-title">자주묻는질문 목록</div>
-
-	
-        <div class="biz-right">
-
-          <div class="help-subtitle">
-		
-		</div>
-
-		<div class="help-middle">
-
-			<c:forEach var="faq" items="${list}" varStatus="vs">
-					<div class="help-item" onclick="location.href='${path}/admin/faq/faqView.do?no=${faq.fNo}'">
-
-						<div class="item-center">
-							<div class="center-title">
-								제목 ${faq.fTitle}
+				<c:forEach var="faq" items="${list}" varStatus="vs">
+						<div class="admin-item" onclick="location.href='${path}/admin/faq/faqView.do?no=${faq.fNo}'">
+								<div class="item1" style="width:100%;">제목 ${faq.fTitle}</div>
 							</div>
-							<div class="item-right">
-								내용 ${faq.fContent}
-							</div>
-							
-						</div>
-
-					</div>
-				
 				</c:forEach>
-           <div id="pageBar">
-           ${pageBar}
-           </div>
-            
-        </div>
-    </div>
-			
-
+				
+				<div class="admin-one">
+						<div id="pageBar">
+								${pageBar}
+								</div>
+				</div>
 		</div>
 		
 		
@@ -74,16 +46,7 @@
 
 <script>
         function fn_paging(cPage) {
-        
-           if(${loginMember!=null and loginCMember==null})
-           {
-              window.location.href="${path}/admin/inquiry/inquiry.do?cPage=" + cPage;
-           }
-           else if(${loginMember==null and loginCMember!=null})
-           {
-                window.location.href="${path}/admin/inquiry/inquiry.do?cPage=" + cPage;
-           }
-
+                window.location.href="${path}/admin/faq/faq.do?cPage=" + cPage;
           }
 	
 </script>
