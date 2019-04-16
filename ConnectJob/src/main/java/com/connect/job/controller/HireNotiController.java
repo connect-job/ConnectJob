@@ -36,7 +36,7 @@ public class HireNotiController {
 		
 		List<HireNoti> list = service.selectLatest();
 		
-		for(int i=0; i<list.size(); i++) {
+		for(int i=0; i<5; i++) {
 			html += "<div class=\"hire-item\" onclick=\"location.href=\'" + request.getContextPath() + "/hireNotiView.do?no=" + list.get(i).getHnSeq() + "\'\">";
 			html += "<div class=\"item-title\">";
 			if(list.get(i).getHnTitle().length()>12) {

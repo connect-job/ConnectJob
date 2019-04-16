@@ -278,6 +278,24 @@ public class CompanyController {
 		return html;
 	}
 	
+	// 기업회원가입 -> 기업 검색 폼
+	@RequestMapping("company/searchCompanyEnroll.do")
+	@ResponseBody
+	public String searchCompanyEnroll(String keyword) throws UnsupportedEncodingException {
+		System.out.println(keyword);
+		
+		List<Company> list = service.searchCompany(keyword);
+		
+		String result = "<ul>";
+		for(int i=0; i<list.size(); i++) {
+			result += "<li onclick='fn_keywordCk(this, "+ list.get(i).getCompanyNo() +")'>" + list.get(i).getCompanyName() + "</li>";
+		}
+		result += "</ul>";
+		
+		String html = URLEncoder.encode(result, "UTF-8");
+		return html;
+	}
+	
 	// 검색하는 순간 데이터 저장
 	@RequestMapping("company/searchKeyword.do")
 	@ResponseBody

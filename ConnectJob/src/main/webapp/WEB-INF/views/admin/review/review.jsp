@@ -25,7 +25,7 @@
 			<ul>
 					<li class="menu">고객센터 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
 						<ul class="hide">
-							<li><a href="${path}/admin/inquiry/inquiry.do<%-- ?id=${loginMember.p_id } --%>">1:1문의
+							<li><a href="${path}/admin/inquiry/inquiry.do">1:1문의
 									관리</a></li>
 							<li><a href="#">자주묻는질문 관리</a></li>
 						</ul>
@@ -37,7 +37,7 @@
 					</ul>
 				</li>
 
-<li class="menu">기업리뷰 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
+				<li class="menu">기업리뷰 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
 					<ul class="hide">
 						<li><a href="${path }/review/adminReview.do">기업리뷰</a></li>
 					</ul>
@@ -50,25 +50,34 @@
 		<!-- ---------------------------------------------------------------------- 우측페이지  -->
 
 		<div class="admin-right">
-			<div class="admin-title">1:1 문의내역 관리</div>
+			<div class="admin-title">기업리뷰 관리</div>
 
 			<div class="admin-item-top">
-				<div class="item1">질문유형</div>
-				<div class="item2">제목</div>
-				<div class="item3">답변상태</div>
+				<div class="item1" style="width:5%">번호</div>
+				<div class="item2" style="width:25%">기업명</div>
+				<div class="item3" style="width:35%">제목</div>
+				<div class="item4"style="width:16%" >등록일</div>
+				<div class="item4"style="width:10%" >삭제</div>
 			</div>
 
-			<c:forEach var="inq" items="${list}" varStatus="vs">
-				<div class="admin-item" onclick="location.href='${path}/admin/inquiry/InquiryView.do?no=${inq.iNo}'">
-					<div class="item1">${inq.iType}</div>
-					<div class="item2">${inq.iTitle}</div>
-					<div class="item3">
+			<c:forEach var="list" items="${review}" varStatus="vs">
+				<div class="admin-item" onclick="location.href='${path}/review/adminReviewOne.do?no=${list.reviewNo}'">
+					<div class="item1" style="width:5%">${list.reviewNo}</div>
+					<div class="item2" style="width:25%">${list.cName }</div>
+					<div class="item3" style="width:35%; text-align:left">
 						<c:choose>
-							<c:when test="${inq.status=='답변중'}">${inq.status}</c:when>
-							<c:when test="${inq.status=='답변대기중'}">${inq.status}</c:when>
-							<c:when test="${inq.status=='답변완료'}">${inq.status}</c:when>
+							<c:when test="${fn:length(list.reviewShort)>20 }">
+								${fn:substring(list.reviewShort, 0, 20)}...
+							</c:when>
+							<c:otherwise>
+								${list.reviewShort }
+							</c:otherwise>
 						</c:choose>
 					</div>
+					<div class="item4" style="width:16%">
+						<fmt:formatDate value="${list.reviewDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>${regDate }<br>
+					</div>
+					<div class="item4"style="width:10%" ><button onclick="fn_delete()">삭제</button></div>
 				</div>
 			</c:forEach>
 
@@ -95,16 +104,7 @@
 
 
 	function fn_paging(cPage) {
-
-		if (${ loginMember != null and loginCMember == null })
-		{
-			window.location.href = "${path}/admin/inquiry/inquiry.do?cPage=" + cPage;
-		}
-           else if (${ loginMember == null and loginCMember != null })
-		{
-			window.location.href = "${path}/admin/inquiry/inquiry.do?cPage=" + cPage;
-		}
-
+			window.location.href = "${path}/review/adminReview.do?cPage=" + cPage;
 	}
 
 </script>

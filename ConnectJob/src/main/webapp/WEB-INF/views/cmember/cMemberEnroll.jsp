@@ -27,14 +27,16 @@
       <div id="memberEnroll">
          <form action="${path }/cMemberEnrollEnd.do" method="post" class="signup-frm" autocomplete="off"/>
             <div class="enroll-title">
-               	기업정보 인증
+               	기업정보
             </div>
+            
             <div class="enroll-item">
                <div class="left">
-                 	 사업자번호
+                  	기업선택
                </div>
                <div class="right">
-                  <input type="text" class="CMember" id="CMemberBNum" name="CMemberBNum"  required maxlength="12"/>
+                  <input type="text" class="CMember" id="companyName" required/>
+                  <input type="hidden" class="CMember" id="cId" name="cId"/>
                   <select type="select" class="CMember" id="CMemberDiv" name="CMemberDiv" required><i class="fas fa-arrow-down"></i></br>
                      <option value="divide" selected disabled>기업구분</option>
                      <option value="normal">일반</option>
@@ -46,12 +48,50 @@
             
             <div class="enroll-item">
                <div class="left">
-                  	기업선택
+                 	 
                </div>
                <div class="right">
-                  <input type="text" class="CMember" id="cId" name="cId"  required/>
+                  <div id="companySearchResult" style="font-size:12px">기업검색이 안되는 경우 <Br>커넥트잡 고객센터로 문의해주시기 바랍니다.</div>
                </div>
             </div>
+            
+            <script>
+	            $('#companyName').keyup(function () {
+	            	var companySearchResult = $('#companySearchResult');
+	                var keyword = $('#cId').val();
+	                $.ajax({
+	                    url: '${path}/company/searchCompanyEnroll.do?keyword=' + keyword,
+	                    type: 'POST',
+	                    dataType: 'text',
+	                    success: function (data) {
+	                        var Ca = /\+/g;
+	                        var resultSet = decodeURIComponent(data.replace(Ca, " "));
+	                        companySearchResult.css("position", "absolute");
+                           companySearchResult.css("overflow", "scroll");
+                           companySearchResult.css("height", "300px");
+	                        companySearchResult.css("z-index", "9999");
+	                        companySearchResult.css("overflow-x", "hidden");
+                           companySearchResult.css("border", "1px solid #eee");
+	                        companySearchResult.empty();
+	                        companySearchResult.html(resultSet);
+	                    }
+	                });
+	            });
+
+                  function fn_keywordCk(e, no) {
+                     $('#cId').val(no);
+                     var comName = e.innerText.trim();
+                     $('#companyName').val(comName);
+                     var companySearchResult = $('#companySearchResult');
+                     companySearchResult.css("overflow", "");
+                     companySearchResult.css("height", "");
+                     companySearchResult.css("z-index", "");
+                     companySearchResult.css("overflow-x", "");
+                     companySearchResult.css("border", "none");
+                     companySearchResult.html('기업검색이 안되는 경우 <Br>커넥트잡 고객센터로 문의해주시기 바랍니다.');
+                  }
+
+            </script>
             
             <div class="enroll-item">
                <div class="left">
@@ -165,15 +205,11 @@ $(document).ready(function(){
 			$("#id-result-div").show();
 			$("#id_result").html("아이디를 입력해주세요").css('color', 'red');
 			$('#CMemberId').focus();
-		}else if(CMemberId.indexOf(" ")>=0){
+		}else if(CMemberId.indexOf(" ")>=0) {
 			$("#id-result-div").show();
 			$("#id_result").html("아이디에는 공백이 들어갈 수 없습니다.").css('color', 'red');
 			$('#CMemberId').focus();
-		}/* else if(emailRegex.test(CMemberId)==false){
-			$("#id-result-div").show();
-			$("#id_result").html("이메일 형식이 올바르지 않습니다.").css('color', 'red');
-			$('#CMemberId').focus();
-		 */}else{
+		} else {
 			$.ajax({
 				type:"POST",
 				url: "${path}/member/checkId?CMemberId="+CMemberId,

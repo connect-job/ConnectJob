@@ -1262,7 +1262,10 @@ section #enroll-container #memberEnroll .enroll-text-end input {
     margin: 10px;
 }
 
-
+section #enroll-container #companySearchResult {
+    width: 265px;
+    background-color: #fff;
+}
 
 
 /* ------------------------------------------ 마이페이지 */
@@ -4003,13 +4006,7 @@ section #senier-container .senier-middle .comment-item .date {
 
 /* ------------------------- 내 이력서  -------------------- */
 
-section#resumeView {
-    background-color: #efeff1;
-}
 
-section#resumeList {
-    background-color: #efeff1;
-}
 
 section #resume-container {
     width: 990px;
@@ -4053,8 +4050,8 @@ section #resume-container .resume-sub {
 
 section #resume-container .resume-sub .sub-item {
     display: inline-block;
-    background-color: #fff;
-    bordrer:1px solid #dbdbdb;
+    background-color: #eee;
+    border:1px solid #dbdbdb;
     border-radius: 100px;
     width: 140px;
     height: 140px;
@@ -5041,6 +5038,9 @@ section #admin-container .admin-right .admin-item-top .item3{
     display: inline-block;
 }
 
+section #admin-container .admin-right .admin-item-top .item4{
+    display: inline-block;
+}
 
 section #admin-container .admin-right .admin-item {
     cursor: pointer;
@@ -5078,6 +5078,10 @@ section #admin-container .admin-right .admin-item .item2{
 
 section #admin-container .admin-right .admin-item .item3{
     width: 150px;
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-item .item4{
     display: inline-block;
 }
 
