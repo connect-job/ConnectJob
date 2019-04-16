@@ -5061,6 +5061,15 @@ section #admin-container .admin-right .admin-item button {
     color :#fff;
 }
 
+section #admin-container button {
+    width: 90px;
+    height: 30px;
+    background-color: #495368;
+    border: 1px solid #333946;
+    outline: none;
+    color :#fff;
+}
+
 section #admin-container .admin-right .admin-item:hover {
     background-color: rgb(246, 246, 246);
     transition: 400ms;

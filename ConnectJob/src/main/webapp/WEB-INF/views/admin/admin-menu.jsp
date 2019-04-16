@@ -10,8 +10,8 @@
 					<ul class="hide">
 						<li><a
 							href="${path}/admin/inquiry/inquiry.do">1:1문의
-								관리</a></li>
-						<li><a href="#">자주묻는질문 관리</a></li>
+								</a></li>
+						<li><a href="#">자주묻는질문</a></li>
 					</ul>
 				</li>
 

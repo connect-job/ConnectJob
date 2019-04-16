@@ -33,7 +33,7 @@
 			</div>
 
 			<c:forEach var="list" items="${review}" varStatus="vs">
-				<div class="admin-item" onclick="location.href='${path}/review/adminReviewOne.do?no=${list.reviewNo}'">
+				<div class="admin-item" onclick="location.href='${path}/review/adminReviewOne.do?reviewNo=${list.reviewNo}'">
 					<div class="item1" style="width:5%">${list.reviewNo}</div>
 					<div class="item2" style="width:25%">${list.cName }</div>
 					<div class="item3" style="width:35%; text-align:left">
@@ -61,20 +61,6 @@
 </section>
 
 <script>
-	$(document).ready(function () {
-		$(".menu").click(function () {
-			var submenu = $(this).children('ul');
-			if (submenu.is(":visible")) {
-				submenu.slideUp();
-				$(this).children('.icon').html("<i class='fas fa-sort-down'></i>");
-			} else {
-				submenu.slideDown();
-				$(this).children('.icon').html("<i class='fas fa-sort-up'></i>");
-			}
-		});
-	});
-
-
 	function fn_paging(cPage) {
 			window.location.href = "${path}/review/adminReview.do?cPage=" + cPage;
 	}

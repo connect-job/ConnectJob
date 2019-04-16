@@ -79,7 +79,7 @@
 					</div>
 
 					<div class="admin-item">
-					<button type="submit">답변등록</button>　<button onclick="history.back();">목록으로</button>
+					<button type="submit">답변등록</button>　<button type="button" onclick="history.back();">목록으로</button>
 					</div>
 			</form>
 		</div>
@@ -87,19 +87,6 @@
 </section>
 
 <script>
-	$(document).ready(function () {
-		$(".menu").click(function () {
-			var submenu = $(this).children('ul');
-			if (submenu.is(":visible")) {
-				submenu.slideUp();
-				$(this).children('.icon').html("<i class='fas fa-sort-down'></i>");
-			} else {
-				submenu.slideDown();
-				$(this).children('.icon').html("<i class='fas fa-sort-up'></i>");
-			}
-		});
-	});
-	
 	ClassicEditor
         .create(document.querySelector('#aContent'))
         .catch(error => {

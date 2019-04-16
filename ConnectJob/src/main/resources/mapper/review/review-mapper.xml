@@ -77,7 +77,7 @@
 		SELECT COUNT(*) FROM COMPANY_REVIEW WHERE REVIEW_STATUS = 'Y'
 	</select>
 	
-	<select id="reviewOne" parameterType="_int" resultType="review" resultMap="reviewMap">
+	<select id="reviewOne" parameterType="_int" resultMap="reviewMap">
 		SELECT * FROM COMPANY_REVIEW WHERE REVIEW_NO = #{reviewNo}
 	</select>
 	

@@ -52,21 +52,8 @@
 </section>
 
 <script>
-	
-
-
-
 	function fn_paging(cPage) {
-
-		if (${ loginMember != null and loginCMember == null })
-		{
 			window.location.href = "${path}/admin/inquiry/inquiry.do?cPage=" + cPage;
-		}
-           else if (${ loginMember == null and loginCMember != null })
-		{
-			window.location.href = "${path}/admin/inquiry/inquiry.do?cPage=" + cPage;
-		}
-
 	}
 </script>
 
