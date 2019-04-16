@@ -4003,6 +4003,14 @@ section #senier-container .senier-middle .comment-item .date {
 
 /* ------------------------- 내 이력서  -------------------- */
 
+section#resumeView {
+    background-color: #efeff1;
+}
+
+section#resumeList {
+    background-color: #efeff1;
+}
+
 section #resume-container {
     width: 990px;
     display: inline-block;
@@ -4019,9 +4027,24 @@ section #resume-container .resume-top {
 }
 
 section #resume-container .resume-content {
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 25px;
+    border-radius: 6px;
     text-align: left;
-    line-height: 35px;
+    line-height: 30px;
+    font-size: 13px;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    background-color: #64697a;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #fff;
 }
 
 section #resume-container .resume-sub {
@@ -4030,32 +4053,47 @@ section #resume-container .resume-sub {
 
 section #resume-container .resume-sub .sub-item {
     display: inline-block;
-    background-color: #eee;
+    background-color: #fff;
+    bordrer:1px solid #dbdbdb;
     border-radius: 100px;
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     margin: 25px;
 }
 
 section #resume-container .resume-sub .sub-item .item-title {
     margin-top: 30px;
     font-size: 13px;
-    font-weight: bold;
 }
 
 section #resume-container .resume-sub .sub-item .item-content {
     padding-top: 5px;
-    font-size: 28px;
+    font-size: 35px;
     color: #404861;
 }
 
 section #resume-container .list-header {
+    width: 990px;
     margin-top: 20px;
-    padding-left: 25px;
     text-align: left;
     padding-top: 15px;
     font-size: 24px;
     height: 50px;
+}
+
+section #resume-container .list-header .left {
+    text-align: left;
+    padding-left: 25px;
+    display: inline-block;
+    width: 50%;
+}
+
+
+section #resume-container .list-header .right {
+    text-align: right;
+    display: inline-block;
+    width: 45%;
+    
 }
 
 section #resume-container .list-header button {
@@ -4063,6 +4101,7 @@ section #resume-container .list-header button {
     width: 120px;
     height: 33px;
     outline: none;
+    border: 1px solid #404861;
     background-color: #404861;
     color: #fff;
 }
@@ -4077,17 +4116,104 @@ section #resume-container .list-header button:hover {
 section #resume-container #resume-list {
     margin-top: 20px;
     display: inline-block;
-    width: 900px;
-    border: 1px solid #cfcfcf;
-    padding-top: 15px;
+    width: 990px;
     padding-bottom: 15px;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #dbdbdb;
 }
+
+section #resume-container #resume-list .list-item-top {
+    background-color: #eee;
+    border-bottom: 1px solid #dbdbdb;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 20px;
+}
+
+section #resume-container #resume-list .list-item-top .item1 {
+    vertical-align: top;
+    display: inline-block;
+    width: 50%;
+}
+section #resume-container #resume-list .list-item-top .item2 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+section #resume-container #resume-list .list-item-top .item3 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+section #resume-container #resume-list .list-item-top .item4 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+section #resume-container #resume-list .list-item-top .item5 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+
+
+
+section #resume-container #resume-list .list-item {
+    display: inline-block;
+    width: 950px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 13px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+section #resume-container #resume-list .list-item button {
+    vertical-align: top;
+    height: 28px;
+}
+
+section #resume-container #resume-list .list-item:hover {
+    transition: 900ms;
+    border: 1px solid #4b546e;
+}
+
+section #resume-container #resume-list .list-item .item1 {
+    vertical-align: top;
+    display: inline-block;
+    width: 50%;
+}
+section #resume-container #resume-list .list-item .item2 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+section #resume-container #resume-list .list-item .item3 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+section #resume-container #resume-list .list-item .item4 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+section #resume-container #resume-list .list-item .item5 {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+}
+
+
 
 section #resume-container .sub-title {
     border-radius: 3px;
     background-color: #f1f1f1;
     color: #000;
-    font-size: 16px;
+    font-size: 18px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 25px;
@@ -4098,7 +4224,19 @@ section #resume-container .sub-title {
 }
 
 section #resume-container button {
-    background-color: #404861;
+    margin: 10px;
+    background-color: #474e62;
+    border: 1px solid rgb(50, 56, 75);
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 120px;
+    height: 35px;
+}
+
+section #resume-container button.delete {
+    background-color: #a75252;
+    border: 1px solid #914848;
     color: #fff;
     border: none;
     outline: none;
@@ -4107,7 +4245,17 @@ section #resume-container button {
 }
 
 section #resume-container .view-content {
+    padding-top: 20px;
     width: 100%;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+section #resume-container .view-content:hover {
+    transition: 700ms;
+    border: 2px solid #5f6579;
 }
 
 section #resume-container .view-content .view-top {
@@ -4115,11 +4263,14 @@ section #resume-container .view-content .view-top {
 }
 
 section #resume-container .view-content .view-top .top-left {
+    vertical-align: top;
     display: inline-block;
     width: 200px;
 }
 
 section #resume-container .view-content .view-top .top-right {
+    padding-top: 10px;
+    vertical-align: top;
     display: inline-block;
     width: 700px;
     text-align: left;
@@ -4146,16 +4297,16 @@ section #resume-container .view-content .view-top .top-right .right-item .item-r
 section #resume-container .item {
     margin-top: 5px;
     margin-bottom: 5px;
-    width: 100%;
+    width: 990px;
     display: inline-block;
 }
 
 section #resume-container .item .left {
     display: inline-block;
-    width: 15%;
+    width: 20%;
     padding-top: 10px;
     height: 30px;
-    padding-left: 25px;
+    padding-left: 15px;
     text-align: left;
 }
 
@@ -4198,6 +4349,17 @@ section #resume-container .item .right input[type=text] {
     outline: none;
 }
 
+section #resume-container .item .right input[type=month] {
+    vertical-align: top;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    border: 2px solid #eee;
+    width: 150px;
+    outline: none;
+}
+
 section #resume-container .item .right input[type=email] {
     vertical-align: top;
     padding-left: 15px;
@@ -4220,12 +4382,25 @@ section #resume-container .item .right input[type=date] {
     outline: none;
 }
 
+section #resume-container .item .right input[type=file] {
+    vertical-align: top;
+    padding-left: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 13px;
+    border: none;
+    background-color: #404861;
+    color: #fff;
+    width: 100px;
+    outline: none;
+}
+
 
 section #resume-container .item .right select {
     vertical-align: top;
     padding-left: 15px;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     font-size: 13px;
     width: 200px;
     border: 2px solid #eee;
@@ -4752,6 +4927,220 @@ section #notice-container .notice-content .notice-item-content .right {
 }
 
 
+/* ------------------------------------------------------- 관리자 */
+
+section #admin-container{
+    display: inline-block;
+    width: 990px;
+}
+
+section #admin-container .admin-left {
+    position: fixed;
+    float:left;
+    vertical-align: top;
+    width: 200px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    font-size: 13px;
+    text-align: left;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+
+section #admin-container .admin-left .menu-top {
+    font-size: 22px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+section #admin-container .admin-left ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+section #admin-container .admin-left ul li {
+    cursor: pointer;
+    width: 79%;
+    line-height: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #e7e7e7;
+    margin-bottom: 5px;
+}
+
+section #admin-container .admin-left ul li span {
+    float: right;
+    vertical-align: top;
+}
+
+
+section #admin-container .menu a { cursor:pointer; }
+
+section #admin-container .menu ul.hide { 
+    display:none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+section #admin-container .menu ul.hide li { 
+    height: 30px;
+    line-height: 30px;
+    border: none;
+}
+
+
+
+section #admin-container .admin-right {
+    float: right;
+    vertical-align: top;
+    padding-left: 15px;
+    width: 74%;
+    text-align: left;
+}
+
+
+
+section #admin-container .admin-right .admin-title {
+    margin-top: 25px;
+    width: 700px;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+}
+
+section #admin-container .admin-right .admin-item-top {
+    margin-top: 10px;
+    vertical-align: top;
+    text-align: center;
+    width: 715px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #eee;
+}
+
+section #admin-container .admin-right .admin-item-top .item1{
+    width: 150px;
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-item-top .item2{
+    width: 400px;
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-item-top .item3{
+    width: 150px;
+    display: inline-block;
+}
+
+
+section #admin-container .admin-right .admin-item {
+    cursor: pointer;
+    vertical-align: top;
+    text-align: center;
+    width: 715px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 12px;
+}
+
+section #admin-container .admin-right .admin-item button {
+    width: 90px;
+    height: 30px;
+    background-color: #495368;
+    border: 1px solid #333946;
+    outline: none;
+    color :#fff;
+}
+
+section #admin-container .admin-right .admin-item:hover {
+    background-color: rgb(246, 246, 246);
+    transition: 400ms;
+}
+
+section #admin-container .admin-right .admin-item .item1{
+    width: 150px;
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-item .item2{
+    width: 400px;
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-item .item3{
+    width: 150px;
+    display: inline-block;
+}
+
+section #admin-container .admin-right .admin-content {
+    font-size: 13px;
+    width: 715px;
+}
+
+section #admin-container .admin-right .admin-content .left {
+    vertical-align: top;
+    text-align: center;
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+}
+
+section #admin-container .admin-right .admin-content .right {
+    display: inline-block;
+    padding-left: 15px;
+    width: 535px;
+    line-height: 40px;
+}
+
+section #admin-container .admin-right .admin-content select {
+    width: 40%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-size:12px;
+    border: 1px solid #eee;
+    outline: none;
+}
+
+
+section #admin-container .admin-right .admin-one {
+    vertical-align: top;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+section #admin-container .admin-right .admin-one .one-item {
+    text-align: center;
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    border-radius: 100px;
+    border: 1px solid #eee;
+    margin: 15px;
+}
+
+section #admin-container .admin-right .admin-one .one-item .one-top {
+    padding-top: 15px;
+}
+
+section #admin-container .admin-right .admin-one .one-item .one-bottom {
+    padding-top: 15px;
+    font-size: 35px;
+}
+
+
+/* ------------------------------------------------------------------------ */
 
 
 footer {

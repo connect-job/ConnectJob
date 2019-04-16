@@ -10,7 +10,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 
-<section>
+<section id="resumeView">
    <div id="resume-container">
       <div class="resume-top">이력서 제목 : ${resultR.title }</div>
 
@@ -61,6 +61,7 @@
 		<div class="view-content">
 			<div class="view-top">
 				<div class="top-left">
+					<br>
 					<c:choose>
 						 <c:when test="${resultR.finalEdu eq '대학/대학원 이상 졸업'?true:false }">
 							<c:forEach var="u" items="${univList}" varStatus="status">
@@ -195,12 +196,12 @@
 		
 		<br><Br>
 		<button onclick="location='${path}/resume/updateResume?resumeNo=${resultR.resumeNo}'">수정</button>
-		<button onclick="location='${path}/resume/deleteResume?resumeNo=${resultR.resumeNo}'">삭제</button>
+		<button class="delete" onclick="location='${path}/resume/deleteResume?resumeNo=${resultR.resumeNo}'">삭제</button>
 		<br><Br>
 		<div>
 			<h3>위의 모든 기재사항은 사실과 다름없음을 확인합니다.</h3>
 			<h4>작성자 : ${resultR.name }</h4>
-			<p style="color:gray;">
+			<p style="color:gray; font-size:12px;">
 				이 이력서는
 				<fmt:formatDate value="${resultR.creationDate}" pattern="yyyy년 MM월 dd일" />에 최종 업데이트된 이력서 입니다.<br />
 				위조된 문서를 등록하여 취업활동에 이용 시 법적 책임을 지게 될 수있습니다.<br />

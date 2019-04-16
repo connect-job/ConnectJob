@@ -375,7 +375,7 @@
             $('#header-search-result').css("display", "none");
         }
 
-        var result = $('#header-search-result');
+        var result2 = $('#header-search-result');
 
         $('#search').keyup(function () {
             var keyword = $('#search').val();
@@ -386,9 +386,9 @@
                 success: function (data) {
                     var Ca = /\+/g;
                     var resultSet = decodeURIComponent(data.replace(Ca, " "));
-                    result.css("display", "block");
-                    result.empty();
-                    result.html(resultSet);
+                    result2.css("display", "block");
+                    result2.empty();
+                    result2.html(resultSet);
                 }
             });
         });

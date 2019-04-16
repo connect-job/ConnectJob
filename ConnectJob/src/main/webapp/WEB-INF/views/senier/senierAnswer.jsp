@@ -33,23 +33,16 @@
 
 
 		<div class="senier-middle">
-				<div class="middle-content">
-					<div class="left">직종분류</div>
-					<div class="right">
-							${s.sCate}
+
+
+				<div class="middle-subtitle" style="font-size: 18px;">
+						<i class="fab fa-quora"></i> ${s.sTitle}
 					</div>
-				</div>
 
 				<div class="middle-subtitle">
-					질문유형　#${s.qType}　|　${s.sDate}
+					#${s.qType}　|　${s.sCate}　|　${s.sDate}
 				</div>
 				
-				<div class="middle-content">
-					<div class="left"></div>
-					<div class="right">
-							<i class="fab fa-quora"></i> ${s.sTitle}
-					</div>
-				</div>
 
 				<div class="middle-content">
 					<div class="right">${s.sContent}</div>

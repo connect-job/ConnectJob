@@ -5,13 +5,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<script >
-	console.log(".")
-</script>
-<section>
+
+
+<section id="resumeView">
 	<div id="resume-container">
 		<div class="resume-top">
-				<i class="far fa-address-card"></i>　내 스크랩 관리
+			내 스크랩 관리
 		</div>
 		<div class="resume-content">
 			· 스크랩한 기업과 채용공고를 확인할 수 있습니다.<br>
@@ -33,33 +32,32 @@
 			</div>
 		</div>
 		
-		<div class="list-header">
-				<i class="fas fa-list-ul"></i>　스크랩 리스트　
+		<div class="resume-top">
+			내 스크랩 목록
 		</div>
 		<div id="resume-list">
+
+				<div class="list-item-top">
+						<div class="item1"  style="width: 20%">구분</div>
+						<div class="item2" style="width: 38%">회사명</div>
+						<div class="item3">진행중 공고</div>
+						<div class="item4">삭제</div>
+					</div>
 			<c:choose>
 				<c:when test="${not empty allList}">
-				<table>
-						<tr>
-							<th>구분</th>
-							<th>회사명</th>
-							<th>진행중 공고</th>
-							<th>삭제</th>
-						</tr>
 						<c:forEach items="${allList }" var="aList">
-							<tr>
-								<td>${aList.sCategory eq '기업'?'기업 스크랩':'채용공고 스크랩'}</td>
-								<td><a href="${path }/company/companyView.do?no=${aList.companyNo}">${aList.companyName }</a></td>
-								<td>2개</td>
-								<td><button type="button" onclick="location.href='${path}/scrap/delete.do?scrapNo=${aList.scrapNo }&companyNo=0'">삭제</button></td>
-							</tr>
-							<script>console.log("${aList}")</script>
+								<div class="list-item">
+										<div class="item1" style="width: 20%">${aList.sCategory eq '기업'?'기업 스크랩':'채용공고 스크랩'}</div>
+										<div class="item2" style="width: 40%"><a href="${path }/company/companyView.do?no=${aList.companyNo}">${aList.companyName }</a></div>
+										<div class="item3">2개</div>
+										<div class="item4"><button type="button" onclick="location.href='${path}/scrap/delete.do?scrapNo=${aList.scrapNo }&companyNo=0'">삭제</button></div>
+									</div>
 						</c:forEach>
-				</table>
-					
 				</c:when>
 				<c:otherwise>
-					스크랩 내역이 없습니다.
+						<div class="list-item-top">
+								스크랩 내역이 없습니다.	</div>
+					
 				</c:otherwise>
 			</c:choose> 
 			
