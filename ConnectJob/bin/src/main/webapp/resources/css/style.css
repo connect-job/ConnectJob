@@ -97,7 +97,49 @@ button, input , select, option, textarea {
 	transition: 1000ms;
 	position: absolute;
 	opacity: 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
 	padding-top: 20px;
+	width: 300px;
+	height: 95px;
+	right:10px;
+	top: 150px;
+	color: #fff;
+	text-align: center;
+	background-color: #596483a8;
+	z-index: 999999;
+	border-radius: 5px;
+}
+
+#socket-message a {
+    color: #fff;
+    font-size: 14px;
+}
+
+#socket-message a:hover {
+    transition: 500ms;
+    text-decoration: underline;
+}
+
+#socket-message button {
+    border: 2px solid #fff;
+    background: none;
+    color: #fff;
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+}
+
+#socket-message button:hover{
+    transition: 700ms;
+    background-color: #fff;
+    color :#000;
+=======
+	padding-top: 25px;
+=======
+	padding-top: 20px;
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	width: 300px;
 	height: 95px;
 	right:10px;
@@ -107,6 +149,7 @@ button, input , select, option, textarea {
 	background-color: #596483a8;
 	z-index: -1;
 	border-radius: 5px;
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 }
 
 #socket-message a {
@@ -604,6 +647,8 @@ section #index-container .index-top-right {
     width: 27%;
     border: 1px solid rgb(207, 207, 207);
     overflow: hidden;
+<<<<<<< HEAD
+=======
 }
 
 section #index-container .index-top-right .tab-btn {
@@ -623,8 +668,52 @@ section #index-container .index-top-right .tab-btn:hover {
     background-color: #4c5268;
     color: #fff;
     transition: 500ms;
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+section #index-container .index-top-right .tab-btn {
+=======
+section #index-container .index-top-right .notice {
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+    display: inline-block;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+<<<<<<< HEAD
+    width: 43%;
+=======
+    width: 44.3%;
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+    padding-top: 12px;
+    height: 28px;
+    padding-left: 15px;
+}
+
+section #index-container .index-top-right .notice2 {
+    display: inline-block;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    width: 44%;
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 12px;
+    height: 28px;
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+section #index-container .index-top-right .tab-btn:hover {
+    background-color: #4c5268;
+    color: #fff;
+    transition: 500ms;
+}
+
+=======
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 
 section #index-container .index-top-right #item {
     font-size: 12px;
@@ -651,6 +740,8 @@ section #index-container .index-top-right #item ul li:hover {
     transition: 500ms;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 section #index-container .index-top-right #item-notice {
     display: none;
     font-size: 12px;
@@ -677,6 +768,36 @@ section #index-container .index-top-right #item-notice ul li:hover {
     transition: 500ms;
 }
 
+=======
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+=======
+section #index-container .index-top-right #item-notice {
+    display: none;
+    font-size: 12px;
+    width: 100%;
+}
+
+section #index-container .index-top-right #item-notice ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+section #index-container .index-top-right #item-notice ul li {
+    cursor: pointer;
+    height: 25px;
+    border-bottom: 1px solid #eee;
+    padding-top: 8px;
+    padding-left: 15px;
+    text-align: left;
+}
+
+section #index-container .index-top-right #item-notice ul li:hover {
+    background-color: #eee;
+    transition: 500ms;
+}
+
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 
 section #index-container .index-hire {
     margin-top: 15px;
@@ -3453,8 +3574,100 @@ section #help-container .help-middle .help-item .item-right span {
     color: #fff;
 }
 
+/* --------------------------------------- 알림센터 */
+
+section #alarm-container {
+    display: inline-block;
+    width: 990px;
+}
+
+section #alarm-container .title {
+    width: 100%;
+    height: 50px;
+    font-size: 22px;
+    text-align: left;
+    padding-left: 20px;
+}
 
 
+<<<<<<< HEAD
+section #alarm-container .sum {
+    width: 100%;
+}
+
+section #alarm-container .sum .item {
+    vertical-align: top;
+    display: inline-block;
+    margin: 25px;
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+    background-color: #464c6315;
+}
+
+section #alarm-container .sum .top {
+    padding-top: 25px;
+    font-size: 13px;
+}
+
+section #alarm-container .sum .count {
+    padding-top: 5px;
+    font-size: 45px;
+    color: #404861;
+}
+
+section #alarm-container .left {
+    vertical-align: top;
+    display: inline-block;
+    width: 10%;
+    padding-top: 12px;
+    height: 35px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #464c63;
+    color: #fff;
+}
+
+section #alarm-container .right {
+    vertical-align: top;
+    display: inline-block;
+    width: 88%;
+    text-align: left;
+    padding-left: 15px;
+}
+
+section #alarm-container .right .message {
+    padding-top: 18px;
+    border: 1px solid #eee;
+    height: 45px;
+    margin-bottom: 10px;
+    width: 100%;
+    color: #000;
+}
+
+section #alarm-container .right .message:hover {
+    transition: 600ms;
+    background-color: #83889b;
+    color: #fff;
+}
+
+section #alarm-container .right .message .content {
+    display: inline-block;
+    width: 40%;
+    font-size: 14px;
+}
+
+section #alarm-container .right .message .date {
+    display: inline-block;
+    width: 19%;
+    text-align: left;
+}
+
+section #alarm-container .right .message .status {
+    display: inline-block;
+    width: 16%;
+    text-align: center;
+=======
 /* --------------------------------------- 알림센터 */
 
 section #alarm-container {
@@ -3469,9 +3682,64 @@ section #alarm-container .title {
     font-weight: normal;
     text-align: left;
     padding-left: 20px;
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 }
 
 
+<<<<<<< HEAD
+section #alarm-container .right .message .button {
+    display: inline-block;
+    text-align: left;
+}
+
+section #alarm-container .right .message .button button {
+    width: 90px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    outline: none;
+    color :#000;
+}
+
+/* ------------------------------ 공지사항 */
+
+section #notice-container {
+    width: 990px;
+    display: inline-block;
+    text-align: center;
+    margin-top: 15px;
+}
+
+section #notice-container .notice-title {
+    width: 100%;
+    text-align: left;
+    padding-left: 25px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+section #notice-container .notice-subtitle {
+    width: 100%;
+    text-align: left;
+    padding-left: 30px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+section #notice-container .notice-write {
+    width: 100%;
+    text-align: right;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+section #notice-container .notice-write input[type=button] {
+    border: none;
+    width: 80px;
+    height: 34px;
+    background-color: #404861;
+    color:#fff;
+=======
 section #alarm-container .subtitle {
     width: 990px;
     text-align: center;
@@ -3496,9 +3764,15 @@ section #alarm-container .subtitle > div .top {
 section #alarm-container .subtitle > div .bottom {
     font-size: 12px;
     text-align: left;
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 }
 
 
+<<<<<<< HEAD
+section #notice-container .notice-top-list {
+    width: 100%;
+    margin-bottom: 20px;
+=======
 section #alarm-container .center {
     width: 940px;
     font-size: 12px;
@@ -3510,9 +3784,22 @@ section #alarm-container .center button {
     outline: none;
     width: 100px;
     height: 30px;
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 }
 
+section #notice-container .notice-top-list:hover {
+    width: 100%;
+    margin-bottom: 20px;
+}
 
+<<<<<<< HEAD
+section #notice-container .notice-top-list .item-top {
+    width: 100%;
+    border: 1px solid rgb(224, 224, 224);
+    margin-bottom: 5px;
+    background-color: rgb(243, 243, 243);
+    height: 45px;
+=======
 section #alarm-container .sum {
     width: 100%;
 }
@@ -3589,9 +3876,17 @@ section #alarm-container .right .message .status {
     display: inline-block;
     width: 16%;
     text-align: center;
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 }
 
+section #notice-container .notice-top-list .item-top .head {
+    display: inline-block;
+    width: 10%;
+    font-size: 12px;
+}
 
+<<<<<<< HEAD
+=======
 section #alarm-container .right .message .button {
     display: inline-block;
     text-align: left;
@@ -3671,6 +3966,7 @@ section #notice-container .notice-top-list .item-top .head {
     font-size: 12px;
 }
 
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 section #notice-container .notice-top-list .item-top .title {
     display: inline-block;
     width: 60%;

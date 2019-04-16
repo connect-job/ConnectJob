@@ -6,6 +6,23 @@
 		SELECT * FROM RESUME WHERE P_ID = #{member}
 	</select>
 	
+<<<<<<< HEAD
+<<<<<<< HEAD
+	<select id="selectMessage" resultMap="messageResult">
+		SELECT * FROM M_MESSAGE WHERE M_TO = #{id}
+	</select>
+	
+=======
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
+	<resultMap type="message" id="messageResult">
+		<id column="m_no" property="mNo"/>
+		<result column="m_to" property="mTo"/>
+		<result column="m_from" property="mFrom"/>
+		<result column="m_message" property="mMessage"/>
+		<result column="m_date" property="mDate"/>
+		<result column="m_status" property="mStatus"/>
+		<result column="m_count" property="mCount"/>
+=======
 	<select id="messageHireNoti" parameterType="resume" resultMap="hireNotiResult">
 		SELECT * FROM HIRENOTI WHERE 1=1
 		<if test="hopeJobs!=null and hopeJobs!=''">
@@ -92,6 +109,7 @@
 		<result property="hnInterview" column="hn_interview"/>
 		<result property="hnTitle" column="hn_title"/>
 		<result property="addDate" column="hn_adddate"/>
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 	</resultMap>
 
 </mapper>

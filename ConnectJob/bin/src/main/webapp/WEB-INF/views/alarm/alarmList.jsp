@@ -11,6 +11,8 @@
 <section>
     <div id='alarm-container'>
         <div class="title">알림센터</div>
+<<<<<<< HEAD
+=======
         
         <div class="center">
             알림설정　<button class="selected">알림 ON</button><BUTTON>알림 OFF</BUTTON>
@@ -38,6 +40,7 @@
             </div>
         </div>  
         
+>>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
         <div class="sum">
             <div class="item">
                 <div class="top">총 알림</div>
