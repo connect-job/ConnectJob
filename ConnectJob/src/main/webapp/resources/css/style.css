@@ -1450,7 +1450,7 @@ section #hire-container {
     position: relative;
 }
 
-section #hire-container #applyModal {
+#applyModal {
     padding-top: 50px;
     padding-bottom: 50px;
     display: none;
@@ -1466,7 +1466,7 @@ section #hire-container #applyModal {
     border-radius: 8px;
 }
 
-section #hire-container #applyModal .top {
+#applyModal .top {
     padding-top: 10px;
     padding-bottom: 10px;
     display: inline-block;
@@ -1480,18 +1480,18 @@ section #hire-container #applyModal .top {
     margin-bottom: 25px;
 }
 
-section #hire-container #applyModal .applyTitle {
+#applyModal .applyTitle {
     margin-top: 20px;
     font-size: 18px;
 }
 
-section #hire-container #applyModal .applySelect {
+#applyModal .applySelect {
     margin-top: 20px;
     font-size: 15px;
     line-height: 40px;
 }
 
-section #hire-container #applyModal .applySelect select {
+#applyModal .applySelect select {
     vertical-align: top;
     padding-left: 15px;
     padding-top: 10px;
@@ -1502,11 +1502,11 @@ section #hire-container #applyModal .applySelect select {
     outline: none;
 }
 
-section #hire-container #applyModal .applyBottom {
+#applyModal .applyBottom {
     margin-top: 25px;
 }
 
-section #hire-container #applyModal .applyBottom button {
+#applyModal .applyBottom button {
     background-color: #404861;
     color: #fff;
     outline: none;
