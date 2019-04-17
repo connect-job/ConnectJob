@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="scrap">
+
 	<insert id="insertCPScrap" parameterType="cpScrap">
 		INSERT INTO CP_SCRAP VALUES(SEQ_SCRAP_ID.NEXTVAL,'기업',#{companyNo},#{pId},'false')
 	</insert>

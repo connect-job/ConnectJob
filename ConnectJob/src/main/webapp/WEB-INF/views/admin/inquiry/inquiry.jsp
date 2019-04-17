@@ -16,9 +16,8 @@
 	<div id="admin-container">
 
 		<!-- ---------------------------------------------------------------------- 좌측메뉴 -->
-
 		<%@ include file="/WEB-INF/views/admin/admin-menu.jsp"%>
-
+		
 		<!-- ---------------------------------------------------------------------- 우측페이지  -->
 
 		<div class="admin-right">
@@ -52,21 +51,8 @@
 </section>
 
 <script>
-	
-
-
-
 	function fn_paging(cPage) {
-
-		if (${ loginMember != null and loginCMember == null })
-		{
 			window.location.href = "${path}/admin/inquiry/inquiry.do?cPage=" + cPage;
-		}
-           else if (${ loginMember == null and loginCMember != null })
-		{
-			window.location.href = "${path}/admin/inquiry/inquiry.do?cPage=" + cPage;
-		}
-
 	}
 </script>
 

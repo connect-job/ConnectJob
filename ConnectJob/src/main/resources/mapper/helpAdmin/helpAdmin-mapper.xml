@@ -13,6 +13,14 @@
 		<result property="aContent" column="a_content"/>
 	</resultMap>
 
+	<resultMap type="faq" id="faqResult">
+		<id property="fNo" column="f_no"/>
+		<result property="fTitle" column="f_title"/>
+		<result property="fContent" column="f_content"/>
+		<result property="status" column="status"/>
+	</resultMap>
+
+
 	<select id="helpPageInquiryList" resultMap="inquiryResult">
 		select * from inquiry order by i_date desc
 	</select>
@@ -28,6 +36,26 @@
 	<update id="helpInquiryUpdate" parameterType="inquiry">
 		update inquiry set a_content=#{aContent}, status=#{status} where i_no=#{iNo}
 	</update>
+	
+	<select id="faq" resultMap="faqResult">
+		select * from faq order by f_no desc
+	</select>
+	
+	<select id="selectFaqCount" resultType="_int">
+		select count(*) from faq
+	</select>
+	
+	<select id="faqView" parameterType="_int" resultMap="faqResult">
+		select * from faq where f_no=#{no}
+	</select>
+	
+	<update id="faqUpdate" parameterType="faq">
+		update faq set f_content=#{fContent}, f_title=#{fTitle} where f_no=#{fNo}
+	</update>
+	
+	<delete id="faqDelete" parameterType="faq">
+		delete from faq where f_no=#{fNo}
+	</delete>
 	
 	<resultMap type="member" id="memberResult">
 		<id column="p_id" property="p_id"/>
@@ -94,4 +122,5 @@
 	<update id="updateNotice" parameterType="notice">
 		update notice set title=#{title}, content=#{content} where notice_no=#{notice_no}
 	</update>
+	
 </mapper>

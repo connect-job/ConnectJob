@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.connect.job.common.PageBarFactory;
+import com.connect.job.model.vo.Faq;
 import com.connect.job.model.vo.Inquiry;
 import com.connect.job.model.vo.Member;
 import com.connect.job.model.vo.Notice;
@@ -25,16 +26,16 @@ public class AdminController {
 	
 
 	@RequestMapping("/admin/inquiry/inquiry.do")
-	public ModelAndView helpPageInquiry(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage/*, String id*/) {
+	public ModelAndView helpPageInquiry(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage) {
 		int numPerPage=10;
 		ModelAndView mv=new ModelAndView();
-		List<Inquiry>list=service.helpPageInquiryList(cPage, numPerPage/*, id*/);
-		int total=service.selectCount(/*id*/);
+		List<Inquiry>list=service.helpPageInquiryList(cPage, numPerPage);
+		int total=service.selectCount();
 		
 		mv.addObject("list",list);
 		mv.addObject("total",total);
 		mv.addObject("pageBar",PageBarFactory.getPageBar(total, cPage, numPerPage)); 
-		mv.setViewName("admin/inquiry/inquiry"); //문의리스트 시작페이지
+		mv.setViewName("admin/inquiry/inquiry"); 
 		return mv;
 	}
 	
@@ -52,7 +53,7 @@ public class AdminController {
 		int result=service.helpInquiryUpdate(i);
 		
 		String msg="";
-		String loc="/admin/inquiry/inquiry.do?id="+i.getiWriter(); //문의리스트시작페이지
+		String loc="/admin/inquiry/inquiry.do?id="+i.getiWriter(); 
 		
 		if(result>0 ) {
 			msg="답변등록완료";
@@ -63,8 +64,7 @@ public class AdminController {
 		model.addAttribute("loc",loc);
 		
 		return "common/msg";
-		
-		//return "helpPage/helpPage-inquiry";
+	
 	}
 	
 	//회원관리	
@@ -81,10 +81,75 @@ public class AdminController {
 		
 		mv.addObject("pageBar", pageBar);
 		mv.addObject("list", list);
-		mv.setViewName("/admin/member/memberList");
+		mv.setViewName("admin/member/memberList");
 		
 		return mv;
 	}
+
+	@RequestMapping("/admin/faq/faq.do")
+	public ModelAndView faq(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage)
+	{
+		int numPerPage=10;
+		ModelAndView mv=new ModelAndView();
+		List<Faq>list=service.faq(cPage, numPerPage);
+		int total=service.selectFaqCount();
+		System.out.println(list);
+		
+		mv.addObject("list",list);
+		mv.addObject("total",total);
+		mv.addObject("pageBar",PageBarFactory.getPageBar(total, cPage, numPerPage)); 
+		mv.setViewName("admin/faq/faq"); 
+		return mv;
+		
+	}
+	
+	@RequestMapping("/admin/faq/faqView.do")
+	public String faqView(Model model, int no)
+	{
+		Faq faq = service.faqView(no);
+		model.addAttribute("faq",faq);
+		return "admin/faq/faqView";
+	}
+	
+	@RequestMapping("/admin/faq/FaqUpdate.do")
+	public String faqUpdate(Model model, Faq f)
+	{
+		int result=service.faqUpdate(f);
+		
+		String msg="";
+		String loc="/admin/faq/faq.do"; 
+		
+		if(result>0 ) {
+			msg="질문수정완료";
+		} else {
+			msg="질문수정실패";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	}
+	
+	
+	@RequestMapping("/admin/faq/FaqDelete.do")
+	public String faqDelete(Model model, Faq f)
+	{
+		int result=service.faqDelete(f);
+		
+		String msg="";
+		String loc="/admin/faq/faq.do"; 
+		
+		if(result>0 ) {
+			msg="질문삭제완료";
+		} else {
+			msg="질문삭제실패";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
+	}
+	
 	
 	@RequestMapping("/admin/member/searchMember")
 	public ModelAndView searchMember(@RequestParam(value="cPage",required=false, defaultValue="1")int cPage, String searchType, String searchKey) {
@@ -103,7 +168,8 @@ public class AdminController {
 		
 		mv.addObject("list", searchList);
 		mv.addObject("map", map);
-		mv.setViewName("/admin/member/memberList");
+
+		mv.setViewName("admin/member/memberList");
 		
 		return mv;
 	}
@@ -138,7 +204,7 @@ public class AdminController {
 		mv.addObject("total",total);
 		mv.addObject("pageBar",PageBarFactory.getPageBar(total,cPage,numPerPage));		
 		
-		mv.setViewName("/admin/notice/adNotice");
+		mv.setViewName("admin/notice/adNotice");
 		
 		return mv;
 	}
@@ -166,7 +232,7 @@ public class AdminController {
 		
 		mv.addObject("pageBar",PageBarFactory.getPageBar(total,cPage,numPerPage));
 		
-		mv.setViewName("/admin/notice/adNotice");
+		mv.setViewName("admin/notice/adNotice");
 		
 		return mv;
 	}
@@ -217,4 +283,7 @@ public class AdminController {
 			
 		return "common/msg";
 	}
+	
+	
+	
 }

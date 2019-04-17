@@ -14,6 +14,7 @@
 	
 		<div class="admin-title">공지사항 관리</div>
 		
+<<<<<<< HEAD
 		<form name="updateFrm" method="post" action="${path }/admin/updateNotice">
 		
 			<div class="enroll-item">
@@ -53,6 +54,55 @@
     	</form>
     </div>
     </div>
+=======
+		<!-- ---------------------------------------------------------------------- 우측 메뉴 -->
+		<div class="admin-right">
+				<div class="admin-title">공지사항 관리</div>
+	
+				<div class="admin-item-top">공지사항 내용</div>
+
+				<form name="updateFrm" method="post" action="${path }/notice/updateNotice">
+				<div class="admin-content">
+						<div class="left">작성자</div>
+						<div class="right" style="text-align: left; padding-left: 15px;">
+							<input type="text" style="width:450px;" name="writer" value="${notice.writer }" readonly/>
+							<input type="hidden" name="notice_no" value="${notice.notice_no }"/>
+						</div>
+
+						<div class="left">제목</div>
+						<div class="right" style="text-align: left; padding-left: 15px;">
+							<input type="text" style="width:450px;" name="title" value="${notice.title }"/>
+						</div>
+
+						<div class="left">내용</div>
+						<div class="right" style="text-align: left; padding-left: 15px;">
+							<textarea id="aContent" name="content">${notice.content}</textarea>
+						</div>
+
+						<div class="left">상단 고정</div>
+						<div class="right" style="text-align: left; padding-left: 15px;">
+								<label><input type="radio" name="status" value="Y"/> Y</label>
+								<label><input type="radio" name="status" value="N"/> N</label>
+						</div>
+				</div>
+
+				<div class="admin-one">
+						<input type="submit" value="수정" />
+						<input type="button" value="삭제" onclick="location.href='${path}/admin/deleteNotice?notice_no=${notice.notice_no }'"/>
+				</div>
+				</form>
+		</div>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 </section>
 
+<<<<<<< HEAD
+=======
+<script>
+		ClassicEditor
+			.create(document.querySelector('#aContent'))
+			.catch(error => {
+				console.error(error);
+			});
+	</script>
+>>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

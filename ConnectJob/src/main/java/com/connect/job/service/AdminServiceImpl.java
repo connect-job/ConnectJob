@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.connect.job.dao.AdminDao;
+import com.connect.job.model.vo.Faq;
 import com.connect.job.model.vo.Inquiry;
 import com.connect.job.model.vo.Member;
 import com.connect.job.model.vo.Notice;
@@ -18,13 +19,13 @@ public class AdminServiceImpl implements AdminService {
 	private AdminDao dao;
 	
 	@Override
-	public List<Inquiry> helpPageInquiryList(int cPage, int numPerPage/*, String id*/) {
-		return dao.helpPageInquiryList(cPage, numPerPage/*, id*/);
+	public List<Inquiry> helpPageInquiryList(int cPage, int numPerPage) {
+		return dao.helpPageInquiryList(cPage, numPerPage);
 	}
 
 	@Override
-	public int selectCount(/*String id*/) {
-		return dao.selectCount(/*id*/);
+	public int selectCount() {
+		return dao.selectCount();
 	}
 
 	@Override
@@ -38,6 +39,39 @@ public class AdminServiceImpl implements AdminService {
 
 		return dao.helpInquiryUpdate(i);
 	}
+
+	@Override
+	public List<Faq> faq(int cPage, int numPerPage) {
+
+		return dao.faq(cPage, numPerPage);
+	}
+
+	@Override
+	public int selectFaqCount() {
+
+		return dao.selectFaqCount();
+	}
+
+	@Override
+	public Faq faqView(int no) {
+
+		return dao.faqView(no);
+	}
+
+	@Override
+	public int faqUpdate(Faq f) {
+
+		return dao.faqUpdate(f);
+	}
+	
+	
+	
+	@Override
+	public int faqDelete(Faq f) {
+
+		return dao.faqDelete(f);
+	}
+
 	
 	//회원관리
 	@Override

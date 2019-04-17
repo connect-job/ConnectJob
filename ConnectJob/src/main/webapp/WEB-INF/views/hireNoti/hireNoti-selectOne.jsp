@@ -7,7 +7,6 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-
 <section id="hire-view">
 	<div id="hire-view-container">
 		
@@ -71,7 +70,7 @@
 			</div>
 			<div class="content-item">
 				<div class="left">모집인원</div>
-				<div class="right">${hireNoti.hnRecruit }</div>
+				<div class="right">${hireNoti.hnRecruit }명</div>
 			</div>
 			<div class="content-item">
 				<div class="left">모집분야</div>
@@ -170,11 +169,11 @@
 		<div class="view-content">
 			<div class="content-item">
 				<div class="left">기업이름</div>
-				<div class="right">${hireNoti.companyName }</div>
+				<div class="right">${hireNoti.cName }</div>
 			</div>
 			<div class="content-item">
 				<div class="left">사원수</div>
-				<div class="right">${hireNoti.companyAllPeople }</div>
+				<div class="right">${hireNoti.companyAllPeople } 명</div>
 			</div>
 			<div class="content-item">
 				<div class="left">설립일</div>
@@ -197,4 +196,4 @@
 	</div>
 </section>
 
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>

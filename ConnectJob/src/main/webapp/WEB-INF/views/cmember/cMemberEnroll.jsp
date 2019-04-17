@@ -25,7 +25,7 @@
          <div class="title-right">무료 채용공고 등록　|　원하는 인재 찜하기 서비스<br>커넥트잡 기업회원에게 <b>모든 서비스를 무료</b>로 이용 가능합니다</div>
       </div><br>
       <div id="memberEnroll">
-         <form action="${path }/cMemberEnrollEnd.do" method="post" class="signup-frm" autocomplete="off"/>
+         <form action="${path }/cMemberEnrollEnd.do" method="post" class="signup-frm" autocomplete="off">
             <div class="enroll-title">
                	기업정보
             </div>
@@ -130,8 +130,10 @@
             <div class="enroll-item">
                <div class="left">비밀번호</div>
                <div class="right"><input type="password" class="CMember" id="CMemberPw" placeholder="영문+숫자+특수문자 8글자 이상 입력" required/>
-               		<span id="pw_validate"></span>
                </div>
+            </div>
+            <div class="enroll-item">
+            	<span id="pw_validate"></span>
             </div>
 
             <div class="enroll-item">
@@ -209,6 +211,7 @@ $(document).ready(function(){
 			$("#id-result-div").show();
 			$("#id_result").html("아이디에는 공백이 들어갈 수 없습니다.").css('color', 'red');
 			$('#CMemberId').focus();
+
 		} else {
 			$.ajax({
 				type:"POST",
@@ -273,29 +276,24 @@ $(document).ready(function(){
 });
    
    
- //체크박스 전체선택 및 전체해제
-   $("#ACCEPT_TERMS").click(function(){
-       if($("#ACCEPT_TERMS").is(":checked")){
-           $(".chk").prop("checked",true);
-       }
-       else{
-           $(".chk").prop("checked",false);
-       }
-   });
+ 	//체크박스 전체선택 및 전체해제
+	   $("#ACCEPT_TERMS").click(function(){
+	       if($("#ACCEPT_TERMS").is(":checked")){
+	           $(".chk").prop("checked",true);
+	       }
+	       else{
+	           $(".chk").prop("checked",false);
+	       }
+	   });
 
    //한개의 체크박스 선택 해제시 전체선택 체크박스도 해제
-   $(".chk").click(function(){
-       if($("input[name='chk']:checked").length == 4){
-           $("#ACCEPT_TERMS").prop("checked",true);
-       }else{
-           $("#ACCEPT_TERMS").prop("checked",false);
-       }
-   });
-
-
-
-
-
+	   $(".chk").click(function(){
+	       if($("input[name='chk']:checked").length == 4){
+	           $("#ACCEPT_TERMS").prop("checked",true);
+	       }else{
+	           $("#ACCEPT_TERMS").prop("checked",false);
+	       }
+	   });
 
 </script>
 

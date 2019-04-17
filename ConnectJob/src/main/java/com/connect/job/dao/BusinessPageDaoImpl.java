@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.connect.job.model.vo.CMember;
+import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.Resume;
 
 @Repository
@@ -25,8 +27,13 @@ public class BusinessPageDaoImpl implements BusinessPageDao {
 	public int selectResumeCount() {
 		return session.selectOne("Resume.selectResumeCount");
 	}
-	
 
+	@Override
+	public Company selectOne(CMember member) {
+		return session.selectOne("Resume.selectOneCompany", member);
+	}
+	
+	
 
 	
 }
