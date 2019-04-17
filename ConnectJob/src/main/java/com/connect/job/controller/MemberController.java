@@ -326,19 +326,18 @@ public class MemberController {
 	@RequestMapping("/member/findId")
 	public String findId(Member m, Model model) {	
 		
-		Member result=service.findId(m);		
+		Member result=service.findId(m);
+		System.out.println(result);
 		
 		String msg="";
-		String loc="";
+		String loc="/member/findMember";
 		
-		if(result==null) {
+		if(result!=null) {
 			msg=m.getP_name()+"님의 아이디는 "+result.getP_id()+"입니다.";
-			loc="/";
+			
 		}else {
 			msg="아이디가 존재하지 않습니다.";
 		}
-		
-		
 		System.out.println(result);
 		
 		model.addAttribute("msg", msg);
