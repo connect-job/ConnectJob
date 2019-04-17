@@ -500,13 +500,14 @@
 
         <div id="hire-list">
             <c:forEach items="${hireNoti }" var="list">
+            	<input type="hidden" value="${list.hnSeq }" id="hnSeq"/>
                 <div class="hire-item">
 
                     <div class="cname">${list.cName }</div>
                     <div class="subject">
-                        <div class="h-title"><a href="${path }/hireNotiView.do?no=${list.hnSeq }">${list.hnTitle }</a>
-                        </div>
-                        <div class="h-subtitle">모집부문 :
+                        <div class="h-title"><a href="${path }/hireNotiView.do?no=${list.hnSeq}">${list.hnTitle }</a></div>
+                        <div class="h-subtitle">모집부문 : 
+			
                             <c:forEach var="sort" items="${list.hnSort }">
                                 ${sort }
                             </c:forEach>
@@ -548,14 +549,15 @@
             <div class="applyTitle">해당 공고에 지원하시려면 이력서를 선택하세요</div>
             <div class="applySelect">
                 내 이력서　
-                <select>
-                    <option>이력서 선택</option>
-                    <option>이력서 선택</option>
-                    <option>이력서 선택</option>
+                <select name="resume">
+                		<option value='' disabled selected>이력서 선택</option>
+                	<c:forEach var="r" items="${rList }">
+                		<option value="<c:set var='resultNo' value='${r.resumeNo }' />">${r.title }</option>
+                	</c:forEach>
                 </select>
             </div>
             <div class="applyBottom">
-                <button>지원하기</button>　<button onclick="fn_applyCancle()">취소</button>
+                <button onclick="fn_applyComplete()">지원하기</button>　<button onclick="fn_applyCancle()">취소</button>
             </div>
         </div>
     </div>
@@ -594,7 +596,12 @@
         $('#search-job').css("display", "none");
         $('#search-etc').css("display", "inline-block");
     });
-
+	
+    function fn_applyComplete(){
+    	var whnSeq=$('#hnSeq').val();
+    	location.href="${path}/application/insertApplication.do?hnSeq="
+    	
+    }
     function fn_apply() {
         if (${ loginMember != null }) {
             $('body').scrollTop(0);
@@ -1026,9 +1033,6 @@
         } else {
             alert('검색 조건을 설정해 주세요');
         }
-
-
-
     }
 
 </script>
