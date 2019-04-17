@@ -28,7 +28,7 @@
 			</div>
 			<div class="sub-item">
 				<div class="item-title">입사지원 현황</div>
-				<div class="item-content">26</div>
+				<div class="item-content">${appCnt }</div>
 			</div>
 		</div>
 

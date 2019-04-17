@@ -25,6 +25,7 @@
 		<typeAlias type="com.connect.job.model.vo.CPScrap" alias="cpScrap"/>
 		<typeAlias type="com.connect.job.model.vo.HNScrap" alias="hnScrap"/>
 		<typeAlias type="com.connect.job.model.vo.Faq" alias="faq"/>
+		<typeAlias type="com.connect.job.model.vo.Application" alias="application"></typeAlias>
 	</typeAliases>
 	 
 </configuration>
