@@ -16,8 +16,6 @@
 <section id="biz">
 	<div id="biz-container">
         
-        
-
 		<div class="biz-left">
             <div class="menu-top">
                 기업페이지
@@ -67,19 +65,15 @@
 
             <div class="biz-item">
                 <div class="item-left">회사이름</div>
-                <div class="item-right"></div>
+                <div class="item-right">${company.companyName}</div>
             </div>
             <div class="biz-item">
                 <div class="item-left">설립일</div>
-                <div class="item-right"></div>
+                <div class="item-right">${company.companyRegDate}</div>
             </div>
             <div class="biz-item">
                 <div class="item-left">주소</div>
-                <div class="item-right"></div>
-            </div>
-            <div class="biz-item">
-                <div class="item-left">담당자</div>
-                <div class="item-right"></div>
+                <div class="item-right">${company.companyAddressOld}</div>
             </div>
 
             <div class="biz-title">

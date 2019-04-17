@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.connect.job.dao.BusinessPageDao;
+import com.connect.job.model.vo.CMember;
+import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.CompanyReview;
 import com.connect.job.model.vo.Resume;
 
@@ -36,6 +38,12 @@ public class BusinessPageServiceImpl implements BusinessPageService {
 	public int selectResumeCount() {
 		return dao.selectResumeCount();
 	}
+
+	@Override
+	public Company selectOne(CMember member) {
+		return dao.selectOne(member);
+	}
+	
 	
 	
 }

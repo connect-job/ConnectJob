@@ -3,6 +3,8 @@ package com.connect.job.dao;
 import java.util.List;
 
 import com.connect.job.model.vo.CompanyReview;
+import com.connect.job.model.vo.CMember;
+import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.Resume;
 
 public interface BusinessPageDao {
@@ -14,6 +16,7 @@ public interface BusinessPageDao {
 	List<CompanyReview> selectReviewList(int cPage, int numPerPage, String id);
 
 	int selectReviewCount(String id);
+	Company selectOne(CMember member);
 	
 	
 

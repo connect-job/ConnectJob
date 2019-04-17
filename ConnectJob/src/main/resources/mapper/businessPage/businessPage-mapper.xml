@@ -2,51 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="Review">
 
-	<select id="selectReviewList" parameterType="Review" resultType="_int" >
-		SELECT * FROM COMPANY_REVIEW WHERE REVIEW_Company=#{cId}
+
+	<!-- <select id="selectAllResume" parameterType="Resume">
+		SELECT * FROM 
+	</select> -->
+	
+
+	<select id="selectOneCompany" parameterType="cmember" resultMap="companyResult">
+		SELECT * FROM COMPANY WHERE COMPANY_NO = #{cId}
 	</select>
 	
-	<select id="selectReviewCount">
-		SELECT COUNT(*) FROM COMPANY_REVIEW WHERE CMEMBERID=#{cId} 
-	</select>
-
-	<resultMap type="hireNoti" id="hireNotiResult">
-      <id property="hnSeq" column="hn_seq"/>
-      <result property="cMemberId" column="cmemberid"/>
-      <result property="hnSort" column="hn_sort" typeHandler="strArr"/>
-      <result property="hnCareer" column="hn_career"/>
-      <result property="hnForm" column="hn_form"/>
-      <result property="hnRecruit" column="hn_recruit"/>
-      <result property="hnCate" column="hn_cate"/>
-      <result property="hnChargeTask" column="hn_chargetask"/>
-      <result property="hnDept" column="hn_dept"/>
-      <result property="hnRankPosition" column="hn_rank_position"/>
-      <result property="hnFinalEdu" column="hn_final_edu" typeHandler="strArr"/>
-      <result property="hnMajor" column="hn_major"/>
-      <result property="hnPreference" column="hn_preference"/>
-      <result property="hnGender" column="hn_gender"/>
-      <result property="hnBirth" column="hn_birth" typeHandler="strArr"/>
-      <result property="hnSal" column="hn_sal"/>
-      <result property="hnWorkPlace" column="hn_work_place"/>
-      <result property="hnDay" column="hn_day"/>
-      <result property="hnStime" column="hn_stime"/>
-      <result property="hnDtime" column="hn_dtime"/>
-      <result property="startDate" column="startdate"/>
-      <result property="endDate" column="enddate"/>
-      <result property="hnEve" column="hn_eve" typeHandler="strArr"/>
-      <result property="hnReMethod" column="hn_remethod"/>
-      <result property="hnProcess" column="hn_process"/>
-      <result property="hnDoc" column="hn_doc"/>
-      <result property="hnInterview" column="hn_interview"/>
-      <result property="hnTitle" column="hn_title"/>
-      <result property="addDate" column="hn_adddate"/>
-      <result property="cName" column="cname"/>
-      <result property="cMemberPhone" column="cmphone"/>
-      <result property="cMemberEmail" column="cMMail"/>
-      <result property="cMemberName" column="cmname"/>
-      <result property="companyAllPeople" column="cap"/>
-      <result property="companyRegDate" column="crd"/>
-      <result property="companyCate" column="cc"/>
-      <result property="companyAddressNew" column="can"/>
-   </resultMap>
+	<resultMap type="company" id="companyResult">
+		<id property="companyNo" column="company_no"/>
+		<result property="companyUpdate" column="company_update"/>
+		<result property="companyName" column="company_name"/>
+		<result property="companyZipcode" column="company_zipcode"/>
+		<result property="companyAddressOld" column="company_address_old"/>
+		<result property="companyAddressNew" column="company_address_new"/>
+		<result property="companyStatus" column="company_status"/>
+		<result property="companyCode" column="company_code"/>
+		<result property="companyCate" column="company_cate"/>
+		<result property="companyRegDate" column="company_regdate"/>
+		<result property="companyAllPeople" column="company_all_people"/>
+		<result property="companyPrice" column="company_price"/>
+		<result property="companyNewPeople" column="company_new_people"/>
+		<result property="companyOutPeople" column="company_out_people"/>
+		<result property="reviewCount" column="review_count"/>
+		<result property="totalScore" column="total_score"/>
+	</resultMap>
+	
 </mapper>

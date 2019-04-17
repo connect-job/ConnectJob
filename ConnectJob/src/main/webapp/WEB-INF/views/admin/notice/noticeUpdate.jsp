@@ -11,45 +11,49 @@
 		<%@ include file="/WEB-INF/views/admin/admin-menu.jsp"%>
 		
 		<!-- ---------------------------------------------------------------------- 우측 메뉴 -->
+		<div class="admin-right">
+				<div class="admin-title">공지사항 관리</div>
+	
+				<div class="admin-item-top">공지사항 내용</div>
 
-	<form name="updateFrm" method="post" action="${path }/notice/updateNotice">
-    	<table>    	
-         	<tr>
-         		
-            	<th>작성자</th>
-            	<td>                
-               		<input type="text" name="writer" value="${notice.writer }" readonly/>
-               		<input type="hidden" name="notice_no" value="${notice.notice_no }"/>
-            	</td>
-            </tr>
-            <tr>
-                <th>제목</th>
-                <td>
-                 	<input type="text" name="title" value="${notice.title }"/>
-                </td>
-            </tr>             
-            <tr>
-                <th>내용</th>
-                <td>
-                 	<textarea name="content">${notice.content}</textarea>
-                </td>
-            </tr>
-            <tr>
-            	<th>상단 고정</th>
-            	<td>
-            		<input type="radio" name="status" value="Y"/> Y
-            		<input type="radio" name="status" value="N"/> N
-            	</td>
-            </tr>                                 
-        </table>  
-    	<div id="btn-container">
-        	<input type="submit" value="수정" />
-        	<input type="button" value="삭제" onclick="location.href='${path}/admin/deleteNotice?notice_no=${notice.notice_no }'"/>                
-    	</div>
-    </form>
+				<form name="updateFrm" method="post" action="${path }/notice/updateNotice">
+				<div class="admin-content">
+						<div class="left">작성자</div>
+						<div class="right" style="text-align: left; padding-left: 15px;">
+							<input type="text" style="width:450px;" name="writer" value="${notice.writer }" readonly/>
+							<input type="hidden" name="notice_no" value="${notice.notice_no }"/>
+						</div>
+
+						<div class="left">제목</div>
+						<div class="right" style="text-align: left; padding-left: 15px;">
+							<input type="text" style="width:450px;" name="title" value="${notice.title }"/>
+						</div>
+
+						<div class="left">내용</div>
+						<div class="right" style="text-align: left; padding-left: 15px;">
+							<textarea id="aContent" name="content">${notice.content}</textarea>
+						</div>
+
+						<div class="left">상단 고정</div>
+						<div class="right" style="text-align: left; padding-left: 15px;">
+								<label><input type="radio" name="status" value="Y"/> Y</label>
+								<label><input type="radio" name="status" value="N"/> N</label>
+						</div>
+				</div>
+
+				<div class="admin-one">
+						<input type="submit" value="수정" />
+						<input type="button" value="삭제" onclick="location.href='${path}/admin/deleteNotice?notice_no=${notice.notice_no }'"/>
+				</div>
+				</form>
+		</div>
 </section>
 
 <script>
-	
-</script>
+		ClassicEditor
+			.create(document.querySelector('#aContent'))
+			.catch(error => {
+				console.error(error);
+			});
+	</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

@@ -46,12 +46,7 @@ public interface HireNotiService {
 	int selectHireNotiWaitCount(String id);
 
 	
-
-	
-	
-
-	
-	
-
+	//HireEventController에서 온것
+	List<HireNoti> selectAllList();
 	
 }

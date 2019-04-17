@@ -93,7 +93,6 @@
 			});
 		</script>
 
-
 		<div class="index-middle">
 			<div class="index-middle-left">
 				<div class="top">

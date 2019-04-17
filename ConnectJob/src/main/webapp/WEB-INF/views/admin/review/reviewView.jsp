@@ -22,43 +22,40 @@
 
 					<div class="admin-content">
 							<div class="left">리뷰번호</div>
-							<div class="right">${review.reviewNo}</div>
+							<div class="right" style="text-align:left" >${review.reviewNo}</div>
 							<div class="left">현/전직장 여부</div>
-							<div class="right">${review.reviewIsCurrent}</div>
+							<div class="right" style="text-align:left" >${review.reviewIsCurrent}</div>
 							<div class="left">직종</div>
-							<div class="right">${review.reviewJob}</div>
+							<div class="right" style="text-align:left" >${review.reviewJob}</div>
 							<div class="left">근무형태</div>
-							<div class="right">${review.reviewEmployCate}</div>
+							<div class="right" style="text-align:left" >${review.reviewEmployCate}</div>
 							<div class="left">경력</div>
-							<div class="right">${review.reviewCareer}</div>
-							<br><Br>
+							<div class="right" style="text-align:left" >${review.reviewCareer}</div>
 							<div class="left">총점</div>
-							<div class="right">${review.reviewTotalScore}</div>
+							<div class="right" style="text-align:left" >${review.reviewTotalScore}/5 점</div>
 							<div class="left">리뷰제목</div>
-							<div class="right">${review.reviewShort}</div>
+							<div class="right" style="text-align:left" >${review.reviewShort}</div>
 							<div class="left">기업의 장점</div>
-							<div class="right">${review.reviewMerit}</div>
+							<div class="right" style="text-align:left" >${review.reviewMerit}</div>
 							<div class="left">기업의 단점</div>
-							<div class="right">${review.reviewDisMerit}</div>
+							<div class="right" style="text-align:left" >${review.reviewDisMerit}</div>
 							<div class="left">바라는 점</div>
-							<div class="right">${review.reviewRequest}</div>
-							<br><Br>
+							<div class="right" style="text-align:left" >${review.reviewRequest}</div>
 							<div class="left">승진 및 기회 가능성</div>
-							<div class="right">${review.reviewGrade01}</div>
+							<div class="right" style="text-align:left" >${review.reviewGrade01}/5 점</div>
 							<div class="left">복지 및 급여</div>
-							<div class="right">${review.reviewGrade02}</div>
+							<div class="right" style="text-align:left" >${review.reviewGrade02}/5 점</div>
 							<div class="left">업무와 삶의 균형</div>
-							<div class="right">${review.reviewGrade03}</div>
+							<div class="right" style="text-align:left" >${review.reviewGrade03}/5 점</div>
 							<div class="left">사내문화</div>
-							<div class="right">${review.reviewGrade04}</div>
+							<div class="right" style="text-align:left" >${review.reviewGrade04}/5 점</div>
 							<div class="left">경영진</div>
-							<div class="right">${review.reviewGrade05}</div>
-							<Br><Br>
+							<div class="right" style="text-align:left" >${review.reviewGrade05}/5 점</div>
 							<div class="left">작성일</div>
-							<div class="right"><fmt:formatDate value="${review.reviewDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>${regDate }</div>
+							<div class="right" style="text-align:left" ><fmt:formatDate value="${review.reviewDate}" pattern="yyyy년 MM월 dd일" var="regDate"/>${regDate }</div>
 					</div>
 					
-					<p align="center"><button onclick="history.back();">목록으로</button></p>
+					<div class="admin-one"><button onclick="history.back();">목록으로</button></div>
 
 		</div>
 	</div>

@@ -20,6 +20,12 @@ public class HireNotiDaoImpl implements HireNotiDao {
 	
 
 	@Override
+	public List<HireNoti> selectAllList() {
+
+		return session.selectList("hireNoti");
+	}
+
+	@Override
 	public List<HireNoti> selectWaitList(int cPage, int numPerPage, HireNoti h) {
 		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
 		return session.selectList("hireNoti.selectWaitList", h, row);

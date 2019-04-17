@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.connect.job.common.PageBarFactory;
+import com.connect.job.model.vo.CMember;
+import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.CompanyReview;
 import com.connect.job.model.vo.HireNoti;
 import com.connect.job.model.vo.Resume;
@@ -31,8 +33,10 @@ public class BusinessPageController {
 	
 	//기업페이지로 이동
 	@RequestMapping("/cmemberBizPage")
-	public String BizMain()
+	public String BizMain(Model model, CMember member)
 	{
+		Company company = bService.selectOne(member);
+		model.addAttribute("company", company);
 		return "businessPage/businessPage-main";
 	}
 	//채용공고 등록페이지로 이동

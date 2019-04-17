@@ -1447,8 +1447,74 @@ section #calendar {
 section #hire-container {
     display: inline-block;
     width: 990px;
+    position: relative;
 }
 
+#applyModal {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -350px;
+    margin-top: 120px;
+    width: 700px;
+    background-color: #fff;
+    text-align: center;
+    z-index: 9999;
+    border-radius: 8px;
+}
+
+#applyModal .top {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: inline-block;
+    font-size: 18px;
+    text-align: left;
+    padding-left: 25px;
+    background-color: #404861;
+    color: #fff;
+    width: 80%;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+#applyModal .applyTitle {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+#applyModal .applySelect {
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 40px;
+}
+
+#applyModal .applySelect select {
+    vertical-align: top;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    font-size: 13px;
+    width: 400px;
+    border: 2px solid #eee;
+    outline: none;
+}
+
+#applyModal .applyBottom {
+    margin-top: 25px;
+}
+
+#applyModal .applyBottom button {
+    background-color: #404861;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-size: 13px;
+    width: 130px;
+    height: 35px;
+}
 
 section #hire-container .hire-top {
     width: 965px;
@@ -2046,6 +2112,14 @@ section #biz-container .biz-right .biz-item {
     padding-top: 20px;
 }
 
+
+section #biz-container .biz-right .biz-item-top {
+    vertical-align: top;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
 section #biz-container .biz-right .biz-item .item-left {
     vertical-align: top;
     display: inline-block;
@@ -2102,7 +2176,55 @@ section #biz-container .biz-right .biz-one .one-item .one-bottom {
     font-size: 35px;
 }
 
+section #biz-container .biz-right #biz-list {
+    width: 715px;
+    display: inline-block;
+}
 
+section #biz-container .biz-right #biz-list .biz-item {
+    display: inline-block;
+    width: 700px;
+    text-align: center;
+}
+
+section #biz-container .biz-right #biz-list .biz-item .item1 {
+    display: inline-block;
+    width: 25%;
+}
+section #biz-container .biz-right #biz-list .biz-item .item2 {
+    display: inline-block;
+    width: 35%;
+}
+section #biz-container .biz-right #biz-list .biz-item .item3 {
+    display: inline-block;
+    width: 25%;
+}
+section #biz-container .biz-right #biz-list .biz-item .item4 {
+    display: inline-block;
+    width: 10%;
+}
+section #biz-container .biz-right #biz-list .biz-item .item5 {
+    display: inline-block;
+}
+
+section #biz-container .biz-right .biz-item-one {
+    width: 700px;
+    display: inline-block;
+    text-align: center;
+}
+
+section #biz-container .biz-right .biz-item-one #pageBar {
+    margin-top: 15px;
+    display: inline-block;
+}
+
+section #biz-container .biz-right input {
+    width: 250px;
+    height: 35px;
+    border: 1px solid #dfdfdf;
+    outline: none;
+    padding-left: 15px;
+}
 
 /* ----------------------------------------------------------------- 기업리스트 */
 
@@ -5047,6 +5169,9 @@ section #admin-container .admin-right .admin-item-top .item3{
 section #admin-container .admin-right .admin-item-top .item4{
     display: inline-block;
 }
+section #admin-container .admin-right .admin-item-top .item5{
+    display: inline-block;
+}
 
 section #admin-container .admin-right .admin-item {
     cursor: pointer;
@@ -5058,7 +5183,46 @@ section #admin-container .admin-right .admin-item {
     font-size: 12px;
 }
 
+
+section #admin-container .admin-right  select {
+    width: 100px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-size:12px;
+    border: 1px solid #eee;
+    outline: none;
+}
+
+section #admin-container .admin-right  input {
+    width: 100px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    font-size:12px;
+    border: 1px solid #eee;
+    outline: none;
+}
+
+section #admin-container .admin-right  input[type=submit] {
+    width: 90px;
+    height: 30px;
+    background-color: #495368;
+    border: 1px solid #333946;
+    outline: none;
+    color :#fff;
+}
+
 section #admin-container .admin-right .admin-item button {
+    width: 90px;
+    height: 30px;
+    background-color: #495368;
+    border: 1px solid #333946;
+    outline: none;
+    color :#fff;
+}
+
+section #admin-container .admin-right .admin-item input[type=button] {
     width: 90px;
     height: 30px;
     background-color: #495368;
@@ -5092,9 +5256,15 @@ section #admin-container .admin-right .admin-item .item4{
     display: inline-block;
 }
 
+
+section #admin-container .admin-right .admin-item .item5{
+    display: inline-block;
+}
+
 section #admin-container .admin-right .admin-content {
     font-size: 13px;
     width: 715px;
+    text-align: center;
 }
 
 section #admin-container .admin-right .admin-content .left {
@@ -5129,6 +5299,16 @@ section #admin-container .admin-right .admin-one {
     width: 100%;
     padding-bottom: 20px;
     padding-top: 20px;
+    text-align: center;
+}
+
+section #admin-container .admin-right .admin-one button {
+    width: 90px;
+    height: 30px;
+    background-color: #495368;
+    border: 1px solid #333946;
+    outline: none;
+    color :#fff;
 }
 
 section #admin-container .admin-right .admin-one .one-item {

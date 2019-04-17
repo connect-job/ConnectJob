@@ -41,7 +41,7 @@
 	</insert>
 	
 	<select id="faqView" resultMap="faqResult">
-		select * from faq
+		select * from faq order by f_no desc
 	</select>
 	
 	<select id="selectFaqCountOne" resultType="_int">
