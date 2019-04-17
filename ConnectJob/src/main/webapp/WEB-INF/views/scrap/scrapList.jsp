@@ -7,7 +7,6 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 
-
 <section id="resumeView">
 	<div id="resume-container">
 		<div class="resume-top">
@@ -37,7 +36,6 @@
 			내 스크랩 목록
 		</div>
 		<div id="resume-list">
-
 				<div class="list-item-top">
 						<div class="item1"  style="width: 20%">구분</div>
 						<div class="item2" style="width: 40%">회사명</div>

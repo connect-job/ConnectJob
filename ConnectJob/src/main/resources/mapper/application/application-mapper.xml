@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="application">
+  <insert id="insertApplication" parameterType="application">
+  		INSERT INTO APPLICATION VALUES(SEQ_APPLICATION_ID.NEXTVAL,#{resumeNo},#{pId},#{hnSeq},#{cMemberId},#{companyNo},#{companyName},SYSDATE)
+  </insert>
+  
+  <select id="selectAllCnt" parameterType="application" resultType="_int">
+  		SELECT COUNT(*) FROM APPLICATION WHERE P_ID=#{pId}
+  </select>
+</mapper>

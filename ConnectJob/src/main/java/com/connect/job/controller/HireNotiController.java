@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,13 +19,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.connect.job.common.PageBarFactory;
 import com.connect.job.model.vo.HireNoti;
+import com.connect.job.model.vo.Member;
+import com.connect.job.model.vo.Resume;
 import com.connect.job.service.HireNotiService;
+import com.connect.job.service.ResumeService;
 
 @Controller
 public class HireNotiController {
 
 	@Autowired
 	private HireNotiService service;
+	@Autowired
+	private ResumeService rservice;
 	
 	private Logger logger=LoggerFactory.getLogger(CMemberController.class);
 	
@@ -64,12 +70,15 @@ public class HireNotiController {
 	
 	//헤더 채용공고로 페이지로 이동
 	@RequestMapping("/hireNotiAll.do")
-	public String hireNotiList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model)
+	public String hireNotiList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model,HttpSession session)
 	{
+		
 		int numPerPage = 10;
 		List<HireNoti> list = service.selectAll(cPage, numPerPage);
 		int total = service.selectHireNotiCount();
-		
+		Member m=(Member)session.getAttribute("loginMember");
+		List<Resume> rList=rservice.selectedResumeList(m.getP_id());
+		model.addAttribute("rList",rList);
 		model.addAttribute("pageBar", PageBarFactory.getPageBar(total, cPage, numPerPage));
 		model.addAttribute("hireNoti",list);
 		return "hireNoti/hireNoti-List";
@@ -137,11 +146,14 @@ public class HireNotiController {
 	
 	//채용공고 제목 누르고 상세 페이지로 이동
 	@RequestMapping("/hireNotiView.do")
-	public String hireNotiView(int no, Model model)
+	public String hireNotiView(int no, Model model,HttpSession session)
 	{
 		System.out.println("공고번호 : "+no);
 		HireNoti hn = service.selectOne(no);
-		
+
+		Member m=(Member)session.getAttribute("loginMember");
+		List<Resume> rList=rservice.selectedResumeList(m.getP_id());
+		model.addAttribute("rList", rList);
 		model.addAttribute("hireNoti",hn);
 		return "hireNoti/hireNoti-selectOne";
 	}

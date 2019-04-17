@@ -16,7 +16,7 @@
 			<div class="left">${hireNoti.cName }　|　${hireNoti.hnTitle}</div>
 			<div class="right">
 				<button type="button" onclick="location.href='${path}/scrap/insertHNScrap.do?cMemberId=${hireNoti.cMemberId}&hnTitle=${hireNoti.hnTitle }&hnSeq=${hireNoti.hnSeq }'">스크랩</button>　
-				<button>즉시지원</button>
+				<button type="button"  onclick="fn_apply()">즉시지원</button>
 			</div>
 		</div>
 		
@@ -147,7 +147,7 @@
 			</div>
 			<div class="content-item">
 				<div class="left">접수방법</div>
-				<div class="right">${hireNoti.hnReMethod }　<button type="button" >즉시지원</button></div>
+				<div class="right">${hireNoti.hnReMethod }　<button type="button" onclick="fn_apply()" >즉시지원</button></div>
 			</div>
 		</div>
 	
@@ -196,8 +196,57 @@
 				<div class="right">${hireNoti.companyAddressNew }</div>
 			</div>
 		</div>
-
+	   <!-- 모달 -->
+	   <div class="background-blur"></div>
+        <div id="applyModal">
+        	<form action="${path }/application/insertApplication.do" method="POST">
+	            <div class="top">지원하기</div>
+	            <div class="applyTitle">해당 공고에 지원하시려면 이력서를 선택하세요</div>
+	            <div class="applySelect">
+	            	<input type="hidden" name="hnSeq" value="${hireNoti.hnSeq }"/>
+	            	<input type="hidden" name="cMemberId" value="${hireNoti.cMemberId }"/>
+	                내 이력서　
+	                <select name="resumeNo">
+	                		<option value='' disabled selected>이력서 선택</option>
+	                	<c:forEach var="r" items="${rList }">
+	                		<option value="${r.resumeNo }">${r.title }</option>
+	                	</c:forEach>
+	                </select>
+	            </div>
+	            <div class="applyBottom">
+	                <input type="submit" value="지원하기"/>　<button onclick="fn_applyCancle()">취소</button>
+	            </div>
+            </form>
+        </div>
 	</div>
+	
 </section>
+<script>
+function fn_applyComplete(){
+	var resumeSelectNo=$('[name=resumeSelect]').val();
+	console.log(resumeSelectNo);
+	console.log("${hnSeq}");
+	location.href="${path}/application/insertApplication.do?hnSeq=${hireNoti.hnSeq }&resumeNo=0";
+	
+}
+function fn_apply() {
+    if (${ loginMember != null }) {
+        $('body').scrollTop(0);
+        $(".background-blur").eq(0).css("display", "inline-block");
+        $('#applyModal').css("display", "inline-block");
+    } else {
+        if (confirm('로그인 후 지원하실 수 있습니다\n로그인 페이지로 이동하시겠습니까?')) {
+            window.location.href = "${path}/member/login.do";
+        } else {
+            return;
+        }
+    }
+}
 
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+function fn_applyCancle() {
+    $(".background-blur").eq(0).css("display", "none");
+    $('#applyModal').css("display", "none");
+}
+</script>
+
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>

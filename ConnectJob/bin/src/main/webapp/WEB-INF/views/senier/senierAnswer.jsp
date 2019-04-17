@@ -32,28 +32,18 @@
 
 
 
-<<<<<<< HEAD
 		<div class="senier-middle">
-<<<<<<< HEAD
-=======
-=======
-		<div class="senier-middle">
->>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 				<div class="middle-content">
 					<div class="left">직종분류</div>
 					<div class="right">
 							${s.sCate}
 					</div>
 				</div>
-<<<<<<< HEAD
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
-=======
 
 				<div class="middle-subtitle">
 					질문유형　#${s.qType}　|　${s.sDate}
 				</div>
 				
->>>>>>> branch 'ljb' of https://github.com/connect-job/ConnectJob.git
 				<div class="middle-content">
 					<div class="left"></div>
 					<div class="right">

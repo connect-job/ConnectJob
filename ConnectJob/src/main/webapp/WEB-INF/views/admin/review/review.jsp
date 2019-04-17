@@ -17,37 +17,9 @@
 	<div id="admin-container">
 
 		<!-- ---------------------------------------------------------------------- 좌측메뉴 -->
-
-		<div class="admin-left">
-
-			<div class="menu-top">관리자페이지</div>
-
-			<ul>
-					<li class="menu">고객센터 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
-						<ul class="hide">
-							<li><a href="${path}/admin/inquiry/inquiry.do">1:1문의
-									관리</a></li>
-							<li><a href="#">자주묻는질문 관리</a></li>
-						</ul>
-					</li>
-
-				<li class="menu">공지사항 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
-					<ul class="hide">
-						<li><a href="#">공지사항</a></li>
-					</ul>
-				</li>
-
-				<li class="menu">기업리뷰 관리<span class="icon"><i class="fas fa-sort-down"></i></span>
-					<ul class="hide">
-						<li><a href="${path }/review/adminReview.do">기업리뷰</a></li>
-					</ul>
-				</li>
-
-
-			</ul>
-		</div>
-
-		<!-- ---------------------------------------------------------------------- 우측페이지  -->
+		<%@ include file="/WEB-INF/views/admin/admin-menu.jsp"%>
+		
+		<!-- ---------------------------------------------------------------------- 우측 메뉴 -->
 
 		<div class="admin-right">
 			<div class="admin-title">기업리뷰 관리</div>
@@ -61,7 +33,7 @@
 			</div>
 
 			<c:forEach var="list" items="${review}" varStatus="vs">
-				<div class="admin-item" onclick="location.href='${path}/review/adminReviewOne.do?no=${list.reviewNo}'">
+				<div class="admin-item" onclick="location.href='${path}/review/adminReviewOne.do?reviewNo=${list.reviewNo}'">
 					<div class="item1" style="width:5%">${list.reviewNo}</div>
 					<div class="item2" style="width:25%">${list.cName }</div>
 					<div class="item3" style="width:35%; text-align:left">
@@ -89,20 +61,6 @@
 </section>
 
 <script>
-	$(document).ready(function () {
-		$(".menu").click(function () {
-			var submenu = $(this).children('ul');
-			if (submenu.is(":visible")) {
-				submenu.slideUp();
-				$(this).children('.icon').html("<i class='fas fa-sort-down'></i>");
-			} else {
-				submenu.slideDown();
-				$(this).children('.icon').html("<i class='fas fa-sort-up'></i>");
-			}
-		});
-	});
-
-
 	function fn_paging(cPage) {
 			window.location.href = "${path}/review/adminReview.do?cPage=" + cPage;
 	}
