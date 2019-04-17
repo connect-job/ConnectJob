@@ -35,17 +35,17 @@ public class BusinessPageDaoImpl implements BusinessPageDao {
 	@Override
 	public List<Resume> selectAllResume(int cPage, int numPerPage) {
 		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
-		return session.selectList("Resume.selectAllResume", null, row);
+		return session.selectList("Review.selectAllResume", null, row);
 	}
 
 	@Override
 	public int selectResumeCount() {
-		return session.selectOne("Resume.selectResumeCount");
+		return session.selectOne("Review.selectResumeCount");
 	}
 
 	@Override
 	public Company selectOne(CMember member) {
-		return session.selectOne("Resume.selectOneCompany", member);
+		return session.selectOne("Review.selectOneCompany", member);
 	}
 	
 	

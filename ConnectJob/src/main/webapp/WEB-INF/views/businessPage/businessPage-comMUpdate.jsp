@@ -13,43 +13,43 @@
                 <div id="biz-container">
                         <!-- ------------------ -->
                         <div class="biz-left">
-                            <div class="menu-top">
-                                기업페이지
-                            </div>
-                            <ul>
-                                <li class="menu">
-                                    채용공고<span class="icon"><i class="fas fa-sort-down"></i></span>
-                                    <ul class="hide">
-                                        <li><a href="${path }/hireNotiAdd.do">채용공고등록</a></li>
-                                        <li><a href="${path }/hireNotiAllList.do?id=${loginCMember.cMemberId}">전체공고</a></li>
-                                    </ul>
-                                </li>
-                
-                                <li class="menu">
-                                    인재관리<span class="icon"><i class="fas fa-sort-down"></i></span>
-                                    <ul class="hide">
-                                        <li><a href="${path }/AllResume.do">전체 인재정보</a></li>
-                                        <li><a href="${path }/comResume.do">자사 지원 인재정보</a></li>
-                                        <li><a href="${path }/openResume.do">공개 인재정보</a></li>
-                                    </ul>
-                                </li>
-                
-                                <li class="menu">
-                                    기업정보수정<span class="icon"><i class="fas fa-sort-down"></i></span>
-                                    <ul class="hide">
-                                        <li><a href="${path }/updateI.do">기업정보수정</a></li>
-                                        <li><a href="${path }/cMemberUpdate.do">담당자 정보 수정</a></li>
-                                    </ul>
-                                </li>
-                
-                                <li class="menu">
-                                    기업리뷰<span class="icon"><i class="fas fa-sort-down"></i></span>
-                                    <ul class="hide">
-                                        <li><a href="${path }/review.do?cId=${loginCMember.cId}">기업 리뷰 조회</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+            <div class="menu-top">
+                기업페이지
+            </div>
+            <ul>
+                <li class="menu">
+                    채용공고<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="${path }/hireNotiAdd.do">채용공고등록</a></li>
+                        <li><a href="${path }/hireNotiAllList.do?id=${loginCMember.cMemberId}">전체공고</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu">
+                    인재관리<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="${path }/AllResume.do">전체 인재정보</a></li>
+                        <li><a href="${path }/comResume.do">자사 지원 인재정보</a></li>
+                        <li><a href="${path }/openResume.do">공개 인재정보</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu">
+                    기업정보수정<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="${path }/updateI.do">기업정보수정</a></li>
+                        <li><a href="${path }/cMemberUpdate.do">담당자 정보 수정</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu">
+                    기업리뷰<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="${path }/reviewList.do?cId=${loginCMember.cId}">기업 리뷰 조회</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
 
 
                         <div class="biz-right">

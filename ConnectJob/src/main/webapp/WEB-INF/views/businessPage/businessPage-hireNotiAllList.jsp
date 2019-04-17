@@ -46,8 +46,14 @@
                     </ul>
                 </li>
 
+                <li class="menu">
+                    기업리뷰<span class="icon"><i class="fas fa-sort-down"></i></span>
+                    <ul class="hide">
+                        <li><a href="${path }/reviewList.do?cId=${loginCMember.cId}">기업 리뷰 조회</a></li>
+                    </ul>
+                </li>
             </ul>
-        </div>
+        </div>>
 
         <!-- ----------------------- -->
 

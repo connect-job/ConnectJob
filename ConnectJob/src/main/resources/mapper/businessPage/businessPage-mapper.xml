@@ -6,10 +6,12 @@
 	<!-- <select id="selectAllResume" parameterType="Resume">
 		SELECT * FROM 
 	</select> -->
-	
+	<select id="selectReviewList" parameterType="Review" resultType="_int">
+		SELECT * FROM COMPANY_Review WHERE review_company = #{cId}
+	</select>	
 
 	<select id="selectOneCompany" parameterType="cmember" resultMap="companyResult">
-		SELECT * FROM COMPANY WHERE COMPANY_NO = #{cId}
+		SELECT * FROM COMPANY_Review WHERE review_company = #{cId}
 	</select>
 	
 	<resultMap type="company" id="companyResult">

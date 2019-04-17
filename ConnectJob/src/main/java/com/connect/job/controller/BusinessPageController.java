@@ -122,15 +122,15 @@ public class BusinessPageController {
 	
 	//리뷰 페이지로 이동
 	@RequestMapping("/reviewList.do")
-	public String review(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, String id, Model model)
+	public String review(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, String cId, Model model)
 	{
 		int numPerPage = 10;
-		List<CompanyReview> list= bService.selectReviewList(cPage, numPerPage, id);
-		int total = bService.selectReviewCount(id);
+		List<CompanyReview> list= bService.selectReviewList(cPage, numPerPage, cId);
+		int total = bService.selectReviewCount(cId);
 	
 		model.addAttribute("pageBar", PageBarFactory.getPageBar(total, cPage, numPerPage));
 		model.addAttribute("hireNoti",list);
-		model.addAttribute("id",id);
+		model.addAttribute("id",cId);
 		return "businessPage/businessPage-review";
 	}
 	
