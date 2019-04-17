@@ -527,7 +527,7 @@
                         <div class="f-location">${list.hnWorkPlace }</div>
                     </div>
                     <div class="date">
-                        <div class="d-submit"><button onclick="fn_apply()" class="submit">즉시지원</button></div>
+                        <div class="d-submit"><button type="button" class="submit">공고등록일</button></div>
                         <div class="d-date">
                             <fmt:formatDate value="${list.addDate}" pattern="yyyy년 MM월 dd일" var="regDate" />${regDate }
                         </div>

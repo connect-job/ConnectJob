@@ -7,9 +7,13 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <section>
+	
+	<div id="login-container">
 	<form action="${path }/member/findId" method="post">
+
+		<div id="member">
 		<table>
-			<caption>ID찾기</caption>
+			<div class="title">아이디 찾기</div>
 			<tr>
 				<td>이름</td>
 				<td><input type="text" name="p_name"/></td>
@@ -30,7 +34,7 @@
 	
 	<form action="${path }/member/findPw" method="post">
 		<table>
-			<caption>PW찾기</caption>
+				<div class="title">비밀번호 찾기</div>
 			<tr>
 				<td>아이디</td>
 				<td><input type="email" name="p_id" id="p_id"/></td>
@@ -43,7 +47,9 @@
 				<td colspan="2"><input type="submit" value="PW찾기" id="findPw"/></td>				
 			</tr>
 		</table>
+	</div>
 	</form>
+</div>
 </section>
 
 <script type="text/javascript">

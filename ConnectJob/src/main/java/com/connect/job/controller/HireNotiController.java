@@ -77,8 +77,13 @@ public class HireNotiController {
 		List<HireNoti> list = service.selectAll(cPage, numPerPage);
 		int total = service.selectHireNotiCount();
 		Member m=(Member)session.getAttribute("loginMember");
-		List<Resume> rList=rservice.selectedResumeList(m.getP_id());
-		model.addAttribute("rList",rList);
+		
+		if(m!=null) {
+			List<Resume> rList=rservice.selectedResumeList(m.getP_id());
+			model.addAttribute("rList",rList);
+		}
+		
+		
 		model.addAttribute("pageBar", PageBarFactory.getPageBar(total, cPage, numPerPage));
 		model.addAttribute("hireNoti",list);
 		return "hireNoti/hireNoti-List";
@@ -87,7 +92,7 @@ public class HireNotiController {
 	//헤더 채용공고로 페이지로 이동 (Ajax 용)
 		@RequestMapping("/hireNotiAllAjax.do")
 		@ResponseBody
-		public String hireNotiListAjax(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model, String category) throws UnsupportedEncodingException
+		public String hireNotiListAjax(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model, String category, HttpServletRequest request) throws UnsupportedEncodingException
 		{	
 			String html = "";
 			HireNoti h = new HireNoti();
@@ -102,7 +107,7 @@ public class HireNotiController {
 				html += "<div class=\"hire-item\">";
 				html += "<div class=\"cname\">" + list.get(i).getcName() + "</div>";
 				html += "<div class=\"subject\">";
-				html += "<div class=\"h-title\"><a href=\"${path }/hireNotiView.do?no=" + list.get(i).getHnSeq() + "\">" + list.get(i).getHnTitle() + "</div>";
+				html += "<div class=\"h-title\"><a href=\"" + request.getContextPath() + "/hireNotiView.do?no=" + list.get(i).getHnSeq() + "\">" + list.get(i).getHnTitle() + "</div>";
 				html += "<div class=\"h-subtitle\">모집부문 : ";
 				for(String sort : list.get(i).getHnSort()) {
 					html += sort + "　";
@@ -152,8 +157,11 @@ public class HireNotiController {
 		HireNoti hn = service.selectOne(no);
 
 		Member m=(Member)session.getAttribute("loginMember");
-		List<Resume> rList=rservice.selectedResumeList(m.getP_id());
-		model.addAttribute("rList", rList);
+		if(m!=null) {
+			List<Resume> rList=rservice.selectedResumeList(m.getP_id());
+			model.addAttribute("rList", rList);			
+		}
+		
 		model.addAttribute("hireNoti",hn);
 		return "hireNoti/hireNoti-selectOne";
 	}

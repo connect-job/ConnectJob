@@ -5,7 +5,6 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<section>
 
 <script>
 //정규식
@@ -53,32 +52,48 @@ $(document).ready(function(){
 
 </script>
 
-<form action="${path}/member/changePwEnd" method="post">
-	
-	<input type="text" value="${param.p_id }" name="p_id"/>
-	<div class="enroll-item">
-		<div class="left">비밀번호</div>
-		<div class="right">
-			<input type="password" name="password" id="pw1" required/>
-			<span id="pw_validate"></span>						
-		</div>
-	</div>
-	
-	<div class="enroll-item">
-		<div class="left">비밀번호 확인</div>
-		<div class="right">
-			<input type="password" name="password2" id="pw2" required />
-			<span id="password_result"></span>						
-		</div>
-	</div>
-	
-	<input type="submit" value="변경" id="changePwBtn"/>
-</form>	
-	
-	
 
-       
+<section>
+	<div id="mypage-container">
+		<div class="mypage-title">마이페이지</div>
+
+		<div class="mypage-content">
+			<div class="content-left">
+				<ul class="tabs">
+					<li class="selected">비밀번호 변경</li>
+				</ul>
+			</div>
+			
+			<div class="content-right">
+				<p align="right">　　<button onclick="history.back();">돌아가기</button></p>
+					<form action="${path}/member/changePwEnd" method="post">
+	
+						<input type="hidden" value="${param.p_id }" name="p_id"/>
+						<div class="enroll-item">
+							<div class="left">비밀번호</div>
+							<div class="right">
+								<input type="password" name="password" id="pw1" required/>
+								<span id="pw_validate"></span>						
+							</div>
+						</div>
+						
+						<div class="enroll-item">
+							<div class="left">비밀번호 확인</div>
+							<div class="right">
+								<input type="password" name="password2" id="pw2" required />
+								<span id="password_result"></span>						
+							</div>
+						</div>
+						<Br><Br>
+						<button type="submit" id="changePwBtn">비밀번호 변경</button>
+					</form>	
+			</div>
+		</div>
+
+	</div>
 </section>
+
+
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 

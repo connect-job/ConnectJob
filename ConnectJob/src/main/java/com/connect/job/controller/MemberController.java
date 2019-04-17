@@ -328,11 +328,10 @@ public class MemberController {
 		Member result=service.findId(m);		
 		
 		String msg="";
-		String loc="";
+		String loc="/member/login.do";
 		
-		if(result==null) {
+		if(result!=null) {
 			msg=m.getP_name()+"님의 아이디는 "+result.getP_id()+"입니다.";
-			loc="/";
 		}else {
 			msg="아이디가 존재하지 않습니다.";
 		}
@@ -464,7 +463,7 @@ public class MemberController {
 			sendMail.setSubject("[ConnectJob] 비밀번호 안내");
 			sendMail.setText(new StringBuffer().append("<h2>비밀번호 변경 링크</h2>")
 			                /*.append("<a href='http://192.168.20.221:9090/job/member/changePw?p_id=").append(m.getP_id())*/
-							.append("<a href='http://localhost:9090/job/member/changePw?p_id=").append(m.getP_id())
+							.append("<a href='http://192.168.20.221:9090/job/member/changePw?p_id=").append(m.getP_id())
 			                .append("' target='_blank'>비밀번호 변경</a>")
 							.toString());
 			sendMail.setFrom("jiany811@gmail.com", "[ConnectJob]");

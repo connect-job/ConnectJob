@@ -213,7 +213,7 @@
 	                </select>
 	            </div>
 	            <div class="applyBottom">
-	                <input type="submit" value="지원하기"/>　<button onclick="fn_applyCancle()">취소</button>
+	                <input type="submit" value="지원하기"/>　<button type="button" onclick="fn_applyCancle()">취소</button>
 	            </div>
             </form>
         </div>
@@ -230,7 +230,7 @@ function fn_applyComplete(){
 }
 function fn_apply() {
     if (${ loginMember != null }) {
-        $('body').scrollTop(0);
+    	window.scrollTo(0,0);
         $(".background-blur").eq(0).css("display", "inline-block");
         $('#applyModal').css("display", "inline-block");
     } else {

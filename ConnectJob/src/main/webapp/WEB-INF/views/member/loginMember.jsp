@@ -51,7 +51,6 @@
 					}
 				});
 			}, function (error) {
-				alert(JSON.stringify(error, undefined, 2));
 			});
 	}
 </script>
@@ -105,13 +104,13 @@
 						naver_id_login.init_naver_id_login();
 					</script>
 
-					<!-- 구글 로그인 -->
+					<%-- <!-- 구글 로그인 -->
 					<div id="gSignInWrapper">
 						<div id="customBtn" class="customGPlusSignIn">
 							<img src="${path }/resources/images/login-google.png" width="187px">
 						</div>
 					</div>
-					<script>startApp();</script>
+					<script>startApp();</script> --%>
 
 					<!-- 카카오 로그인 -->
 					<a id="custom-login-btn" href="javascript:loginWithKakao()">

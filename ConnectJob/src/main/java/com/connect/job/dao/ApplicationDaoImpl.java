@@ -18,7 +18,7 @@ public class ApplicationDaoImpl implements ApplicationDao {
 
 	@Override
 	public int selectAllCnt(String pId) {
-		return session.insert("application.selectAllCnt",pId);
+		return session.selectOne("application.selectAllCnt",pId);
 	}
 	
 	

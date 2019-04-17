@@ -5,7 +5,7 @@
   		INSERT INTO APPLICATION VALUES(SEQ_APPLICATION_ID.NEXTVAL,#{resumeNo},#{pId},#{hnSeq},#{cMemberId},#{companyNo},#{companyName},SYSDATE)
   </insert>
   
-  <select id="selectAllCnt" parameterType="application" resultType="_int">
+  <select id="selectAllCnt" parameterType="String" resultType="_int">
   		SELECT COUNT(*) FROM APPLICATION WHERE P_ID=#{pId}
   </select>
 </mapper>

@@ -38,7 +38,7 @@
 							<div class="tab-item">
 								<div class="item-left">비밀번호</div>
 								<div class="item-right">
-									<input type="button" value="비밀번호 변경" onclick="location.href='${path}/member/changePw?p_id=${m.p_id}'" />
+									<button type="button" onclick="location.href='${path}/member/changePw?p_id=${m.p_id}'">비밀번호 변경</button>
 								</div>
 							</div>
 							<div class="tab-item">
@@ -62,8 +62,8 @@
 								<div class="item-right"><input type="phone" name="phone" value="${m.phone }" /></div>
 							</div>
 							<div class="tab-item-one">
-								<input type="submit" value="수정" />
-								<input type="button" value="탈퇴" onclick="fn_delete()"/>
+								<button type="submit">수정</button>
+								<button type="button" onclick="fn_delete()">탈퇴</button>
 							</div>
 						</form>
 					</div>

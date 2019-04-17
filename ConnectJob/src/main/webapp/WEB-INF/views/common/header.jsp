@@ -158,7 +158,7 @@
     <script>
     
     // ------------------------------------------------------------ 웹소켓 시작
-    var wsUri = "ws://http://192.168.20.221:9090/job/alarm";
+    var wsUri = "ws://192.168.20.221:9090/job/alarm";
     var nick = '${loginMember.p_id}';
 	console.log("현재 접속중인 아이디 : ${loginMember.p_id}");
     

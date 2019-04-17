@@ -310,8 +310,8 @@ header #header-top .top-container .header-top-center .header-search {
 
 header #header-top .top-container .header-top-center .header-search input {
     width: 80%;
-    height: 38px;
-    font-size: 13px;
+    height: 36px;
+    font-size: 12px;
     letter-spacing: -0.4px;
     color: #272727;
     border: none;
@@ -920,6 +920,33 @@ section #login-container #member {
     display: inline-block;
     width: 648px;
     border: 1px solid #b0b4c0;
+    padding-bottom: 20px;
+}
+
+section #login-container #member input {
+    border: 1px solid rgb(209, 209, 209);
+    width: 80%;
+    height: 30px;
+    padding-left: 15px;
+    background-color: #fff;
+    outline: 1px solid rgb(255, 255, 255);
+}
+
+section #login-container #member input[type=submit] {
+    border: 1px solid rgb(209, 209, 209);
+    width: 100%;
+    height: 30px;
+    padding-left: 15px;
+    background-color: #404861;
+    color: #fff;
+    outline: 1px solid rgb(255, 255, 255);
+}
+
+section #login-container #member .title {
+    width: 100%;
+    text-align: left;
+    padding-left: 15px;
+    font-size: 16px;
 }
 
 section #login-container #member .login-left {
@@ -1321,6 +1348,23 @@ section #mypage-container .mypage-content .content-right {
     overflow: hidden;
 }
 
+section #mypage-container .mypage-content .content-right button {
+    width: 100px;
+    height: 35px;
+    outline: none;
+    background-color: #4e536b;
+    color: #fff;
+    border: 1px solid #4e536b;
+}
+
+section #mypage-container .mypage-content .content-right input[type=password] {
+    width: 250px;
+    height: 35px;
+    border: 1px solid #dfdfdf;
+    outline: none;
+    padding-left: 15px;
+}
+
 section #mypage-container .mypage-content .content-right #tab-scroll {
     transition: 900ms;
     width: 1475px;
@@ -1504,6 +1548,16 @@ section #hire-container {
 
 #applyModal .applyBottom {
     margin-top: 25px;
+}
+
+#applyModal .applyBottom input[type=submit] {
+    background-color: #404861;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-size: 13px;
+    width: 130px;
+    height: 35px;
 }
 
 #applyModal .applyBottom button {
@@ -2134,13 +2188,25 @@ section #biz-container .biz-right .biz-item .item-right {
 }
 
 
-section #biz-container .biz-right .biz-item input[type=text] {
+
+
+section #biz-container .biz-right .biz-item .item-right input[type=text] {
     width: 80%;
     height: 30px;
     border: 1px solid rgb(231, 231, 231);
     font-size: 13px;
     padding-left: 15px;
 }
+
+
+section #biz-container .biz-right .biz-item .item-right input[type=number] {
+    width: 50%;
+    height: 30px;
+    border: 1px solid rgb(231, 231, 231);
+    font-size: 13px;
+    padding-left: 15px;
+}
+
 
 section #biz-container .biz-right .biz-item select {
     width: 30%;
@@ -2218,13 +2284,7 @@ section #biz-container .biz-right .biz-item-one #pageBar {
     display: inline-block;
 }
 
-section #biz-container .biz-right input {
-    width: 250px;
-    height: 35px;
-    border: 1px solid #dfdfdf;
-    outline: none;
-    padding-left: 15px;
-}
+
 
 /* ----------------------------------------------------------------- 기업리스트 */
 
@@ -3712,6 +3772,21 @@ section #senier-container {
     letter-spacing: -0.4px;
 }
 
+section #senier-container #comment-space .buttons {
+    display: inline-block;
+}
+
+section #senier-container #comment-space .buttons button {
+    margin-right: 5px;
+    width: 100px;
+    height: 23px;
+    letter-spacing: -0.5px;
+    color: #fff;
+    border: 2px solid #4e536b;
+    outline: none;
+    background-color: #4e536b;
+}
+
 section #senier-container .senier-top {
     padding-left: 25px;
     text-align: left;
@@ -4105,22 +4180,32 @@ section #senier-container .senier-middle .senier-comment .comment-item {
     width: 100%;
     border-bottom: 1px solid #eee;
     padding-top: 10px;
+    height: 35px;
     padding-bottom: 10px;
 }
 
+
+
 section #senier-container .senier-middle .comment-item .writer {
+    vertical-align: top;
     display: inline-block;
     width: 20%;
 }
 
 section #senier-container .senier-middle .comment-item .content {
     text-align: left;
-
+    vertical-align: top;
     display: inline-block;
     width: 50%;
 }
 
+section #senier-container .senier-middle .comment-item .content-container {
+    margin-right: 15px;
+    display: inline-block;
+}
+
 section #senier-container .senier-middle .comment-item .date {
+    vertical-align: top;
     display: inline-block;
     width: 28%;
 }
