@@ -93,8 +93,8 @@ public class HireNotiDaoImpl implements HireNotiDao {
 
 	@Override
 	public List<HireNoti> selectAllList() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return session.selectList("hireNoti.selectAllList");
 	}
 	
 	

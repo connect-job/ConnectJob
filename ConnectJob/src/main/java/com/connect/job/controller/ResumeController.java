@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.connect.job.model.vo.Application;
 import com.connect.job.model.vo.Career;
 import com.connect.job.model.vo.FinalEdu;
 import com.connect.job.model.vo.FinalEduUniv;
 import com.connect.job.model.vo.Member;
 import com.connect.job.model.vo.ProfileImg;
 import com.connect.job.model.vo.Resume;
+import com.connect.job.service.ApplicationService;
 import com.connect.job.service.ResumeService;
 
 
@@ -29,6 +31,8 @@ import com.connect.job.service.ResumeService;
 public class ResumeController {
 	@Autowired
 	private ResumeService service;
+	@Autowired
+	private ApplicationService aService;
 	
 	//Ajax로 불러올 페이지
 	@RequestMapping("/resume/insertResume.do")
@@ -68,8 +72,12 @@ public class ResumeController {
 		ModelAndView mv=new ModelAndView();
 		Member m=(Member)session.getAttribute("loginMember");
 		List<Resume> list=service.selectedResumeList(m.getP_id());
+		int appCnt=aService.selectAllCnt(m.getP_id());
+		System.out.println("application count : "+appCnt);
+		System.out.println("pId : "+m.getP_id());
 		int resumeCnt=service.selectedResumeCnt(m.getP_id());
 		mv.addObject("resumeCnt",resumeCnt);
+		mv.addObject("appCnt",appCnt);
 		mv.addObject("list",list);
 		mv.setViewName( "resume/resumeList");
 		return mv;

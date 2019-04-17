@@ -202,6 +202,7 @@ public class SenierController {
 				html += "<div class=\"content-container\">";
 				html += list.get(i).getcContent();
 				html += "</div>";
+				html += "<div class=\"buttons\">";
 				Member m = (Member) session.getAttribute("loginMember");
 				if(m!=null) {
 					if(m.getP_id().equals(list.get(i).getcWriter())) {
@@ -210,6 +211,7 @@ public class SenierController {
 						
 					}
 				}
+				html += "</div>";
 				html += "</div>";
 				
 				html += "<div class=\"date\">";

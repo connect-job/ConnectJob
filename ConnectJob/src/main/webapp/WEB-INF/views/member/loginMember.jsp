@@ -51,7 +51,6 @@
 					}
 				});
 			}, function (error) {
-				alert(JSON.stringify(error, undefined, 2));
 			});
 	}
 </script>
@@ -96,22 +95,22 @@
 					<!-- 네이버아이디로로그인 -->
 					<div id="naver_id_login"></div>
 					<script type="text/javascript">
-						var naver_id_login = new naver_id_login("HcAcv4cf7ZTp1x4Kkbdb", "http://localhost:9090/job/member/naverCallback.do");
+						var naver_id_login = new naver_id_login("HcAcv4cf7ZTp1x4Kkbdb", "http://192.168.20.221:9090/job/member/naverCallback.do");
 						var state = naver_id_login.getUniqState();
 						naver_id_login.setButton("green", 3, 40);
-						naver_id_login.setDomain("http://localhost:9090");
+						naver_id_login.setDomain("http://192.168.20.221:9090");
 
 						naver_id_login.setState(state);
 						naver_id_login.init_naver_id_login();
 					</script>
 
-					<!-- 구글 로그인 -->
+					<%-- <!-- 구글 로그인 -->
 					<div id="gSignInWrapper">
 						<div id="customBtn" class="customGPlusSignIn">
 							<img src="${path }/resources/images/login-google.png" width="187px">
 						</div>
 					</div>
-					<script>startApp();</script>
+					<script>startApp();</script> --%>
 
 					<!-- 카카오 로그인 -->
 					<a id="custom-login-btn" href="javascript:loginWithKakao()">

@@ -108,6 +108,7 @@ public class ScrapController {
 		System.out.println("HN : "+hn);
 		
 		HNScrap isExist=service.selectHNScrap(hn);//insert하기전 존재여부확인객체
+		
 		if(isExist!=null&&isExist.getIsDelete().equals("false")) {//이미 스크랩이 존재하면
 			int result=service.deleteHNScrap(isExist.getScrapNo()); //스크랩삭제
 			if(result>0) {
@@ -122,8 +123,14 @@ public class ScrapController {
 		}else {//스크랩이 존재하지않으면
 			System.out.println(hn);
 			int result=service.insertHNScrap(hn);
-			if(result>0) {
+			System.out.println("hnInsert result : "+result);
+			if(result>0&&hnSeq==0) {
 				mv.addObject("loc", "/hireNotiAll.do");
+				mv.addObject("HNScrap",hn);
+				mv.addObject("msg", "스크랩에 성공했습니다.");
+				mv.setViewName("common/msg");
+			}else if(result>0&&hnSeq!=0) {
+				mv.addObject("loc", "/hireNotiView.do?no="+hnSeq);
 				mv.addObject("HNScrap",hn);
 				mv.addObject("msg", "스크랩에 성공했습니다.");
 				mv.setViewName("common/msg");

@@ -107,12 +107,7 @@
             </div>
 
             <div class="enroll-item">
-               <div class="left">담당자 인증</div>
-               <div class="right">
-			                  이메일 인증<input type="checkbox" value="emailCk()" />
-			                  이메일<input type="hidden" id="emailCksub" />
-                  <button>인증<i class="fas fa-check"></i></button>
-               </div>
+               
             </div>
 
             <div class="enroll-item">

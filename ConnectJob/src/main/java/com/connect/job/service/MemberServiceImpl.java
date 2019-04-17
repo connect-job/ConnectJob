@@ -35,8 +35,8 @@ public class MemberServiceImpl implements MemberService{
 	    sendMail.setSubject("[ConnectJob] 이메일 인증");
 	    sendMail.setText(new StringBuffer().append("<h1>[ConnectJob] 메일인증</h1>")
 	                	.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-	                	/*.append("<a href='http://192.168.20.221:9090/job/member/emailForm?p_id=").append(m.getP_id())*/
-	                	.append("<a href='http://localhost:9090/job/member/emailForm?p_id=").append(m.getP_id())
+	                	.append("<a href='http://192.168.20.221:9090/job/member/emailForm?p_id=").append(m.getP_id())
+	             /*   	.append("<a href='http://localhost:9090/job/member/emailForm?p_id=").append(m.getP_id())*/
 	                	.append("' target='_blank'>이메일 인증 확인</a>").toString());
 	    sendMail.setFrom("jiany811@gmail.com", "[ConnectJob]");
 	    sendMail.setTo(m.getP_id());

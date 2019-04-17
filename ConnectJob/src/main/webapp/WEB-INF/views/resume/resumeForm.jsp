@@ -225,7 +225,7 @@
 					<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea15" value='개발 매니저' />개발 매니저</label>
 					<label><input type="checkbox" name="hopeJobArea" id="hopeJobArea16" value='데이터 사이언티스트' />데이터
 						사이언티스트</label>
-					<button onclick="resetHopeArea()">reset</button>
+					
 				</div>
 			</div>
 
@@ -248,7 +248,7 @@
 							value='정보보안·백신' />정보보안·백신</label>
 					<label><input type="checkbox" name="hopeCategory" id="hopeCategory8" value='IT컨설팅' />IT컨설팅</label>
 					<label><input type="checkbox" name="hopeCategory" id="hopeCategory9" value='게임' />게임</label>
-					<button onclick="resetHopeJobArea()">reset</button>
+
 				</div>
 			</div>
 

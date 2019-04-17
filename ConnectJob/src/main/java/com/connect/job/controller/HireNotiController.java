@@ -22,12 +22,15 @@ import com.connect.job.model.vo.HireNoti;
 import com.connect.job.model.vo.Member;
 import com.connect.job.model.vo.Resume;
 import com.connect.job.service.HireNotiService;
+import com.connect.job.service.ResumeService;
 
 @Controller
 public class HireNotiController {
 
 	@Autowired
 	private HireNotiService service;
+	@Autowired
+	private ResumeService rservice;
 	
 	private Logger logger=LoggerFactory.getLogger(CMemberController.class);
 	
@@ -65,13 +68,21 @@ public class HireNotiController {
 	}
 	
 	
-	//헤더 채용공고로 페이지로 이동
+	// 헤더 채용공고로 페이지로 이동
 	@RequestMapping("/hireNotiAll.do")
-	public String hireNotiList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model)
+	public String hireNotiList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model,HttpSession session)
 	{
+		
 		int numPerPage = 10;
 		List<HireNoti> list = service.selectAll(cPage, numPerPage);
 		int total = service.selectHireNotiCount();
+		Member m=(Member)session.getAttribute("loginMember");
+		
+		if(m!=null) {
+			List<Resume> rList=rservice.selectedResumeList(m.getP_id());
+			model.addAttribute("rList",rList);
+		}
+		
 		
 		model.addAttribute("pageBar", PageBarFactory.getPageBar(total, cPage, numPerPage));
 		model.addAttribute("hireNoti",list);
@@ -81,7 +92,7 @@ public class HireNotiController {
 	//헤더 채용공고로 페이지로 이동 (Ajax 용)
 		@RequestMapping("/hireNotiAllAjax.do")
 		@ResponseBody
-		public String hireNotiListAjax(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model, String category) throws UnsupportedEncodingException
+		public String hireNotiListAjax(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model, String category, HttpServletRequest request) throws UnsupportedEncodingException
 		{	
 			String html = "";
 			HireNoti h = new HireNoti();
@@ -96,7 +107,7 @@ public class HireNotiController {
 				html += "<div class=\"hire-item\">";
 				html += "<div class=\"cname\">" + list.get(i).getcName() + "</div>";
 				html += "<div class=\"subject\">";
-				html += "<div class=\"h-title\">" + list.get(i).getHnTitle() + "</div>";
+				html += "<div class=\"h-title\"><a href=\"" + request.getContextPath() + "/hireNotiView.do?no=" + list.get(i).getHnSeq() + "\">" + list.get(i).getHnTitle() + "</div>";
 				html += "<div class=\"h-subtitle\">모집부문 : ";
 				for(String sort : list.get(i).getHnSort()) {
 					html += sort + "　";
@@ -140,10 +151,16 @@ public class HireNotiController {
 	
 	//채용공고 제목 누르고 상세 페이지로 이동
 	@RequestMapping("/hireNotiView.do")
-	public String hireNotiView(int no, Model model)
+	public String hireNotiView(int no, Model model,HttpSession session)
 	{
 		System.out.println("공고번호 : "+no);
 		HireNoti hn = service.selectOne(no);
+
+		Member m=(Member)session.getAttribute("loginMember");
+		if(m!=null) {
+			List<Resume> rList=rservice.selectedResumeList(m.getP_id());
+			model.addAttribute("rList", rList);			
+		}
 		
 		model.addAttribute("hireNoti",hn);
 		return "hireNoti/hireNoti-selectOne";

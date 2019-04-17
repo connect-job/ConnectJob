@@ -15,13 +15,10 @@ import com.connect.job.model.vo.HireEvent;
 import com.connect.job.model.vo.HireNoti;
 import com.connect.job.service.CMemberService;
 import com.connect.job.service.CompanyService;
-import com.connect.job.service.HireEventService;
 import com.connect.job.service.HireNotiService;
 
 @Controller
 public class HireEventController {
-	@Autowired
-	private	HireEventService service;
 	@Autowired
 	private HireNotiService hService;
 	@Autowired

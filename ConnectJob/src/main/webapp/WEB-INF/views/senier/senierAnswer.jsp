@@ -128,8 +128,8 @@
 
 $(document).on('click', '.updateBtn', function() {
 	cNo = $('#cNo').val();
-	content = $(this).parent().children('.content-container').text();
-	$(this).parent().children('.content-container').html('<input type="text" id="cContent" name="cContent" value="' + content + '"/>');
+	content = $(this).parent().parent().children('.content-container').text();
+	$(this).parent().parent().children('.content-container').html('<input type="text" id="cContent" name="cContent" value="' + content + '"/>');
 	$(this).text('수정완료');
 	$(this).attr("class","afterUpdate");
 });

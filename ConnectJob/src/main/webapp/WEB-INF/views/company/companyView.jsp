@@ -430,7 +430,7 @@
                             <div class="input">
                                 <div class="left">기업 총 평점</div>
                                 <div class="right">
-                                    <select name="reviewTotalScore">
+                                    <select id="reviewTotalScore" name="reviewTotalScore">
                                         <option>평점</option>
                                         <option value="1">★</option>
                                         <option value="2">★★</option>

@@ -107,8 +107,7 @@
 				<div class="list-item-top">
 						<div class="item1"  style="width: 10%">구분</div>
 						<div class="item2"  style="width: 38%">공고명</div>
-						<div class="item3" style="width: 15%">회사명</div>
-						<div class="item4" style="width: 15%">지원</div>
+						<div class="item3" style="width: 25%">회사명</div>
 						<div class="item5" style="width: 15%">삭제</div>
 					</div>
 			<c:choose>
@@ -117,8 +116,7 @@
 						<div class="list-item">
 										<div class="item1" style="width: 10%">채용공고 스크랩</div>
 										<div class="item2" style="width: 38%"><a href="${path }/hireNotiView.do?no=${hnList.hnSeq}">${hnList.hnTitle }</a></div>
-										<div class="item3" style="width: 15%"><a href="${path }/company/companyView.do?no=${hnList.companyNo}">${hnList.companyName }</a></div>
-										<div class="item4" style="width: 15%"><button type="button">지원하기</button></div>
+										<div class="item3" style="width: 25%"><a href="${path }/company/companyView.do?no=${hnList.companyNo}">${hnList.companyName }</a></div>
 										<div class="item5" style="width: 15%"><button type="button" onclick="location.href='${path}/scrap/deleteHNScrap.do?scrapNo=${hnList.scrapNo}&hnSeq=0'">삭제</button></div>
 									</div>
 				</c:forEach>
