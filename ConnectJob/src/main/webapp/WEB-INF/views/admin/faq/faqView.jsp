@@ -8,7 +8,8 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
 
-<section>	<div id="admin-container">
+<section>	
+<div id="admin-container">
 
 		<!-- ---------------------------------------------------------------------- 좌측메뉴 -->
 		<%@ include file="/WEB-INF/views/admin/admin-menu.jsp"%>
