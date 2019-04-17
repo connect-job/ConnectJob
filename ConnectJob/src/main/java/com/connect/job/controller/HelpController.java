@@ -65,12 +65,9 @@ public class HelpController {
 		return "help/myInquiryView";//나의문의내역상세
 	}
 	
-	/*@RequestMapping("/help/fag.do")
-	public String fag() {
-		return "help/fag";
-	}*/
+
 	
-	@RequestMapping("/help/fag.do")
+	@RequestMapping("/help/faq.do")
 	public String fag(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage, Model model) {
 		
 		int numPerPage=10;
@@ -81,7 +78,7 @@ public class HelpController {
 		model.addAttribute("total",total);
 		model.addAttribute("pageBar",PageBarFactory.getPageBar(total, cPage, numPerPage));
 		
-		return "help/fag";
+		return "help/faq";
 	}
 	
 	@RequestMapping("/help/faq/FaqWrite.do")
@@ -96,7 +93,7 @@ public class HelpController {
 		int result=service.insertFaq(f);
 		
 		String msg="";
-		String loc="/help/fag.do"; /*?id="+i.getiWriter()*/
+		String loc="/help/faq.do"; /*?id="+i.getiWriter()*/
 		
 		if(result>0 ) {
 			msg="질문등록완료";
@@ -109,21 +106,6 @@ public class HelpController {
 		return "common/msg";
 	}
 	
-	/*@RequestMapping("/help/faq/faqView.do")
-	public ModelAndView faq(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage)
-	{
-		int numPerPage=10;
-		ModelAndView mv=new ModelAndView();
-		List<Faq>list=service.faqView(cPage, numPerPage);
-		int total=service.selectFaqCountOne();
-		System.out.println(list);
-		
-		mv.addObject("list",list);
-		mv.addObject("total",total);
-		mv.addObject("pageBar",PageBarFactory.getPageBar(total, cPage, numPerPage)); 
-		mv.setViewName("help/faq"); 
-		return mv;
-		
-	}*/
+
 	
 }

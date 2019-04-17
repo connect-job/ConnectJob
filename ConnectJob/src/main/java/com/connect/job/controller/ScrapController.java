@@ -13,11 +13,9 @@ import com.connect.job.model.vo.CMember;
 import com.connect.job.model.vo.CPScrap;
 import com.connect.job.model.vo.Company;
 import com.connect.job.model.vo.HNScrap;
-import com.connect.job.model.vo.HireNoti;
 import com.connect.job.model.vo.Member;
 import com.connect.job.service.CMemberService;
 import com.connect.job.service.CompanyService;
-import com.connect.job.service.HireNotiService;
 import com.connect.job.service.ScrapService;
 
 @Controller

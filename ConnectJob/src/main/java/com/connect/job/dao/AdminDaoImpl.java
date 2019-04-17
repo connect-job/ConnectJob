@@ -137,6 +137,12 @@ public class AdminDaoImpl implements AdminDao {
 		return session.update("helpAdmin.faqUpdate",f);
 	}
 
+	@Override
+	public int faqDelete(Faq f) {
+
+		return session.delete("helpAdmin.faqDelete",f);
+	}
+
 	
 	
 }

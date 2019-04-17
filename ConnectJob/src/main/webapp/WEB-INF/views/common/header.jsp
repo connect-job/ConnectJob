@@ -119,7 +119,7 @@
                             <li id="logout-li" onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginCMember!=null and loginMember.p_id!='admin@admin.com'}">
-                            <li onclick="location.href='${path}/cmemberBizPage?cMemberId=${logincMember.cMemberId }'">기업페이지</li>
+                            <li onclick="location.href='${path}/cmemberBizPage?cId=${loginCMember.cId }'">기업페이지</li>
                             <li onclick="location.href='${path}/member/logout.do'">로그아웃</li>
                         </c:if>
                         <c:if test="${loginMember!=null and loginMember.p_id=='admin@admin.com'}">
@@ -129,7 +129,7 @@
                         <li id="sub">고객센터<div id="sub-menu">
                                 <ul>
                                     <li onclick="location.href='${path}/help/inquiry.do'">1:1 문의</li>
-                                    <li onclick="location.href='${path}/help/fag.do'">자주묻는질문</li>
+                                    <li onclick="location.href='${path}/help/faq.do'">자주묻는질문</li>
                                 </ul>
                         </div></li>
                         

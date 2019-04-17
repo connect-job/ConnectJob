@@ -16,8 +16,6 @@
 <section id="biz">
 	<div id="biz-container">
         
-        
-
 		<div class="biz-left">
             <div class="menu-top">
                 기업페이지
@@ -27,10 +25,7 @@
                     채용공고<span class="icon"><i class="fas fa-sort-down"></i></span>
                     <ul class="hide">
                         <li><a href="${path }/hireNotiAdd.do">채용공고등록</a></li>
-                        <li><a href="${path }/hireNotiAll.do">전체공고</a></li>
-                        <li><a href="${path }/hireNoti">진행 중 공고</a></li>
-                        <li><a href="#">대기 중 공고</a></li>
-                        <li><a href="#">마감 된 공고</a></li>
+                        <li><a href="${path }/hireNotiAllList.do?id=${loginCMember.cMemberId}">전체공고</a></li>
                     </ul>
                 </li>
 
@@ -40,7 +35,6 @@
                         <li><a href="${path }/AllResume.do">전체 인재정보</a></li>
                         <li><a href="${path }/comResume.do">자사 지원 인재정보</a></li>
                         <li><a href="${path }/openResume.do">공개 인재정보</a></li>
-                        <li><a href="${path }/matchResume.do">매칭 인재정보</a></li>
                     </ul>
                 </li>
 
@@ -52,12 +46,6 @@
                     </ul>
                 </li>
 
-                <li class="menu">
-                    기업리뷰<span class="icon"><i class="fas fa-sort-down"></i></span>
-                    <ul class="hide">
-                        <li><a href="${path }/review.do">기업 리뷰 조회</a></li>
-                    </ul>
-                </li>
             </ul>
         </div>
         
@@ -71,19 +59,15 @@
 
             <div class="biz-item">
                 <div class="item-left">회사이름</div>
-                <div class="item-right"></div>
+                <div class="item-right">${company.companyName}</div>
             </div>
             <div class="biz-item">
                 <div class="item-left">설립일</div>
-                <div class="item-right"></div>
+                <div class="item-right">${company.companyRegDate}</div>
             </div>
             <div class="biz-item">
                 <div class="item-left">주소</div>
-                <div class="item-right"></div>
-            </div>
-            <div class="biz-item">
-                <div class="item-left">담당자</div>
-                <div class="item-right"></div>
+                <div class="item-right">${company.companyAddressOld}</div>
             </div>
 
             <div class="biz-title">

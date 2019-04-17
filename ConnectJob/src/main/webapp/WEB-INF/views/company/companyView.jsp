@@ -732,9 +732,9 @@
                         });
                     }
                     
-                    function fn_delete(num) {
+                    function fn_delete(num, no) {
                     	if(confirm('해당 리뷰를 삭제하시겠습니까?')) {
-                    		location.href="${path}/review/reviewDelete.do?num=" + num;
+                    		location.href="${path}/review/reviewDelete.do?num=" + num +"&no=" + no;
                     	} else {
                     		return;
                     	}
