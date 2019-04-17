@@ -15,9 +15,6 @@ public class HireNotiServiceImpl implements HireNotiService {
 	private HireNotiDao dao;
 	
 	
-	
-	
-
 	@Override
 	public List<HireNoti> selectWaitList(int cPage, int numPerPage, HireNoti h) {
 		return dao.selectWaitList(cPage, numPerPage, h);
@@ -94,6 +91,12 @@ public class HireNotiServiceImpl implements HireNotiService {
 	@Override
 	public List<HireNoti> selectAllList(int cPage, int numPerPage, String id) {
 		return dao.selectAllList(cPage, numPerPage, id);
+	}
+
+
+	@Override
+	public List<HireNoti> selectAllList() {
+		return dao.selectAllList();
 	}
 
 	

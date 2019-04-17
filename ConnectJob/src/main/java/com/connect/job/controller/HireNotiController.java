@@ -65,7 +65,7 @@ public class HireNotiController {
 	}
 	
 	
-	//헤더 채용공고로 페이지로 이동
+	// 헤더 채용공고로 페이지로 이동
 	@RequestMapping("/hireNotiAll.do")
 	public String hireNotiList(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, Model model)
 	{
@@ -96,7 +96,7 @@ public class HireNotiController {
 				html += "<div class=\"hire-item\">";
 				html += "<div class=\"cname\">" + list.get(i).getcName() + "</div>";
 				html += "<div class=\"subject\">";
-				html += "<div class=\"h-title\">" + list.get(i).getHnTitle() + "</div>";
+				html += "<div class=\"h-title\"><a href=\"${path }/hireNotiView.do?no=" + list.get(i).getHnSeq() + "\">" + list.get(i).getHnTitle() + "</div>";
 				html += "<div class=\"h-subtitle\">모집부문 : ";
 				for(String sort : list.get(i).getHnSort()) {
 					html += sort + "　";

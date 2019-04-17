@@ -90,6 +90,11 @@ public class HireNotiDaoImpl implements HireNotiDao {
 		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
 		return session.selectList("hireNoti.selectAllCompanyList", id, row);
 	}
+
+	@Override
+	public List<HireNoti> selectAllList() {
+		return session.selectList("hireNoti.selectAllList");
+	}
 	
 	
 	
