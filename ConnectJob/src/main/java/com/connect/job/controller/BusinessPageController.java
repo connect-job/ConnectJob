@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.connect.job.common.PageBarFactory;
+import com.connect.job.model.vo.CompanyReview;
 import com.connect.job.model.vo.HireNoti;
 import com.connect.job.model.vo.Resume;
 import com.connect.job.service.BusinessPageService;
@@ -116,9 +117,16 @@ public class BusinessPageController {
 	}
 	
 	//리뷰 페이지로 이동
-	@RequestMapping("/review.do")
-	public String review()
+	@RequestMapping("/reviewList.do")
+	public String review(@RequestParam(value="cPage", required=false, defaultValue="1") int cPage, String id, Model model)
 	{
+		int numPerPage = 10;
+		List<CompanyReview> list= bService.selectReviewList(cPage, numPerPage, id);
+		int total = bService.selectReviewCount(id);
+	
+		model.addAttribute("pageBar", PageBarFactory.getPageBar(total, cPage, numPerPage));
+		model.addAttribute("hireNoti",list);
+		model.addAttribute("id",id);
 		return "businessPage/businessPage-review";
 	}
 	

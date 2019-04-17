@@ -2,6 +2,7 @@ package com.connect.job.service;
 
 import java.util.List;
 
+import com.connect.job.model.vo.CompanyReview;
 import com.connect.job.model.vo.HireNoti;
 
 
@@ -43,6 +44,8 @@ public interface HireNotiService {
 	List<HireNoti> selectWaitList(int cPage, int numPerPage, HireNoti h);
 
 	int selectHireNotiWaitCount(String id);
+
+	
 
 	
 	

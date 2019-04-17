@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.connect.job.model.vo.CompanyReview;
 import com.connect.job.model.vo.Resume;
 
 @Repository
@@ -14,6 +15,20 @@ public class BusinessPageDaoImpl implements BusinessPageDao {
 
 	@Autowired
 	private SqlSessionTemplate session;
+	
+	
+	
+
+	@Override
+	public List<CompanyReview> selectReviewList(int cPage, int numPerPage, String id) {
+		RowBounds row = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		return session.selectList("Review.selectReviewList", id, row);
+	}
+
+	@Override
+	public int selectReviewCount(String id) {
+		return session.selectOne("Review.selectReviewCount",id);
+	}
 
 	@Override
 	public List<Resume> selectAllResume(int cPage, int numPerPage) {
