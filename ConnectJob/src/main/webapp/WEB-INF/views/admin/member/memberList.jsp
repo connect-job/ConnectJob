@@ -16,40 +16,24 @@
 		}
 	}
 
-<<<<<<< HEAD
-function fn_paging(cPage) {
-		window.location.href="${path}/admin/member/memberList?cPage=" + cPage;
-}
-</script>	
-<section>
-=======
 	function fn_paging(cPage) {
-		window.location.href = "${path}/notice.do?cPage=" + cPage;
+		window.location.href="${path}/admin/member/memberList?cPage=" + cPage;
 	}
 </script>
 
 <section>
 
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 	<div id="admin-container">
-<<<<<<< HEAD
-	<!-- ---------------------------------------------------------------------- 좌측메뉴 -->
-	<%@ include file="/WEB-INF/views/admin/admin-menu.jsp"%>
-	<!-- ---------------------------------------------------------------------- 우측 메뉴 -->
-		
-=======
-
 
 		<!-- ---------------------------------------------------------------------- 좌측메뉴 -->
 		<%@ include file="/WEB-INF/views/admin/admin-menu.jsp"%>
 
 		<!-- ---------------------------------------------------------------------- 우측 메뉴 -->
 
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 		<div class="admin-right">
-<<<<<<< HEAD
+
 			<div class="admin-title">회원관리</div>
-=======
+
 			<div class="admin-title">회원리스트</div>
 			<br>
 			<div class="member-search">
@@ -64,7 +48,6 @@ function fn_paging(cPage) {
 					<input type="submit" value="검색">
 				</form>
 			</div>
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 
 			<div class="admin-item-top">
 				<div class="item1" style="width:25%;">아이디</div>
@@ -72,8 +55,7 @@ function fn_paging(cPage) {
 				<div class="item3" style="width:20%;">가입일</div>
 				<div class="item4" style="width:10%;">삭제</div>
 			</div>
-<<<<<<< HEAD
-			
+
 		<div class="member-search">
 			<form method="post" action="${path }/admin/member/searchMember" onsubmit="return checkSearch();">			
 				<select name="searchType" id="select">
@@ -99,34 +81,12 @@ function fn_paging(cPage) {
 		</div>
 		
 		<div id="pageBar">${pageBar }</div>
-	
-=======
 
-
-
-
-
-
-
-			<c:forEach var="member" items="${list }">
-				<div class="admin-item">
-					<div class="item1" style="width:25%;">${member.p_id}</div>
-					<div class="item2" style="width:20%;">${member.p_name}</div>
-					<div class="item3" style="width:20%;">${member.enroll_date }</div>
-					<div class="item4" style="width:10%;"><input type="button" value="삭제"
-							onclick="location.href='${path}/admin/deleteMember?p_id=${member.p_id}'" /></div>
-				</div>
-			</c:forEach>
-
-			<div class="admin-one">
-			<div id="pageBar">
-				${pageBar }
-			</div></div>
+			
 
 		</div>
 	</div>
 
->>>>>>> branch 'PSH' of https://github.com/connect-job/ConnectJob.git
 </section>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
